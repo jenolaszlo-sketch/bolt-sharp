@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/BoltSharp/BoltSharp.csproj" />
+  <Project Path="tests/BoltSharp.Tests/BoltSharp.Tests.csproj" />
+</Solution>

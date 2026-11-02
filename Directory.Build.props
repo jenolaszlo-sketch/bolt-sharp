@@ -1,0 +1,14 @@
+<Project>
+
+  <!--
+    Shared settings for every project in the BoltSharp repository.
+    B0-B scaffolding only: no protocol behaviour is defined here.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+</Project>

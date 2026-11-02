@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--
+      Protocol core. Must stay free of ASP.NET Core, Neo4j.Driver,
+      LatticeDbSharp and native dependencies.
+    -->
+    <AssemblyName>BoltSharp</AssemblyName>
+    <RootNamespace>BoltSharp</RootNamespace>
+  </PropertyGroup>
+
+</Project>
