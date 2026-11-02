@@ -267,7 +267,7 @@ public sealed class PackStreamReader
         return new PackStreamMap(entries);
     }
 
-    private PackStreamStructure ReadStructureValue(byte marker, int depth)
+    private PackStreamValue ReadStructureValue(byte marker, int depth)
     {
         var level = depth + 1;
         if (level > _limits.MaxDepth)
@@ -286,6 +286,17 @@ public sealed class PackStreamReader
                 $"Structure tag {tag} is outside the permitted range 0-{PackStreamMarkers.StructureTagMax}.");
         }
 
+        return tag switch
+        {
+            PackStreamMarkers.NodeTag => ReadNode(level, count),
+            PackStreamMarkers.RelationshipTag => ReadRelationship(level, count),
+            PackStreamMarkers.UnboundRelationshipTag => ReadUnboundRelationship(level, count),
+            _ => ReadGenericStructure(level, tag, count),
+        };
+    }
+
+    private PackStreamStructure ReadGenericStructure(int level, byte tag, int count)
+    {
         var fields = new List<PackStreamValue?>(count);
         for (var i = 0; i < count; i++)
         {
@@ -293,6 +304,88 @@ public sealed class PackStreamReader
         }
 
         return new PackStreamStructure(tag, fields);
+    }
+
+    private PackStreamNode ReadNode(int level, int count)
+    {
+        RequireFieldCount("Node", count, PackStreamMarkers.NodeFieldCount);
+
+        var id = RequireInteger(ReadValue(level), "Node.id");
+        var labels = RequireStringList(ReadValue(level), "Node.labels");
+        var properties = RequireMap(ReadValue(level), "Node.properties");
+        var elementId = RequireString(ReadValue(level), "Node.element_id");
+
+        return new PackStreamNode(id, labels, properties, elementId);
+    }
+
+    private PackStreamRelationship ReadRelationship(int level, int count)
+    {
+        RequireFieldCount("Relationship", count, PackStreamMarkers.RelationshipFieldCount);
+
+        var id = RequireInteger(ReadValue(level), "Relationship.id");
+        var startNodeId = RequireInteger(ReadValue(level), "Relationship.startNodeId");
+        var endNodeId = RequireInteger(ReadValue(level), "Relationship.endNodeId");
+        var type = RequireString(ReadValue(level), "Relationship.type");
+        var properties = RequireMap(ReadValue(level), "Relationship.properties");
+        var elementId = RequireString(ReadValue(level), "Relationship.element_id");
+        var startNodeElementId = RequireString(ReadValue(level), "Relationship.start_node_element_id");
+        var endNodeElementId = RequireString(ReadValue(level), "Relationship.end_node_element_id");
+
+        return new PackStreamRelationship(
+            id, startNodeId, endNodeId, type, properties, elementId, startNodeElementId, endNodeElementId);
+    }
+
+    private PackStreamUnboundRelationship ReadUnboundRelationship(int level, int count)
+    {
+        RequireFieldCount("UnboundRelationship", count, PackStreamMarkers.UnboundRelationshipFieldCount);
+
+        var id = RequireInteger(ReadValue(level), "UnboundRelationship.id");
+        var type = RequireString(ReadValue(level), "UnboundRelationship.type");
+        var properties = RequireMap(ReadValue(level), "UnboundRelationship.properties");
+        var elementId = RequireString(ReadValue(level), "UnboundRelationship.element_id");
+
+        return new PackStreamUnboundRelationship(id, type, properties, elementId);
+    }
+
+    private static void RequireFieldCount(string structure, int actual, int expected)
+    {
+        if (actual != expected)
+        {
+            throw new PackStreamFormatException(
+                $"A {structure} structure must have {expected} fields but the marker declares {actual}.");
+        }
+    }
+
+    private static long RequireInteger(PackStreamValue? value, string field) =>
+        value is PackStreamInteger integer
+            ? integer.Value
+            : throw new PackStreamFormatException($"{field} must be a signed integer.");
+
+    private static string RequireString(PackStreamValue? value, string field) =>
+        value is PackStreamString str
+            ? str.Value
+            : throw new PackStreamFormatException($"{field} must be a string.");
+
+    private static PackStreamMap RequireMap(PackStreamValue? value, string field) =>
+        value as PackStreamMap
+            ?? throw new PackStreamFormatException($"{field} must be a map.");
+
+    private static IReadOnlyList<string> RequireStringList(PackStreamValue? value, string field)
+    {
+        if (value is not PackStreamList list)
+        {
+            throw new PackStreamFormatException($"{field} must be a list.");
+        }
+
+        var result = new string[list.Items.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            result[i] = list.Items[i] is PackStreamString item
+                ? item.Value
+                : throw new PackStreamFormatException($"{field}[{i}] must be a string.");
+        }
+
+        return result;
     }
 
     private string ReadStringValue(byte marker)

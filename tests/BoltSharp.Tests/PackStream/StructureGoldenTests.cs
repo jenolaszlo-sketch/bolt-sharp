@@ -68,7 +68,9 @@ public sealed class StructureGoldenTests
     [Theory]
     [InlineData(0)]
     [InlineData(1)]
-    [InlineData(0x4E)]
+    // 0x40 is a non-reserved tag: 0x4E/0x52/0x72 are the Node/Relationship/
+    // UnboundRelationship tags reserved by B1-D1.
+    [InlineData(0x40)]
     [InlineData(0x7F)]
     public void WriteStructure_BoundaryTags_RoundTrip(byte tag)
     {

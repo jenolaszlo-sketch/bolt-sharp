@@ -51,6 +51,15 @@ internal static class PackStreamMarkers
     internal const byte StructureTagMax = 0x7F;
     internal const int MaxStructureFields = 15;
 
+    // Bolt 5.x graph structure tags and their field counts (B1-D1). Node and
+    // UnboundRelationship both use a 4-field marker (0xB4); Relationship uses 8 (0xB8).
+    internal const byte NodeTag = 0x4E;
+    internal const byte RelationshipTag = 0x52;
+    internal const byte UnboundRelationshipTag = 0x72;
+    internal const int NodeFieldCount = 4;
+    internal const int RelationshipFieldCount = 8;
+    internal const int UnboundRelationshipFieldCount = 4;
+
     internal static bool IsTinyInteger(byte marker) =>
         marker <= TinyIntegerMax || marker >= TinyIntegerMin;
 

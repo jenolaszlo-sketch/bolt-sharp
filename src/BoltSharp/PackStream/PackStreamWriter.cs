@@ -202,6 +202,17 @@ public sealed class PackStreamWriter
     public void WriteStructure(byte tag, IReadOnlyList<PackStreamValue?> fields) =>
         WriteStructureCore(tag, fields, depth: 0);
 
+    /// <summary>Writes a Bolt graph Node structure (tag <c>4E</c>, four fields).</summary>
+    public void WriteNode(PackStreamNode node) => WriteNodeCore(node, depth: 0);
+
+    /// <summary>Writes a Bolt graph Relationship structure (tag <c>52</c>, eight fields).</summary>
+    public void WriteRelationship(PackStreamRelationship relationship) =>
+        WriteRelationshipCore(relationship, depth: 0);
+
+    /// <summary>Writes a Bolt graph UnboundRelationship structure (tag <c>72</c>, four fields).</summary>
+    public void WriteUnboundRelationship(PackStreamUnboundRelationship relationship) =>
+        WriteUnboundRelationshipCore(relationship, depth: 0);
+
     /// <summary>
     /// Writes any supported value recursively. A <see langword="null"/> value writes PackStream Null.
     /// </summary>
@@ -237,6 +248,15 @@ public sealed class PackStreamWriter
                 return;
             case PackStreamStructure structure:
                 WriteStructureCore(structure.Tag, structure.Fields, depth);
+                return;
+            case PackStreamNode node:
+                WriteNodeCore(node, depth);
+                return;
+            case PackStreamRelationship relationship:
+                WriteRelationshipCore(relationship, depth);
+                return;
+            case PackStreamUnboundRelationship unboundRelationship:
+                WriteUnboundRelationshipCore(unboundRelationship, depth);
                 return;
             default:
                 throw new PackStreamFormatException(
@@ -341,6 +361,96 @@ public sealed class PackStreamWriter
         {
             WriteValue(fields[i], level);
         }
+    }
+
+    private void WriteNodeCore(PackStreamNode node, int depth)
+    {
+        ArgumentNullException.ThrowIfNull(node);
+
+        var level = EnterContainer(depth);
+
+        WriteMarker((byte)(PackStreamMarkers.StructureBase | PackStreamMarkers.NodeFieldCount));
+        WriteMarker(PackStreamMarkers.NodeTag);
+
+        WriteInteger(node.Id);
+        WriteStringList(node.Labels, level);
+        WriteValue(node.Properties, level);
+        WriteString(node.ElementId);
+    }
+
+    private void WriteRelationshipCore(PackStreamRelationship relationship, int depth)
+    {
+        ArgumentNullException.ThrowIfNull(relationship);
+
+        var level = EnterContainer(depth);
+
+        WriteMarker((byte)(PackStreamMarkers.StructureBase | PackStreamMarkers.RelationshipFieldCount));
+        WriteMarker(PackStreamMarkers.RelationshipTag);
+
+        WriteInteger(relationship.Id);
+        WriteInteger(relationship.StartNodeId);
+        WriteInteger(relationship.EndNodeId);
+        WriteString(relationship.Type);
+        WriteValue(relationship.Properties, level);
+        WriteString(relationship.ElementId);
+        WriteString(relationship.StartNodeElementId);
+        WriteString(relationship.EndNodeElementId);
+    }
+
+    private void WriteUnboundRelationshipCore(PackStreamUnboundRelationship relationship, int depth)
+    {
+        ArgumentNullException.ThrowIfNull(relationship);
+
+        var level = EnterContainer(depth);
+
+        WriteMarker((byte)(PackStreamMarkers.StructureBase | PackStreamMarkers.UnboundRelationshipFieldCount));
+        WriteMarker(PackStreamMarkers.UnboundRelationshipTag);
+
+        WriteInteger(relationship.Id);
+        WriteString(relationship.Type);
+        WriteValue(relationship.Properties, level);
+        WriteString(relationship.ElementId);
+    }
+
+    private void WriteStringList(IReadOnlyList<string> labels, int depth)
+    {
+        var level = EnterContainer(depth);
+
+        if (labels.Count > _limits.MaxListItems)
+        {
+            throw new PackStreamFormatException(
+                $"Label count {labels.Count} exceeds the configured maximum of {_limits.MaxListItems}.");
+        }
+
+        WriteCollectionHeader(
+            labels.Count,
+            PackStreamMarkers.TinyListBase,
+            PackStreamMarkers.List8,
+            PackStreamMarkers.List16,
+            PackStreamMarkers.List32);
+
+        for (var i = 0; i < labels.Count; i++)
+        {
+            var label = labels[i];
+            if (label is null)
+            {
+                throw new PackStreamFormatException("Node labels must not be null.");
+            }
+
+            WriteString(label);
+        }
+    }
+
+    private int EnterContainer(int depth)
+    {
+        var level = depth + 1;
+        if (level > _limits.MaxDepth)
+        {
+            throw new PackStreamFormatException(
+                $"Nesting depth {level} exceeds the configured maximum of {_limits.MaxDepth}.");
+        }
+
+        return level;
     }
 
     private void WriteCollectionHeader(int count, byte tinyBase, byte marker8, byte marker16, byte marker32)
