@@ -5,14 +5,15 @@ namespace BoltSharp.PackStream;
 
 /// <summary>
 /// Reads PackStream 1.0 values from a byte buffer. Supports Null, Boolean, signed Int64,
-/// Float64, UTF-8 String and Byte arrays (B1-A/B1-B). All multi-byte values are
-/// interpreted big-endian.
+/// Float64, UTF-8 String and Byte arrays (B1-A/B1-B) plus recursive Lists, Maps and
+/// Structures (B1-C). All multi-byte values are interpreted big-endian.
 /// </summary>
 public sealed class PackStreamReader
 {
     private readonly ReadOnlyMemory<byte> _input;
     private readonly PackStreamLimits _limits;
     private int _position;
+    private int _remainingElements;
 
     public PackStreamReader(ReadOnlyMemory<byte> input)
         : this(input, PackStreamLimits.Default)
@@ -25,6 +26,7 @@ public sealed class PackStreamReader
 
         _input = input;
         _limits = limits;
+        _remainingElements = limits.MaxTotalElements;
     }
 
     /// <summary>Number of bytes consumed so far.</summary>
@@ -57,21 +59,7 @@ public sealed class PackStreamReader
     /// Reads a signed 64-bit integer from a tiny, INT_8, INT_16, INT_32 or INT_64
     /// representation. Any valid wider representation is accepted.
     /// </summary>
-    public long ReadInteger()
-    {
-        var marker = ReadMarker();
-
-        return marker switch
-        {
-            PackStreamMarkers.Int8 => unchecked((sbyte)ReadByte()),
-            PackStreamMarkers.Int16 => ReadInt16(),
-            PackStreamMarkers.Int32 => ReadInt32(),
-            PackStreamMarkers.Int64 => ReadInt64(),
-            _ when PackStreamMarkers.IsTinyInteger(marker) => DecodeTinyInteger(marker),
-            _ => throw new PackStreamFormatException(
-                $"Marker 0x{marker:X2} is not a valid PackStream integer representation."),
-        };
-    }
+    public long ReadInteger() => ReadIntegerValue(ReadMarker());
 
     /// <summary>Reads a Float64 (<c>C1</c> + 8 bytes); throws for any other marker.</summary>
     public double ReadFloat()
@@ -83,10 +71,7 @@ public sealed class PackStreamReader
                 $"Expected the Float64 marker 0x{PackStreamMarkers.Float64:X2} but found 0x{marker:X2}.");
         }
 
-        EnsureRemaining(sizeof(double));
-        var value = BinaryPrimitives.ReadDoubleBigEndian(_input.Span[_position..]);
-        _position += sizeof(double);
-        return value;
+        return ReadDoublePayload();
     }
 
     /// <summary>
@@ -98,10 +83,220 @@ public sealed class PackStreamReader
     /// <see cref="PackStreamLimits.MaxStringByteLength"/>, or the payload is not valid UTF-8.
     /// </exception>
     /// <exception cref="PackStreamTruncatedException">The payload is incomplete.</exception>
-    public string ReadString()
+    public string ReadString() => ReadStringValue(ReadMarker());
+
+    /// <summary>
+    /// Reads a byte array from a BYTES_8, BYTES_16 or BYTES_32 representation and
+    /// returns a new array that the caller owns (a defensive copy; the returned array
+    /// never aliases the input buffer). There is no tiny byte-array representation.
+    /// </summary>
+    /// <exception cref="PackStreamFormatException">
+    /// The marker is not a byte-array representation, or the declared length exceeds
+    /// <see cref="PackStreamLimits.MaxBytesLength"/>.
+    /// </exception>
+    /// <exception cref="PackStreamTruncatedException">The payload is incomplete.</exception>
+    public byte[] ReadBytes() => ReadBytesSegment(ReadMarker()).ToArray();
+
+    /// <summary>
+    /// Reads and returns one complete value tree, recursively decoding lists, maps and
+    /// structures. A PackStream Null is returned as <see langword="null"/>.
+    /// </summary>
+    /// <exception cref="PackStreamFormatException">
+    /// A marker is invalid, a container declared length exceeds its configured limit, the
+    /// nesting depth exceeds <see cref="PackStreamLimits.MaxDepth"/>, a map key is not a
+    /// string, a structure tag is out of range, or the total element budget is exhausted.
+    /// </exception>
+    /// <exception cref="PackStreamTruncatedException">The value is incomplete.</exception>
+    public PackStreamValue? ReadValue()
     {
+        _remainingElements = _limits.MaxTotalElements;
+        return ReadValue(depth: 0);
+    }
+
+    private PackStreamValue? ReadValue(int depth)
+    {
+        ConsumeElementBudget();
+
         var marker = ReadMarker();
 
+        if (PackStreamMarkers.IsTinyInteger(marker))
+        {
+            return new PackStreamInteger(DecodeTinyInteger(marker));
+        }
+
+        if (PackStreamMarkers.IsTinyString(marker))
+        {
+            return new PackStreamString(ReadStringValue(marker));
+        }
+
+        if (PackStreamMarkers.IsTinyList(marker))
+        {
+            return ReadListValue(marker, depth);
+        }
+
+        if (PackStreamMarkers.IsTinyMap(marker))
+        {
+            return ReadMapValue(marker, depth);
+        }
+
+        if (PackStreamMarkers.IsStructure(marker))
+        {
+            return ReadStructureValue(marker, depth);
+        }
+
+        return marker switch
+        {
+            PackStreamMarkers.Null => null,
+            PackStreamMarkers.True => new PackStreamBoolean(true),
+            PackStreamMarkers.False => new PackStreamBoolean(false),
+            PackStreamMarkers.Float64 => new PackStreamFloat(ReadDoublePayload()),
+            PackStreamMarkers.Int8 => new PackStreamInteger(unchecked((sbyte)ReadByte())),
+            PackStreamMarkers.Int16 => new PackStreamInteger(ReadInt16()),
+            PackStreamMarkers.Int32 => new PackStreamInteger(ReadInt32()),
+            PackStreamMarkers.Int64 => new PackStreamInteger(ReadInt64()),
+            PackStreamMarkers.Bytes8 or PackStreamMarkers.Bytes16 or PackStreamMarkers.Bytes32 =>
+                new PackStreamBytes(ReadBytesSegment(marker)),
+            PackStreamMarkers.String8 or PackStreamMarkers.String16 or PackStreamMarkers.String32 =>
+                new PackStreamString(ReadStringValue(marker)),
+            PackStreamMarkers.List8 or PackStreamMarkers.List16 or PackStreamMarkers.List32 =>
+                ReadListValue(marker, depth),
+            PackStreamMarkers.Map8 or PackStreamMarkers.Map16 or PackStreamMarkers.Map32 =>
+                ReadMapValue(marker, depth),
+            _ => throw new PackStreamFormatException(
+                $"Marker 0x{marker:X2} is not a valid PackStream value."),
+        };
+    }
+
+    private PackStreamList ReadListValue(byte marker, int depth)
+    {
+        var level = depth + 1;
+        if (level > _limits.MaxDepth)
+        {
+            throw new PackStreamFormatException(
+                $"Nesting depth {level} exceeds the configured maximum of {_limits.MaxDepth}.");
+        }
+
+        uint count;
+        if (PackStreamMarkers.IsTinyList(marker))
+        {
+            count = (uint)(marker & 0x0F);
+        }
+        else
+        {
+            count = marker switch
+            {
+                PackStreamMarkers.List8 => ReadByte(),
+                PackStreamMarkers.List16 => ReadUInt16(),
+                PackStreamMarkers.List32 => ReadUInt32(),
+                _ => throw new PackStreamFormatException(
+                    $"Marker 0x{marker:X2} is not a valid PackStream list representation."),
+            };
+        }
+
+        if (count > (uint)_limits.MaxListItems)
+        {
+            throw new PackStreamFormatException(
+                $"Declared list item count {count} exceeds the configured maximum of {_limits.MaxListItems}.");
+        }
+
+        var items = new List<PackStreamValue?>();
+        for (uint i = 0; i < count; i++)
+        {
+            items.Add(ReadValue(level));
+        }
+
+        return new PackStreamList(items);
+    }
+
+    private PackStreamMap ReadMapValue(byte marker, int depth)
+    {
+        var level = depth + 1;
+        if (level > _limits.MaxDepth)
+        {
+            throw new PackStreamFormatException(
+                $"Nesting depth {level} exceeds the configured maximum of {_limits.MaxDepth}.");
+        }
+
+        uint count;
+        if (PackStreamMarkers.IsTinyMap(marker))
+        {
+            count = (uint)(marker & 0x0F);
+        }
+        else
+        {
+            count = marker switch
+            {
+                PackStreamMarkers.Map8 => ReadByte(),
+                PackStreamMarkers.Map16 => ReadUInt16(),
+                PackStreamMarkers.Map32 => ReadUInt32(),
+                _ => throw new PackStreamFormatException(
+                    $"Marker 0x{marker:X2} is not a valid PackStream map representation."),
+            };
+        }
+
+        if (count > (uint)_limits.MaxMapEntries)
+        {
+            throw new PackStreamFormatException(
+                $"Declared map entry count {count} exceeds the configured maximum of {_limits.MaxMapEntries}.");
+        }
+
+        var entries = new List<KeyValuePair<string, PackStreamValue?>>();
+        var index = new Dictionary<string, int>(StringComparer.Ordinal);
+
+        for (uint i = 0; i < count; i++)
+        {
+            if (ReadValue(level) is not PackStreamString key)
+            {
+                throw new PackStreamFormatException("PackStream map keys must be strings.");
+            }
+
+            var value = ReadValue(level);
+
+            if (index.TryGetValue(key.Value, out var existing))
+            {
+                // Duplicate key: the last value wins, keeping the first-seen position.
+                entries[existing] = new KeyValuePair<string, PackStreamValue?>(key.Value, value);
+            }
+            else
+            {
+                index[key.Value] = entries.Count;
+                entries.Add(new KeyValuePair<string, PackStreamValue?>(key.Value, value));
+            }
+        }
+
+        return new PackStreamMap(entries);
+    }
+
+    private PackStreamStructure ReadStructureValue(byte marker, int depth)
+    {
+        var level = depth + 1;
+        if (level > _limits.MaxDepth)
+        {
+            throw new PackStreamFormatException(
+                $"Nesting depth {level} exceeds the configured maximum of {_limits.MaxDepth}.");
+        }
+
+        // The field count is the low nibble, so 0..15; there is no extended structure form.
+        var count = marker & 0x0F;
+
+        var tag = ReadByte();
+        if (tag > PackStreamMarkers.StructureTagMax)
+        {
+            throw new PackStreamFormatException(
+                $"Structure tag {tag} is outside the permitted range 0-{PackStreamMarkers.StructureTagMax}.");
+        }
+
+        var fields = new List<PackStreamValue?>(count);
+        for (var i = 0; i < count; i++)
+        {
+            fields.Add(ReadValue(level));
+        }
+
+        return new PackStreamStructure(tag, fields);
+    }
+
+    private string ReadStringValue(byte marker)
+    {
         uint length;
         if (PackStreamMarkers.IsTinyString(marker))
         {
@@ -142,20 +337,8 @@ public sealed class PackStreamReader
         return value;
     }
 
-    /// <summary>
-    /// Reads a byte array from a BYTES_8, BYTES_16 or BYTES_32 representation and
-    /// returns a new array that the caller owns (a defensive copy; the returned array
-    /// never aliases the input buffer). There is no tiny byte-array representation.
-    /// </summary>
-    /// <exception cref="PackStreamFormatException">
-    /// The marker is not a byte-array representation, or the declared length exceeds
-    /// <see cref="PackStreamLimits.MaxBytesLength"/>.
-    /// </exception>
-    /// <exception cref="PackStreamTruncatedException">The payload is incomplete.</exception>
-    public byte[] ReadBytes()
+    private ReadOnlyMemory<byte> ReadBytesSegment(byte marker)
     {
-        var marker = ReadMarker();
-
         uint length = marker switch
         {
             PackStreamMarkers.Bytes8 => ReadByte(),
@@ -172,9 +355,46 @@ public sealed class PackStreamReader
         }
 
         EnsureRemaining((int)length);
-        var result = _input.Span.Slice(_position, (int)length).ToArray();
+        var segment = _input.Slice(_position, (int)length);
         _position += (int)length;
-        return result;
+        return segment;
+    }
+
+    private long ReadIntegerValue(byte marker)
+    {
+        if (PackStreamMarkers.IsTinyInteger(marker))
+        {
+            return DecodeTinyInteger(marker);
+        }
+
+        return marker switch
+        {
+            PackStreamMarkers.Int8 => unchecked((sbyte)ReadByte()),
+            PackStreamMarkers.Int16 => ReadInt16(),
+            PackStreamMarkers.Int32 => ReadInt32(),
+            PackStreamMarkers.Int64 => ReadInt64(),
+            _ => throw new PackStreamFormatException(
+                $"Marker 0x{marker:X2} is not a valid PackStream integer representation."),
+        };
+    }
+
+    private double ReadDoublePayload()
+    {
+        EnsureRemaining(sizeof(double));
+        var value = BinaryPrimitives.ReadDoubleBigEndian(_input.Span[_position..]);
+        _position += sizeof(double);
+        return value;
+    }
+
+    private void ConsumeElementBudget()
+    {
+        if (_remainingElements <= 0)
+        {
+            throw new PackStreamFormatException(
+                $"The decoded value exceeds the configured element budget of {_limits.MaxTotalElements}.");
+        }
+
+        _remainingElements--;
     }
 
     private static long DecodeTinyInteger(byte marker) =>

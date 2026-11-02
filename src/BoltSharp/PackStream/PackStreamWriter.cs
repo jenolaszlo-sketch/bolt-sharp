@@ -5,8 +5,8 @@ namespace BoltSharp.PackStream;
 
 /// <summary>
 /// Writes PackStream 1.0 values to an <see cref="IBufferWriter{T}"/>. Supports Null,
-/// Boolean, signed Int64, Float64, UTF-8 String and Byte arrays (B1-A/B1-B). All
-/// multi-byte values are written big-endian.
+/// Boolean, signed Int64, Float64, UTF-8 String and Byte arrays (B1-A/B1-B) plus recursive
+/// Lists, Maps and Structures (B1-C). All multi-byte values are written big-endian.
 /// </summary>
 public sealed class PackStreamWriter
 {
@@ -173,6 +173,196 @@ public sealed class PackStreamWriter
             var span = _output.GetSpan(value.Length);
             value.CopyTo(span);
             _output.Advance(value.Length);
+        }
+    }
+
+    /// <summary>Writes a list of values.</summary>
+    /// <exception cref="PackStreamFormatException">
+    /// The item count exceeds <see cref="PackStreamLimits.MaxListItems"/> or the nesting depth
+    /// exceeds <see cref="PackStreamLimits.MaxDepth"/>.
+    /// </exception>
+    public void WriteList(IReadOnlyList<PackStreamValue?> items) => WriteListCore(items, depth: 0);
+
+    /// <summary>Writes a map. Keys must not be null; each key is written as a string.</summary>
+    /// <exception cref="PackStreamFormatException">
+    /// An entry count exceeds <see cref="PackStreamLimits.MaxMapEntries"/>, a key is null, or the
+    /// nesting depth exceeds <see cref="PackStreamLimits.MaxDepth"/>.
+    /// </exception>
+    public void WriteMap(IReadOnlyList<KeyValuePair<string, PackStreamValue?>> entries) =>
+        WriteMapCore(entries, depth: 0);
+
+    /// <summary>
+    /// Writes a generic structure. Tags must be in the range 0-127 and a structure may carry
+    /// at most 15 fields.
+    /// </summary>
+    /// <exception cref="PackStreamFormatException">
+    /// The tag is out of range, the field count exceeds 15, or the nesting depth exceeds
+    /// <see cref="PackStreamLimits.MaxDepth"/>.
+    /// </exception>
+    public void WriteStructure(byte tag, IReadOnlyList<PackStreamValue?> fields) =>
+        WriteStructureCore(tag, fields, depth: 0);
+
+    /// <summary>
+    /// Writes any supported value recursively. A <see langword="null"/> value writes PackStream Null.
+    /// </summary>
+    public void WriteValue(PackStreamValue? value) => WriteValue(value, depth: 0);
+
+    private void WriteValue(PackStreamValue? value, int depth)
+    {
+        switch (value)
+        {
+            case null:
+                WriteNull();
+                return;
+            case PackStreamBoolean boolean:
+                WriteBoolean(boolean.Value);
+                return;
+            case PackStreamInteger integer:
+                WriteInteger(integer.Value);
+                return;
+            case PackStreamFloat floatValue:
+                WriteFloat(floatValue.Value);
+                return;
+            case PackStreamString stringValue:
+                WriteString(stringValue.Value);
+                return;
+            case PackStreamBytes bytes:
+                WriteBytes(bytes.Value.Span);
+                return;
+            case PackStreamList list:
+                WriteListCore(list.Items, depth);
+                return;
+            case PackStreamMap map:
+                WriteMapCore(map.Entries, depth);
+                return;
+            case PackStreamStructure structure:
+                WriteStructureCore(structure.Tag, structure.Fields, depth);
+                return;
+            default:
+                throw new PackStreamFormatException(
+                    $"Unsupported PackStream value type '{value.GetType().Name}'.");
+        }
+    }
+
+    private void WriteListCore(IReadOnlyList<PackStreamValue?> items, int depth)
+    {
+        ArgumentNullException.ThrowIfNull(items);
+
+        var level = depth + 1;
+        if (level > _limits.MaxDepth)
+        {
+            throw new PackStreamFormatException(
+                $"Nesting depth {level} exceeds the configured maximum of {_limits.MaxDepth}.");
+        }
+
+        if (items.Count > _limits.MaxListItems)
+        {
+            throw new PackStreamFormatException(
+                $"List item count {items.Count} exceeds the configured maximum of {_limits.MaxListItems}.");
+        }
+
+        WriteCollectionHeader(
+            items.Count,
+            PackStreamMarkers.TinyListBase,
+            PackStreamMarkers.List8,
+            PackStreamMarkers.List16,
+            PackStreamMarkers.List32);
+
+        for (var i = 0; i < items.Count; i++)
+        {
+            WriteValue(items[i], level);
+        }
+    }
+
+    private void WriteMapCore(IReadOnlyList<KeyValuePair<string, PackStreamValue?>> entries, int depth)
+    {
+        ArgumentNullException.ThrowIfNull(entries);
+
+        var level = depth + 1;
+        if (level > _limits.MaxDepth)
+        {
+            throw new PackStreamFormatException(
+                $"Nesting depth {level} exceeds the configured maximum of {_limits.MaxDepth}.");
+        }
+
+        if (entries.Count > _limits.MaxMapEntries)
+        {
+            throw new PackStreamFormatException(
+                $"Map entry count {entries.Count} exceeds the configured maximum of {_limits.MaxMapEntries}.");
+        }
+
+        WriteCollectionHeader(
+            entries.Count,
+            PackStreamMarkers.TinyMapBase,
+            PackStreamMarkers.Map8,
+            PackStreamMarkers.Map16,
+            PackStreamMarkers.Map32);
+
+        for (var i = 0; i < entries.Count; i++)
+        {
+            var entry = entries[i];
+            if (entry.Key is null)
+            {
+                throw new PackStreamFormatException("PackStream map keys must not be null.");
+            }
+
+            WriteString(entry.Key);
+            WriteValue(entry.Value, level);
+        }
+    }
+
+    private void WriteStructureCore(byte tag, IReadOnlyList<PackStreamValue?> fields, int depth)
+    {
+        ArgumentNullException.ThrowIfNull(fields);
+
+        if (tag > PackStreamMarkers.StructureTagMax)
+        {
+            throw new PackStreamFormatException(
+                $"Structure tag {tag} is outside the permitted range 0-{PackStreamMarkers.StructureTagMax}.");
+        }
+
+        if (fields.Count > PackStreamMarkers.MaxStructureFields)
+        {
+            throw new PackStreamFormatException(
+                $"Structure field count {fields.Count} exceeds the maximum of {PackStreamMarkers.MaxStructureFields}.");
+        }
+
+        var level = depth + 1;
+        if (level > _limits.MaxDepth)
+        {
+            throw new PackStreamFormatException(
+                $"Nesting depth {level} exceeds the configured maximum of {_limits.MaxDepth}.");
+        }
+
+        WriteMarker((byte)(PackStreamMarkers.StructureBase | fields.Count));
+        WriteMarker(tag);
+
+        for (var i = 0; i < fields.Count; i++)
+        {
+            WriteValue(fields[i], level);
+        }
+    }
+
+    private void WriteCollectionHeader(int count, byte tinyBase, byte marker8, byte marker16, byte marker32)
+    {
+        if (count <= 15)
+        {
+            WriteMarker((byte)(tinyBase | count));
+        }
+        else if (count <= byte.MaxValue)
+        {
+            WriteMarker(marker8);
+            WriteLengthBigEndian((uint)count, 1);
+        }
+        else if (count <= ushort.MaxValue)
+        {
+            WriteMarker(marker16);
+            WriteLengthBigEndian((uint)count, 2);
+        }
+        else
+        {
+            WriteMarker(marker32);
+            WriteLengthBigEndian((uint)count, 4);
         }
     }
 
