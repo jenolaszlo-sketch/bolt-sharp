@@ -1,21 +1,30 @@
 using System.Buffers.Binary;
+using System.Text;
 
 namespace BoltSharp.PackStream;
 
 /// <summary>
-/// Reads PackStream 1.0 scalar values from a byte buffer.
-/// B1-A supports Null, Boolean, signed Int64 and Float64 only. All multi-byte
-/// values are interpreted big-endian.
+/// Reads PackStream 1.0 values from a byte buffer. Supports Null, Boolean, signed Int64,
+/// Float64, UTF-8 String and Byte arrays (B1-A/B1-B). All multi-byte values are
+/// interpreted big-endian.
 /// </summary>
 public sealed class PackStreamReader
 {
     private readonly ReadOnlyMemory<byte> _input;
+    private readonly PackStreamLimits _limits;
     private int _position;
 
     public PackStreamReader(ReadOnlyMemory<byte> input)
+        : this(input, PackStreamLimits.Default)
     {
+    }
+
+    public PackStreamReader(ReadOnlyMemory<byte> input, PackStreamLimits limits)
+    {
+        ArgumentNullException.ThrowIfNull(limits);
+
         _input = input;
-        _position = 0;
+        _limits = limits;
     }
 
     /// <summary>Number of bytes consumed so far.</summary>
@@ -80,6 +89,94 @@ public sealed class PackStreamReader
         return value;
     }
 
+    /// <summary>
+    /// Reads a UTF-8 string from a TINY_STRING, STRING_8, STRING_16 or STRING_32
+    /// representation. Any valid wider representation is accepted.
+    /// </summary>
+    /// <exception cref="PackStreamFormatException">
+    /// The marker is not a string representation, the declared length exceeds
+    /// <see cref="PackStreamLimits.MaxStringByteLength"/>, or the payload is not valid UTF-8.
+    /// </exception>
+    /// <exception cref="PackStreamTruncatedException">The payload is incomplete.</exception>
+    public string ReadString()
+    {
+        var marker = ReadMarker();
+
+        uint length;
+        if (PackStreamMarkers.IsTinyString(marker))
+        {
+            length = (uint)(marker & 0x0F);
+        }
+        else
+        {
+            length = marker switch
+            {
+                PackStreamMarkers.String8 => ReadByte(),
+                PackStreamMarkers.String16 => ReadUInt16(),
+                PackStreamMarkers.String32 => ReadUInt32(),
+                _ => throw new PackStreamFormatException(
+                    $"Marker 0x{marker:X2} is not a valid PackStream string representation."),
+            };
+        }
+
+        if (length > (uint)_limits.MaxStringByteLength)
+        {
+            throw new PackStreamFormatException(
+                $"Declared string length {length} exceeds the configured maximum of {_limits.MaxStringByteLength} byte(s).");
+        }
+
+        EnsureRemaining((int)length);
+        var payload = _input.Span.Slice(_position, (int)length);
+
+        string value;
+        try
+        {
+            value = StrictUtf8.Instance.GetString(payload);
+        }
+        catch (DecoderFallbackException ex)
+        {
+            throw new PackStreamFormatException("The string contained malformed UTF-8 data.", ex);
+        }
+
+        _position += (int)length;
+        return value;
+    }
+
+    /// <summary>
+    /// Reads a byte array from a BYTES_8, BYTES_16 or BYTES_32 representation and
+    /// returns a new array that the caller owns (a defensive copy; the returned array
+    /// never aliases the input buffer). There is no tiny byte-array representation.
+    /// </summary>
+    /// <exception cref="PackStreamFormatException">
+    /// The marker is not a byte-array representation, or the declared length exceeds
+    /// <see cref="PackStreamLimits.MaxBytesLength"/>.
+    /// </exception>
+    /// <exception cref="PackStreamTruncatedException">The payload is incomplete.</exception>
+    public byte[] ReadBytes()
+    {
+        var marker = ReadMarker();
+
+        uint length = marker switch
+        {
+            PackStreamMarkers.Bytes8 => ReadByte(),
+            PackStreamMarkers.Bytes16 => ReadUInt16(),
+            PackStreamMarkers.Bytes32 => ReadUInt32(),
+            _ => throw new PackStreamFormatException(
+                $"Marker 0x{marker:X2} is not a valid PackStream byte-array representation."),
+        };
+
+        if (length > (uint)_limits.MaxBytesLength)
+        {
+            throw new PackStreamFormatException(
+                $"Declared byte-array length {length} exceeds the configured maximum of {_limits.MaxBytesLength} byte(s).");
+        }
+
+        EnsureRemaining((int)length);
+        var result = _input.Span.Slice(_position, (int)length).ToArray();
+        _position += (int)length;
+        return result;
+    }
+
     private static long DecodeTinyInteger(byte marker) =>
         marker <= PackStreamMarkers.TinyIntegerMax ? marker : unchecked((sbyte)marker);
 
@@ -93,6 +190,22 @@ public sealed class PackStreamReader
     {
         EnsureRemaining(1);
         return _input.Span[_position++];
+    }
+
+    private ushort ReadUInt16()
+    {
+        EnsureRemaining(sizeof(ushort));
+        var value = BinaryPrimitives.ReadUInt16BigEndian(_input.Span[_position..]);
+        _position += sizeof(ushort);
+        return value;
+    }
+
+    private uint ReadUInt32()
+    {
+        EnsureRemaining(sizeof(uint));
+        var value = BinaryPrimitives.ReadUInt32BigEndian(_input.Span[_position..]);
+        _position += sizeof(uint);
+        return value;
     }
 
     private short ReadInt16()

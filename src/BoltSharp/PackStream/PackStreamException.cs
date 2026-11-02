@@ -24,6 +24,10 @@ public sealed class PackStreamFormatException : PackStreamException
     public PackStreamFormatException(string message) : base(message)
     {
     }
+
+    public PackStreamFormatException(string message, Exception innerException) : base(message, innerException)
+    {
+    }
 }
 
 /// <summary>The input ended before a complete value could be read.</summary>

@@ -4,18 +4,27 @@ using System.Buffers.Binary;
 namespace BoltSharp.PackStream;
 
 /// <summary>
-/// Writes PackStream 1.0 scalar values to an <see cref="IBufferWriter{T}"/>.
-/// B1-A supports Null, Boolean, signed Int64 and Float64 only. All multi-byte
-/// values are written big-endian.
+/// Writes PackStream 1.0 values to an <see cref="IBufferWriter{T}"/>. Supports Null,
+/// Boolean, signed Int64, Float64, UTF-8 String and Byte arrays (B1-A/B1-B). All
+/// multi-byte values are written big-endian.
 /// </summary>
 public sealed class PackStreamWriter
 {
     private readonly IBufferWriter<byte> _output;
+    private readonly PackStreamLimits _limits;
 
     public PackStreamWriter(IBufferWriter<byte> output)
+        : this(output, PackStreamLimits.Default)
+    {
+    }
+
+    public PackStreamWriter(IBufferWriter<byte> output, PackStreamLimits limits)
     {
         ArgumentNullException.ThrowIfNull(output);
+        ArgumentNullException.ThrowIfNull(limits);
+
         _output = output;
+        _limits = limits;
     }
 
     /// <summary>Writes the Null value (<c>C0</c>).</summary>
@@ -84,10 +93,113 @@ public sealed class PackStreamWriter
         _output.Advance(9);
     }
 
+    /// <summary>
+    /// Writes a UTF-8 string. The marker is chosen from the UTF-8 byte length, not the
+    /// .NET character count. Throws <see cref="PackStreamFormatException"/> for invalid
+    /// UTF-16 input (for example unpaired surrogates) or if the encoded length exceeds
+    /// <see cref="PackStreamLimits.MaxStringByteLength"/>.
+    /// </summary>
+    public void WriteString(string value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        StrictUtf8.ValidateUtf16(value);
+
+        var byteCount = StrictUtf8.Instance.GetByteCount(value);
+        if (byteCount > _limits.MaxStringByteLength)
+        {
+            throw new PackStreamFormatException(
+                $"Encoded string length {byteCount} exceeds the configured maximum of {_limits.MaxStringByteLength} byte(s).");
+        }
+
+        if (byteCount <= 15)
+        {
+            WriteMarker((byte)(PackStreamMarkers.TinyStringBase | byteCount));
+        }
+        else if (byteCount <= byte.MaxValue)
+        {
+            WriteMarker(PackStreamMarkers.String8);
+            WriteLengthBigEndian((uint)byteCount, 1);
+        }
+        else if (byteCount <= ushort.MaxValue)
+        {
+            WriteMarker(PackStreamMarkers.String16);
+            WriteLengthBigEndian((uint)byteCount, 2);
+        }
+        else
+        {
+            WriteMarker(PackStreamMarkers.String32);
+            WriteLengthBigEndian((uint)byteCount, 4);
+        }
+
+        if (byteCount > 0)
+        {
+            var span = _output.GetSpan(byteCount);
+            StrictUtf8.Instance.GetBytes(value, span);
+            _output.Advance(byteCount);
+        }
+    }
+
+    /// <summary>
+    /// Writes a byte array. Throws <see cref="PackStreamFormatException"/> if the length
+    /// exceeds <see cref="PackStreamLimits.MaxBytesLength"/>.
+    /// </summary>
+    public void WriteBytes(ReadOnlySpan<byte> value)
+    {
+        if (value.Length > _limits.MaxBytesLength)
+        {
+            throw new PackStreamFormatException(
+                $"Byte-array length {value.Length} exceeds the configured maximum of {_limits.MaxBytesLength} byte(s).");
+        }
+
+        if (value.Length <= byte.MaxValue)
+        {
+            WriteMarker(PackStreamMarkers.Bytes8);
+            WriteLengthBigEndian((uint)value.Length, 1);
+        }
+        else if (value.Length <= ushort.MaxValue)
+        {
+            WriteMarker(PackStreamMarkers.Bytes16);
+            WriteLengthBigEndian((uint)value.Length, 2);
+        }
+        else
+        {
+            WriteMarker(PackStreamMarkers.Bytes32);
+            WriteLengthBigEndian((uint)value.Length, 4);
+        }
+
+        if (!value.IsEmpty)
+        {
+            var span = _output.GetSpan(value.Length);
+            value.CopyTo(span);
+            _output.Advance(value.Length);
+        }
+    }
+
     private void WriteMarker(byte marker)
     {
         var span = _output.GetSpan(1);
         span[0] = marker;
         _output.Advance(1);
+    }
+
+    private void WriteLengthBigEndian(uint value, int size)
+    {
+        var span = _output.GetSpan(size);
+
+        switch (size)
+        {
+            case 1:
+                span[0] = (byte)value;
+                break;
+            case 2:
+                BinaryPrimitives.WriteUInt16BigEndian(span, (ushort)value);
+                break;
+            default:
+                BinaryPrimitives.WriteUInt32BigEndian(span, value);
+                break;
+        }
+
+        _output.Advance(size);
     }
 }
