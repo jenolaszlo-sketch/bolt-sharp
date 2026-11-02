@@ -347,7 +347,10 @@ Evidence limitations:
   - Bolt 6.0's PackStream revision is not documented in S6.
   - S4's per-version state summary stops at 5.2.
   - S3 "Serialization" says "PackStream Version 1" while S6 documents 1.0/1.1.
-Commit SHA: <fill after commit>
+Commit SHA: 93384c44dda7eaa13298f12d638e74a8e4a36147
+  (This SHA is the commit that added this deliverable. This receipt line
+   itself is finalized in a follow-up documentation commit on the same branch;
+   run `git log --oneline` to see both.)
 Independent review: PENDING
 Owner acceptance: PENDING
 ```
