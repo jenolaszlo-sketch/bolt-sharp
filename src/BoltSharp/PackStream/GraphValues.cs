@@ -118,3 +118,143 @@ public sealed class PackStreamUnboundRelationship : PackStreamValue
 
     public string ElementId { get; }
 }
+
+/// <summary>
+/// A Bolt Path structure (tag <c>50</c>, three fields: nodes, unbound relationships and
+/// traversal indices). Nodes and relationships are referenced by position, so the same
+/// entity may be revisited repeatedly without being duplicated.
+/// </summary>
+public sealed class PackStreamPath : PackStreamValue
+{
+    public PackStreamPath(
+        IReadOnlyList<PackStreamNode> nodes,
+        IReadOnlyList<PackStreamUnboundRelationship> unboundRelationships,
+        IReadOnlyList<long> indices)
+        : this(CopyNodes(nodes), CopyUnboundRelationships(unboundRelationships), CopyIndices(indices))
+    {
+    }
+
+    /// <summary>
+    /// Internal constructor used by the reader. It takes ownership of the arrays the reader
+    /// has just built, avoiding a second defensive copy.
+    /// </summary>
+    internal PackStreamPath(PackStreamNode[] nodes, PackStreamUnboundRelationship[] unboundRelationships, long[] indices)
+    {
+        ArgumentNullException.ThrowIfNull(nodes);
+        ArgumentNullException.ThrowIfNull(unboundRelationships);
+        ArgumentNullException.ThrowIfNull(indices);
+
+        if (nodes.Length == 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(nodes), nodes.Length, "A Path must contain at least one node.");
+        }
+
+        ValidateTraversal(nodes.Length, unboundRelationships.Length, indices);
+
+        Nodes = nodes;
+        UnboundRelationships = unboundRelationships;
+        Indices = indices;
+    }
+
+    /// <summary>Nodes referenced by the path. Never empty.</summary>
+    public IReadOnlyList<PackStreamNode> Nodes { get; }
+
+    /// <summary>Unbound relationships referenced by the path. They carry no endpoints.</summary>
+    public IReadOnlyList<PackStreamUnboundRelationship> UnboundRelationships { get; }
+
+    /// <summary>
+    /// Traversal indices as they appear on the wire: alternating 1-based relationship
+    /// indexes (negative means reverse traversal, zero is invalid) and 0-based node indexes.
+    /// The sign and order are preserved exactly.
+    /// </summary>
+    public IReadOnlyList<long> Indices { get; }
+
+    private static void ValidateTraversal(int nodeCount, int relationshipCount, long[] indices)
+    {
+        if ((indices.Length & 1) != 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(indices), indices.Length, "Path indices must contain an even number of entries.");
+        }
+
+        for (var i = 0; i < indices.Length; i += 2)
+        {
+            var relationshipIndex = indices[i];
+            var nodeIndex = indices[i + 1];
+
+            // Relationship indexes are 1-based; negative values mean reverse traversal and
+            // zero is invalid. Only comparisons are used, so long.MinValue cannot overflow.
+            if (relationshipIndex > 0)
+            {
+                if (relationshipIndex > relationshipCount)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        nameof(indices), relationshipIndex, "Relationship index is outside the relationship list.");
+                }
+            }
+            else if (relationshipIndex < 0)
+            {
+                if (relationshipIndex < -relationshipCount)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        nameof(indices), relationshipIndex, "Relationship index is outside the relationship list.");
+                }
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(indices), relationshipIndex, "Relationship index zero is invalid.");
+            }
+
+            // Node indexes are 0-based and nonnegative.
+            if (nodeIndex < 0 || nodeIndex >= nodeCount)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(indices), nodeIndex, "Node index is outside the node list.");
+            }
+        }
+    }
+
+    private static PackStreamNode[] CopyNodes(IReadOnlyList<PackStreamNode> nodes)
+    {
+        ArgumentNullException.ThrowIfNull(nodes);
+
+        var copy = new PackStreamNode[nodes.Count];
+        for (var i = 0; i < copy.Length; i++)
+        {
+            copy[i] = nodes[i] ?? throw new ArgumentException("Path nodes must not be null.", nameof(nodes));
+        }
+
+        return copy;
+    }
+
+    private static PackStreamUnboundRelationship[] CopyUnboundRelationships(
+        IReadOnlyList<PackStreamUnboundRelationship> unboundRelationships)
+    {
+        ArgumentNullException.ThrowIfNull(unboundRelationships);
+
+        var copy = new PackStreamUnboundRelationship[unboundRelationships.Count];
+        for (var i = 0; i < copy.Length; i++)
+        {
+            copy[i] = unboundRelationships[i]
+                ?? throw new ArgumentException(
+                    "Path unbound relationships must not be null.", nameof(unboundRelationships));
+        }
+
+        return copy;
+    }
+
+    private static long[] CopyIndices(IReadOnlyList<long> indices)
+    {
+        ArgumentNullException.ThrowIfNull(indices);
+
+        var copy = new long[indices.Count];
+        for (var i = 0; i < copy.Length; i++)
+        {
+            copy[i] = indices[i];
+        }
+
+        return copy;
+    }
+}

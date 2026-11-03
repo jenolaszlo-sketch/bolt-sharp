@@ -213,6 +213,9 @@ public sealed class PackStreamWriter
     public void WriteUnboundRelationship(PackStreamUnboundRelationship relationship) =>
         WriteUnboundRelationshipCore(relationship, depth: 0);
 
+    /// <summary>Writes a Bolt Path structure (tag <c>50</c>, three fields).</summary>
+    public void WritePath(PackStreamPath path) => WritePathCore(path, depth: 0);
+
     /// <summary>
     /// Writes any supported value recursively. A <see langword="null"/> value writes PackStream Null.
     /// </summary>
@@ -257,6 +260,9 @@ public sealed class PackStreamWriter
                 return;
             case PackStreamUnboundRelationship unboundRelationship:
                 WriteUnboundRelationshipCore(unboundRelationship, depth);
+                return;
+            case PackStreamPath path:
+                WritePathCore(path, depth);
                 return;
             default:
                 throw new PackStreamFormatException(
@@ -410,6 +416,55 @@ public sealed class PackStreamWriter
         WriteString(relationship.Type);
         WriteValue(relationship.Properties, level);
         WriteString(relationship.ElementId);
+    }
+
+    private void WritePathCore(PackStreamPath path, int depth)
+    {
+        ArgumentNullException.ThrowIfNull(path);
+
+        // The path itself is one nesting level; each of its three field lists is one deeper,
+        // and the nodes/relationships inside those lists are one deeper again.
+        var level = EnterContainer(depth);
+        var fieldListLevel = EnterContainer(level);
+
+        WriteMarker((byte)(PackStreamMarkers.StructureBase | PackStreamMarkers.PathFieldCount));
+        WriteMarker(PackStreamMarkers.PathTag);
+
+        WriteCollectionHeader(
+            path.Nodes.Count,
+            PackStreamMarkers.TinyListBase,
+            PackStreamMarkers.List8,
+            PackStreamMarkers.List16,
+            PackStreamMarkers.List32);
+
+        for (var i = 0; i < path.Nodes.Count; i++)
+        {
+            WriteNodeCore(path.Nodes[i], fieldListLevel);
+        }
+
+        WriteCollectionHeader(
+            path.UnboundRelationships.Count,
+            PackStreamMarkers.TinyListBase,
+            PackStreamMarkers.List8,
+            PackStreamMarkers.List16,
+            PackStreamMarkers.List32);
+
+        for (var i = 0; i < path.UnboundRelationships.Count; i++)
+        {
+            WriteUnboundRelationshipCore(path.UnboundRelationships[i], fieldListLevel);
+        }
+
+        WriteCollectionHeader(
+            path.Indices.Count,
+            PackStreamMarkers.TinyListBase,
+            PackStreamMarkers.List8,
+            PackStreamMarkers.List16,
+            PackStreamMarkers.List32);
+
+        for (var i = 0; i < path.Indices.Count; i++)
+        {
+            WriteInteger(path.Indices[i]);
+        }
     }
 
     private void WriteStringList(IReadOnlyList<string> labels, int depth)

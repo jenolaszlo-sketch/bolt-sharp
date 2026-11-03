@@ -291,6 +291,7 @@ public sealed class PackStreamReader
             PackStreamMarkers.NodeTag => ReadNode(level, count),
             PackStreamMarkers.RelationshipTag => ReadRelationship(level, count),
             PackStreamMarkers.UnboundRelationshipTag => ReadUnboundRelationship(level, count),
+            PackStreamMarkers.PathTag => ReadPath(level, count),
             _ => ReadGenericStructure(level, tag, count),
         };
     }
@@ -345,6 +346,122 @@ public sealed class PackStreamReader
         var elementId = RequireString(ReadValue(level), "UnboundRelationship.element_id");
 
         return new PackStreamUnboundRelationship(id, type, properties, elementId);
+    }
+
+    private PackStreamPath ReadPath(int level, int count)
+    {
+        RequireFieldCount("Path", count, PackStreamMarkers.PathFieldCount);
+
+        if (ReadValue(level) is not PackStreamList nodesList)
+        {
+            throw new PackStreamFormatException("Path.nodes must be a list.");
+        }
+
+        var nodes = ReadPathNodes(nodesList);
+        if (nodes.Length == 0)
+        {
+            throw new PackStreamFormatException("A Path must contain at least one node.");
+        }
+
+        if (ReadValue(level) is not PackStreamList relationshipsList)
+        {
+            throw new PackStreamFormatException("Path.unboundRelationships must be a list.");
+        }
+
+        var relationships = ReadPathRelationships(relationshipsList);
+
+        if (ReadValue(level) is not PackStreamList indicesList)
+        {
+            throw new PackStreamFormatException("Path.indices must be a list.");
+        }
+
+        var indices = ReadPathIndices(indicesList);
+        ValidatePathTraversal(nodes.Length, relationships.Length, indices);
+
+        return new PackStreamPath(nodes, relationships, indices);
+    }
+
+    private static PackStreamNode[] ReadPathNodes(PackStreamList nodes)
+    {
+        var result = new PackStreamNode[nodes.Items.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            result[i] = nodes.Items[i] as PackStreamNode
+                ?? throw new PackStreamFormatException($"Path.nodes[{i}] must be a Node structure.");
+        }
+
+        return result;
+    }
+
+    private static PackStreamUnboundRelationship[] ReadPathRelationships(PackStreamList relationships)
+    {
+        var result = new PackStreamUnboundRelationship[relationships.Items.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            result[i] = relationships.Items[i] as PackStreamUnboundRelationship
+                ?? throw new PackStreamFormatException(
+                    $"Path.unboundRelationships[{i}] must be an UnboundRelationship structure.");
+        }
+
+        return result;
+    }
+
+    private static long[] ReadPathIndices(PackStreamList indices)
+    {
+        var result = new long[indices.Items.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            result[i] = indices.Items[i] is PackStreamInteger integer
+                ? integer.Value
+                : throw new PackStreamFormatException($"Path.indices[{i}] must be an integer.");
+        }
+
+        return result;
+    }
+
+    private static void ValidatePathTraversal(int nodeCount, int relationshipCount, long[] indices)
+    {
+        if ((indices.Length & 1) != 0)
+        {
+            throw new PackStreamFormatException(
+                $"A Path must contain an even number of indices but {indices.Length} were found.");
+        }
+
+        for (var i = 0; i < indices.Length; i += 2)
+        {
+            var relationshipIndex = indices[i];
+            var nodeIndex = indices[i + 1];
+
+            // Relationship indexes are 1-based; negative values mean reverse traversal and
+            // zero is invalid. Only comparisons are used, so long.MinValue cannot overflow.
+            if (relationshipIndex > 0)
+            {
+                if (relationshipIndex > relationshipCount)
+                {
+                    throw new PackStreamFormatException(
+                        $"Path relationship index {relationshipIndex} is outside the relationship list of {relationshipCount}.");
+                }
+            }
+            else if (relationshipIndex < 0)
+            {
+                if (relationshipIndex < -relationshipCount)
+                {
+                    throw new PackStreamFormatException(
+                        $"Path relationship index {relationshipIndex} is outside the relationship list of {relationshipCount}.");
+                }
+            }
+            else
+            {
+                throw new PackStreamFormatException("Path relationship index zero is invalid.");
+            }
+
+            // Node indexes are 0-based and nonnegative.
+            if (nodeIndex < 0 || nodeIndex >= nodeCount)
+            {
+                throw new PackStreamFormatException(
+                    $"Path node index {nodeIndex} is outside the node list of {nodeCount}.");
+            }
+        }
     }
 
     private static void RequireFieldCount(string structure, int actual, int expected)

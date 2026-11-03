@@ -60,6 +60,10 @@ internal static class PackStreamMarkers
     internal const int RelationshipFieldCount = 8;
     internal const int UnboundRelationshipFieldCount = 4;
 
+    // Bolt 5.x Path structure (B1-D2): three fields in the order nodes, rels, indices.
+    internal const byte PathTag = 0x50;
+    internal const int PathFieldCount = 3;
+
     internal static bool IsTinyInteger(byte marker) =>
         marker <= TinyIntegerMax || marker >= TinyIntegerMin;
 
