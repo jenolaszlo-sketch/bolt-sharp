@@ -9,16 +9,30 @@ namespace BoltSharp.PackStream;
 /// Lists, Maps and Structures (B1-C) and the Bolt graph structures (B1-D1/B1-D2). All
 /// multi-byte values are written big-endian.
 /// <para>
-/// <b>Exception-safety contract (B1-R1, finding F3).</b> Every public write operation
-/// performs a bounded validation pass — the same recursive walk used for emission, run
-/// without writing — before any bytes are committed. If validation of the supplied value
-/// fails, the operation throws a <see cref="PackStreamException"/> and the contents of the
-/// destination <see cref="IBufferWriter{T}"/> are exactly as they were before the call: a
-/// failed write never commits partial output. This guarantee covers validation of the
-/// supplied value only. It does not cover failures raised by the destination writer itself
-/// (a throwing or contract-violating <see cref="IBufferWriter{T}"/> implementation): if the
-/// destination throws mid-write, the state of the destination is undefined and the caller
-/// must discard its buffer.
+/// <b>Exception-safety contract (B1-R1, finding F3; qualification closed in B1-A1).</b>
+/// Every public write operation performs a bounded validation pass — the same recursive
+/// walk used for emission, run without writing — before any bytes are committed.
+/// <b>For stable input</b>, if validation of the supplied value fails, the operation
+/// throws a <see cref="PackStreamException"/> and the contents of the destination
+/// <see cref="IBufferWriter{T}"/> are exactly as they were before the call: no partial
+/// output is committed.
+/// <para>
+/// <b>Stability requirement.</b> The guarantee rests on the supplied value observing the
+/// same content in both traversals. Library-owned value types
+/// (<see cref="PackStreamValue"/> and derived) are immutable and always provide this
+/// stability. Caller-provided collections passed directly to <see cref="WriteList"/>,
+/// <see cref="WriteMap"/> or <see cref="WriteStructure"/> must remain unchanged between
+/// the validation pass and the emission pass; a collection whose content changes between
+/// traversals may cause a late emission failure that commits partial output.
+/// </para>
+/// <para>
+/// <b>Exclusions.</b> The guarantee covers validation of the supplied value only. It does
+/// not cover failures raised by the destination writer itself (a throwing or
+/// contract-violating <see cref="IBufferWriter{T}"/> implementation): if the destination
+/// throws mid-write, the state of the destination is undefined and the caller must discard
+/// its buffer. No general transactional or rollback guarantee is claimed for
+/// <see cref="IBufferWriter{T}"/> destinations.
+/// </para>
 /// </para>
 /// </summary>
 public sealed class PackStreamWriter
@@ -161,11 +175,24 @@ public sealed class PackStreamWriter
     /// Writes a generic structure. Tags must be in the range 0-127 and a structure may carry
     /// at most 15 fields. The tags reserved for Bolt graph structures (<c>4E</c> Node,
     /// <c>52</c> Relationship, <c>72</c> UnboundRelationship, <c>50</c> Path) require the
-    /// exact field counts those structures have on the wire — 4, 8, 4 and 3 respectively —
-    /// so that only decodable structures are emitted (B1-R1, finding F4). Unknown tags
-    /// remain writable with any field count. Validated in full before any bytes are
-    /// committed.
+    /// exact field counts those structures have on the wire — 4, 8, 4 and 3 respectively
+    /// (B1-R1, finding F4). Unknown tags remain writable with any field count. Validated in
+    /// full before any bytes are committed.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// <b>Arity-only validation of reserved tags (qualification closed in B1-A1).</b>
+    /// Reserved graph tags are validated for their required field count. Correct arity does
+    /// <b>not</b> establish semantic validity of the field values: a generic structure that
+    /// carries a reserved graph tag with the correct field count may still fail typed graph
+    /// decoding if its fields do not conform to that graph structure's field types. This
+    /// behaviour is within the accepted B1 contract — no additional semantic validation is
+    /// performed for generic structures, and future protocol extension tags are unaffected.
+    /// The typed graph writers (<see cref="WriteNode"/>, <see cref="WriteRelationship"/>,
+    /// <see cref="WriteUnboundRelationship"/>, <see cref="WritePath"/>) construct
+    /// type-checked structures and carry the full decodability guarantee.
+    /// </para>
+    /// </remarks>
     /// <exception cref="PackStreamFormatException">
     /// The tag is out of range, the field count exceeds 15, a reserved graph tag is used
     /// with a field count other than its own, the nesting depth exceeds

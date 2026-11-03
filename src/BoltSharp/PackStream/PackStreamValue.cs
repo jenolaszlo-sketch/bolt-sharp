@@ -166,6 +166,14 @@ public sealed class PackStreamMap : PackStreamValue
 /// not interpreted here; graph and temporal structures are handled by later tasks. The
 /// fields are defensively copied on construction and exposed only through a read-only
 /// wrapper (B1-R1, finding F1).
+/// <para>
+/// <b>Reserved graph tags (qualification closed in B1-A1).</b> The writer validates that
+/// generic structures carrying the reserved Bolt graph tags <c>4E</c>, <c>52</c>, <c>72</c>
+/// and <c>50</c> declare the required field counts (4, 8, 4 and 3). Correct arity does not
+/// establish semantic validity: such a structure may still fail typed graph decoding when
+/// its field values do not conform to the graph structure's field types. This is within
+/// the accepted B1 contract.
+/// </para>
 /// </summary>
 public sealed class PackStreamStructure : PackStreamValue
 {
