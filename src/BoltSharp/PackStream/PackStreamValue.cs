@@ -1,9 +1,12 @@
+using System.Collections.ObjectModel;
+
 namespace BoltSharp.PackStream;
 
 /// <summary>
 /// Base type for a decoded PackStream value. A PackStream Null is represented by a C#
-/// <see langword="null"/> reference rather than by a dedicated type. Scalar wrappers are
-/// immutable; containers hold defensive copies of their elements.
+/// <see langword="null"/> reference rather than by a dedicated type. All values are
+/// immutable: public constructors establish defensively owned state, and public accessors
+/// never expose mutable backing storage (B1-R1, finding F1).
 /// </summary>
 public abstract class PackStreamValue
 {
@@ -45,23 +48,57 @@ public sealed class PackStreamString : PackStreamValue
     public string Value { get; }
 }
 
-/// <summary>A PackStream byte array. The bytes are copied on construction and are immutable.</summary>
+/// <summary>
+/// A PackStream byte array. The payload is defensively copied on construction and is
+/// exclusively owned thereafter (B1-R1, finding F1): every access to <see cref="Value"/>
+/// returns memory over a fresh copy, so the stored bytes can never be changed through the
+/// returned memory — not even via <c>MemoryMarshal.TryGetArray</c>.
+/// </summary>
 public sealed class PackStreamBytes : PackStreamValue
 {
-    public PackStreamBytes(ReadOnlyMemory<byte> value) => Value = value.ToArray();
+    private readonly byte[] _value;
 
-    public ReadOnlyMemory<byte> Value { get; }
+    public PackStreamBytes(ReadOnlyMemory<byte> value) => _value = value.ToArray();
+
+    /// <summary>
+    /// The byte payload. Each access returns an independent copy of the stored bytes;
+    /// mutating the returned memory never changes the stored value.
+    /// </summary>
+    public ReadOnlyMemory<byte> Value => _value.ToArray();
+
+    /// <summary>
+    /// Read-only access to the exclusively owned payload for internal encoding. The array
+    /// is never exposed outside this assembly; external callers must use
+    /// <see cref="Value"/> (which copies).
+    /// </summary>
+    internal ReadOnlySpan<byte> OwnedBytes => _value;
 }
 
-/// <summary>A PackStream list: an ordered, heterogeneous sequence of values.</summary>
+/// <summary>
+/// A PackStream list: an ordered, heterogeneous sequence of values. The items are
+/// defensively copied on construction and exposed only through a read-only wrapper
+/// (B1-R1, finding F1).
+/// </summary>
 public sealed class PackStreamList : PackStreamValue
 {
     public PackStreamList(IReadOnlyList<PackStreamValue?> items)
     {
         ArgumentNullException.ThrowIfNull(items);
-        Items = Copy(items);
+        Items = new ReadOnlyCollection<PackStreamValue?>(Copy(items));
     }
 
+    /// <summary>
+    /// Internal constructor used by the reader. Takes ownership of the list the reader has
+    /// just built; the reader never mutates or exposes it afterwards, so no defensive copy
+    /// is required.
+    /// </summary>
+    internal PackStreamList(List<PackStreamValue?> ownedItems) =>
+        Items = new ReadOnlyCollection<PackStreamValue?>(ownedItems);
+
+    /// <summary>
+    /// The list items. The returned collection is a read-only wrapper: casting it back to
+    /// an array fails, and mutation attempts throw <see cref="NotSupportedException"/>.
+    /// </summary>
     public IReadOnlyList<PackStreamValue?> Items { get; }
 
     private static PackStreamValue?[] Copy(IReadOnlyList<PackStreamValue?> items)
@@ -79,16 +116,30 @@ public sealed class PackStreamList : PackStreamValue
 /// <summary>
 /// A PackStream map. Entries preserve insertion order. Keys are always strings and never
 /// <see langword="null"/>; duplicate keys are permitted by the wire format and, when read,
-/// the last value for a key wins.
+/// the last value for a key wins. The entries are defensively copied on construction and
+/// exposed only through a read-only wrapper (B1-R1, finding F1).
 /// </summary>
 public sealed class PackStreamMap : PackStreamValue
 {
     public PackStreamMap(IReadOnlyList<KeyValuePair<string, PackStreamValue?>> entries)
     {
         ArgumentNullException.ThrowIfNull(entries);
-        Entries = Copy(entries);
+        Entries = new ReadOnlyCollection<KeyValuePair<string, PackStreamValue?>>(Copy(entries));
     }
 
+    /// <summary>
+    /// Internal constructor used by the reader. Takes ownership of the entry list the
+    /// reader has just built (its keys are guaranteed non-null and it is never mutated or
+    /// exposed afterwards), so no defensive copy is required.
+    /// </summary>
+    internal PackStreamMap(List<KeyValuePair<string, PackStreamValue?>> ownedEntries) =>
+        Entries = new ReadOnlyCollection<KeyValuePair<string, PackStreamValue?>>(ownedEntries);
+
+    /// <summary>
+    /// The map entries, in insertion order. The returned collection is a read-only wrapper:
+    /// casting it back to an array fails, and mutation attempts throw
+    /// <see cref="NotSupportedException"/>.
+    /// </summary>
     public IReadOnlyList<KeyValuePair<string, PackStreamValue?>> Entries { get; }
 
     private static KeyValuePair<string, PackStreamValue?>[] Copy(
@@ -112,7 +163,9 @@ public sealed class PackStreamMap : PackStreamValue
 
 /// <summary>
 /// A generic PackStream structure: a tag byte and an ordered list of fields. Its meaning is
-/// not interpreted here; graph and temporal structures are handled by later tasks.
+/// not interpreted here; graph and temporal structures are handled by later tasks. The
+/// fields are defensively copied on construction and exposed only through a read-only
+/// wrapper (B1-R1, finding F1).
 /// </summary>
 public sealed class PackStreamStructure : PackStreamValue
 {
@@ -133,11 +186,27 @@ public sealed class PackStreamStructure : PackStreamValue
         }
 
         Tag = tag;
-        Fields = Copy(fields);
+        Fields = new ReadOnlyCollection<PackStreamValue?>(Copy(fields));
+    }
+
+    /// <summary>
+    /// Internal constructor used by the reader. Takes ownership of the field list the
+    /// reader has just built; the reader never mutates or exposes it afterwards, so no
+    /// defensive copy is required.
+    /// </summary>
+    internal PackStreamStructure(byte tag, List<PackStreamValue?> ownedFields)
+    {
+        Tag = tag;
+        Fields = new ReadOnlyCollection<PackStreamValue?>(ownedFields);
     }
 
     public byte Tag { get; }
 
+    /// <summary>
+    /// The structure fields, in order. The returned collection is a read-only wrapper:
+    /// casting it back to an array fails, and mutation attempts throw
+    /// <see cref="NotSupportedException"/>.
+    /// </summary>
     public IReadOnlyList<PackStreamValue?> Fields { get; }
 
     private static PackStreamValue?[] Copy(IReadOnlyList<PackStreamValue?> fields)

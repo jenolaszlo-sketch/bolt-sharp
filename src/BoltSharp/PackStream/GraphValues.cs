@@ -1,8 +1,12 @@
+using System.Collections.ObjectModel;
+
 namespace BoltSharp.PackStream;
 
 /// <summary>
 /// A Bolt graph Node structure (tag <c>4E</c>, four fields). Numeric IDs and element IDs
 /// are preserved independently; numeric IDs are not assumed to be unique across entity types.
+/// The labels are defensively copied on construction and exposed only through a read-only
+/// wrapper (B1-R1, finding F1).
 /// </summary>
 public sealed class PackStreamNode : PackStreamValue
 {
@@ -12,7 +16,20 @@ public sealed class PackStreamNode : PackStreamValue
         ArgumentNullException.ThrowIfNull(elementId);
 
         Id = id;
-        Labels = CopyLabels(labels);
+        Labels = new ReadOnlyCollection<string>(CopyLabels(labels));
+        Properties = properties;
+        ElementId = elementId;
+    }
+
+    /// <summary>
+    /// Internal constructor used by the reader. Takes ownership of the labels array the
+    /// reader has just built (never null, no null entries, not mutated or exposed
+    /// afterwards), so no defensive copy is required.
+    /// </summary>
+    internal PackStreamNode(long id, string[] ownedLabels, PackStreamMap properties, string elementId)
+    {
+        Id = id;
+        Labels = new ReadOnlyCollection<string>(ownedLabels);
         Properties = properties;
         ElementId = elementId;
     }
@@ -20,7 +37,11 @@ public sealed class PackStreamNode : PackStreamValue
     /// <summary>Numeric node ID.</summary>
     public long Id { get; }
 
-    /// <summary>Node labels, in order. Never null; individual entries are never null.</summary>
+    /// <summary>
+    /// Node labels, in order. Never null; individual entries are never null. The returned
+    /// collection is a read-only wrapper: casting it back to an array fails, and mutation
+    /// attempts throw <see cref="NotSupportedException"/>.
+    /// </summary>
     public IReadOnlyList<string> Labels { get; }
 
     /// <summary>Node properties. Keys are strings; values may be any supported value.</summary>
@@ -122,7 +143,9 @@ public sealed class PackStreamUnboundRelationship : PackStreamValue
 /// <summary>
 /// A Bolt Path structure (tag <c>50</c>, three fields: nodes, unbound relationships and
 /// traversal indices). Nodes and relationships are referenced by position, so the same
-/// entity may be revisited repeatedly without being duplicated.
+/// entity may be revisited repeatedly without being duplicated. All three field lists are
+/// defensively copied on construction (public constructor) or exclusively owned (internal
+/// reader constructor) and exposed only through read-only wrappers (B1-R1, finding F1).
 /// </summary>
 public sealed class PackStreamPath : PackStreamValue
 {
@@ -152,21 +175,31 @@ public sealed class PackStreamPath : PackStreamValue
 
         ValidateTraversal(nodes.Length, unboundRelationships.Length, indices);
 
-        Nodes = nodes;
-        UnboundRelationships = unboundRelationships;
-        Indices = indices;
+        Nodes = new ReadOnlyCollection<PackStreamNode>(nodes);
+        UnboundRelationships = new ReadOnlyCollection<PackStreamUnboundRelationship>(unboundRelationships);
+        Indices = new ReadOnlyCollection<long>(indices);
     }
 
-    /// <summary>Nodes referenced by the path. Never empty.</summary>
+    /// <summary>
+    /// Nodes referenced by the path. Never empty. The returned collection is a read-only
+    /// wrapper: casting it back to an array fails, and mutation attempts throw
+    /// <see cref="NotSupportedException"/>.
+    /// </summary>
     public IReadOnlyList<PackStreamNode> Nodes { get; }
 
-    /// <summary>Unbound relationships referenced by the path. They carry no endpoints.</summary>
+    /// <summary>
+    /// Unbound relationships referenced by the path. They carry no endpoints. The returned
+    /// collection is a read-only wrapper: casting it back to an array fails, and mutation
+    /// attempts throw <see cref="NotSupportedException"/>.
+    /// </summary>
     public IReadOnlyList<PackStreamUnboundRelationship> UnboundRelationships { get; }
 
     /// <summary>
     /// Traversal indices as they appear on the wire: alternating 1-based relationship
     /// indexes (negative means reverse traversal, zero is invalid) and 0-based node indexes.
-    /// The sign and order are preserved exactly.
+    /// The sign and order are preserved exactly. The returned collection is a read-only
+    /// wrapper: casting it back to an array fails, and mutation attempts throw
+    /// <see cref="NotSupportedException"/>.
     /// </summary>
     public IReadOnlyList<long> Indices { get; }
 

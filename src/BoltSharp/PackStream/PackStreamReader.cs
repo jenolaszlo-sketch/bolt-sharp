@@ -7,6 +7,15 @@ namespace BoltSharp.PackStream;
 /// Reads PackStream 1.0 values from a byte buffer. Supports Null, Boolean, signed Int64,
 /// Float64, UTF-8 String and Byte arrays (B1-A/B1-B) plus recursive Lists, Maps and
 /// Structures (B1-C). All multi-byte values are interpreted big-endian.
+/// <para>
+/// <b>Failure contract (B1-R1, finding F5).</b> When any read operation throws, the bytes
+/// consumed up to the failure point are reflected in <see cref="Position"/>, but the reader
+/// is not realigned and provides no rollback or recovery. <b>After a decoding exception the
+/// caller must discard the reader</b>; the result of any further read on the same instance
+/// is unspecified. To continue decoding remaining bytes, construct a new
+/// <see cref="PackStreamReader"/> over the unconsumed portion only when the failure
+/// boundary is known with certainty; otherwise re-parse from a known-good boundary.
+/// </para>
 /// </summary>
 public sealed class PackStreamReader
 {
@@ -29,7 +38,11 @@ public sealed class PackStreamReader
         _remainingElements = limits.MaxTotalElements;
     }
 
-    /// <summary>Number of bytes consumed so far.</summary>
+    /// <summary>
+    /// Number of bytes consumed so far. After a failed read this reflects the bytes
+    /// consumed before the failure; the reader is not realigned and must then be discarded
+    /// (see the class-level failure contract).
+    /// </summary>
     public int Position => _position;
 
     /// <summary>True while unread bytes remain.</summary>
@@ -107,6 +120,14 @@ public sealed class PackStreamReader
     /// string, a structure tag is out of range, or the total element budget is exhausted.
     /// </exception>
     /// <exception cref="PackStreamTruncatedException">The value is incomplete.</exception>
+    /// <remarks>
+    /// <para>Decoded values are defensively owned: container collections are exposed
+    /// through read-only wrappers and byte arrays are never aliased to the input buffer
+    /// (B1-R1, finding F1).</para>
+    /// <para>After this method throws, the reader must be discarded: the position reflects
+    /// the bytes consumed before the failure, but the reader is not realigned and further
+    /// reads are unspecified (B1-R1, finding F5).</para>
+    /// </remarks>
     public PackStreamValue? ReadValue()
     {
         _remainingElements = _limits.MaxTotalElements;
@@ -205,6 +226,7 @@ public sealed class PackStreamReader
             items.Add(ReadValue(level));
         }
 
+        // The list was built here and is never touched again: hand over ownership.
         return new PackStreamList(items);
     }
 
@@ -264,6 +286,7 @@ public sealed class PackStreamReader
             }
         }
 
+        // The entry list was built here and is never touched again: hand over ownership.
         return new PackStreamMap(entries);
     }
 
@@ -304,6 +327,7 @@ public sealed class PackStreamReader
             fields.Add(ReadValue(level));
         }
 
+        // The field list was built here and is never touched again: hand over ownership.
         return new PackStreamStructure(tag, fields);
     }
 
@@ -316,6 +340,7 @@ public sealed class PackStreamReader
         var properties = RequireMap(ReadValue(level), "Node.properties");
         var elementId = RequireString(ReadValue(level), "Node.element_id");
 
+        // The labels array was built here and is never touched again: hand over ownership.
         return new PackStreamNode(id, labels, properties, elementId);
     }
 
@@ -487,7 +512,7 @@ public sealed class PackStreamReader
         value as PackStreamMap
             ?? throw new PackStreamFormatException($"{field} must be a map.");
 
-    private static IReadOnlyList<string> RequireStringList(PackStreamValue? value, string field)
+    private static string[] RequireStringList(PackStreamValue? value, string field)
     {
         if (value is not PackStreamList list)
         {

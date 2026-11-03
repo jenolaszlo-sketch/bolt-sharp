@@ -11,9 +11,14 @@ namespace BoltSharp.Tests.Qualification;
 /// B1-Q1 independent reviewer probes.
 /// These probes were designed by the qualification reviewer directly from the PackStream 1.0
 /// and Bolt 5.8 structure-semantics specifications, independently of the producer's fixtures.
-/// Some probes are <c>documenting</c> probes: they pass while demonstrating a defect that is
-/// reported in docs/reviews/B1-Q1-packstream-qualification.md. Such tests are marked
-/// "KNOWN DEFECT" and must not be read as endorsements of the observed behaviour.
+/// <para>
+/// Five probes (05, 05b, 06, 07, 08) originally documented defects F1–F4 reported in
+/// docs/reviews/B1-Q1-packstream-qualification.md §4/§5 by passing while demonstrating the
+/// defect. The B1-R1 remediation fixed those defects; each probe retains its original
+/// reviewer attack vector but now asserts the corrected behaviour, and each carries a
+/// "B1-R1 remediation" annotation pointing back to the finding it verifies. The original
+/// defect-demonstrating versions are preserved in git history and in the review report.
+/// </para>
 /// </summary>
 public sealed class B1Q1ReviewerProbes
 {
@@ -254,53 +259,61 @@ public sealed class B1Q1ReviewerProbes
     }
 
     // ------------------------------------------------------------------
-    // Probe 05 (KNOWN DEFECT): immutability is not enforced; public collection
-    // references can be mutated through array casts.
+    // Probe 05 (B1-R1 remediation of F1): immutability is enforced. This probe
+    // originally demonstrated the defect (KNOWN DEFECT: public collections could
+    // be mutated through array casts); it now replays the reviewer's exact
+    // vectors and asserts they can no longer change stored values.
     // ------------------------------------------------------------------
 
     [Fact]
-    public void Probe05_PublicCollections_CanBeMutatedThroughArrayCasts_KnownDefect()
+    public void Probe05_PublicCollections_CannotBeMutatedThroughArrayCasts_Remediated()
     {
         var node = new PackStreamNode(1, new[] { "Person" }, EmptyMap(), "n:1");
-        ((string[])node.Labels)[0] = "MUTATED";
-        Assert.Equal("MUTATED", node.Labels[0]);
+
+        // Reviewer vector 1: cast the IReadOnlyList<string> back to the array type.
+        Assert.Throws<InvalidCastException>(() => ((string[])node.Labels)[0] = "MUTATED");
+        Assert.Equal("Person", node.Labels[0]);
 
         var path = new PackStreamPath(
             new[] { Node(1, "n:1") },
             Array.Empty<PackStreamUnboundRelationship>(),
             Array.Empty<long>());
-        ((PackStreamNode[])path.Nodes)[0] = Node(9, "n:9");
-        Assert.Equal("n:9", path.Nodes[0].ElementId);
+        Assert.Throws<InvalidCastException>(() => ((PackStreamNode[])path.Nodes)[0] = Node(9, "n:9"));
+        Assert.Equal("n:1", path.Nodes[0].ElementId);
 
-        // The mutation changes the wire bytes: the encoder no longer round-trips the
-        // value it decoded.
+        // The value still round-trips exactly the bytes it was constructed from.
         var buffer = new ArrayBufferWriter<byte>();
         new PackStreamWriter(buffer).WriteNode(node);
         var encoded = buffer.WrittenSpan.ToArray();
 
         Assert.Equal(
-            "MUTATED",
+            "Person",
             Assert.IsType<PackStreamNode>(new PackStreamReader(encoded).ReadValue()).Labels[0]);
     }
 
     [Fact]
-    public void Probe05b_DecodedByteArrays_CanBeMutatedThroughMemoryMarshal_KnownDefect()
+    public void Probe05b_DecodedByteArrays_CannotBeMutatedThroughMemoryMarshal_Remediated()
     {
         var value = new PackStreamBytes(new byte[] { 0x01, 0x02, 0x03 });
 
+        // Reviewer vector 2: reach the backing array through MemoryMarshal.TryGetArray.
+        // The exposed memory is an independent copy, so the mutation cannot reach the
+        // stored payload.
         Assert.True(MemoryMarshal.TryGetArray(value.Value, out var segment));
         segment.Array![segment.Offset] = 0xFF;
 
-        Assert.Equal(0xFF, value.Value.ToArray()[0]);
+        Assert.Equal(0x01, value.Value.ToArray()[0]);
     }
 
     // ------------------------------------------------------------------
-    // Probe 06 (KNOWN DEFECT): the writer emits bytes before a nested
-    // validation failure, and that contract is not documented.
+    // Probe 06 (B1-R1 remediation of F3): the writer performs a validation pass
+    // before committing bytes. This probe originally demonstrated the defect
+    // (KNOWN DEFECT: partial output after a nested validation failure); it now
+    // asserts that the same failing write leaves the destination untouched.
     // ------------------------------------------------------------------
 
     [Fact]
-    public void Probe06_WriterValidationFailureAfterPartialOutput_LeavesBytesWritten_KnownDefect()
+    public void Probe06_WriterValidationFailure_CommitsNoPartialBytes_Remediated()
     {
         var buffer = new ArrayBufferWriter<byte>();
         var writer = new PackStreamWriter(buffer);
@@ -313,17 +326,19 @@ public sealed class B1Q1ReviewerProbes
 
         Assert.Throws<PackStreamFormatException>(() => writer.WriteList(list.Items));
 
-        // The list header and the first element were already emitted.
-        Assert.Equal(new byte[] { 0x92, 0x01 }, buffer.WrittenSpan.ToArray());
+        // The destination is unchanged: no header, no earlier element, nothing.
+        Assert.Equal(0, buffer.WrittenCount);
     }
 
     // ------------------------------------------------------------------
-    // Probe 07 (KNOWN DEFECT): WritePath does not enforce MaxListItems, so the
-    // writer can emit a path that its own reader rejects under the same limits.
+    // Probe 07 (B1-R1 remediation of F2): WritePath enforces MaxListItems on all
+    // three field lists. This probe originally demonstrated the defect (KNOWN
+    // DEFECT: WritePath bypassed MaxListItems); it now asserts writer/reader
+    // limit symmetry and that no bytes are emitted for the rejected path.
     // ------------------------------------------------------------------
 
     [Fact]
-    public void Probe07_WritePath_BypassesMaxListItems_KnownDefect()
+    public void Probe07_WritePath_EnforcesMaxListItems_Remediated()
     {
         var limits = new PackStreamLimits(maxListItems: 4);
         var buffer = new ArrayBufferWriter<byte>();
@@ -333,34 +348,44 @@ public sealed class B1Q1ReviewerProbes
         Assert.Throws<PackStreamFormatException>(
             () => writer.WriteList(new PackStreamValue?[] { One(), One(), One(), One(), One() }));
 
-        // WritePath does not: five nodes are emitted although MaxListItems is 4.
+        // WritePath now enforces it too: five nodes are rejected before any byte
+        // is emitted, so the writer can no longer produce data its own reader
+        // rejects under identical limits.
         var path = new PackStreamPath(FiveNodes(), Array.Empty<PackStreamUnboundRelationship>(), Array.Empty<long>());
-        writer.WritePath(path);
+        Assert.Throws<PackStreamFormatException>(() => writer.WritePath(path));
 
-        var bytes = buffer.WrittenSpan.ToArray();
-        Assert.Equal(0xB3, bytes[0]);
-        Assert.Equal(0x50, bytes[1]);
-        Assert.Equal(0x95, bytes[2]); // TINY_LIST carrying a five-item count
-        Assert.Equal(0xB4, bytes[3]); // the first node follows immediately
-
-        // The same limits reject those bytes on read: a writer/reader asymmetry.
-        Assert.Throws<PackStreamFormatException>(() => new PackStreamReader(bytes, limits).ReadValue());
+        Assert.Equal(0, buffer.WrittenCount);
     }
 
     // ------------------------------------------------------------------
-    // Probe 08 (KNOWN DEFECT): a generic structure may carry a reserved graph
-    // tag with an arity that no decoder accepts, producing undecodable output.
+    // Probe 08 (B1-R1 remediation of F4): generic structures may not carry a
+    // reserved graph tag with an arity no decoder accepts. This probe originally
+    // demonstrated the defect (KNOWN DEFECT: B1 4E 01 was writable but
+    // undecodable); it now asserts the write is rejected before any bytes are
+    // emitted, while the valid four-field form remains writable.
     // ------------------------------------------------------------------
 
     [Fact]
-    public void Probe08_GenericStructureWithReservedGraphTag_IsWritableButUndecodable_KnownDefect()
+    public void Probe08_GenericStructureWithReservedGraphTagAndInvalidArity_IsRejected_Remediated()
     {
         var buffer = new ArrayBufferWriter<byte>();
-        new PackStreamWriter(buffer).WriteStructure(0x4E, new PackStreamValue?[] { new PackStreamInteger(1) });
-        var bytes = buffer.WrittenSpan.ToArray();
 
-        Assert.Equal(new byte[] { 0xB1, 0x4E, 0x01 }, bytes);
-        Assert.Throws<PackStreamFormatException>(() => new PackStreamReader(bytes).ReadValue());
+        Assert.Throws<PackStreamFormatException>(
+            () => new PackStreamWriter(buffer).WriteStructure(0x4E, new PackStreamValue?[] { new PackStreamInteger(1) }));
+
+        // Nothing was committed for the rejected structure.
+        Assert.Equal(0, buffer.WrittenCount);
+
+        // The reserved tag with its correct arity is still writable and decodes as a Node.
+        var valid = new ArrayBufferWriter<byte>();
+        new PackStreamWriter(valid).WriteStructure(
+            0x4E,
+            new PackStreamValue?[] { new PackStreamInteger(1), new PackStreamList(Array.Empty<PackStreamValue?>()), EmptyMap(), new PackStreamString("n:1") });
+        var bytes = valid.WrittenSpan.ToArray();
+
+        Assert.Equal(0xB4, bytes[0]);
+        Assert.Equal(0x4E, bytes[1]);
+        Assert.IsType<PackStreamNode>(new PackStreamReader(bytes).ReadValue());
     }
 
     // ------------------------------------------------------------------
