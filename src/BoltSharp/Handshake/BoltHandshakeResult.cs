@@ -56,12 +56,32 @@ public sealed class BoltHandshakeResult
     /// </summary>
     public ulong NegotiatedCapabilities { get; }
 
-    internal static BoltHandshakeResult AcceptedLegacy(BoltProtocolVersion version) =>
-        new(BoltHandshakeMode.Legacy, accepted: true, shouldClose: false, version, negotiatedCapabilities: 0);
+    internal static BoltHandshakeResult AcceptedLegacy(BoltProtocolVersion version)
+    {
+        GuardNegotiatedVersion(version);
+        return new(BoltHandshakeMode.Legacy, accepted: true, shouldClose: false, version, negotiatedCapabilities: 0);
+    }
 
-    internal static BoltHandshakeResult AcceptedManifest(BoltProtocolVersion version, ulong capabilities) =>
-        new(BoltHandshakeMode.ManifestV1, accepted: true, shouldClose: false, version, capabilities);
+    internal static BoltHandshakeResult AcceptedManifest(BoltProtocolVersion version, ulong capabilities)
+    {
+        GuardNegotiatedVersion(version);
+        return new(BoltHandshakeMode.ManifestV1, accepted: true, shouldClose: false, version, capabilities);
+    }
 
     internal static BoltHandshakeResult Rejected() =>
         new(BoltHandshakeMode.Legacy, accepted: false, shouldClose: true, selectedVersion: null, negotiatedCapabilities: 0);
+
+    /// <summary>
+    /// Fail-closed guard: protocol zero is the "no version" sentinel and must never be published
+    /// as accepted state (B2-B-R1, finding B2BQ1-F01).
+    /// </summary>
+    private static void GuardNegotiatedVersion(BoltProtocolVersion version)
+    {
+        if (version == default)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(version),
+                "Protocol zero is the 'no version' sentinel and cannot be a negotiated version.");
+        }
+    }
 }

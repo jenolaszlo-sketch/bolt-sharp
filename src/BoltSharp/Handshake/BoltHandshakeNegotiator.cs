@@ -22,7 +22,8 @@ namespace BoltSharp.Handshake;
 /// supported ranges (Bolt 4.3 style) and a VarInt capability bitmask, then reads the client's
 /// concrete selection and capability subset. The selection must be an offered concrete version
 /// and the capabilities must be a subset of those offered; otherwise a
-/// <see cref="BoltHandshakeProtocolException"/> is raised and no result is published.
+/// <see cref="BoltHandshakeProtocolException"/> is raised and no result is published. Protocol
+/// zero is never offered, selected or accepted (B2-B-R1).
 /// </para>
 /// <para>
 /// <b>Pipelining and ownership.</b> The negotiator reads exactly the handshake bytes and never
@@ -198,6 +199,13 @@ public sealed class BoltHandshakeNegotiator
             var range = BoltVersionRange.FromUInt32(proposal);
             foreach (var candidate in range.Expand())
             {
+                // Protocol zero is the "no version" sentinel and is never selectable, even when
+                // a client range spans it (B2-B-R1, finding B2BQ1-F01).
+                if (candidate == default)
+                {
+                    continue;
+                }
+
                 if (_supported.Contains(candidate))
                 {
                     return HandshakeDecision.ForLegacy(candidate);
@@ -210,6 +218,14 @@ public sealed class BoltHandshakeNegotiator
 
     private void ValidateSelection(BoltManifestSelection selection)
     {
+        // Protocol zero is the "no version" sentinel; it can never be a valid manifest
+        // selection even if it were somehow offered (B2-B-R1, finding B2BQ1-F01).
+        if (selection.Version == default)
+        {
+            throw new BoltHandshakeProtocolException(
+                "The manifest client selected protocol zero, which is the 'no version' sentinel.");
+        }
+
         var offered = false;
         foreach (var range in OfferRanges)
         {

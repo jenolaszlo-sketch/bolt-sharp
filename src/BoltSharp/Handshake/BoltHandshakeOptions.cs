@@ -13,6 +13,13 @@ namespace BoltSharp.Handshake;
 /// message-processing capabilities exist. Listing a version here is not a claim that the
 /// corresponding messaging protocol is implemented.
 /// </para>
+/// <para>
+/// <b>Protocol zero (B2-B-R1, finding B2BQ1-F01).</b> The version <c>0.0</c> is the wire
+/// sentinel for “no protocol version” and is never negotiable. It is excluded from
+/// <see cref="SupportedVersions"/> at construction, so an explicitly configured <c>0.0</c> is
+/// rejected at this configuration boundary and can never be offered, selected or accepted. A
+/// zero-filled client proposal slot remains the documented placeholder and is unaffected.
+/// </para>
 /// </summary>
 public sealed class BoltHandshakeOptions
 {
@@ -33,6 +40,14 @@ public sealed class BoltHandshakeOptions
         var distinct = new List<BoltProtocolVersion>();
         foreach (var version in supportedVersions)
         {
+            // Protocol zero (0.0) is the "no version" sentinel and is never negotiable. An
+            // explicit 0.0 configuration is rejected here so it can never be offered,
+            // selected or published as accepted state (B2-B-R1, finding B2BQ1-F01).
+            if (version == default)
+            {
+                continue;
+            }
+
             if (!distinct.Contains(version))
             {
                 distinct.Add(version);
@@ -49,7 +64,7 @@ public sealed class BoltHandshakeOptions
 
     /// <summary>
     /// The concrete versions this server supports, de-duplicated and ordered by major then
-    /// minor descending. May be empty.
+    /// minor descending. May be empty. Protocol zero is never present (B2-B-R1).
     /// </summary>
     public IReadOnlyList<BoltProtocolVersion> SupportedVersions { get; }
 
