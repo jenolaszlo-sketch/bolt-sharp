@@ -1,14 +1,15 @@
 # B1-A1 — PackStream owner acceptance and consolidation preparation
 
-**Status:** PREPARED (owner decision PENDING)
+**Status:** ACCEPTED WITH QUALIFICATIONS (owner decision recorded 2026-11-04)
 **Date:** 2026-11-03
 **Prepared at:** B1-A1 closeout commit (see §10)
 **Qualified HEAD under consideration:** `47344b654ef41c0a76002a70be7dd7ec02b1c22f`
 **B1-R1 (remediation):** `93759a2759efeab5cc2ab2ec63d204a9e52e1945`
 **B1-Q1 baseline:** `f40a2da0b3ba36eac0777a63576a75439a313e89`
 
-This record is additive closeout preparation. It is **not** owner acceptance. The owner
-decision field remains PENDING until the owner records a decision explicitly.
+This record began as additive closeout preparation, with the owner decision PENDING. The
+owner decision is now recorded: see §11 (owner decision) and the updated decision fields in
+§10. Sections 1–9 are preserved as the pre-decision qualification and preparation record.
 
 ---
 
@@ -146,14 +147,56 @@ documentation comments and this record.
 
 ## 10. Consolidation, authorization and decision record
 
-- **Owner decision:** PENDING
-- **Consolidation:** NOT AUTHORIZED
-- **B2:** NOT AUTHORIZED
+- **Owner decision:** ACCEPTED WITH QUALIFICATIONS — recorded 2026-11-04 (see §11)
+- **Consolidation:** AUTHORIZED (see §11)
+- **Push of canonical `main`:** AUTHORIZED after verification (see §11)
+- **Package publication:** NOT AUTHORIZED (see §11)
+- **B2:** AUTHORIZED after verified consolidation (see §11)
 - **Consolidation readiness:** `main` (`49a4c87`) is an ancestor of the qualified HEAD;
-  the branch is 14 commits ahead, 0 behind → clean fast-forward is available. Plan and
-  safeguards: see §11 of the B1-A1 handoff (not executed in this task).
-- **Commit identities:** see §1; the B1-A1 documentation closeout commit SHA is recorded
-  in the final handoff message of this task (this file is part of that commit).
+  at preparation the branch was 14 commits ahead, 0 behind → clean fast-forward is
+  available. Plan and safeguards: see §11 of the B1-A1 handoff (not executed in that task).
+- **Commit identities:** see §1; the B1-A1 documentation closeout commit SHA and the owner
+  decision commit SHA are recorded in the final handoff message of their respective tasks
+  (this file is part of the owner decision commit, so it cannot contain its own SHA).
 
-No owner approval has been recorded or inferred. Pushing, publishing, consolidation and
-B2 each require separate explicit authorization.
+Before the owner decision, no approval was recorded or inferred; pushing, publishing,
+consolidation and B2 each required separate explicit authorization. The authorization is
+now recorded in §11.
+
+---
+
+## 11. Owner decision record (2026-11-04)
+
+**Owner decision: ACCEPTED WITH QUALIFICATIONS.**
+
+The owner reviewed the B1 PackStream deliverable against the B1-Q1 independent
+qualification (`f40a2da0`), the B1-R1 remediation (`93759a2`), the B1-Q2 independent
+requalification (`47344b6`), and this acceptance preparation record, and records the
+following authorized work:
+
+1. **B1 is accepted with qualifications.** The two LOW qualifications of §4 — the F3
+   traversal-stability assumption for caller-supplied collections and the F4 arity-only
+   guarantee for generic reserved-graph-tag structures — are accepted as documented
+   contract boundaries. They are established in the authoritative XML documentation on
+   `PackStreamWriter` (exception-safety/stability contract) and
+   `PackStreamValue.PackStreamStructure` (reserved-graph-tag arity) and are preserved
+   unchanged by this decision. No executable behaviour, public signature, wire format,
+   limit, golden fixture, or test was changed to record it.
+2. **Consolidation to canonical `main` is authorized.** `main` may be fast-forwarded to the
+   accepted `feature/protocol-spec` history including this record. No merge commit, squash,
+   rebase, amend, or history rewrite is permitted, and no additional worktrees are to be
+   used. The consolidation must stop if ancestry, scope, or working-tree state differs from
+   expectations.
+3. **Push of canonical `main` is authorized after verification.** The push must be a
+   normal fast-forward push (no force). The obsolete feature branch is not to be pushed.
+4. **Package publication is NOT authorized.** No NuGet package or other published artifact
+   may be produced from this decision or from B1.
+5. **B2 is authorized to begin after verified consolidation**, on canonical `main`, with its
+   own scope, implementation contract, acceptance criteria, and independent qualification
+   requirements established first. Driver compatibility must not be claimed until
+   independently demonstrated by executable integration tests.
+
+**Qualification preservation.** The F3 and F4 qualifications are those established in the
+authoritative XML documentation and summarized verbatim in §4; this record neither restates
+nor alters them. The historical B1-Q1, B1-R1, and B1-Q2 reports are not modified by this
+decision.
