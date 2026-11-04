@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="fe67af70-09d4-43c1-9e30-53b793c2d38d" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-04 20:14:21" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-04T20:14:21.7233534+08:00" queuing="2026-11-04T20:14:21.7233540+08:00" start="2026-11-04T20:14:21.2070891+08:00" finish="2026-11-04T20:14:21.7273898+08:00" />
+  <TestSettings name="default" id="f1df2208-2400-473a-b3d3-985bb364e096">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-04_20_14_21" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="0bd959a6-5a12-4c38-9785-e70d0ab8d206" testId="17cfbfac-592f-b76d-02b8-b0d6b67af859" testName="BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0012148" startTime="2026-11-04T20:14:21.6457207+08:00" endTime="2026-11-04T20:14:21.6457210+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0bd959a6-5a12-4c38-9785-e70d0ab8d206">
+      <Output>
+        <StdOut>wire=00000000; accepted=False; selected=; close=True</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e8584bff-5171-4372-a8d3-aafa1426d8ae" testId="ae6a3a99-1d0a-62c4-c612-a6535221c781" testName="BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0024689" startTime="2026-11-04T20:14:21.6443484+08:00" endTime="2026-11-04T20:14:21.6443485+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e8584bff-5171-4372-a8d3-aafa1426d8ae">
+      <Output>
+        <StdOut>wire=00000000; accepted=False; selected=; close=True</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2bdee456-af5d-4f56-9b97-eea4830a7850" testId="80a79951-5fb3-7d1a-2057-025fc59553e5" testName="BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0001504" startTime="2026-11-04T20:14:21.6458388+08:00" endTime="2026-11-04T20:14:21.6458390+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2bdee456-af5d-4f56-9b97-eea4830a7850">
+      <Output>
+        <StdOut>wire=00000000; accepted=False; selected=; close=True</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8e3789fe-0a45-4400-84d0-c6a94762f518" testId="a99c7a09-5509-9cd5-4133-c57f4c90c84c" testName="BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0083882" startTime="2026-11-04T20:14:21.6423123+08:00" endTime="2026-11-04T20:14:21.6423243+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8e3789fe-0a45-4400-84d0-c6a94762f518">
+      <Output>
+        <StdOut>wire=00000000; accepted=False; selected=; close=True</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-b-q1\bin\debug\net8.0\b2bq1.probes.dll" id="ae6a3a99-1d0a-62c4-c612-a6535221c781">
+      <Execution id="e8584bff-5171-4372-a8d3-aafa1426d8ae" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B2BQ1.QualificationProbes" name="Zero_version_must_never_be_a_successful_manifest_selection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-b-q1\bin\debug\net8.0\b2bq1.probes.dll" id="a99c7a09-5509-9cd5-4133-c57f4c90c84c">
+      <Execution id="8e3789fe-0a45-4400-84d0-c6a94762f518" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B2BQ1.QualificationProbes" name="Zero_version_must_never_be_a_successful_manifest_selection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-b-q1\bin\debug\net8.0\b2bq1.probes.dll" id="17cfbfac-592f-b76d-02b8-b0d6b67af859">
+      <Execution id="0bd959a6-5a12-4c38-9785-e70d0ab8d206" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B2BQ1.QualificationProbes" name="Range_containing_zero_must_not_produce_accepted_legacy_zero_response" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-b-q1\bin\debug\net8.0\b2bq1.probes.dll" id="80a79951-5fb3-7d1a-2057-025fc59553e5">
+      <Execution id="2bdee456-af5d-4f56-9b97-eea4830a7850" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B2BQ1.QualificationProbes" name="Range_containing_zero_must_not_produce_accepted_legacy_zero_response" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="17cfbfac-592f-b76d-02b8-b0d6b67af859" executionId="0bd959a6-5a12-4c38-9785-e70d0ab8d206" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ae6a3a99-1d0a-62c4-c612-a6535221c781" executionId="e8584bff-5171-4372-a8d3-aafa1426d8ae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="80a79951-5fb3-7d1a-2057-025fc59553e5" executionId="2bdee456-af5d-4f56-9b97-eea4830a7850" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a99c7a09-5509-9cd5-4133-c57f4c90c84c" executionId="8e3789fe-0a45-4400-84d0-c6a94762f518" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.04]   Discovering: B2BQ1.Probes&#xD;
+[xUnit.net 00:00:00.08]   Discovered:  B2BQ1.Probes&#xD;
+[xUnit.net 00:00:00.09]   Starting:    B2BQ1.Probes&#xD;
+[xUnit.net 00:00:00.13]   Finished:    B2BQ1.Probes&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

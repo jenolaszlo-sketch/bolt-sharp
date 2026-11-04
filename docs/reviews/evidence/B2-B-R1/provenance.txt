@@ -1,0 +1,8 @@
+Command: git log -1 --format=fuller
+commit b0bcadbf344ea0eef95cdc60702fd1bf8da620c8
+Author:     BoltSharp Research Agent <agent@bolt-sharp.local>
+AuthorDate: Wed Nov 4 20:12:59 2026 +0800
+Commit:     BoltSharp Research Agent <agent@bolt-sharp.local>
+CommitDate: Wed Nov 4 20:12:59 2026 +0800
+
+    fix(handshake): reject protocol zero in Bolt negotiation (B2-B-R1, B2BQ1-F01)

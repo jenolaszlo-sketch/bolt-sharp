@@ -1,0 +1,6 @@
+Command: dotnet test BoltSharp.slnx --no-build -c Debug --filter FullyQualifiedName~ZeroVersionNegotiationTests --logger trx;LogFileName=regression.trx --results-directory D:\projects\bolt-sharp\docs\reviews\evidence\B2-B-R1
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Results File: D:\projects\bolt-sharp\docs\reviews\evidence\B2-B-R1\regression.trx
+
+Passed!  - Failed:     0, Passed:    27, Skipped:     0, Total:    27, Duration: 55 ms - BoltSharp.Tests.dll (net8.0)

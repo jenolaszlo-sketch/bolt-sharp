@@ -1,0 +1,72 @@
+﻿{
+    "branch":  "main",
+    "head":  "b0bcadbf344ea0eef95cdc60702fd1bf8da620c8",
+    "headTree":  "fe4159ac5e68b891fdbbd34f489c38fa84ce04af",
+    "records":  [
+                    {
+                        "run":  "solution",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.tests\\bin\\debug\\net8.0\\boltsharp.tests.dll"
+                                     ],
+                        "passed":  786,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  786,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "regression",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.tests\\bin\\debug\\net8.0\\boltsharp.tests.dll"
+                                     ],
+                        "passed":  27,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  27,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "reviewer",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-b-q1\\bin\\debug\\net8.0\\b2bq1.probes.dll"
+                                     ],
+                        "passed":  67,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  67,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "reviewer-four",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-b-q1\\bin\\debug\\net8.0\\b2bq1.probes.dll"
+                                     ],
+                        "passed":  4,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  4,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "previous-reviewer",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-a-q2\\bin\\debug\\net8.0\\b2aq2.probes.dll"
+                                     ],
+                        "passed":  18,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  18,
+                        "failedTests":  [
+
+                                        ]
+                    }
+                ]
+}
