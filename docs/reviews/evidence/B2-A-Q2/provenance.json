@@ -1,0 +1,337 @@
+{
+  "branch": "main",
+  "identities": {
+    "B1/B2 scope baseline": {
+      "commit": "500f9fc874e6afada2fdc632cd5e17350f877557",
+      "tree": "a836682b352b4a045499a400ee3a8a5bd69e7476",
+      "parents": "4583293a50db0b43e7e749f5b3849be93590fce5"
+    },
+    "B2-A implementation": {
+      "commit": "94aebcaa80a387608b710f2de7001e143fb9c096",
+      "tree": "937109ce87cfec7d5eb43cad6fcf84c2d6ca861e",
+      "parents": "500f9fc874e6afada2fdc632cd5e17350f877557"
+    },
+    "Q1 qualification": {
+      "commit": "4dbd75a86df8a0f691665bc05d72391dc218ccd1",
+      "tree": "cf7ea5b5eb75742d1e5e3389c324a36f1e9bcfba",
+      "parents": "94aebcaa80a387608b710f2de7001e143fb9c096"
+    },
+    "R1 / reviewed entry": {
+      "commit": "6f685487707ab86598415723ad4175ce1893d2b3",
+      "tree": "9d7a80b719adee0a5a31c953fe4112c9649563f2",
+      "parents": "4dbd75a86df8a0f691665bc05d72391dc218ccd1"
+    }
+  },
+  "r1_changed_files": [
+    "docs/reviews/B2-A-R1-qualification-closure.md",
+    "src/BoltSharp/Framing/BoltFramingLimits.cs",
+    "src/BoltSharp/Framing/BoltMessageReader.cs",
+    "src/BoltSharp/Framing/BoltMessageWriter.cs"
+  ],
+  "r1_non_xml_source_identical": true,
+  "r1_tests_identical": true,
+  "entry_src_tree": "bb30c2203f2491b71d65669bd3a5e78601b12633",
+  "entry_tests_tree": "fba785e9bf1bf71ea833317acc636ec11e2fc267",
+  "baseline": {
+    "counters": {
+      "total": "604",
+      "executed": "604",
+      "passed": "604",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "groups": {
+      "B1": 509,
+      "B2-A producer": 54,
+      "B2-A-Q1": 41,
+      "B2-A-Q2": 0
+    }
+  },
+  "reviewer": {
+    "counters": {
+      "total": "18",
+      "executed": "18",
+      "passed": "18",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "groups": {
+      "B1": 0,
+      "B2-A producer": 0,
+      "B2-A-Q1": 0,
+      "B2-A-Q2": 18
+    }
+  },
+  "historical_files_preserved": [
+    {
+      "path": ".gitignore",
+      "git_blob": "f7fde174ff6b2acc96936fd04080e3e385f5c184"
+    },
+    {
+      "path": "BoltSharp.slnx",
+      "git_blob": "45f9c34031945da2a85c4932328e45c1a10d24a4"
+    },
+    {
+      "path": "Directory.Build.props",
+      "git_blob": "b485ad8db4e67cfb5cf6fb2557c0c06fa85b6832"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    },
+    {
+      "path": "docs/boltsharp-spec.md",
+      "git_blob": "1566290f335622a01c4ceec9de757675a944d1b1"
+    },
+    {
+      "path": "docs/compatibility-target.md",
+      "git_blob": "490c721831b0b4096667b2be63f014e69a0c11f5"
+    },
+    {
+      "path": "docs/implementation-tasks.md",
+      "git_blob": "89b1f2e49ca4b2574d083093cf533afd95f0e5fc"
+    },
+    {
+      "path": "docs/reviews/B1-A1-packstream-owner-acceptance.md",
+      "git_blob": "9a6cc446ef89166dd92e839ca4cfeae92c9ec496"
+    },
+    {
+      "path": "docs/reviews/B1-Q1-packstream-qualification.md",
+      "git_blob": "38065071d0c9d629e9b238115aaba9f3fcdfca7c"
+    },
+    {
+      "path": "docs/reviews/B1-Q2-packstream-requalification.md",
+      "git_blob": "660f806fd240b8786d9e41b3dbc945d3f398ee0d"
+    },
+    {
+      "path": "docs/reviews/B1-R1-packstream-remediation.md",
+      "git_blob": "298a0b2ddbe51560c60c9fa29ae4ff5eff1991bb"
+    },
+    {
+      "path": "docs/reviews/B2-A-Q1-chunked-codec-qualification.md",
+      "git_blob": "e5f613eeb9a7b181436fa17644b4a34c39b6f972"
+    },
+    {
+      "path": "docs/reviews/B2-A-R1-qualification-closure.md",
+      "git_blob": "f216964bd52baff98dbf7ab18b43f0bff6cab9e1"
+    },
+    {
+      "path": "docs/reviews/B2-A-chunked-message-codec.md",
+      "git_blob": "f0e74c928bba2565f3ceb8df8559cbcece12fe51"
+    },
+    {
+      "path": "docs/tasks/B0-A-protocol-reconnaissance.md",
+      "git_blob": "dfdc21d52b0d157b43969df2e1b8ab22c89bcbcc"
+    },
+    {
+      "path": "docs/tasks/B2-bolt-integration.md",
+      "git_blob": "87e73984b289333d82e698f1c2eb34f2be9959fa"
+    },
+    {
+      "path": "src/BoltSharp/BoltSharp.csproj",
+      "git_blob": "653568390d64877ab143e5aaa328e12ca20ca63e"
+    },
+    {
+      "path": "src/BoltSharp/Framing/BoltFramingException.cs",
+      "git_blob": "d526a0a68e86afaecdb816ca8044f7298c99cda0"
+    },
+    {
+      "path": "src/BoltSharp/Framing/BoltFramingLimits.cs",
+      "git_blob": "69f229205845e99f04e4744e160faacd5e62a4d6"
+    },
+    {
+      "path": "src/BoltSharp/Framing/BoltMessageReader.cs",
+      "git_blob": "3d3f397346602035e75c7e38e3ab036e63906b12"
+    },
+    {
+      "path": "src/BoltSharp/Framing/BoltMessageWriter.cs",
+      "git_blob": "58597ce6703c6c71c8f43ccb01adfd01bb637293"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/GraphValues.cs",
+      "git_blob": "94888492f17503fa4d8073b6df8b54d5de6b5773"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/PackStreamException.cs",
+      "git_blob": "fa6d1ea41d4f7c0e7fe13ca18e7cc1fc1fbe4177"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/PackStreamLimits.cs",
+      "git_blob": "bdc109d9a7626ec5a8f2d8e3bcce985bf9c57681"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/PackStreamMarkers.cs",
+      "git_blob": "32eab64f1a69b439c74f3e0105857de04f5f4ee7"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/PackStreamReader.cs",
+      "git_blob": "9428e6581b294a9bd541b64c4eeeb22c13743a96"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/PackStreamValue.cs",
+      "git_blob": "25f0fe5f31e8ccfc9526194713354b434ab04d1d"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/PackStreamWriter.cs",
+      "git_blob": "7b2579c4619fdedacea75c6a5fd416f6e65d769f"
+    },
+    {
+      "path": "src/BoltSharp/PackStream/StrictUtf8.cs",
+      "git_blob": "ddec9831eca0f134ba7c0ce5fe16d7967ea59ffa"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/BoltSharp.Tests.csproj",
+      "git_blob": "2c49868cb7844a73ac4b0d3a6ac39d9f9d90802e"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Framing/BoltMessageReaderErrorTests.cs",
+      "git_blob": "45642810b9703b54439ef30f723a55530e88d73f"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Framing/BoltMessageReaderTests.cs",
+      "git_blob": "c2b0cedb1c5284dd5a376017151976f6ac0768a8"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Framing/BoltMessageWriterTests.cs",
+      "git_blob": "920e9b368d96db240fa003be0ea789886852eb0d"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Framing/FragmentingStream.cs",
+      "git_blob": "648768149411bfe6914c3979b9557e8597e014af"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Framing/FramingTestHelpers.cs",
+      "git_blob": "866ff694a5674645f855dd64cb2634ad0cae22d0"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/ByteArrayGoldenTests.cs",
+      "git_blob": "9115add6997ee47feb0f0abacceda2a1ecfbcd7e"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/ContainerLimitTests.cs",
+      "git_blob": "babb9dde617f74732cd9ae290a7b7354a66a294d"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/GraphStructureGoldenTests.cs",
+      "git_blob": "34a745e68b18c9995bdce538e90fa5997e79bd61"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/ListGoldenTests.cs",
+      "git_blob": "609bc93eedf88ba8cfd54ea52f9c3598ee22416f"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/MapGoldenTests.cs",
+      "git_blob": "07f7c1ed0270ed4eab41dff4fd70c39ec41e23dc"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/PackStreamTestHelpers.cs",
+      "git_blob": "37f153cb405e2ffd624adea353ab87929af3c6e9"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/PathGoldenTests.cs",
+      "git_blob": "253d54b5351ca89b86a071ce76e7abfbd8e5f84d"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/ScalarErrorTests.cs",
+      "git_blob": "513aa939fd584725e9451c695d5aa6b6aa222eda"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/ScalarReaderTests.cs",
+      "git_blob": "ee28643df2ee265559cea7ae9ce168f66e022374"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/ScalarWriterGoldenTests.cs",
+      "git_blob": "28a62e12fa714e1707e0879f5fb0160abcf51f80"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/SizeLimitTests.cs",
+      "git_blob": "bc210bee5ba54ba01a60083178db025d71e56f27"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/StringGoldenTests.cs",
+      "git_blob": "1cd00308526b0bbaed51b4cb85ee45657961da4a"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/PackStream/StructureGoldenTests.cs",
+      "git_blob": "6cb7312a7055adf5a51857cbae9bd65d2cf7e54a"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Qualification/B1Q1ReviewerProbes.cs",
+      "git_blob": "0d870c430a31338224b18d8ab9dd79c6033c0a99"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Qualification/B1Q2RequalificationProbes.cs",
+      "git_blob": "f7cfda279c2cecef598edd496d7478ab572f440a"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Qualification/B2Q1FramingProbes.cs",
+      "git_blob": "e8220630a9713bdcfcff57dfdc3a8421274ea511"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Qualification/MaxReadGuardedStream.cs",
+      "git_blob": "871c73d0768ce18278bc3c1bbb15f35ccb6d604d"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Remediation/B1R1F1ImmutabilityTests.cs",
+      "git_blob": "2635f65c2fb440f631b465b5572547a76571681f"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Remediation/B1R1F2PathWriterLimitTests.cs",
+      "git_blob": "30dd13148f2d8db941206c52d967d2f4d907b882"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Remediation/B1R1F3ExceptionSafetyTests.cs",
+      "git_blob": "a8d5b8b84b01a233f44ef17f72632546013c74bc"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Remediation/B1R1F4ReservedGraphTagTests.cs",
+      "git_blob": "906beefc5bb4b2f553cd9943a7b144f20b9ae6f4"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/Remediation/B1R1F5ReaderFailureContractTests.cs",
+      "git_blob": "a87303cd7551316c3c008ec00d553acb2989161c"
+    },
+    {
+      "path": "tests/BoltSharp.Tests/SmokeTests.cs",
+      "git_blob": "ef0268357cbdf12db51f21c495170d06182e5490"
+    }
+  ],
+  "sha256_normalization": "Text bytes with CRLF normalized to LF, stable across Git checkouts",
+  "evidence_sha256": {
+    "baseline-build.txt": "b461fa15850bb919ff5c4bc66ecddba2a32b83a0a4d91687214af9e336cc9fb7",
+    "baseline-results/baseline.trx": "9c5d44438478c899d604e310ada923914fc6598b0bfa8010dce03c71b23aa6ec",
+    "baseline-test.txt": "455236480a818faef6a7cd1d17f67d3cf18418271d39d0e81c2356a213067bc5",
+    "environment.txt": "424159d147aaf89f471e83a39dd07890b6e2325d7131da660fbd1d33eab771c7",
+    "reviewer-build.txt": "8d1ef97a32d27c0e8e2badba13c0f7d8b10dec4c0451d724f1b5396a202c639f",
+    "reviewer-initial-project-path-error.txt": "5f26fbe4e23b947ec780ae58029be351d9b88a0d3827034d1385ac7489ef7251",
+    "reviewer-results/reviewer.trx": "89a552c0dd490569ef6260b77ea34ed3e6a9c2e04355c7e6ac0ed3a53338af0f",
+    "reviewer-test.txt": "fd484bdf524b3f0c1bc26a3c77bf497dd11a0eaa8f49cfea8eea3c50456389b1"
+  },
+  "reviewer_source_sha256": {
+    "B2AQ2.Probes.csproj": "6aa844104c86a4d15e4ecf2af82c8191095499af35e2df0e10a48cefa18a3552",
+    "FramingProbes.cs": "5d6001a316858f6a683ed7b31e0fa2dc6e4fb6b7cd9ff33bc317c1be5805dae0",
+    "verify_evidence.py": "5889dda2764bd179fd1feda7128665dcb814b9ce69567de31fa047208f3ced16"
+  }
+}

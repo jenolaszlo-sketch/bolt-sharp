@@ -1,0 +1,7 @@
+  Determining projects to restore...
+  Skipping project "D:\projects\src\BoltSharp\BoltSharp.csproj" because it was not found.
+  Skipping project "D:\projects\src\BoltSharp\BoltSharp.csproj" because it was not found.
+  Restored D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\B2AQ2.Probes.csproj (in 1.39 sec).
+C:\Program Files\dotnet\sdk\10.0.401\Microsoft.Common.CurrentVersion.targets(2205,5): warning MSB9008: The referenced project ../../../../../src/BoltSharp/BoltSharp.csproj does not exist. [D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\B2AQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\FramingProbes.cs(2,7): error CS0246: The type or namespace name 'BoltSharp' could not be found (are you missing a using directive or an assembly reference?) [D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\B2AQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\FramingProbes.cs(11,41): error CS0246: The type or namespace name 'BoltMessageReader' could not be found (are you missing a using directive or an assembly reference?) [D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\B2AQ2.Probes.csproj]
