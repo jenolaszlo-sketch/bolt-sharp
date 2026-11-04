@@ -1,0 +1,8 @@
+Command: git ls-remote --heads origin main
+Observed live tip: 357df2d6836c4995a741b72bd442f09efa91756f refs/heads/main
+Local refs/remotes/origin/main: a46c916e7f6e72e315504e2d284921d406ee6c74
+Command: git show -s --format=%H 357df2d6836c4995a741b72bd442f09efa91756f
+Result: fatal: bad object; exit 128
+Command: git merge-base --is-ancestor 357df2d6836c4995a741b72bd442f09efa91756f HEAD
+Result: fatal: Not a valid commit name; exit 128
+Live ancestry relationship: UNKNOWN; remote object absent locally. No fetch, ref update or push performed.

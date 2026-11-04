@@ -1,0 +1,74 @@
+[
+  {
+    "name": "environment",
+    "program": "dotnet",
+    "arguments": [
+      "--info"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "provenance",
+    "program": "git",
+    "arguments": [
+      "log",
+      "-1",
+      "--format=fuller"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "identity",
+    "program": "git",
+    "arguments": [
+      "rev-parse",
+      "HEAD",
+      "HEAD^{tree}",
+      "HEAD:src",
+      "HEAD:tests"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "build",
+    "program": "dotnet",
+    "arguments": [
+      "build",
+      "BoltSharp.slnx",
+      "-c",
+      "Debug"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "solution",
+    "program": "dotnet",
+    "arguments": [
+      "test",
+      "BoltSharp.slnx",
+      "--no-build",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=solution.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B2-B-Q1"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "previous-reviewer",
+    "program": "dotnet",
+    "arguments": [
+      "test",
+      "docs/reviews/probes/B2-A-Q2/B2AQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=previous-reviewer.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B2-B-Q1"
+    ],
+    "exitCode": 0
+  }
+]

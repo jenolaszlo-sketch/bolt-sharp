@@ -1,0 +1,54 @@
+  Determining projects to restore...
+  Restored D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\B2BQ1.Probes.csproj (in 1.18 sec).
+  1 of 2 projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+  B2BQ1.Probes -> D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll
+Test run for D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.86]     BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: False) [FAIL]
+[xUnit.net 00:00:00.86]     BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: True) [FAIL]
+  Failed BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: False) [1 ms]
+  Error Message:
+   Protocol zero is no version; manifest must not publish Accepted=true for 0.0.
+  Stack Trace:
+     at BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(Boolean async) in D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\QualificationProbes.cs:line 391
+--- End of stack trace from previous location ---
+  Standard Output Messages:
+ wire=000001FF010000000000; accepted=True; selected=0.0; close=False
+
+
+  Failed BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: True) [< 1 ms]
+  Error Message:
+   Protocol zero is no version; manifest must not publish Accepted=true for 0.0.
+  Stack Trace:
+     at BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(Boolean async) in D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\QualificationProbes.cs:line 391
+--- End of stack trace from previous location ---
+  Standard Output Messages:
+ wire=000001FF010000000000; accepted=True; selected=0.0; close=False
+
+
+[xUnit.net 00:00:00.88]     BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: True) [FAIL]
+[xUnit.net 00:00:00.89]     BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: False) [FAIL]
+  Failed BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: True) [< 1 ms]
+  Error Message:
+   A zero wire response must be a rejection, even with a configured 0.0.
+  Stack Trace:
+     at BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(Boolean async) in D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\QualificationProbes.cs:line 403
+--- End of stack trace from previous location ---
+  Standard Output Messages:
+ wire=00000000; accepted=True; selected=0.0; close=False
+
+
+  Failed BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: False) [< 1 ms]
+  Error Message:
+   A zero wire response must be a rejection, even with a configured 0.0.
+  Stack Trace:
+     at BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(Boolean async) in D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\QualificationProbes.cs:line 403
+--- End of stack trace from previous location ---
+  Standard Output Messages:
+ wire=00000000; accepted=True; selected=0.0; close=False
+
+
+Results File: D:\projects\bolt-sharp\docs\reviews\evidence\B2-B-Q1\reviewer.trx
+
+Failed!  - Failed:     4, Passed:    63, Skipped:     0, Total:    67, Duration: 272 ms - B2BQ1.Probes.dll (net8.0)

@@ -1,0 +1,17 @@
+{
+  "program": "dotnet",
+  "arguments": [
+    "test",
+    "docs/reviews/probes/B2-B-Q1/B2BQ1.Probes.csproj",
+    "-c",
+    "Debug",
+    "--logger",
+    "trx;LogFileName=reviewer.trx",
+    "--results-directory",
+    "docs/reviews/evidence/B2-B-Q1"
+  ],
+  "exitCode": 1,
+  "result": "63 passed, 4 failed, 0 skipped; 67 discovered",
+  "output": "reviewer.txt",
+  "machineResults": "reviewer.trx"
+}

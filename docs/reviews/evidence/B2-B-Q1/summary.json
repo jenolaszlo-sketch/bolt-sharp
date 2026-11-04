@@ -1,0 +1,83 @@
+{
+  "implementation": "ca36d36ee1b840b444180432e355832d56f5384f",
+  "tree": "61485c1c37864a80c00692330958b04483e1204d",
+  "baseline": "a46c916e7f6e72e315504e2d284921d406ee6c74",
+  "baselineTree": "3f8a0fce87f2ff2bede27910d9894303ceff65a0",
+  "directParent": "a46c916e7f6e72e315504e2d284921d406ee6c74",
+  "sourceTree": "8a4567241be0f5ee294c6ac23b708cc5aea280fe",
+  "testsTree": "1bbbd901e7682b54544a5d90316d28bdb81ecbe1",
+  "branch": "main",
+  "localRemoteState": "## main...origin/main [ahead 1]",
+  "remoteTrackingCommit": "a46c916e7f6e72e315504e2d284921d406ee6c74",
+  "cleanAtEntry": true,
+  "cleanAtEntryEvidence": "Initial elevated git status --porcelain=v1 returned no output before reviewer changes.",
+  "implementationAddedPaths": 23,
+  "historicalImplementationDiffEmpty": true,
+  "reviewedSourceTestsProjectsAndHistoricalDocsUnchanged": true,
+  "records": [
+    {
+      "run": "solution",
+      "assembly": [
+        "d:\\projects\\bolt-sharp\\tests\\boltsharp.tests\\bin\\debug\\net8.0\\boltsharp.tests.dll"
+      ],
+      "counters": {
+        "passed": 759,
+        "skipped": 0,
+        "failed": 0
+      },
+      "discovered": 759,
+      "groups": [
+        {
+          "group": "B1",
+          "count": 509
+        },
+        {
+          "group": "B2-A",
+          "count": 54
+        },
+        {
+          "group": "B2-A-Q1",
+          "count": 41
+        },
+        {
+          "group": "B2-B",
+          "count": 155
+        }
+      ],
+      "failed": []
+    },
+    {
+      "run": "previous-reviewer",
+      "assembly": [
+        "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-a-q2\\bin\\debug\\net8.0\\b2aq2.probes.dll"
+      ],
+      "counters": {
+        "passed": 18,
+        "skipped": 0,
+        "failed": 0
+      },
+      "discovered": 18,
+      "groups": null,
+      "failed": []
+    },
+    {
+      "run": "reviewer",
+      "assembly": [
+        "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-b-q1\\bin\\debug\\net8.0\\b2bq1.probes.dll"
+      ],
+      "counters": {
+        "passed": 63,
+        "skipped": 0,
+        "failed": 4
+      },
+      "discovered": 67,
+      "groups": null,
+      "failed": [
+        "BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: False)",
+        "BoltSharp.Qualification.B2BQ1.QualificationProbes.Zero_version_must_never_be_a_successful_manifest_selection(async: True)",
+        "BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: True)",
+        "BoltSharp.Qualification.B2BQ1.QualificationProbes.Range_containing_zero_must_not_produce_accepted_legacy_zero_response(async: False)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+Command: git log -1 --format=fuller
+commit ca36d36ee1b840b444180432e355832d56f5384f
+Author:     BoltSharp Research Agent <agent@bolt-sharp.local>
+AuthorDate: Wed Nov 4 17:41:13 2026 +0800
+Commit:     BoltSharp Research Agent <agent@bolt-sharp.local>
+CommitDate: Wed Nov 4 17:41:13 2026 +0800
+
+    feat(handshake): add B2-B Bolt handshake negotiation with tests
