@@ -70,8 +70,10 @@ public sealed class BoltMessageWriter
     }
 
     /// <summary>
-    /// Writes a <c>NOOP</c> keep-alive chunk (a lone <c>00 00</c>). A receiver skips it
-    /// without ending the current message (Bolt 4.1+).
+    /// Writes a <c>NOOP</c> keep-alive chunk (a lone <c>00 00</c>) for use <b>between</b>
+    /// messages (Bolt 4.1+). A receiver skips a zero-length chunk that precedes any payload;
+    /// once payload bytes have begun, the same <c>00 00</c> terminates the current message
+    /// (B2-A-A1, closing B2-A-Q2 observation Q2-OBS1).
     /// </summary>
     public void WriteNoop() => WriteTerminator();
 
