@@ -19,6 +19,11 @@ namespace BoltSharp.Framing;
 /// keep-alive.
 /// </para>
 /// <para>
+/// <b>Size limits (B2-A-R1, finding Q2).</b> The writer does not enforce the receiving peer's
+/// <see cref="BoltFramingLimits.MaxMessageSize"/>; it emits whatever message it is given. The
+/// receiving side applies its own limit.
+/// </para>
+/// <para>
 /// This type performs no I/O and has no socket, TLS or ASP.NET dependency; it writes only to
 /// the supplied <see cref="IBufferWriter{T}"/>. It does not implement the Bolt handshake.
 /// </para>

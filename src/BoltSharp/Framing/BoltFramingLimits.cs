@@ -10,6 +10,12 @@ namespace BoltSharp.Framing;
 /// which comfortably carries the values permitted by the B1 PackStream per-value limits
 /// (16 MiB strings and byte arrays) together with their message envelope.
 /// </para>
+/// <para>
+/// <b>Scope (B2-A-R1, finding Q2).</b> <see cref="MaxMessageSize"/> is enforced by the
+/// receiving side only, i.e. by <see cref="BoltMessageReader"/>. The writer
+/// (<see cref="BoltMessageWriter"/>) emits whatever message it is given and does not enforce
+/// the receiving peer's configured limit.
+/// </para>
 /// </summary>
 public sealed class BoltFramingLimits
 {
@@ -28,6 +34,10 @@ public sealed class BoltFramingLimits
         MaxMessageSize = maxMessageSize;
     }
 
-    /// <summary>Maximum permitted size, in bytes, of a single reassembled message.</summary>
+    /// <summary>
+    /// Maximum permitted size, in bytes, of a single reassembled message. This is a
+    /// receiver-side limit enforced by <see cref="BoltMessageReader"/>; the writer does not
+    /// enforce the receiving peer's configured limit (B2-A-R1, finding Q2).
+    /// </summary>
     public int MaxMessageSize { get; }
 }

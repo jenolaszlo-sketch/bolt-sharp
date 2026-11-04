@@ -17,9 +17,20 @@ namespace BoltSharp.Framing;
 /// <see cref="TryReadMessage"/>).
 /// </para>
 /// <para>
+/// <b>End-of-stream contract (B2-A-R1, finding Q1).</b> The source stream must follow the
+/// standard <see cref="Stream"/> contract, in which a positive-length read that returns zero
+/// indicates the end of the stream. A stream that returns zero to signal temporary
+/// unavailability rather than end of stream is <b>not</b> supported: the reader would treat
+/// that zero-byte read as a clean end of stream between messages and stop. At a message
+/// boundary a zero-byte read yields <see langword="null"/>/<see langword="false"/>; after
+/// payload bytes have begun it raises <see cref="BoltFramingTruncatedException"/>.
+/// </para>
+/// <para>
 /// <b>Message size limit.</b> The reassembled size of a message must not exceed
-/// <see cref="BoltFramingLimits.MaxMessageSize"/>. The check is made before a chunk payload
-/// is read, so a chunk that declares an over-limit size never causes a large allocation.
+/// <see cref="BoltFramingLimits.MaxMessageSize"/>. This is a receiver-side (reader) safeguard:
+/// the writer does not enforce the receiving peer's configured limit. The check is made before
+/// a chunk payload is read, so a chunk that declares an over-limit size never causes a large
+/// allocation.
 /// </para>
 /// <para>
 /// <b>Failure contract.</b> When a read throws <see cref="BoltFramingTruncatedException"/>
@@ -31,9 +42,11 @@ namespace BoltSharp.Framing;
 /// <para>
 /// <b>Memory.</b> A single read accumulates at most one message, bounded by
 /// <see cref="BoltFramingLimits.MaxMessageSize"/>; allocation is driven by bytes actually
-/// received, never by an unvalidated declared length. This type performs only stream reads
-/// and has no socket, TLS or ASP.NET dependency. It does not implement the Bolt handshake or
-/// interpret message contents.
+/// received, never by an unvalidated declared length. There is no separate limit on the
+/// number of chunks in a message, so memory stays bounded but a peer can still send a message
+/// composed of many tiny chunks and cost I/O proportional to the bytes received (B2-A-Q1,
+/// finding Q4). This type performs only stream reads and has no socket, TLS or ASP.NET
+/// dependency. It does not implement the Bolt handshake or interpret message contents.
 /// </para>
 /// </summary>
 public sealed class BoltMessageReader
@@ -86,9 +99,12 @@ public sealed class BoltMessageReader
     }
 
     /// <summary>
-    /// Reads the next complete message into <paramref name="destination"/>. Returns
-    /// <see langword="true"/> when a message was written, or <see langword="false"/> at a
-    /// clean end of stream between messages (in which case nothing is written).
+    /// Reads the next complete message, <b>appending</b> its bytes to
+    /// <paramref name="destination"/>. Existing content in <paramref name="destination"/> is
+    /// preserved (the destination is not cleared), so the caller must supply a fresh or
+    /// cleared buffer to capture only this message (B2-A-R1, finding Q3). Returns
+    /// <see langword="true"/> when a message was appended, or <see langword="false"/> at a
+    /// clean end of stream between messages (in which case nothing is appended).
     /// </summary>
     public bool TryReadMessage(IBufferWriter<byte> destination)
     {
@@ -133,9 +149,11 @@ public sealed class BoltMessageReader
     }
 
     /// <summary>
-    /// Asynchronously reads the next complete message into <paramref name="destination"/>.
-    /// Returns <see langword="true"/> when a message was written, or <see langword="false"/>
-    /// at a clean end of stream between messages.
+    /// Asynchronously reads the next complete message, <b>appending</b> its bytes to
+    /// <paramref name="destination"/>. Existing content in <paramref name="destination"/> is
+    /// preserved (the destination is not cleared) (B2-A-R1, finding Q3). Returns
+    /// <see langword="true"/> when a message was appended, or <see langword="false"/> at a
+    /// clean end of stream between messages.
     /// </summary>
     public async ValueTask<bool> TryReadMessageAsync(
         IBufferWriter<byte> destination,
