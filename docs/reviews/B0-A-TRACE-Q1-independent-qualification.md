@@ -28,7 +28,7 @@ reports, historical evidence or accepted protocol contracts, and records no owne
 
 ## 2. Reviewer identity and independence statement
 
-- **Reviewing session:** GLM-5.3-Flash (provider `nvidia`), OpenCode harness, a distinct session
+- **Reviewing session:** DeepSeek V4.1 Flash (provider `nvidia`), OpenCode harness, a distinct session
   from the B0-A-TRACE-01 implementation/recovery sessions.
 - **Participation in implementation:** none. This session authored only
   `docs/reviews/probes/B0-A-TRACE-Q1/**`, `docs/reviews/evidence/B0-A-TRACE-Q1/**` and this report.
