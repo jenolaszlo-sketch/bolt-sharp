@@ -341,8 +341,7 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
                     _limits.MaxHandshakeCaptureBytes,
                     leaveOpen: true);
             }
-            catch (Exception ex) when (
-                ex is ObjectDisposedException or SocketException or NullReferenceException or InvalidOperationException)
+            catch (Exception ex) when (IsExpectedAcquisitionClosure(ex))
             {
                 trace.Outcome = "CLOSED";
                 trace.ErrorType = ex.GetType().FullName;
@@ -411,14 +410,12 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
             trace.ErrorType = ex.GetType().FullName;
             trace.SanitizedError = "The client socket was closed during the handshake.";
         }
-        catch (SocketException ex)
+        catch (Exception ex) when (IsLocalDisposal(ex) || IsExpectedPeerClosure(ex))
         {
-            trace.Outcome = "CLOSED";
-            trace.ErrorType = ex.GetType().FullName;
-            trace.SanitizedError = Sanitize(ex.Message);
-        }
-        catch (IOException ex)
-        {
+            // Local disposal (including an IOException wrapping an ObjectDisposedException),
+            // ConnectionReset/ConnectionAborted/OperationAborted and similar peer/local closure
+            // outcomes remain CLOSED. Network-level faults are deliberately excluded and fall
+            // through to the generic ERROR handler (TRACEQ2-F01).
             trace.Outcome = "CLOSED";
             trace.ErrorType = ex.GetType().FullName;
             trace.SanitizedError = Sanitize(ex.Message);
@@ -531,7 +528,17 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
             observation.FramingValid = null;
             observation.SanitizedError = "The connection lifetime elapsed while observing.";
         }
-        catch (IOException ex)
+        catch (Exception ex) when (IsLocalDisposal(ex))
+        {
+            // The listener owns the stream and disposes it as part of shutdown. An ODE at the
+            // framed-read boundary is therefore an expected local closure, not an unexpected
+            // transport fault (TRACEQ2-F02) and not a clean peer EOF.
+            observation.Status = "CANCELLED";
+            observation.FramingValid = false;
+            observation.ErrorType = ex.GetType().FullName;
+            observation.SanitizedError = Sanitize(ex.Message);
+        }
+        catch (Exception ex) when (IsExpectedPeerClosure(ex))
         {
             observation.Status = "CLEAN_EOF";
             observation.FramingValid = false;
@@ -607,7 +614,13 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
                 observation.ErrorType ??= ex.GetType().FullName;
                 return;
             }
-            catch (IOException)
+            catch (Exception ex) when (IsLocalDisposal(ex))
+            {
+                message.Status = "CANCELLED";
+                observation.AdditionalMessages.Add(message);
+                return;
+            }
+            catch (Exception ex) when (IsExpectedPeerClosure(ex))
             {
                 message.Status = "CLEAN_EOF";
                 observation.AdditionalMessages.Add(message);
@@ -690,6 +703,50 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
             _ => "UNKNOWN",
         };
     }
+
+    /// <summary>
+    /// Socket errors that are reached outcomes for an established loopback connection. Network
+    /// level faults (NetworkDown, NetworkUnreachable, NoBufferSpaceAvailable and similar) are
+    /// deliberately absent: those must remain ERROR instead of being reported as CLOSED or
+    /// CLEAN_EOF (TRACEQ2-F01).
+    /// </summary>
+    private static bool IsExpectedSocketClosure(SocketException exception) =>
+        exception.SocketErrorCode is
+            SocketError.OperationAborted or
+            SocketError.ConnectionAborted or
+            SocketError.ConnectionReset or
+            SocketError.NotConnected or
+            SocketError.Shutdown or
+            SocketError.Disconnecting;
+
+    /// <summary>
+    /// An <see cref="ObjectDisposedException"/> (directly or as the cause of an
+    /// <see cref="IOException"/>) means the listener-owned stream or socket was disposed. The
+    /// listener disposes clients only as part of its own shutdown/cleanup, so this is a local
+    /// closure rather than an unexpected transport failure.
+    /// </summary>
+    private static bool IsLocalDisposal(Exception exception) =>
+        exception is ObjectDisposedException ||
+        (exception is IOException { InnerException: { } inner } && IsLocalDisposal(inner));
+
+    /// <summary>An expected peer/local connection termination, excluding network-level faults.</summary>
+    private static bool IsExpectedPeerClosure(Exception exception) =>
+        exception switch
+        {
+            SocketException socket => IsExpectedSocketClosure(socket),
+            IOException { InnerException: { } inner } => IsExpectedPeerClosure(inner),
+            _ => false,
+        };
+
+    /// <summary>
+    /// Acquisition only treats a closed socket (ODE/NRE from TcpClient.Close) or an expected
+    /// peer/local closure as CLOSED. Unexpected socket faults still reach the generic ERROR
+    /// handler (TRACEQ2-F01, Q20).
+    /// </summary>
+    private static bool IsExpectedAcquisitionClosure(Exception exception) =>
+        exception is NullReferenceException or InvalidOperationException ||
+        IsLocalDisposal(exception) ||
+        IsExpectedPeerClosure(exception);
 
     private static string SafeRemoteEndPoint(TcpClient client)
     {
