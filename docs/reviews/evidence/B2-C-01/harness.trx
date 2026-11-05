@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="25677df3-4f02-45a7-895d-cc42ba1c21b3" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-05 16:24:29" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-05T16:24:29.5357553+08:00" queuing="2026-11-05T16:24:29.5357560+08:00" start="2026-11-05T16:24:28.9608530+08:00" finish="2026-11-05T16:24:29.5664674+08:00" />
+  <TestSettings name="default" id="6172b173-e878-4a6a-87eb-a10f29f4a2a5">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-05_16_24_29" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="93d498ca-64e4-4969-86d4-f74f5caa3873" testId="787cb231-29e3-c846-2d9e-a9565d8e7a73" testName="BoltSharp.Tests.Harness.HarnessProbes.H07_Lost_body_byte_is_detected" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0004757" startTime="2026-11-05T16:24:29.5167891+08:00" endTime="2026-11-05T16:24:29.5167891+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="93d498ca-64e4-4969-86d4-f74f5caa3873" />
+    <UnitTestResult executionId="5fae9c2e-374f-4990-b9af-72c8a6e1b4cf" testId="30940e0b-c869-45a2-c312-97458e10d2a4" testName="BoltSharp.Tests.Harness.HarnessProbes.H04_Partial_response_write_surfaces_deterministically" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006346" startTime="2026-11-05T16:24:29.5167535+08:00" endTime="2026-11-05T16:24:29.5167536+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5fae9c2e-374f-4990-b9af-72c8a6e1b4cf" />
+    <UnitTestResult executionId="423fa8a5-155a-4eb3-a54a-ee66176a5a83" testId="981d6185-9a62-7fc9-a05e-377341318d90" testName="BoltSharp.Tests.Harness.HarnessProbes.H05_Oversized_message_exceeding_the_cap_is_a_format_error" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006075" startTime="2026-11-05T16:24:29.5151073+08:00" endTime="2026-11-05T16:24:29.5151074+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="423fa8a5-155a-4eb3-a54a-ee66176a5a83" />
+    <UnitTestResult executionId="a4466f42-1b4f-46f5-ad68-97743fc98ca7" testId="44b2332d-eda5-974a-ff28-3234e786ff12" testName="BoltSharp.Tests.Harness.HarnessProbes.H04_Cancellation_is_deterministic_and_publishes_no_result(at: 4)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0026933" startTime="2026-11-05T16:24:29.4909367+08:00" endTime="2026-11-05T16:24:29.4909368+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a4466f42-1b4f-46f5-ad68-97743fc98ca7" />
+    <UnitTestResult executionId="f05db33e-f654-4ea8-9715-03c106dbb6d9" testId="2c743d47-65f7-c564-ad90-c80ef21ccf00" testName="BoltSharp.Tests.Harness.HarnessProbes.H01_Legacy_handshake_outcome_is_invariant_under_fragmentation" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0061608" startTime="2026-11-05T16:24:29.4882112+08:00" endTime="2026-11-05T16:24:29.4882113+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f05db33e-f654-4ea8-9715-03c106dbb6d9" />
+    <UnitTestResult executionId="45bf3ec3-085a-4df7-bee1-bf3409a7c3bc" testId="32492662-ec6f-9378-d5e3-7a6f0d0b7a00" testName="BoltSharp.Tests.Harness.HarnessProbes.H03_Handshake_leaves_pipelined_frame_for_the_message_reader" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0004615" startTime="2026-11-05T16:24:29.5164678+08:00" endTime="2026-11-05T16:24:29.5164678+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="45bf3ec3-085a-4df7-bee1-bf3409a7c3bc" />
+    <UnitTestResult executionId="82344eda-b9c6-485d-af9f-6262e9f47df1" testId="f0492068-308f-b257-37bc-a134c1e5c0b7" testName="BoltSharp.Tests.Harness.HarnessProbes.H04_Production_does_not_dispose_the_caller_stream" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0002857" startTime="2026-11-05T16:24:29.5167334+08:00" endTime="2026-11-05T16:24:29.5167334+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82344eda-b9c6-485d-af9f-6262e9f47df1" />
+    <UnitTestResult executionId="1677b5e8-bd6e-409b-bf71-cb09a31213c3" testId="e588c08b-7a9f-0a0b-8b73-f27948ad0ce6" testName="BoltSharp.Tests.Harness.HarnessProbes.H04_Cancellation_is_deterministic_and_publishes_no_result(at: 0)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000609" startTime="2026-11-05T16:24:29.4928522+08:00" endTime="2026-11-05T16:24:29.4928522+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1677b5e8-bd6e-409b-bf71-cb09a31213c3" />
+    <UnitTestResult executionId="b3546a66-1285-4d49-84fe-f95cd2ffe59c" testId="1094c940-61cb-6032-d3b6-e66ad4be3fad" testName="BoltSharp.Tests.Harness.HarnessProbes.H04_Cancellation_is_deterministic_and_publishes_no_result(at: 20)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0018481" startTime="2026-11-05T16:24:29.4928290+08:00" endTime="2026-11-05T16:24:29.4928292+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b3546a66-1285-4d49-84fe-f95cd2ffe59c" />
+    <UnitTestResult executionId="3b91a2bc-438c-4562-b901-5bd0ca53f3c3" testId="d69c3fa1-e2d9-b0fb-5e55-aa756160b631" testName="BoltSharp.Tests.Harness.HarnessProbes.H02_Manifest_handshake_succeeds_at_every_split" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006389" startTime="2026-11-05T16:24:29.5163772+08:00" endTime="2026-11-05T16:24:29.5163773+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3b91a2bc-438c-4562-b901-5bd0ca53f3c3" />
+    <UnitTestResult executionId="d0f132fb-68ed-4371-bb8c-4089f7535a04" testId="81aee9a2-2791-477e-5053-2770b25f6ecf" testName="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 7)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000155" startTime="2026-11-05T16:24:29.5151897+08:00" endTime="2026-11-05T16:24:29.5151898+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0f132fb-68ed-4371-bb8c-4089f7535a04" />
+    <UnitTestResult executionId="580f0b8d-e9ce-4ac0-8e98-adedcd43a53b" testId="35a9e66c-1237-21a3-e55d-225c3eaeaa71" testName="BoltSharp.Tests.Harness.HarnessProbes.H02_Framed_message_succeeds_at_header_body_and_terminator_boundaries" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0003747" startTime="2026-11-05T16:24:29.5165011+08:00" endTime="2026-11-05T16:24:29.5165011+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="580f0b8d-e9ce-4ac0-8e98-adedcd43a53b" />
+    <UnitTestResult executionId="cbe8fb22-0937-49bb-a600-9ac3420b59ac" testId="5e0eab58-8c6b-a7f0-8d9e-24cceb2fc56f" testName="BoltSharp.Tests.Harness.HarnessProbes.H07_Bounded_buffer_refuses_unbounded_accumulation" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0007179" startTime="2026-11-05T16:24:29.5164844+08:00" endTime="2026-11-05T16:24:29.5164844+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cbe8fb22-0937-49bb-a600-9ac3420b59ac" />
+    <UnitTestResult executionId="82f40dc8-1023-406a-8ef7-78b215c14437" testId="8ed718f5-e79e-859a-680d-abdb4908f1ad" testName="BoltSharp.Tests.Harness.HarnessProbes.H03_Pipelined_messages_preserve_order_and_bytes" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006876" startTime="2026-11-05T16:24:29.5167716+08:00" endTime="2026-11-05T16:24:29.5167716+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82f40dc8-1023-406a-8ef7-78b215c14437" />
+    <UnitTestResult executionId="347bd196-7d4a-40b5-b834-e7d48d052d0c" testId="381a4390-fde3-b20c-ac1c-7fab78ea1f77" testName="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 1)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0001340" startTime="2026-11-05T16:24:29.5151688+08:00" endTime="2026-11-05T16:24:29.5151688+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="347bd196-7d4a-40b5-b834-e7d48d052d0c" />
+    <UnitTestResult executionId="5cfaa6c9-6a38-45c1-a0e5-5001a46954ef" testId="2abb2db3-dcb2-3d12-f50b-528ff4f9c90b" testName="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 42)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006369" startTime="2026-11-05T16:24:29.5151501+08:00" endTime="2026-11-05T16:24:29.5151502+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5cfaa6c9-6a38-45c1-a0e5-5001a46954ef" />
+    <UnitTestResult executionId="46ed3366-8d5d-47ce-9b8c-fd387e6e5fce" testId="7117e636-f301-8d4a-b5e5-d47da47b5914" testName="BoltSharp.Tests.Harness.HarnessProbes.H07_Fragmentation_policy_is_applied_and_writes_coalesce" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0011674" startTime="2026-11-05T16:24:29.5164509+08:00" endTime="2026-11-05T16:24:29.5164509+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46ed3366-8d5d-47ce-9b8c-fd387e6e5fce" />
+    <UnitTestResult executionId="16804314-0327-416d-be54-9948a3e54f61" testId="3ac3cba4-581d-a73c-a74f-bd9c7704cc51" testName="BoltSharp.Tests.Harness.HarnessProbes.H06_Manifest_handshake_then_pipelined_message(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0024771" startTime="2026-11-05T16:24:29.4954463+08:00" endTime="2026-11-05T16:24:29.4954464+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="16804314-0327-416d-be54-9948a3e54f61" />
+    <UnitTestResult executionId="2c2f1530-cfde-4e41-b56a-e2b18e78dc1e" testId="0ef0cdb6-88f0-6664-de91-2a6580dd67ab" testName="BoltSharp.Tests.Harness.HarnessProbes.H04_Truncated_header_and_body_are_typed" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0005826" startTime="2026-11-05T16:24:29.5152234+08:00" endTime="2026-11-05T16:24:29.5152235+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c2f1530-cfde-4e41-b56a-e2b18e78dc1e" />
+    <UnitTestResult executionId="ecbf11ab-bad6-4112-8fb4-b06335458932" testId="fa4a8b42-db3c-3f1c-dbee-693f72073789" testName="BoltSharp.Tests.Harness.HarnessProbes.H07_Malformed_length_field_is_detected" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0005856" startTime="2026-11-05T16:24:29.4819934+08:00" endTime="2026-11-05T16:24:29.4819936+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ecbf11ab-bad6-4112-8fb4-b06335458932" />
+    <UnitTestResult executionId="54d83167-aa5d-490d-85ae-2bb214515261" testId="df73b436-d8b7-7b6c-c898-e3227d148d1d" testName="BoltSharp.Tests.Harness.HarnessProbes.H07_Broken_eof_mid_header_is_not_a_clean_end" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0008355" startTime="2026-11-05T16:24:29.5149718+08:00" endTime="2026-11-05T16:24:29.5149720+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="54d83167-aa5d-490d-85ae-2bb214515261" />
+    <UnitTestResult executionId="31950061-c02e-4177-9839-c809206dc8a7" testId="ce794a73-38e9-2e98-d0ad-65be99aadc26" testName="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 2026)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000124" startTime="2026-11-05T16:24:29.5152048+08:00" endTime="2026-11-05T16:24:29.5152048+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31950061-c02e-4177-9839-c809206dc8a7" />
+    <UnitTestResult executionId="1296d7f2-f2a6-458f-9f43-ae48a6ad50b6" testId="e55fe647-94f3-9af0-1820-97e7925e9067" testName="BoltSharp.Tests.Harness.HarnessProbes.H05_Unsupported_version_writes_zero_and_requests_close" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0012851" startTime="2026-11-05T16:24:29.5151300+08:00" endTime="2026-11-05T16:24:29.5151301+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1296d7f2-f2a6-458f-9f43-ae48a6ad50b6" />
+    <UnitTestResult executionId="e4632fd2-5736-4dae-9026-4057d5b8b335" testId="9d939e44-854f-34da-363e-be553de9352e" testName="BoltSharp.Tests.Harness.HarnessProbes.H05_Invalid_manifest_selection_is_a_protocol_error" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0008346" startTime="2026-11-05T16:24:29.5164151+08:00" endTime="2026-11-05T16:24:29.5164152+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4632fd2-5736-4dae-9026-4057d5b8b335" />
+    <UnitTestResult executionId="34d07ca0-edf5-44b1-971e-5e1fe1d72781" testId="d68e5dc9-7f09-ef12-94b5-7e6b8c5fb3bb" testName="BoltSharp.Tests.Harness.HarnessProbes.H05_Declared_length_beyond_available_bytes_is_truncation" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0089677" startTime="2026-11-05T16:24:29.4748201+08:00" endTime="2026-11-05T16:24:29.4748320+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34d07ca0-edf5-44b1-971e-5e1fe1d72781" />
+    <UnitTestResult executionId="645306f8-78b0-4d1a-9683-5854012c5eb9" testId="882407ef-537a-75f9-8a11-fffd19320c8e" testName="BoltSharp.Tests.Harness.HarnessProbes.H06_Manifest_handshake_then_pipelined_message(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0015173" startTime="2026-11-05T16:24:29.4969374+08:00" endTime="2026-11-05T16:24:29.4969376+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="645306f8-78b0-4d1a-9683-5854012c5eb9" />
+    <UnitTestResult executionId="3a29d9b8-0be4-4a10-8af2-95579e46507c" testId="2e5a041f-99dd-8996-f605-f0e4b5af5006" testName="BoltSharp.Tests.Harness.HarnessProbes.H05_Invalid_magic_and_reserved_proposal_are_format_errors" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0069220" startTime="2026-11-05T16:24:29.4813947+08:00" endTime="2026-11-05T16:24:29.4813949+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3a29d9b8-0be4-4a10-8af2-95579e46507c" />
+    <UnitTestResult executionId="b9bf7acc-43e9-4b00-ab67-4c4661bab9df" testId="24683964-448d-9770-738f-06f70f990620" testName="BoltSharp.Tests.Harness.HarnessProbes.H06_Legacy_handshake_then_two_pipelined_messages(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006535" startTime="2026-11-05T16:24:29.5152423+08:00" endTime="2026-11-05T16:24:29.5152423+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b9bf7acc-43e9-4b00-ab67-4c4661bab9df" />
+    <UnitTestResult executionId="63951697-f852-45f6-a00a-26156000e2c6" testId="8cb0204d-791d-903c-10e3-b37ae8853aba" testName="BoltSharp.Tests.Harness.HarnessProbes.H04_Clean_eof_between_messages_is_null" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0002719" startTime="2026-11-05T16:24:29.5164323+08:00" endTime="2026-11-05T16:24:29.5164324+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="63951697-f852-45f6-a00a-26156000e2c6" />
+    <UnitTestResult executionId="124976c3-ca60-4095-a548-ff3ba3ee8436" testId="3f8f6302-ab2c-3150-87bb-6d8ec7436cfe" testName="BoltSharp.Tests.Harness.HarnessProbes.H06_Legacy_handshake_then_two_pipelined_messages(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0001280" startTime="2026-11-05T16:24:29.5163425+08:00" endTime="2026-11-05T16:24:29.5163426+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="124976c3-ca60-4095-a548-ff3ba3ee8436" />
+    <UnitTestResult executionId="0cecd5d1-4541-4b13-bbf2-868a217e4666" testId="2a886d74-d11a-4e41-69d4-1420946d0ad5" testName="BoltSharp.Tests.Harness.HarnessProbes.H07_Reordered_bytes_produce_a_different_payload" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0004652" startTime="2026-11-05T16:24:29.5163970+08:00" endTime="2026-11-05T16:24:29.5163970+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0cecd5d1-4541-4b13-bbf2-868a217e4666" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H04_Cancellation_is_deterministic_and_publishes_no_result(at: 0)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="e588c08b-7a9f-0a0b-8b73-f27948ad0ce6">
+      <Execution id="1677b5e8-bd6e-409b-bf71-cb09a31213c3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H04_Cancellation_is_deterministic_and_publishes_no_result" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H03_Handshake_leaves_pipelined_frame_for_the_message_reader" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="32492662-ec6f-9378-d5e3-7a6f0d0b7a00">
+      <Execution id="45bf3ec3-085a-4df7-bee1-bf3409a7c3bc" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H03_Handshake_leaves_pipelined_frame_for_the_message_reader" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H05_Unsupported_version_writes_zero_and_requests_close" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="e55fe647-94f3-9af0-1820-97e7925e9067">
+      <Execution id="1296d7f2-f2a6-458f-9f43-ae48a6ad50b6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H05_Unsupported_version_writes_zero_and_requests_close" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H07_Lost_body_byte_is_detected" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="787cb231-29e3-c846-2d9e-a9565d8e7a73">
+      <Execution id="93d498ca-64e4-4969-86d4-f74f5caa3873" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H07_Lost_body_byte_is_detected" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H06_Manifest_handshake_then_pipelined_message(async: True)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="3ac3cba4-581d-a73c-a74f-bd9c7704cc51">
+      <Execution id="16804314-0327-416d-be54-9948a3e54f61" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H06_Manifest_handshake_then_pipelined_message" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H01_Legacy_handshake_outcome_is_invariant_under_fragmentation" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="2c743d47-65f7-c564-ad90-c80ef21ccf00">
+      <Execution id="f05db33e-f654-4ea8-9715-03c106dbb6d9" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H01_Legacy_handshake_outcome_is_invariant_under_fragmentation" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 42)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="2abb2db3-dcb2-3d12-f50b-528ff4f9c90b">
+      <Execution id="5cfaa6c9-6a38-45c1-a0e5-5001a46954ef" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H01_Seeded_random_fragmentation_is_invariant" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 1)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="381a4390-fde3-b20c-ac1c-7fab78ea1f77">
+      <Execution id="347bd196-7d4a-40b5-b834-e7d48d052d0c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H01_Seeded_random_fragmentation_is_invariant" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H06_Manifest_handshake_then_pipelined_message(async: False)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="882407ef-537a-75f9-8a11-fffd19320c8e">
+      <Execution id="645306f8-78b0-4d1a-9683-5854012c5eb9" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H06_Manifest_handshake_then_pipelined_message" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H04_Partial_response_write_surfaces_deterministically" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="30940e0b-c869-45a2-c312-97458e10d2a4">
+      <Execution id="5fae9c2e-374f-4990-b9af-72c8a6e1b4cf" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H04_Partial_response_write_surfaces_deterministically" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H05_Declared_length_beyond_available_bytes_is_truncation" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="d68e5dc9-7f09-ef12-94b5-7e6b8c5fb3bb">
+      <Execution id="34d07ca0-edf5-44b1-971e-5e1fe1d72781" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H05_Declared_length_beyond_available_bytes_is_truncation" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H07_Broken_eof_mid_header_is_not_a_clean_end" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="df73b436-d8b7-7b6c-c898-e3227d148d1d">
+      <Execution id="54d83167-aa5d-490d-85ae-2bb214515261" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H07_Broken_eof_mid_header_is_not_a_clean_end" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H04_Production_does_not_dispose_the_caller_stream" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="f0492068-308f-b257-37bc-a134c1e5c0b7">
+      <Execution id="82344eda-b9c6-485d-af9f-6262e9f47df1" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H04_Production_does_not_dispose_the_caller_stream" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H05_Oversized_message_exceeding_the_cap_is_a_format_error" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="981d6185-9a62-7fc9-a05e-377341318d90">
+      <Execution id="423fa8a5-155a-4eb3-a54a-ee66176a5a83" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H05_Oversized_message_exceeding_the_cap_is_a_format_error" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H06_Legacy_handshake_then_two_pipelined_messages(async: False)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="24683964-448d-9770-738f-06f70f990620">
+      <Execution id="b9bf7acc-43e9-4b00-ab67-4c4661bab9df" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H06_Legacy_handshake_then_two_pipelined_messages" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H05_Invalid_magic_and_reserved_proposal_are_format_errors" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="2e5a041f-99dd-8996-f605-f0e4b5af5006">
+      <Execution id="3a29d9b8-0be4-4a10-8af2-95579e46507c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H05_Invalid_magic_and_reserved_proposal_are_format_errors" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H07_Malformed_length_field_is_detected" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="fa4a8b42-db3c-3f1c-dbee-693f72073789">
+      <Execution id="ecbf11ab-bad6-4112-8fb4-b06335458932" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H07_Malformed_length_field_is_detected" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H07_Bounded_buffer_refuses_unbounded_accumulation" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="5e0eab58-8c6b-a7f0-8d9e-24cceb2fc56f">
+      <Execution id="cbe8fb22-0937-49bb-a600-9ac3420b59ac" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H07_Bounded_buffer_refuses_unbounded_accumulation" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H04_Truncated_header_and_body_are_typed" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="0ef0cdb6-88f0-6664-de91-2a6580dd67ab">
+      <Execution id="2c2f1530-cfde-4e41-b56a-e2b18e78dc1e" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H04_Truncated_header_and_body_are_typed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H04_Cancellation_is_deterministic_and_publishes_no_result(at: 20)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="1094c940-61cb-6032-d3b6-e66ad4be3fad">
+      <Execution id="b3546a66-1285-4d49-84fe-f95cd2ffe59c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H04_Cancellation_is_deterministic_and_publishes_no_result" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H07_Fragmentation_policy_is_applied_and_writes_coalesce" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="7117e636-f301-8d4a-b5e5-d47da47b5914">
+      <Execution id="46ed3366-8d5d-47ce-9b8c-fd387e6e5fce" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H07_Fragmentation_policy_is_applied_and_writes_coalesce" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H04_Clean_eof_between_messages_is_null" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="8cb0204d-791d-903c-10e3-b37ae8853aba">
+      <Execution id="63951697-f852-45f6-a00a-26156000e2c6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H04_Clean_eof_between_messages_is_null" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H06_Legacy_handshake_then_two_pipelined_messages(async: True)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="3f8f6302-ab2c-3150-87bb-6d8ec7436cfe">
+      <Execution id="124976c3-ca60-4095-a548-ff3ba3ee8436" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H06_Legacy_handshake_then_two_pipelined_messages" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H03_Pipelined_messages_preserve_order_and_bytes" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="8ed718f5-e79e-859a-680d-abdb4908f1ad">
+      <Execution id="82f40dc8-1023-406a-8ef7-78b215c14437" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H03_Pipelined_messages_preserve_order_and_bytes" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 7)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="81aee9a2-2791-477e-5053-2770b25f6ecf">
+      <Execution id="d0f132fb-68ed-4371-bb8c-4089f7535a04" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H01_Seeded_random_fragmentation_is_invariant" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H04_Cancellation_is_deterministic_and_publishes_no_result(at: 4)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="44b2332d-eda5-974a-ff28-3234e786ff12">
+      <Execution id="a4466f42-1b4f-46f5-ad68-97743fc98ca7" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H04_Cancellation_is_deterministic_and_publishes_no_result" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H07_Reordered_bytes_produce_a_different_payload" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="2a886d74-d11a-4e41-69d4-1420946d0ad5">
+      <Execution id="0cecd5d1-4541-4b13-bbf2-868a217e4666" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H07_Reordered_bytes_produce_a_different_payload" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H02_Framed_message_succeeds_at_header_body_and_terminator_boundaries" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="35a9e66c-1237-21a3-e55d-225c3eaeaa71">
+      <Execution id="580f0b8d-e9ce-4ac0-8e98-adedcd43a53b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H02_Framed_message_succeeds_at_header_body_and_terminator_boundaries" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H02_Manifest_handshake_succeeds_at_every_split" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="d69c3fa1-e2d9-b0fb-5e55-aa756160b631">
+      <Execution id="3b91a2bc-438c-4562-b901-5bd0ca53f3c3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H02_Manifest_handshake_succeeds_at_every_split" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H01_Seeded_random_fragmentation_is_invariant(seed: 2026)" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="ce794a73-38e9-2e98-d0ad-65be99aadc26">
+      <Execution id="31950061-c02e-4177-9839-c809206dc8a7" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H01_Seeded_random_fragmentation_is_invariant" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessProbes.H05_Invalid_manifest_selection_is_a_protocol_error" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="9d939e44-854f-34da-363e-be553de9352e">
+      <Execution id="e4632fd2-5736-4dae-9026-4057d5b8b335" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessProbes" name="H05_Invalid_manifest_selection_is_a_protocol_error" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="787cb231-29e3-c846-2d9e-a9565d8e7a73" executionId="93d498ca-64e4-4969-86d4-f74f5caa3873" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="30940e0b-c869-45a2-c312-97458e10d2a4" executionId="5fae9c2e-374f-4990-b9af-72c8a6e1b4cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="981d6185-9a62-7fc9-a05e-377341318d90" executionId="423fa8a5-155a-4eb3-a54a-ee66176a5a83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="44b2332d-eda5-974a-ff28-3234e786ff12" executionId="a4466f42-1b4f-46f5-ad68-97743fc98ca7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c743d47-65f7-c564-ad90-c80ef21ccf00" executionId="f05db33e-f654-4ea8-9715-03c106dbb6d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="32492662-ec6f-9378-d5e3-7a6f0d0b7a00" executionId="45bf3ec3-085a-4df7-bee1-bf3409a7c3bc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f0492068-308f-b257-37bc-a134c1e5c0b7" executionId="82344eda-b9c6-485d-af9f-6262e9f47df1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e588c08b-7a9f-0a0b-8b73-f27948ad0ce6" executionId="1677b5e8-bd6e-409b-bf71-cb09a31213c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1094c940-61cb-6032-d3b6-e66ad4be3fad" executionId="b3546a66-1285-4d49-84fe-f95cd2ffe59c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d69c3fa1-e2d9-b0fb-5e55-aa756160b631" executionId="3b91a2bc-438c-4562-b901-5bd0ca53f3c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="81aee9a2-2791-477e-5053-2770b25f6ecf" executionId="d0f132fb-68ed-4371-bb8c-4089f7535a04" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="35a9e66c-1237-21a3-e55d-225c3eaeaa71" executionId="580f0b8d-e9ce-4ac0-8e98-adedcd43a53b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5e0eab58-8c6b-a7f0-8d9e-24cceb2fc56f" executionId="cbe8fb22-0937-49bb-a600-9ac3420b59ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8ed718f5-e79e-859a-680d-abdb4908f1ad" executionId="82f40dc8-1023-406a-8ef7-78b215c14437" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="381a4390-fde3-b20c-ac1c-7fab78ea1f77" executionId="347bd196-7d4a-40b5-b834-e7d48d052d0c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2abb2db3-dcb2-3d12-f50b-528ff4f9c90b" executionId="5cfaa6c9-6a38-45c1-a0e5-5001a46954ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7117e636-f301-8d4a-b5e5-d47da47b5914" executionId="46ed3366-8d5d-47ce-9b8c-fd387e6e5fce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3ac3cba4-581d-a73c-a74f-bd9c7704cc51" executionId="16804314-0327-416d-be54-9948a3e54f61" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ef0cdb6-88f0-6664-de91-2a6580dd67ab" executionId="2c2f1530-cfde-4e41-b56a-e2b18e78dc1e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa4a8b42-db3c-3f1c-dbee-693f72073789" executionId="ecbf11ab-bad6-4112-8fb4-b06335458932" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="df73b436-d8b7-7b6c-c898-e3227d148d1d" executionId="54d83167-aa5d-490d-85ae-2bb214515261" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ce794a73-38e9-2e98-d0ad-65be99aadc26" executionId="31950061-c02e-4177-9839-c809206dc8a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e55fe647-94f3-9af0-1820-97e7925e9067" executionId="1296d7f2-f2a6-458f-9f43-ae48a6ad50b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9d939e44-854f-34da-363e-be553de9352e" executionId="e4632fd2-5736-4dae-9026-4057d5b8b335" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d68e5dc9-7f09-ef12-94b5-7e6b8c5fb3bb" executionId="34d07ca0-edf5-44b1-971e-5e1fe1d72781" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="882407ef-537a-75f9-8a11-fffd19320c8e" executionId="645306f8-78b0-4d1a-9683-5854012c5eb9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e5a041f-99dd-8996-f605-f0e4b5af5006" executionId="3a29d9b8-0be4-4a10-8af2-95579e46507c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="24683964-448d-9770-738f-06f70f990620" executionId="b9bf7acc-43e9-4b00-ab67-4c4661bab9df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8cb0204d-791d-903c-10e3-b37ae8853aba" executionId="63951697-f852-45f6-a00a-26156000e2c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3f8f6302-ab2c-3150-87bb-6d8ec7436cfe" executionId="124976c3-ca60-4095-a548-ff3ba3ee8436" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2a886d74-d11a-4e41-69d4-1420946d0ad5" executionId="0cecd5d1-4541-4b13-bbf2-868a217e4666" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="31" executed="31" passed="31" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.05]   Discovering: BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.15]   Discovered:  BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.15]   Starting:    BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.23]   Finished:    BoltSharp.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
