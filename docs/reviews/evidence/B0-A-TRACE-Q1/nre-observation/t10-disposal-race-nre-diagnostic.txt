@@ -1,0 +1,37 @@
+﻿Test run for D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q1\bin\Debug\net8.0\B0ATRACEQ1.Probes.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q1\bin\Debug\net8.0\B0ATRACEQ1.Probes.dll
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)
+[xUnit.net 00:00:00.04]   Discovering: B0ATRACEQ1.Probes
+[xUnit.net 00:00:00.07]   Discovered:  B0ATRACEQ1.Probes
+[xUnit.net 00:00:00.07]   Starting:    B0ATRACEQ1.Probes
+dotnet : [xUnit.net 00:00:00.12]     
+BoltSharp.Qualification.B0ATRACEQ1.QualificationProbes.T10_Bounded_Connections_Pending_Connection_Never_Accepted [FAIL]
+At line:1 char:53
++ ... MP\q1diag"; dotnet test docs/reviews/probes/B0-A-TRACE-Q1/B0ATRACEQ1. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Accepted [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.12]       System.NullReferenceException : Object reference not set to an instance of an object.
+[xUnit.net 00:00:00.12]       Stack Trace:
+[xUnit.net 00:00:00.12]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs(657,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client)
+[xUnit.net 00:00:00.12]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs(308,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client)
+[xUnit.net 00:00:00.12]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs(743,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.DisposeAsync()
+[xUnit.net 00:00:00.12]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q1\QualificationProbes.cs(479,0): at BoltSharp.Qualification.B0ATRACEQ1.QualificationProbes.T10_Bounded_Connections_Pending_Connection_Never_Accepted()
+[xUnit.net 00:00:00.12]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:00.12]   Finished:    B0ATRACEQ1.Probes
+  Failed BoltSharp.Qualification.B0ATRACEQ1.QualificationProbes.T10_Bounded_Connections_Pending_Connection_Never_Accepted [14 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 657
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 308
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.DisposeAsync() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 743
+   at BoltSharp.Qualification.B0ATRACEQ1.QualificationProbes.T10_Bounded_Connections_Pending_Connection_Never_Accepted() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q1\QualificationProbes.cs:line 479
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 1
+     Failed: 1
+ Total time: 0.5175 Seconds

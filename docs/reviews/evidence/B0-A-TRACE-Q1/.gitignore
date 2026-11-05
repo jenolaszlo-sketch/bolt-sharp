@@ -1,0 +1,2 @@
+﻿# Reviewer-owned executable qualification evidence: keep per-suite TRX despite the root *.trx rule.
+!*.trx

@@ -1,0 +1,143 @@
+{
+    "description":  "B0-A-TRACE-Q1 reviewer evidence manifest",
+    "algorithm":  "SHA256",
+    "reviewer":  "GLM-5.3-Flash (nvidia) via OpenCode",
+    "qualified_head":  "76058e5086e5d7c7f90eff54da9fb533a6155f76",
+    "files":  [
+                  {
+                      "path":  ".gitignore",
+                      "sha256":  "5B8B0BEB0E6E0F2F444FABA63768FE8F947BB850148BB3E90DBA30DA0022EB99",
+                      "bytes":  110
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-legacy-client-handshake.hex",
+                      "sha256":  "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+                      "bytes":  61
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-legacy-server-response.hex",
+                      "sha256":  "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+                      "bytes":  13
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-legacy-trace.json",
+                      "sha256":  "C2917F6B22A2187DC1F4A62766789E9B77117F030B7525A7E37319DBC00EBA84",
+                      "bytes":  6013
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-manifest-client-handshake.hex",
+                      "sha256":  "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+                      "bytes":  76
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-manifest-server-response.hex",
+                      "sha256":  "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+                      "bytes":  31
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-manifest-trace.json",
+                      "sha256":  "DB0120E20C33DD70DD6DB79978A368B7BC61E9CBD5836129E0DC7B7E7A87AD48",
+                      "bytes":  6478
+                  },
+                  {
+                      "path":  "b2a-q2.txt",
+                      "sha256":  "C5DB83742CA599696C623E0C15D652D5B12F620E5149EA3C330D28FA968D150D",
+                      "bytes":  663
+                  },
+                  {
+                      "path":  "b2b-q1.txt",
+                      "sha256":  "7721F9F5657C5E2598685BAB1E75291ED189CFD57671C8002BC747EB4A40954C",
+                      "bytes":  663
+                  },
+                  {
+                      "path":  "b2b-q2.txt",
+                      "sha256":  "A69405DD0EA24F94912716785C12F2B870F121E504B0C9D802377DB5BB89EE92",
+                      "bytes":  663
+                  },
+                  {
+                      "path":  "b2c-q2.txt",
+                      "sha256":  "8016417365D28DAF8A94375D6750F48DE99DCF7EA9EF45912386C2D6A5F33C76",
+                      "bytes":  818
+                  },
+                  {
+                      "path":  "build.txt",
+                      "sha256":  "596B9E4ADB9FF884E7B55329E52D2990A799E33FF86B668E526B084696B0959C",
+                      "bytes":  355
+                  },
+                  {
+                      "path":  "driver.txt",
+                      "sha256":  "28297D8AFDE93D62D2B6EF47F68A01852D9D3FE0EC1F49D5EFF1867A25DDDB82",
+                      "bytes":  2932
+                  },
+                  {
+                      "path":  "environment.txt",
+                      "sha256":  "9C7C62F625E1EBFF320974CAD8CDF287B0C9C6D36BA19187A7DE8103FEFBED18",
+                      "bytes":  1910
+                  },
+                  {
+                      "path":  "nre-observation/nre-stack-excerpt.txt",
+                      "sha256":  "7DE80B76A159FC12724959C82A4FA9B3FC4291EE0E1C5205D3D5910ACC846FEB",
+                      "bytes":  1505
+                  },
+                  {
+                      "path":  "nre-observation/t10-disposal-race-nre-diagnostic.txt",
+                      "sha256":  "D993BF675011AB2E6DCE1C85A1D0A2A1B3EA436CBAABBBC263C99A8FA279C2C6",
+                      "bytes":  3677
+                  },
+                  {
+                      "path":  "reviewer-probes.txt",
+                      "sha256":  "C8C0D3860F78226C547492E1F03063DFE9AAF6246BC86C3E4367D38B7DFD359D",
+                      "bytes":  421
+                  },
+                  {
+                      "path":  "solution.txt",
+                      "sha256":  "4B76D873DC9E03324FC9F642E8C45058BD7204C97F84CC84E8140336649812F2",
+                      "bytes":  389
+                  },
+                  {
+                      "path":  "trace.txt",
+                      "sha256":  "04610FADE1734F4E1F6D7E66232B878CD22E36F7EFE3C7C41A9251FA49CFA3AD",
+                      "bytes":  451
+                  },
+                  {
+                      "path":  "trx/b2a-q2.trx",
+                      "sha256":  "91C18910146A4E64FFA5E39F783934E791EF461644E8262B2BBADD12CCA412F9",
+                      "bytes":  25357
+                  },
+                  {
+                      "path":  "trx/b2b-q1.trx",
+                      "sha256":  "CFF0765170C63B87EDCA27D8E6CDC773666572581FE8899683DA7DBE63F26654",
+                      "bytes":  103049
+                  },
+                  {
+                      "path":  "trx/b2b-q2.trx",
+                      "sha256":  "67CD3404273AF9611BAB641436176AA4A57514723B8C6BFA14FE06D380F512B8",
+                      "bytes":  65330
+                  },
+                  {
+                      "path":  "trx/b2c-q2.trx",
+                      "sha256":  "7DD4E57037C0F177868BB2B97538FC3B84276E094ACBE17AA56832F84CBEF810",
+                      "bytes":  57876
+                  },
+                  {
+                      "path":  "trx/driver.trx",
+                      "sha256":  "E8720ABD1ECBFBAAF3DFAD8B4DF37821E9B754897419024B9871811FEAE9CD9F",
+                      "bytes":  79418
+                  },
+                  {
+                      "path":  "trx/reviewer-probes.trx",
+                      "sha256":  "524B73B0979CF7BAD4C158E13826981C2F14721774303FE407826A3AD60EE979",
+                      "bytes":  21288
+                  },
+                  {
+                      "path":  "trx/solution.trx",
+                      "sha256":  "A7E2CB25E2B02FD0A115714534056F71277FA7D46C22AC8E749CDFB644A54CD1",
+                      "bytes":  1117920
+                  },
+                  {
+                      "path":  "trx/trace.trx",
+                      "sha256":  "E83166E3D74742BEAF9549CE1CC23E5EF47D9A9619ABF3DC1BB60C538E002695",
+                      "bytes":  4697
+                  }
+              ]
+}
