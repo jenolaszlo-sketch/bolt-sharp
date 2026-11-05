@@ -1,7 +1,7 @@
 {
     "description":  "B0-A-TRACE-Q1 reviewer evidence manifest",
     "algorithm":  "SHA256",
-    "reviewer":  "GLM-5.3-Flash (nvidia) via OpenCode",
+    "reviewer":  "DeepSeek V4.1 Flash (provider nvidia) via OpenCode",
     "qualified_head":  "76058e5086e5d7c7f90eff54da9fb533a6155f76",
     "files":  [
                   {
