@@ -5,6 +5,11 @@
     "qualified_head":  "76058e5086e5d7c7f90eff54da9fb533a6155f76",
     "files":  [
                   {
+                      "path":  ".gitattributes",
+                      "sha256":  "EBA6BF578257C6159CC5E0CC5CC9F388E78E71292F3CEDDFE3F55A140D58D7C2",
+                      "bytes":  122
+                  },
+                  {
                       "path":  ".gitignore",
                       "sha256":  "5B8B0BEB0E6E0F2F444FABA63768FE8F947BB850148BB3E90DBA30DA0022EB99",
                       "bytes":  110
