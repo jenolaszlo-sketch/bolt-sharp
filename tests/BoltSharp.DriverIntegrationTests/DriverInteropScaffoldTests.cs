@@ -25,11 +25,7 @@ public sealed class DriverInteropScaffoldTests
     private const string D02Gate =
         "Requires B3 message/session engine and B5-compatible network transport (no protocol revision negotiated yet).";
 
-    private static IDriver NewDriver(DriverTestSettings settings) =>
-        GraphDatabase.Driver(
-            settings.Uri,
-            settings.AuthToken,
-            o => o.WithConnectionTimeout(TimeSpan.FromSeconds(settings.ConnectionTimeoutSeconds)));
+    private static IDriver NewDriver(DriverTestSettings settings) => settings.CreateDriver();
 
     // ---- scaffold self-checks (run; no server required) ----------------------
 
@@ -58,13 +54,34 @@ public sealed class DriverInteropScaffoldTests
     [Fact]
     public void Scaffold_Rejects_Routing_Scheme_For_A_Direct_Server()
     {
+        // Routing schemes are rejected outright; they are not silently converted.
+        Assert.Throws<ArgumentException>(() => DriverTestSettings.ValidateUri("neo4j://127.0.0.1:7687"));
+        Assert.Throws<ArgumentException>(() => DriverTestSettings.ValidateUri("neo4j+s://127.0.0.1:7687"));
+        Assert.Throws<ArgumentException>(() => DriverTestSettings.ValidateUri("neo4j+ssc://127.0.0.1:7687"));
+
+        var direct = DriverTestSettings.ValidateUri("bolt://127.0.0.1:7687");
+        Assert.Equal("bolt", direct.Scheme);
+
         var settings = new DriverTestSettings();
         Assert.False(settings.UsesRoutingScheme);
         Assert.False(settings.UsesTls);
+    }
 
-        // A routing URI is detected as routing; BoltSharp deliberately has no cluster semantics.
-        var routingUri = new Uri("neo4j://127.0.0.1:7687");
-        Assert.StartsWith("neo4j", routingUri.Scheme, StringComparison.OrdinalIgnoreCase);
+    [Fact]
+    public void Scaffold_Constructor_Rejects_Routing_Uri_From_Environment()
+    {
+        const string variable = "BOLTSHARP_DRIVER_URI";
+        var previous = Environment.GetEnvironmentVariable(variable);
+        try
+        {
+            Environment.SetEnvironmentVariable(variable, "neo4j://127.0.0.1:7687");
+            var exception = Assert.Throws<ArgumentException>(() => new DriverTestSettings());
+            Assert.Contains("routing", exception.Message, StringComparison.OrdinalIgnoreCase);
+        }
+        finally
+        {
+            Environment.SetEnvironmentVariable(variable, previous);
+        }
     }
 
     [Fact]
@@ -192,9 +209,7 @@ public sealed class DriverInteropScaffoldTests
         var tlsUri = new Uri("bolt+ssc://127.0.0.1:7687");
         Assert.NotEqual("bolt", tlsUri.Scheme);
 
-        await using var driver = GraphDatabase.Driver(
-            badSettings.Uri,
-            AuthTokens.Basic(badSettings.User, "deliberately-wrong"));
+        await using var driver = badSettings.CreateDriver(AuthTokens.Basic(badSettings.User, "deliberately-wrong"));
         await Assert.ThrowsAsync<Neo4jException>(() => driver.VerifyConnectivityAsync());
     }
 }

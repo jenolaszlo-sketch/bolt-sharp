@@ -1,0 +1,8 @@
+Command: git log -1 --format=fuller
+commit 2710bc73741ecd1f144cf4d60d7e2387d8f125f9
+Author:     BoltSharp Research Agent <agent@bolt-sharp.local>
+AuthorDate: Thu Nov 5 17:35:30 2026 +0800
+Commit:     BoltSharp Research Agent <agent@bolt-sharp.local>
+CommitDate: Thu Nov 5 17:35:30 2026 +0800
+
+    test(review): independently qualify B2-C-01 harness and driver scaffold (B2-C-Q1)

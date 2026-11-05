@@ -1,0 +1,2 @@
+# Preserve exact captured bytes so committed evidence matches its SHA-256 manifest.
+* -text whitespace=cr-at-eol

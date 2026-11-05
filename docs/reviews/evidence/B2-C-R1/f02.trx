@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d40ae3fb-0762-4c4a-a094-f7233b73b956" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-05 18:10:20" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-05T18:10:20.4000817+08:00" queuing="2026-11-05T18:10:20.4000818+08:00" start="2026-11-05T18:10:19.6841321+08:00" finish="2026-11-05T18:10:20.4051062+08:00" />
+  <TestSettings name="default" id="4f4d2942-8a41-424f-9370-a8f3370fed7d">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-05_18_10_20" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="63ca674c-e2c8-401c-b3da-74d91e920f15" testId="c858448c-6e2e-9895-98b7-5890c530a420" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_after_buffering_data_reflects_disposal_not_eof" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0004295" startTime="2026-11-05T18:10:20.3157290+08:00" endTime="2026-11-05T18:10:20.3157291+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="63ca674c-e2c8-401c-b3da-74d91e920f15" />
+    <UnitTestResult executionId="3efc0c22-c0fe-42c9-8a6d-0119edbd4037" testId="9fe31847-2cb0-11e8-8850-934f8f298adf" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Concurrent_writer_activity_during_disposal_does_not_deadlock" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0051581" startTime="2026-11-05T18:10:20.1808384+08:00" endTime="2026-11-05T18:10:20.1808514+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3efc0c22-c0fe-42c9-8a6d-0119edbd4037" />
+    <UnitTestResult executionId="9c4a59a7-7c9d-45c6-b05a-ee6e51763d6d" testId="3dbd5e22-3cae-e422-0d06-53b298a69af6" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Cancellation_versus_disposal_is_deterministic" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0022655" startTime="2026-11-05T18:10:20.3182258+08:00" endTime="2026-11-05T18:10:20.3182259+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9c4a59a7-7c9d-45c6-b05a-ee6e51763d6d" />
+    <UnitTestResult executionId="a30f83cc-0342-4e4e-957e-f7d315f6da57" testId="62065810-b2b2-6fc9-dd63-32b5fa0d99bc" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_during_blocked_read_releases_it_promptly" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1238688" startTime="2026-11-05T18:10:20.3061427+08:00" endTime="2026-11-05T18:10:20.3061432+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a30f83cc-0342-4e4e-957e-f7d315f6da57" />
+    <UnitTestResult executionId="10883f5e-e979-4532-884a-355afaeeb63d" testId="d07286bd-23ab-caba-b440-b3b9947aa45d" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Half_close_semantics_are_preserved_for_a_non_disposed_stream" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0027556" startTime="2026-11-05T18:10:20.3135781+08:00" endTime="2026-11-05T18:10:20.3135782+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="10883f5e-e979-4532-884a-355afaeeb63d" />
+    <UnitTestResult executionId="1bccae6b-325e-40a0-b71b-21dbe853178b" testId="41003e48-dcdb-7ffc-c0ac-917ba3408744" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Repeated_disposal_is_safe_and_idempotent" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0008091" startTime="2026-11-05T18:10:20.3148826+08:00" endTime="2026-11-05T18:10:20.3148826+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1bccae6b-325e-40a0-b71b-21dbe853178b" />
+    <UnitTestResult executionId="470dc8cb-cec1-4418-b639-22d3686a6c95" testId="3766e69d-7896-f15e-2aba-435bf26e381a" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_during_read_is_stable_across_repetitions" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0037780" startTime="2026-11-05T18:10:20.3107430+08:00" endTime="2026-11-05T18:10:20.3107431+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="470dc8cb-cec1-4418-b639-22d3686a6c95" />
+    <UnitTestResult executionId="10398b69-b1cb-4108-bc10-b1a5c41edc2d" testId="f32f9ca1-002d-42e8-70b8-ad1bfb9514d2" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_does_not_break_bounded_buffer_signaling" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0003346" startTime="2026-11-05T18:10:20.3152585+08:00" endTime="2026-11-05T18:10:20.3152585+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="10398b69-b1cb-4108-bc10-b1a5c41edc2d" />
+    <UnitTestResult executionId="ff340187-03d1-481a-be1c-7cf102d8da3e" testId="01d73952-fd45-f089-8a24-b07928ed4850" testName="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_before_read_reflects_disposal" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0004173" startTime="2026-11-05T18:10:20.3140332+08:00" endTime="2026-11-05T18:10:20.3140333+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ff340187-03d1-481a-be1c-7cf102d8da3e" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Cancellation_versus_disposal_is_deterministic" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="3dbd5e22-3cae-e422-0d06-53b298a69af6">
+      <Execution id="9c4a59a7-7c9d-45c6-b05a-ee6e51763d6d" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Cancellation_versus_disposal_is_deterministic" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_during_blocked_read_releases_it_promptly" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="62065810-b2b2-6fc9-dd63-32b5fa0d99bc">
+      <Execution id="a30f83cc-0342-4e4e-957e-f7d315f6da57" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Dispose_during_blocked_read_releases_it_promptly" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_after_buffering_data_reflects_disposal_not_eof" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="c858448c-6e2e-9895-98b7-5890c530a420">
+      <Execution id="63ca674c-e2c8-401c-b3da-74d91e920f15" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Dispose_after_buffering_data_reflects_disposal_not_eof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Half_close_semantics_are_preserved_for_a_non_disposed_stream" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="d07286bd-23ab-caba-b440-b3b9947aa45d">
+      <Execution id="10883f5e-e979-4532-884a-355afaeeb63d" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Half_close_semantics_are_preserved_for_a_non_disposed_stream" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_during_read_is_stable_across_repetitions" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="3766e69d-7896-f15e-2aba-435bf26e381a">
+      <Execution id="470dc8cb-cec1-4418-b639-22d3686a6c95" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Dispose_during_read_is_stable_across_repetitions" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Repeated_disposal_is_safe_and_idempotent" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="41003e48-dcdb-7ffc-c0ac-917ba3408744">
+      <Execution id="1bccae6b-325e-40a0-b71b-21dbe853178b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Repeated_disposal_is_safe_and_idempotent" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_before_read_reflects_disposal" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="01d73952-fd45-f089-8a24-b07928ed4850">
+      <Execution id="ff340187-03d1-481a-be1c-7cf102d8da3e" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Dispose_before_read_reflects_disposal" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Concurrent_writer_activity_during_disposal_does_not_deadlock" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="9fe31847-2cb0-11e8-8850-934f8f298adf">
+      <Execution id="3efc0c22-c0fe-42c9-8a6d-0119edbd4037" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Concurrent_writer_activity_during_disposal_does_not_deadlock" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Harness.HarnessDisposalTests.Dispose_does_not_break_bounded_buffer_signaling" storage="d:\projects\bolt-sharp\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="f32f9ca1-002d-42e8-70b8-ad1bfb9514d2">
+      <Execution id="10398b69-b1cb-4108-bc10-b1a5c41edc2d" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Harness.HarnessDisposalTests" name="Dispose_does_not_break_bounded_buffer_signaling" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="c858448c-6e2e-9895-98b7-5890c530a420" executionId="63ca674c-e2c8-401c-b3da-74d91e920f15" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9fe31847-2cb0-11e8-8850-934f8f298adf" executionId="3efc0c22-c0fe-42c9-8a6d-0119edbd4037" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3dbd5e22-3cae-e422-0d06-53b298a69af6" executionId="9c4a59a7-7c9d-45c6-b05a-ee6e51763d6d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="62065810-b2b2-6fc9-dd63-32b5fa0d99bc" executionId="a30f83cc-0342-4e4e-957e-f7d315f6da57" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d07286bd-23ab-caba-b440-b3b9947aa45d" executionId="10883f5e-e979-4532-884a-355afaeeb63d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="41003e48-dcdb-7ffc-c0ac-917ba3408744" executionId="1bccae6b-325e-40a0-b71b-21dbe853178b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3766e69d-7896-f15e-2aba-435bf26e381a" executionId="470dc8cb-cec1-4418-b639-22d3686a6c95" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f32f9ca1-002d-42e8-70b8-ad1bfb9514d2" executionId="10398b69-b1cb-4108-bc10-b1a5c41edc2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="01d73952-fd45-f089-8a24-b07928ed4850" executionId="ff340187-03d1-481a-be1c-7cf102d8da3e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="9" executed="9" passed="9" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.05]   Discovering: BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.14]   Discovered:  BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.15]   Starting:    BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.32]   Finished:    BoltSharp.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

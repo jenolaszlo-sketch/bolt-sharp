@@ -1,0 +1,137 @@
+[
+    {
+        "sha256":  "77CE8A03DED1B76FEE611CC00005C51E473A1A3C732463810C27360A181A517B",
+        "file":  ".gitattributes",
+        "bytes":  113
+    },
+    {
+        "sha256":  "627BA589516C2C7BB379C0CC5ABC1C7A0CED68F4921BE123071D861AF917C763",
+        "file":  "aq2.trx",
+        "bytes":  25357
+    },
+    {
+        "sha256":  "FF780AA6327F22C8E02F5AD2FC81BBF4D822A2F633BD12FAD1A4438220079DAD",
+        "file":  "aq2.txt",
+        "bytes":  831
+    },
+    {
+        "sha256":  "B9A526CC0F260F5BEBA6B8C871F19CA12785D7B568705629E6B2E5095BAC7CEC",
+        "file":  "b2cq1.trx",
+        "bytes":  43795
+    },
+    {
+        "sha256":  "4ECE73521C7312FDD6854DF8EB569DB59EEF435004521992634044415D4F9403",
+        "file":  "b2cq1.txt",
+        "bytes":  1878
+    },
+    {
+        "sha256":  "EE6A0C52D54320126B5CB80A5BCE6E00B65D8FA8693D5556BC35445D77A5F727",
+        "file":  "build.txt",
+        "bytes":  399
+    },
+    {
+        "sha256":  "D434F05B72A4ECF8C592434B00127C575FD45A0A2899C64E9398CD9FB9CF5534",
+        "file":  "commands.json",
+        "bytes":  6999
+    },
+    {
+        "sha256":  "15D62A6BEF57632EB4650510CCA470FEF53649C2DE2762C7B5C56C57D5284CD8",
+        "file":  "driver-build.txt",
+        "bytes":  514
+    },
+    {
+        "sha256":  "1D690671883146B12F5AE82985BA78E477CFB09342895342B265330410EEB337",
+        "file":  "driver-test.txt",
+        "bytes":  3450
+    },
+    {
+        "sha256":  "8EFB636BB7340DE8E1B9997B1E82EC131BACC61498A8493EF9BC500568872723",
+        "file":  "driver.trx",
+        "bytes":  59594
+    },
+    {
+        "sha256":  "4117DEC33F23D8C38072BCBA4B0DBAB381651551EBA7B8DA14A3F826083B2039",
+        "file":  "environment.txt",
+        "bytes":  1934
+    },
+    {
+        "sha256":  "6DD805AF4512F70E535E4F44DF604A5EC95BE9E2952C23E137AEBA2355AB134D",
+        "file":  "f01-uri.txt",
+        "bytes":  707
+    },
+    {
+        "sha256":  "6E753B6F8EC77DF72973C88D8EE2C67C5FC256F006B27FBC87117B04C07F07CC",
+        "file":  "f01.trx",
+        "bytes":  30705
+    },
+    {
+        "sha256":  "FED65CB73AC27CC914918C1960CD712DDDD2F51735EB1F02C0D183CD5C23D618",
+        "file":  "f02-disposal.txt",
+        "bytes":  589
+    },
+    {
+        "sha256":  "978F7A84BEB760AC22FE719C31A3A93B37A34664875EF624A14EF370C1F8F971",
+        "file":  "f02.trx",
+        "bytes":  13689
+    },
+    {
+        "sha256":  "A771E95F1E94391DDAAB6F8622EB9CA20839DD13465D43138A8FB9973BF5E316",
+        "file":  "harness.trx",
+        "bytes":  54908
+    },
+    {
+        "sha256":  "290C40F2A35A1B73BB34B0FACAF432646A92EA1A2C4C9203B58BC5818BF16527",
+        "file":  "harness.txt",
+        "bytes":  584
+    },
+    {
+        "sha256":  "F7ED5E6CCA0C50EE7D61D6C354B6540C3B1A4A975CFD87D277B72EBD6ECAC681",
+        "file":  "identity.txt",
+        "bytes":  229
+    },
+    {
+        "sha256":  "79D0208EC8CB89F7552E13CAB9ABB5D94E72760CD754D41E03B13305FA91DA4C",
+        "file":  "provenance.txt",
+        "bytes":  387
+    },
+    {
+        "sha256":  "4CFB52B09D8344985520943C0B21F7A9C70D6EC26365B6430DAA4A2EB81DB296",
+        "file":  "q2.trx",
+        "bytes":  65330
+    },
+    {
+        "sha256":  "AF7EE55B3BA3FA5AF489F5FFDD323B4AC7B14902452776BBF7D44E2D54E3CE81",
+        "file":  "q2.txt",
+        "bytes":  829
+    },
+    {
+        "sha256":  "486C63FDF8823C933A502189224141BACFC8BF83B9BF82E250493E4A50274077",
+        "file":  "reviewer.trx",
+        "bytes":  103049
+    },
+    {
+        "sha256":  "08C76FFB222075B31A70130110E7DED1203975B5DF7F2BCF1C498A710E26A99A",
+        "file":  "reviewer.txt",
+        "bytes":  842
+    },
+    {
+        "sha256":  "CC614CC6C17E208C519B13DA38B71F4D77C2FB3F403BD302792FC5AA814FAE4E",
+        "file":  "Run-Evidence.ps1",
+        "bytes":  5028
+    },
+    {
+        "sha256":  "0007C4C0ADD63BDC6FEB163384486EDC2C4A30EC0A15B1136FA4AA8EDF527BCE",
+        "file":  "solution.trx",
+        "bytes":  1117920
+    },
+    {
+        "sha256":  "029946F467C7E8FA92A0C8B02119CB6C2D416D6DF27FE985092962F8B8791B54",
+        "file":  "solution.txt",
+        "bytes":  550
+    },
+    {
+        "sha256":  "ADB59CB6C9E6C1887F2AC2936EE13339B2A57785CB4F3BB4DC4D3755143D40C0",
+        "file":  "summary.json",
+        "bytes":  5580
+    }
+]

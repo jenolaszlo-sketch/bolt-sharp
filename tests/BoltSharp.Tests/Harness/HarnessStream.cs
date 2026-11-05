@@ -58,6 +58,7 @@ internal sealed class HarnessChannel
     private readonly int _maxBufferedBytes;
     private int _readIndex;
     private bool _completed;
+    private bool _disposed;
     private TaskCompletionSource _signal = new(TaskCreationOptions.RunContinuationsAsynchronously);
 
     internal HarnessChannel(int maxBufferedBytes) => _maxBufferedBytes = maxBufferedBytes;
@@ -65,6 +66,34 @@ internal sealed class HarnessChannel
     internal bool IsCompleted
     {
         get { lock (_gate) { return _completed; } }
+    }
+
+    internal bool IsDisposed
+    {
+        get { lock (_gate) { return _disposed; } }
+    }
+
+    /// <summary>
+    /// Mark the channel disposed and wake any blocked reader (B2-C-R1, finding Q1-F02). A pending
+    /// read then observes <see cref="ObjectDisposedException"/> rather than a clean EOF, and
+    /// subsequent reads/writes fail consistently.
+    /// </summary>
+    internal void Dispose()
+    {
+        TaskCompletionSource signal;
+        lock (_gate)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            _disposed = true;
+            signal = _signal;
+            _signal = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        }
+
+        signal.TrySetResult();
     }
 
     internal int Available
@@ -77,6 +106,11 @@ internal sealed class HarnessChannel
         TaskCompletionSource signal;
         lock (_gate)
         {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(HarnessStream));
+            }
+
             if (_buffer.Count - _readIndex + data.Length > _maxBufferedBytes)
             {
                 throw new InvalidOperationException(
@@ -113,6 +147,11 @@ internal sealed class HarnessChannel
     {
         lock (_gate)
         {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(HarnessStream));
+            }
+
             return ReadCore(destination, fragment);
         }
     }
@@ -124,6 +163,11 @@ internal sealed class HarnessChannel
             Task wait;
             lock (_gate)
             {
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(HarnessStream));
+                }
+
                 if (_buffer.Count - _readIndex > 0 || _completed)
                 {
                     return ReadCore(destination.Span, fragment);
@@ -163,7 +207,11 @@ internal sealed class HarnessChannel
     }
 }
 
-/// <summary>One duplex endpoint of the in-memory harness.</summary>
+/// <summary>
+/// One duplex endpoint of the in-memory harness. Disposing the endpoint promptly releases a
+/// pending asynchronous read with <see cref="ObjectDisposedException"/> and makes further
+/// reads/writes fail consistently; repeated disposal is safe (B2-C-R1, finding Q1-F02).
+/// </summary>
 internal sealed class HarnessStream : Stream
 {
     private readonly HarnessChannel _read;
@@ -216,6 +264,7 @@ internal sealed class HarnessStream : Stream
 
     public override int Read(Span<byte> buffer)
     {
+        ThrowIfDisposed();
         ReadCalls++;
         if (_options.FailReadAfterBytes is int failAt && _readBytes >= failAt)
         {
@@ -231,6 +280,7 @@ internal sealed class HarnessStream : Stream
 
     public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
     {
+        ThrowIfDisposed();
         ReadCalls++;
         if (_options.CancelReadAtByte is int cancelAt && _readBytes >= cancelAt)
         {
@@ -254,6 +304,7 @@ internal sealed class HarnessStream : Stream
 
     public override void Write(ReadOnlySpan<byte> buffer)
     {
+        ThrowIfDisposed();
         WriteCalls++;
         var offset = 0;
         var fragment = Math.Max(1, _options.MaxWriteFragment);
@@ -315,8 +366,24 @@ internal sealed class HarnessStream : Stream
 
     protected override void Dispose(bool disposing)
     {
-        Disposed = true;
+        if (disposing && !Disposed)
+        {
+            Disposed = true;
+
+            // Waking the read channel releases any pending read with ObjectDisposedException
+            // (B2-C-R1, finding Q1-F02). Repeated disposal is a no-op.
+            _read.Dispose();
+        }
+
         base.Dispose(disposing);
+    }
+
+    private void ThrowIfDisposed()
+    {
+        if (Disposed)
+        {
+            throw new ObjectDisposedException(nameof(HarnessStream));
+        }
     }
 
     public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();

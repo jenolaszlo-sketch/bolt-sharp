@@ -15,9 +15,12 @@ internal sealed class DriverTestSettings
 {
     internal const string DirectBoltUriDefault = "bolt://127.0.0.1:7687";
 
+    /// <summary>Only these direct Bolt schemes are accepted; routing schemes are rejected.</summary>
+    private static readonly string[] DirectSchemes = { "bolt", "bolt+s", "bolt+ssc" };
+
     internal DriverTestSettings()
     {
-        Uri = new Uri(Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_URI") ?? DirectBoltUriDefault);
+        Uri = ValidateUri(Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_URI") ?? DirectBoltUriDefault);
         User = Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_USER") ?? string.Empty;
         Password = Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_PASSWORD") ?? string.Empty;
         Encryption = Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_ENCRYPTION") ?? "none";
@@ -56,4 +59,66 @@ internal sealed class DriverTestSettings
     /// <summary>Driver auth token derived from the configured credentials (never logged).</summary>
     internal IAuthToken AuthToken =>
         string.IsNullOrEmpty(User) ? AuthTokens.None : AuthTokens.Basic(User, Password);
+
+    /// <summary>
+    /// The single driver-construction path. Because <see cref="Uri"/> was validated at
+    /// construction, every path that builds a driver from these settings is constrained to a
+    /// direct Bolt endpoint (B2-C-R1, finding Q1-F01).
+    /// </summary>
+    internal IDriver CreateDriver(IAuthToken? authToken = null) =>
+        GraphDatabase.Driver(
+            Uri,
+            authToken ?? AuthToken,
+            o => o.WithConnectionTimeout(TimeSpan.FromSeconds(ConnectionTimeoutSeconds)));
+
+    /// <summary>
+    /// Validates a direct Bolt URI (B2-C-R1, finding Q1-F01). Accepts only <c>bolt</c>,
+    /// <c>bolt+s</c> and <c>bolt+ssc</c>; rejects routing (<c>neo4j</c>), other unsupported or
+    /// malformed schemes, embedded credentials and unexpected URI components. A routing URI is
+    /// never silently transformed into a direct URI.
+    /// </summary>
+    internal static Uri ValidateUri(string value)
+    {
+        if (!Uri.TryCreate(value, UriKind.Absolute, out var uri))
+        {
+            throw new ArgumentException(
+                $"The driver URI '{value}' is not a valid absolute URI.", nameof(value));
+        }
+
+        if (Array.IndexOf(DirectSchemes, uri.Scheme) < 0)
+        {
+            throw new ArgumentException(
+                $"The driver URI scheme '{uri.Scheme}' is not supported. Use a direct Bolt scheme " +
+                "(bolt://, bolt+s://, bolt+ssc://); routing schemes (neo4j://, neo4j+s://, " +
+                "neo4j+ssc://) are not supported by BoltSharp.",
+                nameof(value));
+        }
+
+        if (string.IsNullOrEmpty(uri.Host))
+        {
+            throw new ArgumentException("The driver URI must specify a host.", nameof(value));
+        }
+
+        if (!string.IsNullOrEmpty(uri.UserInfo))
+        {
+            throw new ArgumentException("The driver URI must not embed credentials.", nameof(value));
+        }
+
+        if (uri.AbsolutePath.Length > 1)
+        {
+            throw new ArgumentException("The driver URI must not contain a path.", nameof(value));
+        }
+
+        if (!string.IsNullOrEmpty(uri.Query))
+        {
+            throw new ArgumentException("The driver URI must not contain a query string.", nameof(value));
+        }
+
+        if (!string.IsNullOrEmpty(uri.Fragment))
+        {
+            throw new ArgumentException("The driver URI must not contain a fragment.", nameof(value));
+        }
+
+        return uri;
+    }
 }
