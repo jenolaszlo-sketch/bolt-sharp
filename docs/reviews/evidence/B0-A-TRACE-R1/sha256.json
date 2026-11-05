@@ -1,0 +1,152 @@
+{
+    "description":  "B0-A-TRACE-R1 remediation evidence manifest",
+    "algorithm":  "SHA256",
+    "baseline":  "f24afb79ddf9737583e17887e2874c0e781ab354",
+    "files":  [
+                  {
+                      "path":  ".gitattributes",
+                      "sha256":  "77CE8A03DED1B76FEE611CC00005C51E473A1A3C732463810C27360A181A517B",
+                      "bytes":  113
+                  },
+                  {
+                      "path":  ".gitignore",
+                      "sha256":  "A1B67C2A2E79540259B89E0DD5F1543A883A42597591ACD665BE12364A9B4345",
+                      "bytes":  225
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-legacy-client-handshake.hex",
+                      "sha256":  "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+                      "bytes":  61
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-legacy-server-response.hex",
+                      "sha256":  "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+                      "bytes":  13
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-legacy-trace.json",
+                      "sha256":  "F5B891872F69FDAC3526B3F07ED8DC415E68EC6EAAA5802C3B3C34B74347C611",
+                      "bytes":  6013
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-manifest-client-handshake.hex",
+                      "sha256":  "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+                      "bytes":  76
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-manifest-server-response.hex",
+                      "sha256":  "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+                      "bytes":  31
+                  },
+                  {
+                      "path":  "authentic-reproduction/driver-manifest-trace.json",
+                      "sha256":  "0331557F471AB0B785116CDFD5835D36289F681FC3B92EA1E37833976C5DFCB0",
+                      "bytes":  6478
+                  },
+                  {
+                      "path":  "b2a-q2.txt",
+                      "sha256":  "EFE2221EF0A0EF0A61F31406EC31C3D3CDC92C737FA593E2FECF476C5C502DB7",
+                      "bytes":  663
+                  },
+                  {
+                      "path":  "b2b-q1.txt",
+                      "sha256":  "135FD3D1B948E7C643B380947071E6AE434BC375AA8DB2E1ECD1F328DA9B90E6",
+                      "bytes":  663
+                  },
+                  {
+                      "path":  "b2b-q2.txt",
+                      "sha256":  "F9399A7DB2E828D2979BEC64E35D34B4B9B5E03B24C621CE081394A28D5BA23D",
+                      "bytes":  663
+                  },
+                  {
+                      "path":  "b2c-q2.txt",
+                      "sha256":  "A72B86FC8BFB73E0ED9C960E687EEE44DBE29F086F7DBF0A85A2BEF9B13783FE",
+                      "bytes":  818
+                  },
+                  {
+                      "path":  "build.txt",
+                      "sha256":  "A295FF7BF81E6EE25CE69D99A3007F4FD87795C44AC17691C6F6418ADCE3751A",
+                      "bytes":  355
+                  },
+                  {
+                      "path":  "driver.txt",
+                      "sha256":  "802BF15AF091DE33EC54F1039E6817EF3812F96306230D17703038562BBC3270",
+                      "bytes":  2932
+                  },
+                  {
+                      "path":  "environment.txt",
+                      "sha256":  "9C7C62F625E1EBFF320974CAD8CDF287B0C9C6D36BA19187A7DE8103FEFBED18",
+                      "bytes":  1910
+                  },
+                  {
+                      "path":  "post-fix-regression.txt",
+                      "sha256":  "072549F1A3A1A4FDC9073451E3CC3B8F1729135D1554CFD96DC226549999673B",
+                      "bytes":  352
+                  },
+                  {
+                      "path":  "pre-fix-failure-excerpt.txt",
+                      "sha256":  "95B4814AB7B6A2C8A38A43D1E9ACDB974BDB477EFB9A061BD6F6FCDA38C5F6C2",
+                      "bytes":  1838
+                  },
+                  {
+                      "path":  "pre-fix-regression.txt",
+                      "sha256":  "FF8E9BB9FE246467B43CDF9EC327FCECBE333E1027C1DD2C86B28612A1E756D8",
+                      "bytes":  8400
+                  },
+                  {
+                      "path":  "reviewer-probes.txt",
+                      "sha256":  "A4D81CA0B364254342F80130DCFEB0F707C93FCF07E394B49D276D9489ABAA5A",
+                      "bytes":  966
+                  },
+                  {
+                      "path":  "solution.txt",
+                      "sha256":  "03B21463F7D4B8AF465CE134F01C3B70D14F658D67CC417D844F0E00B501CE94",
+                      "bytes":  389
+                  },
+                  {
+                      "path":  "trace.txt",
+                      "sha256":  "04610FADE1734F4E1F6D7E66232B878CD22E36F7EFE3C7C41A9251FA49CFA3AD",
+                      "bytes":  451
+                  },
+                  {
+                      "path":  "trx/b2a-q2.trx",
+                      "sha256":  "9A23EF58273637E029C1B5F172BD69EDD45CC0EEA1A47CAE5CBA92C1BA32CA21",
+                      "bytes":  25357
+                  },
+                  {
+                      "path":  "trx/b2b-q1.trx",
+                      "sha256":  "6D71607294A1101A6EC48ACEE7EE846B85F456C82DFE3963710D45BE194EB57A",
+                      "bytes":  103049
+                  },
+                  {
+                      "path":  "trx/b2b-q2.trx",
+                      "sha256":  "153A8D6A5575E6C56CD8CA68EB89F27CC614415D00A05F8F5D214994B02B9E9F",
+                      "bytes":  65330
+                  },
+                  {
+                      "path":  "trx/b2c-q2.trx",
+                      "sha256":  "4721C680D5AE9514EBDAD8076BD28D796FD7D805410017C20BD870F95A6663B5",
+                      "bytes":  57876
+                  },
+                  {
+                      "path":  "trx/driver.trx",
+                      "sha256":  "595F186D48089556B6A0CD68201DB8FC34A1B85C85572ECA64ABC222C49B545B",
+                      "bytes":  94496
+                  },
+                  {
+                      "path":  "trx/reviewer-probes.trx",
+                      "sha256":  "6E2D0D3A53576D53C0BE625FC4DC0E82C171264AC58666866612E808B76BBC3C",
+                      "bytes":  21288
+                  },
+                  {
+                      "path":  "trx/solution.trx",
+                      "sha256":  "DE362BAE9C0973D5C5B01849091DA96DBC540AB55DA424256905D6BCE81816BB",
+                      "bytes":  1117920
+                  },
+                  {
+                      "path":  "trx/trace.trx",
+                      "sha256":  "A0622B67AE0E239A6E97242FA0B3DE94756A3AA310745577B4892F85AD5AB9B2",
+                      "bytes":  4697
+                  }
+              ]
+}

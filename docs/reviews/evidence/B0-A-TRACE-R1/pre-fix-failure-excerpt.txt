@@ -1,0 +1,11 @@
+﻿ ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 657
+   System.NullReferenceException : Object reference not set to an instance of an object.
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 657
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 308
+   unexpected outcome 'ERROR'
+Actual:   System.NullReferenceException: Object reference not set to an instance of an object.
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 657
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 308
+   System.ObjectDisposedException : Cannot access a disposed object.
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 318

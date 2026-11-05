@@ -1,0 +1,76 @@
+﻿Test run for D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet : [xUnit.net 00:00:00.91]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1
+_02_EndpointCapture_WithClosedSocket_IsUnknown_NotNre [FAIL]
+At line:1 char:343
++ ... | Out-Null; dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSh ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...n_NotNre [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.93]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_08_After
+Disposal_PortIsClosed_AndNoPendingTasks [FAIL]
+[xUnit.net 00:00:00.93]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_03_Dispo
+salDuringActiveConnection_IsClean [FAIL]
+[xUnit.net 00:00:00.95]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_10_Handl
+er_WithAlreadyClosedClient_DoesNotFault [FAIL]
+[xUnit.net 00:00:00.97]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_09_Accep
+tDisposeRace_Repeated_NoUnhandledFailure [FAIL]
+  Failed BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_02_EndpointCapture_WithClosedSocket_IsUnknown_NotNre [124 ms]
+  Error Message:
+   Assert.Null() Failure: Value is not null
+Expected: null
+Actual:   System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 657
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.<>c__DisplayClass3_0.<R1_02_EndpointCapture_WithClosedSocket_IsUnknown_NotNre>b__0() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 71
+   at Xunit.Record.Exception(Func`1 testCode) in /_/src/xunit.core/Record.cs:line 47
+  Stack Trace:
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_02_EndpointCapture_WithClosedSocket_IsUnknown_NotNre() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 72
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_08_AfterDisposal_PortIsClosed_AndNoPendingTasks [6 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 657
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 308
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.DisposeAsync() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 743
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_08_AfterDisposal_PortIsClosed_AndNoPendingTasks() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 211
+--- End of stack trace from previous location ---
+  Failed BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_03_DisposalDuringActiveConnection_IsClean [5 ms]
+  Error Message:
+   unexpected outcome 'ERROR'
+  Stack Trace:
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_03_DisposalDuringActiveConnection_IsClean() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 129
+--- End of stack trace from previous location ---
+  Failed BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_10_Handler_WithAlreadyClosedClient_DoesNotFault [3 ms]
+  Error Message:
+   Assert.Null() Failure: Value is not null
+Expected: null
+Actual:   System.NullReferenceException: Object reference not set to an instance of an object.
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 657
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 308
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.InvokeHandlerAsync(LoopbackHandshakeListener listener, Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 282
+  Stack Trace:
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_10_Handler_WithAlreadyClosedClient_DoesNotFault() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 92
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_10_Handler_WithAlreadyClosedClient_DoesNotFault() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 92
+--- End of stack trace from previous location ---
+  Failed BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_09_AcceptDisposeRace_Repeated_NoUnhandledFailure [7 ms]
+  Error Message:
+   System.ObjectDisposedException : Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+  Stack Trace:
+     at System.Net.Sockets.TcpClient.GetStream()
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 318
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.DisposeAsync() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 743
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_09_AcceptDisposeRace_Repeated_NoUnhandledFailure() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerShutdownRegressionTests.cs:line 256
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     5, Passed:     5, Skipped:     0, Total:    10, Duration: 218 ms - BoltSharp.DriverIntegrationTests.dll (net8.0)
