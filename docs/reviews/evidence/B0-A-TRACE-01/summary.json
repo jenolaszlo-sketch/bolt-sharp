@@ -1,0 +1,99 @@
+﻿{
+    "branch":  "main",
+    "head":  "9abf5e3724a31aff085b3810ebb9bd3a7783ea2a",
+    "headTree":  "a465d06c17325fddc045fb6d507a0e4df3358414",
+    "driverPackage":  "Neo4j.Driver 6.4.0",
+    "records":  [
+                    {
+                        "run":  "solution",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.tests\\bin\\debug\\net8.0\\boltsharp.tests.dll"
+                                     ],
+                        "passed":  826,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  826,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "b2a-q2",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-a-q2\\bin\\debug\\net8.0\\b2aq2.probes.dll"
+                                     ],
+                        "passed":  18,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  18,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "b2b-q1",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-b-q1\\bin\\debug\\net8.0\\b2bq1.probes.dll"
+                                     ],
+                        "passed":  67,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  67,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "b2b-q2",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-b-q2\\bin\\debug\\net8.0\\b2bq2.probes.dll"
+                                     ],
+                        "passed":  46,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  46,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "b2c-q2",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-c-q2\\bin\\debug\\net8.0\\b2cq2.probes.dll"
+                                     ],
+                        "passed":  40,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  40,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "driver",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.driverintegrationtests\\bin\\debug\\net8.0\\boltsharp.driverintegrationtests.dll"
+                                     ],
+                        "passed":  37,
+                        "failed":  0,
+                        "skipped":  10,
+                        "discovered":  47,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "trace",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.driverintegrationtests\\bin\\debug\\net8.0\\boltsharp.driverintegrationtests.dll"
+                                     ],
+                        "passed":  2,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  2,
+                        "failedTests":  [
+
+                                        ]
+                    }
+                ]
+}

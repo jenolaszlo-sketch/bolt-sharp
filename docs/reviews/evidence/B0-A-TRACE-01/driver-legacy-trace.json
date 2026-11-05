@@ -1,0 +1,193 @@
+{
+  "task": "B0-A-TRACE-01",
+  "mode": "legacy",
+  "observed_at_utc": "2026-11-05T13:24:44.61987+00:00",
+  "endpoint": "bolt://127.0.0.1:7304/",
+  "listener": {
+    "connection_index": 1,
+    "remote_endpoint": "127.0.0.1:7305",
+    "started_at_utc": "2026-11-05T13:24:44.0696606+00:00",
+    "duration_ms": 531.577,
+    "outcome": "ACCEPTED",
+    "negotiation_mode": "Legacy",
+    "accepted": true,
+    "should_close": false,
+    "selected_version": "5.8",
+    "negotiated_capabilities": "0x0",
+    "error_type": null,
+    "sanitized_error": null,
+    "handshake_capture_truncated": false
+  },
+  "T01_identification": {
+    "client_handshake_hex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+    "bolt_magic_hex": "60 60 B0 17",
+    "bolt_magic_valid": true,
+    "proposal_count": 4,
+    "proposals": [
+      {
+        "slot": 0,
+        "raw_hex": "00 00 01 FF",
+        "kind": "MANIFEST_V1",
+        "major": null,
+        "minor": null,
+        "range": null,
+        "version": null,
+        "expanded_versions": null,
+        "decode_error": null
+      },
+      {
+        "slot": 1,
+        "raw_hex": "00 08 08 05",
+        "kind": "RANGE",
+        "major": 5,
+        "minor": 8,
+        "range": 8,
+        "version": "5.8-5.0",
+        "expanded_versions": [
+          "5.8",
+          "5.7",
+          "5.6",
+          "5.5",
+          "5.4",
+          "5.3",
+          "5.2",
+          "5.1",
+          "5.0"
+        ],
+        "decode_error": null
+      },
+      {
+        "slot": 2,
+        "raw_hex": "00 02 04 04",
+        "kind": "RANGE",
+        "major": 4,
+        "minor": 4,
+        "range": 2,
+        "version": "4.4-4.2",
+        "expanded_versions": [
+          "4.4",
+          "4.3",
+          "4.2"
+        ],
+        "decode_error": null
+      },
+      {
+        "slot": 3,
+        "raw_hex": "00 00 00 03",
+        "kind": "CONCRETE",
+        "major": 3,
+        "minor": 0,
+        "range": 0,
+        "version": "3.0",
+        "expanded_versions": null,
+        "decode_error": null
+      }
+    ],
+    "proposal_order": "MANIFEST_V1, 5.8-5.0, 4.4-4.2, 3.0",
+    "manifest_v1_offered": true
+  },
+  "T02_server_negotiation": {
+    "server_supported_versions": [
+      "5.8"
+    ],
+    "server_manifest_v1_enabled": false,
+    "server_offered_capabilities": "0x0",
+    "server_offer_ranges": [
+      "5.8"
+    ],
+    "candidate_versions": [
+      "MANIFEST_V1",
+      "5.8",
+      "5.7",
+      "5.6",
+      "5.5",
+      "5.4",
+      "5.3",
+      "5.2",
+      "5.1",
+      "5.0",
+      "4.4",
+      "4.3",
+      "4.2",
+      "3.0"
+    ],
+    "manifest_advertisement": null,
+    "chosen_version_or_rejection": "5.8",
+    "accepted": true,
+    "should_close": false,
+    "exact_server_response_hex": "00 00 08 05",
+    "acceptance_closure_decision": "ACCEPTED \u2014 handshake negotiated; no message/session support claimed.",
+    "replay": {
+      "outcome": "ACCEPTED",
+      "negotiation_mode": "Legacy",
+      "accepted": true,
+      "should_close": false,
+      "selected_version": "5.8",
+      "negotiated_capabilities": "0x0",
+      "exact_server_response_hex": "00 00 08 05",
+      "response_matches_live_listener": true,
+      "error_type": null,
+      "sanitized_error": null
+    }
+  },
+  "T03_client_selection": {
+    "negotiation_mode": "Legacy",
+    "selection_evidence": "OBSERVED_CONTINUATION",
+    "manifest_selection": null,
+    "legacy_continuation": {
+      "selected_version_response_hex": "00 00 08 05",
+      "first_post_handshake_status": "MESSAGE_READ",
+      "driver_continued_after_selected_version": true,
+      "note": "Continuation is OBSERVED only when a valid first framed message follows the four-byte selection response."
+    },
+    "server_side_negotiation_completed": true,
+    "client_side_acceptance": "OBSERVED_CONTINUATION"
+  },
+  "T04_first_post_handshake": {
+    "status": "MESSAGE_READ",
+    "framing_valid": true,
+    "message_body_length": 155,
+    "bytes_read_after_handshake": 178,
+    "structure_marker_hex": "0xB1",
+    "structure_field_count": 1,
+    "message_signature_hex": "0x01",
+    "message_signature_name": "HELLO",
+    "additional_messages": [
+      {
+        "status": "MESSAGE_READ",
+        "message_body_length": 15,
+        "structure_marker_hex": "0xB1",
+        "structure_field_count": 1,
+        "message_signature_hex": "0x6A",
+        "message_signature_name": "LOGON"
+      },
+      {
+        "status": "TIMED_OUT",
+        "message_body_length": null,
+        "structure_marker_hex": null,
+        "structure_field_count": null,
+        "message_signature_hex": null,
+        "message_signature_name": null
+      }
+    ],
+    "client_closed_after_first_message": false,
+    "client_waiting_after_first_message": true,
+    "extra_buffered_bytes_after_first_message": null,
+    "error_type": null,
+    "sanitized_error": null,
+    "raw_post_handshake_body_persisted": false
+  },
+  "driver_observation": {
+    "completed_successfully": false,
+    "timed_out": false,
+    "exception_type": "Neo4j.Driver.ServiceUnavailableException",
+    "sanitized_message": "Connection with the server breaks due to IOException: Unexpected end of stream, unable to read expected data from the network connection Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0.",
+    "elapsed_ms": 568.551
+  },
+  "compatibility_non_claims": [
+    "A completed handshake does not prove Neo4j server compatibility.",
+    "A completed handshake does not prove message/session compatibility.",
+    "The listener implements no HELLO, LOGON, RUN, PULL, authentication or query execution.",
+    "Any driver exception after negotiation is expected for this probe."
+  ]
+}

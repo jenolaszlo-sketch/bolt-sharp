@@ -1,0 +1,164 @@
+﻿[
+    {
+        "name":  "environment",
+        "program":  "dotnet",
+        "arguments":  [
+                          "--info"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "identity",
+        "program":  "git",
+        "arguments":  [
+                          "rev-parse",
+                          "HEAD",
+                          "HEAD^{tree}",
+                          "HEAD:src",
+                          "HEAD:tests"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "provenance",
+        "program":  "git",
+        "arguments":  [
+                          "log",
+                          "-1",
+                          "--format=fuller"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "build",
+        "program":  "dotnet",
+        "arguments":  [
+                          "build",
+                          "BoltSharp.slnx",
+                          "-c",
+                          "Debug"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "solution",
+        "program":  "dotnet",
+        "arguments":  [
+                          "test",
+                          "BoltSharp.slnx",
+                          "--no-build",
+                          "-c",
+                          "Debug",
+                          "--logger",
+                          "trx;LogFileName=solution.trx",
+                          "--results-directory",
+                          "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-01"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "b2a-q2",
+        "program":  "dotnet",
+        "arguments":  [
+                          "test",
+                          "docs/reviews/probes/B2-A-Q2/B2AQ2.Probes.csproj",
+                          "-c",
+                          "Debug",
+                          "--logger",
+                          "trx;LogFileName=b2a-q2.trx",
+                          "--results-directory",
+                          "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-01"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "b2b-q1",
+        "program":  "dotnet",
+        "arguments":  [
+                          "test",
+                          "docs/reviews/probes/B2-B-Q1/B2BQ1.Probes.csproj",
+                          "-c",
+                          "Debug",
+                          "--logger",
+                          "trx;LogFileName=b2b-q1.trx",
+                          "--results-directory",
+                          "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-01"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "b2b-q2",
+        "program":  "dotnet",
+        "arguments":  [
+                          "test",
+                          "docs/reviews/probes/B2-B-Q2/B2BQ2.Probes.csproj",
+                          "-c",
+                          "Debug",
+                          "--logger",
+                          "trx;LogFileName=b2b-q2.trx",
+                          "--results-directory",
+                          "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-01"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "b2c-q2",
+        "program":  "dotnet",
+        "arguments":  [
+                          "test",
+                          "docs/reviews/probes/B2-C-Q2/B2CQ2.Probes.csproj",
+                          "-c",
+                          "Debug",
+                          "--logger",
+                          "trx;LogFileName=b2c-q2.trx",
+                          "--results-directory",
+                          "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-01"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "driver-build",
+        "program":  "dotnet",
+        "arguments":  [
+                          "build",
+                          "tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj",
+                          "-c",
+                          "Debug"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "driver",
+        "program":  "dotnet",
+        "arguments":  [
+                          "test",
+                          "tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj",
+                          "--no-build",
+                          "-c",
+                          "Debug",
+                          "--logger",
+                          "trx;LogFileName=driver.trx",
+                          "--results-directory",
+                          "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-01"
+                      ],
+        "exitCode":  0
+    },
+    {
+        "name":  "trace",
+        "program":  "dotnet",
+        "arguments":  [
+                          "test",
+                          "tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj",
+                          "--no-build",
+                          "-c",
+                          "Debug",
+                          "--filter",
+                          "FullyQualifiedName~HandshakeTraceProbeTests",
+                          "--logger",
+                          "trx;LogFileName=trace.trx",
+                          "--results-directory",
+                          "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-01"
+                      ],
+        "exitCode":  0
+    }
+]

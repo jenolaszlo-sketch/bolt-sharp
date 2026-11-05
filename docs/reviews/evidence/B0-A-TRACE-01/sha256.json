@@ -1,0 +1,156 @@
+{
+    "description":  "B0-A-TRACE-01 evidence manifest (post-consolidation run)",
+    "algorithm":  "SHA256",
+    "files":  [
+                  {
+                      "path":  ".gitattributes",
+                      "sha256":  "77CE8A03DED1B76FEE611CC00005C51E473A1A3C732463810C27360A181A517B",
+                      "bytes":  113
+                  },
+                  {
+                      "path":  ".gitignore",
+                      "sha256":  "A1B67C2A2E79540259B89E0DD5F1543A883A42597591ACD665BE12364A9B4345",
+                      "bytes":  225
+                  },
+                  {
+                      "path":  "b2a-q2.trx",
+                      "sha256":  "695BAA7D14C53461B3C5BE3599B198AAB1489472F6DC73CFDC400059305AF695",
+                      "bytes":  25357
+                  },
+                  {
+                      "path":  "b2a-q2.txt",
+                      "sha256":  "E22F5E9E443D9B42E7596252B2BEFAE0B1F6B2E96AD8BF1DD4FD8581A1E573AB",
+                      "bytes":  955
+                  },
+                  {
+                      "path":  "b2b-q1.trx",
+                      "sha256":  "A4575C1528A2F0AF5E641B6EBBCF7C0ADF45E86AD5820BDAAC1B940F753CADA5",
+                      "bytes":  103049
+                  },
+                  {
+                      "path":  "b2b-q1.txt",
+                      "sha256":  "C9D70FA54C4964ACF189C2DE3FF0B4BD3471371DE3A6AE6FC1C441613A7AA264",
+                      "bytes":  956
+                  },
+                  {
+                      "path":  "b2b-q2.trx",
+                      "sha256":  "EC600A033488AC80296319DC51B3CF24D774BB5E9E7FA0DF703A4EC29467FE08",
+                      "bytes":  65330
+                  },
+                  {
+                      "path":  "b2b-q2.txt",
+                      "sha256":  "956AA5234F93EAEF09571AD8721094027EE38F2EB76FD459B9702439F6D55A5E",
+                      "bytes":  955
+                  },
+                  {
+                      "path":  "b2c-q2.trx",
+                      "sha256":  "F93662494EE0310BF79EBCCF926C246B047F9DF7D98140568340E6134C53CABE",
+                      "bytes":  57876
+                  },
+                  {
+                      "path":  "b2c-q2.txt",
+                      "sha256":  "040404C2B8D591A7321C9D9F08DB7BB69C952F47701351DB05766CCDBCE32FB3",
+                      "bytes":  1111
+                  },
+                  {
+                      "path":  "build.txt",
+                      "sha256":  "976C7D86042045D00EAFF5F6A9F1E57CB9A263DC2943E7535FD78DFDA7309C4A",
+                      "bytes":  399
+                  },
+                  {
+                      "path":  "commands.json",
+                      "sha256":  "5E69C373B2A570620678795C22757439EFD3A802620EC93FF9E80E1E2A42321D",
+                      "bytes":  5733
+                  },
+                  {
+                      "path":  "driver.trx",
+                      "sha256":  "225C950A463493A17A77A3DA26C3E8F347C2887AA708DEB9CBFE5943C8B69149",
+                      "bytes":  79418
+                  },
+                  {
+                      "path":  "driver.txt",
+                      "sha256":  "931DF9BAC4597487A0E9BB55D58ED186AB29869F10EDCEB6FF7F3A619D220C63",
+                      "bytes":  3256
+                  },
+                  {
+                      "path":  "driver-build.txt",
+                      "sha256":  "15D62A6BEF57632EB4650510CCA470FEF53649C2DE2762C7B5C56C57D5284CD8",
+                      "bytes":  514
+                  },
+                  {
+                      "path":  "driver-legacy-client-handshake.hex",
+                      "sha256":  "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+                      "bytes":  61
+                  },
+                  {
+                      "path":  "driver-legacy-server-response.hex",
+                      "sha256":  "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+                      "bytes":  13
+                  },
+                  {
+                      "path":  "driver-legacy-trace.json",
+                      "sha256":  "C5FD1561E2B9A064023423FC608BA4CE89B3E6645C24D96D6B12EEDCC9D09EE9",
+                      "bytes":  6010
+                  },
+                  {
+                      "path":  "driver-manifest-client-handshake.hex",
+                      "sha256":  "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+                      "bytes":  76
+                  },
+                  {
+                      "path":  "driver-manifest-server-response.hex",
+                      "sha256":  "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+                      "bytes":  31
+                  },
+                  {
+                      "path":  "driver-manifest-trace.json",
+                      "sha256":  "A097B62D6E7693E9EC0B3C632798B3F7A9B33545EBD5A411E1E14C86DA65C45A",
+                      "bytes":  6476
+                  },
+                  {
+                      "path":  "environment.txt",
+                      "sha256":  "4117DEC33F23D8C38072BCBA4B0DBAB381651551EBA7B8DA14A3F826083B2039",
+                      "bytes":  1934
+                  },
+                  {
+                      "path":  "identity.txt",
+                      "sha256":  "DAE96D81B97C68FEA18BBA8FF92241D450FCFE9F0538F8ADF689964A2440DC99",
+                      "bytes":  229
+                  },
+                  {
+                      "path":  "provenance.txt",
+                      "sha256":  "2F29F48D0EF4870E14D2D02BF61ADABD9E0C71BCDC2748F0E8F923E2884C74DC",
+                      "bytes":  380
+                  },
+                  {
+                      "path":  "Run-Evidence.ps1",
+                      "sha256":  "7F8DD167F03BE2E4FA75F28183B13C018982796ECA457CD7940588BBABFE97AA",
+                      "bytes":  5040
+                  },
+                  {
+                      "path":  "solution.trx",
+                      "sha256":  "931D1367C3EDB4503D6AA8285566892748583577FBB66FAFABB7733F334EE588",
+                      "bytes":  1117920
+                  },
+                  {
+                      "path":  "solution.txt",
+                      "sha256":  "916B4FC3E5AFC1FD3326C2187A75672145E666F17C978837748D3E0C1D2741BD",
+                      "bytes":  670
+                  },
+                  {
+                      "path":  "summary.json",
+                      "sha256":  "53B9C4BBB0B6938D8AA5998E32CD6A98A09DF9625E0D2C0F32F607508A9755EF",
+                      "bytes":  4217
+                  },
+                  {
+                      "path":  "trace.trx",
+                      "sha256":  "999BE4F914EAB01ABADB973393F7D6FB210A6E5595C2EA116532328C30E57914",
+                      "bytes":  4697
+                  },
+                  {
+                      "path":  "trace.txt",
+                      "sha256":  "0E7A149B73C3C84BB91BFE5508E2FA47ECDA19F3772000454C8620A5C0451843",
+                      "bytes":  826
+                  }
+              ]
+}

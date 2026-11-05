@@ -1,0 +1,4 @@
+# Executable qualification evidence: keep the per-suite TRX results in this evidence
+# directory despite the repository-root *.trx ignore rule (root *.trx targets local run
+# artifacts, not committed review evidence).
+!*.trx
