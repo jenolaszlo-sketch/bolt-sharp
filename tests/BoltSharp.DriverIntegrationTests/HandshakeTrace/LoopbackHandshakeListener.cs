@@ -276,12 +276,17 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
                 }
 
                 var index = Interlocked.Increment(ref _accepted);
+                // Capture endpoint metadata while the socket is guaranteed alive: DisposeAsync may
+                // close a just-accepted client before the handler prologue runs, and TcpClient
+                // clears client.Client on close (TRACEQ1-F01). Diagnostic metadata must not be able
+                // to invalidate cleanup.
+                var remoteEndPoint = SafeRemoteEndPoint(client);
                 lock (_gate)
                 {
                     _clients.Add(client);
                 }
 
-                var handler = HandleConnectionAsync(index, client);
+                var handler = HandleConnectionAsync(index, client, remoteEndPoint);
                 lock (_gate)
                 {
                     _handlers.Add(handler);
@@ -301,7 +306,7 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
         }
     }
 
-    private async Task HandleConnectionAsync(int index, TcpClient client)
+    private async Task HandleConnectionAsync(int index, TcpClient client, string remoteEndPoint)
     {
         var started = DateTimeOffset.UtcNow;
         var stopwatch = Stopwatch.StartNew();
@@ -309,23 +314,42 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
         {
             ConnectionIndex = index,
             StartedAtUtc = started,
-            RemoteEndPoint = SafeRemoteEndPoint(client),
+            RemoteEndPoint = remoteEndPoint,
         };
 
-        using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(_shutdown.Token);
-        lifetime.CancelAfter(_limits.ConnectionLifetime);
-
-        var stream = client.GetStream();
-        using var tracing = new HandshakeTracingStream(
-            stream,
-            _limits.MaxHandshakeCaptureBytes,
-            leaveOpen: true);
-        using var handshakeTimeout = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
-        handshakeTimeout.CancelAfter(_limits.HandshakeTimeout);
+        CancellationTokenSource? lifetime = null;
+        CancellationTokenSource? handshakeTimeout = null;
+        HandshakeTracingStream? tracing = null;
 
         try
         {
-            client.NoDelay = true;
+            lifetime = CancellationTokenSource.CreateLinkedTokenSource(_shutdown.Token);
+            lifetime.CancelAfter(_limits.ConnectionLifetime);
+            handshakeTimeout = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+            handshakeTimeout.CancelAfter(_limits.HandshakeTimeout);
+
+            // Every socket access is inside the exception boundary: DisposeAsync may close this
+            // client concurrently, and a closed TcpClient nulls client.Client (so NoDelay/GetStream
+            // can throw NullReferenceException as well as ObjectDisposedException) or aborts an
+            // in-flight read (TRACEQ1-F01). A socket already closed is classified CLOSED; genuinely
+            // unexpected failures still fall through to the generic ERROR handler below.
+            try
+            {
+                client.NoDelay = true;
+                tracing = new HandshakeTracingStream(
+                    client.GetStream(),
+                    _limits.MaxHandshakeCaptureBytes,
+                    leaveOpen: true);
+            }
+            catch (Exception ex) when (
+                ex is ObjectDisposedException or SocketException or NullReferenceException or InvalidOperationException)
+            {
+                trace.Outcome = "CLOSED";
+                trace.ErrorType = ex.GetType().FullName;
+                trace.SanitizedError = "The client socket was closed before the handshake started.";
+                return;
+            }
+
             var result = await _negotiator.NegotiateAsync(tracing, handshakeTimeout.Token).ConfigureAwait(false);
 
             trace.Mode = result.Mode.ToString();
@@ -363,20 +387,35 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
             trace.ErrorType = ex.GetType().FullName;
             trace.SanitizedError = Sanitize(ex.Message);
         }
-        catch (OperationCanceledException) when (handshakeTimeout.IsCancellationRequested && !lifetime.IsCancellationRequested)
+        catch (OperationCanceledException) when (
+            handshakeTimeout is { IsCancellationRequested: true } &&
+            lifetime is not { IsCancellationRequested: true })
         {
             trace.Outcome = "HANDSHAKE_TIMEOUT";
             trace.ErrorType = typeof(OperationCanceledException).FullName;
             trace.SanitizedError =
                 "The client did not complete its handshake within the configured handshake timeout.";
         }
-        catch (OperationCanceledException) when (lifetime.IsCancellationRequested)
+        catch (OperationCanceledException) when (lifetime is { IsCancellationRequested: true })
         {
             trace.Outcome = _shutdown.IsCancellationRequested ? "CANCELLED" : "LIFETIME_TIMEOUT";
             trace.ErrorType = typeof(OperationCanceledException).FullName;
             trace.SanitizedError = _shutdown.IsCancellationRequested
                 ? "The listener cancelled the pending negotiation."
                 : "The per-connection lifetime elapsed during negotiation or observation.";
+        }
+        catch (ObjectDisposedException ex)
+        {
+            // A socket closed concurrently by DisposeAsync is a reached outcome, not a defect.
+            trace.Outcome = "CLOSED";
+            trace.ErrorType = ex.GetType().FullName;
+            trace.SanitizedError = "The client socket was closed during the handshake.";
+        }
+        catch (SocketException ex)
+        {
+            trace.Outcome = "CLOSED";
+            trace.ErrorType = ex.GetType().FullName;
+            trace.SanitizedError = Sanitize(ex.Message);
         }
         catch (IOException ex)
         {
@@ -392,13 +431,15 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
         }
         finally
         {
-            tracing.StopCapture();
-            trace.ClientHandshakeBytes = tracing.CapturedClientHandshake;
-            trace.ServerResponseBytes = tracing.CapturedServerResponse;
-            trace.HandshakeCaptureTruncated = tracing.CaptureTruncated;
+            lifetime?.Dispose();
+            handshakeTimeout?.Dispose();
+            tracing?.StopCapture();
+            trace.ClientHandshakeBytes = tracing?.CapturedClientHandshake ?? Array.Empty<byte>();
+            trace.ServerResponseBytes = tracing?.CapturedServerResponse ?? Array.Empty<byte>();
+            trace.HandshakeCaptureTruncated = tracing?.CaptureTruncated ?? false;
             if (trace.PostHandshake is { } postHandshake)
             {
-                postHandshake.BytesReadAfterHandshake = tracing.PostHandshakeBytesRead;
+                postHandshake.BytesReadAfterHandshake = tracing?.PostHandshakeBytesRead ?? 0;
             }
 
             stopwatch.Stop();
@@ -654,7 +695,8 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
     {
         try
         {
-            return client.Client.RemoteEndPoint?.ToString() ?? "UNKNOWN";
+            // TcpClient.Client is null once the socket has been closed (TRACEQ1-F01).
+            return client.Client?.RemoteEndPoint?.ToString() ?? "UNKNOWN";
         }
         catch (SocketException)
         {
