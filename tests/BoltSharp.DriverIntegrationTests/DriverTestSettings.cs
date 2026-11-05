@@ -21,15 +21,45 @@ internal sealed class DriverTestSettings
     internal DriverTestSettings()
     {
         Uri = ValidateUri(Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_URI") ?? DirectBoltUriDefault);
-        User = Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_USER") ?? string.Empty;
-        Password = Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_PASSWORD") ?? string.Empty;
-        Encryption = Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_ENCRYPTION") ?? "none";
-        ConnectionTimeoutSeconds =
+        var environment = ReadEnvironment();
+        User = environment.User;
+        Password = environment.Password;
+        Encryption = environment.Encryption;
+        ConnectionTimeoutSeconds = environment.ConnectionTimeoutSeconds;
+        ExpectedProtocolVersion = environment.ExpectedProtocolVersion;
+    }
+
+    /// <summary>
+    /// Creates settings bound to an explicit direct-Bolt endpoint. Added by B0-A-TRACE-01-RECOVERY
+    /// for the handshake-probe listener, whose port is OS-assigned and therefore cannot come from
+    /// the environment. Validation is identical to the environment path, and the driver construction
+    /// call remains the single factory inside <see cref="CreateDriver"/> (B2-C-R1, finding Q1-F01).
+    /// </summary>
+    internal DriverTestSettings(Uri endpoint)
+    {
+        Uri = ValidateUri(endpoint.ToString());
+        var environment = ReadEnvironment();
+        User = environment.User;
+        Password = environment.Password;
+        Encryption = environment.Encryption;
+        ConnectionTimeoutSeconds = environment.ConnectionTimeoutSeconds;
+        ExpectedProtocolVersion = environment.ExpectedProtocolVersion;
+    }
+
+    private static (string User, string Password, string Encryption, int ConnectionTimeoutSeconds, string ExpectedProtocolVersion) ReadEnvironment()
+    {
+        var connectionTimeoutSeconds =
             int.TryParse(Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_TIMEOUT_SECONDS"), out var timeout)
                 ? timeout
                 : 5;
-        ExpectedProtocolVersion =
-            Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_EXPECTED_PROTOCOL") ?? "5.8";
+
+        return (
+            User: Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_USER") ?? string.Empty,
+            Password: Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_PASSWORD") ?? string.Empty,
+            Encryption: Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_ENCRYPTION") ?? "none",
+            ConnectionTimeoutSeconds: connectionTimeoutSeconds,
+            ExpectedProtocolVersion:
+                Environment.GetEnvironmentVariable("BOLTSHARP_DRIVER_EXPECTED_PROTOCOL") ?? "5.8");
     }
 
     /// <summary>Direct Bolt endpoint. Defaults to loopback.</summary>
