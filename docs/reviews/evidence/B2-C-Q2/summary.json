@@ -1,0 +1,140 @@
+﻿{
+    "branch":  "main",
+    "head":  "87e029f490fc1cd965be2ce656c4e22ccfa26cf5",
+    "headTree":  "7983a0643f9f97031ecb03561e0cc2d429fe7272",
+    "reviewedRemediation":  "87e029f490fc1cd965be2ce656c4e22ccfa26cf5",
+    "reviewedRemediationTree":  "7983a0643f9f97031ecb03561e0cc2d429fe7272",
+    "reviewedQualification":  "2710bc73741ecd1f144cf4d60d7e2387d8f125f9",
+    "records":  [
+                    {
+                        "run":  "solution",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.tests\\bin\\debug\\net8.0\\boltsharp.tests.dll"
+                                     ],
+                        "passed":  826,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  826,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "harness",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.tests\\bin\\debug\\net8.0\\boltsharp.tests.dll"
+                                     ],
+                        "passed":  40,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  40,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "f02",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.tests\\bin\\debug\\net8.0\\boltsharp.tests.dll"
+                                     ],
+                        "passed":  9,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  9,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "driver",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.driverintegrationtests\\bin\\debug\\net8.0\\boltsharp.driverintegrationtests.dll"
+                                     ],
+                        "passed":  24,
+                        "failed":  0,
+                        "skipped":  10,
+                        "discovered":  34,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "f01",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\tests\\boltsharp.driverintegrationtests\\bin\\debug\\net8.0\\boltsharp.driverintegrationtests.dll"
+                                     ],
+                        "passed":  19,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  19,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "reviewer",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-b-q1\\bin\\debug\\net8.0\\b2bq1.probes.dll"
+                                     ],
+                        "passed":  67,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  67,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "q2",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-b-q2\\bin\\debug\\net8.0\\b2bq2.probes.dll"
+                                     ],
+                        "passed":  46,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  46,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "aq2",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-a-q2\\bin\\debug\\net8.0\\b2aq2.probes.dll"
+                                     ],
+                        "passed":  18,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  18,
+                        "failedTests":  [
+
+                                        ]
+                    },
+                    {
+                        "run":  "b2cq1",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-c-q1\\bin\\debug\\net8.0\\b2cq1.probes.dll"
+                                     ],
+                        "passed":  29,
+                        "failed":  1,
+                        "skipped":  0,
+                        "discovered":  30,
+                        "failedTests":  [
+                                            "BoltSharp.Qualification.B2CQ1.HarnessReviewProbes.C6_Dispose_alone_does_not_wake_a_blocked_read_documented"
+                                        ]
+                    },
+                    {
+                        "run":  "b2cq2",
+                        "assembly":  [
+                                         "d:\\projects\\bolt-sharp\\docs\\reviews\\probes\\b2-c-q2\\bin\\debug\\net8.0\\b2cq2.probes.dll"
+                                     ],
+                        "passed":  40,
+                        "failed":  0,
+                        "skipped":  0,
+                        "discovered":  40,
+                        "failedTests":  [
+
+                                        ]
+                    }
+                ]
+}

@@ -1,0 +1,147 @@
+[
+    {
+        "sha256":  "77CE8A03DED1B76FEE611CC00005C51E473A1A3C732463810C27360A181A517B",
+        "file":  ".gitattributes",
+        "bytes":  113
+    },
+    {
+        "sha256":  "9E3C8BEA7046BE42F25BEBBB4A26B93B9732BB1E4087520B661A56B2B16D846B",
+        "file":  "aq2.trx",
+        "bytes":  25357
+    },
+    {
+        "sha256":  "38A92C7E365EDE6FB4CF7E25DA83AD74DFDBC5356F05965D90EF2445DE72B815",
+        "file":  "aq2.txt",
+        "bytes":  831
+    },
+    {
+        "sha256":  "9D7D3C9C7B08864CB560FE85F0E2628BFBCFC2AC643351D8949D4521DA71903C",
+        "file":  "b2cq1.trx",
+        "bytes":  43795
+    },
+    {
+        "sha256":  "101DDCD3BA817A87507BED6F23978C9E55240AEF839A50C33DA34AEA2ED5051A",
+        "file":  "b2cq1.txt",
+        "bytes":  1884
+    },
+    {
+        "sha256":  "25ABF2AB0A477ED9D6C7E5854DAB29BA9988170075570ADBCE4FCA03D5ED17FC",
+        "file":  "b2cq2.trx",
+        "bytes":  57876
+    },
+    {
+        "sha256":  "41F7706737C65C001AE0E707AC6648D157B02B202ED407919B4E1D2C0D96976C",
+        "file":  "b2cq2.txt",
+        "bytes":  991
+    },
+    {
+        "sha256":  "AB82070A3424CD77DB8ABD7765B0BEE133584F1A400D5025149581C92B83F5A1",
+        "file":  "build.txt",
+        "bytes":  399
+    },
+    {
+        "sha256":  "D9C58902CE5500CE07EF2C44F6587A28ECE17BB301F8BE88AE2DEDC2A1D6FCB3",
+        "file":  "commands.json",
+        "bytes":  7562
+    },
+    {
+        "sha256":  "4ADD83C65079B73BAE6A4A3ECCD2B5F6A1A80E331C63D0F23AE02C9A944C6030",
+        "file":  "driver-build.txt",
+        "bytes":  514
+    },
+    {
+        "sha256":  "E41A6424AEAD6CD23BA1053D709407E29885D3DE8C95872A91DB09EDAEAC91E0",
+        "file":  "driver-test.txt",
+        "bytes":  3450
+    },
+    {
+        "sha256":  "D8B1B00B56E70B8A69F7317C0576EB28F910CAB20AFFB238D5CC41F1891929A2",
+        "file":  "driver.trx",
+        "bytes":  59594
+    },
+    {
+        "sha256":  "4117DEC33F23D8C38072BCBA4B0DBAB381651551EBA7B8DA14A3F826083B2039",
+        "file":  "environment.txt",
+        "bytes":  1934
+    },
+    {
+        "sha256":  "D2FA2B29923FB5510D4C5A11C7403B0AB06F26EBBCCB8B0441E3A8F0E0BFE373",
+        "file":  "f01-uri.txt",
+        "bytes":  707
+    },
+    {
+        "sha256":  "45FBFA0451EC16EDE8FE517C6848FBA1EC3757B5031B03A152E507CBDE937463",
+        "file":  "f01.trx",
+        "bytes":  30705
+    },
+    {
+        "sha256":  "1FF8F8428882E4404F8FB0B1E14327D8A07A41104D29D0BACC653182F058C919",
+        "file":  "f02-disposal.txt",
+        "bytes":  589
+    },
+    {
+        "sha256":  "D853F5290D4C2E775F68CFE502F6FB3054302EAC03024AC6D719B9C5C3431E32",
+        "file":  "f02.trx",
+        "bytes":  13689
+    },
+    {
+        "sha256":  "D6147ADEE3581B632878E361DDF50E8E802730998201B01A74C53F207F6ABB47",
+        "file":  "harness.trx",
+        "bytes":  54908
+    },
+    {
+        "sha256":  "731A15D39C83B73930E015615143181F01F646E26B8D44E8F086B207A5FD9B9B",
+        "file":  "harness.txt",
+        "bytes":  584
+    },
+    {
+        "sha256":  "CF5BF58E00D9465E493BC0AC8BDD27D7B9E6B7C5D507FD8E62957C9C52D2D20E",
+        "file":  "identity.txt",
+        "bytes":  229
+    },
+    {
+        "sha256":  "BBBBDE8D3724C227CCEC7C4ACDFA77F4555F616BF19F9466A3BF7A0721EE8EAA",
+        "file":  "provenance.txt",
+        "bytes":  386
+    },
+    {
+        "sha256":  "873803236B3FE6A2ADD75DC2B24613F5EBE5052FB904F5FB7081FAA4C336A68A",
+        "file":  "q2.trx",
+        "bytes":  65330
+    },
+    {
+        "sha256":  "39D4E34BA435B9E299407AC416F96632BEB6B4CBEF5D87F0DF3367DE05DDBC55",
+        "file":  "q2.txt",
+        "bytes":  829
+    },
+    {
+        "sha256":  "29154263B966A2B99A30ECAAFC2D5D1CC17E769CF13B3B8D30EC793E283C0AA5",
+        "file":  "reviewer.trx",
+        "bytes":  103049
+    },
+    {
+        "sha256":  "62C34CF8CF614B6195897F4006D4C61AB969AE562F0A52E4AE23D57206ECBF5A",
+        "file":  "reviewer.txt",
+        "bytes":  842
+    },
+    {
+        "sha256":  "A5E912742A4896CFF640D8957B265F74A0690B115F1A967AB6EFDD0CF602123B",
+        "file":  "Run-Evidence.ps1",
+        "bytes":  5106
+    },
+    {
+        "sha256":  "5EE6D6FE102A228D35C616FED3FDC58D7750638160A7A1220B71AC7BE76F45CE",
+        "file":  "solution.trx",
+        "bytes":  1117920
+    },
+    {
+        "sha256":  "3F9D88E0B5BEE49C162739EE6C70D0FA62D2AA4C27669F37E42A7ED7D331ABBF",
+        "file":  "solution.txt",
+        "bytes":  550
+    },
+    {
+        "sha256":  "2F07C358D6F9758D789EFB507211F09D1C7935AD78718EC42BE4A8F886948EBB",
+        "file":  "summary.json",
+        "bytes":  6211
+    }
+]

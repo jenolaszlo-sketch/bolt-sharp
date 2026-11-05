@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="f8d9f6b5-174d-4af6-aa14-af6d322c1a82" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-05 19:31:21" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-05T19:31:21.5306718+08:00" queuing="2026-11-05T19:31:21.5306725+08:00" start="2026-11-05T19:31:20.8989020+08:00" finish="2026-11-05T19:31:21.5614840+08:00" />
+  <TestSettings name="default" id="2ddea65c-e8fe-454e-9595-1b8f515dd797">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-05_19_31_21" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="27d87d84-1e95-4608-9a4f-72055619e5f6" testId="4973a205-d721-2eca-0241-210a58795874" testName="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 0)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0009644" startTime="2026-11-05T19:31:21.4848529+08:00" endTime="2026-11-05T19:31:21.4848530+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="27d87d84-1e95-4608-9a4f-72055619e5f6" />
+    <UnitTestResult executionId="c2082020-f4e6-46a9-8259-1fcf1d371572" testId="00bbd5ed-2c53-6353-4807-e00b646a1f89" testName="B2AQ2.FramingProbes.RejectedHeaders_NeverRequestPayloadOrDestinationStorage(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0002324" startTime="2026-11-05T19:31:21.5081485+08:00" endTime="2026-11-05T19:31:21.5081486+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c2082020-f4e6-46a9-8259-1fcf1d371572" />
+    <UnitTestResult executionId="a9337374-e561-4866-8532-c0ff45ebe2f3" testId="038bcc3e-c950-ce90-dd6e-a46801756929" testName="B2AQ2.FramingProbes.TinyChunks_UseByteLimit_NotIndependentChunkCount(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0005280" startTime="2026-11-05T19:31:21.5072709+08:00" endTime="2026-11-05T19:31:21.5072709+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a9337374-e561-4866-8532-c0ff45ebe2f3" />
+    <UnitTestResult executionId="0e350756-e54e-4d3e-8da5-1dc0476520cd" testId="d8e5be76-345c-4c84-af68-027ad243c93a" testName="B2AQ2.FramingProbes.FramingDoesNotValidateOrSplitPackedMessageStructures(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0005011" startTime="2026-11-05T19:31:21.5072020+08:00" endTime="2026-11-05T19:31:21.5072020+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0e350756-e54e-4d3e-8da5-1dc0476520cd" />
+    <UnitTestResult executionId="89f570c4-1812-4911-a75e-88a319c50d7b" testId="b2bbf20f-0222-4a00-89bd-ca3e2f20fedd" testName="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 8)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0008368" startTime="2026-11-05T19:31:21.4868748+08:00" endTime="2026-11-05T19:31:21.4868749+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="89f570c4-1812-4911-a75e-88a319c50d7b" />
+    <UnitTestResult executionId="7a6c3a7e-f28b-4d3c-960f-5e087a0aabbb" testId="9203f0fd-d0b4-934e-5271-ba6b13cc75af" testName="B2AQ2.FramingProbes.EverySecondMessagePrefix_PreservesEarlierAndPartialOutput(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0161391" startTime="2026-11-05T19:31:21.4710816+08:00" endTime="2026-11-05T19:31:21.4710930+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a6c3a7e-f28b-4d3c-960f-5e087a0aabbb" />
+    <UnitTestResult executionId="0887af73-bc30-4a01-9721-53acc95d0206" testId="778ef51f-5199-a75d-d387-61153f3f9dff" testName="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 5)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0007728" startTime="2026-11-05T19:31:21.4858279+08:00" endTime="2026-11-05T19:31:21.4858280+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0887af73-bc30-4a01-9721-53acc95d0206" />
+    <UnitTestResult executionId="86cd1de1-c4de-40d9-9155-317214b473b3" testId="1d61d9b5-a8f6-6e7f-d4a9-f93478595a77" testName="B2AQ2.FramingProbes.WriterCanExceedReceiverLimit_ReceiverRejectsItsHeader" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0032723" startTime="2026-11-05T19:31:21.5072301+08:00" endTime="2026-11-05T19:31:21.5072302+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86cd1de1-c4de-40d9-9155-317214b473b3" />
+    <UnitTestResult executionId="2b17d5d3-74ec-44e7-8905-22f21ffd33fa" testId="398272b8-194c-c4e3-203b-d33f6b77965a" testName="B2AQ2.FramingProbes.TinyChunks_UseByteLimit_NotIndependentChunkCount(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0076178" startTime="2026-11-05T19:31:21.5072506+08:00" endTime="2026-11-05T19:31:21.5072506+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b17d5d3-74ec-44e7-8905-22f21ffd33fa" />
+    <UnitTestResult executionId="bd79c2a5-decb-4445-bbf2-9c62be76c8e5" testId="ecdab52b-5d75-b2fd-c452-066d8b3c6a98" testName="B2AQ2.FramingProbes.RejectedHeaders_NeverRequestPayloadOrDestinationStorage(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0027361" startTime="2026-11-05T19:31:21.5078930+08:00" endTime="2026-11-05T19:31:21.5078931+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bd79c2a5-decb-4445-bbf2-9c62be76c8e5" />
+    <UnitTestResult executionId="cc54ee83-7453-474a-8792-1abd3222b76b" testId="61ef0e06-5567-547b-1c9c-186e0b8e8dab" testName="B2AQ2.FramingProbes.FramingDoesNotValidateOrSplitPackedMessageStructures(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0008547" startTime="2026-11-05T19:31:21.5071872+08:00" endTime="2026-11-05T19:31:21.5071873+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cc54ee83-7453-474a-8792-1abd3222b76b" />
+    <UnitTestResult executionId="e684e304-4633-4125-8725-1f6426132548" testId="55d146a3-19ec-25b8-3714-eab09ee8e98e" testName="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 2)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0040640" startTime="2026-11-05T19:31:21.4836660+08:00" endTime="2026-11-05T19:31:21.4836662+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e684e304-4633-4125-8725-1f6426132548" />
+    <UnitTestResult executionId="dcdbca71-0821-4c0b-aac4-e5d2f219036b" testId="6b16f1a2-47aa-4a51-a1b8-27697dc4e69a" testName="B2AQ2.FramingProbes.TransportExceptions_PropagateWithoutRollbackOrPositionFabrication(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0002950" startTime="2026-11-05T19:31:21.5071586+08:00" endTime="2026-11-05T19:31:21.5071586+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dcdbca71-0821-4c0b-aac4-e5d2f219036b" />
+    <UnitTestResult executionId="daf12aab-69e9-41b4-9ba9-ba23245d2791" testId="b2f7f089-222f-8fb5-7b07-1af7ea3bd434" testName="B2AQ2.FramingProbes.MixedApis_ResetMessageStateAndLimit_KeepDestination(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006824" startTime="2026-11-05T19:31:21.4793524+08:00" endTime="2026-11-05T19:31:21.4793526+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="daf12aab-69e9-41b4-9ba9-ba23245d2791" />
+    <UnitTestResult executionId="57a04bd2-42c4-4581-af53-2f954dfc79d4" testId="63566e9b-919f-bb55-6e12-3ab7af467e8e" testName="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 1)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0007890" startTime="2026-11-05T19:31:21.4878697+08:00" endTime="2026-11-05T19:31:21.4878698+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="57a04bd2-42c4-4581-af53-2f954dfc79d4" />
+    <UnitTestResult executionId="848519aa-8653-4c1c-b0bd-8bd989e3f0e8" testId="310b2bd7-5e97-39a9-009e-40e82a49b74f" testName="B2AQ2.FramingProbes.EverySecondMessagePrefix_PreservesEarlierAndPartialOutput(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0026219" startTime="2026-11-05T19:31:21.4738067+08:00" endTime="2026-11-05T19:31:21.4738068+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="848519aa-8653-4c1c-b0bd-8bd989e3f0e8" />
+    <UnitTestResult executionId="92545817-cbac-4ad7-ab98-2534c0b0349c" testId="32f9f3b6-d60e-d9a1-1d83-f0efc56af858" testName="B2AQ2.FramingProbes.TransportExceptions_PropagateWithoutRollbackOrPositionFabrication(async: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0023741" startTime="2026-11-05T19:31:21.5070441+08:00" endTime="2026-11-05T19:31:21.5070443+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="92545817-cbac-4ad7-ab98-2534c0b0349c" />
+    <UnitTestResult executionId="c68dea9c-72a4-4665-bf31-dce582dc4e2f" testId="ea063139-7190-6071-c8f3-526bce6fe4db" testName="B2AQ2.FramingProbes.MixedApis_ResetMessageStateAndLimit_KeepDestination(async: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0038852" startTime="2026-11-05T19:31:21.4784443+08:00" endTime="2026-11-05T19:31:21.4784444+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c68dea9c-72a4-4665-bf31-dce582dc4e2f" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="B2AQ2.FramingProbes.TransportExceptions_PropagateWithoutRollbackOrPositionFabrication(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="6b16f1a2-47aa-4a51-a1b8-27697dc4e69a">
+      <Execution id="dcdbca71-0821-4c0b-aac4-e5d2f219036b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="TransportExceptions_PropagateWithoutRollbackOrPositionFabrication" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 2)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="55d146a3-19ec-25b8-3714-eab09ee8e98e">
+      <Execution id="e684e304-4633-4125-8725-1f6426132548" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 0)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="4973a205-d721-2eca-0241-210a58795874">
+      <Execution id="27d87d84-1e95-4608-9a4f-72055619e5f6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.TinyChunks_UseByteLimit_NotIndependentChunkCount(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="398272b8-194c-c4e3-203b-d33f6b77965a">
+      <Execution id="2b17d5d3-74ec-44e7-8905-22f21ffd33fa" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="TinyChunks_UseByteLimit_NotIndependentChunkCount" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 5)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="778ef51f-5199-a75d-d387-61153f3f9dff">
+      <Execution id="0887af73-bc30-4a01-9721-53acc95d0206" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.RejectedHeaders_NeverRequestPayloadOrDestinationStorage(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="ecdab52b-5d75-b2fd-c452-066d8b3c6a98">
+      <Execution id="bd79c2a5-decb-4445-bbf2-9c62be76c8e5" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="RejectedHeaders_NeverRequestPayloadOrDestinationStorage" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.EverySecondMessagePrefix_PreservesEarlierAndPartialOutput(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="9203f0fd-d0b4-934e-5271-ba6b13cc75af">
+      <Execution id="7a6c3a7e-f28b-4d3c-960f-5e087a0aabbb" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="EverySecondMessagePrefix_PreservesEarlierAndPartialOutput" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.FramingDoesNotValidateOrSplitPackedMessageStructures(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="61ef0e06-5567-547b-1c9c-186e0b8e8dab">
+      <Execution id="cc54ee83-7453-474a-8792-1abd3222b76b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="FramingDoesNotValidateOrSplitPackedMessageStructures" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.TinyChunks_UseByteLimit_NotIndependentChunkCount(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="038bcc3e-c950-ce90-dd6e-a46801756929">
+      <Execution id="a9337374-e561-4866-8532-c0ff45ebe2f3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="TinyChunks_UseByteLimit_NotIndependentChunkCount" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.EverySecondMessagePrefix_PreservesEarlierAndPartialOutput(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="310b2bd7-5e97-39a9-009e-40e82a49b74f">
+      <Execution id="848519aa-8653-4c1c-b0bd-8bd989e3f0e8" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="EverySecondMessagePrefix_PreservesEarlierAndPartialOutput" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 1)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="63566e9b-919f-bb55-6e12-3ab7af467e8e">
+      <Execution id="57a04bd2-42c4-4581-af53-2f954dfc79d4" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix(at: 8)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="b2bbf20f-0222-4a00-89bd-ca3e2f20fedd">
+      <Execution id="89f570c4-1812-4911-a75e-88a319c50d7b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="Cancellation_ReachesSuspendingTransport_PreservesCommittedPrefix" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.RejectedHeaders_NeverRequestPayloadOrDestinationStorage(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="00bbd5ed-2c53-6353-4807-e00b646a1f89">
+      <Execution id="c2082020-f4e6-46a9-8259-1fcf1d371572" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="RejectedHeaders_NeverRequestPayloadOrDestinationStorage" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.FramingDoesNotValidateOrSplitPackedMessageStructures(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="d8e5be76-345c-4c84-af68-027ad243c93a">
+      <Execution id="0e350756-e54e-4d3e-8da5-1dc0476520cd" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="FramingDoesNotValidateOrSplitPackedMessageStructures" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.TransportExceptions_PropagateWithoutRollbackOrPositionFabrication(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="32f9f3b6-d60e-d9a1-1d83-f0efc56af858">
+      <Execution id="92545817-cbac-4ad7-ab98-2534c0b0349c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="TransportExceptions_PropagateWithoutRollbackOrPositionFabrication" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.MixedApis_ResetMessageStateAndLimit_KeepDestination(async: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="ea063139-7190-6071-c8f3-526bce6fe4db">
+      <Execution id="c68dea9c-72a4-4665-bf31-dce582dc4e2f" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="MixedApis_ResetMessageStateAndLimit_KeepDestination" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.WriterCanExceedReceiverLimit_ReceiverRejectsItsHeader" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="1d61d9b5-a8f6-6e7f-d4a9-f93478595a77">
+      <Execution id="86cd1de1-c4de-40d9-9155-317214b473b3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="WriterCanExceedReceiverLimit_ReceiverRejectsItsHeader" />
+    </UnitTest>
+    <UnitTest name="B2AQ2.FramingProbes.MixedApis_ResetMessageStateAndLimit_KeepDestination(async: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b2-a-q2\bin\debug\net8.0\b2aq2.probes.dll" id="b2f7f089-222f-8fb5-7b07-1af7ea3bd434">
+      <Execution id="daf12aab-69e9-41b4-9ba9-ba23245d2791" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B2-A-Q2\bin\Debug\net8.0\B2AQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="B2AQ2.FramingProbes" name="MixedApis_ResetMessageStateAndLimit_KeepDestination" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="4973a205-d721-2eca-0241-210a58795874" executionId="27d87d84-1e95-4608-9a4f-72055619e5f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="00bbd5ed-2c53-6353-4807-e00b646a1f89" executionId="c2082020-f4e6-46a9-8259-1fcf1d371572" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="038bcc3e-c950-ce90-dd6e-a46801756929" executionId="a9337374-e561-4866-8532-c0ff45ebe2f3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d8e5be76-345c-4c84-af68-027ad243c93a" executionId="0e350756-e54e-4d3e-8da5-1dc0476520cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2bbf20f-0222-4a00-89bd-ca3e2f20fedd" executionId="89f570c4-1812-4911-a75e-88a319c50d7b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9203f0fd-d0b4-934e-5271-ba6b13cc75af" executionId="7a6c3a7e-f28b-4d3c-960f-5e087a0aabbb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="778ef51f-5199-a75d-d387-61153f3f9dff" executionId="0887af73-bc30-4a01-9721-53acc95d0206" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1d61d9b5-a8f6-6e7f-d4a9-f93478595a77" executionId="86cd1de1-c4de-40d9-9155-317214b473b3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="398272b8-194c-c4e3-203b-d33f6b77965a" executionId="2b17d5d3-74ec-44e7-8905-22f21ffd33fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ecdab52b-5d75-b2fd-c452-066d8b3c6a98" executionId="bd79c2a5-decb-4445-bbf2-9c62be76c8e5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="61ef0e06-5567-547b-1c9c-186e0b8e8dab" executionId="cc54ee83-7453-474a-8792-1abd3222b76b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55d146a3-19ec-25b8-3714-eab09ee8e98e" executionId="e684e304-4633-4125-8725-1f6426132548" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b16f1a2-47aa-4a51-a1b8-27697dc4e69a" executionId="dcdbca71-0821-4c0b-aac4-e5d2f219036b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2f7f089-222f-8fb5-7b07-1af7ea3bd434" executionId="daf12aab-69e9-41b4-9ba9-ba23245d2791" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="63566e9b-919f-bb55-6e12-3ab7af467e8e" executionId="57a04bd2-42c4-4581-af53-2f954dfc79d4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="310b2bd7-5e97-39a9-009e-40e82a49b74f" executionId="848519aa-8653-4c1c-b0bd-8bd989e3f0e8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="32f9f3b6-d60e-d9a1-1d83-f0efc56af858" executionId="92545817-cbac-4ad7-ab98-2534c0b0349c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea063139-7190-6071-c8f3-526bce6fe4db" executionId="c68dea9c-72a4-4665-bf31-dce582dc4e2f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="18" executed="18" passed="18" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.18]   Discovering: B2AQ2.Probes&#xD;
+[xUnit.net 00:00:00.21]   Discovered:  B2AQ2.Probes&#xD;
+[xUnit.net 00:00:00.22]   Starting:    B2AQ2.Probes&#xD;
+[xUnit.net 00:00:00.30]   Finished:    B2AQ2.Probes&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

@@ -1,0 +1,8 @@
+Command: git log -1 --format=fuller
+commit 87e029f490fc1cd965be2ce656c4e22ccfa26cf5
+Author:     BoltSharp Research Agent <agent@bolt-sharp.local>
+AuthorDate: Thu Nov 5 18:18:45 2026 +0800
+Commit:     BoltSharp Research Agent <agent@bolt-sharp.local>
+CommitDate: Thu Nov 5 18:18:45 2026 +0800
+
+    fix(b2c): enforce direct driver URIs and wake blocked reads on dispose (B2-C-R1)

@@ -1,0 +1,11 @@
+Command: dotnet build BoltSharp.slnx -c Debug
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+  BoltSharp.Tests -> D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.11

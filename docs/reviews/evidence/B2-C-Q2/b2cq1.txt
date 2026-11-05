@@ -1,0 +1,30 @@
+Command: dotnet test docs/reviews/probes/B2-C-Q1/B2CQ1.Probes.csproj -c Debug --logger trx;LogFileName=b2cq1.trx --results-directory D:\projects\bolt-sharp\docs\reviews\evidence\B2-C-Q2
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+  B2CQ1.Probes -> D:\projects\bolt-sharp\docs\reviews\probes\B2-C-Q1\bin\Debug\net8.0\B2CQ1.Probes.dll
+Test run for D:\projects\bolt-sharp\docs\reviews\probes\B2-C-Q1\bin\Debug\net8.0\B2CQ1.Probes.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.57]     
+BoltSharp.Qualification.B2CQ1.HarnessReviewProbes.C6_Dispose_alone_does_not_wake_a_blocked_read_documented [FAIL]
+At D:\projects\bolt-sharp\docs\reviews\evidence\B2-C-Q2\Run-Evidence.ps1:19 char:21
++     try { $output = & $program @arguments 2>&1 | Out-String }
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...cumented [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Qualification.B2CQ1.HarnessReviewProbes.C6_Dispose_alone_does_not_wake_a_blocked_read_documented [104 ms]
+  Error Message:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+  Stack Trace:
+     at BoltSharp.Qualification.B2CQ1.HarnessReviewProbes.C6_Dispose_alone_does_not_wake_a_blocked_read_documented() in D:\projects\bolt-sharp\docs\reviews\probes\B2-C-Q1\HarnessReviewProbes.cs:line 430
+--- End of stack trace from previous location ---
+  Standard Output Messages:
+ wokeOnDispose=True
+
+
+Results File: D:\projects\bolt-sharp\docs\reviews\evidence\B2-C-Q2\b2cq1.trx
+
+Failed!  - Failed:     1, Passed:    29, Skipped:     0, Total:    30, Duration: 341 ms - B2CQ1.Probes.dll (net8.0)
