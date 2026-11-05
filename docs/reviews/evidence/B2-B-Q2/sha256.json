@@ -1,0 +1,102 @@
+[
+    {
+        "sha256":  "77CE8A03DED1B76FEE611CC00005C51E473A1A3C732463810C27360A181A517B",
+        "file":  ".gitattributes",
+        "bytes":  113
+    },
+    {
+        "sha256":  "2BD29B885BEB5ECA3EF02D56EEA4971D6FED83BC2C97450F4C037887F3900741",
+        "file":  "build.txt",
+        "bytes":  399
+    },
+    {
+        "sha256":  "EAC744649FBEA1CB61A07A43AC45D845D726DCC292C53B9B5BE1F08D01CB0340",
+        "file":  "commands.json",
+        "bytes":  4852
+    },
+    {
+        "sha256":  "4117DEC33F23D8C38072BCBA4B0DBAB381651551EBA7B8DA14A3F826083B2039",
+        "file":  "environment.txt",
+        "bytes":  1934
+    },
+    {
+        "sha256":  "E5BB06F247841A7B7EE28506828061FBDB7871B5194F5DDE482A998E375E0B0C",
+        "file":  "identity.txt",
+        "bytes":  229
+    },
+    {
+        "sha256":  "7138CB3C2DB9ABD96FBE97BDF05E44861DF62F2DEEBA7D86F45ACA9A30EC6D2A",
+        "file":  "previous-reviewer.trx",
+        "bytes":  25357
+    },
+    {
+        "sha256":  "B158FF242DC8E6A419E0682AE21B96F7A1550E8E1DF1C1D6B0EB6DF3CB64E59A",
+        "file":  "previous-reviewer.txt",
+        "bytes":  860
+    },
+    {
+        "sha256":  "FB10287AFD3955DE4C925D39A2EB2B3DE0E8659A68559F214667FA02F5966D1C",
+        "file":  "producer-regression.trx",
+        "bytes":  39999
+    },
+    {
+        "sha256":  "FCBF7D042241A081F17AB414C9FE340CFE6838FD93A4E28359B3C23616142D2D",
+        "file":  "producer-regression.txt",
+        "bytes":  627
+    },
+    {
+        "sha256":  "3F024DDDB4669100CAF617CAB4A047576EA3022E7D8A988C3ADC1D7DC22A403F",
+        "file":  "provenance.txt",
+        "bytes":  372
+    },
+    {
+        "sha256":  "6EDEDDAF50AB7E0619856B005DD88C4321ABC14A04CAACBB57883BDA2AEC8C55",
+        "file":  "q2-probes.trx",
+        "bytes":  65330
+    },
+    {
+        "sha256":  "145AE72210779B2740ECCE84CBDC9189BAE962F394C8FDEB2B890367869D0002",
+        "file":  "q2-probes.txt",
+        "bytes":  843
+    },
+    {
+        "sha256":  "670ED81146D8D9F8619F1812232445504B192B6FC0F8CC708793A52E8974B796",
+        "file":  "reviewer-four.trx",
+        "bytes":  7865
+    },
+    {
+        "sha256":  "148B51EB31B3F986E1179614A8882A453A2046223AD32BCF3A77F6C712949183",
+        "file":  "reviewer-four.txt",
+        "bytes":  944
+    },
+    {
+        "sha256":  "6B184E6A4662814C2E5A7335D63D22CDF7A42D999629F7CA33A7ED462DCBF2E9",
+        "file":  "reviewer.trx",
+        "bytes":  103049
+    },
+    {
+        "sha256":  "05D2783F21DF284B11B01504B2C3CB62E5263D999969E7FC339C50B4DCA47001",
+        "file":  "reviewer.txt",
+        "bytes":  842
+    },
+    {
+        "sha256":  "EC36214A3B8B76C3C1B9D2F5CD1F4C37F18619EA7C60FC9F8FEA19A9F268A0B0",
+        "file":  "Run-Evidence.ps1",
+        "bytes":  4372
+    },
+    {
+        "sha256":  "51CB9FB584813563B4A8D32CCD2D6F9691CAD2E64EBD6D4845C1D25B0C172EC9",
+        "file":  "solution.trx",
+        "bytes":  1064632
+    },
+    {
+        "sha256":  "4059C0EEE977281ACAABE19619C2B9C00F92D4353D6E506D44A2AE86B35F0C0B",
+        "file":  "solution.txt",
+        "bytes":  550
+    },
+    {
+        "sha256":  "03AC9B12E422438366FE2667CC55744BA2A32C19E27F8CBE70FB7AB07ACF2BE8",
+        "file":  "summary.json",
+        "bytes":  3948
+    }
+]

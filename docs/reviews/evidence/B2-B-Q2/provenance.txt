@@ -1,0 +1,8 @@
+Command: git log -1 --format=fuller
+commit 70607f0e89fa0554f9731b1b7dcc49e97798372d
+Author:     BoltSharp Research Agent <agent@bolt-sharp.local>
+AuthorDate: Wed Nov 4 20:25:47 2026 +0800
+Commit:     BoltSharp Research Agent <agent@bolt-sharp.local>
+CommitDate: Wed Nov 4 20:25:47 2026 +0800
+
+    test(review): record B2-B-R1 zero-version remediation and evidence
