@@ -1,0 +1,8 @@
+Command: git log -1 --format=fuller
+commit 5295137bd688d38a2c1e3c67e6cc2daa51c050fb
+Author:     BoltSharp Research Agent <agent@bolt-sharp.local>
+AuthorDate: Thu Nov 5 16:27:57 2026 +0800
+Commit:     BoltSharp Research Agent <agent@bolt-sharp.local>
+CommitDate: Thu Nov 5 16:27:57 2026 +0800
+
+    feat(b2c): add integration harness and gated driver scaffold (B2-C-01)

@@ -1,0 +1,5 @@
+Command: git rev-parse HEAD HEAD^{tree} HEAD:src HEAD:tests
+5295137bd688d38a2c1e3c67e6cc2daa51c050fb
+5351dacd16475c75a2b44054a033ba34bd610e51
+078d3ec7dc3d9ca414a208233f6a3859c09a0651
+2d6eb9e3fa9dd2a91cc68717ffaca8b80cda5f34

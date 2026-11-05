@@ -1,0 +1,10 @@
+Command: dotnet test docs/reviews/probes/B2-C-Q1/B2CQ1.Probes.csproj -c Debug --logger trx;LogFileName=b2cq1.trx --results-directory D:\projects\bolt-sharp\docs\reviews\evidence\B2-C-Q1
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+  B2CQ1.Probes -> D:\projects\bolt-sharp\docs\reviews\probes\B2-C-Q1\bin\Debug\net8.0\B2CQ1.Probes.dll
+Test run for D:\projects\bolt-sharp\docs\reviews\probes\B2-C-Q1\bin\Debug\net8.0\B2CQ1.Probes.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Results File: D:\projects\bolt-sharp\docs\reviews\evidence\B2-C-Q1\b2cq1.trx
+
+Passed!  - Failed:     0, Passed:    30, Skipped:     0, Total:    30, Duration: 558 ms - B2CQ1.Probes.dll (net8.0)
