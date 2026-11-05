@@ -1,0 +1,31 @@
+{
+  "session": "01a1acb3-b403-7520-b3ca-fd3c38d39e40",
+  "author_independence": "UNVERIFIED; distinct current Codex session; no producer implementation participation in this session",
+  "model_provenance": "runtime describes GPT-6-based Codex; external identity attestation unavailable",
+  "decisive_source_sha256": "04FF36480AEA95070D0F625CA0F8D853BA4843E96CE19412735BADBAECC9E39B",
+  "decisive_assembly_sha256": "9DFC28E46C5AC40D92A62BFC74DA66E9D543CCCC829535675B6F865DBCDCD910",
+  "build_command": [
+    "dotnet",
+    "build",
+    "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+    "-c",
+    "Debug",
+    "--no-incremental"
+  ],
+  "test_command": [
+    "dotnet",
+    "test",
+    "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+    "-c",
+    "Debug",
+    "--logger",
+    "trx;LogFileName=q2-verified.trx",
+    "--results-directory",
+    "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "--no-build"
+  ],
+  "initial_runs": "q2 and q2-corrected superseded for native lifecycle qualification; Q05 timeouts are reviewer adapter issues. Timestamp-preserving copies allowed stale incremental compilation. q2-final corroborates 20/6; decisive forced rebuild removes ambiguity.",
+  "synchronization": "explicit read-entry/release tasks; actual wire responses; timeouts detect deadlock only",
+  "resource_claim": "native accept/handler task completion and client-list drain, bounded port-refusal probes; no exhaustive leak/race claim",
+  "evidence_scope": "new Q2 paths only; historical sources/evidence unchanged"
+}

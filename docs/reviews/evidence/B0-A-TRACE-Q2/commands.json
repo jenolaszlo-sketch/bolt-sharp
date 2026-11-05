@@ -1,0 +1,1070 @@
+[
+  {
+    "name": "environment",
+    "argv": [
+      "dotnet",
+      "--info"
+    ],
+    "command": "dotnet --info",
+    "exit_code": 0,
+    "elapsed_seconds": 0.331,
+    "started_utc": "2026-11-05T17:19:11Z",
+    "evidence_directory": null,
+    "warning_lines": []
+  },
+  {
+    "name": "build",
+    "argv": [
+      "dotnet",
+      "build",
+      "BoltSharp.slnx",
+      "-c",
+      "Debug"
+    ],
+    "command": "dotnet build BoltSharp.slnx -c Debug",
+    "exit_code": 0,
+    "elapsed_seconds": 2.252,
+    "started_utc": "2026-11-05T17:19:11Z",
+    "evidence_directory": null,
+    "warning_lines": []
+  },
+  {
+    "name": "solution",
+    "argv": [
+      "dotnet",
+      "test",
+      "BoltSharp.slnx",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=solution.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "--no-build"
+    ],
+    "command": "dotnet test BoltSharp.slnx -c Debug --logger trx;LogFileName=solution.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx --no-build",
+    "exit_code": 0,
+    "elapsed_seconds": 2.2,
+    "started_utc": "2026-11-05T17:19:13Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/solution.trx",
+      "counts": {
+        "Passed": 826
+      },
+      "counters": {
+        "total": "826",
+        "executed": "826",
+        "passed": "826",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "driver",
+    "argv": [
+      "dotnet",
+      "test",
+      "tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=driver.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj -c Debug --logger trx;LogFileName=driver.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 0,
+    "elapsed_seconds": 6.69,
+    "started_utc": "2026-11-05T17:19:16Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/driver.trx",
+      "counts": {
+        "NotExecuted": 10,
+        "Passed": 47
+      },
+      "counters": {
+        "total": "57",
+        "executed": "47",
+        "passed": "47",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": [
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D05_PULL_returns_records",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D04_Read_only_RUN_is_accepted",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D01_Driver_establishes_a_real_connection",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D10_TLS_and_authentication_failure_paths",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D08_RESET_and_failure_recovery_behave_correctly",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D03_HELLO_and_LOGON_succeed",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D09_Connection_closes_cleanly",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D06_Typed_nodes_and_relationships_are_decoded",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D07_Unsupported_request_fails_correctly",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D02_Bolt_protocol_revision_is_negotiated"
+      ]
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "b2a-q2",
+    "argv": [
+      "dotnet",
+      "test",
+      "docs/reviews/probes/B2-A-Q2/B2AQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=b2a-q2.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test docs/reviews/probes/B2-A-Q2/B2AQ2.Probes.csproj -c Debug --logger trx;LogFileName=b2a-q2.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 0,
+    "elapsed_seconds": 2.38,
+    "started_utc": "2026-11-05T17:19:22Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2a-q2.trx",
+      "counts": {
+        "Passed": 18
+      },
+      "counters": {
+        "total": "18",
+        "executed": "18",
+        "passed": "18",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "b2b-q1",
+    "argv": [
+      "dotnet",
+      "test",
+      "docs/reviews/probes/B2-B-Q1/B2BQ1.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=b2b-q1.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test docs/reviews/probes/B2-B-Q1/B2BQ1.Probes.csproj -c Debug --logger trx;LogFileName=b2b-q1.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 0,
+    "elapsed_seconds": 2.483,
+    "started_utc": "2026-11-05T17:19:25Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2b-q1.trx",
+      "counts": {
+        "Passed": 67
+      },
+      "counters": {
+        "total": "67",
+        "executed": "67",
+        "passed": "67",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "b2b-q2",
+    "argv": [
+      "dotnet",
+      "test",
+      "docs/reviews/probes/B2-B-Q2/B2BQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=b2b-q2.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test docs/reviews/probes/B2-B-Q2/B2BQ2.Probes.csproj -c Debug --logger trx;LogFileName=b2b-q2.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 0,
+    "elapsed_seconds": 2.419,
+    "started_utc": "2026-11-05T17:19:27Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2b-q2.trx",
+      "counts": {
+        "Passed": 46
+      },
+      "counters": {
+        "total": "46",
+        "executed": "46",
+        "passed": "46",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "b2c-q2",
+    "argv": [
+      "dotnet",
+      "test",
+      "docs/reviews/probes/B2-C-Q2/B2CQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=b2c-q2.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test docs/reviews/probes/B2-C-Q2/B2CQ2.Probes.csproj -c Debug --logger trx;LogFileName=b2c-q2.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 0,
+    "elapsed_seconds": 3.27,
+    "started_utc": "2026-11-05T17:19:30Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2c-q2.trx",
+      "counts": {
+        "Passed": 40
+      },
+      "counters": {
+        "total": "40",
+        "executed": "40",
+        "passed": "40",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q1",
+    "argv": [
+      "dotnet",
+      "test",
+      "docs/reviews/probes/B0-A-TRACE-Q1/B0ATRACEQ1.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q1.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test docs/reviews/probes/B0-A-TRACE-Q1/B0ATRACEQ1.Probes.csproj -c Debug --logger trx;LogFileName=q1.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 0,
+    "elapsed_seconds": 10.08,
+    "started_utc": "2026-11-05T17:19:33Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q1.trx",
+      "counts": {
+        "Passed": 14
+      },
+      "counters": {
+        "total": "14",
+        "executed": "14",
+        "passed": "14",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": [
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q1\\QualificationProbes.cs(510,13): warning CS0219: The variable 'secondRefused' is assigned but its value is never used [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q1\\B0ATRACEQ1.Probes.csproj]"
+    ]
+  },
+  {
+    "name": "t10",
+    "argv": [
+      "dotnet",
+      "test",
+      "docs/reviews/probes/B0-A-TRACE-Q1/B0ATRACEQ1.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=t10.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "--no-build",
+      "--filter",
+      "FullyQualifiedName~T10_"
+    ],
+    "command": "dotnet test docs/reviews/probes/B0-A-TRACE-Q1/B0ATRACEQ1.Probes.csproj -c Debug --logger trx;LogFileName=t10.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx --no-build --filter FullyQualifiedName~T10_",
+    "exit_code": 0,
+    "elapsed_seconds": 1.283,
+    "started_utc": "2026-11-05T17:19:43Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/t10.trx",
+      "counts": {
+        "Passed": 1
+      },
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "1",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "r1-shutdown",
+    "argv": [
+      "dotnet",
+      "test",
+      "tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=r1-shutdown.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "--no-build",
+      "--filter",
+      "FullyQualifiedName~ListenerShutdownRegressionTests"
+    ],
+    "command": "dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj -c Debug --logger trx;LogFileName=r1-shutdown.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx --no-build --filter FullyQualifiedName~ListenerShutdownRegressionTests",
+    "exit_code": 0,
+    "elapsed_seconds": 3.467,
+    "started_utc": "2026-11-05T17:19:44Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/r1-shutdown.trx",
+      "counts": {
+        "Passed": 10
+      },
+      "counters": {
+        "total": "10",
+        "executed": "10",
+        "passed": "10",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "authentic",
+    "argv": [
+      "dotnet",
+      "test",
+      "tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=authentic.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "--no-build",
+      "--filter",
+      "FullyQualifiedName~HandshakeTraceProbeTests"
+    ],
+    "command": "dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj -c Debug --logger trx;LogFileName=authentic.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx --no-build --filter FullyQualifiedName~HandshakeTraceProbeTests",
+    "exit_code": 0,
+    "elapsed_seconds": 2.456,
+    "started_utc": "2026-11-05T17:19:48Z",
+    "evidence_directory": "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\authentic-reproduction",
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/authentic.trx",
+      "counts": {
+        "Passed": 2
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "2",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q2",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 1,
+    "elapsed_seconds": 135.806,
+    "started_utc": "2026-11-05T17:19:50Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2.trx",
+      "counts": {
+        "Passed": 17,
+        "Failed": 5
+      },
+      "counters": {
+        "total": "22",
+        "executed": "22",
+        "passed": "17",
+        "failed": "5",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": [
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(321,40): warning CS0649: Field 'ReviewerHooks.BeforeGetStream' is never assigned to, and will always have its default value null [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]"
+    ]
+  },
+  {
+    "name": "q2-prefixed-control",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-prefixed-control.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "-p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\PreFixListener.cs",
+      "--filter",
+      "FullyQualifiedName~Q01_|FullyQualifiedName~Q02_|FullyQualifiedName~Q12_|FullyQualifiedName~Q14_|FullyQualifiedName~Q11_"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-prefixed-control.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\PreFixListener.cs --filter FullyQualifiedName~Q01_|FullyQualifiedName~Q02_|FullyQualifiedName~Q12_|FullyQualifiedName~Q14_|FullyQualifiedName~Q11_",
+    "exit_code": 1,
+    "elapsed_seconds": 12.67,
+    "started_utc": "2026-11-05T17:22:06Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-prefixed-control.trx",
+      "counts": {
+        "Failed": 3,
+        "Passed": 4
+      },
+      "counters": {
+        "total": "7",
+        "executed": "7",
+        "passed": "4",
+        "failed": "3",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": [
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(321,40): warning CS0649: Field 'ReviewerHooks.BeforeGetStream' is never assigned to, and will always have its default value null [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]"
+    ]
+  },
+  {
+    "name": "q2-getstream-hook",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-getstream-hook.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "-p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\GetStreamHookListener.cs",
+      "-p:ReviewerHooks=true",
+      "--filter",
+      "FullyQualifiedName~Q19_|FullyQualifiedName~Q20_"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-getstream-hook.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\GetStreamHookListener.cs -p:ReviewerHooks=true --filter FullyQualifiedName~Q19_|FullyQualifiedName~Q20_",
+    "exit_code": 1,
+    "elapsed_seconds": 4.461,
+    "started_utc": "2026-11-05T17:22:19Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-getstream-hook.trx",
+      "counts": {
+        "Passed": 1,
+        "Failed": 1
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "1",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": [
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]"
+    ]
+  },
+  {
+    "name": "q2-final-build",
+    "argv": [
+      "dotnet",
+      "build",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug"
+    ],
+    "command": "dotnet build D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug",
+    "exit_code": 0,
+    "elapsed_seconds": 1.506,
+    "started_utc": "2026-11-05T17:22:23Z",
+    "evidence_directory": null,
+    "warning_lines": [
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(321,40): warning CS0649: Field 'ReviewerHooks.BeforeGetStream' is never assigned to, and will always have its default value null [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs(321,40): warning CS0649: Field 'ReviewerHooks.BeforeGetStream' is never assigned to, and will always have its default value null [D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj]"
+    ]
+  },
+  {
+    "name": "q2-corrected",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-corrected.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-corrected.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 1,
+    "elapsed_seconds": 130.691,
+    "started_utc": "2026-11-05T17:22:49Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-corrected.trx",
+      "counts": {
+        "Failed": 5,
+        "Passed": 17
+      },
+      "counters": {
+        "total": "22",
+        "executed": "22",
+        "passed": "17",
+        "failed": "5",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q2-prefix-corrected",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-prefix-corrected.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "-p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\PreFixListener.cs",
+      "--filter",
+      "FullyQualifiedName~Q01_|FullyQualifiedName~Q02_|FullyQualifiedName~Q12_|FullyQualifiedName~Q14_|FullyQualifiedName~Q11_|FullyQualifiedName~Q15_"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-prefix-corrected.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\PreFixListener.cs --filter FullyQualifiedName~Q01_|FullyQualifiedName~Q02_|FullyQualifiedName~Q12_|FullyQualifiedName~Q14_|FullyQualifiedName~Q11_|FullyQualifiedName~Q15_",
+    "exit_code": 1,
+    "elapsed_seconds": 14.687,
+    "started_utc": "2026-11-05T17:24:59Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-prefix-corrected.trx",
+      "counts": {
+        "Passed": 4,
+        "Failed": 4
+      },
+      "counters": {
+        "total": "8",
+        "executed": "8",
+        "passed": "4",
+        "failed": "4",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q2-hook-corrected",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-hook-corrected.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "-p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\GetStreamHookListener.cs",
+      "-p:ReviewerHooks=true",
+      "--filter",
+      "FullyQualifiedName~Q19_|FullyQualifiedName~Q20_"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-hook-corrected.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\GetStreamHookListener.cs -p:ReviewerHooks=true --filter FullyQualifiedName~Q19_|FullyQualifiedName~Q20_",
+    "exit_code": 1,
+    "elapsed_seconds": 4.456,
+    "started_utc": "2026-11-05T17:25:14Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-hook-corrected.trx",
+      "counts": {
+        "Passed": 1,
+        "Failed": 1
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "1",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q2-corrected-build",
+    "argv": [
+      "dotnet",
+      "build",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug"
+    ],
+    "command": "dotnet build D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug",
+    "exit_code": 0,
+    "elapsed_seconds": 1.508,
+    "started_utc": "2026-11-05T17:25:18Z",
+    "evidence_directory": null,
+    "warning_lines": []
+  },
+  {
+    "name": "q2-final",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-final.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-final.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+    "exit_code": 1,
+    "elapsed_seconds": 132.529,
+    "started_utc": "2026-11-05T17:25:46Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-final.trx",
+      "counts": {
+        "Passed": 20,
+        "Failed": 6
+      },
+      "counters": {
+        "total": "26",
+        "executed": "26",
+        "passed": "20",
+        "failed": "6",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q2-prefix-final",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-prefix-final.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "-p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\PreFixListener.cs",
+      "--filter",
+      "FullyQualifiedName~Q01_|FullyQualifiedName~Q02_|FullyQualifiedName~Q12_|FullyQualifiedName~Q14_|FullyQualifiedName~Q11_|FullyQualifiedName~Q15_"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-prefix-final.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\PreFixListener.cs --filter FullyQualifiedName~Q01_|FullyQualifiedName~Q02_|FullyQualifiedName~Q12_|FullyQualifiedName~Q14_|FullyQualifiedName~Q11_|FullyQualifiedName~Q15_",
+    "exit_code": 1,
+    "elapsed_seconds": 14.599,
+    "started_utc": "2026-11-05T17:27:58Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-prefix-final.trx",
+      "counts": {
+        "Passed": 4,
+        "Failed": 4
+      },
+      "counters": {
+        "total": "8",
+        "executed": "8",
+        "passed": "4",
+        "failed": "4",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q2-hook-final",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-hook-final.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "-p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\GetStreamHookListener.cs",
+      "-p:ReviewerHooks=true",
+      "--filter",
+      "FullyQualifiedName~Q19_|FullyQualifiedName~Q20_"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-hook-final.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\negative-control\\GetStreamHookListener.cs -p:ReviewerHooks=true --filter FullyQualifiedName~Q19_|FullyQualifiedName~Q20_",
+    "exit_code": 1,
+    "elapsed_seconds": 4.357,
+    "started_utc": "2026-11-05T17:28:13Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-hook-final.trx",
+      "counts": {
+        "Passed": 1,
+        "Failed": 1
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "1",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  },
+  {
+    "name": "q2-final-source-build",
+    "argv": [
+      "dotnet",
+      "build",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug"
+    ],
+    "command": "dotnet build D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug",
+    "exit_code": 0,
+    "elapsed_seconds": 1.519,
+    "started_utc": "2026-11-05T17:28:17Z",
+    "evidence_directory": null,
+    "warning_lines": []
+  },
+  {
+    "name": "q2-verified-rebuild",
+    "argv": [
+      "dotnet",
+      "build",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--no-incremental"
+    ],
+    "command": "dotnet build D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --no-incremental",
+    "exit_code": 0,
+    "elapsed_seconds": 2.018,
+    "started_utc": "2026-11-05T17:29:56Z",
+    "evidence_directory": null,
+    "warning_lines": []
+  },
+  {
+    "name": "q2-verified",
+    "argv": [
+      "dotnet",
+      "test",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj",
+      "-c",
+      "Debug",
+      "--logger",
+      "trx;LogFileName=q2-verified.trx",
+      "--results-directory",
+      "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx",
+      "--no-build"
+    ],
+    "command": "dotnet test D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\B0ATRACEQ2.Probes.csproj -c Debug --logger trx;LogFileName=q2-verified.trx --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q2\\trx --no-build",
+    "exit_code": 1,
+    "elapsed_seconds": 60.168,
+    "started_utc": "2026-11-05T17:29:58Z",
+    "evidence_directory": null,
+    "trx": {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-verified.trx",
+      "counts": {
+        "Failed": 6,
+        "Passed": 20
+      },
+      "counters": {
+        "total": "26",
+        "executed": "26",
+        "passed": "20",
+        "failed": "6",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    "warning_lines": []
+  }
+]

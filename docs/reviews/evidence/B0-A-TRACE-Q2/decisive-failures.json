@@ -1,0 +1,68 @@
+[
+  {
+    "suite": "q2-verified",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NetworkUnreachable)",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"ERROR\"\r\nActual:   \"CLOSED\"\r\n           \u2191 (pos 0)",
+    "stdout": "injected=System.Net.Sockets.SocketException (10051): A socket operation was attempted to an unreachable network.; serverConnected=True; peerConnected=True\r\noutcome=CLOSED; error=System.Net.Sockets.SocketException; detail=A socket operation was attempted to an unreachable network.; endpoint=reviewer"
+  },
+  {
+    "suite": "q2-verified",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q21_ObjectDisposedDuringFramedRead_IsExpectedClosure",
+    "message": "Assert.NotEqual() Failure: Strings are equal\r\nExpected: Not \"ERROR\"\r\nActual:       \"ERROR\"",
+    "stdout": "outcome=ACCEPTED; error=; detail=; endpoint=reviewer\r\npostStatus=ERROR; postError=System.ObjectDisposedException; injected=System.ObjectDisposedException: Cannot access a disposed object.\r\nObject name: 'reviewer framed read'.\r\n   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.ControlledNetworkStream.ReadAsync(Memory`1 buffer, CancellationToken token) in D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs:line 361\r\n   at BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTracingStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\tests\\BoltSharp.DriverIntegrationTests\\HandshakeTrace\\LoopbackHandshakeListener.cs:line 912\r\n   at BoltSharp.Framing.BoltMessageReader.ReadHeaderAsync(CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\src\\BoltSharp\\Framing\\BoltMessageReader.cs:line 239\r\n   at BoltSharp.Framing.BoltMessageReader.TryReadMessageAsync(IBufferWriter`1 destination, CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\src\\BoltSharp\\Framing\\BoltMessageReader.cs:line 167\r\n   at BoltSharp.Framing.BoltMessageReader.ReadMessageAsync(CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\src\\BoltSharp\\Framing\\BoltMessageReader.cs:line 96\r\n   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.ObserveFirstMessageAsync(HandshakeTracingStream tracing, TcpClient client, CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\tests\\BoltSharp.DriverIntegrationTests\\HandshakeTrace\\LoopbackHandshakeListener.cs:line 485"
+  },
+  {
+    "suite": "q2-verified",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q23_UnexpectedWrappedFramedSocketFault_MustRemainError",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"ERROR\"\r\nActual:   \"CLEAN_EOF\"\r\n           \u2191 (pos 0)",
+    "stdout": "outcome=ACCEPTED; error=; detail=; endpoint=reviewer\r\npostStatus=CLEAN_EOF; postError=System.IO.IOException; injected=System.IO.IOException: reviewer framed network failure\r\n ---> System.Net.Sockets.SocketException (10050): A socket operation encountered a dead network.\r\n   --- End of inner exception stack trace ---\r\n   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.ControlledNetworkStream.ReadAsync(Memory`1 buffer, CancellationToken token) in D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-A-TRACE-Q2\\LifecycleProbes.cs:line 361\r\n   at BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTracingStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\tests\\BoltSharp.DriverIntegrationTests\\HandshakeTrace\\LoopbackHandshakeListener.cs:line 912\r\n   at BoltSharp.Framing.BoltMessageReader.ReadHeaderAsync(CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\src\\BoltSharp\\Framing\\BoltMessageReader.cs:line 239\r\n   at BoltSharp.Framing.BoltMessageReader.TryReadMessageAsync(IBufferWriter`1 destination, CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\src\\BoltSharp\\Framing\\BoltMessageReader.cs:line 167\r\n   at BoltSharp.Framing.BoltMessageReader.ReadMessageAsync(CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\src\\BoltSharp\\Framing\\BoltMessageReader.cs:line 96\r\n   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.ObserveFirstMessageAsync(HandshakeTracingStream tracing, TcpClient client, CancellationToken cancellationToken) in D:\\projects\\bolt-sharp\\tests\\BoltSharp.DriverIntegrationTests\\HandshakeTrace\\LoopbackHandshakeListener.cs:line 485"
+  },
+  {
+    "suite": "q2-verified",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NoBufferSpaceAvailable)",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"ERROR\"\r\nActual:   \"CLOSED\"\r\n           \u2191 (pos 0)",
+    "stdout": "injected=System.Net.Sockets.SocketException (10055): An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full.; serverConnected=True; peerConnected=True\r\noutcome=CLOSED; error=System.Net.Sockets.SocketException; detail=An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full.; endpoint=reviewer"
+  },
+  {
+    "suite": "q2-verified",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q15_UnexpectedWrappedSocketFault_MustRemainError",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"ERROR\"\r\nActual:   \"CLOSED\"\r\n           \u2191 (pos 0)",
+    "stdout": "injected=System.IO.IOException: reviewer network read failure\r\n ---> System.Net.Sockets.SocketException (10050): A socket operation encountered a dead network.\r\n   --- End of inner exception stack trace ---; serverConnected=True; peerConnected=True\r\noutcome=CLOSED; error=System.IO.IOException; detail=reviewer network read failure; endpoint=reviewer"
+  },
+  {
+    "suite": "q2-verified",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NetworkDown)",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"ERROR\"\r\nActual:   \"CLOSED\"\r\n           \u2191 (pos 0)",
+    "stdout": "injected=System.Net.Sockets.SocketException (10050): A socket operation encountered a dead network.; serverConnected=True; peerConnected=True\r\noutcome=CLOSED; error=System.Net.Sockets.SocketException; detail=A socket operation encountered a dead network.; endpoint=reviewer"
+  },
+  {
+    "suite": "q2-hook-final",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"ERROR\"\r\nActual:   \"CLOSED\"\r\n           \u2191 (pos 0)",
+    "stdout": "outcome=CLOSED; error=System.Net.Sockets.SocketException; detail=The client socket was closed before the handshake started.; endpoint=reviewer"
+  },
+  {
+    "suite": "q2-prefix-final",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q02_AlreadyClosedClient_HandlerAndDisposeComplete",
+    "message": "System.NullReferenceException : Object reference not set to an instance of an object.",
+    "stdout": null
+  },
+  {
+    "suite": "q2-prefix-final",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q15_UnexpectedWrappedSocketFault_MustRemainError",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"ERROR\"\r\nActual:   \"CLOSED\"\r\n           \u2191 (pos 0)",
+    "stdout": "injected=System.IO.IOException: reviewer network read failure\r\n ---> System.Net.Sockets.SocketException (10050): A socket operation encountered a dead network.\r\n   --- End of inner exception stack trace ---; serverConnected=True; peerConnected=True\r\noutcome=CLOSED; error=System.IO.IOException; detail=reviewer network read failure; endpoint=127.0.0.1:53126"
+  },
+  {
+    "suite": "q2-prefix-final",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q12_MidReadObjectDisposed_IsClosed",
+    "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"CLOSED\"\r\nActual:   \"ERROR\"\r\n           \u2191 (pos 0)",
+    "stdout": "injected=System.ObjectDisposedException: Cannot access a disposed object.\r\nObject name: 'reviewer read'.; serverConnected=True; peerConnected=True\r\noutcome=ERROR; error=System.ObjectDisposedException; detail=Cannot access a disposed object.  Object name: 'reviewer read'.; endpoint=127.0.0.1:53130"
+  },
+  {
+    "suite": "q2-prefix-final",
+    "name": "BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q01_LocalCloseBeforeEndpointCapture_IsNullSafe",
+    "message": "System.NullReferenceException : Object reference not set to an instance of an object.",
+    "stdout": null
+  }
+]

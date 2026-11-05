@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="61518785-1025-4b75-87b7-e42e066c96b8" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-06 01:19:18" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T01:19:18.4591236+08:00" queuing="2026-11-06T01:19:18.4591239+08:00" start="2026-11-06T01:19:17.8485575+08:00" finish="2026-11-06T01:19:22.7032569+08:00" />
+  <TestSettings name="default" id="c3eee4b8-dd27-4dba-b9be-560f6f6cd989">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-06_01_19_18" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c291bdda-60b6-470c-80bb-9449fb8a7f82" testId="254c2bcb-e2c5-7fd2-008b-d1034a8572ff" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D05_PULL_returns_records" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4381737+08:00" endTime="2026-11-06T01:19:18.4381737+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c291bdda-60b6-470c-80bb-9449fb8a7f82">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="283ece4e-bff2-4731-bd3a-9b11938663fa" testId="a1ea6bc6-3272-a751-bbe0-0da1587843ef" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_LegacyNegotiation_Is_Observed" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.6037047" startTime="2026-11-06T01:19:19.0254446+08:00" endTime="2026-11-06T01:19:19.0254451+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="283ece4e-bff2-4731-bd3a-9b11938663fa" />
+    <UnitTestResult executionId="3f7f97eb-d700-418b-b757-768b40c087cd" testId="bdb657c2-fbf3-ea0b-558a-dd5ef8ebdee1" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://host?x=1&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000112" startTime="2026-11-06T01:19:18.4375640+08:00" endTime="2026-11-06T01:19:18.4375641+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f7f97eb-d700-418b-b757-768b40c087cd" />
+    <UnitTestResult executionId="457dcd27-4e34-4929-878b-abe0bb1ba2e6" testId="1d51ac8a-b060-eed7-a1d8-8f45161a36c0" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt://localhost:7687/&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0004284" startTime="2026-11-06T01:19:18.4375861+08:00" endTime="2026-11-06T01:19:18.4375861+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="457dcd27-4e34-4929-878b-abe0bb1ba2e6" />
+    <UnitTestResult executionId="19b6c52c-696f-40d1-b4e4-c68d6e6014e6" testId="6bcb2af2-14a7-7fb9-fa28-0411fa2f50b4" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://user:secret@host&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000274" startTime="2026-11-06T01:19:18.4365595+08:00" endTime="2026-11-06T01:19:18.4365595+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="19b6c52c-696f-40d1-b4e4-c68d6e6014e6" />
+    <UnitTestResult executionId="3a24860e-af1d-4ef0-8dfb-7af0e7cb566a" testId="6a2742a3-636f-e5b7-ee69-34748c59a0af" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;neo4j+s://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0002626" startTime="2026-11-06T01:19:18.4175517+08:00" endTime="2026-11-06T01:19:18.4175517+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3a24860e-af1d-4ef0-8dfb-7af0e7cb566a" />
+    <UnitTestResult executionId="695f835a-388e-474f-ac91-b56af33204ef" testId="7aee6898-eeed-b6bd-8036-d4e45f6b72ce" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;neo4j+ssc://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000133" startTime="2026-11-06T01:19:18.4365780+08:00" endTime="2026-11-06T01:19:18.4365781+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="695f835a-388e-474f-ac91-b56af33204ef" />
+    <UnitTestResult executionId="9f3eee62-bbbd-4729-a793-2e38f3e5e9d0" testId="e6543aaa-cc0d-11aa-34e6-455e6e9d844c" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D04_Read_only_RUN_is_accepted" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4379173+08:00" endTime="2026-11-06T01:19:18.4379173+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f3eee62-bbbd-4729-a793-2e38f3e5e9d0">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ee2e477b-b7ba-4e6a-81ad-5058183f6140" testId="77365bd0-f384-cf62-12d4-5bd52dd7718b" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt+ssc://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000088" startTime="2026-11-06T01:19:18.4380334+08:00" endTime="2026-11-06T01:19:18.4380334+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ee2e477b-b7ba-4e6a-81ad-5058183f6140" />
+    <UnitTestResult executionId="f222cdf8-7bf4-4f1a-835a-5352b7d93305" testId="c4dadfaa-532c-f966-22be-0f83cd2e7fa7" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.Cancellation_DuringNegotiation_Closes_PendingConnection" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1087273" startTime="2026-11-06T01:19:22.5281702+08:00" endTime="2026-11-06T01:19:22.5281707+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f222cdf8-7bf4-4f1a-835a-5352b7d93305" />
+    <UnitTestResult executionId="9251ae4e-0715-422a-869c-538c6c627fca" testId="505275be-9ff5-4d65-c756-48692a474484" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D01_Driver_establishes_a_real_connection" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4175215+08:00" endTime="2026-11-06T01:19:18.4175216+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9251ae4e-0715-422a-869c-538c6c627fca">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a3fe46da-b5f2-4dc3-a0b7-6eae0d75831a" testId="9ed991e4-1315-5bf1-0329-a1bdbd9979ef" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://host#fragment&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000660" startTime="2026-11-06T01:19:18.4365947+08:00" endTime="2026-11-06T01:19:18.4365947+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a3fe46da-b5f2-4dc3-a0b7-6eae0d75831a" />
+    <UnitTestResult executionId="d2f3b2ca-fa00-49c7-899d-7f0998547732" testId="9350d9dc-9de0-6137-0b7d-dbd8eeaa2012" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Rejects_Routing_Scheme_For_A_Direct_Server" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0003677" startTime="2026-11-06T01:19:18.4381157+08:00" endTime="2026-11-06T01:19:18.4381158+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2f3b2ca-fa00-49c7-899d-7f0998547732" />
+    <UnitTestResult executionId="69d3c5db-d89f-4650-86c9-d5f855524c82" testId="d729ff03-7f3f-d844-a319-d98be51c712d" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_04_CancellationConcurrentWithClientClosure_IsClean" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0026407" startTime="2026-11-06T01:19:21.5929844+08:00" endTime="2026-11-06T01:19:21.5929846+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="69d3c5db-d89f-4650-86c9-d5f855524c82" />
+    <UnitTestResult executionId="77ce4587-5a4d-4807-9f52-94564c1183bc" testId="b04db208-c6b1-e649-2cd0-0a3365dc9995" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_05_RepeatedDisposal_IsClean" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0018716" startTime="2026-11-06T01:19:19.5546658+08:00" endTime="2026-11-06T01:19:19.5546661+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="77ce4587-5a4d-4807-9f52-94564c1183bc" />
+    <UnitTestResult executionId="bf435542-4bce-490b-9507-b48265e64700" testId="337cb8d0-c1de-5790-5d88-da8341a002f1" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt://localhost&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0001014" startTime="2026-11-06T01:19:18.4376033+08:00" endTime="2026-11-06T01:19:18.4376034+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bf435542-4bce-490b-9507-b48265e64700" />
+    <UnitTestResult executionId="d2222896-7fac-4c13-b62f-ffc954635a9e" testId="446e2ad5-3ee3-8610-bb52-e7b6ec6297cd" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;wss://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000095" startTime="2026-11-06T01:19:18.4365022+08:00" endTime="2026-11-06T01:19:18.4365023+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2222896-7fac-4c13-b62f-ffc954635a9e" />
+    <UnitTestResult executionId="d8b8fb37-370c-4fa1-9c20-bae314edf9bf" testId="87a6c42c-91ff-6d32-0543-6fae95624909" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_08_AfterDisposal_PortIsClosed_AndNoPendingTasks" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0067144" startTime="2026-11-06T01:19:21.5620598+08:00" endTime="2026-11-06T01:19:21.5620605+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d8b8fb37-370c-4fa1-9c20-bae314edf9bf" />
+    <UnitTestResult executionId="9fe4bf4d-aaa3-49eb-884d-0274c2a5cfa3" testId="16ea9200-b32b-1946-6d5a-7293851d0d45" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_ManifestNegotiation_Is_Observed" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.5229144" startTime="2026-11-06T01:19:19.5496315+08:00" endTime="2026-11-06T01:19:19.5496319+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9fe4bf4d-aaa3-49eb-884d-0274c2a5cfa3" />
+    <UnitTestResult executionId="7fd46d85-16d7-4f9d-81c1-e03e4b157891" testId="455b492d-59bf-378e-c68c-7131da76df5c" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0027183" startTime="2026-11-06T01:19:18.4168237+08:00" endTime="2026-11-06T01:19:18.4168241+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7fd46d85-16d7-4f9d-81c1-e03e4b157891" />
+    <UnitTestResult executionId="18890b63-49d4-47bd-a12b-8885c56e5425" testId="10fc17e3-838d-2742-dbe0-ddfe5e3ed709" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D10_TLS_and_authentication_failure_paths" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4173788+08:00" endTime="2026-11-06T01:19:18.4173789+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18890b63-49d4-47bd-a12b-8885c56e5425">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b9b5812d-0379-48f9-a9d1-b77ddefb852a" testId="11f01187-b050-d962-0e61-7dcdb29ef782" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;https://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000171" startTime="2026-11-06T01:19:18.4175665+08:00" endTime="2026-11-06T01:19:18.4175665+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b9b5812d-0379-48f9-a9d1-b77ddefb852a" />
+    <UnitTestResult executionId="48ec2880-7b74-4636-af85-d76e51afbea6" testId="9bfeb806-2edb-4361-ea21-dd282d8d1155" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.MalformedManifestSelection_UnofferedVersion_Is_Rejected" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0062695" startTime="2026-11-06T01:19:22.5457397+08:00" endTime="2026-11-06T01:19:22.5457402+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="48ec2880-7b74-4636-af85-d76e51afbea6" />
+    <UnitTestResult executionId="5ce07618-0761-42c7-8003-e5d78271a9dc" testId="58985955-57ed-b167-bddb-79b807421d44" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Constructor_Rejects_Routing_Uri_From_Environment" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006074" startTime="2026-11-06T01:19:18.4366334+08:00" endTime="2026-11-06T01:19:18.4366335+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5ce07618-0761-42c7-8003-e5d78271a9dc" />
+    <UnitTestResult executionId="815ca71d-756c-4cbd-a16a-448fb6604440" testId="fe17ab36-1be4-3c09-2655-45e8a1ed04cd" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_01_ClientClosesBeforeListenerDisposal_ShutdownIsClean" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0045946" startTime="2026-11-06T01:19:21.5898665+08:00" endTime="2026-11-06T01:19:21.5898667+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="815ca71d-756c-4cbd-a16a-448fb6604440" />
+    <UnitTestResult executionId="1a629666-7aab-464d-8035-3212b07ad97d" testId="75966725-9fa0-ec35-d7a0-2890f72ca967" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D08_RESET_and_failure_recovery_behave_correctly" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4374432+08:00" endTime="2026-11-06T01:19:18.4374433+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1a629666-7aab-464d-8035-3212b07ad97d">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="827902ae-b721-4ac4-ae5b-1f27d6724abf" testId="b920e86e-b7ed-1066-f4b0-58bd0ebca6a3" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D03_HELLO_and_LOGON_succeed" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4380182+08:00" endTime="2026-11-06T01:19:18.4380182+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="827902ae-b721-4ac4-ae5b-1f27d6724abf">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ec81ed0a-18dc-45e8-b65d-39f6ca383b31" testId="a0a71dac-7363-a6b0-b96e-93bb4b8a36dd" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.InvalidBoltIdentification_Is_Rejected_Without_A_Response" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0058717" startTime="2026-11-06T01:19:22.5551052+08:00" endTime="2026-11-06T01:19:22.5551054+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec81ed0a-18dc-45e8-b65d-39f6ca383b31" />
+    <UnitTestResult executionId="37d42983-7824-4070-904c-938fd7b6a87d" testId="5bc14a40-fb03-9ea6-6232-e0b3833a4630" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D09_Connection_closes_cleanly" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4380914+08:00" endTime="2026-11-06T01:19:18.4380915+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37d42983-7824-4070-904c-938fd7b6a87d">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7165c7c6-11b5-463b-8c12-0cbc445fae43" testId="bf32b3dc-a442-d680-7e85-1d4ff700a8ce" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.HandshakeTimeout_DuringNegotiation_ClosesPendingConnection" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.3188989" startTime="2026-11-06T01:19:22.0933061+08:00" endTime="2026-11-06T01:19:22.0933064+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7165c7c6-11b5-463b-8c12-0cbc445fae43" />
+    <UnitTestResult executionId="2a3da088-9cdd-4716-8b71-745ef8f6f956" testId="81c5bdee-e92a-5427-beef-f6af810733f0" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Default_Endpoint_Is_Direct_Loopback" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006921" startTime="2026-11-06T01:19:18.4378542+08:00" endTime="2026-11-06T01:19:18.4378542+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2a3da088-9cdd-4716-8b71-745ef8f6f956" />
+    <UnitTestResult executionId="43955dc5-4e2d-436f-b7d2-b7f6f1629afd" testId="22f8e36c-faef-f146-8d78-de8bfb93b302" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_07_ShutdownWithPendingRead_IsClean" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0035392" startTime="2026-11-06T01:19:21.5811976+08:00" endTime="2026-11-06T01:19:21.5811978+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43955dc5-4e2d-436f-b7d2-b7f6f1629afd" />
+    <UnitTestResult executionId="48ca9212-441d-4e7b-8412-8ac882ba761f" testId="8d381d0b-74a4-9e39-aa9f-a53bb9ef0501" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_03_DisposalDuringActiveConnection_IsClean" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0144850" startTime="2026-11-06T01:19:21.5771979+08:00" endTime="2026-11-06T01:19:21.5771985+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="48ca9212-441d-4e7b-8412-8ac882ba761f" />
+    <UnitTestResult executionId="edfa7ffc-f6b9-4a55-8f9c-1a28152e0bfe" testId="2974196c-5cf7-459c-22a4-acff7feec971" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;http://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000206" startTime="2026-11-06T01:19:18.4365449+08:00" endTime="2026-11-06T01:19:18.4365449+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="edfa7ffc-f6b9-4a55-8f9c-1a28152e0bfe" />
+    <UnitTestResult executionId="35510274-39d9-44f5-ba6f-f45ef5d5b136" testId="8c0e8452-d6f5-0d02-d46f-17515c12e1c4" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.MalformedManifestSelection_ReservedByteSet_Is_FormatError" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0098958" startTime="2026-11-06T01:19:22.5387860+08:00" endTime="2026-11-06T01:19:22.5387866+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="35510274-39d9-44f5-ba6f-f45ef5d5b136" />
+    <UnitTestResult executionId="bce1ba22-9c28-4284-91c7-949cbf88bee3" testId="73bd2f6f-3d9e-cf4d-86c9-4211e87d9cd0" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;ws://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000086" startTime="2026-11-06T01:19:18.4365265+08:00" endTime="2026-11-06T01:19:18.4365265+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bce1ba22-9c28-4284-91c7-949cbf88bee3" />
+    <UnitTestResult executionId="a8d9bd6d-236f-48f9-b891-6bcc34f040ec" testId="c69448a7-c6c6-b47e-25df-48ddd3a3b587" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D06_Typed_nodes_and_relationships_are_decoded" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4174562+08:00" endTime="2026-11-06T01:19:18.4174562+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8d9bd6d-236f-48f9-b891-6bcc34f040ec">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fa64d68f-6343-4404-b0c6-e8c3583d77b3" testId="1b372fdf-7374-342d-5daa-c14002095769" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D07_Unsupported_request_fails_correctly" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4375327+08:00" endTime="2026-11-06T01:19:18.4375328+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa64d68f-6343-4404-b0c6-e8c3583d77b3">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2ccf2f0c-c0a3-4cf6-a4b6-ad18d3f4fe5b" testId="8051b786-e3be-058d-0a1c-ba88ac4b2c69" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.UnsupportedVersion_Is_Rejected_With_Zero_And_Closed" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0033322" startTime="2026-11-06T01:19:22.5589433+08:00" endTime="2026-11-06T01:19:22.5589435+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2ccf2f0c-c0a3-4cf6-a4b6-ad18d3f4fe5b" />
+    <UnitTestResult executionId="4c02bc61-be51-413f-a0cd-260621e2c242" testId="72a0593e-aedf-0278-475e-6075159ab41c" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://host/path&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000126" startTime="2026-11-06T01:19:18.4372987+08:00" endTime="2026-11-06T01:19:18.4372987+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c02bc61-be51-413f-a0cd-260621e2c242" />
+    <UnitTestResult executionId="16374938-7b0d-44b2-bd77-001d7f319e1f" testId="fa2b81fc-9c95-3692-b82f-9c34c9188669" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.Listener_Shutdown_With_PendingConnection_Is_Deterministic" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0599518" startTime="2026-11-06T01:19:22.6228904+08:00" endTime="2026-11-06T01:19:22.6228910+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="16374938-7b0d-44b2-bd77-001d7f319e1f" />
+    <UnitTestResult executionId="624fe14f-ec02-471c-bee1-1adf3dc6ed92" testId="9bf01a4d-99da-268f-76f8-74aedd4b0262" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D02_Bolt_protocol_revision_is_negotiated" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010000" startTime="2026-11-06T01:19:18.4087030+08:00" endTime="2026-11-06T01:19:18.4087150+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="624fe14f-ec02-471c-bee1-1adf3dc6ed92">
+      <Output>
+        <ErrorInfo>
+          <Message>Requires B3 message/session engine and B5-compatible network transport (no protocol revision negotiated yet).</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a41aa77e-a021-4e5e-8b1b-85525311a070" testId="3c2e5079-8bb1-6897-ac15-b72996958e33" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000098" startTime="2026-11-06T01:19:18.4374574+08:00" endTime="2026-11-06T01:19:18.4374574+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a41aa77e-a021-4e5e-8b1b-85525311a070" />
+    <UnitTestResult executionId="25ceccea-c409-46ec-99e3-3eb426c809f5" testId="4e6dfc64-2cfa-2b3c-fb42-7ff331c69ff5" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;not a uri&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000106" startTime="2026-11-06T01:19:18.4366157+08:00" endTime="2026-11-06T01:19:18.4366157+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="25ceccea-c409-46ec-99e3-3eb426c809f5" />
+    <UnitTestResult executionId="dbef490c-461b-4363-9ad8-f026b399ab56" testId="04c462fd-fca7-6c11-56eb-01549504eff5" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Driver_Package_Version_Is_Pinned_To_6_4_0" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0027188" startTime="2026-11-06T01:19:18.4169006+08:00" endTime="2026-11-06T01:19:18.4169007+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dbef490c-461b-4363-9ad8-f026b399ab56" />
+    <UnitTestResult executionId="474a3205-8084-4600-a6c5-ef90a3ae0fd2" testId="643158ad-d425-8fee-5b83-bc7371766d46" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_06_ClientAbort_DuringShutdown_IsClean" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0026085" startTime="2026-11-06T01:19:21.7734149+08:00" endTime="2026-11-06T01:19:21.7734150+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="474a3205-8084-4600-a6c5-ef90a3ae0fd2" />
+    <UnitTestResult executionId="3bbede4e-e65c-4017-a3f0-41567f3e9809" testId="b8b8973c-7583-c6a2-29f7-9542d155f805" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt+s://db.example.com:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0001354" startTime="2026-11-06T01:19:18.4379383+08:00" endTime="2026-11-06T01:19:18.4379384+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3bbede4e-e65c-4017-a3f0-41567f3e9809" />
+    <UnitTestResult executionId="45c1cc73-007d-4041-b718-80b0e472ae77" testId="dc40b9f1-77fd-2d39-5cd7-7d60357f778d" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.Listener_Binds_Only_To_Loopback_And_Uses_An_Ephemeral_Port" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0023156" startTime="2026-11-06T01:19:22.5486997+08:00" endTime="2026-11-06T01:19:22.5487003+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="45c1cc73-007d-4041-b718-80b0e472ae77" />
+    <UnitTestResult executionId="e73a4fd9-563d-488e-a1a2-65276a2c5634" testId="83d99f7a-39f2-6a63-ab80-2ae9c590bf2b" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.MalformedManifestSelection_CapabilitySuperset_Is_Rejected" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0029791" startTime="2026-11-06T01:19:22.5623575+08:00" endTime="2026-11-06T01:19:22.5623577+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e73a4fd9-563d-488e-a1a2-65276a2c5634" />
+    <UnitTestResult executionId="5e13bc10-6220-4dae-8162-6c5096159a4b" testId="842711ed-9b4b-c17e-2ec5-8412d50cc317" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.ClientDisconnect_DuringHandshake_Is_Truncated" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0043243" startTime="2026-11-06T01:19:22.6278120+08:00" endTime="2026-11-06T01:19:22.6278125+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5e13bc10-6220-4dae-8162-6c5096159a4b" />
+    <UnitTestResult executionId="d09f2371-1d5d-4d4e-aa1d-20847e9eb160" testId="db46c04a-812a-1b72-806d-f451c297cb1d" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;neo4j://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000136" startTime="2026-11-06T01:19:18.4363878+08:00" endTime="2026-11-06T01:19:18.4363880+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d09f2371-1d5d-4d4e-aa1d-20847e9eb160" />
+    <UnitTestResult executionId="60b86c7a-941d-486c-ad68-8eab7aacd683" testId="3198d07e-d779-389c-af54-9548353ed0d4" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.FragmentedHandshakeInput_Is_Negotiated_Identically" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.3247332" startTime="2026-11-06T01:19:22.4187442+08:00" endTime="2026-11-06T01:19:22.4187448+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60b86c7a-941d-486c-ad68-8eab7aacd683" />
+    <UnitTestResult executionId="44f33bc7-cda5-45a5-ad7f-e11da554371c" testId="8a7f9dc3-a154-0ea2-8822-de8e52fa8653" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_10_Handler_WithAlreadyClosedClient_DoesNotFault" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0028656" startTime="2026-11-06T01:19:21.5845998+08:00" endTime="2026-11-06T01:19:21.5846000+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44f33bc7-cda5-45a5-ad7f-e11da554371c" />
+    <UnitTestResult executionId="d3a1103d-96b7-4666-8508-60decfead9e5" testId="e4658ab2-8947-2545-35fd-076749f342bc" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_09_AcceptDisposeRace_Repeated_NoUnhandledFailure" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1767920" startTime="2026-11-06T01:19:21.7703480+08:00" endTime="2026-11-06T01:19:21.7703482+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d3a1103d-96b7-4666-8508-60decfead9e5" />
+    <UnitTestResult executionId="e66b2820-8956-4882-bf72-7da937359914" testId="95f61766-9e8a-acdd-fae0-be1ddcbd30c6" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_02_EndpointCapture_WithClosedSocket_IsUnknown_NotNre" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0022267" startTime="2026-11-06T01:19:19.5525590+08:00" endTime="2026-11-06T01:19:19.5525593+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e66b2820-8956-4882-bf72-7da937359914" />
+    <UnitTestResult executionId="58dd4d07-6fb0-48a7-be2b-33349e3db434" testId="4ec73f51-11b4-7d69-00a6-493282f3b455" testName="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt://127.0.0.1:7687&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000065" startTime="2026-11-06T01:19:18.4376206+08:00" endTime="2026-11-06T01:19:18.4376207+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="58dd4d07-6fb0-48a7-be2b-33349e3db434" />
+    <UnitTestResult executionId="0773f23b-b01e-459e-b613-cb8a0bde63d1" testId="e11ab2df-d16e-aa92-f55a-b6106a96fccc" testName="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Every_D_Scenario_Declares_A_Gate_Reason" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0000492" startTime="2026-11-06T01:19:18.4379512+08:00" endTime="2026-11-06T01:19:18.4379513+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0773f23b-b01e-459e-b613-cb8a0bde63d1" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D01_Driver_establishes_a_real_connection" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="505275be-9ff5-4d65-c756-48692a474484">
+      <Execution id="9251ae4e-0715-422a-869c-538c6c627fca" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D01_Driver_establishes_a_real_connection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.ClientDisconnect_DuringHandshake_Is_Truncated" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="842711ed-9b4b-c17e-2ec5-8412d50cc317">
+      <Execution id="5e13bc10-6220-4dae-8162-6c5096159a4b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="ClientDisconnect_DuringHandshake_Is_Truncated" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_07_ShutdownWithPendingRead_IsClean" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="22f8e36c-faef-f146-8d78-de8bfb93b302">
+      <Execution id="43955dc5-4e2d-436f-b7d2-b7f6f1629afd" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_07_ShutdownWithPendingRead_IsClean" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.MalformedManifestSelection_ReservedByteSet_Is_FormatError" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="8c0e8452-d6f5-0d02-d46f-17515c12e1c4">
+      <Execution id="35510274-39d9-44f5-ba6f-f45ef5d5b136" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="MalformedManifestSelection_ReservedByteSet_Is_FormatError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Driver_Package_Version_Is_Pinned_To_6_4_0" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="04c462fd-fca7-6c11-56eb-01549504eff5">
+      <Execution id="dbef490c-461b-4363-9ad8-f026b399ab56" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="Scaffold_Driver_Package_Version_Is_Pinned_To_6_4_0" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="455b492d-59bf-378e-c68c-7131da76df5c">
+      <Execution id="7fd46d85-16d7-4f9d-81c1-e03e4b157891" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.Listener_Shutdown_With_PendingConnection_Is_Deterministic" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="fa2b81fc-9c95-3692-b82f-9c34c9188669">
+      <Execution id="16374938-7b0d-44b2-bd77-001d7f319e1f" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="Listener_Shutdown_With_PendingConnection_Is_Deterministic" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D05_PULL_returns_records" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="254c2bcb-e2c5-7fd2-008b-d1034a8572ff">
+      <Execution id="c291bdda-60b6-470c-80bb-9449fb8a7f82" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D05_PULL_returns_records" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;neo4j+s://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="6a2742a3-636f-e5b7-ee69-34748c59a0af">
+      <Execution id="3a24860e-af1d-4ef0-8dfb-7af0e7cb566a" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_ManifestNegotiation_Is_Observed" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="16ea9200-b32b-1946-6d5a-7293851d0d45">
+      <Execution id="9fe4bf4d-aaa3-49eb-884d-0274c2a5cfa3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests" name="T01_T04_OfficialDriver_ManifestNegotiation_Is_Observed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_01_ClientClosesBeforeListenerDisposal_ShutdownIsClean" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="fe17ab36-1be4-3c09-2655-45e8a1ed04cd">
+      <Execution id="815ca71d-756c-4cbd-a16a-448fb6604440" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_01_ClientClosesBeforeListenerDisposal_ShutdownIsClean" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;not a uri&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="4e6dfc64-2cfa-2b3c-fb42-7ff331c69ff5">
+      <Execution id="25ceccea-c409-46ec-99e3-3eb426c809f5" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.MalformedManifestSelection_CapabilitySuperset_Is_Rejected" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="83d99f7a-39f2-6a63-ab80-2ae9c590bf2b">
+      <Execution id="e73a4fd9-563d-488e-a1a2-65276a2c5634" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="MalformedManifestSelection_CapabilitySuperset_Is_Rejected" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.MalformedManifestSelection_UnofferedVersion_Is_Rejected" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="9bfeb806-2edb-4361-ea21-dd282d8d1155">
+      <Execution id="48ec2880-7b74-4636-af85-d76e51afbea6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="MalformedManifestSelection_UnofferedVersion_Is_Rejected" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D08_RESET_and_failure_recovery_behave_correctly" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="75966725-9fa0-ec35-d7a0-2890f72ca967">
+      <Execution id="1a629666-7aab-464d-8035-3212b07ad97d" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D08_RESET_and_failure_recovery_behave_correctly" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_02_EndpointCapture_WithClosedSocket_IsUnknown_NotNre" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="95f61766-9e8a-acdd-fae0-be1ddcbd30c6">
+      <Execution id="e66b2820-8956-4882-bf72-7da937359914" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_02_EndpointCapture_WithClosedSocket_IsUnknown_NotNre" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D04_Read_only_RUN_is_accepted" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="e6543aaa-cc0d-11aa-34e6-455e6e9d844c">
+      <Execution id="9f3eee62-bbbd-4729-a793-2e38f3e5e9d0" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D04_Read_only_RUN_is_accepted" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_09_AcceptDisposeRace_Repeated_NoUnhandledFailure" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="e4658ab2-8947-2545-35fd-076749f342bc">
+      <Execution id="d3a1103d-96b7-4666-8508-60decfead9e5" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_09_AcceptDisposeRace_Repeated_NoUnhandledFailure" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://user:secret@host&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="6bcb2af2-14a7-7fb9-fa28-0411fa2f50b4">
+      <Execution id="19b6c52c-696f-40d1-b4e4-c68d6e6014e6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt+s://db.example.com:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="b8b8973c-7583-c6a2-29f7-9542d155f805">
+      <Execution id="3bbede4e-e65c-4017-a3f0-41567f3e9809" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Accepts_Direct_Bolt_Schemes" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D07_Unsupported_request_fails_correctly" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="1b372fdf-7374-342d-5daa-c14002095769">
+      <Execution id="fa64d68f-6343-4404-b0c6-e8c3583d77b3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D07_Unsupported_request_fails_correctly" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="4ec73f51-11b4-7d69-00a6-493282f3b455">
+      <Execution id="58dd4d07-6fb0-48a7-be2b-33349e3db434" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Accepts_Direct_Bolt_Schemes" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.Listener_Binds_Only_To_Loopback_And_Uses_An_Ephemeral_Port" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="dc40b9f1-77fd-2d39-5cd7-7d60357f778d">
+      <Execution id="45c1cc73-007d-4041-b718-80b0e472ae77" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="Listener_Binds_Only_To_Loopback_And_Uses_An_Ephemeral_Port" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.HandshakeTimeout_DuringNegotiation_ClosesPendingConnection" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="bf32b3dc-a442-d680-7e85-1d4ff700a8ce">
+      <Execution id="7165c7c6-11b5-463b-8c12-0cbc445fae43" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="HandshakeTimeout_DuringNegotiation_ClosesPendingConnection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_04_CancellationConcurrentWithClientClosure_IsClean" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="d729ff03-7f3f-d844-a319-d98be51c712d">
+      <Execution id="69d3c5db-d89f-4650-86c9-d5f855524c82" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_04_CancellationConcurrentWithClientClosure_IsClean" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Every_D_Scenario_Declares_A_Gate_Reason" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="e11ab2df-d16e-aa92-f55a-b6106a96fccc">
+      <Execution id="0773f23b-b01e-459e-b613-cb8a0bde63d1" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="Scaffold_Every_D_Scenario_Declares_A_Gate_Reason" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;ws://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="73bd2f6f-3d9e-cf4d-86c9-4211e87d9cd0">
+      <Execution id="bce1ba22-9c28-4284-91c7-949cbf88bee3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_05_RepeatedDisposal_IsClean" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="b04db208-c6b1-e649-2cd0-0a3365dc9995">
+      <Execution id="77ce4587-5a4d-4807-9f52-94564c1183bc" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_05_RepeatedDisposal_IsClean" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;neo4j://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="db46c04a-812a-1b72-806d-f451c297cb1d">
+      <Execution id="d09f2371-1d5d-4d4e-aa1d-20847e9eb160" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.InvalidBoltIdentification_Is_Rejected_Without_A_Response" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="a0a71dac-7363-a6b0-b96e-93bb4b8a36dd">
+      <Execution id="ec81ed0a-18dc-45e8-b65d-39f6ca383b31" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="InvalidBoltIdentification_Is_Rejected_Without_A_Response" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D10_TLS_and_authentication_failure_paths" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="10fc17e3-838d-2742-dbe0-ddfe5e3ed709">
+      <Execution id="18890b63-49d4-47bd-a12b-8885c56e5425" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D10_TLS_and_authentication_failure_paths" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D03_HELLO_and_LOGON_succeed" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="b920e86e-b7ed-1066-f4b0-58bd0ebca6a3">
+      <Execution id="827902ae-b721-4ac4-ae5b-1f27d6724abf" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D03_HELLO_and_LOGON_succeed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt+ssc://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="77365bd0-f384-cf62-12d4-5bd52dd7718b">
+      <Execution id="ee2e477b-b7ba-4e6a-81ad-5058183f6140" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Accepts_Direct_Bolt_Schemes" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D06_Typed_nodes_and_relationships_are_decoded" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="c69448a7-c6c6-b47e-25df-48ddd3a3b587">
+      <Execution id="a8d9bd6d-236f-48f9-b891-6bcc34f040ec" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D06_Typed_nodes_and_relationships_are_decoded" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;wss://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="446e2ad5-3ee3-8610-bb52-e7b6ec6297cd">
+      <Execution id="d2222896-7fac-4c13-b62f-ffc954635a9e" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.Cancellation_DuringNegotiation_Closes_PendingConnection" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="c4dadfaa-532c-f966-22be-0f83cd2e7fa7">
+      <Execution id="f222cdf8-7bf4-4f1a-835a-5352b7d93305" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="Cancellation_DuringNegotiation_Closes_PendingConnection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_08_AfterDisposal_PortIsClosed_AndNoPendingTasks" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="87a6c42c-91ff-6d32-0543-6fae95624909">
+      <Execution id="d8b8fb37-370c-4fa1-9c20-bae314edf9bf" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_08_AfterDisposal_PortIsClosed_AndNoPendingTasks" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Default_Endpoint_Is_Direct_Loopback" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="81c5bdee-e92a-5427-beef-f6af810733f0">
+      <Execution id="2a3da088-9cdd-4716-8b71-745ef8f6f956" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="Scaffold_Default_Endpoint_Is_Direct_Loopback" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="3c2e5079-8bb1-6897-ac15-b72996958e33">
+      <Execution id="a41aa77e-a021-4e5e-8b1b-85525311a070" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt://localhost&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="337cb8d0-c1de-5790-5d88-da8341a002f1">
+      <Execution id="bf435542-4bce-490b-9507-b48265e64700" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Accepts_Direct_Bolt_Schemes" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_06_ClientAbort_DuringShutdown_IsClean" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="643158ad-d425-8fee-5b83-bc7371766d46">
+      <Execution id="474a3205-8084-4600-a6c5-ef90a3ae0fd2" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_06_ClientAbort_DuringShutdown_IsClean" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Constructor_Rejects_Routing_Uri_From_Environment" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="58985955-57ed-b167-bddb-79b807421d44">
+      <Execution id="5ce07618-0761-42c7-8003-e5d78271a9dc" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="Scaffold_Constructor_Rejects_Routing_Uri_From_Environment" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Accepts_Direct_Bolt_Schemes(value: &quot;bolt://localhost:7687/&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="1d51ac8a-b060-eed7-a1d8-8f45161a36c0">
+      <Execution id="457dcd27-4e34-4929-878b-abe0bb1ba2e6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Accepts_Direct_Bolt_Schemes" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_03_DisposalDuringActiveConnection_IsClean" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="8d381d0b-74a4-9e39-aa9f-a53bb9ef0501">
+      <Execution id="48ca9212-441d-4e7b-8412-8ac882ba761f" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_03_DisposalDuringActiveConnection_IsClean" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests.R1_10_Handler_WithAlreadyClosedClient_DoesNotFault" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="8a7f9dc3-a154-0ea2-8822-de8e52fa8653">
+      <Execution id="44f33bc7-cda5-45a5-ad7f-e11da554371c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerShutdownRegressionTests" name="R1_10_Handler_WithAlreadyClosedClient_DoesNotFault" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.FragmentedHandshakeInput_Is_Negotiated_Identically" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="3198d07e-d779-389c-af54-9548353ed0d4">
+      <Execution id="60b86c7a-941d-486c-ad68-8eab7aacd683" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="FragmentedHandshakeInput_Is_Negotiated_Identically" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://host/path&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="72a0593e-aedf-0278-475e-6075159ab41c">
+      <Execution id="4c02bc61-be51-413f-a0cd-260621e2c242" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://host#fragment&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="9ed991e4-1315-5bf1-0329-a1bdbd9979ef">
+      <Execution id="a3fe46da-b5f2-4dc3-a0b7-6eae0d75831a" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests.UnsupportedVersion_Is_Rejected_With_Zero_And_Closed" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="8051b786-e3be-058d-0a1c-ba88ac4b2c69">
+      <Execution id="2ccf2f0c-c0a3-4cf6-a4b6-ad18d3f4fe5b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListenerTests" name="UnsupportedVersion_Is_Rejected_With_Zero_And_Closed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.Scaffold_Rejects_Routing_Scheme_For_A_Direct_Server" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="9350d9dc-9de0-6137-0b7d-dbd8eeaa2012">
+      <Execution id="d2f3b2ca-fa00-49c7-899d-7f0998547732" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="Scaffold_Rejects_Routing_Scheme_For_A_Direct_Server" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;neo4j+ssc://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="7aee6898-eeed-b6bd-8036-d4e45f6b72ce">
+      <Execution id="695f835a-388e-474f-ac91-b56af33204ef" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_LegacyNegotiation_Is_Observed" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="a1ea6bc6-3272-a751-bbe0-0da1587843ef">
+      <Execution id="283ece4e-bff2-4731-bd3a-9b11938663fa" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests" name="T01_T04_OfficialDriver_LegacyNegotiation_Is_Observed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D09_Connection_closes_cleanly" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="5bc14a40-fb03-9ea6-6232-e0b3833a4630">
+      <Execution id="37d42983-7824-4070-904c-938fd7b6a87d" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D09_Connection_closes_cleanly" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;https://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="11f01187-b050-d962-0e61-7dcdb29ef782">
+      <Execution id="b9b5812d-0379-48f9-a9d1-b77ddefb852a" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;http://127.0.0.1:7687&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="2974196c-5cf7-459c-22a4-acff7feec971">
+      <Execution id="edfa7ffc-f6b9-4a55-8f9c-1a28152e0bfe" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverUriValidationTests.ValidateUri_Rejects_Routing_Unsupported_Or_Malformed(value: &quot;bolt://host?x=1&quot;)" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="bdb657c2-fbf3-ea0b-558a-dd5ef8ebdee1">
+      <Execution id="3f7f97eb-d700-418b-b757-768b40c087cd" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverUriValidationTests" name="ValidateUri_Rejects_Routing_Unsupported_Or_Malformed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D02_Bolt_protocol_revision_is_negotiated" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="9bf01a4d-99da-268f-76f8-74aedd4b0262">
+      <Execution id="624fe14f-ec02-471c-bee1-1adf3dc6ed92" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests" name="D02_Bolt_protocol_revision_is_negotiated" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="254c2bcb-e2c5-7fd2-008b-d1034a8572ff" executionId="c291bdda-60b6-470c-80bb-9449fb8a7f82" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a1ea6bc6-3272-a751-bbe0-0da1587843ef" executionId="283ece4e-bff2-4731-bd3a-9b11938663fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bdb657c2-fbf3-ea0b-558a-dd5ef8ebdee1" executionId="3f7f97eb-d700-418b-b757-768b40c087cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1d51ac8a-b060-eed7-a1d8-8f45161a36c0" executionId="457dcd27-4e34-4929-878b-abe0bb1ba2e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6bcb2af2-14a7-7fb9-fa28-0411fa2f50b4" executionId="19b6c52c-696f-40d1-b4e4-c68d6e6014e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a2742a3-636f-e5b7-ee69-34748c59a0af" executionId="3a24860e-af1d-4ef0-8dfb-7af0e7cb566a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7aee6898-eeed-b6bd-8036-d4e45f6b72ce" executionId="695f835a-388e-474f-ac91-b56af33204ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e6543aaa-cc0d-11aa-34e6-455e6e9d844c" executionId="9f3eee62-bbbd-4729-a793-2e38f3e5e9d0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="77365bd0-f384-cf62-12d4-5bd52dd7718b" executionId="ee2e477b-b7ba-4e6a-81ad-5058183f6140" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4dadfaa-532c-f966-22be-0f83cd2e7fa7" executionId="f222cdf8-7bf4-4f1a-835a-5352b7d93305" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="505275be-9ff5-4d65-c756-48692a474484" executionId="9251ae4e-0715-422a-869c-538c6c627fca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9ed991e4-1315-5bf1-0329-a1bdbd9979ef" executionId="a3fe46da-b5f2-4dc3-a0b7-6eae0d75831a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9350d9dc-9de0-6137-0b7d-dbd8eeaa2012" executionId="d2f3b2ca-fa00-49c7-899d-7f0998547732" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d729ff03-7f3f-d844-a319-d98be51c712d" executionId="69d3c5db-d89f-4650-86c9-d5f855524c82" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b04db208-c6b1-e649-2cd0-0a3365dc9995" executionId="77ce4587-5a4d-4807-9f52-94564c1183bc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="337cb8d0-c1de-5790-5d88-da8341a002f1" executionId="bf435542-4bce-490b-9507-b48265e64700" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="446e2ad5-3ee3-8610-bb52-e7b6ec6297cd" executionId="d2222896-7fac-4c13-b62f-ffc954635a9e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="87a6c42c-91ff-6d32-0543-6fae95624909" executionId="d8b8fb37-370c-4fa1-9c20-bae314edf9bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16ea9200-b32b-1946-6d5a-7293851d0d45" executionId="9fe4bf4d-aaa3-49eb-884d-0274c2a5cfa3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="455b492d-59bf-378e-c68c-7131da76df5c" executionId="7fd46d85-16d7-4f9d-81c1-e03e4b157891" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="10fc17e3-838d-2742-dbe0-ddfe5e3ed709" executionId="18890b63-49d4-47bd-a12b-8885c56e5425" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="11f01187-b050-d962-0e61-7dcdb29ef782" executionId="b9b5812d-0379-48f9-a9d1-b77ddefb852a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9bfeb806-2edb-4361-ea21-dd282d8d1155" executionId="48ec2880-7b74-4636-af85-d76e51afbea6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58985955-57ed-b167-bddb-79b807421d44" executionId="5ce07618-0761-42c7-8003-e5d78271a9dc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe17ab36-1be4-3c09-2655-45e8a1ed04cd" executionId="815ca71d-756c-4cbd-a16a-448fb6604440" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="75966725-9fa0-ec35-d7a0-2890f72ca967" executionId="1a629666-7aab-464d-8035-3212b07ad97d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b920e86e-b7ed-1066-f4b0-58bd0ebca6a3" executionId="827902ae-b721-4ac4-ae5b-1f27d6724abf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0a71dac-7363-a6b0-b96e-93bb4b8a36dd" executionId="ec81ed0a-18dc-45e8-b65d-39f6ca383b31" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5bc14a40-fb03-9ea6-6232-e0b3833a4630" executionId="37d42983-7824-4070-904c-938fd7b6a87d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bf32b3dc-a442-d680-7e85-1d4ff700a8ce" executionId="7165c7c6-11b5-463b-8c12-0cbc445fae43" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="81c5bdee-e92a-5427-beef-f6af810733f0" executionId="2a3da088-9cdd-4716-8b71-745ef8f6f956" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="22f8e36c-faef-f146-8d78-de8bfb93b302" executionId="43955dc5-4e2d-436f-b7d2-b7f6f1629afd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d381d0b-74a4-9e39-aa9f-a53bb9ef0501" executionId="48ca9212-441d-4e7b-8412-8ac882ba761f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2974196c-5cf7-459c-22a4-acff7feec971" executionId="edfa7ffc-f6b9-4a55-8f9c-1a28152e0bfe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c0e8452-d6f5-0d02-d46f-17515c12e1c4" executionId="35510274-39d9-44f5-ba6f-f45ef5d5b136" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="73bd2f6f-3d9e-cf4d-86c9-4211e87d9cd0" executionId="bce1ba22-9c28-4284-91c7-949cbf88bee3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c69448a7-c6c6-b47e-25df-48ddd3a3b587" executionId="a8d9bd6d-236f-48f9-b891-6bcc34f040ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1b372fdf-7374-342d-5daa-c14002095769" executionId="fa64d68f-6343-4404-b0c6-e8c3583d77b3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8051b786-e3be-058d-0a1c-ba88ac4b2c69" executionId="2ccf2f0c-c0a3-4cf6-a4b6-ad18d3f4fe5b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="72a0593e-aedf-0278-475e-6075159ab41c" executionId="4c02bc61-be51-413f-a0cd-260621e2c242" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa2b81fc-9c95-3692-b82f-9c34c9188669" executionId="16374938-7b0d-44b2-bd77-001d7f319e1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9bf01a4d-99da-268f-76f8-74aedd4b0262" executionId="624fe14f-ec02-471c-bee1-1adf3dc6ed92" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c2e5079-8bb1-6897-ac15-b72996958e33" executionId="a41aa77e-a021-4e5e-8b1b-85525311a070" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4e6dfc64-2cfa-2b3c-fb42-7ff331c69ff5" executionId="25ceccea-c409-46ec-99e3-3eb426c809f5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04c462fd-fca7-6c11-56eb-01549504eff5" executionId="dbef490c-461b-4363-9ad8-f026b399ab56" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="643158ad-d425-8fee-5b83-bc7371766d46" executionId="474a3205-8084-4600-a6c5-ef90a3ae0fd2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8b8973c-7583-c6a2-29f7-9542d155f805" executionId="3bbede4e-e65c-4017-a3f0-41567f3e9809" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc40b9f1-77fd-2d39-5cd7-7d60357f778d" executionId="45c1cc73-007d-4041-b718-80b0e472ae77" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83d99f7a-39f2-6a63-ab80-2ae9c590bf2b" executionId="e73a4fd9-563d-488e-a1a2-65276a2c5634" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="842711ed-9b4b-c17e-2ec5-8412d50cc317" executionId="5e13bc10-6220-4dae-8162-6c5096159a4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db46c04a-812a-1b72-806d-f451c297cb1d" executionId="d09f2371-1d5d-4d4e-aa1d-20847e9eb160" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3198d07e-d779-389c-af54-9548353ed0d4" executionId="60b86c7a-941d-486c-ad68-8eab7aacd683" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8a7f9dc3-a154-0ea2-8822-de8e52fa8653" executionId="44f33bc7-cda5-45a5-ad7f-e11da554371c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e4658ab2-8947-2545-35fd-076749f342bc" executionId="d3a1103d-96b7-4666-8508-60decfead9e5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="95f61766-9e8a-acdd-fae0-be1ddcbd30c6" executionId="e66b2820-8956-4882-bf72-7da937359914" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ec73f51-11b4-7d69-00a6-493282f3b455" executionId="58dd4d07-6fb0-48a7-be2b-33349e3db434" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e11ab2df-d16e-aa92-f55a-b6106a96fccc" executionId="0773f23b-b01e-459e-b613-cb8a0bde63d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="57" executed="47" passed="47" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.18]   Discovering: BoltSharp.DriverIntegrationTests&#xD;
+[xUnit.net 00:00:00.22]   Discovered:  BoltSharp.DriverIntegrationTests&#xD;
+[xUnit.net 00:00:00.22]   Starting:    BoltSharp.DriverIntegrationTests&#xD;
+[xUnit.net 00:00:00.24]       Requires B3 message/session engine and B5-compatible network transport (no protocol revision negotiated yet).&#xD;
+[xUnit.net 00:00:00.25]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+[xUnit.net 00:00:00.25]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+[xUnit.net 00:00:00.25]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D02_Bolt_protocol_revision_is_negotiated' was skipped in the test run.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D10_TLS_and_authentication_failure_paths' was skipped in the test run.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D06_Typed_nodes_and_relationships_are_decoded' was skipped in the test run.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D01_Driver_establishes_a_real_connection' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.27]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+[xUnit.net 00:00:00.27]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D08_RESET_and_failure_recovery_behave_correctly' was skipped in the test run.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D07_Unsupported_request_fails_correctly' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.27]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+[xUnit.net 00:00:00.27]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+[xUnit.net 00:00:00.27]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+[xUnit.net 00:00:00.27]       Requires B3 message/session engine and B5-compatible network transport.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D04_Read_only_RUN_is_accepted' was skipped in the test run.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D03_HELLO_and_LOGON_succeed' was skipped in the test run.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D09_Connection_closes_cleanly' was skipped in the test run.&#xD;
+Test 'BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D05_PULL_returns_records' was skipped in the test run.&#xD;
+[xUnit.net 00:00:04.47]   Finished:    BoltSharp.DriverIntegrationTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4085351+08:00">
+        <Text>[xUnit.net 00:00:00.24]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D02_Bolt_protocol_revision_is_negotiated [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4176889+08:00">
+        <Text>[xUnit.net 00:00:00.25]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D10_TLS_and_authentication_failure_paths [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4180706+08:00">
+        <Text>[xUnit.net 00:00:00.25]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D06_Typed_nodes_and_relationships_are_decoded [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4180937+08:00">
+        <Text>[xUnit.net 00:00:00.25]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D01_Driver_establishes_a_real_connection [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4645266+08:00">
+        <Text>[xUnit.net 00:00:00.27]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D08_RESET_and_failure_recovery_behave_correctly [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4645750+08:00">
+        <Text>[xUnit.net 00:00:00.27]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D07_Unsupported_request_fails_correctly [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4647547+08:00">
+        <Text>[xUnit.net 00:00:00.27]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D04_Read_only_RUN_is_accepted [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4647699+08:00">
+        <Text>[xUnit.net 00:00:00.27]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D03_HELLO_and_LOGON_succeed [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4647826+08:00">
+        <Text>[xUnit.net 00:00:00.27]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D09_Connection_closes_cleanly [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Warning" timestamp="2026-11-06T01:19:18.4648008+08:00">
+        <Text>[xUnit.net 00:00:00.27]     BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D05_PULL_returns_records [SKIP]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

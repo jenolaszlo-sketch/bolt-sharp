@@ -1,0 +1,8 @@
+{
+  "pre_fix_source_commit": "f24afb79ddf9737583e17887e2874c0e781ab354",
+  "pre_fix_sha256": "61B5D3211675E726270D176B16A129623CAAFB45B8E882CD068B8441FB81F1FB",
+  "current_working_source_sha256": "AB121219FD1AC18F32C10FE041A5A3319CEAEC4B8F41F3761738854209BEB228",
+  "hooked_source_sha256": "B14BF16FEBFB553989E13E614509F71D7862BF5AF1F587B51CADC13BF3D9DDE5",
+  "transformation": "one client.GetStream() expression replaced by callback wrapper; otherwise byte-identical",
+  "limits": "Reflection and injected NetworkStream exceptions control handler phases. Socket faults are injected, not claims of native OS outage reproduction."
+}

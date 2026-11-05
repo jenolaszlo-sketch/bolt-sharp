@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>BoltSharp.Qualification.B0ATRACEQ2</RootNamespace>
+    <ListenerSource Condition="'$(ListenerSource)' == ''">../../../../tests/BoltSharp.DriverIntegrationTests/HandshakeTrace/LoopbackHandshakeListener.cs</ListenerSource>
+    <DefineConstants Condition="'$(ReviewerHooks)' == 'true'">$(DefineConstants);REVIEWER_HOOKS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2"><PrivateAssets>all</PrivateAssets></PackageReference>
+    <ProjectReference Include="../../../../src/BoltSharp/BoltSharp.csproj" />
+    <Compile Include="$(ListenerSource)" Link="Qualified/LoopbackHandshakeListener.cs" />
+  </ItemGroup>
+</Project>

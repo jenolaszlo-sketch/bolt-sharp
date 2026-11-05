@@ -1,0 +1,17 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(321,40): warning CS0649: Field 'ReviewerHooks.BeforeGetStream' is never assigned to, and will always have its default value null [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+  B0ATRACEQ2.Probes -> D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll
+
+Build succeeded.
+
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(321,40): warning CS0649: Field 'ReviewerHooks.BeforeGetStream' is never assigned to, and will always have its default value null [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+    3 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.23

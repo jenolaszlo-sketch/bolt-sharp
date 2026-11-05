@@ -1,0 +1,61 @@
+{
+  "algorithm": "SHA256",
+  "description": "report and reviewer-owned source artifacts; paths relative to repository",
+  "files": [
+    {
+      "path": "docs/reviews/B0-A-TRACE-Q2-independent-requalification.md",
+      "sha256": "F32E8A92B31E045383A266DFFE6F74D7777DBFDA3735F470EFE23318284F0FED",
+      "bytes": 23108
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/.gitignore",
+      "sha256": "32DAE3052F331EE34D628EF535709B301259A45DF7C7522C4D35DCF49873F00B",
+      "bytes": 13
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/Audit-Results.py",
+      "sha256": "F27C31A510B35411A7657B777D4BBF7B85C30CC1E39B7E2DB0300CEE807128B6",
+      "bytes": 4334
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/B0ATRACEQ2.Probes.csproj",
+      "sha256": "91F304B9AAF6FFDE47835A8FBB57A10652C5367B6FAC5A8897A4084E1C729FE7",
+      "bytes": 969
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/Finalize-Review.py",
+      "sha256": "36EE2E83EF8B8831793A53501C21B7B8523D027E1AC7051129EEED51C6BF17C9",
+      "bytes": 5655
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/LifecycleProbes.cs",
+      "sha256": "04FF36480AEA95070D0F625CA0F8D853BA4843E96CE19412735BADBAECC9E39B",
+      "bytes": 19916
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/README.md",
+      "sha256": "15499D2F5C256B6F5CC6B130C96E3B2394C1108DEAF8BE7D30C37AE6624AD549",
+      "bytes": 2391
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/Run-Final.py",
+      "sha256": "B7A5F7FC6EA86476AF0E4362FBF6A81CFBD441BFD5AA1413F4602232C7545B8B",
+      "bytes": 989
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/Run-Qualification.py",
+      "sha256": "90B981F2C2AF3C231DEB859A439D17AD2D31C0DFC8A3C141435B74F692ED7D98",
+      "bytes": 9458
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/Run-Targeted.py",
+      "sha256": "A1A8A6D231EDC1567752A0C8460AA00320BE7CF5B23D11E1F6520B3BAF7D4680",
+      "bytes": 983
+    },
+    {
+      "path": "docs/reviews/probes/B0-A-TRACE-Q2/Run-Verified.py",
+      "sha256": "AAEF450024F30FB197EA871B9C2627EA0A8374B8C4D67559C0C8251A5FA76DB5",
+      "bytes": 560
+    }
+  ]
+}

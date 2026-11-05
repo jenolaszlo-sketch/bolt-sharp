@@ -1,0 +1,595 @@
+{
+  "handshake_files": [
+    {
+      "file": "driver-manifest-client-handshake.hex",
+      "file_bytes_identical": true,
+      "sha256": "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+      "wire_length": 25
+    },
+    {
+      "file": "driver-manifest-server-response.hex",
+      "file_bytes_identical": true,
+      "sha256": "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+      "wire_length": 10
+    },
+    {
+      "file": "driver-legacy-client-handshake.hex",
+      "file_bytes_identical": true,
+      "sha256": "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+      "wire_length": 20
+    },
+    {
+      "file": "driver-legacy-server-response.hex",
+      "file_bytes_identical": true,
+      "sha256": "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+      "wire_length": 4
+    }
+  ],
+  "modes": {
+    "manifest": {
+      "selected_version": "5.8",
+      "capability_subset": "0x0",
+      "first_message": {
+        "marker": "0xB1",
+        "signature": "0x01",
+        "body_bytes": 155
+      },
+      "second_message": {
+        "marker": "0xB1",
+        "signature": "0x6A",
+        "body_bytes": 15
+      },
+      "bytes_after_handshake": 178,
+      "failure": "Neo4j.Driver.ServiceUnavailableException",
+      "pipelining_basis": "second framed message observed before any post-handshake server write; listener source sends no HELLO/LOGON response",
+      "raw_post_handshake_body_persisted": false
+    },
+    "legacy": {
+      "selected_version": "5.8",
+      "capability_subset": "0x0",
+      "first_message": {
+        "marker": "0xB1",
+        "signature": "0x01",
+        "body_bytes": 155
+      },
+      "second_message": {
+        "marker": "0xB1",
+        "signature": "0x6A",
+        "body_bytes": 15
+      },
+      "bytes_after_handshake": 178,
+      "failure": "Neo4j.Driver.ServiceUnavailableException",
+      "pipelining_basis": "second framed message observed before any post-handshake server write; listener source sends no HELLO/LOGON response",
+      "raw_post_handshake_body_persisted": false
+    }
+  },
+  "trx": [
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/authentic.trx",
+      "counts": {
+        "Passed": 2
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "2",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2a-q2.trx",
+      "counts": {
+        "Passed": 18
+      },
+      "counters": {
+        "total": "18",
+        "executed": "18",
+        "passed": "18",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2b-q1.trx",
+      "counts": {
+        "Passed": 67
+      },
+      "counters": {
+        "total": "67",
+        "executed": "67",
+        "passed": "67",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2b-q2.trx",
+      "counts": {
+        "Passed": 46
+      },
+      "counters": {
+        "total": "46",
+        "executed": "46",
+        "passed": "46",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/b2c-q2.trx",
+      "counts": {
+        "Passed": 40
+      },
+      "counters": {
+        "total": "40",
+        "executed": "40",
+        "passed": "40",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/driver.trx",
+      "counts": {
+        "NotExecuted": 10,
+        "Passed": 47
+      },
+      "counters": {
+        "total": "57",
+        "executed": "47",
+        "passed": "47",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": [
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D05_PULL_returns_records",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D04_Read_only_RUN_is_accepted",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D01_Driver_establishes_a_real_connection",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D10_TLS_and_authentication_failure_paths",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D08_RESET_and_failure_recovery_behave_correctly",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D03_HELLO_and_LOGON_succeed",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D09_Connection_closes_cleanly",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D06_Typed_nodes_and_relationships_are_decoded",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D07_Unsupported_request_fails_correctly",
+        "BoltSharp.DriverIntegrationTests.DriverInteropScaffoldTests.D02_Bolt_protocol_revision_is_negotiated"
+      ]
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q1.trx",
+      "counts": {
+        "Passed": 14
+      },
+      "counters": {
+        "total": "14",
+        "executed": "14",
+        "passed": "14",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-corrected.trx",
+      "counts": {
+        "Failed": 5,
+        "Passed": 17
+      },
+      "counters": {
+        "total": "22",
+        "executed": "22",
+        "passed": "17",
+        "failed": "5",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-final.trx",
+      "counts": {
+        "Passed": 20,
+        "Failed": 6
+      },
+      "counters": {
+        "total": "26",
+        "executed": "26",
+        "passed": "20",
+        "failed": "6",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-getstream-hook.trx",
+      "counts": {
+        "Passed": 1,
+        "Failed": 1
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "1",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-hook-corrected.trx",
+      "counts": {
+        "Passed": 1,
+        "Failed": 1
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "1",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-hook-final.trx",
+      "counts": {
+        "Passed": 1,
+        "Failed": 1
+      },
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "1",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-prefix-corrected.trx",
+      "counts": {
+        "Passed": 4,
+        "Failed": 4
+      },
+      "counters": {
+        "total": "8",
+        "executed": "8",
+        "passed": "4",
+        "failed": "4",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-prefix-final.trx",
+      "counts": {
+        "Passed": 4,
+        "Failed": 4
+      },
+      "counters": {
+        "total": "8",
+        "executed": "8",
+        "passed": "4",
+        "failed": "4",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-prefixed-control.trx",
+      "counts": {
+        "Failed": 3,
+        "Passed": 4
+      },
+      "counters": {
+        "total": "7",
+        "executed": "7",
+        "passed": "4",
+        "failed": "3",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2-verified.trx",
+      "counts": {
+        "Failed": 6,
+        "Passed": 20
+      },
+      "counters": {
+        "total": "26",
+        "executed": "26",
+        "passed": "20",
+        "failed": "6",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/q2.trx",
+      "counts": {
+        "Passed": 17,
+        "Failed": 5
+      },
+      "counters": {
+        "total": "22",
+        "executed": "22",
+        "passed": "17",
+        "failed": "5",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/r1-shutdown.trx",
+      "counts": {
+        "Passed": 10
+      },
+      "counters": {
+        "total": "10",
+        "executed": "10",
+        "passed": "10",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/solution.trx",
+      "counts": {
+        "Passed": 826
+      },
+      "counters": {
+        "total": "826",
+        "executed": "826",
+        "passed": "826",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    },
+    {
+      "path": "docs/reviews/evidence/B0-A-TRACE-Q2/trx/t10.trx",
+      "counts": {
+        "Passed": 1
+      },
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "1",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "not_executed": []
+    }
+  ],
+  "driver_package": {
+    "resolved": "Neo4j.Driver/6.4.0",
+    "dll": "C:\\Users\\Laszlos\\.nuget\\packages\\neo4j.driver\\6.4.0\\lib\\net8.0\\Neo4j.Driver.dll",
+    "sha256": "C0F34E7008F57D70C158E2FA3FDF2E96E3D93506BA1714929B2BD8F4F34B14CF"
+  }
+}

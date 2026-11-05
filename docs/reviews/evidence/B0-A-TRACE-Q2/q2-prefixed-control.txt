@@ -1,0 +1,47 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(119,9): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(142,50): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(321,40): warning CS0649: Field 'ReviewerHooks.BeforeGetStream' is never assigned to, and will always have its default value null [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+  B0ATRACEQ2.Probes -> D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll
+Test run for D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:08.32]     BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q02_AlreadyClosedClient_HandlerAndDisposeComplete [FAIL]
+[xUnit.net 00:00:08.32]     BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q01_LocalCloseBeforeEndpointCapture_IsNullSafe [FAIL]
+  Failed BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q02_AlreadyClosedClient_HandlerAndDisposeComplete [4 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\docs\reviews\evidence\B0-A-TRACE-Q2\negative-control\PreFixListener.cs:line 657
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.HandleConnectionAsync(Int32 index, TcpClient client) in D:\projects\bolt-sharp\docs\reviews\evidence\B0-A-TRACE-Q2\negative-control\PreFixListener.cs:line 308
+   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q02_AlreadyClosedClient_HandlerAndDisposeComplete() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 73
+   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q02_AlreadyClosedClient_HandlerAndDisposeComplete() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 76
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q01_LocalCloseBeforeEndpointCapture_IsNullSafe [< 1 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.SafeRemoteEndPoint(TcpClient client) in D:\projects\bolt-sharp\docs\reviews\evidence\B0-A-TRACE-Q2\negative-control\PreFixListener.cs:line 657
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:10.37]     BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q12_MidReadObjectDisposed_IsClosed [FAIL]
+  Failed BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q12_MidReadObjectDisposed_IsClosed [2 s]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           ↓ (pos 0)
+Expected: "CLOSED"
+Actual:   "ERROR"
+           ↑ (pos 0)
+  Stack Trace:
+     at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q12_MidReadObjectDisposed_IsClosed() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 187
+--- End of stack trace from previous location ---
+  Standard Output Messages:
+ injected=System.ObjectDisposedException: Cannot access a disposed object.
+ Object name: 'reviewer read'.; serverConnected=True; peerConnected=True
+ outcome=ERROR; error=System.ObjectDisposedException; detail=Cannot access a disposed object.  Object name: 'reviewer read'.; endpoint=127.0.0.1:27528
+
+
+Results File: D:\projects\bolt-sharp\docs\reviews\evidence\B0-A-TRACE-Q2\trx\q2-prefixed-control.trx
+
+Failed!  - Failed:     3, Passed:     4, Skipped:     0, Total:     7, Duration: 10 s - B0ATRACEQ2.Probes.dll (net8.0)

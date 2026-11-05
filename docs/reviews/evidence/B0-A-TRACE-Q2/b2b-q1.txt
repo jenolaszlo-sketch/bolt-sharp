@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+  B2BQ1.Probes -> D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll
+Test run for D:\projects\bolt-sharp\docs\reviews\probes\B2-B-Q1\bin\Debug\net8.0\B2BQ1.Probes.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Results File: D:\projects\bolt-sharp\docs\reviews\evidence\B0-A-TRACE-Q2\trx\b2b-q1.trx
+
+Passed!  - Failed:     0, Passed:    67, Skipped:     0, Total:    67, Duration: 102 ms - B2BQ1.Probes.dll (net8.0)

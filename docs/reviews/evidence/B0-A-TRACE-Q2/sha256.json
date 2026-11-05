@@ -1,0 +1,333 @@
+{
+  "description": "B0-A-TRACE-Q2 independent reviewer evidence manifest",
+  "algorithm": "SHA256",
+  "qualified_head": "3408e6b05af6c449e93979a0ff993ef7e52d9d3b",
+  "qualified_tree": "38ea330bec12666505f978310f39348d620428a3",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "8B9C3028D6467FF3BE7C793141927841D70F47F52D0590677438F488CA154992",
+      "bytes": 9
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "CBD158228937B8DF98B4B8941DE6F72AD48ED1F4AB5749A1729CD4FDED8BB16E",
+      "bytes": 8
+    },
+    {
+      "path": "authentic-reproduction/driver-legacy-client-handshake.hex",
+      "sha256": "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+      "bytes": 61
+    },
+    {
+      "path": "authentic-reproduction/driver-legacy-server-response.hex",
+      "sha256": "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+      "bytes": 13
+    },
+    {
+      "path": "authentic-reproduction/driver-legacy-trace.json",
+      "sha256": "C2A3AA4EC95608A883817274AB3616D5927D6EE4429EDB91A86BC0A7983CE518",
+      "bytes": 6013
+    },
+    {
+      "path": "authentic-reproduction/driver-manifest-client-handshake.hex",
+      "sha256": "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+      "bytes": 76
+    },
+    {
+      "path": "authentic-reproduction/driver-manifest-server-response.hex",
+      "sha256": "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+      "bytes": 31
+    },
+    {
+      "path": "authentic-reproduction/driver-manifest-trace.json",
+      "sha256": "7F85BFA2B153F18774ACB3253B9CF91701419B39AAC8364789D6157D6F376D5D",
+      "bytes": 6478
+    },
+    {
+      "path": "authentic.txt",
+      "sha256": "6CE25DEEA8CA72ED953CBA33FE067C29FBC731DAFDCBA41B5729DCC44763D854",
+      "bytes": 441
+    },
+    {
+      "path": "b2a-q2.txt",
+      "sha256": "62E2CFDBB086CBDF1EF0500FFFA7D6061B9702E2C1615273865C40E1D33F1401",
+      "bytes": 659
+    },
+    {
+      "path": "b2b-q1.txt",
+      "sha256": "80DE3B2182D5B1E554EC7371799ED457CB7F2BA66A92AB1FFFDE7AC7911250C8",
+      "bytes": 660
+    },
+    {
+      "path": "b2b-q2.txt",
+      "sha256": "725EF7EC2CC36358A43324834C4FE12D75FFEF22AD2B48751820000F485536B3",
+      "bytes": 659
+    },
+    {
+      "path": "b2c-q2.txt",
+      "sha256": "2EA77880D0FFB39924444A12E1DA50B8D1A43203A253B63B5CA03D4069335C26",
+      "bytes": 815
+    },
+    {
+      "path": "build.txt",
+      "sha256": "33832CE3C6015E9A8EBE207A50B7A38C1C8E54035D6B4750D071ECAAB1150A75",
+      "bytes": 352
+    },
+    {
+      "path": "commands.json",
+      "sha256": "8BE9066250850ED3FFEB38CD470B7C02F08B96A0B8133F338D562E82BBB52939",
+      "bytes": 41142
+    },
+    {
+      "path": "decisive-failures.json",
+      "sha256": "A5E0FB697A87E0701CAB0F76DB793F94DA92ACC3E6DF9FA06C0B1A084AFBCF8D",
+      "bytes": 9148
+    },
+    {
+      "path": "driver.txt",
+      "sha256": "345367107424CF17B7994CEF0A60454389FD714AFB6F82842489BF674D029601",
+      "bytes": 3239
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "9C7C62F625E1EBFF320974CAD8CDF287B0C9C6D36BA19187A7DE8103FEFBED18",
+      "bytes": 1910
+    },
+    {
+      "path": "harness-revisions/second-pass-LifecycleProbes.cs",
+      "sha256": "76ECC6BAA8067E105DDB1C346488C2FCE01CFAFC545F8BCAD27191C2387FB22B",
+      "bytes": 19406
+    },
+    {
+      "path": "independent-results-audit.json",
+      "sha256": "DACAC1C63687F557707A71648CC057F340B6E08D881611B452E84DD84CD064C2",
+      "bytes": 16320
+    },
+    {
+      "path": "integrity.json",
+      "sha256": "F33D8C669E902140A18A3A84F3D9F01623E56A04D3A36574421FC2C015779FE3",
+      "bytes": 21141
+    },
+    {
+      "path": "negative-control/GetStreamHookListener.cs",
+      "sha256": "B14BF16FEBFB553989E13E614509F71D7862BF5AF1F587B51CADC13BF3D9DDE5",
+      "bytes": 35059
+    },
+    {
+      "path": "negative-control/PreFixListener.cs",
+      "sha256": "61B5D3211675E726270D176B16A129623CAAFB45B8E882CD068B8441FB81F1FB",
+      "bytes": 32643
+    },
+    {
+      "path": "ownership-and-final-precommit.json",
+      "sha256": "07776B2F9DF2F05BA5AA821E1512D0BAE87EF445CE52341BE0CC28A5FE0D925A",
+      "bytes": 5688
+    },
+    {
+      "path": "q1.txt",
+      "sha256": "460DC79D918104FC80DC97354A36C955E3D29E0153EC8A859442E96B3EF072A7",
+      "bytes": 944
+    },
+    {
+      "path": "q2-corrected-build.txt",
+      "sha256": "CD35F859E9CFAD8B831BA6F1D4068D113012EF0B2BD9C2595418B61BB9ADAE66",
+      "bytes": 368
+    },
+    {
+      "path": "q2-corrected.txt",
+      "sha256": "C99B061B9723164F7B139A040D514204259BC9F24C563C9429D350A56EF55812",
+      "bytes": 5767
+    },
+    {
+      "path": "q2-final-build.txt",
+      "sha256": "B89CEBF11424D5B2101A4D4AF384CA668D023BCF2A0C2E810E431A517290919B",
+      "bytes": 2380
+    },
+    {
+      "path": "q2-final-source-build.txt",
+      "sha256": "D39C46125BAA2F5857F2DA86AD021AC7690413EF3B08D6C5D57A9EDBEEBD8447",
+      "bytes": 368
+    },
+    {
+      "path": "q2-final.txt",
+      "sha256": "C5A1C1E39757647EFC366388C23DAE5C2C5774852ABEB320A3E9AEF1080A634D",
+      "bytes": 9657
+    },
+    {
+      "path": "q2-getstream-hook.txt",
+      "sha256": "AC43932B104255577411B2C6A85138255528A415AA0CB646E699D40BAE7064B0",
+      "bytes": 2474
+    },
+    {
+      "path": "q2-hook-corrected.txt",
+      "sha256": "C66ED1B26A8E81F227E69CC50774D94E73CD593349027B62BC2E6839123A7023",
+      "bytes": 1759
+    },
+    {
+      "path": "q2-hook-final.txt",
+      "sha256": "6ED341B8947E2EC5F56B9976E7EEFB43E3CF5DFD2A56EDD8DF9C675CC26A7769",
+      "bytes": 1755
+    },
+    {
+      "path": "q2-prefix-corrected.txt",
+      "sha256": "99F7808694C545A44DE7E3790351764181A8A807FC76D3CB7337CBFF39BE71AF",
+      "bytes": 4861
+    },
+    {
+      "path": "q2-prefix-final.txt",
+      "sha256": "065794826FB460709D260DF1B0707E5DF5459944E47058CF04B8A30BF87AB3ED",
+      "bytes": 4857
+    },
+    {
+      "path": "q2-prefixed-control.txt",
+      "sha256": "E7BA88D6698567A106EDF6E36D62665414CEA051CD80DF48A3696D607B49F701",
+      "bytes": 4804
+    },
+    {
+      "path": "q2-verified-rebuild.txt",
+      "sha256": "561C91C9509A50FA0DD94169D47E421C06397F364E0DC1FF3C9C5E7487BE63DD",
+      "bytes": 368
+    },
+    {
+      "path": "q2-verified.txt",
+      "sha256": "680D58313EAEFD204099749B9BE1B3C58464CAA1A38B0A2A41CB7E16304A5E4B",
+      "bytes": 9370
+    },
+    {
+      "path": "q2.txt",
+      "sha256": "3C3E5B06B681E8F9E2D43D990E1243AB1C9BCA8DD70D03928B01E2022C285AB4",
+      "bytes": 6874
+    },
+    {
+      "path": "r1-shutdown.txt",
+      "sha256": "A92374A0C70D8EA54C4D23B9F7F77F2C4C38241345593A16DC9662CE100E0A2F",
+      "bytes": 443
+    },
+    {
+      "path": "reviewer-artifacts.json",
+      "sha256": "52E0E9950F45437255B4E16A00ED2A506E89844B6478F4949FA8DCB55FA62915",
+      "bytes": 2173
+    },
+    {
+      "path": "reviewer-run-provenance.json",
+      "sha256": "9C3A1A1FA6C4118A546F0B83F44288C30D07B0972BB6FC1F498C005C34E3BE42",
+      "bytes": 1658
+    },
+    {
+      "path": "solution.txt",
+      "sha256": "6B87F53EF28F637F2305A1717262174E0429B317C0081347E4B3AC62093B1BBA",
+      "bytes": 392
+    },
+    {
+      "path": "source-controls.json",
+      "sha256": "85D0585798FFB7336D2C193285B2A35A0795FB885EF9AA7567CBE6141DD62C65",
+      "bytes": 640
+    },
+    {
+      "path": "t10.txt",
+      "sha256": "F6DE2BF21345DF0F1A86E2821F2DCFDFAD4D773C5A21A0DC7E135086E49F97B8",
+      "bytes": 402
+    },
+    {
+      "path": "trx/authentic.trx",
+      "sha256": "10B64192A7765081045E309F4B084BAD8B531B0972A1FDE38A38571115CB267C",
+      "bytes": 4697
+    },
+    {
+      "path": "trx/b2a-q2.trx",
+      "sha256": "84944E70FD5EE771C54330DC96E6112DAEF6673B3B244B7CED81C3F33660E47A",
+      "bytes": 25357
+    },
+    {
+      "path": "trx/b2b-q1.trx",
+      "sha256": "3413F1222B250C71E01D35F704E5BE5988920CED559DC00EE9D9D44A3F9AF914",
+      "bytes": 103049
+    },
+    {
+      "path": "trx/b2b-q2.trx",
+      "sha256": "4D47A9ED1BFEFA6CE75B70F119FF2363E83E93D9C3AA04337786CE0B1DCB0D4A",
+      "bytes": 65330
+    },
+    {
+      "path": "trx/b2c-q2.trx",
+      "sha256": "D8098E9140605E06E7E44BB7F895D5CFA5C648D7218DA2D029EC89306B4AF219",
+      "bytes": 57876
+    },
+    {
+      "path": "trx/driver.trx",
+      "sha256": "4E98B998D85FCC971B2608A0844CB427E0D6310761DDC597C80FB76637786CEB",
+      "bytes": 94496
+    },
+    {
+      "path": "trx/q1.trx",
+      "sha256": "17AB9735726462D269F863AE64C94ECC4507330CCEA7B075FD11FFBD9262923A",
+      "bytes": 21288
+    },
+    {
+      "path": "trx/q2-corrected.trx",
+      "sha256": "7F4551A5381E8F01D2DA66D5C287960F581C4C6354EFB6E152E9D4FF29949642",
+      "bytes": 46540
+    },
+    {
+      "path": "trx/q2-final.trx",
+      "sha256": "AAEFE4E8836BC236BF7F477BBD2B605B15413E3B86540653B098CCBE57CC2B64",
+      "bytes": 62838
+    },
+    {
+      "path": "trx/q2-getstream-hook.trx",
+      "sha256": "ECCFB52A7E293D80AF784DC2FD5B307F78895C2FD7A9794C641B934300C0A707",
+      "bytes": 6994
+    },
+    {
+      "path": "trx/q2-hook-corrected.trx",
+      "sha256": "A8FE786E232216FB4CA51E924337FEC506F35847E7E73B26B04DCC30277C236E",
+      "bytes": 6994
+    },
+    {
+      "path": "trx/q2-hook-final.trx",
+      "sha256": "90C18F5DDA165350351D89F55F385DDDAA4BF70B87C6FFB174BEEC1BFBDCB832",
+      "bytes": 6994
+    },
+    {
+      "path": "trx/q2-prefix-corrected.trx",
+      "sha256": "64A6389A1EF35074D2E0C1E9387CE712B9FD43D1AE09253DA3C380FFCD3FC6D2",
+      "bytes": 23472
+    },
+    {
+      "path": "trx/q2-prefix-final.trx",
+      "sha256": "46CB04ED5262597FF2D55119454F59A605D38C6A077973CEFF37718BA83D2EDA",
+      "bytes": 23474
+    },
+    {
+      "path": "trx/q2-prefixed-control.trx",
+      "sha256": "17F294AE3265E5B86C3B349C258EF312A7EC99490079D56627F4D2257675AEB6",
+      "bytes": 19639
+    },
+    {
+      "path": "trx/q2-verified.trx",
+      "sha256": "3C629FC3ABA2DD2C712F003F23E7F82836630B7CE312A73166A13AAA916DEDF6",
+      "bytes": 62843
+    },
+    {
+      "path": "trx/q2.trx",
+      "sha256": "57FE324659BABAC853DD19821EA6EDFEA712EB1D5C76B0F809AC96F678EE2D31",
+      "bytes": 46541
+    },
+    {
+      "path": "trx/r1-shutdown.trx",
+      "sha256": "A528D43BD8EF90BF17E824F9E29D2C3AD812754B207984C024F9E449D5175C49",
+      "bytes": 16766
+    },
+    {
+      "path": "trx/solution.trx",
+      "sha256": "581CE533B07E56ACA9A4F8CEAA121C2E29A3A1F0E0CC6C9CAD6F6BB58AB6682A",
+      "bytes": 1117920
+    },
+    {
+      "path": "trx/t10.trx",
+      "sha256": "1B375E2F415B4F0DDC01B1DD921C0CF90A85D11976EAD5401FDE3DED6311B113",
+      "bytes": 3031
+    }
+  ]
+}

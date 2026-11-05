@@ -1,0 +1,5 @@
+Test run for D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q1\bin\Debug\net8.0\B0ATRACEQ1.Probes.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Results File: D:\projects\bolt-sharp\docs\reviews\evidence\B0-A-TRACE-Q2\trx\t10.trx
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 17 ms - B0ATRACEQ1.Probes.dll (net8.0)
