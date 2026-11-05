@@ -1,0 +1,164 @@
+﻿{
+    "description":  "B0-A-TRACE-Q2-REM-01 remediation evidence manifest",
+    "algorithm":  "SHA256",
+    "baseline_head":  "8c4c6b9e8f8aa5bc53090067ffd22b4fe0084201",
+    "baseline_tree":  "3e688553da26542704ba23c56a24d9a8a4f5d248",
+    "implementation_commit":  "0766bbdacea4955d445b007c0d83ead91ea54a21",
+    "report":  {
+                   "path":  "docs/reviews/B0-A-TRACE-Q2-REM-01-remediation.md",
+                   "sha256":  "EEB815AE379C924EA9633F0288E7DB7220DC825C026E45793C62F98047D5D23E",
+                   "bytes":  14505
+               },
+    "files":  [
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/.gitattributes",
+                      "sha256":  "705FD4D6451A31D36B3DF7DE96F83F30AC976C9B4A6D1E51671D8E2F33E2D0DA",
+                      "bytes":  8
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/.gitignore",
+                      "sha256":  "E4B9A90BFFF3E464955B5B47208AD550246DDE2EC0E93FE89C4D5D668C754B71",
+                      "bytes":  7
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/authentic-after.trx",
+                      "sha256":  "569C70BD6CE70AEEFA42E0DEEB6121C00C55ABACFBDFB89C101DEE6EF1B55D67",
+                      "bytes":  4697
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/B0-A-TRACE-Q1-after.trx",
+                      "sha256":  "59392D0099390EB5FB512ABC1679E9DE08BF78D6F17BC911E9C33F7B66DC620D",
+                      "bytes":  21288
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/B2-A-Q2-after.trx",
+                      "sha256":  "3E0823E97DE9F2892B87B3FC282440BF7B8C7C16B1735A2E5FE86B7E715012CE",
+                      "bytes":  25357
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/B2-B-Q1-after.trx",
+                      "sha256":  "EEB72807BFFD5AB90136A08F81642BAE2A92E2D01FCE16DCD4B39F04BCB7951F",
+                      "bytes":  103049
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/B2-B-Q2-after.trx",
+                      "sha256":  "1C2919D145E69F27DA2330E45EE6AEFBB5B76518EC7303E65E0A09838F5BAD71",
+                      "bytes":  65330
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/B2-C-Q2-after.trx",
+                      "sha256":  "C1E9558BFD66F79E0586ADF155428D0E098DCFCAE1310913D4DCD3F09453DEF7",
+                      "bytes":  57876
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/driver-after.trx",
+                      "sha256":  "5F33E1814369C3812BA82F462E16BE6ACCF55F55671AA56DAE55E200F4BA7CCE",
+                      "bytes":  114902
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/driver-after.txt",
+                      "sha256":  "BF372FCF670B3988310598E6BB9316FE914DF9E594C6B83470FC79BC0AE823D6",
+                      "bytes":  6116
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/focused-after.txt",
+                      "sha256":  "BBA5CF1284598DB035D8EA59659C2B0302A34B3DA73123A6B77EAB75B8C6227E",
+                      "bytes":  3566
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/probes-after.txt",
+                      "sha256":  "4D0E686344BFEED31EB44EFE3E1173B6FD9863103B6B3261E82C35DE3BFA6179",
+                      "bytes":  17396
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/q2-after.trx",
+                      "sha256":  "ECF0B4FB43651151925B3708BDDAB66C748CDA871C77E06EB01669FBE087787C",
+                      "bytes":  48227
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/q2-after.txt",
+                      "sha256":  "4B9EFCDB822ECB02B6460B9793BA3330D6300921EA63308F07171EC84F957CE6",
+                      "bytes":  1836
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/q2-hook-after.trx",
+                      "sha256":  "F8B093094CCCD3097A6F64CD5B75289FCB5D77CB20066EDFAA0D6AFCFFED83E8",
+                      "bytes":  4836
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/q2-hook-after.txt",
+                      "sha256":  "2DE045F8752FA3052042B5EF200B12D70C0AC02BDCF9318D2A41735FE497F463",
+                      "bytes":  1854
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/r1-shutdown-after.trx",
+                      "sha256":  "75F8C4405065ABB457AA18D8676AE1B27CDE4D356C114580E66F90B855951991",
+                      "bytes":  16766
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/r2-regression.trx",
+                      "sha256":  "7AC77CF36BAB11AD376ABE265D79BED1CE099377FA3FBB803D5173C1E2FC2E3A",
+                      "bytes":  22094
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/r2-regression-build.txt",
+                      "sha256":  "C8FB31EDFB16BA39BB145583255C61F8FA035C3F1686A3B3CB8503AB9BF791CF",
+                      "bytes":  836
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/r2-regression-tests.txt",
+                      "sha256":  "164F65874DBB38E264C2F813E8B0B7AE0913432F6CB53553D23D66CEB6DB2F05",
+                      "bytes":  2000
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/solution-after.trx",
+                      "sha256":  "0286668C040252D2D30C167F31925878C3B83B48DEA316C1B858E1AB66B26C34",
+                      "bytes":  1117920
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/solution-after.txt",
+                      "sha256":  "4BEDAD013D34D05FDAF1D7C50E61655A6E7F0F7A2C933728B1325273F169041D",
+                      "bytes":  1800
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/after/t10-after.trx",
+                      "sha256":  "C94CB1BD59156F425116DE430D738E48DAE8574775D1FFEB0FB1267378B80E92",
+                      "bytes":  3031
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/baseline/q2-baseline.trx",
+                      "sha256":  "2D91CA5F6D75669AE8F90AA81312F60B0084D9E92FC3C36E8CE634200BBBE897",
+                      "bytes":  62838
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/baseline/q2-baseline.txt",
+                      "sha256":  "EE83D020C70C8F0FDA9526A828284544F096D3EACD7A2A05CBC79BF335DF11A1",
+                      "bytes":  20270
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/baseline/q2-hook-baseline.trx",
+                      "sha256":  "2729C076A87744812B4739DD7A0886AB3B7A85357403FC529FD6121F97FD7F86",
+                      "bytes":  6994
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/baseline/q2-hook-baseline.txt",
+                      "sha256":  "5CFE15EB2875958D02F9DFE51832A5EAB1A9E362D27EFB05F05DFEB81DEA03A9",
+                      "bytes":  4448
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/commands.json",
+                      "sha256":  "31E3DD5F8D2D52A2C153BA3EA21D3015CE53687DA9AB523B5615741F47E9ED84",
+                      "bytes":  7732
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/controls/GetStreamHookListener.cs",
+                      "sha256":  "D7503FAEAAF7DB79315E05492E939DB60AE5CA09F4FCB5AB683AB7F7F937A703",
+                      "bytes":  38198
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R2/environment.txt",
+                      "sha256":  "809E278D34D03717D8CADD420F4E02EC7A2006E2E3A63583A0836424186EB4CE",
+                      "bytes":  2203
+                  }
+              ]
+}

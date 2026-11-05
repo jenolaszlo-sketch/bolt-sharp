@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="35293e44-f2ed-4992-be49-7bafb6e2af88" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-06 01:54:40" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T01:54:40.6458198+08:00" queuing="2026-11-06T01:54:40.6458203+08:00" start="2026-11-06T01:54:37.6478504+08:00" finish="2026-11-06T01:54:42.0211629+08:00" />
+  <TestSettings name="default" id="fe8eb237-66d1-44c6-8f92-901c11f606d4">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-06_01_54_40" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="5d0474e0-9bf0-4e6f-a278-bda0a8152be0" testId="459d6f4c-2801-57c6-caef-7a078d2166d9" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1320371" startTime="2026-11-06T01:54:39.9250008+08:00" endTime="2026-11-06T01:54:39.9250220+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5d0474e0-9bf0-4e6f-a278-bda0a8152be0">
+      <Output>
+        <StdOut>outcome=ERROR; error=System.Net.Sockets.SocketException; detail=A socket operation encountered a dead network.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="74873e5e-003e-4203-bb2f-cbcb07260ec9" testId="ce388817-7123-d7a3-2ad9-84a0125c4dae" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q19_CloseImmediatelyBeforeRealGetStream_IsClosed" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0397759" startTime="2026-11-06T01:54:41.9660788+08:00" endTime="2026-11-06T01:54:41.9660794+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="74873e5e-003e-4203-bb2f-cbcb07260ec9">
+      <Output>
+        <StdOut>outcome=CLOSED; error=System.ObjectDisposedException; detail=The client socket was closed before the handshake started.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q19_CloseImmediatelyBeforeRealGetStream_IsClosed" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="ce388817-7123-d7a3-2ad9-84a0125c4dae">
+      <Execution id="74873e5e-003e-4203-bb2f-cbcb07260ec9" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q19_CloseImmediatelyBeforeRealGetStream_IsClosed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="459d6f4c-2801-57c6-caef-7a078d2166d9">
+      <Execution id="5d0474e0-9bf0-4e6f-a278-bda0a8152be0" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q20_UnexpectedAcquisitionSocketFault_MustRemainError" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="459d6f4c-2801-57c6-caef-7a078d2166d9" executionId="5d0474e0-9bf0-4e6f-a278-bda0a8152be0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ce388817-7123-d7a3-2ad9-84a0125c4dae" executionId="74873e5e-003e-4203-bb2f-cbcb07260ec9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.57]   Discovering: B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:00.61]   Discovered:  B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:00.61]   Starting:    B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:02.82]   Finished:    B0ATRACEQ2.Probes&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

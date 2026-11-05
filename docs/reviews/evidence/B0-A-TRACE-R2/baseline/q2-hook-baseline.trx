@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="603f78ef-3cdb-4a3c-af93-6ea6a0b4a0be" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-06 01:48:37" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T01:48:37.3231351+08:00" queuing="2026-11-06T01:48:37.3231357+08:00" start="2026-11-06T01:48:34.1576843+08:00" finish="2026-11-06T01:48:38.8466441+08:00" />
+  <TestSettings name="default" id="0b3d3b24-4e68-4a3a-8c92-b2c902cf8f40">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-06_01_48_37" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="4d7d9ebe-5d7e-41bb-ac6f-c424308170c7" testId="ce388817-7123-d7a3-2ad9-84a0125c4dae" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q19_CloseImmediatelyBeforeRealGetStream_IsClosed" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0437987" startTime="2026-11-06T01:48:38.7888261+08:00" endTime="2026-11-06T01:48:38.7888268+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4d7d9ebe-5d7e-41bb-ac6f-c424308170c7">
+      <Output>
+        <StdOut>outcome=CLOSED; error=System.ObjectDisposedException; detail=The client socket was closed before the handshake started.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8a4bcb01-2a89-4d28-bbd0-1c2da519d863" testId="459d6f4c-2801-57c6-caef-7a078d2166d9" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1928661" startTime="2026-11-06T01:48:36.7475343+08:00" endTime="2026-11-06T01:48:36.7475460+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a4bcb01-2a89-4d28-bbd0-1c2da519d863">
+      <Output>
+        <StdOut>outcome=CLOSED; error=System.Net.Sockets.SocketException; detail=The client socket was closed before the handshake started.; endpoint=reviewer</StdOut>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLOSED"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 326&#xD;
+   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 327&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q19_CloseImmediatelyBeforeRealGetStream_IsClosed" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="ce388817-7123-d7a3-2ad9-84a0125c4dae">
+      <Execution id="4d7d9ebe-5d7e-41bb-ac6f-c424308170c7" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q19_CloseImmediatelyBeforeRealGetStream_IsClosed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="459d6f4c-2801-57c6-caef-7a078d2166d9">
+      <Execution id="8a4bcb01-2a89-4d28-bbd0-1c2da519d863" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q20_UnexpectedAcquisitionSocketFault_MustRemainError" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ce388817-7123-d7a3-2ad9-84a0125c4dae" executionId="4d7d9ebe-5d7e-41bb-ac6f-c424308170c7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="459d6f4c-2801-57c6-caef-7a078d2166d9" executionId="8a4bcb01-2a89-4d28-bbd0-1c2da519d863" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="2" executed="2" passed="1" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.64]   Discovering: B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:00.67]   Discovered:  B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:00.68]   Starting:    B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:00.92]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.92]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.92]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.92]       Actual:   "CLOSED"&#xD;
+[xUnit.net 00:00:00.92]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.92]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.92]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(326,0): at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError()&#xD;
+[xUnit.net 00:00:00.92]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs(327,0): at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError()&#xD;
+[xUnit.net 00:00:00.92]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.92]       Output:&#xD;
+[xUnit.net 00:00:00.92]         outcome=CLOSED; error=System.Net.Sockets.SocketException; detail=The client socket was closed before the handshake started.; endpoint=reviewer&#xD;
+[xUnit.net 00:00:02.96]   Finished:    B0ATRACEQ2.Probes&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T01:48:36.7451636+08:00">
+        <Text>[xUnit.net 00:00:00.92]     BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q20_UnexpectedAcquisitionSocketFault_MustRemainError [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

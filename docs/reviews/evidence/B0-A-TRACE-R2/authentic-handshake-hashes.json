@@ -1,0 +1,33 @@
+﻿{
+    "description":  "Authentic handshake files rechecked against the Q2 independent audit; files were not modified",
+    "files":  [
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q2/authentic-reproduction/driver-manifest-client-handshake.hex",
+                      "expected_sha256":  "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+                      "observed_sha256":  "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+                      "bytes":  76,
+                      "match":  true
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q2/authentic-reproduction/driver-manifest-server-response.hex",
+                      "expected_sha256":  "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+                      "observed_sha256":  "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+                      "bytes":  31,
+                      "match":  true
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q2/authentic-reproduction/driver-legacy-client-handshake.hex",
+                      "expected_sha256":  "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+                      "observed_sha256":  "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+                      "bytes":  61,
+                      "match":  true
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q2/authentic-reproduction/driver-legacy-server-response.hex",
+                      "expected_sha256":  "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+                      "observed_sha256":  "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+                      "bytes":  13,
+                      "match":  true
+                  }
+              ]
+}
