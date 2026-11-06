@@ -1,0 +1,179 @@
+{
+  "scenario": "T06-incomplete",
+  "negotiated_version": "5.8",
+  "client_handshake_hex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+  "server_handshake_hex": "00 00 08 05",
+  "proposals": [
+    {
+      "slot": 0,
+      "raw": "000001FF",
+      "kind": "manifest-v1",
+      "version": null,
+      "range": null
+    },
+    {
+      "slot": 1,
+      "raw": "00080805",
+      "kind": "range",
+      "version": "5.8",
+      "range": "5.0..5.8"
+    },
+    {
+      "slot": 2,
+      "raw": "00020404",
+      "kind": "range",
+      "version": "4.4",
+      "range": "4.2..4.4"
+    },
+    {
+      "slot": 3,
+      "raw": "00000003",
+      "kind": "concrete",
+      "version": "3.0",
+      "range": null
+    }
+  ],
+  "requests": [
+    {
+      "sequence": 1,
+      "name": "HELLO",
+      "unscripted": false,
+      "sensitive": true,
+      "description": "HELLO map keys [user_agent, routing, bolt_agent] \u003Cvalues redacted\u003E"
+    },
+    {
+      "sequence": 2,
+      "name": "LOGON",
+      "unscripted": false,
+      "sensitive": true,
+      "description": "LOGON map keys [scheme, principal, credentials] \u003Cvalues redacted\u003E"
+    },
+    {
+      "sequence": 3,
+      "name": "RESET",
+      "unscripted": false,
+      "sensitive": false,
+      "description": "RESET()"
+    },
+    {
+      "sequence": 4,
+      "name": "RESET",
+      "unscripted": false,
+      "sensitive": false,
+      "description": "RESET()"
+    },
+    {
+      "sequence": 5,
+      "name": "RUN",
+      "unscripted": false,
+      "sensitive": false,
+      "description": "RUN(\u0022RETURN n\u0022, {}, {})"
+    },
+    {
+      "sequence": 6,
+      "name": "PULL",
+      "unscripted": false,
+      "sensitive": false,
+      "description": "PULL({n})"
+    }
+  ],
+  "frames": [
+    {
+      "sequence": 0,
+      "direction": "ClientToServer",
+      "name": "HELLO",
+      "sensitive": true,
+      "summary": "HELLO map keys [user_agent, routing, bolt_agent] \u003Cvalues redacted\u003E",
+      "hex": "\u003Credacted\u003E"
+    },
+    {
+      "sequence": 1,
+      "direction": "ServerToClient",
+      "name": "SUCCESS",
+      "sensitive": false,
+      "summary": "SUCCESS (55 bytes)",
+      "hex": "B170A3867365727665728C4E656F346A2F352E32362E308D636F6E6E656374696F6E5F69648A626F6C742D6230622D318568696E7473A0"
+    },
+    {
+      "sequence": 2,
+      "direction": "ClientToServer",
+      "name": "LOGON",
+      "sensitive": true,
+      "summary": "LOGON map keys [scheme, principal, credentials] \u003Cvalues redacted\u003E",
+      "hex": "\u003Credacted\u003E"
+    },
+    {
+      "sequence": 3,
+      "direction": "ServerToClient",
+      "name": "SUCCESS",
+      "sensitive": false,
+      "summary": "SUCCESS (3 bytes)",
+      "hex": "B170A0"
+    },
+    {
+      "sequence": 4,
+      "direction": "ClientToServer",
+      "name": "RESET",
+      "sensitive": false,
+      "summary": "RESET()",
+      "hex": "B00F"
+    },
+    {
+      "sequence": 5,
+      "direction": "ServerToClient",
+      "name": "SUCCESS",
+      "sensitive": false,
+      "summary": "SUCCESS (3 bytes)",
+      "hex": "B170A0"
+    },
+    {
+      "sequence": 6,
+      "direction": "ClientToServer",
+      "name": "RESET",
+      "sensitive": false,
+      "summary": "RESET()",
+      "hex": "B00F"
+    },
+    {
+      "sequence": 7,
+      "direction": "ServerToClient",
+      "name": "SUCCESS",
+      "sensitive": false,
+      "summary": "SUCCESS (3 bytes)",
+      "hex": "B170A0"
+    },
+    {
+      "sequence": 8,
+      "direction": "ClientToServer",
+      "name": "RUN",
+      "sensitive": false,
+      "summary": "RUN(\u0022RETURN n\u0022, {}, {})",
+      "hex": "B3108852455455524E206EA0A0"
+    },
+    {
+      "sequence": 9,
+      "direction": "ServerToClient",
+      "name": "SUCCESS",
+      "sensitive": false,
+      "summary": "SUCCESS (13 bytes)",
+      "hex": "B170A1866669656C647391816E"
+    },
+    {
+      "sequence": 10,
+      "direction": "ClientToServer",
+      "name": "PULL",
+      "sensitive": false,
+      "summary": "PULL({n})",
+      "hex": "B13FA1816EC903E8"
+    },
+    {
+      "sequence": 11,
+      "direction": "ServerToClient",
+      "name": "RAW",
+      "sensitive": false,
+      "summary": "raw 4 byte(s)",
+      "hex": "00054142"
+    }
+  ],
+  "notes": []
+}

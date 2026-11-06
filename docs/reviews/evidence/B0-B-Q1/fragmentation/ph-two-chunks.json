@@ -1,0 +1,120 @@
+{
+  "case_name": "ph-two-chunks",
+  "case_description": "HELLO SUCCESS split into two legal PackStream chunks.",
+  "driver_package": "Neo4j.Driver 6.4.0 (exact)",
+  "driver_assembly": "Neo4j.Driver, Version=6.4.12.0, Culture=neutral, PublicKeyToken=b646bc66d277ac07",
+  "driver_informational_version": "6.4.0\u002B4ed413b01906c5d1682c62a3ee3c982cb28f99cd",
+  "handshake_response_concatenated_hex": "00 00 08 05",
+  "write_segments": [
+    {
+      "offset": 0,
+      "length": 4
+    }
+  ],
+  "inter_segment_delay_ms": 0,
+  "server_handshake_mode": "legacy",
+  "hello_variant": "whole",
+  "logon_failure_variant": "none",
+  "run_count": 1,
+  "runs": [
+    {
+      "Iteration": 1,
+      "Outcome": "success",
+      "VerifyConnectivitySucceeded": true,
+      "QueryValue": 42,
+      "QueryFailureType": null,
+      "QueryFailureMessage": null,
+      "ElapsedMs": 97.4,
+      "ExceptionType": null,
+      "ExceptionMessage": null,
+      "ExceptionStack": null,
+      "InnerExceptionChain": [],
+      "ExceptionProperties": null,
+      "ServerStillOpenAtFailure": false,
+      "Connections": [
+        {
+          "ConnectionIndex": 1,
+          "ClientHandshakeHex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+          "ManifestSelectionHex": null,
+          "Requests": [
+            "HELLO",
+            "LOGON",
+            "RESET",
+            "RESET",
+            "RUN",
+            "PULL",
+            "RESET",
+            "GOODBYE"
+          ],
+          "RequestTimesMs": [
+            21.1282,
+            23.7005,
+            40.8495,
+            40.9469,
+            58.8998,
+            59.3909,
+            71.0663,
+            82.3268
+          ],
+          "WriteSegments": [
+            {
+              "Offset": 0,
+              "Length": 4,
+              "AtMs": 4.5
+            },
+            {
+              "Offset": 0,
+              "Length": 60,
+              "AtMs": 23.6
+            },
+            {
+              "Offset": 0,
+              "Length": 9,
+              "AtMs": 24
+            },
+            {
+              "Offset": 0,
+              "Length": 9,
+              "AtMs": 40.9
+            },
+            {
+              "Offset": 0,
+              "Length": 9,
+              "AtMs": 41
+            },
+            {
+              "Offset": 0,
+              "Length": 24,
+              "AtMs": 59.3
+            },
+            {
+              "Offset": 0,
+              "Length": 10,
+              "AtMs": 59.5
+            },
+            {
+              "Offset": 0,
+              "Length": 19,
+              "AtMs": 59.7
+            },
+            {
+              "Offset": 0,
+              "Length": 9,
+              "AtMs": 71.1
+            }
+          ],
+          "Notes": [
+            "GOODBYE received"
+          ],
+          "DurationMs": 83,
+          "Stopwatch": {
+            "IsRunning": true,
+            "Elapsed": "00:00:00.0482480",
+            "ElapsedMilliseconds": 49,
+            "ElapsedTicks": 496671
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>B0BQ1.FragmentationProbe</AssemblyName>
+    <RootNamespace>B0BQ1.FragmentationProbe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Same exact pin as the producer harness; no Boltsharp project reference: this probe is
+         deliberately an independent minimal TCP responder and byte oracle. -->
+    <PackageReference Include="Neo4j.Driver" Version="6.4.0" />
+  </ItemGroup>
+
+</Project>

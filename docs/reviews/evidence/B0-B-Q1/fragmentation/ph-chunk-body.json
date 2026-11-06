@@ -1,0 +1,200 @@
+{
+  "case_name": "ph-chunk-body",
+  "case_description": "Chunk body separated from header and terminator.",
+  "driver_package": "Neo4j.Driver 6.4.0 (exact)",
+  "driver_assembly": "Neo4j.Driver, Version=6.4.12.0, Culture=neutral, PublicKeyToken=b646bc66d277ac07",
+  "driver_informational_version": "6.4.0\u002B4ed413b01906c5d1682c62a3ee3c982cb28f99cd",
+  "handshake_response_concatenated_hex": "00 00 08 05",
+  "write_segments": [
+    {
+      "offset": 0,
+      "length": 4
+    }
+  ],
+  "inter_segment_delay_ms": 0,
+  "server_handshake_mode": "legacy",
+  "hello_variant": "whole",
+  "logon_failure_variant": "none",
+  "run_count": 1,
+  "runs": [
+    {
+      "Iteration": 1,
+      "Outcome": "success",
+      "VerifyConnectivitySucceeded": true,
+      "QueryValue": 42,
+      "QueryFailureType": null,
+      "QueryFailureMessage": null,
+      "ElapsedMs": 78.8,
+      "ExceptionType": null,
+      "ExceptionMessage": null,
+      "ExceptionStack": null,
+      "InnerExceptionChain": [],
+      "ExceptionProperties": null,
+      "ServerStillOpenAtFailure": false,
+      "Connections": [
+        {
+          "ConnectionIndex": 1,
+          "ClientHandshakeHex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+          "ManifestSelectionHex": null,
+          "Requests": [
+            "HELLO",
+            "LOGON",
+            "RESET",
+            "RESET",
+            "RUN",
+            "PULL",
+            "RESET",
+            "GOODBYE"
+          ],
+          "RequestTimesMs": [
+            18.2492,
+            20.2981,
+            35.5191,
+            35.6238,
+            48.5908,
+            48.9095,
+            56.8988,
+            66.4003
+          ],
+          "WriteSegments": [
+            {
+              "Offset": 0,
+              "Length": 4,
+              "AtMs": 4
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 20.2
+            },
+            {
+              "Offset": 2,
+              "Length": 54,
+              "AtMs": 20.3
+            },
+            {
+              "Offset": 56,
+              "Length": 2,
+              "AtMs": 20.3
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 20.6
+            },
+            {
+              "Offset": 2,
+              "Length": 3,
+              "AtMs": 20.6
+            },
+            {
+              "Offset": 5,
+              "Length": 2,
+              "AtMs": 20.6
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 35.5
+            },
+            {
+              "Offset": 2,
+              "Length": 3,
+              "AtMs": 35.6
+            },
+            {
+              "Offset": 5,
+              "Length": 2,
+              "AtMs": 35.6
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 35.6
+            },
+            {
+              "Offset": 2,
+              "Length": 3,
+              "AtMs": 35.6
+            },
+            {
+              "Offset": 5,
+              "Length": 2,
+              "AtMs": 35.6
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 48.8
+            },
+            {
+              "Offset": 2,
+              "Length": 18,
+              "AtMs": 48.9
+            },
+            {
+              "Offset": 20,
+              "Length": 2,
+              "AtMs": 48.9
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 49.1
+            },
+            {
+              "Offset": 2,
+              "Length": 4,
+              "AtMs": 49.1
+            },
+            {
+              "Offset": 6,
+              "Length": 2,
+              "AtMs": 49.1
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 49.2
+            },
+            {
+              "Offset": 2,
+              "Length": 13,
+              "AtMs": 49.2
+            },
+            {
+              "Offset": 15,
+              "Length": 2,
+              "AtMs": 49.2
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 56.9
+            },
+            {
+              "Offset": 2,
+              "Length": 3,
+              "AtMs": 56.9
+            },
+            {
+              "Offset": 5,
+              "Length": 2,
+              "AtMs": 57
+            }
+          ],
+          "Notes": [
+            "GOODBYE received"
+          ],
+          "DurationMs": 66.7,
+          "Stopwatch": {
+            "IsRunning": true,
+            "Elapsed": "00:00:00.0376559",
+            "ElapsedMilliseconds": 38,
+            "ElapsedTicks": 387242
+          }
+        }
+      ]
+    }
+  ]
+}

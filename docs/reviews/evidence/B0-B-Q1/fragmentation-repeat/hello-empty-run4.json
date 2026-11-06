@@ -1,0 +1,80 @@
+{
+  "case_name": "hello-empty",
+  "case_description": "HELLO SUCCESS {} (no metadata).",
+  "driver_package": "Neo4j.Driver 6.4.0 (exact)",
+  "driver_assembly": "Neo4j.Driver, Version=6.4.12.0, Culture=neutral, PublicKeyToken=b646bc66d277ac07",
+  "driver_informational_version": "6.4.0\u002B4ed413b01906c5d1682c62a3ee3c982cb28f99cd",
+  "handshake_response_concatenated_hex": "00 00 08 05",
+  "write_segments": [
+    {
+      "offset": 0,
+      "length": 4
+    }
+  ],
+  "inter_segment_delay_ms": 0,
+  "server_handshake_mode": "legacy",
+  "hello_variant": "empty",
+  "logon_failure_variant": "none",
+  "run_count": 1,
+  "runs": [
+    {
+      "Iteration": 1,
+      "Outcome": "failure",
+      "VerifyConnectivitySucceeded": false,
+      "QueryValue": null,
+      "QueryFailureType": null,
+      "QueryFailureMessage": null,
+      "ElapsedMs": 46.4,
+      "ExceptionType": "System.NullReferenceException",
+      "ExceptionMessage": "Object reference not set to an instance of an object.",
+      "ExceptionStack": "System.NullReferenceException: Object reference not set to an instance of an object.\r\n   at Neo4j.Driver.Internal.Connector.PooledConnection.OnErrorAsync(Exception error)\r\n   at Neo4j.Driver.Internal.Connector.DelegatedConnection.InitAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.CreateNewPooledConnectionAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.CreateNewPooledConnectionAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.CreateNewConnectionOrGetIdleAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.AcquireAsync(AccessMode mode, String database, SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.VerifyConnectivityAndGetInfoAsync()\r\n   at B0BQ1.FragmentationProbe.Program.RunOnceAsync(CaseDefinition definition, Int32 iteration) in D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-B-Q1\\FragmentationProbe\\Program.cs:line 88",
+      "InnerExceptionChain": [
+        "System.NullReferenceException: Object reference not set to an instance of an object."
+      ],
+      "ExceptionProperties": {},
+      "ServerStillOpenAtFailure": false,
+      "Connections": [
+        {
+          "ConnectionIndex": 1,
+          "ClientHandshakeHex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+          "ManifestSelectionHex": null,
+          "Requests": [
+            "HELLO",
+            "LOGON"
+          ],
+          "RequestTimesMs": [
+            18.3485,
+            20.2443
+          ],
+          "WriteSegments": [
+            {
+              "Offset": 0,
+              "Length": 4,
+              "AtMs": 4.3
+            },
+            {
+              "Offset": 0,
+              "Length": 7,
+              "AtMs": 20.2
+            },
+            {
+              "Offset": 0,
+              "Length": 7,
+              "AtMs": 20.5
+            }
+          ],
+          "Notes": [
+            "client closed"
+          ],
+          "DurationMs": 26.7,
+          "Stopwatch": {
+            "IsRunning": true,
+            "Elapsed": "00:00:00.0443354",
+            "ElapsedMilliseconds": 45,
+            "ElapsedTicks": 455520
+          }
+        }
+      ]
+    }
+  ]
+}

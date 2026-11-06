@@ -1,0 +1,39 @@
+{
+  "scenario": "T01-reject",
+  "negotiated_version": "rejected",
+  "client_handshake_hex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+  "server_handshake_hex": "00 00 00 00",
+  "proposals": [
+    {
+      "slot": 0,
+      "raw": "000001FF",
+      "kind": "manifest-v1",
+      "version": null,
+      "range": null
+    },
+    {
+      "slot": 1,
+      "raw": "00080805",
+      "kind": "range",
+      "version": "5.8",
+      "range": "5.0..5.8"
+    },
+    {
+      "slot": 2,
+      "raw": "00020404",
+      "kind": "range",
+      "version": "4.4",
+      "range": "4.2..4.4"
+    },
+    {
+      "slot": 3,
+      "raw": "00000003",
+      "kind": "concrete",
+      "version": "3.0",
+      "range": null
+    }
+  ],
+  "requests": [],
+  "frames": [],
+  "notes": []
+}

@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B0-B-Q1 reviewer negative controls. This is a reviewer-only console probe: it links the
+    producer harness infrastructure source read-only (no producer file is modified) and executes
+    copies of selected producer assertions against deliberately mutated server behaviour. A
+    "DETECTED" control means the copied producer assertion (or the producer test's uncaught driver
+    call) failed as required. A "NOT_DETECTED" control documents an assertion blind spot.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>B0BQ1.NegativeControls</AssemblyName>
+    <RootNamespace>B0BQ1.NegativeControls</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Neo4j.Driver" Version="6.4.0" />
+    <PackageReference Include="xunit.assert" Version="2.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\..\..\tests\BoltSharp.IntegrationTests\Infrastructure\BoltConnectionScript.cs"
+             Link="ProducerInfrastructure\BoltConnectionScript.cs" />
+    <Compile Include="..\..\..\..\..\tests\BoltSharp.IntegrationTests\Infrastructure\DriverHarness.cs"
+             Link="ProducerInfrastructure\DriverHarness.cs" />
+    <Compile Include="..\..\..\..\..\tests\BoltSharp.IntegrationTests\Infrastructure\ProtocolFixtures.cs"
+             Link="ProducerInfrastructure\ProtocolFixtures.cs" />
+    <Compile Include="..\..\..\..\..\tests\BoltSharp.IntegrationTests\Infrastructure\ScenarioSupport.cs"
+             Link="ProducerInfrastructure\ScenarioSupport.cs" />
+    <Compile Include="..\..\..\..\..\tests\BoltSharp.IntegrationTests\Infrastructure\ScriptedBoltServer.cs"
+             Link="ProducerInfrastructure\ScriptedBoltServer.cs" />
+    <Compile Include="..\..\..\..\..\tests\BoltSharp.IntegrationTests\Infrastructure\WireCapture.cs"
+             Link="ProducerInfrastructure\WireCapture.cs" />
+  </ItemGroup>
+
+</Project>

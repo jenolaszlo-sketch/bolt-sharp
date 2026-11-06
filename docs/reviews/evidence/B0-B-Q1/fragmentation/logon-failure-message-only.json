@@ -1,0 +1,87 @@
+{
+  "case_name": "logon-failure-message-only",
+  "case_description": "LOGON FAILURE {message} only.",
+  "driver_package": "Neo4j.Driver 6.4.0 (exact)",
+  "driver_assembly": "Neo4j.Driver, Version=6.4.12.0, Culture=neutral, PublicKeyToken=b646bc66d277ac07",
+  "driver_informational_version": "6.4.0\u002B4ed413b01906c5d1682c62a3ee3c982cb28f99cd",
+  "handshake_response_concatenated_hex": "00 00 08 05",
+  "write_segments": [
+    {
+      "offset": 0,
+      "length": 4
+    }
+  ],
+  "inter_segment_delay_ms": 0,
+  "server_handshake_mode": "legacy",
+  "hello_variant": "whole",
+  "logon_failure_variant": "message-only",
+  "run_count": 1,
+  "runs": [
+    {
+      "Iteration": 1,
+      "Outcome": "failure",
+      "VerifyConnectivitySucceeded": false,
+      "QueryValue": null,
+      "QueryFailureType": null,
+      "QueryFailureMessage": null,
+      "ElapsedMs": 56.8,
+      "ExceptionType": "Neo4j.Driver.DatabaseException",
+      "ExceptionMessage": "The client is unauthorized due to authentication failure.",
+      "ExceptionStack": "Neo4j.Driver.DatabaseException: The client is unauthorized due to authentication failure.\r\n   at Neo4j.Driver.Internal.Connector.PooledConnection.OnErrorAsync(Exception error)\r\n   at Neo4j.Driver.Internal.Connector.DelegatedConnection.InitAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.CreateNewPooledConnectionAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.CreateNewPooledConnectionAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.CreateNewConnectionOrGetIdleAsync(SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.AcquireAsync(AccessMode mode, String database, SessionConfig sessionConfig, CancellationToken cancellationToken)\r\n   at Neo4j.Driver.Internal.ConnectionPool.VerifyConnectivityAndGetInfoAsync()\r\n   at B0BQ1.FragmentationProbe.Program.RunOnceAsync(CaseDefinition definition, Int32 iteration) in D:\\projects\\bolt-sharp\\docs\\reviews\\probes\\B0-B-Q1\\FragmentationProbe\\Program.cs:line 88",
+      "InnerExceptionChain": [
+        "Neo4j.Driver.DatabaseException: The client is unauthorized due to authentication failure."
+      ],
+      "ExceptionProperties": {
+        "Code": "Neo.DatabaseError.General.UnknownError",
+        "GqlStatus": "50N42",
+        "GqlStatusDescription": "error: general processing exception - unexpected error. The client is unauthorized due to authentication failure."
+      },
+      "ServerStillOpenAtFailure": false,
+      "Connections": [
+        {
+          "ConnectionIndex": 1,
+          "ClientHandshakeHex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+          "ManifestSelectionHex": null,
+          "Requests": [
+            "HELLO",
+            "LOGON",
+            "GOODBYE"
+          ],
+          "RequestTimesMs": [
+            17.8231,
+            19.7745,
+            40.118
+          ],
+          "WriteSegments": [
+            {
+              "Offset": 0,
+              "Length": 4,
+              "AtMs": 4.4
+            },
+            {
+              "Offset": 0,
+              "Length": 58,
+              "AtMs": 19.7
+            },
+            {
+              "Offset": 0,
+              "Length": 74,
+              "AtMs": 20
+            }
+          ],
+          "Notes": [
+            "logon failure sent; connection kept open for observation",
+            "GOODBYE received"
+          ],
+          "DurationMs": 40.4,
+          "Stopwatch": {
+            "IsRunning": true,
+            "Elapsed": "00:00:00.0426980",
+            "ElapsedMilliseconds": 43,
+            "ElapsedTicks": 437033
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+    "probe":  "B0-B-Q1 independent graph decode",
+    "source_evidence":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t04-graph-values.json",
+    "source_frame_sequence":  11,
+    "source_frame_hex":  "B17193B44E019186506572736F6EA1846E616D6585416C696365836E3A31B852010102854B4E4F5753A18573696E6365C907E883723A31836E3A31836E3A32B44E029186506572736F6EA1846E616D6583426F62836E3A32",
+    "decoder":  "docs/reviews/probes/B0-B-Q1/GraphDecode/decode-graph.ps1 (standalone PackStream subset)",
+    "decoded":  {
+                    "struct_tag":  "0x71",
+                    "struct_fields":  1,
+                    "values":  [
+                                   {
+                                       "marker":  "0xB4",
+                                       "tag":  "0x4E",
+                                       "field_count":  4,
+                                       "fields":  [
+                                                      1,
+                                                      [
+                                                          "Person"
+                                                      ],
+                                                      {
+                                                          "name":  "Alice"
+                                                      },
+                                                      "n:1"
+                                                  ]
+                                   },
+                                   {
+                                       "marker":  "0xB8",
+                                       "tag":  "0x52",
+                                       "field_count":  8,
+                                       "fields":  [
+                                                      1,
+                                                      1,
+                                                      2,
+                                                      "KNOWS",
+                                                      {
+                                                          "since":  2024
+                                                      },
+                                                      "r:1",
+                                                      "n:1",
+                                                      "n:2"
+                                                  ]
+                                   },
+                                   {
+                                       "marker":  "0xB4",
+                                       "tag":  "0x4E",
+                                       "field_count":  4,
+                                       "fields":  [
+                                                      2,
+                                                      [
+                                                          "Person"
+                                                      ],
+                                                      {
+                                                          "name":  "Bob"
+                                                      },
+                                                      "n:2"
+                                                  ]
+                                   }
+                               ]
+                },
+    "expected_fixture":  {
+                             "node_a":  "Node(id=1, elementId=n:1, labels=[Person], name=Alice)",
+                             "relationship":  "Relationship(id=1, start=1, end=2, type=KNOWS, elementId=r:1, startElementId=n:1, endElementId=n:2, since=2024)",
+                             "node_b":  "Node(id=2, elementId=n:2, labels=[Person], name=Bob)"
+                         },
+    "checks":  [
+                   {
+                       "name":  "record value count",
+                       "expected":  3,
+                       "actual":  3,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node A struct tag",
+                       "expected":  "0x4E",
+                       "actual":  "0x4E",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node A struct field count",
+                       "expected":  4,
+                       "actual":  4,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node A numeric id",
+                       "expected":  1,
+                       "actual":  1,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node A labels",
+                       "expected":  [
+                                        "Person"
+                                    ],
+                       "actual":  [
+                                      "Person"
+                                  ],
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node A name",
+                       "expected":  "Alice",
+                       "actual":  "Alice",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node A element id",
+                       "expected":  "n:1",
+                       "actual":  "n:1",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship struct tag",
+                       "expected":  "0x52",
+                       "actual":  "0x52",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship struct field count",
+                       "expected":  8,
+                       "actual":  8,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship numeric id",
+                       "expected":  1,
+                       "actual":  1,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship start node id",
+                       "expected":  1,
+                       "actual":  1,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship end node id",
+                       "expected":  2,
+                       "actual":  2,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship type",
+                       "expected":  "KNOWS",
+                       "actual":  "KNOWS",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship since",
+                       "expected":  2024,
+                       "actual":  2024,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship element id",
+                       "expected":  "r:1",
+                       "actual":  "r:1",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship start element id",
+                       "expected":  "n:1",
+                       "actual":  "n:1",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "relationship end element id",
+                       "expected":  "n:2",
+                       "actual":  "n:2",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node B struct tag",
+                       "expected":  "0x4E",
+                       "actual":  "0x4E",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node B struct field count",
+                       "expected":  4,
+                       "actual":  4,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node B numeric id",
+                       "expected":  2,
+                       "actual":  2,
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node B labels",
+                       "expected":  [
+                                        "Person"
+                                    ],
+                       "actual":  [
+                                      "Person"
+                                  ],
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node B name",
+                       "expected":  "Bob",
+                       "actual":  "Bob",
+                       "pass":  true
+                   },
+                   {
+                       "name":  "node B element id",
+                       "expected":  "n:2",
+                       "actual":  "n:2",
+                       "pass":  true
+                   }
+               ],
+    "all_checks_pass":  true
+}

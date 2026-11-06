@@ -1,0 +1,160 @@
+{
+  "case_name": "ph-header-slow",
+  "case_description": "Chunk header separated from body with a 100 ms delay.",
+  "driver_package": "Neo4j.Driver 6.4.0 (exact)",
+  "driver_assembly": "Neo4j.Driver, Version=6.4.12.0, Culture=neutral, PublicKeyToken=b646bc66d277ac07",
+  "driver_informational_version": "6.4.0\u002B4ed413b01906c5d1682c62a3ee3c982cb28f99cd",
+  "handshake_response_concatenated_hex": "00 00 08 05",
+  "write_segments": [
+    {
+      "offset": 0,
+      "length": 4
+    }
+  ],
+  "inter_segment_delay_ms": 0,
+  "server_handshake_mode": "legacy",
+  "hello_variant": "whole",
+  "logon_failure_variant": "none",
+  "run_count": 1,
+  "runs": [
+    {
+      "Iteration": 1,
+      "Outcome": "success",
+      "VerifyConnectivitySucceeded": true,
+      "QueryValue": 42,
+      "QueryFailureType": null,
+      "QueryFailureMessage": null,
+      "ElapsedMs": 926.4,
+      "ExceptionType": null,
+      "ExceptionMessage": null,
+      "ExceptionStack": null,
+      "InnerExceptionChain": [],
+      "ExceptionProperties": null,
+      "ServerStillOpenAtFailure": false,
+      "Connections": [
+        {
+          "ConnectionIndex": 1,
+          "ClientHandshakeHex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+          "ManifestSelectionHex": null,
+          "Requests": [
+            "HELLO",
+            "LOGON",
+            "RESET",
+            "RESET",
+            "RUN",
+            "PULL",
+            "RESET",
+            "GOODBYE"
+          ],
+          "RequestTimesMs": [
+            19.0733,
+            131.2022,
+            240.1334,
+            349.0349,
+            474.7882,
+            580.8051,
+            796.5552,
+            912.3135
+          ],
+          "WriteSegments": [
+            {
+              "Offset": 0,
+              "Length": 4,
+              "AtMs": 4.2
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 21.2
+            },
+            {
+              "Offset": 2,
+              "Length": 56,
+              "AtMs": 130.9
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 131.5
+            },
+            {
+              "Offset": 2,
+              "Length": 5,
+              "AtMs": 233.2
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 240.2
+            },
+            {
+              "Offset": 2,
+              "Length": 5,
+              "AtMs": 348.8
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 349.1
+            },
+            {
+              "Offset": 2,
+              "Length": 5,
+              "AtMs": 459.6
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 475.2
+            },
+            {
+              "Offset": 2,
+              "Length": 20,
+              "AtMs": 580.6
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 581.3
+            },
+            {
+              "Offset": 2,
+              "Length": 6,
+              "AtMs": 681.7
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 682.1
+            },
+            {
+              "Offset": 2,
+              "Length": 15,
+              "AtMs": 791.7
+            },
+            {
+              "Offset": 0,
+              "Length": 2,
+              "AtMs": 796.6
+            },
+            {
+              "Offset": 2,
+              "Length": 5,
+              "AtMs": 906.2
+            }
+          ],
+          "Notes": [
+            "GOODBYE received"
+          ],
+          "DurationMs": 912.7,
+          "Stopwatch": {
+            "IsRunning": true,
+            "Elapsed": "00:00:00.0430244",
+            "ElapsedMilliseconds": 43,
+            "ElapsedTicks": 441741
+          }
+        }
+      ]
+    }
+  ]
+}

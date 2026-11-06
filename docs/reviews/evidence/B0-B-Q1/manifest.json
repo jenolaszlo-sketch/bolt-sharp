@@ -1,0 +1,608 @@
+{
+    "probe":  "B0-B-Q1 independent qualification of B0-B-DRV-INT-01",
+    "reviewer":  "GLM-5.3-Flash (provider nvidia) in OpenCode",
+    "reviewed_head":  "9d121aedb3e733930b903d2986fcb74aa0d7f39c",
+    "implementation_commit":  "46b0e8226331117b6b5d6da10ec40a24c46862d9",
+    "parent_commit":  "a4429ef969a3f150c4ab1b4908a193ffaddcce2a",
+    "driver":  "Neo4j.Driver 6.4.0 (exact pin; assembly 6.4.12.0; informational 6.4.0+4ed413b01906c5d1682c62a3ee3c982cb28f99cd)",
+    "generated_utc":  "2026-11-06T22:58:30Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/core-solution-build-rerun.log",
+                               "sha256":  "0353a2f0ec224eb3c1b599efb682010cf76a0f601244528097893f978c474f5d",
+                               "bytes":  706
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/core-solution-tests.log",
+                               "sha256":  "05fd9c3d9d0b3ae1195953700aca0d37313d68513cae733ecb2572dfcec9c1ae",
+                               "bytes":  1214
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/dotnet-info.txt",
+                               "sha256":  "88eb373c7018f650bb7c594ee095d9d8acb6f4d5d5583a18ef0a268d6bcb5243",
+                               "bytes":  3822
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/driver-source/BoltHandshaker.cs",
+                               "sha256":  "5b879f36e433e8804dc9a42f99bd4af4434bacf10f157236e5c5097e3f62224f",
+                               "bytes":  9401
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-connection-id-only.json",
+                               "sha256":  "28d42bc3fea82901f990b4ddfdbf335e386c62039b518042ef1fa6cbaec8ada0",
+                               "bytes":  3549
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-empty.json",
+                               "sha256":  "cc80402ba87997f3aedb4de50d21623d1ef139a9a96a0fe14c53bedf8f1237d8",
+                               "bytes":  3520
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-full.json",
+                               "sha256":  "b7b373cf04b39dba62621ab98f3fb0a9f3dab664197d322cd8f4c8df9d3e37ad",
+                               "bytes":  3137
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-hints-only.json",
+                               "sha256":  "295848f452174fa892669ad06e447488de1afdd8a0c71acc0761f79e4799684b",
+                               "bytes":  3555
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-no-hints.json",
+                               "sha256":  "0c9edff4a0f5e66549bc38e9e5ff874ac2276bcb3205773af315ddf8b1031acc",
+                               "bytes":  3144
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-server-only.json",
+                               "sha256":  "c05c80493f1087980e2f91873647e6fbf3f9cded834b3c6135c8f6c5a9e76c82",
+                               "bytes":  3121
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-1-1-1.json",
+                               "sha256":  "f50cc304b5cd2a067a6d5dbcb26803984b08a7141a2e8d7925f1cfbe2cba4a91",
+                               "bytes":  5841
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-1-1-1-d10.json",
+                               "sha256":  "dbcccf2b8a55b5f3ac17fbc6e080f09bac95b3336d410d43c32da03fcb8eb50c",
+                               "bytes":  5850
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3.json",
+                               "sha256":  "4d5748c082c6d9e127fb6c918abf3e1cff458e940435169e9d084552e0b315e7",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d1.json",
+                               "sha256":  "8224d26e66fbd60c4c730d70071609373f6ad27058330f3eb2e66f25793c17e6",
+                               "bytes":  5495
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d10.json",
+                               "sha256":  "7ea18e6b30a9de53456450eafa3d3284050f3588e9830f9d5c3ad48112e9935b",
+                               "bytes":  5500
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d1000.json",
+                               "sha256":  "3266f86c20a5f46537fd23de44456ccdd9ada8f802e955b3e639603b4a90038d",
+                               "bytes":  5506
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d3000.json",
+                               "sha256":  "26bfc866813fdb6d93516acd491de064c0f219fda9af6cf6c79f9fcd99b5066e",
+                               "bytes":  5461
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d50.json",
+                               "sha256":  "3d59145cc47082099b65069b7082a5f60227e0e6091c2b92ed6601fc18647091",
+                               "bytes":  5498
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-2-2.json",
+                               "sha256":  "d924760b8e41722dfbceeeed76069c8e36c25c1bbde732d792c4390a632341f0",
+                               "bytes":  5492
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-2-2-d10.json",
+                               "sha256":  "042005328c13bf841cdf30cae028411ef6b731e54408b4113f24dffd3391e8c3",
+                               "bytes":  5500
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-3-1.json",
+                               "sha256":  "fe3cbd94ad620d587b70bb1ac1de7c78a0ee71e487a3275f31f678a71ccfdbf1",
+                               "bytes":  5489
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-manifest-whole.json",
+                               "sha256":  "7c453cca8697dd4e1e3bb630b52153dfdcfa7b483a57566bfdee99b6091b5fe5",
+                               "bytes":  3173
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-whole.json",
+                               "sha256":  "52dade80e8f295e859ae84e556922544b7b6f7d309304a3197c9d50c763f8d0c",
+                               "bytes":  3132
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-whole-d0-wait.json",
+                               "sha256":  "322b7356eba5ef4d40550deffe623ed3d9664dcec8cd69609474a7d69b3a11c7",
+                               "bytes":  3132
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-code-gql-no-description.json",
+                               "sha256":  "f97b0992fa29f872a0e86f1cc04e795a423670d339c97d0ee34169fb7a51e644",
+                               "bytes":  3870
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-empty.json",
+                               "sha256":  "330cf3afaa87a6a4c6d28e8d198c8ef5a405208a90f1168b2066aa8762fc830e",
+                               "bytes":  3771
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-full.json",
+                               "sha256":  "6227ae03642f4ca148bdb3437ff476cf2335231c180ab17607897625d8774dd8",
+                               "bytes":  3821
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-message-only.json",
+                               "sha256":  "d43f52b878a5f58d50b3d970e96252cbf95b915e845be1c3fe08ee1b072005c9",
+                               "bytes":  3924
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-neo4j-code-only.json",
+                               "sha256":  "f305445b4a01255e034050b1ac4b58231740712739e03cd5db79c3eeba25c07b",
+                               "bytes":  3828
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-no-code.json",
+                               "sha256":  "8b40c60c4d76421c03f286d6b408df9c047a375081a2e4bbdac1e993655dcf66",
+                               "bytes":  3769
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-no-gql.json",
+                               "sha256":  "c2ff1cfb0f0e820bfe1ba75976c26e192407bb513b16babe6ca8d653b00cd291",
+                               "bytes":  3785
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-old-code.json",
+                               "sha256":  "9fb1d72d367622ac083cc5c973fc87a7dcbf417f0d3ccdf16adea8bd993fd106",
+                               "bytes":  3950
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-chunk-body.json",
+                               "sha256":  "5b069b4f4319b3d6788df527cdbd8eabaf8fcb01dcb42b1505687b7180b39a2e",
+                               "bytes":  4975
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-chunk-header.json",
+                               "sha256":  "b7cf56f2882179ca1890493defee903369a33f2e6708115bef461f12a147e734",
+                               "bytes":  4061
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-header-slow.json",
+                               "sha256":  "cece040cf8fe1a4a7d996e99b108939f5b85b88d93268fa43e35f27d63657411",
+                               "bytes":  4086
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-perbyte.json",
+                               "sha256":  "0da0d729ddce5f0c8c9fe83251cddb252ea7ae75c11bf2afc0decaa5448d50aa",
+                               "bytes":  17550
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-terminator.json",
+                               "sha256":  "db9e3ee430c3877c9d561b34b2338b4be7b6cb40b33afdd16600642f65e54415",
+                               "bytes":  4050
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-two-chunks.json",
+                               "sha256":  "3edde201c7dded8a6c3659e2b9f7764bac59eeac11401a032e8ee78d3b10457f",
+                               "bytes":  3136
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-whole.json",
+                               "sha256":  "174ee98119b5d40c687ae838537789851bdcae182b19dc5cdc0f306bb198d415",
+                               "bytes":  3123
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/smoke-hs-whole.json",
+                               "sha256":  "22e4d3982a97f0672eb12052ef71959247bbddaa830ebacf3ffa254c0e3a8cec",
+                               "bytes":  3093
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-probe-build.log",
+                               "sha256":  "63dbaafb630abb12d807e31dda03b1a80ba19b343fe028694132f5b6964e2730",
+                               "bytes":  616
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run1.json",
+                               "sha256":  "17fbd1b5269b6531908ef0f9ac49c6294bc1c42f98f31689288406a98c3341a7",
+                               "bytes":  3551
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run2.json",
+                               "sha256":  "3c351fca31c16bc03d210669304ddefabe1b4c4b7e18d25fd1fd88558c51bd60",
+                               "bytes":  3549
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run3.json",
+                               "sha256":  "b868a21cf0d441ecfc4e911cc8fd3190382815d73f2f59ebb5165e1a62f4e961",
+                               "bytes":  3549
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run4.json",
+                               "sha256":  "e1763633dd9b07a537ac497b2bb5d04b37678f63b655bae8d78017337d1f69b7",
+                               "bytes":  3549
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run5.json",
+                               "sha256":  "eedfd4834fd2c4178450679010bfa5265c0eeb4c4b88fce9d65957347967beee",
+                               "bytes":  3551
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run1.json",
+                               "sha256":  "a0071e3a89b95287376cfe531f5d7e5f3eacfbdceb2194a2c5dc9d6d706d929a",
+                               "bytes":  3519
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run2.json",
+                               "sha256":  "df4ec432fe7f2561067d3c0e336306bec9d6d2fbfb941cb1b03055fe99986ea4",
+                               "bytes":  3518
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run3.json",
+                               "sha256":  "d4a850e2cbea756677aa0d6e8d21d1ef0659c4bcbe8582ffb4ec9dc4fc88dd3e",
+                               "bytes":  3518
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run4.json",
+                               "sha256":  "ee6039814ebd1cf846a9eaed129f668b5e8e738f7017cbb2f6bf7d0f98849531",
+                               "bytes":  3520
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run5.json",
+                               "sha256":  "49e595a806003f5217d123cf5163e45187dea078f57f6133345e6e9954757250",
+                               "bytes":  3518
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run1.json",
+                               "sha256":  "fce7db2c0cef3774922c7def9fb2ba23d00bf3949eeb837449500561e33c4e8e",
+                               "bytes":  3126
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run2.json",
+                               "sha256":  "2082f11acb5b37350b6fa6151f18e5da691ef53555767bdf44a11f3a73d9bd81",
+                               "bytes":  3124
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run3.json",
+                               "sha256":  "984df3582f5b856aa18e5b358af2d0a569d063caa1694bafa6daf07295387e43",
+                               "bytes":  3126
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run4.json",
+                               "sha256":  "effb37b49872b7c7e0ff26db3b2b13eb684eebca2f36a1fd664c3fd591d57fc9",
+                               "bytes":  3123
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run5.json",
+                               "sha256":  "a94375a1e766aa79a2e1faac4f47dc87b2af5888629ca4a8b4da5fcbc8bf716a",
+                               "bytes":  3124
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run1.json",
+                               "sha256":  "02b6d8d8d7fdd531639828bd706436b61f2cdcb35d5edc1f9df44e69158460cb",
+                               "bytes":  5841
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run2.json",
+                               "sha256":  "bced0911281ef51603fd7b8291a572542285ffefa5fbbbd278fa7d9d0ce869a0",
+                               "bytes":  5839
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run3.json",
+                               "sha256":  "cbfa83d4fcf970505d5cc36889e5db7f6442ee184e1aea4a50827cb9c77f23f6",
+                               "bytes":  5835
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run4.json",
+                               "sha256":  "bdc6dde62047d940d79b0d51cdf63d8bc18c62928a579ddffda5cababc5956c2",
+                               "bytes":  5839
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run5.json",
+                               "sha256":  "c94889f9b5fe71515b1e5b51fc51a21f82f0e8a5d4ee911eeac0765f0aa62905",
+                               "bytes":  5841
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run1.json",
+                               "sha256":  "9d199841ca8d615c99cd7516c322dac218d76ee91483c05ca06ecfc92bcb1ce9",
+                               "bytes":  5489
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run2.json",
+                               "sha256":  "c2f5ee4e9e08d53bbf6718b83fde90ed5d4a39bd7b48eaf38902112d3675e256",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run3.json",
+                               "sha256":  "2d8ee5c74ec574f8104c6285627092d1e3e777d9da00351994696ce573073f52",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run4.json",
+                               "sha256":  "d7a567a1e108e95600ba6d75b71350644e442e604c80cb0749160f1ffd1b0eeb",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run5.json",
+                               "sha256":  "507d2ee1d08e7f715126ca7a17923eaaa379c40d6d54ee69459ce067ee6561d4",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run1.json",
+                               "sha256":  "63bf08fd569d3e9397252c37e13c181d056ed02a22c612171ec8460757a0d043",
+                               "bytes":  5492
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run2.json",
+                               "sha256":  "bb0c1376a1d1c1f0e813a37362c56177efeab284b824ed2c2b42d86c703786f4",
+                               "bytes":  5492
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run3.json",
+                               "sha256":  "01feb64221f5fe72c00413ff892364b2f2c68ef66efc048cb3595b60ff5a1c43",
+                               "bytes":  5492
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run4.json",
+                               "sha256":  "b2eb561ae66a970faced031a762bf98a05ee05e6071a5c00c33484c3c17d750d",
+                               "bytes":  5492
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run5.json",
+                               "sha256":  "ada4f1f10eea1918ffc43787b7154720baa643ade598e8e5a6c8a2c6933d1a3e",
+                               "bytes":  5490
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run1.json",
+                               "sha256":  "706bef0c20b3089873097d8b0e9b82d7ac7d2320fed794e84b0df541353f0020",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run2.json",
+                               "sha256":  "22c3cd358405d155b316e799acf8a611d99ee2f01074a246f33f4c2818e32f1d",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run3.json",
+                               "sha256":  "a08e46580c0bee31d2d3bdf1f01aaa98af295c365c4bb8b3d0c2254c209cf2c2",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run4.json",
+                               "sha256":  "98b64fe6f0e9f9fe93f1f01df468185fe88744606e8e1d5ebe95bb841979df1c",
+                               "bytes":  5491
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run5.json",
+                               "sha256":  "67ca2aa147582a35a5163005563a2b65a5b3dec0aceba9fd84253f1017a7d8b7",
+                               "bytes":  5489
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run1.json",
+                               "sha256":  "7d466f2b3000ddbd1e65a41b8f41364fb98fafc22c1c5dd2f04d6b93ec397ca0",
+                               "bytes":  3132
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run2.json",
+                               "sha256":  "57797f4212698a44feaa957507ef30df8b57d9244952595abfa771ee6a652091",
+                               "bytes":  3129
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run3.json",
+                               "sha256":  "a0e90bda09adbfe2fcb11cdc41202bdcca561a1c3fd5b6ac94bc5605c61d714d",
+                               "bytes":  3128
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run4.json",
+                               "sha256":  "c3dc1eb74fa0080cc036a7c8553ab264b2eb68e460ece9dd31292078a10893ca",
+                               "bytes":  3125
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run5.json",
+                               "sha256":  "54627e71b3f82385307644441043ecd72b6a37275a5e8e16f85096039edc2cd6",
+                               "bytes":  3132
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-summary.json",
+                               "sha256":  "85c21d62e3a53a304edcae384bf0bf9a4037abaefe2e581b8f8734633a059f64",
+                               "bytes":  13506
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/graph-independent-decode.json",
+                               "sha256":  "3e14f0d897e18334673448a63fc719c02b4dd8e1801142f7708800998b5296ee",
+                               "bytes":  9314
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/graph-independent-decode.log",
+                               "sha256":  "8cff6b908f577e14d92f733cc5683c8bd868aa61a1ec09735d65ccc11eae254c",
+                               "bytes":  18634
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/integration-build.log",
+                               "sha256":  "8562c4b76e954761c6ab205b7e638ab88446c018e395eea71de22c7d0d7533b5",
+                               "bytes":  844
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/integration-tests.log",
+                               "sha256":  "4ec9c73c63922386a84a6a3c927ccf5fcf0c55cd2e9243fa073d72c82c65bf70",
+                               "bytes":  5936
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/integration-tests-rerun.log",
+                               "sha256":  "218468421146addbb50670e76b54c8f7b1760c8374e64131570c84195830d51b",
+                               "bytes":  1272
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls/summary.json",
+                               "sha256":  "e6693e4dc6810fb65fd087a281a7e51fa8ea88abfed4145ad4bc5d233914337b",
+                               "bytes":  8716
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls-build.log",
+                               "sha256":  "cc20899f6ddae190e8f92d48c2ea16ec21438267788134929ce296c275f902f2",
+                               "bytes":  776
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls-run.log",
+                               "sha256":  "dd787bbe991a321a31250b358c8fb2729d79c31f8d7637c2cbc5bcbd6b3fcd7e",
+                               "bytes":  19358
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/package-list.txt",
+                               "sha256":  "1d0c05b0a43f9e98096a617f707bdfba0b0d77784d15a9e2011a0ada0ab6ea0f",
+                               "bytes":  930
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t01-handshake.json",
+                               "sha256":  "48fa13a8a93ee6b1bcfe2191f5fad440099acce1f1eb6529f6551f3a28620a70",
+                               "bytes":  3603
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t01-handshake-rejected.json",
+                               "sha256":  "8184d2180f7d1017b438fdcbba54095b099c386a39f2040f63ad4256708d05f5",
+                               "bytes":  814
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t02-initialization.json",
+                               "sha256":  "10801eb456502e8e720a4a3ffd1b46eefa40611c6dd83458a381406e2b6b32ce",
+                               "bytes":  3603
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t02-invalid-credentials.json",
+                               "sha256":  "482f99de82aeb0c13f5a4bb3d2541d530223c8ab65d76979e994900a9ed7a63c",
+                               "bytes":  2898
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t03-query-scalar.json",
+                               "sha256":  "18aa3034945e54849005023af84c510020a3ac0f7c11b5a67fe922506b71b660",
+                               "bytes":  5545
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t04-graph-values.json",
+                               "sha256":  "937cf5810bb03201fd643ee44a32471aa8dce046f0aee474e93011a5f677894d",
+                               "bytes":  5748
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-discard.json",
+                               "sha256":  "214a6b0700255921ae17e7a8fd9d5ac0e0be65947fe10069f9f5cedcff90ca3f",
+                               "bytes":  6009
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-early-disposal.json",
+                               "sha256":  "6d1199efab2fbea59ff8029c7c2051046a6ef7c58141d3b7483593d61fdf6a59",
+                               "bytes":  6016
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-pagination.json",
+                               "sha256":  "879ea73147ecf7ccb33c73bb0eac296ab7f208e2a64730afe27b226bdd75a5ab",
+                               "bytes":  6945
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-incomplete-response.json",
+                               "sha256":  "48eb65a111e550e8511fa6e72e08adf88bd1e9b9ae619cc271b1ffa1c6239f79",
+                               "bytes":  4411
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-protocol-failure.json",
+                               "sha256":  "27502da284d7d25702f28df5070a7264e5aa61a54fc5182039fb27be82b5dbb0",
+                               "bytes":  5606
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-socket-termination.json",
+                               "sha256":  "85b90f475d1a83e186e0c4fb18c14a0da438057d56a06d4ce2ed1011ac6a6891",
+                               "bytes":  4227
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-coalesced.json",
+                               "sha256":  "a0a04af864df8bcd93ce33006f583b8188ecd8599ea50cce1c011a1196633bb4",
+                               "bytes":  5375
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-fixedchunk-3.json",
+                               "sha256":  "69acd1f49242fed9b3ca3cf2e2eb0022682750064918f000d3bb07d16981dbc1",
+                               "bytes":  5536
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-perbyte-1.json",
+                               "sha256":  "04631b63b5604c1e565ff3fb972c740999a6a93eac2d894c2d0f08020b37fc14",
+                               "bytes":  5533
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-whole-7.json",
+                               "sha256":  "b3df1ac294de341e213b9cb9ffb0afdb9af415dd5fb644934647edf8005a81c2",
+                               "bytes":  5531
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-handshake-fragmentation.json",
+                               "sha256":  "d36747163c6da3fcfcf968c1777f686ad99076f3cbd347a0bb398b2fcc06bd1f",
+                               "bytes":  817
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t08-real-listener-legacy.json",
+                               "sha256":  "d1a9ed6fcfd4a74e6e88c8863527b18c338da3b2e5e89358672caec481a6ffaa",
+                               "bytes":  618
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t08-real-listener-manifest.json",
+                               "sha256":  "e16b7e4731d4cb6f4c6d31d691e5804b61b96e2ab483b2b036e2805e7ea26377",
+                               "bytes":  622
+                           }
+                       ],
+    "probe_source_files":  [
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/.gitignore",
+                                   "sha256":  "6c5082c7e6de3e350189c67a1aacf757485ecc26e0a3cf96683528565f3e5f12",
+                                   "bytes":  10
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/FragmentationProbe.csproj",
+                                   "sha256":  "008c79f613dd5b45fe8c499b3a5c2323c01b640e9af429e01eb9c451e73b1c81",
+                                   "bytes":  661
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/Program.cs",
+                                   "sha256":  "9a3bccf9a4f9b7a5ca86b85f95a2de0d7a01e7d07f0f724a0a29fea2f5e13518",
+                                   "bytes":  41218
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/README.md",
+                                   "sha256":  "3e25bf2dcf22cd299aa34ea6efd9b7fd402198f622fbf041426cc49a671e451f",
+                                   "bytes":  3155
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/GraphDecode/decode-graph.ps1",
+                                   "sha256":  "b3f1588d233b46fd9491695d2bb9c471c48ed4f5f07394e1838077bb3a92a40f",
+                                   "bytes":  7995
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/NegativeControls.csproj",
+                                   "sha256":  "97b2733d6b848010dbe91c403b5962b040e85e52b7c74adb92170e1e0d084b36",
+                                   "bytes":  2196
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/Program.cs",
+                                   "sha256":  "e82930514adac8f5d899de89cc1f2ed7575d221c0d82cec9327f7a73fcf581ae",
+                                   "bytes":  32751
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/README.md",
+                                   "sha256":  "f1a1c1335ba28ea7fefb3ae173c645add747af94b82d8b75026c3a5c4fef9e18",
+                                   "bytes":  1042
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B0-B-Q1/README.md",
+                                   "sha256":  "259a8f367c97fdb01af28e6c89c35a0c522f0867b0c5031c06299adb8ddf7d1f",
+                                   "bytes":  1759
+                               }
+                           ]
+}

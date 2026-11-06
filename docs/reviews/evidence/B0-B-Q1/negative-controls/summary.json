@@ -1,0 +1,150 @@
+{
+  "probe": "B0-B-Q1 reviewer negative controls",
+  "producer_infrastructure": "tests/BoltSharp.IntegrationTests/Infrastructure (linked read-only)",
+  "driver": "Neo4j.Driver, Version=6.4.12.0, Culture=neutral, PublicKeyToken=b646bc66d277ac07",
+  "controls": [
+    {
+      "Id": "NC-01-wrong-record-value",
+      "ProducerTest": "T03_ReturnScalar_RealDriverReconstructsValue",
+      "Mutation": "PULL returns RECORD 43 instead of RECORD 42.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Xunit.Sdk.EqualException",
+      "ExceptionMessage": "Assert.Equal() Failure: Values differ  Expected: 42  Actual:   43",
+      "note": "Detected by the exact-value assertion; the producer scalar test is value-sensitive."
+    },
+    {
+      "Id": "NC-02-reversed-relationship-direction",
+      "ProducerTest": "T04_SyntheticGraph_RealDriverReconstructsTypedGraph",
+      "Mutation": "Relationship endpoints reversed: start=n:2/2, end=n:1/1.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Xunit.Sdk.EqualException",
+      "ExceptionMessage": "Assert.Equal() Failure: Values differ  Expected: 1  Actual:   2",
+      "note": "Detected by the StartNodeId/StartNodeElementId assertions; direction is verified."
+    },
+    {
+      "Id": "NC-03a-missing-hello-server",
+      "ProducerTest": "T02_Initialization_ObservesHelloThenLogonAndRequiredMetadata",
+      "Mutation": "HELLO SUCCESS omits the required server field.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "System.NullReferenceException",
+      "ExceptionMessage": "Object reference not set to an instance of an object.",
+      "note": "Driver 6.4.0 throws NullReferenceException without server; the uncaught T02 call fails."
+    },
+    {
+      "Id": "NC-03b-wrong-hello-server-value",
+      "ProducerTest": "T02_Initialization_ObservesHelloThenLogonAndRequiredMetadata",
+      "Mutation": "HELLO SUCCESS carries server = \u0022Neo4j/9.9.9\u0022 instead of the producer fixture value.",
+      "ExpectedDetection": false,
+      "Detected": false,
+      "Disposition": "EXPECTED",
+      "ExceptionType": null,
+      "ExceptionMessage": null,
+      "note": "T02 only requires the connection to succeed, so a wrong-but-present server value passes. Assertion blind spot, not a false claim."
+    },
+    {
+      "Id": "NC-03c-missing-hello-connection-id",
+      "ProducerTest": "T02_Initialization_ObservesHelloThenLogonAndRequiredMetadata",
+      "Mutation": "HELLO SUCCESS omits connection_id (producer matrix claims it is required).",
+      "ExpectedDetection": false,
+      "Detected": false,
+      "Disposition": "EXPECTED",
+      "ExceptionType": null,
+      "ExceptionMessage": null,
+      "note": "Driver 6.4.0 accepts HELLO SUCCESS without connection_id; this contradicts the producer gap-matrix claim that both fields are mandatory (D01 correction)."
+    },
+    {
+      "Id": "NC-04-missing-ignored",
+      "ProducerTest": "T06_ProtocolFailure_IsSurfacedAccurately",
+      "Mutation": "PULL after FAILURE is answered with SUCCESS instead of IGNORED.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Xunit.Sdk.ContainsException",
+      "ExceptionMessage": "Assert.Contains() Failure: Filter not matched in collection  Collection: [WireFrame { Direction = ClientToServer, Name = \u0022HELLO\u0022, RawMessage = [177, 1, 163, 138, 117, \u00B7\u00B7\u00B7], SanitizedHex = \u0022\u003Credacted\u003E\u0022, Sensitive = True, \u00B7\u00B7\u00B7 }, WireFrame { Direction = ServerToClient, Name = \u0022SUCCESS\u0022, RawMessage = [177, 112, 163, 134, 115, \u00B7\u00B7\u00B7], SanitizedHex = \u0022B170A3867365727665728C4E656F346A2F352E32362E308D63\u0022\u00B7\u00B7\u00B7, Sensitive = False, \u00B7\u00B7\u00B7 }, WireFrame { Direction = ClientToServer, Name = \u0022LOGON\u0022, RawMessage = [177, 106, 163, 134, 115, \u00B7\u00B7\u00B7], SanitizedHex = \u0022\u003Credacted\u003E\u0022, Sensitive = True, \u00B7\u00B7\u00B7 }, WireFrame { Direction = ServerToClient, Name = \u0022SUCCESS\u0022, RawMessage = [177, 112, 160], SanitizedHex = \u0022B170A0\u0022, Sensitive = False, \u00B7\u00B7\u00B7 }, WireFrame { Direction = ClientToServer, Name = \u0022RESET\u0022, RawMessage = [176, 15], SanitizedHex = \u0022B00F\u0022, Sensitive = False, \u00B7\u00B7\u00B7 }, \u00B7\u00B7\u00B7]",
+      "note": "Detected by the IGNORED-frame assertion; the T06 recovery test is IGNORED-sensitive."
+    },
+    {
+      "Id": "NC-05a-wrong-response-signature",
+      "ProducerTest": "T03_ReturnScalar_RealDriverReconstructsValue",
+      "Mutation": "PULL is answered with FAILURE instead of RECORD/SUCCESS.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Neo4j.Driver.ClientException",
+      "ExceptionMessage": "An unknown error occurred",
+      "note": "The FAILURE response surfaces as Neo4j.Driver.ClientException from the uncaught T03 call."
+    },
+    {
+      "Id": "NC-05b-wrong-record-arity",
+      "ProducerTest": "T03_ReturnScalar_RealDriverReconstructsValue",
+      "Mutation": "RECORD carries two values for the single RUN field (T03 asserts no record arity).",
+      "ExpectedDetection": false,
+      "Detected": false,
+      "Disposition": "EXPECTED",
+      "ExceptionType": null,
+      "ExceptionMessage": null,
+      "note": "The driver ignores the extra value and T03 never asserts record arity, so the mutation passes. Assertion blind spot."
+    },
+    {
+      "Id": "NC-06-extra-record-response",
+      "ProducerTest": "T05_FinitePullSize_MultiplePullsDeliverExactlyTheRecords",
+      "Mutation": "First PULL reply contains an extra RECORD beyond the scripted three.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Xunit.Sdk.EqualException",
+      "ExceptionMessage": "Assert.Equal() Failure: Collections differ                        \u2193 (pos 0)  Expected: long[]     [1, 2, 3]  Actual:   List\u003Clong\u003E [99, 1, 2, 3]                        \u2191 (pos 0)",
+      "note": "Detected by the exact values and exact RECORD-count assertions in T05."
+    },
+    {
+      "Id": "NC-07-premature-termination-masked",
+      "ProducerTest": "T06_IncompleteResponse_IsSurfacedAsFailure",
+      "Mutation": "Truncated PULL frame replaced by a complete RECORD/SUCCESS (clean end).",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Xunit.Sdk.NotNullException",
+      "ExceptionMessage": "Assert.NotNull() Failure: Value is null",
+      "note": "With a complete reply the driver returns normally; T06 fails on Assert.NotNull(failure)."
+    },
+    {
+      "Id": "NC-08-extra-success-after-has-more-false",
+      "ProducerTest": "T03_ReturnScalar_RealDriverReconstructsValue",
+      "Mutation": "PULL reply carries an extra empty SUCCESS after has_more=false.",
+      "ExpectedDetection": false,
+      "Detected": false,
+      "Disposition": "EXPECTED",
+      "ExceptionType": null,
+      "ExceptionMessage": null,
+      "note": "The driver stops at has_more=false and ignores the trailing SUCCESS; T03 asserts no frame count. Assertion blind spot."
+    },
+    {
+      "Id": "NC-09-swapped-node-identities",
+      "ProducerTest": "T04_SyntheticGraph_RealDriverReconstructsTypedGraph",
+      "Mutation": "Node numeric ids swapped (Alice=2, Bob=1) while element ids stay n:1/n:2.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Xunit.Sdk.EqualException",
+      "ExceptionMessage": "Assert.Equal() Failure: Values differ  Expected: 1  Actual:   2",
+      "note": "Detected by the numeric node-id assertions; node identity is verified."
+    },
+    {
+      "Id": "NC-10-wrong-relationship-element-id",
+      "ProducerTest": "T04_SyntheticGraph_RealDriverReconstructsTypedGraph",
+      "Mutation": "Relationship element id changed from r:1 to r:99.",
+      "ExpectedDetection": true,
+      "Detected": true,
+      "Disposition": "EXPECTED",
+      "ExceptionType": "Xunit.Sdk.EqualException",
+      "ExceptionMessage": "Assert.Equal() Failure: Strings differ               \u2193 (pos 2)  Expected: \u0022r:1\u0022  Actual:   \u0022r:99\u0022               \u2191 (pos 2)",
+      "note": "Detected by the relationship element-id assertion; relationship identity is verified."
+    }
+  ]
+}
