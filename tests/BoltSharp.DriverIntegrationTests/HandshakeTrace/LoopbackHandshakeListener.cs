@@ -414,8 +414,10 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
         {
             // Local disposal (including an IOException wrapping an ObjectDisposedException),
             // ConnectionReset/ConnectionAborted/OperationAborted and similar peer/local closure
-            // outcomes remain CLOSED. Network-level faults are deliberately excluded and fall
-            // through to the generic ERROR handler (TRACEQ2-F01).
+            // outcomes remain CLOSED. CLOSED is the documented reached-closure outcome at this
+            // outer negotiation boundary (Q13); the framed-read boundary is where an exception
+            // must never be invented as CLEAN_EOF (TRACEQ3-F01). Network-level faults are
+            // deliberately excluded and fall through to the generic ERROR handler (TRACEQ2-F01).
             trace.Outcome = "CLOSED";
             trace.ErrorType = ex.GetType().FullName;
             trace.SanitizedError = Sanitize(ex.Message);
@@ -496,7 +498,7 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
             observation.SignatureHex = structure.SignatureHex;
             observation.SignatureName = structure.SignatureName;
 
-            await ObserveAdditionalMessagesAsync(reader, observation, cancellationToken)
+            await ObserveAdditionalMessagesAsync(reader, client, observation, cancellationToken)
                 .ConfigureAwait(false);
             await ClassifyClientBehaviourAsync(client, observation, cancellationToken).ConfigureAwait(false);
             return observation;
@@ -528,26 +530,17 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
             observation.FramingValid = null;
             observation.SanitizedError = "The connection lifetime elapsed while observing.";
         }
-        catch (Exception ex) when (IsLocalDisposal(ex))
-        {
-            // The listener owns the stream and disposes it as part of shutdown. An ODE at the
-            // framed-read boundary is therefore an expected local closure, not an unexpected
-            // transport fault (TRACEQ2-F02) and not a clean peer EOF.
-            observation.Status = "CANCELLED";
-            observation.FramingValid = false;
-            observation.ErrorType = ex.GetType().FullName;
-            observation.SanitizedError = Sanitize(ex.Message);
-        }
-        catch (Exception ex) when (IsExpectedPeerClosure(ex))
-        {
-            observation.Status = "CLEAN_EOF";
-            observation.FramingValid = false;
-            observation.ErrorType = ex.GetType().FullName;
-            observation.SanitizedError = Sanitize(ex.Message);
-        }
         catch (Exception ex)
         {
-            observation.Status = "ERROR";
+            // CLEAN_EOF is reserved for a genuine zero-byte read at a valid protocol boundary,
+            // which is handled above (body is null). An exception is never converted into
+            // CLEAN_EOF, even when its type or socket error code resembles connection
+            // termination: a reset/abort is an exceptional termination, not stream completion
+            // (TRACEQ3-F01). The shared classifier records an unconfirmed closure as ERROR and
+            // only reports CANCELLED when local teardown was established.
+            observation.Status = ClassifyFramedReadFailure(
+                ex,
+                IsLocalTeardownRequested(client, cancellationToken));
             observation.FramingValid = false;
             observation.ErrorType = ex.GetType().FullName;
             observation.SanitizedError = Sanitize(ex.Message);
@@ -563,6 +556,7 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
     /// </summary>
     private async Task ObserveAdditionalMessagesAsync(
         BoltMessageReader reader,
+        TcpClient client,
         PostHandshakeObservation observation,
         CancellationToken cancellationToken)
     {
@@ -614,16 +608,18 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
                 observation.ErrorType ??= ex.GetType().FullName;
                 return;
             }
-            catch (Exception ex) when (IsLocalDisposal(ex))
+            catch (Exception ex) when (IsLocalDisposal(ex) || IsExpectedPeerClosure(ex))
             {
-                message.Status = "CANCELLED";
+                // Same contract as the first framed read: neither a disposal nor a reset/abort is
+                // CLEAN_EOF, and an unconfirmed reset/abort is ERROR rather than an invented
+                // clean outcome (TRACEQ3-F01). Unexpected non-closure faults are left to the
+                // first-message handler so the observation keeps its established ERROR outcome.
+                message.Status = ClassifyFramedReadFailure(
+                    ex,
+                    IsLocalTeardownRequested(client, cancellationToken));
+                message.SignatureName = "UNKNOWN";
                 observation.AdditionalMessages.Add(message);
-                return;
-            }
-            catch (Exception ex) when (IsExpectedPeerClosure(ex))
-            {
-                message.Status = "CLEAN_EOF";
-                observation.AdditionalMessages.Add(message);
+                observation.ErrorType ??= ex.GetType().FullName;
                 return;
             }
         }
@@ -722,8 +718,13 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
     /// <summary>
     /// An <see cref="ObjectDisposedException"/> (directly or as the cause of an
     /// <see cref="IOException"/>) means the listener-owned stream or socket was disposed. The
-    /// listener disposes clients only as part of its own shutdown/cleanup, so this is a local
-    /// closure rather than an unexpected transport failure.
+    /// listener owns the only stream/socket on a connection and disposes it only as part of its
+    /// own shutdown/cleanup, so a disposal at a listener boundary is treated as a local closure
+    /// rather than an unexpected transport failure. Whether local teardown was actually requested
+    /// is established separately from lifecycle state (see
+    /// <see cref="IsLocalTeardownRequested"/>); the disposal origin is not provable from the
+    /// exception alone, so the disclosure is confined to the listener-owned boundaries
+    /// (TRACEQ2-F02).
     /// </summary>
     private static bool IsLocalDisposal(Exception exception) =>
         exception is ObjectDisposedException ||
@@ -737,6 +738,65 @@ internal sealed class LoopbackHandshakeListener : IAsyncDisposable
             IOException { InnerException: { } inner } => IsExpectedPeerClosure(inner),
             _ => false,
         };
+
+    /// <summary>
+    /// True when local teardown has been established for the connection under observation: the
+    /// listener's shutdown token or the per-connection lifetime/cancellation token is cancelled,
+    /// or the listener-owned <see cref="TcpClient"/> has already been closed (its
+    /// <see cref="TcpClient.Client"/> is null, TRACEQ1-F01). This is the available connection
+    /// lifecycle state used to decide whether an ambiguous closure was locally initiated rather
+    /// than an unexpected remote/transport failure (TRACEQ2-F02, TRACEQ3-F01).
+    /// </summary>
+    private bool IsLocalTeardownRequested(TcpClient client, CancellationToken lifetimeToken) =>
+        _shutdown.IsCancellationRequested ||
+        lifetimeToken.IsCancellationRequested ||
+        IsOwnedClientClosed(client);
+
+    private static bool IsOwnedClientClosed(TcpClient client)
+    {
+        try
+        {
+            // TcpClient clears Client on Close/Dispose (TRACEQ1-F01).
+            return client.Client is null;
+        }
+        catch (ObjectDisposedException)
+        {
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Classifies a framed-read fault into the post-handshake trace taxonomy shared by the
+    /// first-message and additional-message readers, so both boundaries cannot diverge.
+    /// <para>
+    /// CLEAN_EOF is never produced here: a genuine clean stream completion is a zero-byte read
+    /// and is handled by the caller. A connection reset/abort is an exceptional termination, not
+    /// a clean EOF; it is reported as ERROR unless local teardown was established, in which case
+    /// it is the local operation's own cancellation (TRACEQ3-F01). An
+    /// <see cref="ObjectDisposedException"/> is a non-clean local/stream closure signature and is
+    /// reported as CANCELLED, never as CLEAN_EOF or ERROR (TRACEQ2-F02).
+    /// </para>
+    /// </summary>
+    private static string ClassifyFramedReadFailure(Exception exception, bool localTeardownRequested)
+    {
+        if (IsLocalDisposal(exception))
+        {
+            // The listener owns the only stream/socket on this connection, so a disposal at this
+            // boundary is a local closure. It is not evidence of a clean peer EOF, and Q2/Q21
+            // requires it not be an unexpected ERROR.
+            return "CANCELLED";
+        }
+
+        if (IsExpectedPeerClosure(exception))
+        {
+            // A reset/abort/disconnect is a reached but exceptional termination. Only a local
+            // teardown request establishes it as the local operation's own cancellation;
+            // otherwise it remains observable as ERROR.
+            return localTeardownRequested ? "CANCELLED" : "ERROR";
+        }
+
+        return "ERROR";
+    }
 
     /// <summary>
     /// Acquisition only treats a closed socket (ODE/NRE from TcpClient.Close) or an expected

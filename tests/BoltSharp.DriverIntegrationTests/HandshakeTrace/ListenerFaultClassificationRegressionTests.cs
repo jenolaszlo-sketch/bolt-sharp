@@ -237,8 +237,11 @@ public sealed class ListenerFaultClassificationRegressionTests
 
     [Fact]
     [Trait("Category", "B0-A-TRACE-R2")]
-    public async Task ExpectedPeerReset_DuringFramedRead_RemainsCleanEof()
+    public async Task ExpectedPeerReset_DuringFramedRead_IsErrorNotCleanEof()
     {
+        // B0-A-TRACE-R3 correction: a peer reset is an exceptional termination, not a zero-byte
+        // read, so it must not be reported as CLEAN_EOF (TRACEQ3-F01). It was CLEAN_EOF before
+        // the R3 remediation; the assertion is retained here with the corrected contract.
         await using var listener = Start(observe: true);
         var post = await ObserveFirstMessage(
             listener,
@@ -248,7 +251,8 @@ public sealed class ListenerFaultClassificationRegressionTests
                     "regression peer reset",
                     new SocketException((int)SocketError.ConnectionReset))));
 
-        Assert.Equal("CLEAN_EOF", post.Status);
+        Assert.Equal("ERROR", post.Status);
+        Assert.NotEqual("CLEAN_EOF", post.Status);
         Assert.Equal(typeof(IOException).FullName, post.ErrorType);
     }
 
