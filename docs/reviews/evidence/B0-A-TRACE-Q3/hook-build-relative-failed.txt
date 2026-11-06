@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+CSC : error CS2001: Source file 'D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\docs/reviews/evidence/B0-A-TRACE-R2/controls/GetStreamHookListener.cs' could not be found. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+
+Build FAILED.
+
+CSC : error CS2001: Source file 'D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\docs/reviews/evidence/B0-A-TRACE-R2/controls/GetStreamHookListener.cs' could not be found. [D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\B0ATRACEQ2.Probes.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.61
+exit=1

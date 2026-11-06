@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="f3e2d5df-b966-4918-8c8d-c89cd764badd" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-06 08:15:45" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T08:15:45.5835498+08:00" queuing="2026-11-06T08:15:45.5835505+08:00" start="2026-11-06T08:15:42.1571292+08:00" finish="2026-11-06T08:16:40.1486468+08:00" />
+  <TestSettings name="default" id="dd73616d-e133-4b19-9e7e-d02404edd52c">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-06_08_15_45" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="631901e4-ca2f-4133-8d46-7cbf557000ee" testId="e34a7ef3-7539-29f7-fdc9-5230e5a42274" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q13_ConnectionReset_IsClosed" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0465391" startTime="2026-11-06T08:16:40.0470863+08:00" endTime="2026-11-06T08:16:40.0470869+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="631901e4-ca2f-4133-8d46-7cbf557000ee">
+      <Output>
+        <StdOut>injected=System.Net.Sockets.SocketException (10054): An existing connection was forcibly closed by the remote host.; serverConnected=True; peerConnected=True&#xD;
+outcome=CLOSED; error=System.Net.Sockets.SocketException; detail=An existing connection was forcibly closed by the remote host.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e9f97a0f-0df6-4763-b3e4-e928893e7af6" testId="8d918a7c-b0ec-64dc-ad61-5a4c7c8f6da1" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q02_AlreadyClosedClient_HandlerAndDisposeComplete" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0378862" startTime="2026-11-06T08:16:17.5235895+08:00" endTime="2026-11-06T08:16:17.5235902+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e9f97a0f-0df6-4763-b3e4-e928893e7af6">
+      <Output>
+        <StdOut>outcome=CLOSED; error=System.NullReferenceException; detail=The client socket was closed before the handshake started.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c3a8ef81-3627-480f-8826-700858cb72ef" testId="36080bcd-f73a-f6a5-e0ba-4ecf72a8b116" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q07_CancelAndPeerClose_ControlledOrders(cancelFirst: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0452583" startTime="2026-11-06T08:16:07.3641329+08:00" endTime="2026-11-06T08:16:07.3641335+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c3a8ef81-3627-480f-8826-700858cb72ef">
+      <Output>
+        <StdOut>outcome=CANCELLED; error=System.OperationCanceledException; detail=The listener cancelled the pending negotiation.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9b589ef7-8b97-49dd-9775-e4ad50616e27" testId="7419ed8a-95c6-8ec0-5a61-91ed626c8efa" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q18_RemoteResetDuringRead_NoTaskLeak" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0300822" startTime="2026-11-06T08:16:13.4700431+08:00" endTime="2026-11-06T08:16:13.4700435+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b589ef7-8b97-49dd-9775-e4ad50616e27">
+      <Output>
+        <StdOut>outcome=TRUNCATED; error=BoltSharp.Handshake.BoltHandshakeTruncatedException; detail=The stream ended 4 byte(s) before a 4-byte handshake field was complete.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="def31f14-c4be-4214-984d-ea71843c125c" testId="0dc26b96-ea9d-a47f-8689-08f956d9258d" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q05_CloseDuringActualBlockedRead_IsClosed" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0269593" startTime="2026-11-06T08:15:59.1876384+08:00" endTime="2026-11-06T08:15:59.1876391+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="def31f14-c4be-4214-984d-ea71843c125c">
+      <Output>
+        <StdOut>outcome=CLOSED; error=System.IO.IOException; detail=Unable to read data from the transport connection: The I/O operation has been aborted because of either a thread exit or an application request..; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="30f4c292-4392-41f8-8da6-8cbd8286141b" testId="9fa906a1-93f4-033a-0a29-39c97f05e4c1" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q23_UnexpectedWrappedFramedSocketFault_MustRemainError" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0492724" startTime="2026-11-06T08:16:11.4391830+08:00" endTime="2026-11-06T08:16:11.4391837+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30f4c292-4392-41f8-8da6-8cbd8286141b">
+      <Output>
+        <StdOut>outcome=ACCEPTED; error=; detail=; endpoint=reviewer&#xD;
+postStatus=ERROR; postError=System.IO.IOException; injected=System.IO.IOException: reviewer framed network failure&#xD;
+ ---&gt; System.Net.Sockets.SocketException (10050): A socket operation encountered a dead network.&#xD;
+   --- End of inner exception stack trace ---&#xD;
+   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.ControlledNetworkStream.ReadAsync(Memory`1 buffer, CancellationToken token) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 361&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTracingStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 969&#xD;
+   at BoltSharp.Framing.BoltMessageReader.ReadHeaderAsync(CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 239&#xD;
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessageAsync(IBufferWriter`1 destination, CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 167&#xD;
+   at BoltSharp.Framing.BoltMessageReader.ReadMessageAsync(CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 96&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.ObserveFirstMessageAsync(HandshakeTracingStream tracing, TcpClient client, CancellationToken cancellationToken) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 482</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a62a8d52-c8a8-436f-8da5-e68f59be1286" testId="18af2aaa-a286-38ae-0ea7-1f5e17cb062a" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q07_CancelAndPeerClose_ControlledOrders(cancelFirst: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0243642" startTime="2026-11-06T08:16:09.3891608+08:00" endTime="2026-11-06T08:16:09.3891615+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a62a8d52-c8a8-436f-8da5-e68f59be1286">
+      <Output>
+        <StdOut>outcome=TRUNCATED; error=BoltSharp.Handshake.BoltHandshakeTruncatedException; detail=The stream ended 4 byte(s) before a 4-byte handshake field was complete.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="343f08cc-5504-4790-8975-943ec12d8b86" testId="5c31edf3-0265-7267-7a3b-269f90cc04b8" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q09_PendingAccept_AndRepeatedDispose_Complete" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0542022" startTime="2026-11-06T08:15:57.1598636+08:00" endTime="2026-11-06T08:15:57.1598643+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="343f08cc-5504-4790-8975-943ec12d8b86" />
+    <UnitTestResult executionId="3d35e8d7-0984-4c7f-a226-57b9897f1db6" testId="8343f937-3112-6a48-5077-10bf879d33a8" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q06_ListenerDisposeDuringBlockedRead_JoinsHandler" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0304997" startTime="2026-11-06T08:15:51.0174508+08:00" endTime="2026-11-06T08:15:51.0174514+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d35e8d7-0984-4c7f-a226-57b9897f1db6">
+      <Output>
+        <StdOut>outcome=CANCELLED; error=System.OperationCanceledException; detail=The listener cancelled the pending negotiation.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="71c56509-d44e-45fd-a510-222e65ca495c" testId="794f8a99-2d0c-a3f3-9fb8-c1c3cc47c500" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q03_LocalCloseAfterEndpointCapture_PreservesMetadata" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0541508" startTime="2026-11-06T08:16:19.5784785+08:00" endTime="2026-11-06T08:16:19.5784790+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71c56509-d44e-45fd-a510-222e65ca495c">
+      <Output>
+        <StdOut>outcome=CLOSED; error=System.NullReferenceException; detail=The client socket was closed before the handshake started.; endpoint=127.0.0.1:47306</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="16595895-652f-4015-a7fb-9b5a03b1bb60" testId="e44b8827-2720-9b55-a700-f1e40366c1d1" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q04_RemoteCloseBeforeCapture_DoesNotDisposeLocalSocket" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0339921" startTime="2026-11-06T08:16:01.2224556+08:00" endTime="2026-11-06T08:16:01.2224562+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="16595895-652f-4015-a7fb-9b5a03b1bb60">
+      <Output>
+        <StdOut>outcome=TRUNCATED; error=BoltSharp.Handshake.BoltHandshakeTruncatedException; detail=The stream ended 4 byte(s) before a 4-byte handshake field was complete.; endpoint=127.0.0.1:16425</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="32f37e4e-3ec0-412e-9c17-c219ff8a6949" testId="f07ca1fa-1c58-c029-4f04-16bd7656ae38" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q15_UnexpectedWrappedSocketFault_MustRemainError" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0109327" startTime="2026-11-06T08:16:35.9704520+08:00" endTime="2026-11-06T08:16:35.9704526+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="32f37e4e-3ec0-412e-9c17-c219ff8a6949">
+      <Output>
+        <StdOut>injected=System.IO.IOException: reviewer network read failure&#xD;
+ ---&gt; System.Net.Sockets.SocketException (10050): A socket operation encountered a dead network.&#xD;
+   --- End of inner exception stack trace ---; serverConnected=True; peerConnected=True&#xD;
+outcome=ERROR; error=System.IO.IOException; detail=reviewer network read failure; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c3b875c4-9388-49c2-b5af-eaa96de68752" testId="4fdbc71e-e23e-153f-ecf1-ecd3e53d3279" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q21_ObjectDisposedDuringFramedRead_IsExpectedClosure" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0302588" startTime="2026-11-06T08:16:21.6096234+08:00" endTime="2026-11-06T08:16:21.6096242+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c3b875c4-9388-49c2-b5af-eaa96de68752">
+      <Output>
+        <StdOut>outcome=ACCEPTED; error=; detail=; endpoint=reviewer&#xD;
+postStatus=CANCELLED; postError=System.ObjectDisposedException; injected=System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+Object name: 'reviewer framed read'.&#xD;
+   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.ControlledNetworkStream.ReadAsync(Memory`1 buffer, CancellationToken token) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 361&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTracingStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 969&#xD;
+   at BoltSharp.Framing.BoltMessageReader.ReadHeaderAsync(CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 239&#xD;
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessageAsync(IBufferWriter`1 destination, CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 167&#xD;
+   at BoltSharp.Framing.BoltMessageReader.ReadMessageAsync(CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 96&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.ObserveFirstMessageAsync(HandshakeTracingStream tracing, TcpClient client, CancellationToken cancellationToken) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 482</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3deba398-ec4c-47e5-8cb9-66fd89c7b625" testId="379aa500-cbc8-360a-cb3e-93626566b2bc" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NetworkDown)" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0618703" startTime="2026-11-06T08:15:44.9127267+08:00" endTime="2026-11-06T08:15:44.9127394+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3deba398-ec4c-47e5-8cb9-66fd89c7b625">
+      <Output>
+        <StdOut>injected=System.Net.Sockets.SocketException (10050): A socket operation encountered a dead network.; serverConnected=True; peerConnected=True&#xD;
+outcome=ERROR; error=System.Net.Sockets.SocketException; detail=A socket operation encountered a dead network.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="748dba47-c345-413a-a87c-13697789ce90" testId="93b57a8f-911d-cce0-0a59-1fb9398f0377" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q16_UnexpectedPrologueFailure_IsError_WithCleanup" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0142211" startTime="2026-11-06T08:16:15.4850366+08:00" endTime="2026-11-06T08:16:15.4850370+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="748dba47-c345-413a-a87c-13697789ce90">
+      <Output>
+        <StdOut>outcome=ERROR; error=System.ArgumentOutOfRangeException; detail=Specified argument was out of the range of valid values. (Parameter 'delay'); endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="56083a0f-9f59-4bde-bae7-c384344214f0" testId="f32b61ca-915d-7538-bfe9-8f0c8fc28b90" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q08_CancelConcurrentDispose_WithReleaseBarrier(disposeFirst: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0430408" startTime="2026-11-06T08:15:53.0612876+08:00" endTime="2026-11-06T08:15:53.0612884+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="56083a0f-9f59-4bde-bae7-c384344214f0" />
+    <UnitTestResult executionId="a829de74-ca4e-4312-b986-09020527ec41" testId="a5d3d540-4029-63f2-7b76-8633cada23cc" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NetworkUnreachable)" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0394823" startTime="2026-11-06T08:15:46.9527558+08:00" endTime="2026-11-06T08:15:46.9527563+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a829de74-ca4e-4312-b986-09020527ec41">
+      <Output>
+        <StdOut>injected=System.Net.Sockets.SocketException (10051): A socket operation was attempted to an unreachable network.; serverConnected=True; peerConnected=True&#xD;
+outcome=ERROR; error=System.Net.Sockets.SocketException; detail=A socket operation was attempted to an unreachable network.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c9f49d1a-151e-4a67-b2fd-9fae7d59b754" testId="3d472010-2609-76cf-c87d-dda849633fd8" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q17_AlternateInterleavings_RepeatedFortyTimes" computerName="LAPTOP-KBD8D8JG" duration="00:00:08.2801616" startTime="2026-11-06T08:16:29.8905865+08:00" endTime="2026-11-06T08:16:29.8905867+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9f49d1a-151e-4a67-b2fd-9fae7d59b754" />
+    <UnitTestResult executionId="ac319d72-9e3b-42ae-b65e-8abd8ff39c1c" testId="e0bada3f-e114-ebc6-6761-8b9a09c4adb8" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q11_UnexpectedHandlerException_IsError" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0582250" startTime="2026-11-06T08:16:03.2815236+08:00" endTime="2026-11-06T08:16:03.2815239+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ac319d72-9e3b-42ae-b65e-8abd8ff39c1c">
+      <Output>
+        <StdOut>injected=System.InvalidOperationException: reviewer unexpected handler fault; serverConnected=True; peerConnected=True&#xD;
+outcome=ERROR; error=System.InvalidOperationException; detail=reviewer unexpected handler fault; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="18a7f5be-20d4-494b-ac24-41365bc422fc" testId="1142a383-0178-f297-a300-05620857c833" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q01_LocalCloseBeforeEndpointCapture_IsNullSafe" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010794" startTime="2026-11-06T08:16:33.9588534+08:00" endTime="2026-11-06T08:16:33.9588537+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18a7f5be-20d4-494b-ac24-41365bc422fc" />
+    <UnitTestResult executionId="9bad350a-b0bc-4a75-bc04-d27d26460c96" testId="030e9555-ea55-8c44-25fa-eefad5fac1d6" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q10_FourSimultaneousConnections_ActualAcceptLoopDrains" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0357582" startTime="2026-11-06T08:16:05.3181485+08:00" endTime="2026-11-06T08:16:05.3181489+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9bad350a-b0bc-4a75-bc04-d27d26460c96">
+      <Output>
+        <StdOut>outcome=ACCEPTED; error=; detail=; endpoint=127.0.0.1:33276&#xD;
+outcome=ACCEPTED; error=; detail=; endpoint=127.0.0.1:33274&#xD;
+outcome=ACCEPTED; error=; detail=; endpoint=127.0.0.1:33275&#xD;
+outcome=ACCEPTED; error=; detail=; endpoint=127.0.0.1:33273</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fcdf4332-d6fd-48e4-a273-4e992dfe962a" testId="7b1f9e21-3f4b-4876-049b-ce98c3d789d6" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NoBufferSpaceAvailable)" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0315862" startTime="2026-11-06T08:15:48.9850970+08:00" endTime="2026-11-06T08:15:48.9850977+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fcdf4332-d6fd-48e4-a273-4e992dfe962a">
+      <Output>
+        <StdOut>injected=System.Net.Sockets.SocketException (10055): An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full.; serverConnected=True; peerConnected=True&#xD;
+outcome=ERROR; error=System.Net.Sockets.SocketException; detail=An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ac42fc6f-c8cd-4081-a224-ebeb605771ee" testId="192aa334-e089-0d5a-1d08-20aa7c50334e" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q12_MidReadObjectDisposed_IsClosed" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0287871" startTime="2026-11-06T08:16:37.9999330+08:00" endTime="2026-11-06T08:16:37.9999336+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ac42fc6f-c8cd-4081-a224-ebeb605771ee">
+      <Output>
+        <StdOut>injected=System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+Object name: 'reviewer read'.; serverConnected=True; peerConnected=True&#xD;
+outcome=CLOSED; error=System.ObjectDisposedException; detail=The client socket was closed during the handshake.; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="38444c70-a87f-48c8-8d6e-5860df6890b1" testId="e7817b9f-b169-09d3-82b4-a21830ad98dc" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q08_CancelConcurrentDispose_WithReleaseBarrier(disposeFirst: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0426987" startTime="2026-11-06T08:15:55.1047129+08:00" endTime="2026-11-06T08:15:55.1047135+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38444c70-a87f-48c8-8d6e-5860df6890b1" />
+    <UnitTestResult executionId="4a15302f-c4ae-4a9c-8384-d95293779347" testId="88aa7e69-0c59-2ecc-eb40-164cc967335b" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q24_DisposeDuringActualFramedRead_JoinsHandler" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0357889" startTime="2026-11-06T08:16:31.9270824+08:00" endTime="2026-11-06T08:16:31.9270828+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4a15302f-c4ae-4a9c-8384-d95293779347">
+      <Output>
+        <StdOut>outcome=ACCEPTED; error=; detail=; endpoint=reviewer</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="67f24f06-6d74-4fb6-a09f-4226714ecca9" testId="0c8de9e4-e5ea-e5ba-3fe6-f17ad1e6f680" testName="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q22_UnexpectedFramedReadException_RemainsError" computerName="LAPTOP-KBD8D8JG" duration="00:00:02.0297646" startTime="2026-11-06T08:16:33.9574791+08:00" endTime="2026-11-06T08:16:33.9574797+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67f24f06-6d74-4fb6-a09f-4226714ecca9">
+      <Output>
+        <StdOut>outcome=ACCEPTED; error=; detail=; endpoint=reviewer&#xD;
+postStatus=ERROR; postError=System.InvalidOperationException; injected=System.InvalidOperationException: reviewer framed read failure&#xD;
+   at BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.ControlledNetworkStream.ReadAsync(Memory`1 buffer, CancellationToken token) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\LifecycleProbes.cs:line 361&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTracingStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 969&#xD;
+   at BoltSharp.Framing.BoltMessageReader.ReadHeaderAsync(CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 239&#xD;
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessageAsync(IBufferWriter`1 destination, CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 167&#xD;
+   at BoltSharp.Framing.BoltMessageReader.ReadMessageAsync(CancellationToken cancellationToken) in D:\projects\bolt-sharp\src\BoltSharp\Framing\BoltMessageReader.cs:line 96&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.LoopbackHandshakeListener.ObserveFirstMessageAsync(HandshakeTracingStream tracing, TcpClient client, CancellationToken cancellationToken) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs:line 482</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q16_UnexpectedPrologueFailure_IsError_WithCleanup" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="93b57a8f-911d-cce0-0a59-1fb9398f0377">
+      <Execution id="748dba47-c345-413a-a87c-13697789ce90" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q16_UnexpectedPrologueFailure_IsError_WithCleanup" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NetworkDown)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="379aa500-cbc8-360a-cb3e-93626566b2bc">
+      <Execution id="3deba398-ec4c-47e5-8cb9-66fd89c7b625" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q14_UnexpectedSocketFault_MustRemainError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q22_UnexpectedFramedReadException_RemainsError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="0c8de9e4-e5ea-e5ba-3fe6-f17ad1e6f680">
+      <Execution id="67f24f06-6d74-4fb6-a09f-4226714ecca9" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q22_UnexpectedFramedReadException_RemainsError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q23_UnexpectedWrappedFramedSocketFault_MustRemainError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="9fa906a1-93f4-033a-0a29-39c97f05e4c1">
+      <Execution id="30f4c292-4392-41f8-8da6-8cbd8286141b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q23_UnexpectedWrappedFramedSocketFault_MustRemainError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q01_LocalCloseBeforeEndpointCapture_IsNullSafe" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="1142a383-0178-f297-a300-05620857c833">
+      <Execution id="18a7f5be-20d4-494b-ac24-41365bc422fc" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q01_LocalCloseBeforeEndpointCapture_IsNullSafe" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q08_CancelConcurrentDispose_WithReleaseBarrier(disposeFirst: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="f32b61ca-915d-7538-bfe9-8f0c8fc28b90">
+      <Execution id="56083a0f-9f59-4bde-bae7-c384344214f0" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q08_CancelConcurrentDispose_WithReleaseBarrier" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q21_ObjectDisposedDuringFramedRead_IsExpectedClosure" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="4fdbc71e-e23e-153f-ecf1-ecd3e53d3279">
+      <Execution id="c3b875c4-9388-49c2-b5af-eaa96de68752" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q21_ObjectDisposedDuringFramedRead_IsExpectedClosure" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q06_ListenerDisposeDuringBlockedRead_JoinsHandler" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="8343f937-3112-6a48-5077-10bf879d33a8">
+      <Execution id="3d35e8d7-0984-4c7f-a226-57b9897f1db6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q06_ListenerDisposeDuringBlockedRead_JoinsHandler" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q07_CancelAndPeerClose_ControlledOrders(cancelFirst: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="36080bcd-f73a-f6a5-e0ba-4ecf72a8b116">
+      <Execution id="c3a8ef81-3627-480f-8826-700858cb72ef" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q07_CancelAndPeerClose_ControlledOrders" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q05_CloseDuringActualBlockedRead_IsClosed" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="0dc26b96-ea9d-a47f-8689-08f956d9258d">
+      <Execution id="def31f14-c4be-4214-984d-ea71843c125c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q05_CloseDuringActualBlockedRead_IsClosed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NetworkUnreachable)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="a5d3d540-4029-63f2-7b76-8633cada23cc">
+      <Execution id="a829de74-ca4e-4312-b986-09020527ec41" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q14_UnexpectedSocketFault_MustRemainError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q11_UnexpectedHandlerException_IsError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="e0bada3f-e114-ebc6-6761-8b9a09c4adb8">
+      <Execution id="ac319d72-9e3b-42ae-b65e-8abd8ff39c1c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q11_UnexpectedHandlerException_IsError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q17_AlternateInterleavings_RepeatedFortyTimes" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="3d472010-2609-76cf-c87d-dda849633fd8">
+      <Execution id="c9f49d1a-151e-4a67-b2fd-9fae7d59b754" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q17_AlternateInterleavings_RepeatedFortyTimes" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q12_MidReadObjectDisposed_IsClosed" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="192aa334-e089-0d5a-1d08-20aa7c50334e">
+      <Execution id="ac42fc6f-c8cd-4081-a224-ebeb605771ee" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q12_MidReadObjectDisposed_IsClosed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q09_PendingAccept_AndRepeatedDispose_Complete" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="5c31edf3-0265-7267-7a3b-269f90cc04b8">
+      <Execution id="343f08cc-5504-4790-8975-943ec12d8b86" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q09_PendingAccept_AndRepeatedDispose_Complete" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q15_UnexpectedWrappedSocketFault_MustRemainError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="f07ca1fa-1c58-c029-4f04-16bd7656ae38">
+      <Execution id="32f37e4e-3ec0-412e-9c17-c219ff8a6949" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q15_UnexpectedWrappedSocketFault_MustRemainError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q02_AlreadyClosedClient_HandlerAndDisposeComplete" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="8d918a7c-b0ec-64dc-ad61-5a4c7c8f6da1">
+      <Execution id="e9f97a0f-0df6-4763-b3e4-e928893e7af6" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q02_AlreadyClosedClient_HandlerAndDisposeComplete" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q03_LocalCloseAfterEndpointCapture_PreservesMetadata" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="794f8a99-2d0c-a3f3-9fb8-c1c3cc47c500">
+      <Execution id="71c56509-d44e-45fd-a510-222e65ca495c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q03_LocalCloseAfterEndpointCapture_PreservesMetadata" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q10_FourSimultaneousConnections_ActualAcceptLoopDrains" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="030e9555-ea55-8c44-25fa-eefad5fac1d6">
+      <Execution id="9bad350a-b0bc-4a75-bc04-d27d26460c96" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q10_FourSimultaneousConnections_ActualAcceptLoopDrains" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q18_RemoteResetDuringRead_NoTaskLeak" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="7419ed8a-95c6-8ec0-5a61-91ed626c8efa">
+      <Execution id="9b589ef7-8b97-49dd-9775-e4ad50616e27" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q18_RemoteResetDuringRead_NoTaskLeak" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q24_DisposeDuringActualFramedRead_JoinsHandler" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="88aa7e69-0c59-2ecc-eb40-164cc967335b">
+      <Execution id="4a15302f-c4ae-4a9c-8384-d95293779347" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q24_DisposeDuringActualFramedRead_JoinsHandler" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q14_UnexpectedSocketFault_MustRemainError(code: NoBufferSpaceAvailable)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="7b1f9e21-3f4b-4876-049b-ce98c3d789d6">
+      <Execution id="fcdf4332-d6fd-48e4-a273-4e992dfe962a" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q14_UnexpectedSocketFault_MustRemainError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q07_CancelAndPeerClose_ControlledOrders(cancelFirst: False)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="18af2aaa-a286-38ae-0ea7-1f5e17cb062a">
+      <Execution id="a62a8d52-c8a8-436f-8da5-e68f59be1286" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q07_CancelAndPeerClose_ControlledOrders" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q13_ConnectionReset_IsClosed" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="e34a7ef3-7539-29f7-fdc9-5230e5a42274">
+      <Execution id="631901e4-ca2f-4133-8d46-7cbf557000ee" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q13_ConnectionReset_IsClosed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q04_RemoteCloseBeforeCapture_DoesNotDisposeLocalSocket" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="e44b8827-2720-9b55-a700-f1e40366c1d1">
+      <Execution id="16595895-652f-4015-a7fb-9b5a03b1bb60" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q04_RemoteCloseBeforeCapture_DoesNotDisposeLocalSocket" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes.Q08_CancelConcurrentDispose_WithReleaseBarrier(disposeFirst: True)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q2\bin\debug\net8.0\b0atraceq2.probes.dll" id="e7817b9f-b169-09d3-82b4-a21830ad98dc">
+      <Execution id="38444c70-a87f-48c8-8d6e-5860df6890b1" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q2\bin\Debug\net8.0\B0ATRACEQ2.Probes.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Qualification.B0ATRACEQ2.LifecycleProbes" name="Q08_CancelConcurrentDispose_WithReleaseBarrier" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e34a7ef3-7539-29f7-fdc9-5230e5a42274" executionId="631901e4-ca2f-4133-8d46-7cbf557000ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d918a7c-b0ec-64dc-ad61-5a4c7c8f6da1" executionId="e9f97a0f-0df6-4763-b3e4-e928893e7af6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="36080bcd-f73a-f6a5-e0ba-4ecf72a8b116" executionId="c3a8ef81-3627-480f-8826-700858cb72ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7419ed8a-95c6-8ec0-5a61-91ed626c8efa" executionId="9b589ef7-8b97-49dd-9775-e4ad50616e27" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0dc26b96-ea9d-a47f-8689-08f956d9258d" executionId="def31f14-c4be-4214-984d-ea71843c125c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9fa906a1-93f4-033a-0a29-39c97f05e4c1" executionId="30f4c292-4392-41f8-8da6-8cbd8286141b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18af2aaa-a286-38ae-0ea7-1f5e17cb062a" executionId="a62a8d52-c8a8-436f-8da5-e68f59be1286" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c31edf3-0265-7267-7a3b-269f90cc04b8" executionId="343f08cc-5504-4790-8975-943ec12d8b86" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8343f937-3112-6a48-5077-10bf879d33a8" executionId="3d35e8d7-0984-4c7f-a226-57b9897f1db6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="794f8a99-2d0c-a3f3-9fb8-c1c3cc47c500" executionId="71c56509-d44e-45fd-a510-222e65ca495c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e44b8827-2720-9b55-a700-f1e40366c1d1" executionId="16595895-652f-4015-a7fb-9b5a03b1bb60" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f07ca1fa-1c58-c029-4f04-16bd7656ae38" executionId="32f37e4e-3ec0-412e-9c17-c219ff8a6949" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4fdbc71e-e23e-153f-ecf1-ecd3e53d3279" executionId="c3b875c4-9388-49c2-b5af-eaa96de68752" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="379aa500-cbc8-360a-cb3e-93626566b2bc" executionId="3deba398-ec4c-47e5-8cb9-66fd89c7b625" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="93b57a8f-911d-cce0-0a59-1fb9398f0377" executionId="748dba47-c345-413a-a87c-13697789ce90" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f32b61ca-915d-7538-bfe9-8f0c8fc28b90" executionId="56083a0f-9f59-4bde-bae7-c384344214f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a5d3d540-4029-63f2-7b76-8633cada23cc" executionId="a829de74-ca4e-4312-b986-09020527ec41" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3d472010-2609-76cf-c87d-dda849633fd8" executionId="c9f49d1a-151e-4a67-b2fd-9fae7d59b754" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e0bada3f-e114-ebc6-6761-8b9a09c4adb8" executionId="ac319d72-9e3b-42ae-b65e-8abd8ff39c1c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1142a383-0178-f297-a300-05620857c833" executionId="18a7f5be-20d4-494b-ac24-41365bc422fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="030e9555-ea55-8c44-25fa-eefad5fac1d6" executionId="9bad350a-b0bc-4a75-bc04-d27d26460c96" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7b1f9e21-3f4b-4876-049b-ce98c3d789d6" executionId="fcdf4332-d6fd-48e4-a273-4e992dfe962a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="192aa334-e089-0d5a-1d08-20aa7c50334e" executionId="ac42fc6f-c8cd-4081-a224-ebeb605771ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7817b9f-b169-09d3-82b4-a21830ad98dc" executionId="38444c70-a87f-48c8-8d6e-5860df6890b1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="88aa7e69-0c59-2ecc-eb40-164cc967335b" executionId="4a15302f-c4ae-4a9c-8384-d95293779347" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0c8de9e4-e5ea-e5ba-3fe6-f17ad1e6f680" executionId="67f24f06-6d74-4fb6-a09f-4226714ecca9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="26" executed="26" passed="26" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.23]   Discovering: B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:00.26]   Discovered:  B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:00.27]   Starting:    B0ATRACEQ2.Probes&#xD;
+[xUnit.net 00:00:57.50]   Finished:    B0ATRACEQ2.Probes&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

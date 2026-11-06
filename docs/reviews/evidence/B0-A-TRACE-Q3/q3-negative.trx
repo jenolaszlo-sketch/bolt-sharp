@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="b80424bc-1a8c-448d-8a67-06ecf3bacf2b" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-06 08:18:39" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T08:18:39.1516095+08:00" queuing="2026-11-06T08:18:39.1516102+08:00" start="2026-11-06T08:18:38.5033134+08:00" finish="2026-11-06T08:18:39.1835691+08:00" />
+  <TestSettings name="default" id="41339286-f0af-48e3-be54-49a058754450">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-06_08_18_39" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="f908efc7-a2a1-4a6c-9785-244f2ee6df5f" testId="b68c4557-9b71-087d-ec4b-1a64e530be74" testName="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NetworkUnreachable)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0018630" startTime="2026-11-06T08:18:39.1055085+08:00" endTime="2026-11-06T08:18:39.1055086+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f908efc7-a2a1-4a6c-9785-244f2ee6df5f">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs:line 22&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="aa0d6b59-3095-4ae5-9154-fb1e9011dab0" testId="4e7a4fd8-1abd-d5d1-b166-a38cc1472ee0" testName="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: Disconnecting)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0009733" startTime="2026-11-06T08:18:39.0846779+08:00" endTime="2026-11-06T08:18:39.0846780+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aa0d6b59-3095-4ae5-9154-fb1e9011dab0" />
+    <UnitTestResult executionId="58bb917d-d18e-4be5-8d6a-9e9898a061eb" testId="f177f827-f20f-d5c5-5897-ea25c8b732b2" testName="IndependentClassification.UnexpectedIoAndNestedIoAreErrors" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0013421" startTime="2026-11-06T08:18:39.1260497+08:00" endTime="2026-11-06T08:18:39.1260497+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="58bb917d-d18e-4be5-8d6a-9e9898a061eb">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at IndependentClassification.UnexpectedIoAndNestedIoAreErrors() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs:line 30&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fd33e026-90fd-49f5-ae71-3d9717296b0b" testId="d3114a36-10e7-6636-103e-bcfa1085415c" testName="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: AccessDenied)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0032280" startTime="2026-11-06T08:18:39.1050625+08:00" endTime="2026-11-06T08:18:39.1050627+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd33e026-90fd-49f5-ae71-3d9717296b0b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs:line 22&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7b462a44-c9da-4ad4-8ef9-1d288b09b192" testId="c10a372a-cef5-00d2-aaac-9fc69dcd7b09" testName="IndependentClassification.SignalledCancellationIsCancelled" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0013713" startTime="2026-11-06T08:18:39.1255728+08:00" endTime="2026-11-06T08:18:39.1255728+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7b462a44-c9da-4ad4-8ef9-1d288b09b192" />
+    <UnitTestResult executionId="161b373c-3bdf-4a75-a013-d90e32a88f83" testId="bbf502ca-a274-0d3e-013e-59bd0405b4da" testName="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NetworkDown)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0013343" startTime="2026-11-06T08:18:39.1251453+08:00" endTime="2026-11-06T08:18:39.1251455+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="161b373c-3bdf-4a75-a013-d90e32a88f83">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs:line 22&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fe9f4626-f582-4ee7-a347-9b809b5858df" testId="e97522ad-81d8-0813-66db-506e1be9fb3f" testName="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: TimedOut)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0012199" startTime="2026-11-06T08:18:39.1255336+08:00" endTime="2026-11-06T08:18:39.1255336+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fe9f4626-f582-4ee7-a347-9b809b5858df">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs:line 22&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="840856a2-eb17-48c0-8aed-95196c677e1d" testId="0757daef-a900-0800-c262-cd4a1112af6e" testName="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: ConnectionAborted)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0008712" startTime="2026-11-06T08:18:39.0834792+08:00" endTime="2026-11-06T08:18:39.0834793+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="840856a2-eb17-48c0-8aed-95196c677e1d" />
+    <UnitTestResult executionId="65ceaee5-55f2-4f98-9f48-44acb942a125" testId="a82c0126-03e7-d54d-b113-d81666e15d40" testName="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: Shutdown)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0167327" startTime="2026-11-06T08:18:39.0799415+08:00" endTime="2026-11-06T08:18:39.0799543+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="65ceaee5-55f2-4f98-9f48-44acb942a125" />
+    <UnitTestResult executionId="198aaaf1-3925-4cf1-8b77-92fb6a84f703" testId="3ef0bccc-7243-4b01-f405-6de3aa72ea9a" testName="IndependentClassification.ArbitraryDisposedObjectIsCancelledWithoutToken" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0013721" startTime="2026-11-06T08:18:39.1257901+08:00" endTime="2026-11-06T08:18:39.1257901+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="198aaaf1-3925-4cf1-8b77-92fb6a84f703">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "CANCELLED"&#xD;
+Actual:   "ERROR"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at IndependentClassification.ArbitraryDisposedObjectIsCancelledWithoutToken() in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs:line 35&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f2ef1d96-329e-42db-90c4-fe6301ffa7fc" testId="6cf9020a-77c7-345c-c08f-9ceed83eb95f" testName="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: NotConnected)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0006870" startTime="2026-11-06T08:18:39.0865406+08:00" endTime="2026-11-06T08:18:39.0865407+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f2ef1d96-329e-42db-90c4-fe6301ffa7fc" />
+    <UnitTestResult executionId="bae11255-e422-4efa-878e-1772140a8213" testId="dc05540a-346b-72d1-f638-d5fa353e3e5c" testName="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: OperationAborted)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0021790" startTime="2026-11-06T08:18:39.0823563+08:00" endTime="2026-11-06T08:18:39.0823565+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bae11255-e422-4efa-878e-1772140a8213" />
+    <UnitTestResult executionId="bb6702e2-73aa-4e73-b72e-5b70b347844c" testId="9fd74621-42ba-1fba-0a91-92b49eaa9bca" testName="IndependentClassification.GenuineEofRemainsDistinct" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0013202" startTime="2026-11-06T08:18:39.1258281+08:00" endTime="2026-11-06T08:18:39.1258282+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb6702e2-73aa-4e73-b72e-5b70b347844c" />
+    <UnitTestResult executionId="8e2484ec-bd36-4377-bf0f-716b57bfd6ed" testId="5e0b9176-6d66-52e4-97ac-7409ff11a94b" testName="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: ConnectionReset)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0007380" startTime="2026-11-06T08:18:39.0856417+08:00" endTime="2026-11-06T08:18:39.0856418+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8e2484ec-bd36-4377-bf0f-716b57bfd6ed" />
+    <UnitTestResult executionId="5f303be8-740b-48cb-b2ca-fd9f3be1412e" testId="e41e51f9-2644-7ae8-9cd9-c6173574ccfa" testName="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NoBufferSpaceAvailable)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0015761" startTime="2026-11-06T08:18:39.1057473+08:00" endTime="2026-11-06T08:18:39.1057474+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5f303be8-740b-48cb-b2ca-fd9f3be1412e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code) in D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs:line 22&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NetworkDown)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="bbf502ca-a274-0d3e-013e-59bd0405b4da">
+      <Execution id="161b373c-3bdf-4a75-a013-d90e32a88f83" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="UnexpectedSocketAndWrappedSocketAreErrors" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.SignalledCancellationIsCancelled" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="c10a372a-cef5-00d2-aaac-9fc69dcd7b09">
+      <Execution id="7b462a44-c9da-4ad4-8ef9-1d288b09b192" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="SignalledCancellationIsCancelled" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.UnexpectedIoAndNestedIoAreErrors" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="f177f827-f20f-d5c5-5897-ea25c8b732b2">
+      <Execution id="58bb917d-d18e-4be5-8d6a-9e9898a061eb" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="UnexpectedIoAndNestedIoAreErrors" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NoBufferSpaceAvailable)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="e41e51f9-2644-7ae8-9cd9-c6173574ccfa">
+      <Execution id="5f303be8-740b-48cb-b2ca-fd9f3be1412e" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="UnexpectedSocketAndWrappedSocketAreErrors" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: OperationAborted)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="dc05540a-346b-72d1-f638-d5fa353e3e5c">
+      <Execution id="bae11255-e422-4efa-878e-1772140a8213" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="ClosureCodesBecomeCleanEofEvenWithoutCancellation" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: ConnectionAborted)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="0757daef-a900-0800-c262-cd4a1112af6e">
+      <Execution id="840856a2-eb17-48c0-8aed-95196c677e1d" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="ClosureCodesBecomeCleanEofEvenWithoutCancellation" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.ArbitraryDisposedObjectIsCancelledWithoutToken" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="3ef0bccc-7243-4b01-f405-6de3aa72ea9a">
+      <Execution id="198aaaf1-3925-4cf1-8b77-92fb6a84f703" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="ArbitraryDisposedObjectIsCancelledWithoutToken" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: Shutdown)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="a82c0126-03e7-d54d-b113-d81666e15d40">
+      <Execution id="65ceaee5-55f2-4f98-9f48-44acb942a125" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="ClosureCodesBecomeCleanEofEvenWithoutCancellation" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NetworkUnreachable)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="b68c4557-9b71-087d-ec4b-1a64e530be74">
+      <Execution id="f908efc7-a2a1-4a6c-9785-244f2ee6df5f" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="UnexpectedSocketAndWrappedSocketAreErrors" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: NotConnected)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="6cf9020a-77c7-345c-c08f-9ceed83eb95f">
+      <Execution id="f2ef1d96-329e-42db-90c4-fe6301ffa7fc" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="ClosureCodesBecomeCleanEofEvenWithoutCancellation" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: Disconnecting)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="4e7a4fd8-1abd-d5d1-b166-a38cc1472ee0">
+      <Execution id="aa0d6b59-3095-4ae5-9154-fb1e9011dab0" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="ClosureCodesBecomeCleanEofEvenWithoutCancellation" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.GenuineEofRemainsDistinct" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="9fd74621-42ba-1fba-0a91-92b49eaa9bca">
+      <Execution id="bb6702e2-73aa-4e73-b72e-5b70b347844c" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="GenuineEofRemainsDistinct" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: AccessDenied)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="d3114a36-10e7-6636-103e-bcfa1085415c">
+      <Execution id="fd33e026-90fd-49f5-ae71-3d9717296b0b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="UnexpectedSocketAndWrappedSocketAreErrors" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: TimedOut)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="e97522ad-81d8-0813-66db-506e1be9fb3f">
+      <Execution id="fe9f4626-f582-4ee7-a347-9b809b5858df" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="UnexpectedSocketAndWrappedSocketAreErrors" />
+    </UnitTest>
+    <UnitTest name="IndependentClassification.ClosureCodesBecomeCleanEofEvenWithoutCancellation(code: ConnectionReset)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-q3\bin\debug\net8.0\q3.dll" id="5e0b9176-6d66-52e4-97ac-7409ff11a94b">
+      <Execution id="8e2484ec-bd36-4377-bf0f-716b57bfd6ed" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\bin\Debug\net8.0\Q3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="IndependentClassification" name="ClosureCodesBecomeCleanEofEvenWithoutCancellation" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b68c4557-9b71-087d-ec4b-1a64e530be74" executionId="f908efc7-a2a1-4a6c-9785-244f2ee6df5f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4e7a4fd8-1abd-d5d1-b166-a38cc1472ee0" executionId="aa0d6b59-3095-4ae5-9154-fb1e9011dab0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f177f827-f20f-d5c5-5897-ea25c8b732b2" executionId="58bb917d-d18e-4be5-8d6a-9e9898a061eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d3114a36-10e7-6636-103e-bcfa1085415c" executionId="fd33e026-90fd-49f5-ae71-3d9717296b0b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c10a372a-cef5-00d2-aaac-9fc69dcd7b09" executionId="7b462a44-c9da-4ad4-8ef9-1d288b09b192" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bbf502ca-a274-0d3e-013e-59bd0405b4da" executionId="161b373c-3bdf-4a75-a013-d90e32a88f83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e97522ad-81d8-0813-66db-506e1be9fb3f" executionId="fe9f4626-f582-4ee7-a347-9b809b5858df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0757daef-a900-0800-c262-cd4a1112af6e" executionId="840856a2-eb17-48c0-8aed-95196c677e1d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a82c0126-03e7-d54d-b113-d81666e15d40" executionId="65ceaee5-55f2-4f98-9f48-44acb942a125" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3ef0bccc-7243-4b01-f405-6de3aa72ea9a" executionId="198aaaf1-3925-4cf1-8b77-92fb6a84f703" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6cf9020a-77c7-345c-c08f-9ceed83eb95f" executionId="f2ef1d96-329e-42db-90c4-fe6301ffa7fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc05540a-346b-72d1-f638-d5fa353e3e5c" executionId="bae11255-e422-4efa-878e-1772140a8213" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9fd74621-42ba-1fba-0a91-92b49eaa9bca" executionId="bb6702e2-73aa-4e73-b72e-5b70b347844c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5e0b9176-6d66-52e4-97ac-7409ff11a94b" executionId="8e2484ec-bd36-4377-bf0f-716b57bfd6ed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e41e51f9-2644-7ae8-9cd9-c6173574ccfa" executionId="5f303be8-740b-48cb-b2ca-fd9f3be1412e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="15" executed="15" passed="8" failed="7" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.17]   Discovering: Q3&#xD;
+[xUnit.net 00:00:00.20]   Discovered:  Q3&#xD;
+[xUnit.net 00:00:00.20]   Starting:    Q3&#xD;
+[xUnit.net 00:00:00.27]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.27]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.27]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.27]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.27]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.27]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.27]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs(22,0): at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code)&#xD;
+[xUnit.net 00:00:00.27]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.27]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.27]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.27]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.27]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.27]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.27]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.27]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs(22,0): at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code)&#xD;
+[xUnit.net 00:00:00.27]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.27]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.27]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.27]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.27]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.27]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.27]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.27]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs(22,0): at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code)&#xD;
+[xUnit.net 00:00:00.27]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.29]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.29]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.29]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.29]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.29]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs(22,0): at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code)&#xD;
+[xUnit.net 00:00:00.29]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.29]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.29]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.29]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.29]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.29]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs(22,0): at IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(SocketError code)&#xD;
+[xUnit.net 00:00:00.29]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.29]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.29]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Expected: "CANCELLED"&#xD;
+[xUnit.net 00:00:00.29]       Actual:   "ERROR"&#xD;
+[xUnit.net 00:00:00.29]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.29]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs(35,0): at IndependentClassification.ArbitraryDisposedObjectIsCancelledWithoutToken()&#xD;
+[xUnit.net 00:00:00.29]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.29]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.29]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.29]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.29]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.29]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.29]         D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-Q3\IndependentClassification.cs(30,0): at IndependentClassification.UnexpectedIoAndNestedIoAreErrors()&#xD;
+[xUnit.net 00:00:00.29]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.30]   Finished:    Q3&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T08:18:39.1039242+08:00">
+        <Text>[xUnit.net 00:00:00.27]     IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: AccessDenied) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T08:18:39.1055302+08:00">
+        <Text>[xUnit.net 00:00:00.27]     IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NetworkUnreachable) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T08:18:39.1056784+08:00">
+        <Text>[xUnit.net 00:00:00.27]     IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NoBufferSpaceAvailable) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T08:18:39.1577700+08:00">
+        <Text>[xUnit.net 00:00:00.29]     IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: NetworkDown) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T08:18:39.1578114+08:00">
+        <Text>[xUnit.net 00:00:00.29]     IndependentClassification.UnexpectedSocketAndWrappedSocketAreErrors(code: TimedOut) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T08:18:39.1578393+08:00">
+        <Text>[xUnit.net 00:00:00.29]     IndependentClassification.ArbitraryDisposedObjectIsCancelledWithoutToken [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T08:18:39.1578613+08:00">
+        <Text>[xUnit.net 00:00:00.29]     IndependentClassification.UnexpectedIoAndNestedIoAreErrors [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
