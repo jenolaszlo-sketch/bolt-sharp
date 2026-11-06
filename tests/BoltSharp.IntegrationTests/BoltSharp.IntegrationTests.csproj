@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B0-B-DRV-INT-01 integration harness. Test-only. Deliberately NOT part of BoltSharp.slnx (the
+    same repository convention as BoltSharp.DriverIntegrationTests): the core solution restore and
+    build stay free of the official Neo4j driver, and the pinned driver package is never referenced
+    by src/BoltSharp. Adding this project to the solution would violate that documented convention
+    and change the accepted 826-test core-solution baseline.
+  -->
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>BoltSharp.IntegrationTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- Pinned exact version, matching the existing B2-C-01 scaffold. No floating ranges. -->
+    <PackageReference Include="Neo4j.Driver" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      T08 reuses the genuine, accepted test-only BoltSharp listener (production B2-B negotiation and
+      B2-A framing) by linking its source file. The original file is not modified. This is the same
+      non-invasive reuse pattern used by the historical review probe hosts.
+    -->
+    <Compile Include="..\BoltSharp.DriverIntegrationTests\HandshakeTrace\LoopbackHandshakeListener.cs"
+             Link="ActualServer\LoopbackHandshakeListener.cs" />
+  </ItemGroup>
+
+</Project>
