@@ -1,0 +1,133 @@
+{
+  "description": "B0-A-TRACE-Q4 independent reviewer command log. Every command was run from the repository root D:\\projects\\bolt-sharp against the committed R3 source at HEAD 9ed5150096d18ea56b92a6535f065786ea331458. The reviewer build/export uses the normal project obj/bin outputs; no Git worktree or branch was created.",
+  "workdir": "D:\\projects\\bolt-sharp",
+  "reviewed_head": "9ed5150096d18ea56b92a6535f065786ea331458",
+  "reviewed_tree": "see git rev-parse HEAD^{tree}",
+  "evidence_directory": "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4",
+  "environment": {
+    "os": "Windows 10.0.26200 x64",
+    "sdk": "10.0.401",
+    "msbuild": "18.9.11",
+    "target_framework": "net8.0",
+    "runtime": "8.0.31"
+  },
+  "commands": [
+    {
+      "name": "solution",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test BoltSharp.slnx -c Debug --logger \"trx;LogFileName=q4-solution.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-solution.trx",
+      "result": "826 passed / 0 failed",
+      "exit_code": 0
+    },
+    {
+      "name": "driver",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj -c Debug --logger \"trx;LogFileName=q4-driver.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "environment": { "BOLTSHARP_TRACE01_EVIDENCE_DIR": "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\authentic" },
+      "trx": "trx/q4-driver.trx",
+      "result": "75 passed / 0 failed / 10 gated (D01-D10 NotExecuted); four authentic hex files regenerated",
+      "exit_code": 0
+    },
+    {
+      "name": "r1-shutdown",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj -c Debug --no-build --filter \"FullyQualifiedName~ListenerShutdownRegressionTests\" --logger \"trx;LogFileName=q4-r1-shutdown.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-r1-shutdown.trx",
+      "result": "10 passed / 0 failed",
+      "exit_code": 0
+    },
+    {
+      "name": "r2-classification",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj -c Debug --no-build --filter \"FullyQualifiedName~ListenerFaultClassificationRegressionTests\" --logger \"trx;LogFileName=q4-r2-classification.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-r2-classification.trx",
+      "result": "13 passed / 0 failed",
+      "exit_code": 0
+    },
+    {
+      "name": "r3-classification",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test tests/BoltSharp.DriverIntegrationTests/BoltSharp.DriverIntegrationTests.csproj -c Debug --no-build --filter \"FullyQualifiedName~ListenerClassificationR3RegressionTests\" --logger \"trx;LogFileName=q4-r3-classification.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-r3-classification.trx",
+      "result": "15 passed / 0 failed",
+      "exit_code": 0
+    },
+    {
+      "name": "r3-live-build",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet build docs/reviews/probes/B0-A-TRACE-R3/R3.csproj -c Debug --no-incremental",
+      "result": "build succeeded (live remediated listener linked)",
+      "exit_code": 0
+    },
+    {
+      "name": "r3-live",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test docs/reviews/probes/B0-A-TRACE-R3/R3.csproj -c Debug --no-build --logger \"trx;LogFileName=q4-r3-live.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-r3-live.trx",
+      "result": "15 passed / 0 failed",
+      "exit_code": 0
+    },
+    {
+      "name": "r3-negative-build",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet build docs/reviews/probes/B0-A-TRACE-R3/R3.csproj -c Debug --no-incremental -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-R3\\controls\\pre-r3-listener.cs",
+      "result": "build succeeded (byte-faithful pre-R3 listener snapshot, blob 24d530498aabaa0ec5d1275ad040a6e984afbe43)",
+      "exit_code": 0
+    },
+    {
+      "name": "r3-negative",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test docs/reviews/probes/B0-A-TRACE-R3/R3.csproj -c Debug --no-build --logger \"trx;LogFileName=q4-r3-negative.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-r3-negative.trx",
+      "result": "7 passed / 8 failed (EXPECTED before-fix negative control)",
+      "exit_code": 1
+    },
+    {
+      "name": "q2-retained",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test docs/reviews/probes/B0-A-TRACE-Q2/B0ATRACEQ2.Probes.csproj -c Debug --logger \"trx;LogFileName=q4-q2-retained.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-q2-retained.trx",
+      "result": "26 passed / 0 failed (retained TRACE-Q2 decisive probes, live listener)",
+      "exit_code": 0
+    },
+    {
+      "name": "q3-retained",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test docs/reviews/probes/B0-A-TRACE-Q3/Q3.csproj -c Debug --logger \"trx;LogFileName=q4-q3-retained.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-q3-retained.trx",
+      "result": "10 passed / 6 failed; the 6 failures are ClosureCodesBecomeCleanEofEvenWithoutCancellation cases that intentionally assert the pre-R3 historical behaviour (retained, unmodified)",
+      "exit_code": 1
+    },
+    {
+      "name": "getstream-control-build",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet build docs/reviews/probes/B0-A-TRACE-Q2/B0ATRACEQ2.Probes.csproj -c Debug --no-incremental -p:ListenerSource=D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-R3\\controls\\GetStreamHookListener.cs -p:ReviewerHooks=true",
+      "result": "build succeeded (R3-remediated hook snapshot, exactly one expression differs from live listener)",
+      "exit_code": 0
+    },
+    {
+      "name": "getstream-control",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test docs/reviews/probes/B0-A-TRACE-Q2/B0ATRACEQ2.Probes.csproj -c Debug --no-build -p:ReviewerHooks=true --filter \"FullyQualifiedName~Q19_|FullyQualifiedName~Q20_\" --logger \"trx;LogFileName=q4-getstream-control.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-getstream-control.trx",
+      "result": "2 passed / 0 failed (Q19 pre-GetStream close = CLOSED; Q20 unexpected acquisition fault = ERROR)",
+      "exit_code": 0
+    },
+    {
+      "name": "q4-independent-probes-build",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet build docs/reviews/probes/B0-A-TRACE-Q4/Q4.csproj -c Debug",
+      "result": "build succeeded; 0 warnings / 0 errors (reviewer-authored probes linking the live listener)",
+      "exit_code": 0
+    },
+    {
+      "name": "q4-independent-probes",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test docs/reviews/probes/B0-A-TRACE-Q4/Q4.csproj -c Debug --no-build --logger \"trx;LogFileName=q4-independent-probes.trx\" --results-directory D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-A-TRACE-Q4\\trx",
+      "trx": "trx/q4-independent-probes.trx",
+      "result": "27 passed / 0 failed (reviewer-authored classification probes)",
+      "exit_code": 0
+    }
+  ]
+}

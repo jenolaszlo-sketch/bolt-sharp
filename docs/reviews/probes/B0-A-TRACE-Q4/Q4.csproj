@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    B0-A-TRACE-Q4 independent reviewer probe host. Links the live committed listener source
+    (tests/BoltSharp.DriverIntegrationTests/HandshakeTrace/LoopbackHandshakeListener.cs) and the
+    Q4 reviewer-authored classification probes. Test-only: no production transport is introduced.
+  -->
+  <PropertyGroup>
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>BoltSharp.DriverIntegrationTests.HandshakeTrace</RootNamespace>
+    <ListenerSource Condition="'$(ListenerSource)' == ''">../../../../tests/BoltSharp.DriverIntegrationTests/HandshakeTrace/LoopbackHandshakeListener.cs</ListenerSource>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2"><PrivateAssets>all</PrivateAssets></PackageReference>
+    <ProjectReference Include="../../../../src/BoltSharp/BoltSharp.csproj" />
+    <Compile Include="$(ListenerSource)" Link="LoopbackHandshakeListener.cs" />
+  </ItemGroup>
+</Project>

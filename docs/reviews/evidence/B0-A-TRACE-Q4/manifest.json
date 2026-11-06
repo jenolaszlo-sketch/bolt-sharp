@@ -1,0 +1,130 @@
+﻿{
+    "description":  "B0-A-TRACE-Q4 independent reviewer evidence manifest. Lists every Q4 evidence file except the manifest itself plus the review report; SHA-256 over working-tree bytes (.gitattributes sets * -text in the evidence directory).",
+    "algorithm":  "SHA256",
+    "reviewed_head":  "9ed5150096d18ea56b92a6535f065786ea331458",
+    "reviewed_tree":  "6af3130696e5261bd4eadc764ac75b4a4ea2c1ca",
+    "implementation_commit":  "a79a28f29f060703d90adfbbb3d7f558576f7df3",
+    "report":  {
+                   "path":  "docs/reviews/B0-A-TRACE-Q4-independent-requalification.md",
+                   "sha256":  "0C3756B220A1D997EA93C99A90647EFB086550BE9715D34AED98CA3E94221E02",
+                   "bytes":  23363
+               },
+    "file_count":  23,
+    "files":  [
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/.gitattributes",
+                      "sha256":  "705FD4D6451A31D36B3DF7DE96F83F30AC976C9B4A6D1E51671D8E2F33E2D0DA",
+                      "bytes":  8
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/.gitignore",
+                      "sha256":  "E4B9A90BFFF3E464955B5B47208AD550246DDE2EC0E93FE89C4D5D668C754B71",
+                      "bytes":  7
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/authentic/driver-legacy-client-handshake.hex",
+                      "sha256":  "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+                      "bytes":  61
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/authentic/driver-legacy-server-response.hex",
+                      "sha256":  "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+                      "bytes":  13
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/authentic/driver-legacy-trace.json",
+                      "sha256":  "32C2D23E73E2EAFF10EDA299E1C4E082E1948076B547A21DE4AC1D5EF724655C",
+                      "bytes":  6014
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/authentic/driver-manifest-client-handshake.hex",
+                      "sha256":  "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+                      "bytes":  76
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/authentic/driver-manifest-server-response.hex",
+                      "sha256":  "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+                      "bytes":  31
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/authentic/driver-manifest-trace.json",
+                      "sha256":  "7EB0975D92D53174C45B509472A40FED9A6B485B502EEE82A39995F43F2E0145",
+                      "bytes":  6476
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/authentic-handshake-hashes.json",
+                      "sha256":  "E7206FF6C5EE349D0102A7BA11DA27E413ED8F82366BBEC04417C03D62B5CB73",
+                      "bytes":  1851
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/commands.json",
+                      "sha256":  "110824FA2D798FCE7D9590609CB6AB57C1A2C85FDCA5FF6ED1BEDDCD55840371",
+                      "bytes":  7955
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/environment.txt",
+                      "sha256":  "6752598DAA95111222C3395563AAFDC59C152DB94E5D32642D13F2468B7AAB66",
+                      "bytes":  3904
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/q4-results-summary.json",
+                      "sha256":  "54BF1612958316CC8134C9DEA54C27C992C8313670093023D9C21F7473E34BBE",
+                      "bytes":  1679
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-driver.trx",
+                      "sha256":  "BA0E86E71F2FB9E7E217B95ACBB33D051B4A43F35C2EEE65205B9EDE7F1352E0",
+                      "bytes":  138791
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-getstream-control.trx",
+                      "sha256":  "AD399A37FDE6734AAD57065D7D9CA7160B83E58A5C1C289327F0D9F1E325AE6B",
+                      "bytes":  4836
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-independent-probes.trx",
+                      "sha256":  "B8C17D5CC74840B544E6AF5FC45A04DE92C5FA6CC1BA9EBE7E47B6DAF340729F",
+                      "bytes":  41379
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-q2-retained.trx",
+                      "sha256":  "C053F8BD559E2F19F62278A2EA143D93B983B3F51D9D13B89DCA8D1D3D7F033F",
+                      "bytes":  48231
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-q3-retained.trx",
+                      "sha256":  "0899043143B4E5D4C6193AF4E821C0AF7835F017292683F930579D18CB97FB9A",
+                      "bytes":  31279
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-r1-shutdown.trx",
+                      "sha256":  "B449BEDC1D10D6B70E6BD1B5032AF3E1B059EE24289AFEE0CE6B362FB220B803",
+                      "bytes":  16766
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-r2-classification.trx",
+                      "sha256":  "8A2B46E16754C011DF20F7223852EDE8464DAA30CB4E1170E24BD4847D0FAE44",
+                      "bytes":  22103
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-r3-classification.trx",
+                      "sha256":  "CFFC945079E105BDD1CEF58EEF47B9E9D0ADC76923F5DA891499BE2B65030DAE",
+                      "bytes":  25568
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-r3-live.trx",
+                      "sha256":  "09CDA7F1F845467A647C056F394F5169AA3AC0A2294B7C952DEF335689CBE7AF",
+                      "bytes":  24398
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-r3-negative.trx",
+                      "sha256":  "77FF498A4AA057D695779F6F840E8C209F618325466E8C39281C7BBB71AA78C3",
+                      "bytes":  44136
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-Q4/trx/q4-solution.trx",
+                      "sha256":  "4FE88C3B44CB8459569C83A3FB061BE9B02A0EA9C4687B4D8D87049971A5437D",
+                      "bytes":  1117920
+                  }
+              ]
+}
