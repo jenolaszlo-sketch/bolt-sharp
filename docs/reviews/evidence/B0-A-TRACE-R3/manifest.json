@@ -1,0 +1,261 @@
+﻿{
+    "description":  "B0-A-TRACE-R3 classification remediation evidence manifest. Lists every committed evidence file except the manifest itself; hashes are SHA-256 over committed bytes (.gitattributes sets * -text in the evidence directory).",
+    "algorithm":  "SHA256",
+    "baseline_head":  "81f12f9d1f0c274d07431e2543f5ddb58e2e733a",
+    "baseline_tree":  "f079c054e12fa93204c53e722f684e4a7bc773d9",
+    "implementation_commit":  "a79a28f29f060703d90adfbbb3d7f558576f7df3",
+    "implementation_tree":  "dc979880ac0f4e748e4df4ae7530d9d4f09beb43",
+    "report":  {
+                   "path":  "docs/reviews/B0-A-TRACE-R3-classification-remediation.md",
+                   "sha256":  "9EA7058A4252219F3F2713F59DDFBB9226DEDC5629A3280BCAB41DB79ECD10ED",
+                   "bytes":  16424
+               },
+    "file_count":  49,
+    "files":  [
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/.gitattributes",
+                      "sha256":  "705FD4D6451A31D36B3DF7DE96F83F30AC976C9B4A6D1E51671D8E2F33E2D0DA",
+                      "bytes":  8
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/.gitignore",
+                      "sha256":  "E4B9A90BFFF3E464955B5B47208AD550246DDE2EC0E93FE89C4D5D668C754B71",
+                      "bytes":  7
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic.txt",
+                      "sha256":  "1F28C79E97BA0EA68BA093E68C2C5A55859EAEEF9F167F54E546F6B979E5155C",
+                      "bytes":  884
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic/driver-legacy-client-handshake.hex",
+                      "sha256":  "9BAB968DED8B229BEE87BBEEEC39E26C096EE6ACB39D4A6FE848419E7E17AE13",
+                      "bytes":  61
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic/driver-legacy-server-response.hex",
+                      "sha256":  "C35413A73CD1EBB50AF8BF14CC07FA8BE069902E8FB30FCDB32E52483D4E9AB0",
+                      "bytes":  13
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic/driver-legacy-trace.json",
+                      "sha256":  "AE499DBF35FB046E17C3AEB0C02B50E2FBE3B7E370C823A1184219BAAF6DF537",
+                      "bytes":  6012
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic/driver-manifest-client-handshake.hex",
+                      "sha256":  "0CD1BABC841371031AA2EE228A7CCAAF233D32428C60BB7F16F3D37210A39A5C",
+                      "bytes":  76
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic/driver-manifest-server-response.hex",
+                      "sha256":  "52445611830D9D51BA7D8E56E9F9923E5C804A3DAB388248B0C87918E9DEC0AC",
+                      "bytes":  31
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic/driver-manifest-trace.json",
+                      "sha256":  "B6CEB420445BCEF4FFE8EAA59F9AD84217B6BF6741C857A483C40634CC2E1642",
+                      "bytes":  6476
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/authentic-handshake-hashes.json",
+                      "sha256":  "58A86CED7A24871AE3F2118FCE04E34317C25AEC41CCBADD0F9FA358D3CF72CF",
+                      "bytes":  1788
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/b2a-q2.txt",
+                      "sha256":  "949FB88962583602D7EE7ACE3D1DDD7FB79A0B772CC30FA5E8855AF3A1963B24",
+                      "bytes":  1320
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/b2b-q1.txt",
+                      "sha256":  "99FCB0D9716E3159F81DA9FECBED277ED721C5194DE66839A7942993FE1A5220",
+                      "bytes":  1322
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/b2b-q2.txt",
+                      "sha256":  "E5A917FF2A6E1B5620362EE9C0452E45353077DD0C5CB8924EAEB922279B7342",
+                      "bytes":  1320
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/b2c-q2.txt",
+                      "sha256":  "9A389BB5E4DD80FC664F7A9713B1683550E41D8D023635050D56F4D699A90C1C",
+                      "bytes":  1632
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/commands.json",
+                      "sha256":  "10FD7389B461E76DC1DEC13511F5585E5FAA91645D3BEB9BF8451024FFAB7E8D",
+                      "bytes":  9781
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/controls/GetStreamHookListener.cs",
+                      "sha256":  "648E4CB3D59F936C603A2499C882B8F2378376CD345C044CB34B9E25A36641A5",
+                      "bytes":  41831
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/controls/pre-r3-listener.cs",
+                      "sha256":  "707F0E197271BF7D8453EA480D94B346B17AEADCF1F760909020D4811CFA350A",
+                      "bytes":  38142
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/driver.txt",
+                      "sha256":  "F4B3F036F145C6296FF2AAF7391A91A80DE24C586444A3BC4443720CB3BD5912",
+                      "bytes":  6480
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/environment.txt",
+                      "sha256":  "D0176C72D486987849E6A8B227735CB9530BE8CB6727E055975DCD69FF36BD88",
+                      "bytes":  328
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/evidence-addendum.md",
+                      "sha256":  "2AECF00DCFE3B91043528A429F45BCBF317BABBB4B43E1FFAF2CDF617350E901",
+                      "bytes":  2344
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/getstream-control.txt",
+                      "sha256":  "B6ABE8E6D7BA9B7BCFA7DF03D77987D721118D5E114F1BDA2CC16513F8109A45",
+                      "bytes":  830
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/getstream-control-build.txt",
+                      "sha256":  "94103FDFC536FF970547740413C5E71C7570DCA7D56D85A646CD707D412B949E",
+                      "bytes":  738
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/q1.txt",
+                      "sha256":  "5534B2096BA5C089D2238D207EC19CC40BE581A8599CCD6B91E1E951987B4993",
+                      "bytes":  1890
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/q2-retained.txt",
+                      "sha256":  "88F7B5029F91EB052A82750BDBB30C449F33D31982FA651B7543FC086BD76FA6",
+                      "bytes":  1392
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/q3-retained-r3.txt",
+                      "sha256":  "39729B2C1759E0BD1ADACA34918E5B41EA7FBC26813882A5912EB09429C64A55",
+                      "bytes":  9992
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/r1-shutdown.txt",
+                      "sha256":  "4F452252DB65867DA0C0DB56F850C44E385257CAE21BBD083E2BF26B37AC1E46",
+                      "bytes":  888
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/r2-classification.txt",
+                      "sha256":  "0FF26191A01DDDC656BFB0FE4501BE957AEEA843B63897D5EAC9B82A6482FA93",
+                      "bytes":  904
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/r3-classification.txt",
+                      "sha256":  "430D4F78B23CF1C777C22294F1265FE13F10152B2F63CC8AE036E82931020917",
+                      "bytes":  906
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/r3-live.txt",
+                      "sha256":  "6BC85D14CAAE3BC9936176D1EB5294C7AAAA45F66FDFAFF130B998A6F26BC508",
+                      "bytes":  756
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/r3-live-build.txt",
+                      "sha256":  "5519AC2CF3E3049A635FB83DCA51AE2C7068A4995E68488A330877B8F63C0BFA",
+                      "bytes":  868
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/r3-negative.txt",
+                      "sha256":  "D54805F25BA273F43E4949A92BF5E284B5AB8D024B6A358348E25519E2458ECD",
+                      "bytes":  21406
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/r3-negative-build.txt",
+                      "sha256":  "DD26B1684D4A24E72BC553B0F0999CE6B2B067DC5368ACFC2D3992060B0552A5",
+                      "bytes":  678
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/solution.txt",
+                      "sha256":  "E20998463A7D4114AC9E183B2D3FBDD42943D836AA972441C2177739E4427AF2",
+                      "bytes":  1326
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/authentic.trx",
+                      "sha256":  "93F80F63E9206099C0BF828E07BC7DCD22B6CECCB390A3333FAEBC1EA25FFAEC",
+                      "bytes":  4697
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/b2a-q2.trx",
+                      "sha256":  "896BE35EE2F661FC2E2349154AC11AE136FA6EACED0E321CA0B744E3D5F30774",
+                      "bytes":  25357
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/b2b-q1.trx",
+                      "sha256":  "A01696113304AC6E56651B4E81EE3C7315BDAF2049F140998C60EE5EA8C75084",
+                      "bytes":  103049
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/b2b-q2.trx",
+                      "sha256":  "8433599F92A1DA1E58AB46D8FFE097CD3B71A4429ECEB7D7D441528C6642EE5E",
+                      "bytes":  65330
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/b2c-q2.trx",
+                      "sha256":  "4A5336CB3246CC24CF77A8C4BCA03C6435F6EF14FE65BC64ABFB603813469911",
+                      "bytes":  57876
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/driver.trx",
+                      "sha256":  "37668585D4B67F451C20D481470603CED0E5D335180D7B4CB6A14F425DFF5C70",
+                      "bytes":  138791
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/getstream-control.trx",
+                      "sha256":  "11AB33BA84666F606D30D600B12EE80C12A3D26A78B5BD1054ECA8C280C3F85E",
+                      "bytes":  4836
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/q1.trx",
+                      "sha256":  "2A361B09C76924D7AA4BC3FFFB392A941DA0C797C61F06C63FF46DB9CE8A07DB",
+                      "bytes":  21288
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/q2-retained.trx",
+                      "sha256":  "EA4CB10A6DB3DAD1014DFC1998AC83B860F1753188A437E13B24DEF0C1E47DD3",
+                      "bytes":  48227
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/q3-retained-r3.trx",
+                      "sha256":  "46E7013DE76E87B4E774E03D09E6F021480405D848B48A0795D44D410323CFA4",
+                      "bytes":  31279
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/r1-shutdown.trx",
+                      "sha256":  "150573C77A747477DCF7558F3FA556897B534251126649899BF337B820CC8C87",
+                      "bytes":  16766
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/r2-classification.trx",
+                      "sha256":  "C5FADA8AB503450AEBD2816F76E0331CFC5040DF9E09BCA459FB12349AF148E1",
+                      "bytes":  22103
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/r3-classification.trx",
+                      "sha256":  "2C8913A3D2E69157D3A00B59093BBEDBEE4E03750D83B5A5E0BF0858774EEFA7",
+                      "bytes":  25568
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/r3-live.trx",
+                      "sha256":  "52615AC800E4B2F0FD0432125116B1C80295B131ED8477062C0F648CB9A11E2F",
+                      "bytes":  24398
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/r3-negative.trx",
+                      "sha256":  "70DD9EB8E73A2768173B6220EFB6529BB849DCB1FAFE6A1883198EBA371F2BDC",
+                      "bytes":  44136
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-A-TRACE-R3/trx/solution.trx",
+                      "sha256":  "66D361573D85CFD62A3261962ABC2416162C5125C8EB0F0B36A7C78786FF4643",
+                      "bytes":  1117920
+                  }
+              ]
+}

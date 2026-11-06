@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="dbc86235-e86b-458a-a63d-6682ceeec7bf" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-06 09:47:30" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T09:47:30.8536319+08:00" queuing="2026-11-06T09:47:30.8536323+08:00" start="2026-11-06T09:47:29.0987630+08:00" finish="2026-11-06T09:47:30.8581420+08:00" />
+  <TestSettings name="default" id="b37421f9-2235-4986-bd71-9471ed1226af">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-06_09_47_30" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="b1eac08b-b4d3-4690-98ed-b4fa8f5dabf8" testId="a1ea6bc6-3272-a751-bbe0-0da1587843ef" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_LegacyNegotiation_Is_Observed" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.6446935" startTime="2026-11-06T09:47:30.1750886+08:00" endTime="2026-11-06T09:47:30.1751001+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b1eac08b-b4d3-4690-98ed-b4fa8f5dabf8" />
+    <UnitTestResult executionId="8ce5f0bc-26ff-479d-bcae-56ef6a101e99" testId="16ea9200-b32b-1946-6d5a-7293851d0d45" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_ManifestNegotiation_Is_Observed" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.5578838" startTime="2026-11-06T09:47:30.7338665+08:00" endTime="2026-11-06T09:47:30.7338669+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ce5f0bc-26ff-479d-bcae-56ef6a101e99" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_LegacyNegotiation_Is_Observed" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="a1ea6bc6-3272-a751-bbe0-0da1587843ef">
+      <Execution id="b1eac08b-b4d3-4690-98ed-b4fa8f5dabf8" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests" name="T01_T04_OfficialDriver_LegacyNegotiation_Is_Observed" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests.T01_T04_OfficialDriver_ManifestNegotiation_Is_Observed" storage="d:\projects\bolt-sharp\tests\boltsharp.driverintegrationtests\bin\debug\net8.0\boltsharp.driverintegrationtests.dll" id="16ea9200-b32b-1946-6d5a-7293851d0d45">
+      <Execution id="8ce5f0bc-26ff-479d-bcae-56ef6a101e99" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\bin\Debug\net8.0\BoltSharp.DriverIntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.HandshakeTraceProbeTests" name="T01_T04_OfficialDriver_ManifestNegotiation_Is_Observed" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="a1ea6bc6-3272-a751-bbe0-0da1587843ef" executionId="b1eac08b-b4d3-4690-98ed-b4fa8f5dabf8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16ea9200-b32b-1946-6d5a-7293851d0d45" executionId="8ce5f0bc-26ff-479d-bcae-56ef6a101e99" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.05]   Discovering: BoltSharp.DriverIntegrationTests&#xD;
+[xUnit.net 00:00:00.09]   Discovered:  BoltSharp.DriverIntegrationTests&#xD;
+[xUnit.net 00:00:00.09]   Starting:    BoltSharp.DriverIntegrationTests&#xD;
+[xUnit.net 00:00:01.33]   Finished:    BoltSharp.DriverIntegrationTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

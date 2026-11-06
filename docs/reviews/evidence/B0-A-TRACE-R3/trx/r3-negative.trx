@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="a7ab3587-2283-4846-a00e-127e66632ab8" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-06 09:42:36" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-06T09:42:36.4850592+08:00" queuing="2026-11-06T09:42:36.4850598+08:00" start="2026-11-06T09:42:34.0166805+08:00" finish="2026-11-06T09:42:36.5997505+08:00" />
+  <TestSettings name="default" id="4d5199ee-e535-420f-b9e1-f536394be11b">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-06_09_42_36" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="ce29c11e-384a-4288-aa83-d8c715b67016" testId="57f950b3-3640-677f-6aad-d435492547a7" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: OperationAborted)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010053" startTime="2026-11-06T09:42:36.3969589+08:00" endTime="2026-11-06T09:42:36.3969591+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ce29c11e-384a-4288-aa83-d8c715b67016">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 168&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 170&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="11d1d27f-f12c-460f-9910-0bc161d65d7b" testId="a008f57e-e081-6cc3-d429-b906b0764b65" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: ConnectionReset)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0013158" startTime="2026-11-06T09:42:36.3965158+08:00" endTime="2026-11-06T09:42:36.3965159+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="11d1d27f-f12c-460f-9910-0bc161d65d7b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 168&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 170&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1677b849-5fd8-49b9-bd0b-7ddf9e6b7294" testId="ff136bec-cb34-1abc-e7ee-1cd4f52ce794" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_01_GenuineZeroByteEof_FirstRead_IsCleanEof" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0020189" startTime="2026-11-06T09:42:36.5439994+08:00" endTime="2026-11-06T09:42:36.5439997+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1677b849-5fd8-49b9-bd0b-7ddf9e6b7294" />
+    <UnitTestResult executionId="e3883fbb-c607-4731-9c2f-f07c7c068d06" testId="1ed639e4-700c-3355-2ba2-da5efb7107dd" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_08_LocalShutdown_WithSocketClosure_IsCancelled" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0152783" startTime="2026-11-06T09:42:36.4158828+08:00" endTime="2026-11-06T09:42:36.4158831+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e3883fbb-c607-4731-9c2f-f07c7c068d06">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+            ↓ (pos 1)&#xD;
+Expected: "CANCELLED"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+            ↑ (pos 1)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_08_LocalShutdown_WithSocketClosure_IsCancelled() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 252&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_08_LocalShutdown_WithSocketClosure_IsCancelled() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 254&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fb9e2c56-ecbf-4ff1-8059-7f8f9ff051b8" testId="5ab4d8e6-c533-fdd8-894a-cadfc704658b" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_06_UnexpectedIoException_RemainsError" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0014748" startTime="2026-11-06T09:42:36.4434486+08:00" endTime="2026-11-06T09:42:36.4434486+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fb9e2c56-ecbf-4ff1-8059-7f8f9ff051b8" />
+    <UnitTestResult executionId="8031d46e-b720-4db5-a023-f827da8cc588" testId="6b9246a5-f79a-d130-7665-5da57bd61f90" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_03_IncompleteFrameEof_IsTruncatedNotCleanEof" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0035981" startTime="2026-11-06T09:42:36.4433424+08:00" endTime="2026-11-06T09:42:36.4433424+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8031d46e-b720-4db5-a023-f827da8cc588" />
+    <UnitTestResult executionId="fbfa0291-a840-44b2-b461-2c89649f306e" testId="596735df-cf35-cb1a-15d6-b13f840d4d76" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1102511" startTime="2026-11-06T09:42:36.5422483+08:00" endTime="2026-11-06T09:42:36.5422487+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fbfa0291-a840-44b2-b461-2c89649f306e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 189&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof() in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 190&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ad7d5b25-305a-434b-af31-af54f95c8d2e" testId="5a49929d-a880-cc48-aae9-a6160012b7ea" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: NotConnected)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0042349" startTime="2026-11-06T09:42:36.3952081+08:00" endTime="2026-11-06T09:42:36.3952084+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ad7d5b25-305a-434b-af31-af54f95c8d2e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 168&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 170&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="19fbc040-f495-453b-b496-315a5773d9c3" testId="239c02e5-007c-226c-f45d-5b90c9274835" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_07_UnexpectedWrappedNetworkFault_RemainsError" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0035107" startTime="2026-11-06T09:42:36.3750422+08:00" endTime="2026-11-06T09:42:36.3750425+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="19fbc040-f495-453b-b496-315a5773d9c3" />
+    <UnitTestResult executionId="565e02e4-0a70-424c-9552-3598fe1c5972" testId="cdf5be1b-bb2f-080b-da9c-0ef725ad8555" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: Disconnecting)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0010228" startTime="2026-11-06T09:42:36.3984253+08:00" endTime="2026-11-06T09:42:36.3984254+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="565e02e4-0a70-424c-9552-3598fe1c5972">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 168&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 170&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="55e91381-2234-45f4-b5a1-c603c89464ef" testId="4dd9318d-8de2-ab5e-b401-2e0040087dda" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: ConnectionAborted)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0008937" startTime="2026-11-06T09:42:36.3997121+08:00" endTime="2026-11-06T09:42:36.3997122+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55e91381-2234-45f4-b5a1-c603c89464ef">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 168&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 170&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6a7ce8bd-4d52-4271-a491-65b87f2107bd" testId="27cf5276-545d-7bc9-472e-839cb962aaab" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_10_ListenerDisposal_DuringObservation_DoesNotThrowAndIsNotCleanEof" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0081268" startTime="2026-11-06T09:42:36.4433981+08:00" endTime="2026-11-06T09:42:36.4433982+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6a7ce8bd-4d52-4271-a491-65b87f2107bd" />
+    <UnitTestResult executionId="79c53a1f-d84b-4479-a89f-57d77ee69ccf" testId="c8a6b17b-d909-db0f-7375-48093e2d34d4" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: Shutdown)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0018944" startTime="2026-11-06T09:42:36.3959313+08:00" endTime="2026-11-06T09:42:36.3959314+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="79c53a1f-d84b-4479-a89f-57d77ee69ccf">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "ERROR"&#xD;
+Actual:   "CLEAN_EOF"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 168&#xD;
+   at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code) in D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs:line 170&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e9d82eff-ffeb-4bb8-8f71-2da39fca8a6e" testId="8a99d69c-b6aa-b330-7067-b160730c2ef7" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_09_Classifier_UsesLifecycleContextToDistinguishLocalTeardown" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0005927" startTime="2026-11-06T09:42:36.4431773+08:00" endTime="2026-11-06T09:42:36.4431776+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e9d82eff-ffeb-4bb8-8f71-2da39fca8a6e" />
+    <UnitTestResult executionId="132bcbf8-f601-4ae7-a074-06814a26e592" testId="c22afaa9-d397-ecc3-bb7d-5923916d875d" testName="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_02_GenuineZeroByteEof_AdditionalRead_IsCleanEof" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2328996" startTime="2026-11-06T09:42:36.3707340+08:00" endTime="2026-11-06T09:42:36.3707459+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="132bcbf8-f601-4ae7-a074-06814a26e592" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_07_UnexpectedWrappedNetworkFault_RemainsError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="239c02e5-007c-226c-f45d-5b90c9274835">
+      <Execution id="19fbc040-f495-453b-b496-315a5773d9c3" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_07_UnexpectedWrappedNetworkFault_RemainsError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_08_LocalShutdown_WithSocketClosure_IsCancelled" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="1ed639e4-700c-3355-2ba2-da5efb7107dd">
+      <Execution id="e3883fbb-c607-4731-9c2f-f07c7c068d06" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_08_LocalShutdown_WithSocketClosure_IsCancelled" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_03_IncompleteFrameEof_IsTruncatedNotCleanEof" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="6b9246a5-f79a-d130-7665-5da57bd61f90">
+      <Execution id="8031d46e-b720-4db5-a023-f827da8cc588" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_03_IncompleteFrameEof_IsTruncatedNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: ConnectionAborted)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="4dd9318d-8de2-ab5e-b401-2e0040087dda">
+      <Execution id="55e91381-2234-45f4-b5a1-c603c89464ef" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_09_Classifier_UsesLifecycleContextToDistinguishLocalTeardown" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="8a99d69c-b6aa-b330-7067-b160730c2ef7">
+      <Execution id="e9d82eff-ffeb-4bb8-8f71-2da39fca8a6e" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_09_Classifier_UsesLifecycleContextToDistinguishLocalTeardown" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_06_UnexpectedIoException_RemainsError" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="5ab4d8e6-c533-fdd8-894a-cadfc704658b">
+      <Execution id="fb9e2c56-ecbf-4ff1-8059-7f8f9ff051b8" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_06_UnexpectedIoException_RemainsError" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="596735df-cf35-cb1a-15d6-b13f840d4d76">
+      <Execution id="fbfa0291-a840-44b2-b461-2c89649f306e" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_02_GenuineZeroByteEof_AdditionalRead_IsCleanEof" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="c22afaa9-d397-ecc3-bb7d-5923916d875d">
+      <Execution id="132bcbf8-f601-4ae7-a074-06814a26e592" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_02_GenuineZeroByteEof_AdditionalRead_IsCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: Disconnecting)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="cdf5be1b-bb2f-080b-da9c-0ef725ad8555">
+      <Execution id="565e02e4-0a70-424c-9552-3598fe1c5972" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: Shutdown)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="c8a6b17b-d909-db0f-7375-48093e2d34d4">
+      <Execution id="79c53a1f-d84b-4479-a89f-57d77ee69ccf" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: NotConnected)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="5a49929d-a880-cc48-aae9-a6160012b7ea">
+      <Execution id="ad7d5b25-305a-434b-af31-af54f95c8d2e" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: OperationAborted)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="57f950b3-3640-677f-6aad-d435492547a7">
+      <Execution id="ce29c11e-384a-4288-aa83-d8c715b67016" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_01_GenuineZeroByteEof_FirstRead_IsCleanEof" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="ff136bec-cb34-1abc-e7ee-1cd4f52ce794">
+      <Execution id="1677b849-5fd8-49b9-bd0b-7ddf9e6b7294" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_01_GenuineZeroByteEof_FirstRead_IsCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: ConnectionReset)" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="a008f57e-e081-6cc3-d429-b906b0764b65">
+      <Execution id="11d1d27f-f12c-460f-9910-0bc161d65d7b" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_10_ListenerDisposal_DuringObservation_DoesNotThrowAndIsNotCleanEof" storage="d:\projects\bolt-sharp\docs\reviews\probes\b0-a-trace-r3\bin\debug\net8.0\r3.dll" id="27cf5276-545d-7bc9-472e-839cb962aaab">
+      <Execution id="6a7ce8bd-4d52-4271-a491-65b87f2107bd" />
+      <TestMethod codeBase="D:\projects\bolt-sharp\docs\reviews\probes\B0-A-TRACE-R3\bin\Debug\net8.0\R3.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests" name="R3_10_ListenerDisposal_DuringObservation_DoesNotThrowAndIsNotCleanEof" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="57f950b3-3640-677f-6aad-d435492547a7" executionId="ce29c11e-384a-4288-aa83-d8c715b67016" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a008f57e-e081-6cc3-d429-b906b0764b65" executionId="11d1d27f-f12c-460f-9910-0bc161d65d7b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ff136bec-cb34-1abc-e7ee-1cd4f52ce794" executionId="1677b849-5fd8-49b9-bd0b-7ddf9e6b7294" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1ed639e4-700c-3355-2ba2-da5efb7107dd" executionId="e3883fbb-c607-4731-9c2f-f07c7c068d06" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ab4d8e6-c533-fdd8-894a-cadfc704658b" executionId="fb9e2c56-ecbf-4ff1-8059-7f8f9ff051b8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b9246a5-f79a-d130-7665-5da57bd61f90" executionId="8031d46e-b720-4db5-a023-f827da8cc588" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="596735df-cf35-cb1a-15d6-b13f840d4d76" executionId="fbfa0291-a840-44b2-b461-2c89649f306e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5a49929d-a880-cc48-aae9-a6160012b7ea" executionId="ad7d5b25-305a-434b-af31-af54f95c8d2e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="239c02e5-007c-226c-f45d-5b90c9274835" executionId="19fbc040-f495-453b-b496-315a5773d9c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cdf5be1b-bb2f-080b-da9c-0ef725ad8555" executionId="565e02e4-0a70-424c-9552-3598fe1c5972" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4dd9318d-8de2-ab5e-b401-2e0040087dda" executionId="55e91381-2234-45f4-b5a1-c603c89464ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="27cf5276-545d-7bc9-472e-839cb962aaab" executionId="6a7ce8bd-4d52-4271-a491-65b87f2107bd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c8a6b17b-d909-db0f-7375-48093e2d34d4" executionId="79c53a1f-d84b-4479-a89f-57d77ee69ccf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8a99d69c-b6aa-b330-7067-b160730c2ef7" executionId="e9d82eff-ffeb-4bb8-8f71-2da39fca8a6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c22afaa9-d397-ecc3-bb7d-5923916d875d" executionId="132bcbf8-f601-4ae7-a074-06814a26e592" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="15" executed="15" passed="7" failed="8" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.57]   Discovering: R3&#xD;
+[xUnit.net 00:00:00.61]   Discovered:  R3&#xD;
+[xUnit.net 00:00:00.61]   Starting:    R3&#xD;
+[xUnit.net 00:00:00.89]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.89]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.89]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.89]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.89]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.89]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(168,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(170,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.90]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.90]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.90]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.90]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(168,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(170,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.90]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.90]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.90]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.90]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(168,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(170,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.90]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.90]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.90]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.90]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(168,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(170,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.90]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.90]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.90]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.90]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(168,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(170,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.90]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.90]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:00.90]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.90]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.90]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(168,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(170,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(SocketError code)&#xD;
+[xUnit.net 00:00:00.90]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.92]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.92]                   ↓ (pos 1)&#xD;
+[xUnit.net 00:00:00.92]       Expected: "CANCELLED"&#xD;
+[xUnit.net 00:00:00.92]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:00.92]                   ↑ (pos 1)&#xD;
+[xUnit.net 00:00:00.92]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.92]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(252,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_08_LocalShutdown_WithSocketClosure_IsCancelled()&#xD;
+[xUnit.net 00:00:00.92]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(254,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_08_LocalShutdown_WithSocketClosure_IsCancelled()&#xD;
+[xUnit.net 00:00:00.92]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.04]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:01.04]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:01.04]       Expected: "ERROR"&#xD;
+[xUnit.net 00:00:01.04]       Actual:   "CLEAN_EOF"&#xD;
+[xUnit.net 00:00:01.04]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:01.04]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.04]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(189,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof()&#xD;
+[xUnit.net 00:00:01.04]         D:\projects\bolt-sharp\tests\BoltSharp.DriverIntegrationTests\HandshakeTrace\ListenerClassificationR3RegressionTests.cs(190,0): at BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof()&#xD;
+[xUnit.net 00:00:01.04]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.05]   Finished:    R3&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.3932094+08:00">
+        <Text>[xUnit.net 00:00:00.89]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: NotConnected) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.3957457+08:00">
+        <Text>[xUnit.net 00:00:00.90]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: Shutdown) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.3962847+08:00">
+        <Text>[xUnit.net 00:00:00.90]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: ConnectionReset) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.3967029+08:00">
+        <Text>[xUnit.net 00:00:00.90]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: OperationAborted) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.3982010+08:00">
+        <Text>[xUnit.net 00:00:00.90]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: Disconnecting) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.3995117+08:00">
+        <Text>[xUnit.net 00:00:00.90]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_04_InjectedClosureCode_FirstRead_WithoutLocalShutdown_IsErrorNotCleanEof(code: ConnectionAborted) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.4159017+08:00">
+        <Text>[xUnit.net 00:00:00.92]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_08_LocalShutdown_WithSocketClosure_IsCancelled [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-06T09:42:36.5424118+08:00">
+        <Text>[xUnit.net 00:00:01.04]     BoltSharp.DriverIntegrationTests.HandshakeTrace.ListenerClassificationR3RegressionTests.R3_05_InjectedReset_AdditionalRead_IsErrorNotCleanEof [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    B0-A-TRACE-R3 decisive probe host. Links the live listener and the producer R3 regression
+    source by default; -p:ListenerSource can point at a byte-faithful pre-R3 snapshot to produce
+    the before-fix negative control. Test-only: no production transport is introduced.
+  -->
+  <PropertyGroup>
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>BoltSharp.DriverIntegrationTests.HandshakeTrace</RootNamespace>
+    <ListenerSource Condition="'$(ListenerSource)' == ''">../../../../tests/BoltSharp.DriverIntegrationTests/HandshakeTrace/LoopbackHandshakeListener.cs</ListenerSource>
+    <R3TestSource Condition="'$(R3TestSource)' == ''">../../../../tests/BoltSharp.DriverIntegrationTests/HandshakeTrace/ListenerClassificationR3RegressionTests.cs</R3TestSource>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2"><PrivateAssets>all</PrivateAssets></PackageReference>
+    <ProjectReference Include="../../../../src/BoltSharp/BoltSharp.csproj" />
+    <Compile Include="$(ListenerSource)" Link="LoopbackHandshakeListener.cs" />
+    <Compile Include="$(R3TestSource)" Link="ListenerClassificationR3RegressionTests.cs" />
+  </ItemGroup>
+</Project>
