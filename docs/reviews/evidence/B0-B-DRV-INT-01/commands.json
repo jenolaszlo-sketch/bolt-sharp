@@ -1,0 +1,38 @@
+{
+  "description": "B0-B-DRV-INT-01 command log. All commands were executed from the repository root D:\\projects\\bolt-sharp against baseline a4429ef969a3f150c4ab1b4908a193ffaddcce2a. Evidence JSON files were produced by running the integration project with BOLTSHARP_B0B_EVIDENCE_DIR pointing at this directory.",
+  "workdir": "D:\\projects\\bolt-sharp",
+  "baseline_head": "a4429ef969a3f150c4ab1b4908a193ffaddcce2a",
+  "driver": "Neo4j.Driver 6.4.0 (exact pin)",
+  "selected_revision": "Bolt 5.8 / PackStream 1.0 (provisional)",
+  "environment": {
+    "os": "Windows 10.0.26200 x64",
+    "sdk": "10.0.401",
+    "msbuild": "18.9.11",
+    "target_framework": "net8.0",
+    "runtime": "8.0.31"
+  },
+  "commands": [
+    {
+      "name": "integration-build",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet build tests/BoltSharp.IntegrationTests/BoltSharp.IntegrationTests.csproj -c Debug",
+      "result": "build succeeded; 0 warnings / 0 errors",
+      "exit_code": 0
+    },
+    {
+      "name": "integration-tests",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test tests/BoltSharp.IntegrationTests/BoltSharp.IntegrationTests.csproj -c Debug --no-build",
+      "environment": { "BOLTSHARP_B0B_EVIDENCE_DIR": "D:\\projects\\bolt-sharp\\docs\\reviews\\evidence\\B0-B-DRV-INT-01" },
+      "result": "19 passed / 0 failed / 0 skipped (all B0-B-T01..T08 scenarios)",
+      "exit_code": 0
+    },
+    {
+      "name": "core-solution-regression",
+      "workdir": "D:\\projects\\bolt-sharp",
+      "command": "dotnet test BoltSharp.slnx -c Debug",
+      "result": "826 passed / 0 failed (unchanged baseline; src and BoltSharp.Tests untouched)",
+      "exit_code": 0
+    }
+  ]
+}

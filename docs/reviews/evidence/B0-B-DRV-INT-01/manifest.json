@@ -1,0 +1,131 @@
+﻿{
+    "description":  "B0-B-DRV-INT-01 evidence manifest. Lists every evidence file except the manifest itself, plus the implementation record and gap matrix; SHA-256 over working-tree bytes (.gitattributes sets * -text).",
+    "algorithm":  "SHA256",
+    "baseline_head":  "a4429ef969a3f150c4ab1b4908a193ffaddcce2a",
+    "driver":  "Neo4j.Driver 6.4.0",
+    "reports":  [
+                    {
+                        "path":  "docs/reviews/B0-B-DRV-INT-01-implementation.md",
+                        "sha256":  "C0EA7E10CB11B5E4359351688F5130A5640FB9B737996C9C1C38F958865744E7",
+                        "bytes":  12628
+                    },
+                    {
+                        "path":  "docs/reviews/B0-B-DRV-INT-01-gap-matrix.md",
+                        "sha256":  "8DD3A59475724C17DDE76C9B104A4D61290CDBDD0ED376683A38264EA1399B67",
+                        "bytes":  5727
+                    }
+                ],
+    "file_count":  22,
+    "files":  [
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/.gitattributes",
+                      "sha256":  "8B9C3028D6467FF3BE7C793141927841D70F47F52D0590677438F488CA154992",
+                      "bytes":  9
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/commands.json",
+                      "sha256":  "A7E3A84A6F3E9B787053DB8C3BAAA908C923C4BB43B52A423B6145B66CB9E13C",
+                      "bytes":  1715
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/environment.txt",
+                      "sha256":  "17B004E0E278D3CB2819E5DDA559A38A87B439F5A494FC94CBE2211D714E762C",
+                      "bytes":  3904
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t01-handshake.json",
+                      "sha256":  "48FA13A8A93EE6B1BCFE2191F5FAD440099ACCE1F1EB6529F6551F3A28620A70",
+                      "bytes":  3603
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t01-handshake-rejected.json",
+                      "sha256":  "8184D2180F7D1017B438FDCBBA54095B099C386A39F2040F63AD4256708D05F5",
+                      "bytes":  814
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t02-initialization.json",
+                      "sha256":  "10801EB456502E8E720A4A3FFD1B46EEFA40611C6DD83458A381406E2B6B32CE",
+                      "bytes":  3603
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t02-invalid-credentials.json",
+                      "sha256":  "482F99DE82AEB0C13F5A4BB3D2541D530223C8AB65D76979E994900A9ED7A63C",
+                      "bytes":  2898
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t03-query-scalar.json",
+                      "sha256":  "18AA3034945E54849005023AF84C510020A3AC0F7C11B5A67FE922506B71B660",
+                      "bytes":  5545
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t04-graph-values.json",
+                      "sha256":  "937CF5810BB03201FD643EE44A32471AA8DCE046F0AEE474E93011A5F677894D",
+                      "bytes":  5748
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-discard.json",
+                      "sha256":  "214A6B0700255921AE17E7A8FD9D5AC0E0BE65947FE10069F9F5CEDCFF90CA3F",
+                      "bytes":  6009
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-early-disposal.json",
+                      "sha256":  "6D1199EFAB2FBEA59FF8029C7C2051046A6EF7C58141D3B7483593D61FDF6A59",
+                      "bytes":  6016
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-pagination.json",
+                      "sha256":  "879EA73147ECF7CCB33C73BB0EAC296AB7F208E2A64730AFE27B226BDD75A5AB",
+                      "bytes":  6945
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-incomplete-response.json",
+                      "sha256":  "48EB65A111E550E8511FA6E72E08ADF88BD1E9B9AE619CC271B1FFA1C6239F79",
+                      "bytes":  4411
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-protocol-failure.json",
+                      "sha256":  "27502DA284D7D25702F28DF5070A7264E5AA61A54FC5182039FB27BE82B5DBB0",
+                      "bytes":  5606
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-socket-termination.json",
+                      "sha256":  "85B90F475D1A83E186E0C4FB18C14A0DA438057D56A06D4CE2ED1011AC6A6891",
+                      "bytes":  4227
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-coalesced.json",
+                      "sha256":  "A0A04AF864DF8BCD93CE33006F583B8188ECD8599EA50CCE1C011A1196633BB4",
+                      "bytes":  5375
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-fixedchunk-3.json",
+                      "sha256":  "69ACD1F49242FED9B3CA3CF2E2EB0022682750064918F000D3BB07D16981DBC1",
+                      "bytes":  5536
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-perbyte-1.json",
+                      "sha256":  "04631B63B5604C1E565FF3FB972C740999A6A93EAC2D894C2D0F08020B37FC14",
+                      "bytes":  5533
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-whole-7.json",
+                      "sha256":  "B3DF1AC294DE341E213B9CB9FFB0AFDB9AF415DD5FB644934647EDF8005A81C2",
+                      "bytes":  5531
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-handshake-fragmentation.json",
+                      "sha256":  "D36747163C6DA3FCFCF968C1777F686AD99076F3CBD347A0BB398B2FCC06BD1F",
+                      "bytes":  817
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t08-real-listener-legacy.json",
+                      "sha256":  "D1A9ED6FCFD4A74E6E88C8863527B18C338DA3B2E5E89358672CAEC481A6FFAA",
+                      "bytes":  618
+                  },
+                  {
+                      "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t08-real-listener-manifest.json",
+                      "sha256":  "E16B7E4731D4CB6F4C6D31D691E5804B61B96E2AB483B2B036E2805E7EA26377",
+                      "bytes":  622
+                  }
+              ]
+}

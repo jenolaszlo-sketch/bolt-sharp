@@ -1,0 +1,9 @@
+{
+  "Mode": "Legacy",
+  "Outcome": "ACCEPTED",
+  "SelectedVersion": "5.8",
+  "FirstMessageStatus": "MESSAGE_READ",
+  "FirstMessageSignature": "HELLO",
+  "DriverFailureType": "Neo4j.Driver.ServiceUnavailableException",
+  "DriverFailureMessage": "Connection with the server breaks due to IOException: Unexpected end of stream, unable to read expected data from the network connection Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0."
+}
