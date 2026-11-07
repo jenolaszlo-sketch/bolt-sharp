@@ -84,6 +84,14 @@ public sealed class BoltConnectionSession : IDisposable
     public bool HasActiveOperation => _operation is not null;
 
     /// <summary>
+    /// The most recent provider <see cref="IBoltOperation.Dispose"/> failure, or <see langword="null"/>
+    /// when no cleanup attempt has failed. Disposal failures are contained (never thrown out of this
+    /// API) and recorded here as a diagnostic; they never prevent a terminal transition and never
+    /// change a primary protocol outcome.
+    /// </summary>
+    public Exception? LastCleanupFailure { get; private set; }
+
+    /// <summary>
     /// Processes one complete, unchunked client request payload: decodes it with the B3-A codec and
     /// handles it. Malformed, unknown and unsupported payloads produce a terminal protocol-error
     /// response and transition the connection to <see cref="BoltConnectionState.Defunct"/>; they are
@@ -188,7 +196,9 @@ public sealed class BoltConnectionSession : IDisposable
             return;
         }
 
-        DisposeOperationQuietly();
+        // Terminal state is established independently of whether provider cleanup succeeds; a
+        // throwing provider Dispose is contained and recorded (F-01).
+        _ = DetachAndDisposeOperation();
         _state = BoltConnectionState.Defunct;
     }
 
@@ -200,8 +210,15 @@ public sealed class BoltConnectionSession : IDisposable
             return;
         }
 
-        Disconnect();
-        _disposed = true;
+        try
+        {
+            Disconnect();
+        }
+        finally
+        {
+            // Idempotency must hold even if a cleanup path were to misbehave.
+            _disposed = true;
+        }
     }
 
     // ---- Handlers ----
@@ -307,8 +324,13 @@ public sealed class BoltConnectionSession : IDisposable
 
         if (operation.Fields is null)
         {
-            operation.Dispose();
-            return FailRecoverable(ProviderFailure());
+            // Invalid provider result: never install the cursor and never enter STREAMING. Dispose
+            // exactly once; if cleanup cannot complete safely the connection is terminal rather than
+            // recoverable, so it is never left falsely usable (F-01).
+            var cleanupFailure = RecordCleanupFailure(DisposeGuarded(operation));
+            return cleanupFailure is null
+                ? FailRecoverable(ProviderFailure())
+                : FailTerminal(ProviderFailure());
         }
 
         _operation = operation;
@@ -426,12 +448,9 @@ public sealed class BoltConnectionSession : IDisposable
 
         // Model the <INTERRUPT> signal, cancel and dispose outstanding work, then recover.
         _state = BoltConnectionState.Interrupted;
-        try
+        if (DetachAndDisposeOperation() is not null)
         {
-            DisposeOperationQuietly();
-        }
-        catch (Exception)
-        {
+            // Cleanup failure makes safe recovery impossible: fail closed (unchanged from Q1).
             return FailTerminal(ProviderFailure());
         }
 
@@ -442,7 +461,8 @@ public sealed class BoltConnectionSession : IDisposable
     private BoltSessionResult HandleGoodbye()
     {
         // Graceful termination: no response is defined, outstanding work is released, connection ends.
-        DisposeOperationQuietly();
+        // DEFUNCT is guaranteed even when provider cleanup throws; no protocol response is fabricated.
+        _ = DetachAndDisposeOperation();
         _state = BoltConnectionState.Defunct;
         return BoltSessionResult.None(_state, shouldClose: true);
     }
@@ -495,7 +515,13 @@ public sealed class BoltConnectionSession : IDisposable
     private BoltSessionResult CompleteResult(IReadOnlyList<BoltResponse> responses, bool hasMore)
     {
         var summary = hasMore ? HasMoreSuccess(true) : SuccessResponse.Empty;
-        DisposeOperationQuietly();
+        if (DetachAndDisposeOperation() is not null)
+        {
+            // The exhausted result could not be released: recoverable failure (unchanged from Q1).
+            _state = BoltConnectionState.Failed;
+            return BoltSessionResult.Of(_state, Append(responses, ProviderFailure()), shouldClose: false);
+        }
+
         _state = BoltConnectionState.Ready;
         return BoltSessionResult.Of(_state, Append(responses, summary));
     }
@@ -511,17 +537,53 @@ public sealed class BoltConnectionSession : IDisposable
         return list;
     }
 
-    private void DisposeOperationQuietly()
+    /// <summary>
+    /// Detaches and disposes the active operation exactly once. A throwing provider
+    /// <see cref="IBoltOperation.Dispose"/> is contained: the failure is recorded and returned, never
+    /// propagated. Returns <see langword="null"/> when there was nothing to dispose or disposal
+    /// succeeded. A failed attempt is not retried.
+    /// </summary>
+    private Exception? DetachAndDisposeOperation()
     {
         var operation = _operation;
         _operation = null;
         _pendingRow = null;
-        operation?.Dispose();
+        return RecordCleanupFailure(DisposeGuarded(operation));
+    }
+
+    /// <summary>Disposes one operation, containing any provider failure.</summary>
+    private static Exception? DisposeGuarded(IBoltOperation? operation)
+    {
+        if (operation is null)
+        {
+            return null;
+        }
+
+        try
+        {
+            operation.Dispose();
+            return null;
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
+    }
+
+    private Exception? RecordCleanupFailure(Exception? failure)
+    {
+        if (failure is not null)
+        {
+            LastCleanupFailure = failure;
+        }
+
+        return failure;
     }
 
     private BoltSessionResult FailTerminal(BoltResponse failure)
     {
-        DisposeOperationQuietly();
+        // DEFUNCT is guaranteed regardless of the cleanup outcome (F-01).
+        _ = DetachAndDisposeOperation();
         _state = BoltConnectionState.Defunct;
         return BoltSessionResult.Single(_state, failure, shouldClose: true);
     }
@@ -529,7 +591,8 @@ public sealed class BoltConnectionSession : IDisposable
     /// <summary>A recoverable execution failure: one FAILURE, enter FAILED, connection stays open.</summary>
     private BoltSessionResult FailRecoverable(BoltResponse failure, IReadOnlyList<BoltResponse>? priorResponses = null)
     {
-        DisposeOperationQuietly();
+        // Cleanup failure does not suppress the primary protocol failure (F-01).
+        _ = DetachAndDisposeOperation();
         _state = BoltConnectionState.Failed;
         return BoltSessionResult.Of(
             _state,
@@ -561,9 +624,12 @@ public sealed class BoltConnectionSession : IDisposable
         ("description", new PackStreamString("A result row does not match the announced result fields.")),
         ("diagnostic_record", EmptyMap));
 
+    // Bolt 5.8: an integer identifier outside the defined domain is an invalid *value* (the
+    // specification's own TELEMETRY 9001 example answers 50N00 / General.UnknownError); 22G03 is
+    // reserved for an invalid value *type*, which B3-A rejects as a malformed message (F-02).
     private static FailureResponse TelemetryFailure() => FailureResponse.FromEntries(
-        ("gql_status", new PackStreamString("22G03")),
-        ("neo4j_code", new PackStreamString("Neo.ClientError.Request.Invalid")),
+        ("gql_status", new PackStreamString("50N00")),
+        ("neo4j_code", new PackStreamString("Neo.DatabaseError.General.UnknownError")),
         ("description", new PackStreamString("The telemetry API identifier is not valid for this server.")),
         ("diagnostic_record", EmptyMap));
 

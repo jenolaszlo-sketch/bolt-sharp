@@ -215,15 +215,20 @@ public sealed class AuthenticationAndTransitionTests
     [InlineData(4)]
     [InlineData(9001)]
     [InlineData(-1)]
+    [InlineData(long.MaxValue)]
     public void Telemetry_InvalidIdentifier_IsFailure_AndFailed(long api)
     {
         var session = SessionHarness.Authenticated();
 
         var result = session.Receive(SessionHarness.Telemetry(api));
 
+        // B3-B-R1 F-02: an out-of-domain integer identifier is an invalid *value* — the Bolt 5.8
+        // specification's TELEMETRY 9001 example answers 50N00 / General.UnknownError (22G03 is for
+        // an invalid value type, which B3-A rejects as malformed).
         var failure = SessionHarness.SingleResponse<FailureResponse>(result);
         Assert.Equal(BoltConnectionState.Failed, result.State);
-        Assert.Equal("22G03", failure.GqlStatus);
+        Assert.Equal("50N00", failure.GqlStatus);
+        Assert.Equal("Neo.DatabaseError.General.UnknownError", failure.Neo4jCode);
         Assert.False(result.ShouldClose);
     }
 
