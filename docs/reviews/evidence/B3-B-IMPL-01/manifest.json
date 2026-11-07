@@ -1,0 +1,122 @@
+{
+    "task":  "B3-B-IMPL-01 - Bolt 5.8 connection state machine",
+    "baseline_commit":  "c2881ea5bee1d42629ff121eb25449bfeda52d79",
+    "implementation_commit":  "9f224cf41656e4baf155532e682b862ed8e910b0",
+    "implementation_tree":  "bae5940dfd255a80eba6a67ce44208cd398d4b5e",
+    "disposition":  "IMPLEMENTED, READY FOR INDEPENDENT QUALIFICATION",
+    "generated_utc":  "2026-11-07T10:56:59Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/baseline/core-build-baseline.log",
+                               "sha256":  "33349421d0d5a67efe488ec3676f4f0adf1db7675a4aab0acadb93d14d2d8918",
+                               "bytes":  357
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/baseline/core-solution-tests-baseline.log",
+                               "sha256":  "58c09d563c7f8b20e691b8c4dd4ddfc9823114a687acd8ce6501fa833f549b7b",
+                               "bytes":  1230
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/baseline/integration-tests-baseline.log",
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/core-build.log",
+                               "sha256":  "463f0375f0e93d8a5bf68b3df60bc5116be7755012a0647aca7af329484fee36",
+                               "bytes":  1667
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/core-solution-tests.log",
+                               "sha256":  "e37c378a8330b2cf438e3d833bf7f236ec1a5e2040e09a0e59330adabfed76e8",
+                               "bytes":  576
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/environment.txt",
+                               "sha256":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+                               "bytes":  1915
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/integration-tests.log",
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/message-tests.log",
+                               "sha256":  "2d6e6494734cc59ee8b0b3d980c0b6535c18f2a1f9276108aebb0803be302a4b",
+                               "bytes":  575
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/session-tests.log",
+                               "sha256":  "50588a262f423d41263c191d7e8ae92900400f01c44439a4e966f4add586e200",
+                               "bytes":  575
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/spec/message.adoc",
+                               "sha256":  "3b696f527dfabd525f8f635ae71b70502579253b7b587c40f3990422f5a763d8",
+                               "bytes":  79630
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/spec/server-state.adoc",
+                               "sha256":  "2a200d8dd971f454cc9be8e26db8b9e81a5eb5f8734fcec062f7c26ba9d48468",
+                               "bytes":  11529
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-IMPL-01/spec/version-5.adoc",
+                               "sha256":  "2497503f46b845ef434ab891c253a28d3ed9c06b3be6a6ac107692e308003239",
+                               "bytes":  4680
+                           }
+                       ],
+    "changed_source_and_report_files":  [
+                                            {
+                                                "path":  "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+                                                "sha256":  "53c1274c3d3f1bf5f575fa706b1977b6d1931792a47d3048aba8cf98c63f3e80",
+                                                "bytes":  21719
+                                            },
+                                            {
+                                                "path":  "src/BoltSharp/Sessions/BoltConnectionState.cs",
+                                                "sha256":  "21b95b965e3f76c767466e5da446dd2c80a7f0c7c49f145f4cddb00ccd487348",
+                                                "bytes":  1766
+                                            },
+                                            {
+                                                "path":  "src/BoltSharp/Sessions/BoltSessionOptions.cs",
+                                                "sha256":  "77497dda9ffa2c0a19f2b7b2d4212ea86597759f7563028c3f92a864ea4b9578",
+                                                "bytes":  3647
+                                            },
+                                            {
+                                                "path":  "src/BoltSharp/Sessions/BoltSessionResult.cs",
+                                                "sha256":  "151347efc7d735fc6d4309402ef8f61b2efba17130e77fd0b90dcc9e69529f52",
+                                                "bytes":  2364
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Sessions/SessionTestHarness.cs",
+                                                "sha256":  "f71ac1c5b2b3bcd9fa68bd5bc9f42a600f16b75ec465f40eaa144d47aa3da804",
+                                                "bytes":  7035
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs",
+                                                "sha256":  "1d8c35b4563a91dc23e476bde9b963b6177dcb3af521d174cb4df68d1cde04ef",
+                                                "bytes":  11246
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Sessions/FailureAndRecoveryTests.cs",
+                                                "sha256":  "4b22e112fd34e09ee51dd3bd87de6385f9c8ddb5f6e086f233d04619d5bcdabc",
+                                                "bytes":  9726
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Sessions/ResultAndSequenceTests.cs",
+                                                "sha256":  "aa8e30c0576e2ba479d2765da7d1b559752df169a8036c35360a3af4b0f35aa8",
+                                                "bytes":  10659
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Sessions/IntegrationAndCleanupTests.cs",
+                                                "sha256":  "91278d048a613a1d240e0c6d218bb2fa670dad5f60a92d774b146517789d8812",
+                                                "bytes":  13365
+                                            },
+                                            {
+                                                "path":  "docs/reviews/B3-B-IMPL-01.md",
+                                                "sha256":  "a91e5e0a71c99a7866167137ca771a7aac14029c2a6e0b0a684261a20f12978a",
+                                                "bytes":  15853
+                                            }
+                                        ]
+}
