@@ -421,20 +421,29 @@ public sealed class BoltMessageCodec
         ValidateOptionalStringOrNull(extra, "notifications_minimum_severity", signature);
         ValidateOptionalStringListOrNull(extra, "notifications_disabled_classifications", signature);
 
-        if (BoltMessageFields.GetValue(extra, "bolt_agent") is { } agent)
+        // The specification marks bolt_agent mandatory from Bolt 5.3 ("This field is mandatory"),
+        // with a mandatory nested product string; the remaining agent entries are optional strings
+        // (null permitted). Absent, null and non-map values are all schema violations.
+        var agentPresent = extra.Entries.Any(e =>
+            string.Equals(e.Key, "bolt_agent", StringComparison.Ordinal));
+        var agent = BoltMessageFields.GetValue(extra, "bolt_agent");
+        if (!agentPresent)
         {
-            if (agent is not PackStreamMap agentMap)
-            {
-                throw InvalidField(signature, "extra.bolt_agent", "a map");
-            }
-
-            // The specification marks bolt_agent.product as mandatory when the agent is present;
-            // the remaining entries are optional strings (null permitted).
-            RequireStringField(agentMap, "product", signature, "extra.bolt_agent");
-            ValidateOptionalStringOrNull(agentMap, "platform", signature);
-            ValidateOptionalStringOrNull(agentMap, "language", signature);
-            ValidateOptionalStringOrNull(agentMap, "language_details", signature);
+            throw new BoltMessageException(
+                BoltMessageErrorCategory.MissingRequiredField,
+                "Message HELLO field 'extra.bolt_agent' is required.",
+                signature);
         }
+
+        if (agent is not PackStreamMap agentMap)
+        {
+            throw InvalidField(signature, "extra.bolt_agent", "a map");
+        }
+
+        RequireStringField(agentMap, "product", signature, "extra.bolt_agent");
+        ValidateOptionalStringOrNull(agentMap, "platform", signature);
+        ValidateOptionalStringOrNull(agentMap, "language", signature);
+        ValidateOptionalStringOrNull(agentMap, "language_details", signature);
     }
 
     private void ValidateRunExtra(PackStreamMap extra, byte signature)

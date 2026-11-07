@@ -15,7 +15,7 @@ public sealed class BoltRequestDecodeTests
     private readonly BoltMessageCodec _codec = new();
 
     [Fact]
-    public void Hello_Minimal_DecodesUserAgent()
+    public void Hello_Minimal_DecodesUserAgentAndAgent()
     {
         var request = _codec.DecodeRequest(BoltMessageFixtures.Spec5_8.HelloMinimal);
 
@@ -23,7 +23,10 @@ public sealed class BoltRequestDecodeTests
         Assert.Equal(BoltMessageSignatures.Hello, hello.Signature);
         Assert.Equal("Example/1.0", hello.UserAgent);
         Assert.Null(hello.Routing);
-        Assert.Null(hello.BoltAgent);
+        var agent = Assert.IsType<PackStreamMap>(hello.BoltAgent);
+        Assert.Equal(
+            "neo4j-example/1.0",
+            Assert.IsType<PackStreamString>(BoltMessageFieldsTestAccess.GetValue(agent, "product")).Value);
     }
 
     [Fact]
@@ -67,6 +70,11 @@ public sealed class BoltRequestDecodeTests
         Assert.Null(entry.Value);
         Assert.True(hello.Extra.Entries.Any(e => e.Key == "notifications_minimum_severity"));
         Assert.True(hello.Extra.Entries.Any(e => e.Key == "notifications_disabled_classifications"));
+        // The mandatory bolt_agent coexists with the null optionals.
+        var agent = Assert.IsType<PackStreamMap>(hello.BoltAgent);
+        Assert.Equal(
+            "neo4j-example/1.0",
+            Assert.IsType<PackStreamString>(BoltMessageFieldsTestAccess.GetValue(agent, "product")).Value);
     }
 
     [Fact]

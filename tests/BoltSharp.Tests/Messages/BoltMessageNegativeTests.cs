@@ -179,6 +179,27 @@ public sealed class BoltMessageNegativeTests
     }
 
     [Fact]
+    public void Hello_MissingBoltAgent_IsRejected()
+    {
+        // F-01 remediation (B3-A-R1): the Bolt 5.8 specification marks bolt_agent mandatory from
+        // 5.3 ("This field is mandatory"); a HELLO omitting it must be rejected.
+        AssertCategory(
+            BoltMessageFixtures.Negative.HelloMissingBoltAgent,
+            BoltMessageErrorCategory.MissingRequiredField,
+            (c, p) => c.DecodeRequest(p));
+    }
+
+    [Fact]
+    public void Hello_NullBoltAgent_IsRejected()
+    {
+        // An explicitly null bolt_agent is not the mandatory Dictionary the schema requires.
+        AssertCategory(
+            BoltMessageFixtures.Negative.HelloNullBoltAgent,
+            BoltMessageErrorCategory.InvalidFieldType,
+            (c, p) => c.DecodeRequest(p));
+    }
+
+    [Fact]
     public void Hello_BoltAgentShapeViolations_AreRejected()
     {
         AssertCategory(

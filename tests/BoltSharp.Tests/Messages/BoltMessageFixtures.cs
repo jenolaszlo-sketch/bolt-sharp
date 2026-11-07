@@ -241,9 +241,10 @@ internal static class BoltMessageFixtures
 
         // ---- Requests ----
 
-        /// <summary>HELLO {"user_agent": "Example/1.0"} — minimal schema-valid form.</summary>
-        public static readonly byte[] HelloMinimal =
-            IndependentPackStream.Struct(0x01, Map(("user_agent", IndependentPackStream.Str("Example/1.0"))));
+        /// <summary>HELLO {"user_agent": "Example/1.0", "bolt_agent": {"product": "neo4j-example/1.0"}} — the minimal schema-valid form (bolt_agent is mandatory from Bolt 5.3).</summary>
+        public static readonly byte[] HelloMinimal = IndependentPackStream.Struct(0x01, Map(
+            ("user_agent", IndependentPackStream.Str("Example/1.0")),
+            ("bolt_agent", Map(("product", IndependentPackStream.Str("neo4j-example/1.0"))))));
 
         /// <summary>
         /// HELLO {"user_agent": "Example/1.0", "routing": {"address": "x.example.com:9001"},
@@ -258,12 +259,13 @@ internal static class BoltMessageFixtures
             ("notifications_disabled_classifications", IndependentPackStream.List(
                 IndependentPackStream.Str("HINT"), IndependentPackStream.Str("GENERIC")))));
 
-        /// <summary>HELLO with explicit nulls for the optional fields (valid "use the default" values).</summary>
+        /// <summary>HELLO with explicit nulls for the optional fields (valid "use the default" values) plus the mandatory bolt_agent.</summary>
         public static readonly byte[] HelloNullOptional = IndependentPackStream.Struct(0x01, Map(
             ("user_agent", IndependentPackStream.Str("X")),
             ("routing", IndependentPackStream.Null()),
             ("notifications_minimum_severity", IndependentPackStream.Null()),
-            ("notifications_disabled_classifications", IndependentPackStream.Null())));
+            ("notifications_disabled_classifications", IndependentPackStream.Null()),
+            ("bolt_agent", Map(("product", IndependentPackStream.Str("neo4j-example/1.0"))))));
 
         /// <summary>HELLO with the full bolt_agent shape (product mandatory; platform/language/language_details null-able).</summary>
         public static readonly byte[] HelloAgent = IndependentPackStream.Struct(0x01, Map(
@@ -431,7 +433,16 @@ internal static class BoltMessageFixtures
             ("user_agent", IndependentPackStream.Str("X")),
             ("patch_bolt", IndependentPackStream.List(IndependentPackStream.Str("utc")))));
 
-        /// <summary>HELLO whose bolt_agent is a string instead of a map.</summary>
+        /// <summary>HELLO whose extra field is a map carrying no bolt_agent (mandatory from Bolt 5.3).</summary>
+    public static readonly byte[] HelloMissingBoltAgent =
+        IndependentPackStream.Struct(0x01, Map(("user_agent", IndependentPackStream.Str("X"))));
+
+    /// <summary>HELLO whose bolt_agent entry is explicitly null.</summary>
+    public static readonly byte[] HelloNullBoltAgent = IndependentPackStream.Struct(0x01, Map(
+        ("user_agent", IndependentPackStream.Str("X")),
+        ("bolt_agent", IndependentPackStream.Null())));
+
+    /// <summary>HELLO whose bolt_agent is a string instead of a map.</summary>
         public static readonly byte[] HelloBoltAgentWrongType = IndependentPackStream.Struct(0x01, Map(
             ("user_agent", IndependentPackStream.Str("X")),
             ("bolt_agent", IndependentPackStream.Str("agent"))));

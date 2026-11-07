@@ -54,7 +54,7 @@ public sealed class HelloRequest : BoltRequest
     /// <summary>The <c>user_agent</c> string (required by the Bolt 5.8 schema).</summary>
     public string UserAgent => BoltMessageFields.GetString(Extra, "user_agent")!;
 
-    /// <summary>The <c>bolt_agent</c> map when present, otherwise <see langword="null"/> (5.3+; the schema marks it mandatory, the codec validates its shape when present).</summary>
+    /// <summary>The <c>bolt_agent</c> map (5.3+; mandatory per the Bolt 5.8 schema, with a mandatory nested <c>product</c> string). The codec rejects HELLO messages that omit it.</summary>
     public PackStreamMap? BoltAgent => BoltMessageFields.GetMap(Extra, "bolt_agent");
 
     /// <summary>The <c>routing</c> context map when present and non-null, otherwise <see langword="null"/> (<see langword="null"/> is a valid "no routing" value per the specification).</summary>
