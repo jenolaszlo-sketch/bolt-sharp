@@ -4,27 +4,32 @@
     "implementation_tree":  "6cb9cace72d403d496ca92a067c06510be64220c",
     "baseline_commit":  "d5189af56c79bbdb86bbaaa156bfb2a0f4046c37",
     "revision":  "Bolt 5.8 / PackStream 1.0",
-    "generated_utc":  "2026-11-07T02:27:29Z",
+    "generated_utc":  "2026-11-07T02:30:16Z",
     "evidence_files":  [
                            {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/.gitattributes",
+                               "sha256":  "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+                               "bytes":  9
+                           },
+                           {
                                "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/core-build.log",
-                               "sha256":  "8182b6d8775e0ddc7023a58f94ece52acca38cc40075a4e4577a7960102c4ff1",
-                               "bytes":  706
+                               "sha256":  "f3d2e5e221f3714e9d8641d71d79f3778728ecd43a8729aedbabb994d0c79718",
+                               "bytes":  357
                            },
                            {
                                "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/core-solution-tests.log",
-                               "sha256":  "c4fea49d2ccc930094a2deb422a9ef861d4876c690ff9dd55ffd22fe16844a8e",
-                               "bytes":  1144
+                               "sha256":  "ff5d78701559bc4b371a2230191850b76a8539f9120c4e1fa5b3d46ee36defaf",
+                               "bytes":  1230
                            },
                            {
                                "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/integration-tests-baseline.log",
-                               "sha256":  "218468421146addbb50670e76b54c8f7b1760c8374e64131570c84195830d51b",
-                               "bytes":  1272
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
                            },
                            {
                                "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/integration-tests-final.log",
-                               "sha256":  "218468421146addbb50670e76b54c8f7b1760c8374e64131570c84195830d51b",
-                               "bytes":  1272
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
                            },
                            {
                                "path":  "docs/reviews/evidence/B3-A-IMPL-01/driver-source/IgnoredMessageSerializer.cs",
