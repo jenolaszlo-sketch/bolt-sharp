@@ -1,0 +1,79 @@
+{
+    "task":  "B3-B-Q1 - Independent qualification of the Bolt 5.8 connection state machine",
+    "reviewer":  "GLM-5.3-Flash (provider nvidia) in OpenCode",
+    "reviewed_head":  "81c0af9547a8b4e2a6f7310226763bea0819cad9",
+    "reviewed_tree":  "27097120fc5f64d5c9cece16ba0091e9aa5aed82",
+    "implementation_commit":  "9f224cf41656e4baf155532e682b862ed8e910b0",
+    "disposition":  "REMEDIATION REQUIRED",
+    "findings":  [
+                     "B3-B-Q1-F01 (blocking, moderate): provider Dispose throwing escapes GOODBYE/Disconnect/Dispose/RUN-fields-null",
+                     "B3-B-Q1-F02 (blocking, minor): TELEMETRY invalid-identifier status 22G03 instead of 50N00"
+                 ],
+    "generated_utc":  "2026-11-07T12:43:22Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/core-build.log",
+                               "sha256":  "e3ca013ad1545bc25157ca1846ab5a4407cce864b179814f3982cda0df1e67e0",
+                               "bytes":  1667
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/core-solution-tests.log",
+                               "sha256":  "2087efbea9c23c555e8d1e24e5be08bdc39a131dc0540f66363d666252d8e0ec",
+                               "bytes":  1230
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/environment.txt",
+                               "sha256":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+                               "bytes":  1915
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/integration-tests.log",
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/message-tests.log",
+                               "sha256":  "d5aa5b8e485a8d959d4ce677ee448c68e977109a2ea437b4ebd8c9ee07289194",
+                               "bytes":  575
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/probe/session-probe-results.json",
+                               "sha256":  "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab",
+                               "bytes":  18132
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/session-probe-run.log",
+                               "sha256":  "2cbe2c9dbc11c96b56b734308e68dbf7b84d1930db0c80254c10a048003fa366",
+                               "bytes":  367
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q1/session-tests.log",
+                               "sha256":  "0af5a35bc1de80ab4f1e94c5162dd45b009dfb499550062361add42c296c6c16",
+                               "bytes":  575
+                           }
+                       ],
+    "probe_source_files":  [
+                               {
+                                   "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/Harness.cs",
+                                   "sha256":  "0650a888f427fcb43ce10abd549f92c3539cc033fbb6e400cec59e270418415f",
+                                   "bytes":  7848
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/Program.cs",
+                                   "sha256":  "29a7e3eeaab52257e7e1b82e2bbf5421ee8eb8ff1ceead1be7c4f49d879b2e5b",
+                                   "bytes":  27942
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/SessionProbe.csproj",
+                                   "sha256":  "2a551153120ef202471b9613309346632210cec3a9e2a7cdd959344c7de582c9",
+                                   "bytes":  686
+                               }
+                           ],
+    "report_files":  [
+                         {
+                             "path":  "docs/reviews/B3-B-Q1-independent-qualification.md",
+                             "sha256":  "03ba2687092d12a03fda26574fdf99cf574035dcbb21226fe554b5894ba4de49",
+                             "bytes":  23209
+                         }
+                     ]
+}

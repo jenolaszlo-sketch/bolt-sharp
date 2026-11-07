@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B3-B-Q1 independent qualification probe. References only the production BoltSharp assembly.
+    Deterministic scheduling primitives only (no sleeps). Additive reviewer artifact.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>B3BQ1.SessionProbe</AssemblyName>
+    <RootNamespace>B3BQ1.SessionProbe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+</Project>
