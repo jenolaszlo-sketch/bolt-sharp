@@ -1,0 +1,16 @@
+﻿  Determining projects to restore...
+  All projects are up-to-date for restore.
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(71,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(72,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+  BoltSharp.Tests -> D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll
+
+Build succeeded.
+
+D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(71,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(72,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.16
+

@@ -1,0 +1,7 @@
+dotnet : checks=118 failed=8 findings=0
+At line:10 char:1
++ dotnet run --project docs\reviews\probes\B3-B-Q1\SessionProbe\Session ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (checks=118 failed=8 findings=0:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
