@@ -36,9 +36,12 @@ public interface IBoltOperationProvider
 }
 
 /// <summary>
-/// A prepared, finite result handle owned by the session. The session validates every row's column
-/// count against <see cref="Fields"/> before emitting it (NC-05b) and calls <see cref="Dispose"/> at
-/// most once when the result completes, fails, is discarded, is reset or the connection closes.
+/// A prepared, finite result handle owned by the session from the moment
+/// <see cref="IBoltOperationProvider.Prepare"/> returns it. The session acquires <see cref="Fields"/>
+/// once, under its ownership boundary, and validates every row's column count against that snapshot
+/// before emitting it (NC-05b). It calls <see cref="Dispose"/> at most once when the result completes,
+/// fails, is discarded, is reset or the connection closes; a throwing <see cref="Dispose"/> makes the
+/// session permanently unusable (B3-B-R2 fail-closed retirement).
 /// </summary>
 public interface IBoltOperation : IDisposable
 {

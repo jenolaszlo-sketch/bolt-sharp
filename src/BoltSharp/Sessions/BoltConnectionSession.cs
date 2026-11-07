@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 using BoltSharp.Messages;
 using BoltSharp.PackStream;
 
@@ -30,7 +32,9 @@ namespace BoltSharp.Sessions;
 /// <see cref="IBoltOperation.Dispose"/>), clears recoverable failure state and returns the
 /// connection to <see cref="BoltConnectionState.Ready"/>. A provider call already executing inside
 /// <c>Prepare</c>/<c>ReadRow</c> cannot be preempted; no SUCCESS is claimed for work that is still
-/// active. This limitation is recorded in the B3-B implementation report.
+/// active. This limitation is recorded in the B3-B implementation report. A provider
+/// <see cref="IBoltOperation.Dispose"/> failure during any retirement path is irreversible
+/// (B3-B-R2 fail-closed retirement): the connection becomes terminal instead of claiming recovery.
 /// </para>
 /// <para>
 /// <b>Diagnostics.</b> Responses never carry request values, and no exception raised by this type
@@ -51,6 +55,7 @@ public sealed class BoltConnectionSession : IDisposable
     private BoltConnectionState _state = BoltConnectionState.Negotiation;
     private IBoltOperation? _operation;
     private IReadOnlyList<PackStreamValue?>? _pendingRow;
+    private int _fieldCount;
     private bool _disposed;
 
     public BoltConnectionSession(
@@ -87,7 +92,9 @@ public sealed class BoltConnectionSession : IDisposable
     /// The most recent provider <see cref="IBoltOperation.Dispose"/> failure, or <see langword="null"/>
     /// when no cleanup attempt has failed. Disposal failures are contained (never thrown out of this
     /// API) and recorded here as a diagnostic; they never prevent a terminal transition and never
-    /// change a primary protocol outcome.
+    /// change a primary protocol outcome. A failed retirement is irreversible (B3-B-R2): where the
+    /// session would otherwise continue or recover, it becomes <see cref="BoltConnectionState.Defunct"/>
+    /// instead of falsely reporting recovery, and the diagnostic survives that transition.
     /// </summary>
     public Exception? LastCleanupFailure { get; private set; }
 
@@ -322,24 +329,25 @@ public sealed class BoltConnectionSession : IDisposable
             return FailRecoverable(UnsupportedQueryFailure());
         }
 
-        if (operation.Fields is null)
-        {
-            // Invalid provider result: never install the cursor and never enter STREAMING. Dispose
-            // exactly once; if cleanup cannot complete safely the connection is terminal rather than
-            // recoverable, so it is never left falsely usable (F-01).
-            var cleanupFailure = RecordCleanupFailure(DisposeGuarded(operation));
-            return cleanupFailure is null
-                ? FailRecoverable(ProviderFailure())
-                : FailTerminal(ProviderFailure());
-        }
-
+        // B3-B-R2: session ownership starts the moment Prepare returns a handle, before any
+        // provider-controlled metadata is touched (INV-01). Every later failure therefore retires
+        // this handle through the single session retirement path (INV-02). No provider metadata is
+        // read until that ownership is established.
         _operation = operation;
         _pendingRow = null;
-        _state = BoltConnectionState.Streaming;
 
-        var fields = new PackStreamList(operation.Fields
-            .Select(name => (PackStreamValue?)new PackStreamString(name))
-            .ToArray());
+        // The field metadata is acquired and snapshotted exactly once, inside the ownership
+        // boundary; no RUN response is ever built from a second provider read (INV-07).
+        if (!TryCaptureFields(operation, out var fields))
+        {
+            // Invalid or unavailable metadata is a provider failure: never publish a cursor and
+            // never enter STREAMING. Retirement is attempted exactly once; a failed retirement is
+            // irreversible, so the session fails closed rather than recoverable (R2-F02).
+            return FailRecoverable(ProviderFailure());
+        }
+
+        _fieldCount = fields.Items.Count;
+        _state = BoltConnectionState.Streaming;
         return BoltSessionResult.Single(
             _state,
             SuccessResponse.FromEntries(("fields", fields)));
@@ -369,8 +377,9 @@ public sealed class BoltConnectionSession : IDisposable
                     return CompleteResult(responses, hasMore: false);
                 }
 
-                // NC-05b: the session validates cross-message column count before emitting a record.
-                if (row.Count != _operation.Fields.Count)
+                // NC-05b: the session validates cross-message column count against the RUN-time
+                // metadata snapshot, never by re-reading the provider (B3-B-R2 / INV-07).
+                if (row.Count != _fieldCount)
                 {
                     // Rows already emitted before the bad row stay in the response stream.
                     return FailRecoverable(RowShapeFailure(), responses);
@@ -512,14 +521,58 @@ public sealed class BoltConnectionSession : IDisposable
         return _operation?.ReadRow();
     }
 
+    /// <summary>
+    /// Acquires the provider's field metadata once and converts it to a session-owned immutable
+    /// snapshot. Returns <see langword="false"/> when the provider returns null metadata, returns a
+    /// null field name, or throws while the metadata is read (including <c>Count</c> or indexer
+    /// access on a custom or deferred list). B3-B-R2: this is the only place the session reads
+    /// <see cref="IBoltOperation.Fields"/>.
+    /// </summary>
+    private static bool TryCaptureFields(
+        IBoltOperation operation,
+        [NotNullWhen(true)] out PackStreamList? fields)
+    {
+        fields = null;
+        try
+        {
+            var names = operation.Fields;
+            if (names is null)
+            {
+                return false;
+            }
+
+            var values = new PackStreamValue?[names.Count];
+            for (var i = 0; i < values.Length; i++)
+            {
+                var name = names[i];
+                if (name is null)
+                {
+                    return false;
+                }
+
+                values[i] = new PackStreamString(name);
+            }
+
+            fields = new PackStreamList(values);
+            return true;
+        }
+        catch (Exception)
+        {
+            fields = null;
+            return false;
+        }
+    }
+
     private BoltSessionResult CompleteResult(IReadOnlyList<BoltResponse> responses, bool hasMore)
     {
         var summary = hasMore ? HasMoreSuccess(true) : SuccessResponse.Empty;
         if (DetachAndDisposeOperation() is not null)
         {
-            // The exhausted result could not be released: recoverable failure (unchanged from Q1).
-            _state = BoltConnectionState.Failed;
-            return BoltSessionResult.Of(_state, Append(responses, ProviderFailure()), shouldClose: false);
+            // B3-B-R2 (R2-F01): the exhausted result could not be released. The failed retirement is
+            // irreversible: report the completion as FAILURE (never SUCCESS) and make the connection
+            // permanently unusable instead of recoverable.
+            _state = BoltConnectionState.Defunct;
+            return BoltSessionResult.Of(_state, Append(responses, ProviderFailure()), shouldClose: true);
         }
 
         _state = BoltConnectionState.Ready;
@@ -548,6 +601,7 @@ public sealed class BoltConnectionSession : IDisposable
         var operation = _operation;
         _operation = null;
         _pendingRow = null;
+        _fieldCount = 0;
         return RecordCleanupFailure(DisposeGuarded(operation));
     }
 
@@ -588,16 +642,24 @@ public sealed class BoltConnectionSession : IDisposable
         return BoltSessionResult.Single(_state, failure, shouldClose: true);
     }
 
-    /// <summary>A recoverable execution failure: one FAILURE, enter FAILED, connection stays open.</summary>
+    /// <summary>
+    /// A recoverable execution failure: one FAILURE, enter FAILED, connection stays open — unless
+    /// retirement of an owned operation fails, in which case the session fails closed (B3-B-R2).
+    /// </summary>
     private BoltSessionResult FailRecoverable(BoltResponse failure, IReadOnlyList<BoltResponse>? priorResponses = null)
     {
-        // Cleanup failure does not suppress the primary protocol failure (F-01).
-        _ = DetachAndDisposeOperation();
+        // Cleanup failure never suppresses the primary protocol failure (F-01 / INV-08). It does,
+        // however, make recovery impossible (R2-F01 / INV-04): the FAILURE is still reported exactly
+        // once, and the session becomes terminal instead of recoverable (INV-05 / INV-09).
+        var responses = priorResponses is null ? new[] { failure } : Append(priorResponses, failure);
+        if (DetachAndDisposeOperation() is not null)
+        {
+            _state = BoltConnectionState.Defunct;
+            return BoltSessionResult.Of(_state, responses, shouldClose: true);
+        }
+
         _state = BoltConnectionState.Failed;
-        return BoltSessionResult.Of(
-            _state,
-            priorResponses is null ? new[] { failure } : Append(priorResponses, failure),
-            shouldClose: false);
+        return BoltSessionResult.Of(_state, responses, shouldClose: false);
     }
 
     private static FailureResponse AuthenticationFailure() => FailureResponse.FromEntries(

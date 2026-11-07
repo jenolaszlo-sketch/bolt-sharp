@@ -10,7 +10,10 @@ namespace BoltSharp.Tests.Sessions;
 /// <summary>
 /// B3-B-R1 regression tests for the two defects independently established by B3-B-Q1:
 /// F-01 (provider cleanup failure escaping the API / leaving a non-terminal session) and
-/// F-02 (out-of-domain TELEMETRY identifier error metadata).
+/// F-02 (out-of-domain TELEMETRY identifier error metadata). B3-B-R2 tightened the F-01 contract:
+/// the R1-era expectation that an exhausted result with a throwing disposal remains recoverable
+/// FAILED was superseded by fail-closed DEFUNCT (see B3-B-Q2-F01 and the R2 tests in
+/// <c>ResourceLifecycleRemediationTests</c>).
 /// </summary>
 public sealed class CleanupAndTelemetryRemediationTests
 {
@@ -199,18 +202,26 @@ public sealed class CleanupAndTelemetryRemediationTests
     }
 
     [Fact]
-    public void PullCompletion_WithThrowingDispose_IsFailureFailed_OneAttempt()
+    public void PullCompletion_WithThrowingDispose_IsFailureDefunct_OneAttempt_NoRecovery()
     {
         var operation = ThrowingOperation(1);
         var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
         session.Receive(SessionHarness.Run());
 
+        // B3-B-R2 supersedes the R1 recoverable-FAILED outcome for a failed retirement: the
+        // completion is reported as FAILURE (never SUCCESS) and the session is permanently unusable.
         var result = session.Receive(SessionHarness.Pull(-1));
 
-        Assert.Equal(BoltConnectionState.Failed, result.State);
         Assert.IsType<FailureResponse>(result.Responses[^1]);
+        Assert.DoesNotContain(result.Responses, r => r is SuccessResponse);
+        Assert.Equal(BoltConnectionState.Defunct, result.State);
+        Assert.True(result.ShouldClose);
         Assert.Equal(1, operation.DisposeCount);
         Assert.NotNull(session.LastCleanupFailure);
+
+        var reset = session.Receive(SessionHarness.Reset());
+        Assert.Empty(reset.Responses);
+        Assert.Equal(BoltConnectionState.Defunct, reset.State);
     }
 
     // ---- F-01: primary failure precedence ----
@@ -228,10 +239,13 @@ public sealed class CleanupAndTelemetryRemediationTests
 
         var result = session.Receive(SessionHarness.Pull(-1));
 
-        Assert.Equal(BoltConnectionState.Failed, result.State);
+        // Two distinct facts stay observable: the primary provider failure (50N00) and the
+        // cleanup diagnostic (the disposal exception). Failed retirement is irreversible.
+        Assert.Equal(BoltConnectionState.Defunct, result.State);
+        Assert.True(result.ShouldClose);
         Assert.Equal("Neo.DatabaseError.General.UnknownError", FailureCodeOf(result));
         Assert.Equal(1, operation.DisposeCount);
-        Assert.NotNull(session.LastCleanupFailure);
+        Assert.Equal("provider dispose failure", session.LastCleanupFailure?.Message);
     }
 
     [Fact]
@@ -248,12 +262,16 @@ public sealed class CleanupAndTelemetryRemediationTests
 
         var result = session.Receive(SessionHarness.Pull(-1));
 
-        Assert.Equal(BoltConnectionState.Failed, result.State);
+        // The row-shape classification remains the primary failure; the failed retirement makes
+        // the session terminal instead of recoverable (B3-B-R2).
+        Assert.Equal(BoltConnectionState.Defunct, result.State);
+        Assert.True(result.ShouldClose);
         var failure = Assert.IsType<FailureResponse>(result.Responses[^1]);
         Assert.Equal(
             "A result row does not match the announced result fields.",
             BoltMessageFieldsTestAccess.GetString(failure.Metadata, "description"));
         Assert.Equal(1, operation.DisposeCount);
+        Assert.Equal("provider dispose failure", session.LastCleanupFailure?.Message);
     }
 
     [Fact]
