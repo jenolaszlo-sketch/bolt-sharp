@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B3-A-Q1 reviewer falsification probe. Console host referencing only the production BoltSharp
+    assembly under review. It carries its own independent PackStream encoder AND decoder, written
+    from the published specification (independent of the production writer/reader and of the
+    producer's test fixtures). No producer test file is referenced or modified.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>B3AQ1.FalsificationProbe</AssemblyName>
+    <RootNamespace>B3AQ1.FalsificationProbe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+</Project>

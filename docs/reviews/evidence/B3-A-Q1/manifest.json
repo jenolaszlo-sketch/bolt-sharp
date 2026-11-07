@@ -1,0 +1,85 @@
+{
+    "task":  "B3-A-Q1 - Independent qualification of the Bolt 5.8 message contracts",
+    "reviewer":  "GLM-5.3-Flash (provider nvidia) in OpenCode",
+    "reviewed_head":  "fb81f8b386d46db2347f7b890847885d9815dcf5",
+    "reviewed_tree":  "88aba63c3e35e89dc030a1fa54967d941cd06031",
+    "implementation_commit":  "d99096a9689c4a7ce313c569cff2b165cfbda11a",
+    "disposition":  "SUPPORTED WITH QUALIFICATIONS",
+    "generated_utc":  "2026-11-07T03:20:31Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q1/core-build.log",
+                               "sha256":  "bca8813f68241364aaa85b9b314ff7f4afc1fe1a07f855b2f339abb6727f12a0",
+                               "bytes":  357
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q1/core-solution-tests.log",
+                               "sha256":  "bc1bd9a2c4ac16e18c425258f60085eedabf831f474a9e054925e969dafc5bf2",
+                               "bytes":  576
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q1/environment.txt",
+                               "sha256":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+                               "bytes":  1915
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q1/falsification-probe/falsification-results.json",
+                               "sha256":  "9f20391176135d723fbd6b4d7b796bc9d302e3ebc8d0df8f604a20bc359d19de",
+                               "bytes":  31331
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q1/falsification-probe-run.log",
+                               "sha256":  "903a2db0679a9d348bfe5211dccd801c8b1cd0025a902caac00f3c447cb15fa3",
+                               "bytes":  63366
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q1/integration-tests.log",
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q1/message-tests.log",
+                               "sha256":  "570f6feb8c814cbf5ed9ca20c917e4fcfb8da7dd8ecdde0b954e67de44311f4e",
+                               "bytes":  575
+                           }
+                       ],
+    "probe_source_files":  [
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q1/.gitignore",
+                                   "sha256":  "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+                                   "bytes":  9
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/.gitignore",
+                                   "sha256":  "d717056e5eef4b08b2c976afd47b9d757f19c98f8f20c32afcccf224a4dc46ca",
+                                   "bytes":  11
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/FalsificationProbe.csproj",
+                                   "sha256":  "a24327d741248fb377b82f97dd4bc4930ebd31e7b9a6f676358269b81d5320c1",
+                                   "bytes":  884
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/IndependentPackStream.cs",
+                                   "sha256":  "6af5cc3486ec1b73005f9fc49065219c3f1483f534ac9c8cf2b87b6bed384863",
+                                   "bytes":  8718
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/Program.cs",
+                                   "sha256":  "bab03178a3a93bd9e701ff379b9967364caa4b5321656eb1b0023ecbc526edf3",
+                                   "bytes":  48538
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q1/README.md",
+                                   "sha256":  "a104dc2e7baf3b817d99dbdf4df1f4f9525a775b40d1d2fd16f738b710709aa6",
+                                   "bytes":  2229
+                               }
+                           ],
+    "report_files":  [
+                         {
+                             "path":  "docs/reviews/B3-A-Q1-independent-qualification.md",
+                             "sha256":  "adf6e729f668fb0fbc9ba76b3a447c61d0a86f4914ce8b818886e15140678ec9",
+                             "bytes":  22486
+                         }
+                     ]
+}
