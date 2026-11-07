@@ -1,0 +1,1450 @@
+[
+    {
+        "id":  "terminal-Goodbye-no-response-2",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "",
+        "after_actual":  ""
+    },
+    {
+        "id":  "terminal-Goodbye-contained-2",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Goodbye-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=",
+        "after_actual":  "opens=1;exception="
+    },
+    {
+        "id":  "terminal-Goodbye-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Goodbye-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Goodbye-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "terminal-Disconnect-contained-8",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Disconnect-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=",
+        "after_actual":  "opens=1;exception="
+    },
+    {
+        "id":  "terminal-Disconnect-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Disconnect-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Disconnect-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "terminal-Dispose-contained-14",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Dispose-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=ObjectDisposedException",
+        "after_actual":  "opens=1;exception=ObjectDisposedException"
+    },
+    {
+        "id":  "terminal-Dispose-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Dispose-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Dispose-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "terminal-Goodbye,Disconnect-no-response-20",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "",
+        "after_actual":  ""
+    },
+    {
+        "id":  "terminal-Goodbye,Disconnect-contained-20",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Goodbye,Disconnect-contained-21",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Goodbye,Disconnect-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=",
+        "after_actual":  "opens=1;exception="
+    },
+    {
+        "id":  "terminal-Goodbye,Disconnect-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Goodbye,Disconnect-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Goodbye,Disconnect-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "terminal-Goodbye,Dispose-no-response-27",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "",
+        "after_actual":  ""
+    },
+    {
+        "id":  "terminal-Goodbye,Dispose-contained-27",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Goodbye,Dispose-contained-28",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Goodbye,Dispose-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=ObjectDisposedException",
+        "after_actual":  "opens=1;exception=ObjectDisposedException"
+    },
+    {
+        "id":  "terminal-Goodbye,Dispose-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Goodbye,Dispose-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Goodbye,Dispose-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "terminal-Disconnect,Dispose-contained-34",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Disconnect,Dispose-contained-35",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Disconnect,Dispose-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=ObjectDisposedException",
+        "after_actual":  "opens=1;exception=ObjectDisposedException"
+    },
+    {
+        "id":  "terminal-Disconnect,Dispose-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Disconnect,Dispose-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Disconnect,Dispose-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "terminal-Dispose,Dispose-contained-41",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Dispose,Dispose-contained-42",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Dispose,Dispose-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=ObjectDisposedException",
+        "after_actual":  "opens=1;exception=ObjectDisposedException"
+    },
+    {
+        "id":  "terminal-Dispose,Dispose-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Dispose,Dispose-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Dispose,Dispose-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-no-response-48",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "",
+        "after_actual":  ""
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-contained-48",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-no-response-49",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "",
+        "after_actual":  ""
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-contained-49",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  ";Defunct",
+        "after_actual":  ";Defunct"
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-late",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "opens=1;exception=",
+        "after_actual":  "opens=1;exception="
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-attempts",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-diagnostic",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "terminal-Goodbye,Goodbye-detach-before-call",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "False",
+        "after_actual":  "False"
+    },
+    {
+        "id":  "null-fields-False",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "Failed;attempts=1;exception=",
+        "after_actual":  "Failed;attempts=1;exception="
+    },
+    {
+        "id":  "null-fields-False-retry",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;opens=2",
+        "after_actual":  "attempts=1;opens=2"
+    },
+    {
+        "id":  "null-fields-True",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "Defunct;attempts=1;exception=",
+        "after_actual":  "Defunct;attempts=1;exception="
+    },
+    {
+        "id":  "null-fields-True-retry",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;opens=1",
+        "after_actual":  "attempts=1;opens=1"
+    },
+    {
+        "id":  "reset-fail-closed",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct/True",
+        "after_actual":  "FAILURE/Defunct/True"
+    },
+    {
+        "id":  "reset-transient",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "Interrupted",
+        "after_actual":  "Interrupted"
+    },
+    {
+        "id":  "reset-once",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "1",
+        "after_actual":  "1"
+    },
+    {
+        "id":  "terminal-primary",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "terminal-primary-once",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "1",
+        "after_actual":  "1"
+    },
+    {
+        "id":  "diagnostic-no-virtual-access",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "none",
+        "after_actual":  "none"
+    },
+    {
+        "id":  "pull-complete-primary",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "RECORD,FAILURE/Failed/The operation provider failed while executing the request.",
+        "after_actual":  "RECORD,FAILURE/Defunct/The operation provider failed while executing the request."
+    },
+    {
+        "id":  "pull-complete-count",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "pull-complete-ignored",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "IGNORED;opens=1",
+        "after_actual":  ";opens=1"
+    },
+    {
+        "id":  "pull-complete-safe-reset",
+        "before_pass":  false,
+        "after_pass":  false,
+        "transition":  "fail-fail",
+        "before_actual":  "SUCCESS/Ready;oldResourceLive=True",
+        "after_actual":  "/Defunct;oldResourceLive=True"
+    },
+    {
+        "id":  "pull-complete-no-overlap",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "opens=2;oldResourceLive=True",
+        "after_actual":  "opens=1;oldResourceLive=True"
+    },
+    {
+        "id":  "pull-complete-never-retry",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "1",
+        "after_actual":  "1"
+    },
+    {
+        "id":  "discard-complete-primary",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "FAILURE/Failed/The operation provider failed while executing the request.",
+        "after_actual":  "FAILURE/Defunct/The operation provider failed while executing the request."
+    },
+    {
+        "id":  "discard-complete-count",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "discard-complete-ignored",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "IGNORED;opens=1",
+        "after_actual":  ";opens=1"
+    },
+    {
+        "id":  "discard-complete-safe-reset",
+        "before_pass":  false,
+        "after_pass":  false,
+        "transition":  "fail-fail",
+        "before_actual":  "SUCCESS/Ready;oldResourceLive=True",
+        "after_actual":  "/Defunct;oldResourceLive=True"
+    },
+    {
+        "id":  "discard-complete-no-overlap",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "opens=2;oldResourceLive=True",
+        "after_actual":  "opens=1;oldResourceLive=True"
+    },
+    {
+        "id":  "discard-complete-never-retry",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "1",
+        "after_actual":  "1"
+    },
+    {
+        "id":  "pull-read-primary",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "RECORD,FAILURE/Failed/The operation provider failed while executing the request.",
+        "after_actual":  "RECORD,FAILURE/Defunct/The operation provider failed while executing the request."
+    },
+    {
+        "id":  "pull-read-count",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "pull-read-prefix",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "RECORD,FAILURE",
+        "after_actual":  "RECORD,FAILURE"
+    },
+    {
+        "id":  "pull-read-ignored",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "IGNORED;opens=1",
+        "after_actual":  ";opens=1"
+    },
+    {
+        "id":  "pull-read-safe-reset",
+        "before_pass":  false,
+        "after_pass":  false,
+        "transition":  "fail-fail",
+        "before_actual":  "SUCCESS/Ready;oldResourceLive=True",
+        "after_actual":  "/Defunct;oldResourceLive=True"
+    },
+    {
+        "id":  "pull-read-no-overlap",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "opens=2;oldResourceLive=True",
+        "after_actual":  "opens=1;oldResourceLive=True"
+    },
+    {
+        "id":  "pull-read-never-retry",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "1",
+        "after_actual":  "1"
+    },
+    {
+        "id":  "discard-read-primary",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "FAILURE/Failed/The operation provider failed while executing the request.",
+        "after_actual":  "FAILURE/Defunct/The operation provider failed while executing the request."
+    },
+    {
+        "id":  "discard-read-count",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "discard-read-ignored",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "IGNORED;opens=1",
+        "after_actual":  ";opens=1"
+    },
+    {
+        "id":  "discard-read-safe-reset",
+        "before_pass":  false,
+        "after_pass":  false,
+        "transition":  "fail-fail",
+        "before_actual":  "SUCCESS/Ready;oldResourceLive=True",
+        "after_actual":  "/Defunct;oldResourceLive=True"
+    },
+    {
+        "id":  "discard-read-no-overlap",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "opens=2;oldResourceLive=True",
+        "after_actual":  "opens=1;oldResourceLive=True"
+    },
+    {
+        "id":  "discard-read-never-retry",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "1",
+        "after_actual":  "1"
+    },
+    {
+        "id":  "row-shape-primary",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "FAILURE/Failed/A result row does not match the announced result fields.",
+        "after_actual":  "FAILURE/Defunct/A result row does not match the announced result fields."
+    },
+    {
+        "id":  "row-shape-count",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;owned=False",
+        "after_actual":  "attempts=1;owned=False"
+    },
+    {
+        "id":  "row-shape-ignored",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "IGNORED;opens=1",
+        "after_actual":  ";opens=1"
+    },
+    {
+        "id":  "row-shape-safe-reset",
+        "before_pass":  false,
+        "after_pass":  false,
+        "transition":  "fail-fail",
+        "before_actual":  "SUCCESS/Ready;oldResourceLive=True",
+        "after_actual":  "/Defunct;oldResourceLive=True"
+    },
+    {
+        "id":  "row-shape-no-overlap",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "opens=2;oldResourceLive=True",
+        "after_actual":  "opens=1;oldResourceLive=True"
+    },
+    {
+        "id":  "row-shape-never-retry",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "1",
+        "after_actual":  "1"
+    },
+    {
+        "id":  "failed-disconnect-once",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "Defunct;1",
+        "after_actual":  "Defunct;1"
+    },
+    {
+        "id":  "prepare-failure",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Failed;acquired=0",
+        "after_actual":  "FAILURE/Failed;acquired=0"
+    },
+    {
+        "id":  "provider-refusal",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Failed",
+        "after_actual":  "FAILURE/Failed"
+    },
+    {
+        "id":  "clean-reset-control",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS;opens=2;oldResourceLive=False",
+        "after_actual":  "SUCCESS;opens=2;oldResourceLive=False"
+    },
+    {
+        "id":  "telemetry-0",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry-1",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry-2",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry-3",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry--1-metadata",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}",
+        "after_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}"
+    },
+    {
+        "id":  "telemetry--1-wire",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+        "after_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0"
+    },
+    {
+        "id":  "telemetry--1-ignored",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED;opens=0",
+        "after_actual":  "IGNORED;opens=0"
+    },
+    {
+        "id":  "telemetry--1-recovery",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry-4-metadata",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}",
+        "after_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}"
+    },
+    {
+        "id":  "telemetry-4-wire",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+        "after_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0"
+    },
+    {
+        "id":  "telemetry-4-ignored",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED;opens=0",
+        "after_actual":  "IGNORED;opens=0"
+    },
+    {
+        "id":  "telemetry-4-recovery",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry-9001-metadata",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}",
+        "after_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}"
+    },
+    {
+        "id":  "telemetry-9001-wire",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+        "after_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0"
+    },
+    {
+        "id":  "telemetry-9001-ignored",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED;opens=0",
+        "after_actual":  "IGNORED;opens=0"
+    },
+    {
+        "id":  "telemetry-9001-recovery",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry-9223372036854775807-metadata",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}",
+        "after_actual":  "{\"gql_status\":\"50N00\",\"neo4j_code\":\"Neo.DatabaseError.General.UnknownError\",\"description\":\"The telemetry API identifier is not valid for this server.\",\"diagnostic_record\":{}}"
+    },
+    {
+        "id":  "telemetry-9223372036854775807-wire",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+        "after_actual":  "B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A5468652074656C656D6574727920415049206964656E746966696572206973206E6F742076616C696420666F722074686973207365727665722ED011646961676E6F737469635F7265636F7264A0"
+    },
+    {
+        "id":  "telemetry-9223372036854775807-ignored",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED;opens=0",
+        "after_actual":  "IGNORED;opens=0"
+    },
+    {
+        "id":  "telemetry-9223372036854775807-recovery",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "telemetry-type-boundary",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidFieldType",
+        "after_actual":  "InvalidFieldType"
+    },
+    {
+        "id":  "telemetry-type-existing-gap",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "diagnostic-mutable-alias",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "modified",
+        "after_actual":  "modified"
+    },
+    {
+        "id":  "diagnostic-retained",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "InvalidOperationException",
+        "after_actual":  "InvalidOperationException"
+    },
+    {
+        "id":  "diagnostic-latest",
+        "before_pass":  true,
+        "after_pass":  false,
+        "transition":  "superseded",
+        "before_actual":  "same-as-latest=True",
+        "after_actual":  "same-as-latest=True"
+    },
+    {
+        "id":  "diagnostic-accessibility",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "getterPublic=True;setterPrivate=True",
+        "after_actual":  "getterPublic=True;setterPrivate=True"
+    },
+    {
+        "id":  "response-send-terminal",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "failed=True;state=Defunct;attempts=1",
+        "after_actual":  "failed=True;state=Defunct;attempts=1"
+    },
+    {
+        "id":  "matrix-Negotiation-RUN",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Negotiation-PULL",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Negotiation-DISCARD",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Negotiation-RESET",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Negotiation-GOODBYE",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Negotiation-TELEMETRY",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Negotiation-Disconnect",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Negotiation-Dispose",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-RUN",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-PULL",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-DISCARD",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-RESET",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-GOODBYE",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-TELEMETRY",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-Disconnect",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Authentication-Dispose",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Ready-RUN",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Streaming",
+        "after_actual":  "SUCCESS/Streaming"
+    },
+    {
+        "id":  "matrix-Ready-PULL",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Ready-DISCARD",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Ready-RESET",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "matrix-Ready-GOODBYE",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Ready-TELEMETRY",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "matrix-Ready-Disconnect",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Ready-Dispose",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Streaming-RUN",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Streaming-PULL",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "matrix-Streaming-DISCARD",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "matrix-Streaming-RESET",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "matrix-Streaming-GOODBYE",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Streaming-TELEMETRY",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "matrix-Streaming-Disconnect",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Streaming-Dispose",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Failed-RUN",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED/Failed",
+        "after_actual":  "IGNORED/Failed"
+    },
+    {
+        "id":  "matrix-Failed-PULL",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED/Failed",
+        "after_actual":  "IGNORED/Failed"
+    },
+    {
+        "id":  "matrix-Failed-DISCARD",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED/Failed",
+        "after_actual":  "IGNORED/Failed"
+    },
+    {
+        "id":  "matrix-Failed-RESET",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "SUCCESS/Ready",
+        "after_actual":  "SUCCESS/Ready"
+    },
+    {
+        "id":  "matrix-Failed-GOODBYE",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Failed-TELEMETRY",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "IGNORED/Failed",
+        "after_actual":  "IGNORED/Failed"
+    },
+    {
+        "id":  "matrix-Failed-Disconnect",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Failed-Dispose",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-RUN",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-PULL",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-DISCARD",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-RESET",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-GOODBYE",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-TELEMETRY",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "/Defunct",
+        "after_actual":  "/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-Disconnect",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "matrix-Defunct-Dispose",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "(void)/Defunct",
+        "after_actual":  "(void)/Defunct"
+    },
+    {
+        "id":  "authentication-fail-closed",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "FAILURE/Defunct",
+        "after_actual":  "FAILURE/Defunct"
+    },
+    {
+        "id":  "run-metadata-first-getter-contained",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "exception=InvalidOperationException;state=Ready;owned=False",
+        "after_actual":  "exception=;state=Defunct;owned=False"
+    },
+    {
+        "id":  "run-metadata-first-getter-cleanup",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "attempts=0;diagnostic=",
+        "after_actual":  "attempts=1;diagnostic=InvalidOperationException"
+    },
+    {
+        "id":  "run-metadata-first-getter-no-reopen",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "opens=2;oldResourceLive=True",
+        "after_actual":  "opens=1;oldResourceLive=True"
+    },
+    {
+        "id":  "run-metadata-first-getter-eventual-attempt",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "attempts=0;oldResourceLive=True",
+        "after_actual":  "attempts=1;oldResourceLive=True"
+    },
+    {
+        "id":  "run-metadata-second-getter-contained",
+        "before_pass":  false,
+        "after_pass":  false,
+        "transition":  "fail-fail",
+        "before_actual":  "exception=InvalidOperationException;state=Streaming;owned=True",
+        "after_actual":  "exception=;state=Streaming;owned=True"
+    },
+    {
+        "id":  "run-metadata-second-getter-cleanup",
+        "before_pass":  false,
+        "after_pass":  false,
+        "transition":  "fail-fail",
+        "before_actual":  "attempts=0;diagnostic=",
+        "after_actual":  "attempts=0;diagnostic="
+    },
+    {
+        "id":  "run-metadata-second-getter-eventual-attempt",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;oldResourceLive=True",
+        "after_actual":  "attempts=1;oldResourceLive=True"
+    },
+    {
+        "id":  "run-metadata-null-element-contained",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "exception=ArgumentNullException;state=Streaming;owned=True",
+        "after_actual":  "exception=;state=Defunct;owned=False"
+    },
+    {
+        "id":  "run-metadata-null-element-cleanup",
+        "before_pass":  false,
+        "after_pass":  true,
+        "transition":  "resolved",
+        "before_actual":  "attempts=0;diagnostic=",
+        "after_actual":  "attempts=1;diagnostic=InvalidOperationException"
+    },
+    {
+        "id":  "run-metadata-null-element-eventual-attempt",
+        "before_pass":  true,
+        "after_pass":  true,
+        "transition":  "pass-pass",
+        "before_actual":  "attempts=1;oldResourceLive=True",
+        "after_actual":  "attempts=1;oldResourceLive=True"
+    }
+]

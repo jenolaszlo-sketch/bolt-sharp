@@ -1,0 +1,27 @@
+{
+    "head":  "7eb9a8fcee5d4d89d333a920a6c3307e84ad4210",
+    "tree":  "c62e9d21ea578c4186bf34ca0b9eb280055eae4d",
+    "branch":  "main",
+    "worktrees":  [
+                      "worktree D:/projects/bolt-sharp",
+                      "HEAD 7eb9a8fcee5d4d89d333a920a6c3307e84ad4210",
+                      "branch refs/heads/main",
+                      ""
+                  ],
+    "status":  [
+
+               ],
+    "r2_delta_stat":  [
+                          " src/BoltSharp/Sessions/BoltConnectionSession.cs    | 118 +++--",
+                          " src/BoltSharp/Sessions/BoltSessionOptions.cs       |   9 +-",
+                          " .../CleanupAndTelemetryRemediationTests.cs         |  30 +-",
+                          " .../Sessions/ResourceLifecycleRemediationTests.cs  | 553 +++++++++++++++++++++",
+                          " 4 files changed, 673 insertions(+), 37 deletions(-)"
+                      ],
+    "r2_delta_name_status":  [
+                                 "M\tsrc/BoltSharp/Sessions/BoltConnectionSession.cs",
+                                 "M\tsrc/BoltSharp/Sessions/BoltSessionOptions.cs",
+                                 "M\ttests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs",
+                                 "A\ttests/BoltSharp.Tests/Sessions/ResourceLifecycleRemediationTests.cs"
+                             ]
+}

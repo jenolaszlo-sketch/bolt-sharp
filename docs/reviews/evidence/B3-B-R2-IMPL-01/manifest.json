@@ -1,0 +1,175 @@
+{
+    "task":  "B3-B-R2-IMPL-01 - Resource ownership, metadata acquisition and fail-closed recovery",
+    "producer":  "DeepSeek V4.1 Flash (provider nvidia, OpenCode)",
+    "baseline_commit":  "4ae87b4f944a5c16cbd90a734b1ebfddc9fe0236",
+    "baseline_tree":  "f4d2ebb606ac2c34f2b5ffe6e39eb700d71e7852",
+    "implementation_commit":  "7eb9a8fcee5d4d89d333a920a6c3307e84ad4210",
+    "implementation_tree":  "c62e9d21ea578c4186bf34ca0b9eb280055eae4d",
+    "disposition":  "IMPLEMENTED, READY FOR INDEPENDENT B3-B-Q3 REQUALIFICATION",
+    "findings_closed":  [
+                            "B3-B-Q2-F01 unsafe recovery after failed cleanup",
+                            "B3-B-Q2-F02 metadata acquisition outside the ownership boundary"
+                        ],
+    "q1_probe_checks":  118,
+    "q1_probe_failed_checks":  1,
+    "q2_probe_before_checks":  181,
+    "q2_probe_before_failed_checks":  18,
+    "q2_probe_after_checks":  181,
+    "q2_probe_after_failed_checks":  18,
+    "q2_probe_reconciliation":  {
+                                    "pass_pass":  152,
+                                    "resolved":  11,
+                                    "superseded":  11,
+                                    "stale_fail_fail":  7
+                                },
+    "generated_utc":  "2026-11-07T18:32:06Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/baseline.json",
+                               "sha256":  "f3b5f1f12dbb6f3c8410611e37e8bb11c143d95d16e4784f6d8f0adcc4e26c48",
+                               "bytes":  1406
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core.trx",
+                               "sha256":  "65e6e12ee73bdfd56f4ec86178631e82c690e496de5b1c6a55c12d2c2734c28f",
+                               "bytes":  1502212
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core-build.log",
+                               "sha256":  "b6f9bdcf2f34260a000ac64d38bdf3333fe159231960e92eb4e5cb0ca500b285",
+                               "bytes":  1919
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core-tests.log",
+                               "sha256":  "c04e4a71944f6136228b71103f821c7e3ab8e8f4ca57b4ec594980483bff16b5",
+                               "bytes":  906
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/environment.txt",
+                               "sha256":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+                               "bytes":  1910
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/historical-integrity.json",
+                               "sha256":  "ce082a2cf760d7f869d3ca086bceac118338c628cc950b03f158da8a5a037e2a",
+                               "bytes":  116654
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/historical-integrity-summary.txt",
+                               "sha256":  "ed5729b81e882870d6d4cc78089bb7c0cf77759cdb2658d995d9de52096b31ce",
+                               "bytes":  616
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration.trx",
+                               "sha256":  "04a4c39911956dc15be89c4fee3c756385fef203fc2695d85e0d41959a53bbd9",
+                               "bytes":  30069
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration-build.log",
+                               "sha256":  "79abc5563496e5d52d97dc063c781dd236cfbeab88b03e9c8800f198e4c80a2a",
+                               "bytes":  694
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration-tests.log",
+                               "sha256":  "f7a3bd63fd72b58aed3a70074494290a2d5b6326a42c0f7695a8e48b561662cb",
+                               "bytes":  980
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/message.trx",
+                               "sha256":  "adf42a72c4bcbe180b34acf25d9a75c803f248c6d866efe70bacf2305f526baa",
+                               "bytes":  140845
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/message-tests.log",
+                               "sha256":  "2187d9fcbdf980bc70a20857c718ce9ab6a7e079ec1e1ec7e77909f649181038",
+                               "bytes":  967
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe.log",
+                               "sha256":  "253b0fdbf382ce107a2b0e794aabfa00f7315bce779226128693355d061f661b",
+                               "bytes":  276
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe-after/session-probe-results.json",
+                               "sha256":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+                               "bytes":  18110
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe-build.log",
+                               "sha256":  "235d8ce777ab1d76010810faad29ba45931f20ae587d44e372d995e54b9e990d",
+                               "bytes":  658
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-after.json",
+                               "sha256":  "ae1d85e723cc83a0eaea65bde1baeeca16ccc157cbba9d2ee5bd2afeb5ac9201",
+                               "bytes":  214469
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-after.log",
+                               "sha256":  "e3741517cf6ecf4fa3ea8d0f8ad6dc54aab679f8052cba8493c72e2d19783abd",
+                               "bytes":  2532
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-before-after.json",
+                               "sha256":  "ee84d28fa5b0b81204083143cd472da912115c297f9d18ab203f274c9d42d968",
+                               "bytes":  50119
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-build.log",
+                               "sha256":  "e6d95cec65a86d23d2b92d3c58c9fa6a494759bc716236054bee85f4c24fcec4",
+                               "bytes":  654
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-implementation-delta.patch",
+                               "sha256":  "b5c8534ea187344f90ac11df5f5545ee63b06b59685e24d95233af2aed2e2683",
+                               "bytes":  40436
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-lifecycle.trx",
+                               "sha256":  "ee91d365ac0ce0fa760319ae946246504c71ed713e3221b4b101f2a3ca6ae1f2",
+                               "bytes":  28529
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-tests.log",
+                               "sha256":  "48fc6a9214c77300501b70c1deaf08ce3e1c4ba6cf3746031b16ce578f4cf92f",
+                               "bytes":  991
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/README.md",
+                               "sha256":  "8060190f04584307121cc466a10154fd8355fe8384aaf7dae456c622b0dc5ac6",
+                               "bytes":  4822
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/remediation.trx",
+                               "sha256":  "b2e13590d1931fc04e1050021e09474c45326b17625c5f25ec69c39dd275dbdf",
+                               "bytes":  33029
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/remediation-tests.log",
+                               "sha256":  "26f5267f8dfc5b2a83631a1d24fb89da7a2dfdfed690694ae4bc6a493b4284a0",
+                               "bytes":  990
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/Run-R2.ps1",
+                               "sha256":  "8de69e75a6f16738e7fceba02885608c6ea05e3bcb9d840991ff131569a128a7",
+                               "bytes":  9662
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/session.trx",
+                               "sha256":  "ac37e1692562a38ac5e38dc8347c15c4f96cf8f619de6ae4e0407c6bcc682f34",
+                               "bytes":  175656
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/session-tests.log",
+                               "sha256":  "bb0f6e40b41c93ef5264a8bbf8efa115340ed2116947576134f3db48bcde9259",
+                               "bytes":  967
+                           }
+                       ],
+    "report_files":  [
+                         {
+                             "path":  "docs/reviews/B3-B-R2-IMPL-01.md",
+                             "sha256":  "a2ad9bf4876bdfa348b3b2035fe544e2034088cb69c5cb925a6ad1936c55cdef",
+                             "bytes":  28853
+                         }
+                     ]
+}

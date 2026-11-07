@@ -1,0 +1,718 @@
+{
+  "probe": "B3-B-Q1 independent session qualification probe",
+  "reviewed_head": "81c0af9547a8b4e2a6f7310226763bea0819cad9",
+  "implementation_commit": "9f224cf41656e4baf155532e682b862ed8e910b0",
+  "checks": 118,
+  "failed": 1,
+  "findings": [],
+  "results": [
+    {
+      "Id": "S01-new-state",
+      "Expected": "Negotiation",
+      "Actual": "Negotiation",
+      "Pass": true
+    },
+    {
+      "Id": "S02-hello",
+      "Expected": "SUCCESS/Authentication",
+      "Actual": "SUCCESS/Authentication",
+      "Pass": true
+    },
+    {
+      "Id": "S03-hello-state",
+      "Expected": "Authentication",
+      "Actual": "Authentication",
+      "Pass": true
+    },
+    {
+      "Id": "S04-logon",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "S05-run",
+      "Expected": "SUCCESS/Streaming",
+      "Actual": "SUCCESS/Streaming",
+      "Pass": true
+    },
+    {
+      "Id": "S06-pull",
+      "Expected": "RECORD,SUCCESS/Ready",
+      "Actual": "RECORD,SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "S07-telemetry-valid",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "S08-reset-ready",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "S09-goodbye",
+      "Expected": "/Defunct",
+      "Actual": "/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S10-failed-run",
+      "Expected": "Failed",
+      "Actual": "Failed",
+      "Pass": true
+    },
+    {
+      "Id": "S11-failed-pull-ignored",
+      "Expected": "IGNORED/Failed",
+      "Actual": "IGNORED/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "S12-failed-reset",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "S13-reset-then-run-fails-again",
+      "Expected": "FAILURE/Failed",
+      "Actual": "FAILURE/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "S14-logon-before-hello",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S15-run-before-logon",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S16-hello-twice",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S17-pull-in-ready",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S18-run-while-streaming",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S19-reset-in-negotiation",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S20-logoff",
+      "Expected": "SUCCESS/Authentication",
+      "Actual": "SUCCESS/Authentication",
+      "Pass": true
+    },
+    {
+      "Id": "S21-run-after-logoff",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S22-no-processing-after-defunct",
+      "Expected": "/Defunct",
+      "Actual": "/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "S23-telemetry-in-negotiation",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "A01-missing-verifier-fails-closed",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "A02-throwing-verifier-fails-closed",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "A03-no-credential-leak",
+      "Expected": "clean",
+      "Actual": "clean",
+      "Pass": true
+    },
+    {
+      "Id": "A04-verifier-called-once",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "A05-reauth-after-logoff",
+      "Expected": "Ready",
+      "Actual": "Ready",
+      "Pass": true
+    },
+    {
+      "Id": "A06-verifier-called-twice",
+      "Expected": "2",
+      "Actual": "2",
+      "Pass": true
+    },
+    {
+      "Id": "A07-auth-failure-metadata",
+      "Expected": "50N42|Neo.ClientError.Security.Unauthorized",
+      "Actual": "50N42|Neo.ClientError.Security.Unauthorized",
+      "Pass": true
+    },
+    {
+      "Id": "A08-none-scheme-not-a-bypass",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "P01-finite-below-cap",
+      "Expected": "RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Actual": "RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Pass": true
+    },
+    {
+      "Id": "P02-finite-equal-cap",
+      "Expected": "RECORD,RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Actual": "RECORD,RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Pass": true
+    },
+    {
+      "Id": "P03-finite-above-cap",
+      "Expected": "RECORD,RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Actual": "RECORD,RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Pass": true
+    },
+    {
+      "Id": "P04-nminus1-below-cap",
+      "Expected": "RECORD,RECORD,SUCCESS/Ready",
+      "Actual": "RECORD,RECORD,SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "P05-nminus1-equal-cap",
+      "Expected": "RECORD,RECORD,RECORD,SUCCESS/Ready",
+      "Actual": "RECORD,RECORD,RECORD,SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "P06-nminus1-above-cap-first",
+      "Expected": "RECORD,RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Actual": "RECORD,RECORD,RECORD,SUCCESS(has_more:true)/Streaming",
+      "Pass": true
+    },
+    {
+      "Id": "P06b-nminus1-above-cap-second",
+      "Expected": "RECORD,RECORD,SUCCESS/Ready",
+      "Actual": "RECORD,RECORD,SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "P06c-all-rows-in-order",
+      "Expected": "1,2,3,4,5",
+      "Actual": "1,2,3,4,5",
+      "Pass": true
+    },
+    {
+      "Id": "P07-empty-result",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "P08-midstream-failure",
+      "Expected": "RECORD,FAILURE/Failed",
+      "Actual": "RECORD,FAILURE/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "P08b-cursor-disposed",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "P09-pull-after-terminal",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "P10-has-more-only-when-rows-remain",
+      "Expected": "True",
+      "Actual": "True",
+      "Pass": true
+    },
+    {
+      "Id": "P10b-cap-respected",
+      "Expected": "2",
+      "Actual": "2",
+      "Pass": true
+    },
+    {
+      "Id": "R01-reset-in-ready",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "R02-reset-in-failed",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "R03-reset-in-streaming",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "R03b-cursor-disposed",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "R03c-no-active-cursor",
+      "Expected": "False",
+      "Actual": "False",
+      "Pass": true
+    },
+    {
+      "Id": "R04-buffered-row-discarded",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "R04b-first-pull-had-more",
+      "Expected": "True",
+      "Actual": "True",
+      "Pass": true
+    },
+    {
+      "Id": "R05-reset-disposal-failure",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "R06-reset-before-ready",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "R07-multiple-resets",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "R08-blocked-provider-reset-not-jump-ahead",
+      "Expected": "blocked=True;resetDuringBlock=not-attempted-single-owner",
+      "Actual": "blocked=True;resetDuringBlock=not-attempted-single-owner",
+      "Pass": true
+    },
+    {
+      "Id": "R08b-reset-after-unblock",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "B01-hello-logon-run-pull",
+      "Expected": "4|SUCCESS|SUCCESS|SUCCESS|RECORD,SUCCESS",
+      "Actual": "4|SUCCESS|SUCCESS|SUCCESS|RECORD,SUCCESS",
+      "Pass": true
+    },
+    {
+      "Id": "B02-run-pull-pull-discard",
+      "Expected": "4|SUCCESS|RECORD,SUCCESS(has_more:true)|RECORD,SUCCESS(has_more:true)|SUCCESS",
+      "Actual": "4|SUCCESS|RECORD,SUCCESS(has_more:true)|RECORD,SUCCESS(has_more:true)|SUCCESS",
+      "Pass": true
+    },
+    {
+      "Id": "B03-failure-ignored-reset-run",
+      "Expected": "4|FAILURE|IGNORED|SUCCESS|FAILURE",
+      "Actual": "4|FAILURE|IGNORED|SUCCESS|FAILURE",
+      "Pass": true
+    },
+    {
+      "Id": "B04-pull-failure-reset",
+      "Expected": "3|SUCCESS|FAILURE|SUCCESS",
+      "Actual": "3|SUCCESS|FAILURE|SUCCESS",
+      "Pass": true
+    },
+    {
+      "Id": "B05-goodbye-stops-batch",
+      "Expected": "2",
+      "Actual": "2",
+      "Pass": true
+    },
+    {
+      "Id": "B05b-remainder-still-caller-owned",
+      "Expected": "3",
+      "Actual": "3",
+      "Pass": true
+    },
+    {
+      "Id": "B05c-envelope-count-below-request-count",
+      "Expected": "True",
+      "Actual": "True",
+      "Pass": true
+    },
+    {
+      "Id": "B06-run-failure-then-hello-in-failed-is-fatal",
+      "Expected": "2|FAILURE|FAILURE",
+      "Actual": "2|FAILURE|FAILURE",
+      "Pass": true
+    },
+    {
+      "Id": "B07-multiple-resets",
+      "Expected": "2|SUCCESS|SUCCESS",
+      "Actual": "2|SUCCESS|SUCCESS",
+      "Pass": true
+    },
+    {
+      "Id": "B08-over-capacity",
+      "Expected": "throws",
+      "Actual": "throws",
+      "Pass": true
+    },
+    {
+      "Id": "B09-at-capacity",
+      "Expected": "2",
+      "Actual": "2",
+      "Pass": true
+    },
+    {
+      "Id": "I01-ignored-wire-form",
+      "Expected": "B07E",
+      "Actual": "B07E",
+      "Pass": true
+    },
+    {
+      "Id": "I02-ignored-after-failure",
+      "Expected": "IGNORED/Failed",
+      "Actual": "IGNORED/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "I03-original-failure-not-overwritten",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "I04-run-ignored",
+      "Expected": "IGNORED/Failed",
+      "Actual": "IGNORED/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "I05-discard-ignored",
+      "Expected": "IGNORED/Failed",
+      "Actual": "IGNORED/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "I06-logoff-ignored",
+      "Expected": "IGNORED/Failed",
+      "Actual": "IGNORED/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "I07-telemetry-ignored",
+      "Expected": "IGNORED/Failed",
+      "Actual": "IGNORED/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "I08-disconnect-in-failed",
+      "Expected": "Defunct",
+      "Actual": "Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "C01-no-execution-before-auth",
+      "Expected": "0",
+      "Actual": "0",
+      "Pass": true
+    },
+    {
+      "Id": "C02-open-count",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "C03-second-run-while-streaming-not-opened",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "C04-dispose-once-after-completion",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "C05-goodbye-disposes-cursor",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "C06-disconnect-idempotent-dispose",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "N01-nc05b-wrong-column",
+      "Expected": "RECORD,FAILURE/Failed",
+      "Actual": "RECORD,FAILURE/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "N01b-bad-row-not-emitted",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "N01c-cursor-disposed",
+      "Expected": "1",
+      "Actual": "1",
+      "Pass": true
+    },
+    {
+      "Id": "N02-correct-column",
+      "Expected": "RECORD,SUCCESS/Ready",
+      "Actual": "RECORD,SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "N03-no-second-terminal",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "N04-no-record-for-discard",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "N05-no-record-without-run",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "T0-valid-telemetry",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "T1-valid-telemetry",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "T2-valid-telemetry",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "T3-valid-telemetry",
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid--1",
+      "Expected": "FAILURE/Failed",
+      "Actual": "FAILURE/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid--1-status",
+      "Expected": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Actual": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid-4",
+      "Expected": "FAILURE/Failed",
+      "Actual": "FAILURE/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid-4-status",
+      "Expected": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Actual": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid-9001",
+      "Expected": "FAILURE/Failed",
+      "Actual": "FAILURE/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid-9001-status",
+      "Expected": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Actual": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid-9223372036854775807",
+      "Expected": "FAILURE/Failed",
+      "Actual": "FAILURE/Failed",
+      "Pass": true
+    },
+    {
+      "Id": "T-invalid-9223372036854775807-status",
+      "Expected": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Actual": "50N00|Neo.DatabaseError.General.UnknownError",
+      "Pass": true
+    },
+    {
+      "Id": "U01-begin",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "U02-commit",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "U03-rollback",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "U04-route",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "U05-unknown-signature",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "U06-malformed-arity",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "U07-telemetry-wrong-wire-type",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "X01-goodbye-dispose-throws",
+      "Expected": "no-throw;Defunct;disposeCount=1",
+      "Actual": "no-throw;Defunct;disposeCount=1",
+      "Pass": true
+    },
+    {
+      "Id": "X02-disconnect-dispose-throws",
+      "Expected": "no-throw;Defunct;disposeCount=1",
+      "Actual": "no-throw;Defunct;disposeCount=1",
+      "Pass": true
+    },
+    {
+      "Id": "X03-dispose-dispose-throws",
+      "Expected": "no-throw;Defunct;disposeCount=1",
+      "Actual": "no-throw;Defunct;disposeCount=1",
+      "Pass": true
+    },
+    {
+      "Id": "X04-run-null-fields-dispose-throws",
+      "Expected": "no-throw;Failed",
+      "Actual": "no-throw;Defunct;FAILURE",
+      "Pass": false
+    },
+    {
+      "Id": "X05-reset-dispose-throws-control",
+      "Expected": "FAILURE/Defunct",
+      "Actual": "FAILURE/Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "W01-disconnect-during-run",
+      "Expected": "Defunct|0",
+      "Actual": "Defunct|0",
+      "Pass": true
+    },
+    {
+      "Id": "W01b-no-late-read",
+      "Expected": "0",
+      "Actual": "0",
+      "Pass": true
+    },
+    {
+      "Id": "W02-disconnect-during-pull-idempotent",
+      "Expected": "True",
+      "Actual": "True",
+      "Pass": true
+    },
+    {
+      "Id": "W03-reset-racing-completed-cursor",
+      "Expected": "FAILURE/Failed|SUCCESS/Ready|Defunct",
+      "Actual": "FAILURE/Failed|SUCCESS/Ready|Defunct",
+      "Pass": true
+    },
+    {
+      "Id": "W04-late-result-after-defunct",
+      "Expected": "Defunct|0",
+      "Actual": "Defunct|0",
+      "Pass": true
+    }
+  ]
+}

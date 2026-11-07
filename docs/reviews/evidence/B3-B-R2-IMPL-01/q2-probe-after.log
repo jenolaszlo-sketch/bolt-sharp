@@ -1,0 +1,21 @@
+COMMAND: dotnet C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-r2-20261108\q2-probe-artifacts\bin\Q2Probe\debug\B3BQ2.Probe.dll C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-r2-20261108\evidence\q2-probe-after.json
+checks=181 passed=163 failed=18 trace_steps=217
+FAIL pull-complete-primary: expected=primary FAILURE preserved;Failed;actual=RECORD,FAILURE/Defunct/The operation provider failed while executing the request.
+FAIL pull-complete-ignored: expected=IGNORED;no open;actual=;opens=1
+FAIL pull-complete-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=/Defunct;oldResourceLive=True
+FAIL discard-complete-primary: expected=primary FAILURE preserved;Failed;actual=FAILURE/Defunct/The operation provider failed while executing the request.
+FAIL discard-complete-ignored: expected=IGNORED;no open;actual=;opens=1
+FAIL discard-complete-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=/Defunct;oldResourceLive=True
+FAIL pull-read-primary: expected=primary FAILURE preserved;Failed;actual=RECORD,FAILURE/Defunct/The operation provider failed while executing the request.
+FAIL pull-read-ignored: expected=IGNORED;no open;actual=;opens=1
+FAIL pull-read-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=/Defunct;oldResourceLive=True
+FAIL discard-read-primary: expected=primary FAILURE preserved;Failed;actual=FAILURE/Defunct/The operation provider failed while executing the request.
+FAIL discard-read-ignored: expected=IGNORED;no open;actual=;opens=1
+FAIL discard-read-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=/Defunct;oldResourceLive=True
+FAIL row-shape-primary: expected=primary FAILURE preserved;Failed;actual=FAILURE/Defunct/A result row does not match the announced result fields.
+FAIL row-shape-ignored: expected=IGNORED;no open;actual=;opens=1
+FAIL row-shape-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=/Defunct;oldResourceLive=True
+FAIL diagnostic-latest: expected=later cleanup failure replaces earlier diagnostic;actual=same-as-latest=True
+FAIL run-metadata-second-getter-contained: expected=metadata primary failure contained;cleanup failure makes Defunct;actual=exception=;state=Streaming;owned=True
+FAIL run-metadata-second-getter-cleanup: expected=one guarded cleanup attempt even before installation;actual=attempts=0;diagnostic=
+EXIT: 4

@@ -1,0 +1,8 @@
+COMMAND: dotnet test tests/BoltSharp.Tests/BoltSharp.Tests.csproj -c Debug --no-build --no-restore --artifacts-path C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-r2-20261108\artifacts --filter FullyQualifiedName~CleanupAndTelemetryRemediationTests --logger trx;LogFileName=remediation.trx --results-directory C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-r2-20261108\evidence
+Test run for C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-r2-20261108\artifacts\bin\BoltSharp.Tests\debug\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+WARNING: Overwriting results file: C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-r2-20261108\evidence\remediation.trx
+Results File: C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-r2-20261108\evidence\remediation.trx
+
+Passed!  - Failed:     0, Passed:    21, Skipped:     0, Total:    21, Duration: 35 ms - BoltSharp.Tests.dll (net8.0)
+EXIT: 0
