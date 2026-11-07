@@ -1,0 +1,112 @@
+{
+    "task":  "B3-A-IMPL-01 - Bolt 5.8 message schemas and protocol contracts",
+    "implementation_commit":  "d99096a9689c4a7ce313c569cff2b165cfbda11a",
+    "implementation_tree":  "6cb9cace72d403d496ca92a067c06510be64220c",
+    "baseline_commit":  "d5189af56c79bbdb86bbaaa156bfb2a0f4046c37",
+    "revision":  "Bolt 5.8 / PackStream 1.0",
+    "generated_utc":  "2026-11-07T02:27:29Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/core-build.log",
+                               "sha256":  "8182b6d8775e0ddc7023a58f94ece52acca38cc40075a4e4577a7960102c4ff1",
+                               "bytes":  706
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/core-solution-tests.log",
+                               "sha256":  "c4fea49d2ccc930094a2deb422a9ef861d4876c690ff9dd55ffd22fe16844a8e",
+                               "bytes":  1144
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/integration-tests-baseline.log",
+                               "sha256":  "218468421146addbb50670e76b54c8f7b1760c8374e64131570c84195830d51b",
+                               "bytes":  1272
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/baseline/integration-tests-final.log",
+                               "sha256":  "218468421146addbb50670e76b54c8f7b1760c8374e64131570c84195830d51b",
+                               "bytes":  1272
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/driver-source/IgnoredMessageSerializer.cs",
+                               "sha256":  "8aea1836683c737ff92faae7df8e1c2c66022238017b2bcdbf09aca4da3c960b",
+                               "bytes":  1370
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/driver-source/PipelinedMessageReader.cs",
+                               "sha256":  "e7e0a910341a0fe64003bd0e02e1d39a2669eb9151cbfb315901cb962a1a5bfc",
+                               "bytes":  10031
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-IMPL-01/spec/message.adoc",
+                               "sha256":  "3b696f527dfabd525f8f635ae71b70502579253b7b587c40f3990422f5a763d8",
+                               "bytes":  79630
+                           }
+                       ],
+    "report_and_source_files":  [
+                                    {
+                                        "path":  "docs/reviews/B3-A-IMPL-01.md",
+                                        "sha256":  "d83aa35585c4bb337cb9097d56e3d6c548194b3cc465c879472a7d8c00698f44",
+                                        "bytes":  24635
+                                    },
+                                    {
+                                        "path":  "src/BoltSharp/Messages/BoltMessageCodec.cs",
+                                        "sha256":  "4cbe0a755cc834f30cab3a8b4e4b583ea5c427374e110a1cfde7583c020162b4",
+                                        "bytes":  26761
+                                    },
+                                    {
+                                        "path":  "src/BoltSharp/Messages/BoltMessageError.cs",
+                                        "sha256":  "ce62577ae6dcf5a3153bef7d3a68f04a9c24000310c3867c80815f74d4811d85",
+                                        "bytes":  3128
+                                    },
+                                    {
+                                        "path":  "src/BoltSharp/Messages/BoltMessageFields.cs",
+                                        "sha256":  "eb9abc5fa3684d036fa95b7a4a30ff2a0f584cc26221b425b147ebbb3a80e40e",
+                                        "bytes":  3796
+                                    },
+                                    {
+                                        "path":  "src/BoltSharp/Messages/BoltMessageSignatures.cs",
+                                        "sha256":  "07fd66f52cafe6cb718d464a36e401778dd3c0c72e2f9b07742b9a130c98fccd",
+                                        "bytes":  3898
+                                    },
+                                    {
+                                        "path":  "src/BoltSharp/Messages/BoltRequests.cs",
+                                        "sha256":  "78ce8ad7f800b9ade3f62cbcaebcceb76ec35aaea0edfc3642a3c1a884d716d8",
+                                        "bytes":  11090
+                                    },
+                                    {
+                                        "path":  "src/BoltSharp/Messages/BoltResponses.cs",
+                                        "sha256":  "90735cabbe21f91865a2643b8b84d108de96ce98a8d0739c3420e7ef4780d37f",
+                                        "bytes":  11875
+                                    },
+                                    {
+                                        "path":  "tests/BoltSharp.Tests/Messages/B0BFixtureComparisonTests.cs",
+                                        "sha256":  "50cf9de256df820b8fd1dfce7a43553b5396d3177094f5525f4e77cbc951983f",
+                                        "bytes":  5190
+                                    },
+                                    {
+                                        "path":  "tests/BoltSharp.Tests/Messages/BoltMessageFixtures.cs",
+                                        "sha256":  "a713243a31b5585bb14c75a851d5bc17b842924b9e6c2c5150604d74b53a56dd",
+                                        "bytes":  29716
+                                    },
+                                    {
+                                        "path":  "tests/BoltSharp.Tests/Messages/BoltMessageNegativeTests.cs",
+                                        "sha256":  "89a02a913416217cf13a2439c808423d148ca96b47c5a08d43463c0d6c3f0f27",
+                                        "bytes":  16901
+                                    },
+                                    {
+                                        "path":  "tests/BoltSharp.Tests/Messages/BoltRequestDecodeTests.cs",
+                                        "sha256":  "cf049f60a69284c401bf7e42e8514d96048cb1b6d69ad7e335088a6c0c3a21b5",
+                                        "bytes":  11009
+                                    },
+                                    {
+                                        "path":  "tests/BoltSharp.Tests/Messages/BoltResponseDecodeTests.cs",
+                                        "sha256":  "0c538f7183311506b7a51b571d4c06951ed4a745f639bb7b81a7d7b6172a0a22",
+                                        "bytes":  6637
+                                    },
+                                    {
+                                        "path":  "tests/BoltSharp.Tests/Messages/BoltResponseEncodeTests.cs",
+                                        "sha256":  "aa4d17cc52d439f232dc2589a59b62cbe07543647ccde327355c640d406fc031",
+                                        "bytes":  7953
+                                    }
+                                ]
+}
