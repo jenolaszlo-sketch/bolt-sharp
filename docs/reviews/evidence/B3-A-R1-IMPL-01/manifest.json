@@ -1,0 +1,76 @@
+{
+    "task":  "B3-A-R1-IMPL-01 - Mandatory HELLO bolt_agent enforcement (F-01 remediation)",
+    "baseline_commit":  "6974a56a6c4fc9b706a29ac65fe029840834893c",
+    "remediation_commit":  "d6686d14f3eaee42f83971d517d9077170a30fe2",
+    "remediation_tree":  "f615af7feff41c2f0cc2e0debd06d4d928daa32d",
+    "generated_utc":  "2026-11-07T05:11:47Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/core-build.log",
+                               "sha256":  "250a5329c0f8f7e936813ff0176f572ee4708bf295864e4ea96942d4c05da6ab",
+                               "bytes":  357
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/core-solution-tests.log",
+                               "sha256":  "fd87031929db60b30d4db6b7a79a4edeee8f76947ec5e78a7f318a655e0a7e2f",
+                               "bytes":  576
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/integration-tests.log",
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-after-fix/falsification-results.json",
+                               "sha256":  "25ceb9237e12bb64c83725ea50588ceeab890c7908ad8488dd9a6a759f5f2aa3",
+                               "bytes":  31361
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-after-fix-run.log",
+                               "sha256":  "664a2c792428161dedffdc325d9e28929e98c6dbb4a0b3e04ff5e3c782ebbb82",
+                               "bytes":  31712
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-before-fix/falsification-results.json",
+                               "sha256":  "9f20391176135d723fbd6b4d7b796bc9d302e3ebc8d0df8f604a20bc359d19de",
+                               "bytes":  31331
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-before-fix-run.log",
+                               "sha256":  "cd8fc055626208bf9950811213aae14bf4cbe370241da0416a1c42dcbf5b1192",
+                               "bytes":  31682
+                           }
+                       ],
+    "changed_source_and_report_files":  [
+                                            {
+                                                "path":  "src/BoltSharp/Messages/BoltMessageCodec.cs",
+                                                "sha256":  "4f20b992ed4cbf0a18ef24e23e1e1f0a277a83cc30dac569b5776d1e11121cfe",
+                                                "bytes":  27196
+                                            },
+                                            {
+                                                "path":  "src/BoltSharp/Messages/BoltRequests.cs",
+                                                "sha256":  "77c8ec1f539b3f8b30a18091229c89caa2e397081e3915850ad034147550c059",
+                                                "bytes":  11097
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Messages/BoltMessageFixtures.cs",
+                                                "sha256":  "83b979acd55c9d76dc2b2c7ba5cbf83781eb011bc53b20b3cd50c4d5fcc4a0db",
+                                                "bytes":  30577
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Messages/BoltMessageNegativeTests.cs",
+                                                "sha256":  "542021b07b0134aab6da55e50cf19cf18b6a1945ea6f533e584d8af5d197198f",
+                                                "bytes":  17697
+                                            },
+                                            {
+                                                "path":  "tests/BoltSharp.Tests/Messages/BoltRequestDecodeTests.cs",
+                                                "sha256":  "18255130bf1714a045d576a8e3284898293eab559562aca7907af0f0db9bbd33",
+                                                "bytes":  11509
+                                            },
+                                            {
+                                                "path":  "docs/reviews/B3-A-R1-IMPL-01.md",
+                                                "sha256":  "269daff14a7742ba08fcdc94d3fb8a0f259e7b9a3514266ba5b2437824bf8d16",
+                                                "bytes":  11987
+                                            }
+                                        ]
+}

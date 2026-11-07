@@ -1,0 +1,861 @@
+{
+  "probe": "B3-A-Q1 independent falsification probe",
+  "reviewed_head": "fb81f8b386d46db2347f7b890847885d9815dcf5",
+  "implementation_commit": "d99096a9689c4a7ce313c569cff2b165cfbda11a",
+  "driver_under_test": "BoltSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "oracle": "IndependentPackStream (this probe) \u002B B0-B qualified fixture bytes \u002B published Bolt 5.8 spec",
+  "probe_count": 85,
+  "mismatches": 0,
+  "results": [
+    {
+      "Id": "A1",
+      "Group": "signature",
+      "Input": "RUN-shaped payload tagged PULL (0x3F, 3 fields)",
+      "SpecExpectation": "PULL has arity 1; a 3-field structure must be rejected",
+      "Observed": "rejected",
+      "Category": "StructureArity",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "A2",
+      "Group": "signature",
+      "Input": "PULL-shaped payload tagged RUN (0x10, 1 field)",
+      "SpecExpectation": "RUN has arity 3; a 1-field structure must be rejected",
+      "Observed": "rejected",
+      "Category": "StructureArity",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "A3",
+      "Group": "signature",
+      "Input": "zero-field structure tagged GOODBYE (0x02)",
+      "SpecExpectation": "Signature determines message identity; a stateless codec has no other discriminator",
+      "Observed": "decoded to GoodbyeRequest (GOODBYE)",
+      "Category": null,
+      "Outcome": "CONFIRMED",
+      "Notes": "Swapping zero-arity signatures (RESET/GOODBYE/LOGOFF) is only detectable with connection state (B3-B)."
+    },
+    {
+      "Id": "A4-BEGIN",
+      "Group": "signature",
+      "Input": "BEGIN (B111A0)",
+      "SpecExpectation": "Known Bolt 5.8 signature, intentionally unsupported by the B3-A codec; must be classified UnsupportedMessage",
+      "Observed": "rejected",
+      "Category": "UnsupportedMessage",
+      "Outcome": "CONFORMANT",
+      "Notes": "Valid-but-unsupported requests are never silently accepted."
+    },
+    {
+      "Id": "A4-COMMIT",
+      "Group": "signature",
+      "Input": "COMMIT (B012)",
+      "SpecExpectation": "Known Bolt 5.8 signature, intentionally unsupported by the B3-A codec; must be classified UnsupportedMessage",
+      "Observed": "rejected",
+      "Category": "UnsupportedMessage",
+      "Outcome": "CONFORMANT",
+      "Notes": "Valid-but-unsupported requests are never silently accepted."
+    },
+    {
+      "Id": "A4-ROLLBACK",
+      "Group": "signature",
+      "Input": "ROLLBACK (B013)",
+      "SpecExpectation": "Known Bolt 5.8 signature, intentionally unsupported by the B3-A codec; must be classified UnsupportedMessage",
+      "Observed": "rejected",
+      "Category": "UnsupportedMessage",
+      "Outcome": "CONFORMANT",
+      "Notes": "Valid-but-unsupported requests are never silently accepted."
+    },
+    {
+      "Id": "A4-ROUTE",
+      "Group": "signature",
+      "Input": "ROUTE (B366A090A0)",
+      "SpecExpectation": "Known Bolt 5.8 signature, intentionally unsupported by the B3-A codec; must be classified UnsupportedMessage",
+      "Observed": "rejected",
+      "Category": "UnsupportedMessage",
+      "Outcome": "CONFORMANT",
+      "Notes": "Valid-but-unsupported requests are never silently accepted."
+    },
+    {
+      "Id": "A5",
+      "Group": "signature",
+      "Input": "structure with unknown tag 0x5A",
+      "SpecExpectation": "Not a Bolt 5.8 message signature; must be UnknownSignature",
+      "Observed": "rejected",
+      "Category": "UnknownSignature",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "A6",
+      "Group": "signature",
+      "Input": "graph Node structure as top-level message",
+      "SpecExpectation": "A graph structure is not a message; the production PackStream layer resolves it to a typed value before dispatch",
+      "Observed": "rejected",
+      "Category": "NotAStructure",
+      "Outcome": "CONFIRMED",
+      "Notes": "Deterministic rejection; classification nuance documented (typed graph value vs generic structure)."
+    },
+    {
+      "Id": "A7",
+      "Group": "signature",
+      "Input": "empty payload",
+      "SpecExpectation": "A Bolt message must be one structure",
+      "Observed": "rejected",
+      "Category": "EmptyPayload",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "A8",
+      "Group": "signature",
+      "Input": "top-level integer (0x2A)",
+      "SpecExpectation": "Not a structure",
+      "Observed": "rejected",
+      "Category": "NotAStructure",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B1a",
+      "Group": "arity",
+      "Input": "HELLO with 2 fields",
+      "SpecExpectation": "HELLO arity is 1",
+      "Observed": "rejected",
+      "Category": "StructureArity",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B1b",
+      "Group": "arity",
+      "Input": "HELLO with 0 fields",
+      "SpecExpectation": "HELLO arity is 1",
+      "Observed": "rejected",
+      "Category": "StructureArity",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B2",
+      "Group": "truncation",
+      "Input": "RUN with the declared 19-byte query cut after 15 bytes",
+      "SpecExpectation": "Truncated payload must be rejected as Truncated",
+      "Observed": "rejected",
+      "Category": "Truncated",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B3",
+      "Group": "truncation",
+      "Input": "HELLO cut inside the extra map (value declares 11 bytes, 4 present)",
+      "SpecExpectation": "Truncated payload must be rejected as Truncated",
+      "Observed": "rejected",
+      "Category": "Truncated",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B4a",
+      "Group": "trailing",
+      "Input": "RESET followed by one extra byte",
+      "SpecExpectation": "Exactly one structure must be consumed; trailing bytes rejected",
+      "Observed": "rejected",
+      "Category": "TrailingBytes",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B4b",
+      "Group": "trailing",
+      "Input": "valid HELLO followed by one extra byte",
+      "SpecExpectation": "Exactly one structure must be consumed",
+      "Observed": "rejected",
+      "Category": "TrailingBytes",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B5",
+      "Group": "truncation",
+      "Input": "STRING_8 declaring 200 bytes with only 10 present after a complete key",
+      "SpecExpectation": "Declared length beyond the payload must be Truncated, without reading past the buffer",
+      "Observed": "rejected",
+      "Category": "Truncated",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "B6",
+      "Group": "truncation",
+      "Input": "string payload containing invalid UTF-8 (D0 C8 lead-byte sequence)",
+      "SpecExpectation": "malformed UTF-8 is a PackStream format error (InvalidPackStreamValue), distinct from truncation",
+      "Observed": "rejected",
+      "Category": "InvalidPackStreamValue",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C1",
+      "Group": "hello",
+      "Input": "HELLO {} (no user_agent)",
+      "SpecExpectation": "user_agent is required by the 5.8 schema",
+      "Observed": "rejected",
+      "Category": "MissingRequiredField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C2",
+      "Group": "hello",
+      "Input": "HELLO {user_agent: 1}",
+      "SpecExpectation": "user_agent must be a string",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C3",
+      "Group": "hello",
+      "Input": "HELLO {user_agent: \u0022X\u0022} \u2014 no bolt_agent",
+      "SpecExpectation": "Bolt 5.8 specification: \u0027bolt_agent \u2026 This field is mandatory.\u0027 A schema-exact codec would reject this message",
+      "Observed": "decoded to HelloRequest (HELLO {user_agent: \u0022X\u0022})",
+      "Category": null,
+      "Outcome": "DEVIATION",
+      "Notes": "Conformance finding F-01: the codec accepts HELLO without the spec-mandatory bolt_agent. Documented by the producer as a deliberate less-strict reading; real driver 6.4.0 always sends bolt_agent (B0-B evidence), so no executed observation is affected. Recommended for spec-exact enforcement before/at B3-B integration."
+    },
+    {
+      "Id": "C4",
+      "Group": "hello",
+      "Input": "HELLO {user_agent, bolt_agent: {}}",
+      "SpecExpectation": "bolt_agent.product is mandatory; an empty agent map must be rejected",
+      "Observed": "rejected",
+      "Category": "MissingRequiredField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C5",
+      "Group": "hello",
+      "Input": "HELLO {user_agent, bolt_agent: {platform: \u0022win\u0022}} (no product)",
+      "SpecExpectation": "bolt_agent.product is mandatory",
+      "Observed": "rejected",
+      "Category": "MissingRequiredField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C6",
+      "Group": "hello",
+      "Input": "HELLO {user_agent, bolt_agent: {product: 1}}",
+      "SpecExpectation": "bolt_agent.product must be a string",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C7",
+      "Group": "hello",
+      "Input": "HELLO {user_agent, bolt_agent: {product: \u0022p/1\u0022, platform: 2}}",
+      "SpecExpectation": "optional bolt_agent entries must be strings or null",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C8",
+      "Group": "hello",
+      "Input": "HELLO {user_agent, routing: {address: 1}}",
+      "SpecExpectation": "routing is Dictionary(address::String): values must be strings",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C9",
+      "Group": "hello",
+      "Input": "HELLO {user_agent, notifications_disabled_classifications: [1]}",
+      "SpecExpectation": "notifications_disabled_classifications is List\u003CString\u003E",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C10",
+      "Group": "hello",
+      "Input": "HELLO carrying legacy authentication field \u0027scheme\u0027",
+      "SpecExpectation": "scheme was removed from HELLO after Bolt 5.0; authentication moved to LOGON in 5.1",
+      "Observed": "rejected",
+      "Category": "ProhibitedField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C11",
+      "Group": "hello",
+      "Input": "HELLO carrying \u0027patch_bolt\u0027",
+      "SpecExpectation": "patch_bolt was removed after Bolt 4.4",
+      "Observed": "rejected",
+      "Category": "ProhibitedField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C12",
+      "Group": "hello",
+      "Input": "HELLO {user_agent, notifications_minimum_severity: 1}",
+      "SpecExpectation": "notifications_minimum_severity must be a string or null",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "C13",
+      "Group": "hello",
+      "Input": "HELLO with the specification example\u0027s field set",
+      "SpecExpectation": "must decode with every known field preserved and validated",
+      "Observed": "decoded to HelloRequest (HELLO {user_agent: \u0022Example/4.2.0\u0022})",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": "All four known metadata keys type-check; routing values validated as strings."
+    },
+    {
+      "Id": "C14",
+      "Group": "hello",
+      "Input": "HELLO with routing=null and null notification fields",
+      "SpecExpectation": "null is a valid value for these optional fields (spec: \u0027Sending null will make the server use \u2026 default\u0027)",
+      "Observed": "decoded to HelloRequest (HELLO {user_agent: \u0022X\u0022})",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "D1",
+      "Group": "logon",
+      "Input": "LOGON {} (no scheme)",
+      "SpecExpectation": "auth.scheme is required",
+      "Observed": "rejected",
+      "Category": "MissingRequiredField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "D2",
+      "Group": "logon",
+      "Input": "LOGON {scheme: 1}",
+      "SpecExpectation": "scheme must be a string",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "D3",
+      "Group": "logon",
+      "Input": "LOGON {scheme: basic, principal: \u0022u\u0022} (no credentials)",
+      "SpecExpectation": "the basic scheme requires principal and credentials",
+      "Observed": "rejected",
+      "Category": "MissingRequiredField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "D4",
+      "Group": "logon",
+      "Input": "LOGON {scheme: basic, principal: 1, credentials: \u0022x\u0022}",
+      "SpecExpectation": "principal must be a string",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "D5",
+      "Group": "logon",
+      "Input": "LOGON {scheme: bearer} (no token)",
+      "SpecExpectation": "the bearer scheme requires credentials",
+      "Observed": "rejected",
+      "Category": "MissingRequiredField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "D6",
+      "Group": "logon",
+      "Input": "LOGON {scheme: \u0022custom\u0022}",
+      "SpecExpectation": "unknown schemes are preserved structurally; recognition never implies support (B3-B decides)",
+      "Observed": "decoded to LogonRequest with RecognizedScheme=Unknown",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": "No authentication decision is made by the codec."
+    },
+    {
+      "Id": "D7",
+      "Group": "logon",
+      "Input": "LOGON with a list instead of the auth map",
+      "SpecExpectation": "auth must be a map",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "E1",
+      "Group": "run",
+      "Input": "RUN with 2 fields",
+      "SpecExpectation": "RUN arity is 3",
+      "Observed": "rejected",
+      "Category": "StructureArity",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "E2",
+      "Group": "run",
+      "Input": "RUN with an integer query",
+      "SpecExpectation": "query must be a string",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "E3",
+      "Group": "run",
+      "Input": "RUN with a list as parameters",
+      "SpecExpectation": "parameters must be a map",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "E4",
+      "Group": "run",
+      "Input": "RUN {tx_timeout: \u0022later\u0022}",
+      "SpecExpectation": "tx_timeout must be an integer",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "E5",
+      "Group": "run",
+      "Input": "RUN carrying \u0027notifications_disabled_categories\u0027",
+      "SpecExpectation": "removed after Bolt 5.4 (renamed to notifications_disabled_classifications in 5.6)",
+      "Observed": "rejected",
+      "Category": "ProhibitedField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "E6",
+      "Group": "run",
+      "Input": "RUN \u0022RETURN $x AS x\u0022 {x: 1} {}",
+      "SpecExpectation": "nested parameter values preserved with signed-integer semantics",
+      "Observed": "decoded; parameters.x = PackStreamInteger:1",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "F1",
+      "Group": "pull-discard",
+      "Input": "PULL {} (no n)",
+      "SpecExpectation": "n has no default and must be present (spec)",
+      "Observed": "rejected",
+      "Category": "MissingRequiredField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "F2",
+      "Group": "pull-discard",
+      "Input": "PULL {n: \u0022not!\u0022}",
+      "SpecExpectation": "n must be an integer",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "F3",
+      "Group": "pull-discard",
+      "Input": "PULL {n: -2}",
+      "SpecExpectation": "spec defines n=-1 as \u0027fetch all\u0027; the spec does not state n\u003C-1 behavior. The codec rejects n\u003C-1 \u2014 a documented implementation policy, not a quoted protocol requirement",
+      "Observed": "rejected",
+      "Category": "InvalidFieldValue",
+      "Outcome": "CONFIRMED",
+      "Notes": "Classified as: documented implementation policy (reasonable; matches the value domain\u0027s meaning). Reviewer accepts with the policy note recorded."
+    },
+    {
+      "Id": "F4",
+      "Group": "pull-discard",
+      "Input": "PULL {n: 1, qid: -2}",
+      "SpecExpectation": "qid=-1 denotes the last executed statement; smaller values are rejected by policy",
+      "Observed": "rejected",
+      "Category": "InvalidFieldValue",
+      "Outcome": "CONFIRMED",
+      "Notes": "Same documented-policy classification as F3."
+    },
+    {
+      "Id": "F5",
+      "Group": "pull-discard",
+      "Input": "DISCARD {n: -2}",
+      "SpecExpectation": "same shape as PULL",
+      "Observed": "rejected",
+      "Category": "InvalidFieldValue",
+      "Outcome": "CONFIRMED",
+      "Notes": ""
+    },
+    {
+      "Id": "F6",
+      "Group": "pull-discard",
+      "Input": "PULL {n: -1}",
+      "SpecExpectation": "n=-1 fetches all remaining records (spec)",
+      "Observed": "decoded; N=-1",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "F7",
+      "Group": "pull-discard",
+      "Input": "authentic driver capture PULL {n: 1000} (B0-B evidence)",
+      "SpecExpectation": "must decode to n=1000",
+      "Observed": "decoded; N=1000",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "F8",
+      "Group": "pull-discard",
+      "Input": "authentic driver capture DISCARD {n: -1} (B0-B evidence)",
+      "SpecExpectation": "must decode to n=-1",
+      "Observed": "decoded; N=-1",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "G1",
+      "Group": "telemetry",
+      "Input": "TELEMETRY \u0022driver\u0022",
+      "SpecExpectation": "api must be an integer",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "G2",
+      "Group": "telemetry",
+      "Input": "TELEMETRY 9001",
+      "SpecExpectation": "the spec types api as Integer; its own example answers an out-of-domain value (9001) with FAILURE rather than malformed-input \u2014 the value domain (0-3) is a server-side decision",
+      "Observed": "decoded; Api=9001",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": "Intentional parsing/processing boundary; B3-B owns the FAILURE response."
+    },
+    {
+      "Id": "H1",
+      "Group": "responses",
+      "Input": "RECORD with a map instead of a list",
+      "SpecExpectation": "data must be a list",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H2",
+      "Group": "responses",
+      "Input": "RECORD with two fields (wrong outer arity)",
+      "SpecExpectation": "RECORD arity is 1 (NC-05b outer-arity boundary)",
+      "Observed": "rejected",
+      "Category": "StructureArity",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H3",
+      "Group": "responses",
+      "Input": "RECORD [42, 43] \u2014 two values in the single list",
+      "SpecExpectation": "the stateless codec enforces outer arity only; column-count matching against RUN fields is B3-B/B3-C (NC-05b)",
+      "Observed": "decoded to RecordResponse with 2 value(s)",
+      "Category": null,
+      "Outcome": "CONFIRMED",
+      "Notes": "Documented boundary; both halves are pinned by the producer\u0027s tests and this probe."
+    },
+    {
+      "Id": "H4",
+      "Group": "responses",
+      "Input": "SUCCESS with a list instead of metadata",
+      "SpecExpectation": "metadata must be a map",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H5",
+      "Group": "responses",
+      "Input": "SUCCESS {fields: 1}",
+      "SpecExpectation": "fields must be a list of strings",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H6",
+      "Group": "responses",
+      "Input": "SUCCESS {has_more: \u0022true\u0022}",
+      "SpecExpectation": "has_more must be a Boolean",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H7",
+      "Group": "responses",
+      "Input": "SUCCESS carrying patch_bolt",
+      "SpecExpectation": "removed after Bolt 4.4",
+      "Observed": "rejected",
+      "Category": "ProhibitedField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H8",
+      "Group": "responses",
+      "Input": "FAILURE carrying the pre-5.7 \u0027code\u0027 field",
+      "SpecExpectation": "obsolete field; 5.7\u002B uses gql_status/neo4j_code",
+      "Observed": "rejected",
+      "Category": "ProhibitedField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H9",
+      "Group": "responses",
+      "Input": "FAILURE with cause: \u0022nope!\u0022",
+      "SpecExpectation": "cause must be a map",
+      "Observed": "rejected",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H10",
+      "Group": "responses",
+      "Input": "FAILURE whose nested cause carries \u0027code\u0027",
+      "SpecExpectation": "causes are validated recursively as failure metadata",
+      "Observed": "rejected",
+      "Category": "ProhibitedField",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H11",
+      "Group": "responses",
+      "Input": "FAILURE with a 150-level nested cause chain",
+      "SpecExpectation": "recursive causes must be bounded by the configured depth; unbounded recursion is unsafe",
+      "Observed": "rejected",
+      "Category": "InvalidPackStreamValue",
+      "Outcome": "CONFORMANT",
+      "Notes": "The PackStream reader\u0027s depth limit (100) bounds the chain before the codec\u0027s recursion runs."
+    },
+    {
+      "Id": "H12",
+      "Group": "responses",
+      "Input": "response with unknown tag 0x5A",
+      "SpecExpectation": "not a response signature",
+      "Observed": "rejected",
+      "Category": "UnknownSignature",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H13",
+      "Group": "encode-ignored",
+      "Input": "EncodeResponse(IgnoredResponse.Instance)",
+      "SpecExpectation": "the Bolt 5.8 specification defines IGNORED with no fields: exactly B0 7E",
+      "Observed": "bytes=B07E; independent decode: tag=0x7E, fields=0, consumed=2/2",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": "Zero-field form independently confirmed; no production logic reproduces the historical one-field fixture."
+    },
+    {
+      "Id": "H14",
+      "Group": "encode-ignored",
+      "Input": "the historical B0-B producer fixture B1 7E A0",
+      "SpecExpectation": "one-field form; the spec defines zero fields. The qualified driver tolerates it because its deserializer reads no IGNORED fields and the pipelined reader discards leftovers (upstream sources preserved in B3-A evidence)",
+      "Observed": "independent decode: tag=0x7E, fields=1, consumed=3/3",
+      "Category": null,
+      "Outcome": "CONFIRMED",
+      "Notes": "The codec rejects this form with StructureArity (producer test) \u2014 the discrepancy is isolated from production behavior; B0-B evidence remains unaltered."
+    },
+    {
+      "Id": "H15",
+      "Group": "encode",
+      "Input": "EncodeResponse(SuccessResponse.Empty)",
+      "SpecExpectation": "must equal B170A0 (B0-B fixture and independent encoding)",
+      "Observed": "bytes=B170A0",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H16",
+      "Group": "encode",
+      "Input": "EncodeResponse(SUCCESS {server, connection_id, hints:{}})",
+      "SpecExpectation": "must equal the B0-B-qualified fixture the real driver accepted",
+      "Observed": "bytes=B170A3867365727665728C4E656F346A2F352E32362E308D636F6E6E656374696F6E5F69648A626F6C742D6230622D318568696E7473A0",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H17",
+      "Group": "encode",
+      "Input": "EncodeResponse(SUCCESS {fields: [\u0022answer\u0022]})",
+      "SpecExpectation": "must equal the B0-B-qualified fixture",
+      "Observed": "bytes=B170A1866669656C64739186616E73776572",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H18",
+      "Group": "encode",
+      "Input": "EncodeResponse(RECORD [42])",
+      "SpecExpectation": "must equal the B0-B-qualified fixture B171912A",
+      "Observed": "bytes=B171912A",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H19",
+      "Group": "encode",
+      "Input": "EncodeResponse(RECORD [Node(1,\u0027n:1\u0027), Relationship(1,\u0027r:1\u0027), Node(2,\u0027n:2\u0027)])",
+      "SpecExpectation": "wire layout must match the Bolt 5.8 graph structures (Node 4-field, Relationship 8-field, field order per spec) and equal the B0-B fixture independently decoded in B0-B-Q1",
+      "Observed": "bytes match B0-B fixture: True; independent layout decode: tag order/arity/field order verified, consumed 88/88",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": "Node id 1 and relationship id 1 remain distinct typed structures (no aliasing)."
+    },
+    {
+      "Id": "H20",
+      "Group": "encode",
+      "Input": "EncodeResponse(FAILURE {gql_status, neo4j_code, description, diagnostic_record})",
+      "SpecExpectation": "must equal the B0-B t06 fixture",
+      "Observed": "bytes match t06 fixture: True",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "H21",
+      "Group": "encode",
+      "Input": "EncodeResponse(SUCCESS {has_more: false})",
+      "SpecExpectation": "must equal the B0-B fixture",
+      "Observed": "bytes match: True",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "I1",
+      "Group": "confidentiality",
+      "Input": "valid LOGON with sentinel principal/credentials; ToString()",
+      "SpecExpectation": "credential material must never appear in message diagnostics",
+      "Observed": "ToString() = \u0022LOGON {scheme: \u0022basic\u0022}\u0022",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "I2",
+      "Group": "confidentiality",
+      "Input": "malformed LOGON (credentials wrong-typed) with sentinels",
+      "SpecExpectation": "exception diagnostics must never contain field values",
+      "Observed": "category=InvalidFieldType; exception text contains sentinel: False",
+      "Category": "InvalidFieldType",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "I3",
+      "Group": "confidentiality",
+      "Input": "LOGON with a 100k-char sentinel credential failing on principal type",
+      "SpecExpectation": "exception diagnostics must never contain field values",
+      "Observed": "category=TrailingBytes; message length=73; sentinel present: False",
+      "Category": "TrailingBytes",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "I4",
+      "Group": "confidentiality",
+      "Input": "cast of LogonRequest.Auth.Entries to List\u003C\u2026\u003E",
+      "SpecExpectation": "the B1-R1 F1 immutability contract: read-only wrapper, no mutable backing storage reachable",
+      "Observed": "cast rejected (InvalidCastException)",
+      "Category": null,
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "I5",
+      "Group": "confidentiality",
+      "Input": "secret-bearing LOGON followed by a trailing byte",
+      "SpecExpectation": "the TrailingBytes rejection must not echo payload bytes",
+      "Observed": "category=TrailingBytes; sentinel present: False",
+      "Category": "TrailingBytes",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    },
+    {
+      "Id": "J1",
+      "Group": "limits",
+      "Input": "STRING_32 declaring 2,000,000,000 bytes with a truncated payload",
+      "SpecExpectation": "declared lengths beyond the configured maximum must be rejected before any allocation",
+      "Observed": "rejected",
+      "Category": "InvalidPackStreamValue",
+      "Outcome": "CONFORMANT",
+      "Notes": "16 MiB default string limit rejects the declaration before the payload is read; no large allocation occurs."
+    },
+    {
+      "Id": "J2",
+      "Group": "limits",
+      "Input": "LIST_32 declaring 2,000,000,000 items",
+      "SpecExpectation": "declared counts beyond the configured maximum must be rejected before any allocation",
+      "Observed": "rejected",
+      "Category": "InvalidPackStreamValue",
+      "Outcome": "CONFORMANT",
+      "Notes": "Default list limit is 100,000 items; the declaration is rejected before elements are decoded."
+    },
+    {
+      "Id": "J3",
+      "Group": "limits",
+      "Input": "HELLO with a 150-level nested value",
+      "SpecExpectation": "nesting depth beyond the configured maximum (100) must be rejected deterministically",
+      "Observed": "rejected",
+      "Category": "InvalidPackStreamValue",
+      "Outcome": "CONFORMANT",
+      "Notes": ""
+    }
+  ]
+}
