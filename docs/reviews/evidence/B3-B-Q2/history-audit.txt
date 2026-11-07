@@ -1,0 +1,11 @@
+9f224cf feat(boltsharp): add Bolt 5.8 connection state machine (B3-B)
+81c0af9 docs(review): record B3-B-IMPL-01 implementation and evidence
+3caab5b docs(boltsharp): independently qualify B3-B connection state machine
+454ae00 fix(boltsharp): harden session cleanup and correct TELEMETRY errors
+801badc docs(boltsharp): record B3-B R1 remediation evidence
+Implementation ancestor exit=0
+M	src/BoltSharp/Sessions/BoltConnectionSession.cs
+M	tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs
+A	tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs
+Unchanged historical paths since R1 entry:
+Guarded paths diff exit=0

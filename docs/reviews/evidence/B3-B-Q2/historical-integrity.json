@@ -1,0 +1,184 @@
+[
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/core-build.log",
+    "expected": "e3ca013ad1545bc25157ca1846ab5a4407cce864b179814f3982cda0df1e67e0",
+    "actual": "e3ca013ad1545bc25157ca1846ab5a4407cce864b179814f3982cda0df1e67e0",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/core-solution-tests.log",
+    "expected": "2087efbea9c23c555e8d1e24e5be08bdc39a131dc0540f66363d666252d8e0ec",
+    "actual": "2087efbea9c23c555e8d1e24e5be08bdc39a131dc0540f66363d666252d8e0ec",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/environment.txt",
+    "expected": "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+    "actual": "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/integration-tests.log",
+    "expected": "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+    "actual": "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/message-tests.log",
+    "expected": "d5aa5b8e485a8d959d4ce677ee448c68e977109a2ea437b4ebd8c9ee07289194",
+    "actual": "d5aa5b8e485a8d959d4ce677ee448c68e977109a2ea437b4ebd8c9ee07289194",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/probe/session-probe-results.json",
+    "expected": "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab",
+    "actual": "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/session-probe-run.log",
+    "expected": "2cbe2c9dbc11c96b56b734308e68dbf7b84d1930db0c80254c10a048003fa366",
+    "actual": "2cbe2c9dbc11c96b56b734308e68dbf7b84d1930db0c80254c10a048003fa366",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-Q1/session-tests.log",
+    "expected": "0af5a35bc1de80ab4f1e94c5162dd45b009dfb499550062361add42c296c6c16",
+    "actual": "0af5a35bc1de80ab4f1e94c5162dd45b009dfb499550062361add42c296c6c16",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/probes/B3-B-Q1/SessionProbe/Harness.cs",
+    "expected": "0650a888f427fcb43ce10abd549f92c3539cc033fbb6e400cec59e270418415f",
+    "actual": "0650a888f427fcb43ce10abd549f92c3539cc033fbb6e400cec59e270418415f",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/probes/B3-B-Q1/SessionProbe/Program.cs",
+    "expected": "29a7e3eeaab52257e7e1b82e2bbf5421ee8eb8ff1ceead1be7c4f49d879b2e5b",
+    "actual": "29a7e3eeaab52257e7e1b82e2bbf5421ee8eb8ff1ceead1be7c4f49d879b2e5b",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/probes/B3-B-Q1/SessionProbe/SessionProbe.csproj",
+    "expected": "2a551153120ef202471b9613309346632210cec3a9e2a7cdd959344c7de582c9",
+    "actual": "2a551153120ef202471b9613309346632210cec3a9e2a7cdd959344c7de582c9",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "path": "docs/reviews/B3-B-Q1-independent-qualification.md",
+    "expected": "03ba2687092d12a03fda26574fdf99cf574035dcbb21226fe554b5894ba4de49",
+    "actual": "03ba2687092d12a03fda26574fdf99cf574035dcbb21226fe554b5894ba4de49",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/core-build.log",
+    "expected": "148456138beba817d1910b6ae30bf09e542186f03ddf796b58ee90a8cc27c96c",
+    "actual": "148456138beba817d1910b6ae30bf09e542186f03ddf796b58ee90a8cc27c96c",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/core-solution-tests.log",
+    "expected": "92d442b3d3b223a0fead4cf7ee9435189910918689d627a48d8df1dfc7888422",
+    "actual": "92d442b3d3b223a0fead4cf7ee9435189910918689d627a48d8df1dfc7888422",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/environment.txt",
+    "expected": "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+    "actual": "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/integration-tests.log",
+    "expected": "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+    "actual": "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/message-tests.log",
+    "expected": "eaf1ef8a4cba330f5741b9a4bc20d6d84c7b25b7c2f11a95f5c2ce1b4bed8ae2",
+    "actual": "eaf1ef8a4cba330f5741b9a4bc20d6d84c7b25b7c2f11a95f5c2ce1b4bed8ae2",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/q1-probe-after-fix/session-probe-results.json",
+    "expected": "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+    "actual": "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/q1-probe-after-fix-run.log",
+    "expected": "f38f696f5e15fdba14607070fac92d2e2dfcb5444ca1b52f0185fb6f68ce6624",
+    "actual": "f38f696f5e15fdba14607070fac92d2e2dfcb5444ca1b52f0185fb6f68ce6624",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/q1-probe-before-fix/session-probe-results.json",
+    "expected": "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab",
+    "actual": "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/q1-probe-before-fix-run.log",
+    "expected": "63643dd889b13c2d9ab25634c3589c564c14a85fabfa9ce14c8158af354d8ed9",
+    "actual": "63643dd889b13c2d9ab25634c3589c564c14a85fabfa9ce14c8158af354d8ed9",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/evidence/B3-B-R1-IMPL-01/session-tests.log",
+    "expected": "929d5309782989fbd80ccc28a682784951c231ecba5bc997c77fa47e48612739",
+    "actual": "929d5309782989fbd80ccc28a682784951c231ecba5bc997c77fa47e48612739",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+    "expected": "4f7dc3b424dc8709e0c8a795b1e4cc9b15239c42605e7f423e470fb31b51bd46",
+    "actual": "4f7dc3b424dc8709e0c8a795b1e4cc9b15239c42605e7f423e470fb31b51bd46",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs",
+    "expected": "ad737aa92fee2d657ee487893c17e440c9e401516a90a967c05831c516a90c82",
+    "actual": "ad737aa92fee2d657ee487893c17e440c9e401516a90a967c05831c516a90c82",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs",
+    "expected": "e92e9177e3bd8f66dd5af2780afa0d4ae7a881b97432fd1cc5f5847f06148135",
+    "actual": "e92e9177e3bd8f66dd5af2780afa0d4ae7a881b97432fd1cc5f5847f06148135",
+    "matched": true
+  },
+  {
+    "manifest": "docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json",
+    "path": "docs/reviews/B3-B-R1-IMPL-01.md",
+    "expected": "32def37636251d06f997b4bfb9df3f6eb64736f10d635f216cdc1380f495d0b7",
+    "actual": "32def37636251d06f997b4bfb9df3f6eb64736f10d635f216cdc1380f495d0b7",
+    "matched": true
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "path": "docs/boltsharp-spec.md",
+    "sha256": "7280fff861c4be8c0758e896cc051c551ea59322a26be1e422e3e9a8f5d1d637"
+  },
+  {
+    "path": "docs/implementation-tasks.md",
+    "sha256": "a5248d1b3a763a5b86424d0f3f91298161b83dbd8e501d0109851b4aa64a48cf"
+  },
+  {
+    "path": "docs/reviews/B3-B-IMPL-01.md",
+    "sha256": "a91e5e0a71c99a7866167137ca771a7aac14029c2a6e0b0a684261a20f12978a"
+  },
+  {
+    "path": "docs/reviews/B3-B-Q1-independent-qualification.md",
+    "sha256": "03ba2687092d12a03fda26574fdf99cf574035dcbb21226fe554b5894ba4de49"
+  },
+  {
+    "path": "docs/reviews/B3-B-R1-IMPL-01.md",
+    "sha256": "32def37636251d06f997b4bfb9df3f6eb64736f10d635f216cdc1380f495d0b7"
+  },
+  {
+    "path": "docs/reviews/B3-A-IMPL-01.md",
+    "sha256": "d83aa35585c4bb337cb9097d56e3d6c548194b3cc465c879472a7d8c00698f44"
+  },
+  {
+    "path": "docs/decisions/B3-A-OWNER-01-owner-acceptance.md",
+    "sha256": "d715beac496560a359d1041efb8ed2b141fb9d967c6feab21c815e09a5669ce2"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-IMPL-01/spec/server-state.adoc",
+    "sha256": "2a200d8dd971f454cc9be8e26db8b9e81a5eb5f8734fcec062f7c26ba9d48468"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-IMPL-01/spec/version-5.adoc",
+    "sha256": "2497503f46b845ef434ab891c253a28d3ed9c06b3be6a6ac107692e308003239"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-IMPL-01/spec/message.adoc",
+    "sha256": "3b696f527dfabd525f8f635ae71b70502579253b7b587c40f3990422f5a763d8"
+  },
+  {
+    "path": "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+    "sha256": "4f7dc3b424dc8709e0c8a795b1e4cc9b15239c42605e7f423e470fb31b51bd46"
+  },
+  {
+    "path": "src/BoltSharp/Sessions/BoltSessionOptions.cs",
+    "sha256": "77497dda9ffa2c0a19f2b7b2d4212ea86597759f7563028c3f92a864ea4b9578"
+  },
+  {
+    "path": "src/BoltSharp/Sessions/BoltConnectionState.cs",
+    "sha256": "21b95b965e3f76c767466e5da446dd2c80a7f0c7c49f145f4cddb00ccd487348"
+  },
+  {
+    "path": "src/BoltSharp/Sessions/BoltSessionResult.cs",
+    "sha256": "151347efc7d735fc6d4309402ef8f61b2efba17130e77fd0b90dcc9e69529f52"
+  },
+  {
+    "path": "src/BoltSharp/Messages/BoltMessageCodec.cs",
+    "sha256": "4f20b992ed4cbf0a18ef24e23e1e1f0a277a83cc30dac569b5776d1e11121cfe"
+  },
+  {
+    "path": "tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs",
+    "sha256": "ad737aa92fee2d657ee487893c17e440c9e401516a90a967c05831c516a90c82"
+  },
+  {
+    "path": "tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs",
+    "sha256": "e92e9177e3bd8f66dd5af2780afa0d4ae7a881b97432fd1cc5f5847f06148135"
+  }
+]

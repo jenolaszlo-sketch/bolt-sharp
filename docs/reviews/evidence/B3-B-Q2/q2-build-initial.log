@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  Restored C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Q2Probe.csproj (in 79 ms).
+C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Program.cs(219,209): warning CS8602: Dereference of a possibly null reference. [C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Q2Probe.csproj]
+C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Program.cs(226,250): warning CS8602: Dereference of a possibly null reference. [C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Q2Probe.csproj]
+  Q2Probe -> C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe-artifacts\bin\Q2Probe\debug\B3BQ2.Probe.dll
+
+Build succeeded.
+
+C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Program.cs(219,209): warning CS8602: Dereference of a possibly null reference. [C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Q2Probe.csproj]
+C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Program.cs(226,250): warning CS8602: Dereference of a possibly null reference. [C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe\Q2Probe.csproj]
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.13

@@ -1,0 +1,19 @@
+checks=181 passed=163 failed=18 trace_steps=217
+FAIL pull-complete-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=SUCCESS/Ready;oldResourceLive=True
+FAIL pull-complete-no-overlap: expected=no new provider operation while prior cleanup remains incomplete;actual=opens=2;oldResourceLive=True
+FAIL discard-complete-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=SUCCESS/Ready;oldResourceLive=True
+FAIL discard-complete-no-overlap: expected=no new provider operation while prior cleanup remains incomplete;actual=opens=2;oldResourceLive=True
+FAIL pull-read-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=SUCCESS/Ready;oldResourceLive=True
+FAIL pull-read-no-overlap: expected=no new provider operation while prior cleanup remains incomplete;actual=opens=2;oldResourceLive=True
+FAIL discard-read-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=SUCCESS/Ready;oldResourceLive=True
+FAIL discard-read-no-overlap: expected=no new provider operation while prior cleanup remains incomplete;actual=opens=2;oldResourceLive=True
+FAIL row-shape-safe-reset: expected=incomplete cleanup must not be claimed recovered: FAILURE/Defunct;actual=SUCCESS/Ready;oldResourceLive=True
+FAIL row-shape-no-overlap: expected=no new provider operation while prior cleanup remains incomplete;actual=opens=2;oldResourceLive=True
+FAIL run-metadata-first-getter-contained: expected=metadata primary failure contained;cleanup failure makes Defunct;actual=exception=InvalidOperationException;state=Ready;owned=False
+FAIL run-metadata-first-getter-cleanup: expected=one guarded cleanup attempt even before installation;actual=attempts=0;diagnostic=
+FAIL run-metadata-first-getter-no-reopen: expected=no new acquisition after failed RUN with unretired operation;actual=opens=2;oldResourceLive=True
+FAIL run-metadata-first-getter-eventual-attempt: expected=session cleanup owns every returned operation;actual=attempts=0;oldResourceLive=True
+FAIL run-metadata-second-getter-contained: expected=metadata primary failure contained;cleanup failure makes Defunct;actual=exception=InvalidOperationException;state=Streaming;owned=True
+FAIL run-metadata-second-getter-cleanup: expected=one guarded cleanup attempt even before installation;actual=attempts=0;diagnostic=
+FAIL run-metadata-null-element-contained: expected=metadata primary failure contained;cleanup failure makes Defunct;actual=exception=ArgumentNullException;state=Streaming;owned=True
+FAIL run-metadata-null-element-cleanup: expected=one guarded cleanup attempt even before installation;actual=attempts=0;diagnostic=

@@ -1,0 +1,565 @@
+diff --git a/src/BoltSharp/Sessions/BoltConnectionSession.cs b/src/BoltSharp/Sessions/BoltConnectionSession.cs
+index 73e73ff..cfdc6e3 100644
+--- a/src/BoltSharp/Sessions/BoltConnectionSession.cs
++++ b/src/BoltSharp/Sessions/BoltConnectionSession.cs
+@@ -83,6 +83,14 @@ public sealed class BoltConnectionSession : IDisposable
+     /// <summary>True while an auto-commit result is owned by the session.</summary>
+     public bool HasActiveOperation => _operation is not null;
+ 
++    /// <summary>
++    /// The most recent provider <see cref="IBoltOperation.Dispose"/> failure, or <see langword="null"/>
++    /// when no cleanup attempt has failed. Disposal failures are contained (never thrown out of this
++    /// API) and recorded here as a diagnostic; they never prevent a terminal transition and never
++    /// change a primary protocol outcome.
++    /// </summary>
++    public Exception? LastCleanupFailure { get; private set; }
++
+     /// <summary>
+     /// Processes one complete, unchunked client request payload: decodes it with the B3-A codec and
+     /// handles it. Malformed, unknown and unsupported payloads produce a terminal protocol-error
+@@ -188,7 +196,9 @@ public sealed class BoltConnectionSession : IDisposable
+             return;
+         }
+ 
+-        DisposeOperationQuietly();
++        // Terminal state is established independently of whether provider cleanup succeeds; a
++        // throwing provider Dispose is contained and recorded (F-01).
++        _ = DetachAndDisposeOperation();
+         _state = BoltConnectionState.Defunct;
+     }
+ 
+@@ -200,8 +210,15 @@ public sealed class BoltConnectionSession : IDisposable
+             return;
+         }
+ 
+-        Disconnect();
+-        _disposed = true;
++        try
++        {
++            Disconnect();
++        }
++        finally
++        {
++            // Idempotency must hold even if a cleanup path were to misbehave.
++            _disposed = true;
++        }
+     }
+ 
+     // ---- Handlers ----
+@@ -307,8 +324,13 @@ public sealed class BoltConnectionSession : IDisposable
+ 
+         if (operation.Fields is null)
+         {
+-            operation.Dispose();
+-            return FailRecoverable(ProviderFailure());
++            // Invalid provider result: never install the cursor and never enter STREAMING. Dispose
++            // exactly once; if cleanup cannot complete safely the connection is terminal rather than
++            // recoverable, so it is never left falsely usable (F-01).
++            var cleanupFailure = RecordCleanupFailure(DisposeGuarded(operation));
++            return cleanupFailure is null
++                ? FailRecoverable(ProviderFailure())
++                : FailTerminal(ProviderFailure());
+         }
+ 
+         _operation = operation;
+@@ -426,12 +448,9 @@ public sealed class BoltConnectionSession : IDisposable
+ 
+         // Model the <INTERRUPT> signal, cancel and dispose outstanding work, then recover.
+         _state = BoltConnectionState.Interrupted;
+-        try
+-        {
+-            DisposeOperationQuietly();
+-        }
+-        catch (Exception)
++        if (DetachAndDisposeOperation() is not null)
+         {
++            // Cleanup failure makes safe recovery impossible: fail closed (unchanged from Q1).
+             return FailTerminal(ProviderFailure());
+         }
+ 
+@@ -442,7 +461,8 @@ public sealed class BoltConnectionSession : IDisposable
+     private BoltSessionResult HandleGoodbye()
+     {
+         // Graceful termination: no response is defined, outstanding work is released, connection ends.
+-        DisposeOperationQuietly();
++        // DEFUNCT is guaranteed even when provider cleanup throws; no protocol response is fabricated.
++        _ = DetachAndDisposeOperation();
+         _state = BoltConnectionState.Defunct;
+         return BoltSessionResult.None(_state, shouldClose: true);
+     }
+@@ -495,7 +515,13 @@ public sealed class BoltConnectionSession : IDisposable
+     private BoltSessionResult CompleteResult(IReadOnlyList<BoltResponse> responses, bool hasMore)
+     {
+         var summary = hasMore ? HasMoreSuccess(true) : SuccessResponse.Empty;
+-        DisposeOperationQuietly();
++        if (DetachAndDisposeOperation() is not null)
++        {
++            // The exhausted result could not be released: recoverable failure (unchanged from Q1).
++            _state = BoltConnectionState.Failed;
++            return BoltSessionResult.Of(_state, Append(responses, ProviderFailure()), shouldClose: false);
++        }
++
+         _state = BoltConnectionState.Ready;
+         return BoltSessionResult.Of(_state, Append(responses, summary));
+     }
+@@ -511,17 +537,53 @@ public sealed class BoltConnectionSession : IDisposable
+         return list;
+     }
+ 
+-    private void DisposeOperationQuietly()
++    /// <summary>
++    /// Detaches and disposes the active operation exactly once. A throwing provider
++    /// <see cref="IBoltOperation.Dispose"/> is contained: the failure is recorded and returned, never
++    /// propagated. Returns <see langword="null"/> when there was nothing to dispose or disposal
++    /// succeeded. A failed attempt is not retried.
++    /// </summary>
++    private Exception? DetachAndDisposeOperation()
+     {
+         var operation = _operation;
+         _operation = null;
+         _pendingRow = null;
+-        operation?.Dispose();
++        return RecordCleanupFailure(DisposeGuarded(operation));
++    }
++
++    /// <summary>Disposes one operation, containing any provider failure.</summary>
++    private static Exception? DisposeGuarded(IBoltOperation? operation)
++    {
++        if (operation is null)
++        {
++            return null;
++        }
++
++        try
++        {
++            operation.Dispose();
++            return null;
++        }
++        catch (Exception ex)
++        {
++            return ex;
++        }
++    }
++
++    private Exception? RecordCleanupFailure(Exception? failure)
++    {
++        if (failure is not null)
++        {
++            LastCleanupFailure = failure;
++        }
++
++        return failure;
+     }
+ 
+     private BoltSessionResult FailTerminal(BoltResponse failure)
+     {
+-        DisposeOperationQuietly();
++        // DEFUNCT is guaranteed regardless of the cleanup outcome (F-01).
++        _ = DetachAndDisposeOperation();
+         _state = BoltConnectionState.Defunct;
+         return BoltSessionResult.Single(_state, failure, shouldClose: true);
+     }
+@@ -529,7 +591,8 @@ public sealed class BoltConnectionSession : IDisposable
+     /// <summary>A recoverable execution failure: one FAILURE, enter FAILED, connection stays open.</summary>
+     private BoltSessionResult FailRecoverable(BoltResponse failure, IReadOnlyList<BoltResponse>? priorResponses = null)
+     {
+-        DisposeOperationQuietly();
++        // Cleanup failure does not suppress the primary protocol failure (F-01).
++        _ = DetachAndDisposeOperation();
+         _state = BoltConnectionState.Failed;
+         return BoltSessionResult.Of(
+             _state,
+@@ -561,9 +624,12 @@ public sealed class BoltConnectionSession : IDisposable
+         ("description", new PackStreamString("A result row does not match the announced result fields.")),
+         ("diagnostic_record", EmptyMap));
+ 
++    // Bolt 5.8: an integer identifier outside the defined domain is an invalid *value* (the
++    // specification's own TELEMETRY 9001 example answers 50N00 / General.UnknownError); 22G03 is
++    // reserved for an invalid value *type*, which B3-A rejects as a malformed message (F-02).
+     private static FailureResponse TelemetryFailure() => FailureResponse.FromEntries(
+-        ("gql_status", new PackStreamString("22G03")),
+-        ("neo4j_code", new PackStreamString("Neo.ClientError.Request.Invalid")),
++        ("gql_status", new PackStreamString("50N00")),
++        ("neo4j_code", new PackStreamString("Neo.DatabaseError.General.UnknownError")),
+         ("description", new PackStreamString("The telemetry API identifier is not valid for this server.")),
+         ("diagnostic_record", EmptyMap));
+ 
+diff --git a/tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs b/tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs
+index e6325e8..2ac757f 100644
+--- a/tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs
++++ b/tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs
+@@ -215,15 +215,20 @@ public sealed class AuthenticationAndTransitionTests
+     [InlineData(4)]
+     [InlineData(9001)]
+     [InlineData(-1)]
++    [InlineData(long.MaxValue)]
+     public void Telemetry_InvalidIdentifier_IsFailure_AndFailed(long api)
+     {
+         var session = SessionHarness.Authenticated();
+ 
+         var result = session.Receive(SessionHarness.Telemetry(api));
+ 
++        // B3-B-R1 F-02: an out-of-domain integer identifier is an invalid *value* — the Bolt 5.8
++        // specification's TELEMETRY 9001 example answers 50N00 / General.UnknownError (22G03 is for
++        // an invalid value type, which B3-A rejects as malformed).
+         var failure = SessionHarness.SingleResponse<FailureResponse>(result);
+         Assert.Equal(BoltConnectionState.Failed, result.State);
+-        Assert.Equal("22G03", failure.GqlStatus);
++        Assert.Equal("50N00", failure.GqlStatus);
++        Assert.Equal("Neo.DatabaseError.General.UnknownError", failure.Neo4jCode);
+         Assert.False(result.ShouldClose);
+     }
+ 
+diff --git a/tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs b/tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs
+new file mode 100644
+index 0000000..0ea664f
+--- /dev/null
++++ b/tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs
+@@ -0,0 +1,347 @@
++using BoltSharp.Messages;
++using BoltSharp.PackStream;
++using BoltSharp.Sessions;
++using BoltSharp.Tests.Messages;
++
++using Xunit;
++
++namespace BoltSharp.Tests.Sessions;
++
++/// <summary>
++/// B3-B-R1 regression tests for the two defects independently established by B3-B-Q1:
++/// F-01 (provider cleanup failure escaping the API / leaving a non-terminal session) and
++/// F-02 (out-of-domain TELEMETRY identifier error metadata).
++/// </summary>
++public sealed class CleanupAndTelemetryRemediationTests
++{
++    private static byte[] Hex(string hex) =>
++        Convert.FromHexString(hex.Replace(" ", string.Empty, StringComparison.Ordinal));
++
++    private static ScriptedOperation ThrowingOperation(params long[] rows) =>
++        new(new[] { "x" }, rows.Select(ScriptedOperationProvider.Row).ToArray())
++        {
++            DisposeOverride = () => throw new InvalidOperationException("provider dispose failure"),
++        };
++
++    private static string FailureCodeOf(BoltSessionResult result) =>
++        Assert.IsType<PackStreamString>(BoltMessageFieldsTestAccess.GetValue(
++            Assert.IsType<FailureResponse>(Assert.Single(result.Responses)).Metadata, "neo4j_code"))!.Value;
++
++    // ---- F-01: terminal-state safety ----
++
++    [Fact]
++    public void Goodbye_WithThrowingDispose_ReachesDefunct_NoResponse_OneAttempt()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        var result = session.Receive(SessionHarness.Goodbye());
++
++        Assert.Empty(result.Responses);
++        Assert.Equal(BoltConnectionState.Defunct, result.State);
++        Assert.True(result.ShouldClose);
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.False(session.HasActiveOperation);
++        Assert.NotNull(session.LastCleanupFailure);
++    }
++
++    [Fact]
++    public void Disconnect_WithThrowingDispose_ReachesDefunct_OneAttempt()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        session.Disconnect();
++
++        Assert.Equal(BoltConnectionState.Defunct, session.State);
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.False(session.HasActiveOperation);
++        Assert.NotNull(session.LastCleanupFailure);
++    }
++
++    [Fact]
++    public void Dispose_WithThrowingProviderDispose_IsTerminalAndIdempotent()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        session.Dispose();
++        session.Dispose();
++
++        Assert.Equal(BoltConnectionState.Defunct, session.State);
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.Throws<ObjectDisposedException>(() => session.Receive(SessionHarness.Run()));
++    }
++
++    [Fact]
++    public void GoodbyeThenDisconnect_DoesNotRepeatDisposal()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++        session.Receive(SessionHarness.Goodbye());
++
++        session.Disconnect();
++
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.Equal(BoltConnectionState.Defunct, session.State);
++    }
++
++    [Fact]
++    public void DisconnectThenDispose_DoesNotRepeatDisposal()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        session.Disconnect();
++        session.Dispose();
++        session.Dispose();
++
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.Equal(BoltConnectionState.Defunct, session.State);
++    }
++
++    [Fact]
++    public void GoodbyeTwice_DoesNotRepeatDisposal()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        session.Receive(SessionHarness.Goodbye());
++        var second = session.Receive(SessionHarness.Goodbye());
++
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.Empty(second.Responses);
++        Assert.Equal(BoltConnectionState.Defunct, second.State);
++    }
++
++    [Fact]
++    public void LateOperationAfterTerminalCleanup_IsRefused_WithoutExecution()
++    {
++        var provider = ScriptedOperationProvider.WithOperation(ThrowingOperation(1));
++        var session = SessionHarness.Authenticated(provider);
++        session.Receive(SessionHarness.Run());
++        session.Receive(SessionHarness.Goodbye());
++
++        var result = session.Receive(SessionHarness.Run());
++
++        Assert.Empty(result.Responses);
++        Assert.Equal(BoltConnectionState.Defunct, result.State);
++        Assert.Equal(1, provider.PrepareCount);
++    }
++
++    // ---- F-01: RUN with null Fields ----
++
++    [Fact]
++    public void Run_NullFields_CleanDispose_IsRecoverableFailed_OneAttempt_NoCursor()
++    {
++        var operation = new NullFieldsOperation();
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++
++        var result = session.Receive(SessionHarness.Run());
++
++        Assert.Equal(BoltConnectionState.Failed, result.State);
++        Assert.IsType<FailureResponse>(Assert.Single(result.Responses));
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.False(session.HasActiveOperation);
++        Assert.Null(session.LastCleanupFailure);
++    }
++
++    [Fact]
++    public void Run_NullFields_ThrowingDispose_IsDefunct_OneAttempt_NoCursor()
++    {
++        var operation = new NullFieldsOperation { ThrowOnDispose = true };
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++
++        var result = session.Receive(SessionHarness.Run());
++
++        // Cleanup could not complete safely: the session must be terminal, never falsely usable.
++        Assert.Equal(BoltConnectionState.Defunct, result.State);
++        Assert.True(result.ShouldClose);
++        Assert.IsType<FailureResponse>(Assert.Single(result.Responses));
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.False(session.HasActiveOperation);
++        Assert.NotNull(session.LastCleanupFailure);
++    }
++
++    [Fact]
++    public void Run_NullFields_DoesNotSubstituteEmptyFields_AndNeverStreams()
++    {
++        var operation = new NullFieldsOperation();
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++
++        var result = session.Receive(SessionHarness.Run());
++
++        Assert.NotEqual(BoltConnectionState.Streaming, result.State);
++        Assert.DoesNotContain(result.Responses, r => r is SuccessResponse { Fields: not null });
++    }
++
++    // ---- F-01: RESET and PULL-completion behaviour preserved ----
++
++    [Fact]
++    public void Reset_WithThrowingDispose_StillFailsClosed()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        var result = session.Receive(SessionHarness.Reset());
++
++        Assert.Equal(BoltConnectionState.Defunct, result.State);
++        Assert.IsType<FailureResponse>(Assert.Single(result.Responses));
++        Assert.Equal("Neo.DatabaseError.General.UnknownError", FailureCodeOf(result));
++        Assert.Equal(1, operation.DisposeCount);
++    }
++
++    [Fact]
++    public void PullCompletion_WithThrowingDispose_IsFailureFailed_OneAttempt()
++    {
++        var operation = ThrowingOperation(1);
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        var result = session.Receive(SessionHarness.Pull(-1));
++
++        Assert.Equal(BoltConnectionState.Failed, result.State);
++        Assert.IsType<FailureResponse>(result.Responses[^1]);
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.NotNull(session.LastCleanupFailure);
++    }
++
++    // ---- F-01: primary failure precedence ----
++
++    [Fact]
++    public void PrimaryProviderFailure_ThenCleanupFailure_KeepsPrimaryAndRecordsCleanup()
++    {
++        var operation = new ScriptedOperation(new[] { "x" }, ScriptedOperationProvider.Row(1))
++        {
++            ThrowOnReadNumber = 1,
++            DisposeOverride = () => throw new InvalidOperationException("provider dispose failure"),
++        };
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        var result = session.Receive(SessionHarness.Pull(-1));
++
++        Assert.Equal(BoltConnectionState.Failed, result.State);
++        Assert.Equal("Neo.DatabaseError.General.UnknownError", FailureCodeOf(result));
++        Assert.Equal(1, operation.DisposeCount);
++        Assert.NotNull(session.LastCleanupFailure);
++    }
++
++    [Fact]
++    public void RowShapeFailure_ThenCleanupFailure_KeepsRowShapePrimary()
++    {
++        var operation = new ScriptedOperation(
++            new[] { "x" },
++            new PackStreamValue?[] { new PackStreamInteger(1), new PackStreamInteger(2) })
++        {
++            DisposeOverride = () => throw new InvalidOperationException("provider dispose failure"),
++        };
++        var session = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(operation));
++        session.Receive(SessionHarness.Run());
++
++        var result = session.Receive(SessionHarness.Pull(-1));
++
++        Assert.Equal(BoltConnectionState.Failed, result.State);
++        var failure = Assert.IsType<FailureResponse>(result.Responses[^1]);
++        Assert.Equal(
++            "A result row does not match the announced result fields.",
++            BoltMessageFieldsTestAccess.GetString(failure.Metadata, "description"));
++        Assert.Equal(1, operation.DisposeCount);
++    }
++
++    [Fact]
++    public void CleanupFailure_IsRecorded_AndAbsentOnCleanPaths()
++    {
++        var clean = new ScriptedOperation(new[] { "x" }, ScriptedOperationProvider.Row(1));
++        var cleanSession = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(clean));
++        cleanSession.Receive(SessionHarness.Run());
++        cleanSession.Receive(SessionHarness.Pull(-1));
++        Assert.Null(cleanSession.LastCleanupFailure);
++
++        var dirty = ThrowingOperation(1);
++        var dirtySession = SessionHarness.Authenticated(ScriptedOperationProvider.WithOperation(dirty));
++        dirtySession.Receive(SessionHarness.Run());
++        dirtySession.Receive(SessionHarness.Goodbye());
++        Assert.NotNull(dirtySession.LastCleanupFailure);
++    }
++
++    // ---- F-02: TELEMETRY metadata ----
++
++    [Theory]
++    [InlineData(-1)]
++    [InlineData(4)]
++    [InlineData(9001)]
++    [InlineData(long.MaxValue)]
++    public void Telemetry_InvalidInteger_UsesSpecStatusAndCode(long api)
++    {
++        var session = SessionHarness.Authenticated();
++
++        var result = session.Receive(SessionHarness.Telemetry(api));
++
++        var failure = SessionHarness.SingleResponse<FailureResponse>(result);
++        Assert.Equal(BoltConnectionState.Failed, result.State);
++        Assert.Equal("50N00", failure.GqlStatus);
++        Assert.Equal("Neo.DatabaseError.General.UnknownError", failure.Neo4jCode);
++        Assert.NotNull(failure.Description);
++        Assert.NotNull(failure.DiagnosticRecord);
++    }
++
++    [Fact]
++    public void Telemetry_InvalidIdentifier_ThenWorkIgnored_ResetRecovers()
++    {
++        var session = SessionHarness.Authenticated();
++
++        session.Receive(SessionHarness.Telemetry(9001));           // FAILURE -> FAILED
++        var ignored = session.Receive(SessionHarness.Run());
++        SessionHarness.SingleResponse<IgnoredResponse>(ignored);
++        Assert.Equal(BoltConnectionState.Failed, ignored.State);
++
++        var reset = session.Receive(SessionHarness.Reset());
++        SessionHarness.SingleResponse<SuccessResponse>(reset);
++        Assert.Equal(BoltConnectionState.Ready, reset.State);
++    }
++
++    [Fact]
++    public void Telemetry_WrongWireType_IsRejectedByCodec_BeforeSession()
++    {
++        // A non-integer TELEMETRY field is structurally invalid and belongs to B3-A decoding.
++        var codec = new BoltMessageCodec();
++        var exception = Assert.Throws<BoltMessageException>(
++            () => codec.DecodeRequest(Hex("B15486647269766572"))); // TELEMETRY "driver"
++
++        Assert.Equal(BoltMessageErrorCategory.InvalidFieldType, exception.Category);
++
++        // The session's byte path never sees a typed request for it.
++        var session = SessionHarness.Authenticated();
++        var result = session.ReceiveBytes(Hex("B15486647269766572"));
++        Assert.Equal(BoltConnectionState.Defunct, result.State);
++        Assert.IsType<FailureResponse>(Assert.Single(result.Responses));
++    }
++
++    private sealed class NullFieldsOperation : IBoltOperation
++    {
++        public bool ThrowOnDispose { get; init; }
++
++        public int DisposeCount { get; private set; }
++
++        public IReadOnlyList<string> Fields => null!;
++
++        public IReadOnlyList<PackStreamValue?>? ReadRow() => null;
++
++        public void Dispose()
++        {
++            DisposeCount++;
++            if (ThrowOnDispose)
++            {
++                throw new InvalidOperationException("provider dispose failure");
++            }
++        }
++    }
++}

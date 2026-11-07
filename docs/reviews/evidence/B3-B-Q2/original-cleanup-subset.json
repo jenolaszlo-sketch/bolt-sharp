@@ -1,0 +1,32 @@
+[
+  {
+    "Id": "X01-goodbye-dispose-throws",
+    "Expected": "no-throw;Defunct;disposeCount=1",
+    "Actual": "no-throw;Defunct;disposeCount=1",
+    "Pass": true
+  },
+  {
+    "Id": "X02-disconnect-dispose-throws",
+    "Expected": "no-throw;Defunct;disposeCount=1",
+    "Actual": "no-throw;Defunct;disposeCount=1",
+    "Pass": true
+  },
+  {
+    "Id": "X03-dispose-dispose-throws",
+    "Expected": "no-throw;Defunct;disposeCount=1",
+    "Actual": "no-throw;Defunct;disposeCount=1",
+    "Pass": true
+  },
+  {
+    "Id": "X04-run-null-fields-dispose-throws",
+    "Expected": "no-throw;Failed",
+    "Actual": "no-throw;Defunct;FAILURE",
+    "Pass": false
+  },
+  {
+    "Id": "X05-reset-dispose-throws-control",
+    "Expected": "FAILURE/Defunct",
+    "Actual": "FAILURE/Defunct",
+    "Pass": true
+  }
+]

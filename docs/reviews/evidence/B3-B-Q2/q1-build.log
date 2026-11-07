@@ -1,0 +1,13 @@
+COMMAND: dotnet build docs/reviews/probes/B3-B-Q1/SessionProbe/SessionProbe.csproj -c Debug --artifacts-path C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\artifacts
+  Determining projects to restore...
+  Restored D:\projects\bolt-sharp\docs\reviews\probes\B3-B-Q1\SessionProbe\SessionProbe.csproj (in 97 ms).
+  1 of 2 projects are up-to-date for restore.
+  BoltSharp -> C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\artifacts\bin\BoltSharp\debug\BoltSharp.dll
+  SessionProbe -> C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\artifacts\bin\SessionProbe\debug\B3BQ1.SessionProbe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.60
+EXIT: 0

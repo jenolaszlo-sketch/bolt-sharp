@@ -1,0 +1,54 @@
+[
+  {
+    "path": "docs/reviews/B3-B-Q1-independent-qualification.md",
+    "sha256": "03ba2687092d12a03fda26574fdf99cf574035dcbb21226fe554b5894ba4de49"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/core-build.log",
+    "sha256": "e3ca013ad1545bc25157ca1846ab5a4407cce864b179814f3982cda0df1e67e0"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/core-solution-tests.log",
+    "sha256": "2087efbea9c23c555e8d1e24e5be08bdc39a131dc0540f66363d666252d8e0ec"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/environment.txt",
+    "sha256": "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/integration-tests.log",
+    "sha256": "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/manifest.json",
+    "sha256": "83faa6a844cb4c7cb0d37773232b5ee2e5a2da016bab73cb3ddc1f826eaeb956"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/message-tests.log",
+    "sha256": "d5aa5b8e485a8d959d4ce677ee448c68e977109a2ea437b4ebd8c9ee07289194"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/probe/session-probe-results.json",
+    "sha256": "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/session-probe-run.log",
+    "sha256": "2cbe2c9dbc11c96b56b734308e68dbf7b84d1930db0c80254c10a048003fa366"
+  },
+  {
+    "path": "docs/reviews/evidence/B3-B-Q1/session-tests.log",
+    "sha256": "0af5a35bc1de80ab4f1e94c5162dd45b009dfb499550062361add42c296c6c16"
+  },
+  {
+    "path": "docs/reviews/probes/B3-B-Q1/SessionProbe/Harness.cs",
+    "sha256": "0650a888f427fcb43ce10abd549f92c3539cc033fbb6e400cec59e270418415f"
+  },
+  {
+    "path": "docs/reviews/probes/B3-B-Q1/SessionProbe/Program.cs",
+    "sha256": "29a7e3eeaab52257e7e1b82e2bbf5421ee8eb8ff1ceead1be7c4f49d879b2e5b"
+  },
+  {
+    "path": "docs/reviews/probes/B3-B-Q1/SessionProbe/SessionProbe.csproj",
+    "sha256": "2a551153120ef202471b9613309346632210cec3a9e2a7cdd959344c7de582c9"
+  }
+]

@@ -1,0 +1,11 @@
+COMMAND: dotnet build C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe/Q2Probe.csproj -c Debug -p:BoltSharpAssembly=C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\artifacts\bin\BoltSharp\debug\BoltSharp.dll --artifacts-path C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe-artifacts
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Q2Probe -> C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q2-20261107\probe-artifacts\bin\Q2Probe\debug\B3BQ2.Probe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.63
+EXIT: 0

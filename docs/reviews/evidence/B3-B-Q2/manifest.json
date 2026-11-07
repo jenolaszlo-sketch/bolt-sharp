@@ -1,0 +1,216 @@
+{
+    "task":  "B3-B-Q2 - Independent remediation requalification of B3-B-R1-IMPL-01",
+    "reviewer":  "Codex",
+    "reviewed_head":  "801badcea8523372d4ed83f8f2942d80bc0373e1",
+    "reviewed_tree":  "243998eb21d01aa918f4b83143cb8a0c6bb27dd1",
+    "implementation_commit":  "454ae005245d6511b672f8962092829839fb7153",
+    "implementation_tree":  "f93388ca7a23bcf727b6c76b8435d0b1f609f5ad",
+    "disposition":  "REMEDIATION REQUIRED",
+    "findings":  [
+                     "B3-B-Q2-F01 (blocking, high): failed PULL/DISCARD/row-validation cleanup is forgotten; RESET reports SUCCESS/Ready and a new operation opens while the prior resource remains live",
+                     "B3-B-Q2-F02 (blocking, high): throwing RUN Fields getter escapes before/after installation; the returned operation receives zero disposal attempts (first getter) and no RUN response is committed",
+                     "X04: EXPECTED CONTRACT CORRECTION - RUN null Fields plus throwing disposal must be Defunct, not recoverable Failed"
+                 ],
+    "q1_probe_checks":  118,
+    "q1_probe_failed_checks":  1,
+    "q2_probe_checks":  181,
+    "q2_probe_failed_checks":  18,
+    "q2_probe_trace_steps":  217,
+    "generated_utc":  "2026-11-07T16:43:15Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/baseline.json",
+                               "sha256":  "9b00722d68b4c693bb53896c8470303750c65803bf1d06f766aea87c689f746a",
+                               "bytes":  4779
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/baseline.txt",
+                               "sha256":  "c0287932d6d445d729c7225ee0e05b03aa8ae28c3b4637e9e55acd9c935ce244",
+                               "bytes":  233
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/commission.md",
+                               "sha256":  "49cad8c0ef35e76c4f6c569ab7ce59a39867917ac5ddea16b5ab1cdb438ba538",
+                               "bytes":  16998
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/core.trx",
+                               "sha256":  "05ee5bb31d10334c58f34385b22aa0a98d284c103f724c121d8c5bb36d779d88",
+                               "bytes":  1475272
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/core-build.log",
+                               "sha256":  "735594cd1a3b9ed178d745519890b2e4d675301735acf796ce6a9c41d21ab66c",
+                               "bytes":  2046
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/core-tests.log",
+                               "sha256":  "bba61067b2cee5e2b83b6998db045da3982e5ce692a8582555af00e55d506fbb",
+                               "bytes":  783
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/environment.txt",
+                               "sha256":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+                               "bytes":  1910
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/historical-integrity.json",
+                               "sha256":  "50865df997a7c10e922e37ad7f8591f89887dc0c4d14c9adbbe01cc421901e34",
+                               "bytes":  8878
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/history-audit.txt",
+                               "sha256":  "7871a48d84c1aad9173bcddf79ec59087cb51d1dc12e63f865d3369c71998561",
+                               "bytes":  656
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/implementation-delta.patch",
+                               "sha256":  "0da1c83b21584c7fa56227da507e0c8d38a7133294adc6d97e8af702c5b8d0c3",
+                               "bytes":  24149
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/integration.trx",
+                               "sha256":  "e3f2cc9ac414e0c630dcac837d0b44894e00d1f200bb8cbcb478f5395214623a",
+                               "bytes":  30069
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/integration-build.log",
+                               "sha256":  "577434a7c2fcb7547c575d20375328cc94740c97770832b5dd2bb9e2e87e0755",
+                               "bytes":  812
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/integration-tests.log",
+                               "sha256":  "2cd5a5697c52549045c41bdfbca3f96f262399f97d165bbe8cf4f74c7dec6e97",
+                               "bytes":  850
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/message.trx",
+                               "sha256":  "5524eebcfdbbf9dd92c8250153a9f58620b901180c0ee3ffda9a7853106712d8",
+                               "bytes":  140845
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/message-tests.log",
+                               "sha256":  "07cdb2619e0ae5114a3deb3d97919b6c0d7aa897c3231468c74ebef7c219dd97",
+                               "bytes":  841
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/original-cleanup-subset.json",
+                               "sha256":  "c5ce6c080a12c359aa1ea62822def1c9dc380eba251876ee35dab7da299238d3",
+                               "bytes":  828
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/prior-session.txt",
+                               "sha256":  "cb9f4afbc21b2392cf9acdfbb089fdfd5f4e13645d944f8de20a4f357162bf2f",
+                               "bytes":  22303
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q1-build.log",
+                               "sha256":  "09b7620c1dd1da329eefbea7c3bcd3b06deb6e2c639a3df23edd0240edd3d693",
+                               "bytes":  746
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q1-input-hashes.json",
+                               "sha256":  "4e37705c048aa1d9daf34e16a8f1efa88099d04d1ba7771a6ff8d0f724ab2b13",
+                               "bytes":  2089
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q1-unchanged.log",
+                               "sha256":  "55d780462e9891c3df73eb6261988cbec47fb08c2c82180a566dd03b964fe5a7",
+                               "bytes":  274
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q1-unchanged/session-probe-results.json",
+                               "sha256":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+                               "bytes":  18110
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q2-build.log",
+                               "sha256":  "873e986d06900a65656524a0b97e69ed8572f397622234fbad4f93b40134931b",
+                               "bytes":  664
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q2-build-initial.log",
+                               "sha256":  "b7d8800e7484dfb9e78e6ccbdb9411b09cf1847f4dbb7e85f98f2ecb8de8419e",
+                               "bytes":  1357
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q2-probe-results.json",
+                               "sha256":  "1ef748c7ebffb821e867c78ab2c409d65b06cdd4e2527dcc7cefe8e9f635f73d",
+                               "bytes":  221994
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q2-run.log",
+                               "sha256":  "95e5d891891ec92fb525f42e295149d89e52b4ec52fe2c5230df601f6b097c63",
+                               "bytes":  2985
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/q2-run-initial.log",
+                               "sha256":  "e69252caa65cdb97199de062a44c935d02297f53e81b42c585e8ebcb023746c8",
+                               "bytes":  2740
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/README.md",
+                               "sha256":  "91cd915bb3addf97b56bcd4ba0c7fb4271951222bb69726ceaf35ea5f1aaeaf4",
+                               "bytes":  4114
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/remediation.trx",
+                               "sha256":  "065b5b839824072db49e3890047e51c5cd70b3f4cbd4e895911d69a9974cb347",
+                               "bytes":  32993
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/remediation-tests.log",
+                               "sha256":  "b10f7fbfaeb37b05e8cda848098a7f523d8f2c1df9fcbb99cb5b35ab523b29dc",
+                               "bytes":  860
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/reviewed-inputs.json",
+                               "sha256":  "b31852901179bd7c7917a564e5167b8362bed2ed81aa5540021598db0777b009",
+                               "bytes":  2628
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/reviewed-session-numbered.txt",
+                               "sha256":  "a6709e83ce3d08a5af153c4eba789d4c745cfc5128161b2960ce1391f8133ba9",
+                               "bytes":  28641
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/Run-Q2.ps1",
+                               "sha256":  "468cda79e8ab5f8449690072fc2848ab12caa97e6e6dd9de9559bffb7b412d09",
+                               "bytes":  1253
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/Run-Regression.ps1",
+                               "sha256":  "49899fe59b660d9e9bf40c28bd2c901355c03dc80b4cade34e2ba27889c9902e",
+                               "bytes":  4643
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/session.trx",
+                               "sha256":  "0967039ffae2cb853fcd89830eaef7714da0214be29ec01d91d7115d104e7d4b",
+                               "bytes":  148716
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-B-Q2/session-tests.log",
+                               "sha256":  "27f021e1d5061d7adf2b33de688850dc26c684006f9f1a03d3f8627537f756d8",
+                               "bytes":  841
+                           }
+                       ],
+    "probe_source_files":  [
+                               {
+                                   "path":  "docs/reviews/evidence/B3-B-Q2/probe/Program.cs",
+                                   "sha256":  "754ac7e1c9c8591999041beb91467b7b10b020db57702dee0643cb1fbafca31a",
+                                   "bytes":  25392
+                               },
+                               {
+                                   "path":  "docs/reviews/evidence/B3-B-Q2/probe/Q2Probe.csproj",
+                                   "sha256":  "6b594dcfc9223ef15eff6e18524d2e693f6949291e5c6ffb2a671e04206d447c",
+                                   "bytes":  390
+                               }
+                           ],
+    "report_files":  [
+                         {
+                             "path":  "docs/reviews/B3-B-Q2.md",
+                             "sha256":  "7effc9f63f422e84c86d78eb334efd4b0feb97920274b223a69c46186eba3303",
+                             "bytes":  31597
+                         }
+                     ]
+}
