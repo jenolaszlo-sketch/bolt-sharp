@@ -1,0 +1,91 @@
+{
+    "task":  "B3-A-Q2 - Focused independent requalification of the HELLO bolt_agent remediation",
+    "reviewer":  "GLM-5.3-Flash (provider nvidia) in OpenCode",
+    "reviewed_head":  "83126a99be56fa141eec3342a21b863ca4ef45d2",
+    "reviewed_tree":  "4c697e8dab5a30f8749c7eb9246827bb6ddcd9ff",
+    "remediation_commit":  "d6686d14f3eaee42f83971d517d9077170a30fe2",
+    "q1_baseline":  "6974a56a6c4fc9b706a29ac65fe029840834893c",
+    "disposition":  "SUPPORTED WITH QUALIFICATIONS; F-01 CLOSED",
+    "generated_utc":  "2026-11-07T07:08:22Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/closure-probe/closure-results.json",
+                               "sha256":  "7e0e85766fc6b2cb8c5a4069e4d51426a3dbd404e1c099cf258e91d5ca0eaa36",
+                               "bytes":  5434
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/closure-probe-run.log",
+                               "sha256":  "8e29a5a5b81df7832e7506b1bb717fa8f9050c9c2f37bde8f9274a4db19d4050",
+                               "bytes":  5783
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/core-build.log",
+                               "sha256":  "da5a93fa58d26fa18902f65c201085bc7866cfc484d7b70ce4dabf5271ec8d00",
+                               "bytes":  357
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/core-solution-tests.log",
+                               "sha256":  "0712bc26ad84c661e074e8e612643a72530002dd72f44036435943da3d9888db",
+                               "bytes":  1230
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/environment.txt",
+                               "sha256":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+                               "bytes":  1915
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/integration-tests.log",
+                               "sha256":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+                               "bytes":  640
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/message-tests.log",
+                               "sha256":  "54b7a7ec9918457e0960568d6c31c2beeca15c6dbd9c097d6b1370dfbddc0be5",
+                               "bytes":  575
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/q1-probe-rerun.log",
+                               "sha256":  "e7b6bcd530199081ab000f4ee5e69c20d891cc764912fb59997de9c8a8168c28",
+                               "bytes":  31712
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-A-Q2/q1-probe-rerun/falsification-results.json",
+                               "sha256":  "25ceb9237e12bb64c83725ea50588ceeab890c7908ad8488dd9a6a759f5f2aa3",
+                               "bytes":  31361
+                           }
+                       ],
+    "probe_source_files":  [
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/.gitignore",
+                                   "sha256":  "d717056e5eef4b08b2c976afd47b9d757f19c98f8f20c32afcccf224a4dc46ca",
+                                   "bytes":  11
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/ClosureProbe.csproj",
+                                   "sha256":  "c03b18b2a75e2276d4eb84454ff7c089143ace18dfe4fa95239065973854c9d3",
+                                   "bytes":  862
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/IndependentFixtures.cs",
+                                   "sha256":  "9bec15c661d928cc92edb9eabf33870337284df0f6c5a595a8684aabcc988865",
+                                   "bytes":  5433
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/Program.cs",
+                                   "sha256":  "45304fff1e35ce9fae8e6dd62d617f8aa04860e9749c152b7b8ca9ef344f189b",
+                                   "bytes":  11370
+                               },
+                               {
+                                   "path":  "docs/reviews/probes/B3-A-Q2/README.md",
+                                   "sha256":  "7dbbe33c35414896b25eda344b53dfd16e259c43830a1ab42f708b698fcf268d",
+                                   "bytes":  1487
+                               }
+                           ],
+    "report_files":  [
+                         {
+                             "path":  "docs/reviews/B3-A-Q2-independent-requalification.md",
+                             "sha256":  "ff38856fc70e1ed004d74f171d72081e87c5d2841bb92374c241ec3965f45135",
+                             "bytes":  15869
+                         }
+                     ]
+}

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B3-A-Q2 focused requalification probe: fresh, independently generated Bolt 5.8 HELLO fixtures
+    executed against the remediated bolt_agent validation. References only the production BoltSharp
+    assembly under review; carries its own spec-derived encoder/decoder, independent of the Q1
+    probe, the producer test fixtures and the production writer.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>B3AQ2.ClosureProbe</AssemblyName>
+    <RootNamespace>B3AQ2.ClosureProbe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+</Project>

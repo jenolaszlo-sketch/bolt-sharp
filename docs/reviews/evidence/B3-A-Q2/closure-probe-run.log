@@ -1,0 +1,154 @@
+{
+  "probe": "B3-A-Q2 focused requalification probe (F-01 closure)",
+  "reviewed_head": "83126a99be56fa141eec3342a21b863ca4ef45d2",
+  "remediation_commit": "d6686d14f3eaee42f83971d517d9077170a30fe2",
+  "production_assembly": "BoltSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "spec_source": "docs/reviews/evidence/B3-A-IMPL-01/spec/message.adoc (Bolt 5.8: \u0027bolt_agent \u2026 This field is mandatory.\u0027; \u0027product \u2026 This field is mandatory.\u0027)",
+  "case_count": 17,
+  "mismatches": 1,
+  "cases": [
+    {
+      "Id": "Q2-A",
+      "Input": "HELLO {user_agent} (no bolt_agent)",
+      "Expectation": "MissingRequiredField",
+      "Observed": "MissingRequiredField",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-B",
+      "Input": "HELLO {user_agent, bolt_agent: null}",
+      "Expectation": "InvalidFieldType",
+      "Observed": "InvalidFieldType",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-C",
+      "Input": "HELLO {user_agent, bolt_agent: \u0022agent\u0022} (not a map)",
+      "Expectation": "InvalidFieldType",
+      "Observed": "InvalidFieldType",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-D",
+      "Input": "HELLO {user_agent, bolt_agent: {}} (empty map)",
+      "Expectation": "MissingRequiredField",
+      "Observed": "MissingRequiredField",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-E",
+      "Input": "HELLO {user_agent, bolt_agent: {platform: \u0022win\u0022}} (no product)",
+      "Expectation": "MissingRequiredField",
+      "Observed": "MissingRequiredField",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-F",
+      "Input": "HELLO {user_agent, bolt_agent: {product: null}}",
+      "Expectation": "InvalidFieldType",
+      "Observed": "MissingRequiredField",
+      "ExpectationMet": false,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-G",
+      "Input": "HELLO {user_agent, bolt_agent: {product: 1}}",
+      "Expectation": "InvalidFieldType",
+      "Observed": "InvalidFieldType",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-H",
+      "Input": "minimal schema-valid HELLO {user_agent, bolt_agent:{product}}",
+      "Expectation": "accepted",
+      "Observed": "accepted (HelloRequest)",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-I",
+      "Input": "HELLO with permitted optional agent entries",
+      "Expectation": "accepted",
+      "Observed": "accepted (HelloRequest)",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-J",
+      "Input": "HELLO with valid routing metadata",
+      "Expectation": "accepted",
+      "Observed": "accepted (HelloRequest)",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-K",
+      "Input": "HELLO with notification metadata and null optionals",
+      "Expectation": "accepted",
+      "Observed": "accepted (HelloRequest)",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-L",
+      "Input": "HELLO with a complete field set plus additional unknown metadata",
+      "Expectation": "accepted",
+      "Observed": "accepted (HelloRequest)",
+      "ExpectationMet": true,
+      "Notes": "Unknown metadata stays preserved; no additional restriction beyond the spec\u0027s mandatory fields."
+    },
+    {
+      "Id": "Q2-historical-C3",
+      "Input": "HELLO {user_agent}",
+      "Expectation": "bolt_agent absent (independently decoded) -\u003E MissingRequiredField",
+      "Observed": "MissingRequiredField; independently decoded consumed=16/16, bolt_agent present=False",
+      "ExpectationMet": true,
+      "Notes": "Expected remediation difference versus Q1 (Q1 predicted acceptance before the fix)."
+    },
+    {
+      "Id": "Q2-historical-C13",
+      "Input": "spec-example field set without bolt_agent",
+      "Expectation": "bolt_agent absent (independently decoded) -\u003E MissingRequiredField",
+      "Observed": "MissingRequiredField; independently decoded consumed=159/159, bolt_agent present=False",
+      "ExpectationMet": true,
+      "Notes": "Expected remediation difference versus Q1 (Q1 predicted acceptance before the fix)."
+    },
+    {
+      "Id": "Q2-historical-C14",
+      "Input": "null optionals without bolt_agent",
+      "Expectation": "bolt_agent absent (independently decoded) -\u003E MissingRequiredField",
+      "Observed": "MissingRequiredField; independently decoded consumed=99/99, bolt_agent present=False",
+      "ExpectationMet": true,
+dotnet : cases=17 mismatches=1
+At line:2 char:1
++ dotnet run --project docs\reviews\probes\B3-A-Q2\ClosureProbe\Closure ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (cases=17 mismatches=1:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+      "Notes": "Expected remediation difference versus Q1 (Q1 predicted acceptance before the fix)."
+    },
+    {
+      "Id": "Q2-S1",
+      "Input": "HELLO with sentinel user_agent/platform but no product",
+      "Expectation": "rejected, diagnostics contain no field values",
+      "Observed": "category=MissingRequiredField; sentinel present=False",
+      "ExpectationMet": true,
+      "Notes": ""
+    },
+    {
+      "Id": "Q2-S2",
+      "Input": "HELLO with sentinel product but wrong-typed user_agent",
+      "Expectation": "rejected, diagnostics contain no field values",
+      "Observed": "category=InvalidFieldType; sentinel present=False",
+      "ExpectationMet": true,
+      "Notes": ""
+    }
+  ]
+}
