@@ -1,0 +1,50 @@
+[
+    {
+        "path":  "src/BoltSharp/Backend/ReferenceGraph.cs",
+        "sha256":  "a76540206e3f2b929d72d82d8b9005ea6270cc4ec665163ddd230f5e25dd2bc7"
+    },
+    {
+        "path":  "src/BoltSharp/Backend/ReferenceOperationProvider.cs",
+        "sha256":  "1815516888cfb170b16f3a06e64c825f8a4952b4b5bf0e6f0b13ae15185fd3fd"
+    },
+    {
+        "path":  "src/BoltSharp/Backend/ReferenceQueryEvaluator.cs",
+        "sha256":  "00aee3a70ab6c3f4553460d1ee657695b293daeec0ae4198e9098f587406d144"
+    },
+    {
+        "path":  "src/BoltSharp/Backend/ReferenceResultOperation.cs",
+        "sha256":  "68c7892fba19e69380bc8ab56079135c4cf07a7ccf4d5065d21a53429c748a54"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/BackendTestSupport.cs",
+        "sha256":  "c69142f7fe034f03f4fbd841973d413b2c557eb3a00e93f9f5b68b24625eb47a"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/ReadOnlyBoundaryTests.cs",
+        "sha256":  "a1a65dc8363b9d613df6bb7fc0dcf140f4e8f1c51e0d4fd7cc105111909fbe5b"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/ReferenceBytePathTests.cs",
+        "sha256":  "1734f5d67e5c5473573e3b8e1ea36faa2e4ca3591dd122cb205b513258c997d0"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/ReferenceFailureTests.cs",
+        "sha256":  "ed8d2faa6508217098d88320bdbf6dc1ffb95ee6c71cb097d7b1ba7ae7590565"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/ReferenceGraphTests.cs",
+        "sha256":  "b3c669df9575072bd4e42d11fefa2ec82d1a13ef91769f1a547de328f2483739"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/ReferenceResultTests.cs",
+        "sha256":  "f1edd0fff5260a2a03e249fd80da8a84750618677b9415e335fd4069a4adde3e"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/ReferenceSessionIntegrationTests.cs",
+        "sha256":  "64d97577c4db8f652b18a65f8eafae056a806b457fc876527ec2220c4770eff5"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Backend/SupportedQueryTests.cs",
+        "sha256":  "0da2a979033b9dd19582d2ce1f85bd1f41591e59d5aaa3bc9e421c241683a2c2"
+    }
+]

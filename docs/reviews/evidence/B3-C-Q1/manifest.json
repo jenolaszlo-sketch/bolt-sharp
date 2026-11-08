@@ -1,0 +1,166 @@
+{
+    "task":  "B3-C-Q1 - Independent qualification of the deterministic read-only reference graph backend",
+    "reviewer":  "DeepSeek V4.1 Flash (provider nvidia, OpenCode); same-executor caveat prominently disclosed in report §1",
+    "reviewed_head":  "79ddd04da40d5c6eb7fb8dc0177ef7188b613e75",
+    "reviewed_tree":  "bdc50fb27f86bc6f9e7fbbf50157ec5f3d320adf",
+    "implementation_commit":  "37fe40633624a62bc4c6bd6162de2c884e1f0188",
+    "disposition":  "SUPPORTED WITH QUALIFICATIONS",
+    "q1_probe_checks":  125,
+    "q1_probe_failed_checks":  0,
+    "q1_probe_trace_steps":  180,
+    "core_tests":  1137,
+    "backend_tests":  94,
+    "session_tests":  119,
+    "message_tests":  98,
+    "integration_tests":  19,
+    "generated_utc":  "2026-11-08T21:27:09Z",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/b3c-backend.trx",
+                               "sha256":  "09cc89d12fd9fa550838d90e929bd68dc3cedf2a6a6cf6f552d04fbc7b2d2c52",
+                               "bytes":  138158
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/backend-tests.log",
+                               "sha256":  "c02c6c8ae1020bf17866f097c679976a269e7c3702d90bb9042e2eaff311032b",
+                               "bytes":  973
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/baseline.json",
+                               "sha256":  "ca9967c21d580d448934a1ea71e7e79f601b2203c6be6526c25a2ee7c49903e2",
+                               "bytes":  5791
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/core.trx",
+                               "sha256":  "011b0aba2715e08103de4476416abb023fd664d4485a2e3a64c5fbf6acc35719",
+                               "bytes":  1636659
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/core-build.log",
+                               "sha256":  "8de70c7f1a2f07771781dc9b1fd9e0f3f97c48fcdc3b157394118a2b4c92e799",
+                               "bytes":  1934
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/core-tests.log",
+                               "sha256":  "48c6e6dec83dce2faaae59d2f417930013604e3f1c2f4c0f7240e9fbfd64d13e",
+                               "bytes":  901
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/environment.txt",
+                               "sha256":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+                               "bytes":  1910
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/format-check.log",
+                               "sha256":  "32fd50f0195078bc11f98e8be34ff6bdcf1fa2dc7e36e691368e9e039e87bece",
+                               "bytes":  130
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/historical-integrity.json",
+                               "sha256":  "f5ae60a85bc98c1e1eee610e8c2af4404f2d7bcf4a8caae76cfd87001203eb17",
+                               "bytes":  145563
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/historical-integrity-summary.txt",
+                               "sha256":  "25762164a0f63813d1b2279c51dc66bb75af0ffb0514866a71ba1024c8f43dcb",
+                               "bytes":  737
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/integration.trx",
+                               "sha256":  "f2254309cc7c2d18cceebf3c6c18718c4df7855b6a7d9a87fc231c59f858d203",
+                               "bytes":  30031
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/integration-build.log",
+                               "sha256":  "32c37cebe6f8531cf340d1ba14c5e496b160af580cdab3e0339e13487debf6e5",
+                               "bytes":  709
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/integration-tests.log",
+                               "sha256":  "39c8b6b7a0fe4f68c3ad4c0c9a9479cde7fb85277c8a366962aacbad7121338f",
+                               "bytes":  846
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/message.trx",
+                               "sha256":  "56950ad3c4aeeb7cee0b0a9ae7abdccf6bf0ba46eb5662ebe9208cad519d7772",
+                               "bytes":  140649
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/message-tests.log",
+                               "sha256":  "561a3d86f67b89857ffc323ab8d9d404a6a591f41840aeaf769e5ef8cfd683da",
+                               "bytes":  962
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/owner-decisions-diff.txt",
+                               "sha256":  "9736950ccf3d16d695f8dc05861d3b735e361c66b2de837f820e9d0fa2262512",
+                               "bytes":  50
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe.log",
+                               "sha256":  "3b205180d38a0fc2cba42111d40f7b3a5941889bd14e72b775348b2e76c3f583",
+                               "bytes":  301
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-build.log",
+                               "sha256":  "045413b6bcadee333bc9bf216d80892c58b1120dc22adc13e7ec1870fedefe1f",
+                               "bytes":  813
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-determinism.txt",
+                               "sha256":  "926e5fafa40eba643a6550aae0bb8f5b6b5280ed8ea3d7b978f13c9e8b036f54",
+                               "bytes":  175
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-repeat.log",
+                               "sha256":  "33df4f31f37f694a8bc40fa57f007c65e36e4a2dd47fb130264bb67fc20d3c9a",
+                               "bytes":  308
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-results.json",
+                               "sha256":  "88136b579522c12c503fba1c574dd1ff6aa74f539f1744ca3b8b52bd3641f690",
+                               "bytes":  126126
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-results-repeat.json",
+                               "sha256":  "88136b579522c12c503fba1c574dd1ff6aa74f539f1744ca3b8b52bd3641f690",
+                               "bytes":  126126
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/README.md",
+                               "sha256":  "48deeae25a0cbfba1d25dde83b85e9eedf20560ac13695425b736b4c30a0e466",
+                               "bytes":  3972
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/reviewed-inputs.json",
+                               "sha256":  "3587aa0df6ad9c0cab8c7cb8553587658712cbd9d9496d02933d8c43e2710570",
+                               "bytes":  2116
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/Run-B3CQ1.ps1",
+                               "sha256":  "81c271ba202b7e75e0e6fc24ec26ddb3116c43eff2707ab37dec481a7fe52a6a",
+                               "bytes":  9284
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/session.trx",
+                               "sha256":  "b038cd24ec52f827115c07f1c16a5ce31181ae407f13bea482f67d1651e5c140",
+                               "bytes":  175418
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/session-tests.log",
+                               "sha256":  "f77905d7f243f6a86e5855a00322d218227c26d00ec46a98233a91e2c5e7c826",
+                               "bytes":  962
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B3-C-Q1/t04-fixture-provenance.txt",
+                               "sha256":  "d1e28eb387536bf5a632498ad323c4503819d049b14736fe9415c0352b80e593",
+                               "bytes":  392
+                           }
+                       ],
+    "report_files":  [
+                         {
+                             "path":  "docs/reviews/B3-C-Q1-independent-qualification.md",
+                             "sha256":  "cc74e68876660d888c3d8fb0c5f49c831f2065c104b1288fe91ed6926268a0fb",
+                             "bytes":  17182
+                         }
+                     ]
+}

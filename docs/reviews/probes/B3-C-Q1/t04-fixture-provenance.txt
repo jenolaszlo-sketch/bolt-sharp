@@ -1,0 +1,5 @@
+t04/t03 golden hex vectors: introduced in B3-A implementation commit d99096a (git log -S "B17193B44E019186506572736F6EA1846E616D6585416C696365836E3A31" -- tests/BoltSharp.Tests/Messages/BoltMessageFixtures.cs);
+t04 RecordGraph hex: byte-identical between d99096a and the current tree (regex-extracted full multi-line constant, 176 hex chars);
+t03 RUN hex: byte-identical between d99096a and the current tree;
+independently decoded 23/23 by B0-B-Q1 standalone PackStream-subset decoder (docs/reviews/evidence/B0-B-Q1/graph-independent-decode.json, source frame hex matches exactly);
+verified at reviewed revision 79ddd04da40d5c6eb7fb8dc0177ef7188b613e75.

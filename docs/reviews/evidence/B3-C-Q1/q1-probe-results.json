@@ -1,0 +1,4883 @@
+{
+  "probe": "B3-C-Q1 independent reference-backend qualification probe",
+  "reviewed_head": "79ddd04da40d5c6eb7fb8dc0177ef7188b613e75",
+  "implementation_commit": "37fe40633624a62bc4c6bd6162de2c884e1f0188",
+  "checks": 125,
+  "failed": 0,
+  "traces": 180,
+  "results": [
+    {
+      "Id": "go-node-count",
+      "Pass": true,
+      "Expected": "2 nodes",
+      "Actual": "2"
+    },
+    {
+      "Id": "go-relationship-count",
+      "Pass": true,
+      "Expected": "1 relationship",
+      "Actual": "1"
+    },
+    {
+      "Id": "go-alice-identity",
+      "Pass": true,
+      "Expected": "Node(id=1, n:1, [Person], name=Alice)",
+      "Actual": "Node(id=1, n:1, [Person], Alice)"
+    },
+    {
+      "Id": "go-bob-identity",
+      "Pass": true,
+      "Expected": "Node(id=2, n:2, [Person], name=Bob)",
+      "Actual": "Node(id=2, n:2, [Person], Bob)"
+    },
+    {
+      "Id": "go-rel-identity",
+      "Pass": true,
+      "Expected": "Relationship(id=1, 1-\u003E2, KNOWS, r:1, n:1-\u003En:2, since=2024)",
+      "Actual": "Relationship(id=1, 1-\u003E2, KNOWS, r:1, n:1-\u003En:2, since=2024)"
+    },
+    {
+      "Id": "go-direction",
+      "Pass": true,
+      "Expected": "Alice-\u003EBob;no reverse relationship",
+      "Actual": "start=1;end=2;rels=1"
+    },
+    {
+      "Id": "go-id-collision-distinct",
+      "Pass": true,
+      "Expected": "node id 1 and relationship id 1 are distinct typed entities",
+      "Actual": "node=PackStreamNode(1);rel=PackStreamRelationship(1)"
+    },
+    {
+      "Id": "go-immutable-labels",
+      "Pass": true,
+      "Expected": "label mutation rejected",
+      "Actual": "rejected"
+    },
+    {
+      "Id": "go-immutable-properties",
+      "Pass": true,
+      "Expected": "property mutation rejected",
+      "Actual": "rejected"
+    },
+    {
+      "Id": "go-immutable-node-collection",
+      "Pass": true,
+      "Expected": "graph node collection mutation rejected",
+      "Actual": "rejected"
+    },
+    {
+      "Id": "go-immutable-relationship-collection",
+      "Pass": true,
+      "Expected": "graph relationship collection mutation rejected",
+      "Actual": "rejected"
+    },
+    {
+      "Id": "go-stable-identities",
+      "Pass": true,
+      "Expected": "same instances across repeated access",
+      "Actual": "stable"
+    },
+    {
+      "Id": "go-alternate-property",
+      "Pass": true,
+      "Expected": "property results derive from the alternate graph (Carol, Dave)",
+      "Actual": "Carol,Dave"
+    },
+    {
+      "Id": "go-alternate-graph",
+      "Pass": true,
+      "Expected": "graph results derive from the alternate graph",
+      "Actual": "node=(5,n:5);rel=(3,r:3)"
+    },
+    {
+      "Id": "go-alternate-session-scalar",
+      "Pass": true,
+      "Expected": "session pipeline works with alternate graph",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "go-alternate-session-scalar-pull",
+      "Pass": true,
+      "Expected": "scalar result derives from the alternate graph (42)",
+      "Actual": "RECORD,SUCCESS"
+    },
+    {
+      "Id": "go-alternate-session-graph",
+      "Pass": true,
+      "Expected": "session-integrated graph result derives from the alternate graph",
+      "Actual": "node=(5,n:5)"
+    },
+    {
+      "Id": "flow-a-run",
+      "Pass": true,
+      "Expected": "SUCCESS(fields=[answer])/Streaming;opens=1",
+      "Actual": "SUCCESS/Streaming;opens=1"
+    },
+    {
+      "Id": "flow-a-single-metadata-read",
+      "Pass": true,
+      "Expected": "one metadata acquisition",
+      "Actual": "reads=1"
+    },
+    {
+      "Id": "flow-a-pull",
+      "Pass": true,
+      "Expected": "RECORD([42]),SUCCESS/Ready",
+      "Actual": "RECORD,SUCCESS/Ready"
+    },
+    {
+      "Id": "flow-a-disposal",
+      "Pass": true,
+      "Expected": "exactly one disposal",
+      "Actual": "attempts=1"
+    },
+    {
+      "Id": "flow-b-run",
+      "Pass": true,
+      "Expected": "SUCCESS(fields=[a,r,b])",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "flow-b-graph-values",
+      "Pass": true,
+      "Expected": "typed graph values match the independent oracle",
+      "Actual": "a=(1,n:1);r=(1,KNOWS,1-\u003E2,r:1);b=(2,n:2)"
+    },
+    {
+      "Id": "flow-c-run",
+      "Pass": true,
+      "Expected": "SUCCESS(fields=[answer])",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "flow-c-pull",
+      "Pass": true,
+      "Expected": "RECORD([42]),SUCCESS",
+      "Actual": "RECORD,SUCCESS"
+    },
+    {
+      "Id": "flow-d-refused",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation owned",
+      "Actual": "50N42/Failed;ops=0"
+    },
+    {
+      "Id": "flow-d-reset",
+      "Pass": true,
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready"
+    },
+    {
+      "Id": "flow-d-supported-after-recovery",
+      "Pass": true,
+      "Expected": "supported query succeeds after recovery;opens=2",
+      "Actual": "SUCCESS;RECORD,SUCCESS;opens=2"
+    },
+    {
+      "Id": "flow-e-defunct",
+      "Pass": true,
+      "Expected": "RECORD,FAILURE/DEFUNCT;no SUCCESS;close",
+      "Actual": "RECORD,FAILURE/Defunct"
+    },
+    {
+      "Id": "flow-e-one-attempt",
+      "Pass": true,
+      "Expected": "exactly one disposal attempt",
+      "Actual": "attempts=1"
+    },
+    {
+      "Id": "flow-e-reset-refused",
+      "Pass": true,
+      "Expected": "no response;still DEFUNCT",
+      "Actual": "/Defunct"
+    },
+    {
+      "Id": "flow-e-run-refused",
+      "Pass": true,
+      "Expected": "no second operation",
+      "Actual": ";opens=1"
+    },
+    {
+      "Id": "flow-positive-failed",
+      "Pass": true,
+      "Expected": "FAILURE/Failed",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "flow-positive-reset",
+      "Pass": true,
+      "Expected": "SUCCESS/Ready",
+      "Actual": "SUCCESS/Ready"
+    },
+    {
+      "Id": "norm-norm-leading-trailing-space",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS/Streaming"
+    },
+    {
+      "Id": "norm-norm-internal-spaces",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS/Streaming"
+    },
+    {
+      "Id": "norm-norm-tabs-newlines",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS/Streaming"
+    },
+    {
+      "Id": "norm-norm-nbsp",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS/Streaming"
+    },
+    {
+      "Id": "norm-norm-zero-width",
+      "Pass": true,
+      "Expected": "refused",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "norm-norm-lowercase",
+      "Pass": true,
+      "Expected": "refused",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "norm-norm-uppercase",
+      "Pass": true,
+      "Expected": "refused",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "norm-norm-semicolon",
+      "Pass": true,
+      "Expected": "refused",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "norm-norm-empty",
+      "Pass": true,
+      "Expected": "refused",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "norm-norm-whitespace-only",
+      "Pass": true,
+      "Expected": "refused",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "norm-norm-multiline-supported-form",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS/Streaming"
+    },
+    {
+      "Id": "allow-all-refused",
+      "Pass": true,
+      "Expected": "all 28 unsupported queries refused with recovery",
+      "Actual": "0 failures"
+    },
+    {
+      "Id": "allow-prepare-consulted",
+      "Pass": true,
+      "Expected": "Prepare called once per refusal (disclosed seam behavior)",
+      "Actual": "28"
+    },
+    {
+      "Id": "allow-graph-unmutated",
+      "Pass": true,
+      "Expected": "graph state unchanged by refused queries",
+      "Actual": "unchanged"
+    },
+    {
+      "Id": "bounded-padded-accepted",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "bounded-unsupported-refused",
+      "Pass": true,
+      "Expected": "refused without exception",
+      "Actual": "FAILURE;escaped="
+    },
+    {
+      "Id": "opt-empty-accepted",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "opt-read-accepted",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "opt-refused-write-mode",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-rw-mode",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-wrong-mode-type",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-null-mode",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-database",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-impersonation",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-timeout",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-bookmarks",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-unknown-key",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-wrong-typed-known-key",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-multiple-unsupported",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-refused-supported-query-unsafe-option",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "opt-null-db-accepted",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "opt-null-imp-accepted",
+      "Pass": true,
+      "Expected": "accepted",
+      "Actual": "SUCCESS"
+    },
+    {
+      "Id": "param-positive-int",
+      "Pass": true,
+      "Expected": "typed value preserved (42)",
+      "Actual": "42"
+    },
+    {
+      "Id": "param-negative-int",
+      "Pass": true,
+      "Expected": "typed value preserved (-7)",
+      "Actual": "-7"
+    },
+    {
+      "Id": "param-long-min",
+      "Pass": true,
+      "Expected": "typed value preserved (-9223372036854775808)",
+      "Actual": "-9223372036854775808"
+    },
+    {
+      "Id": "param-long-max",
+      "Pass": true,
+      "Expected": "typed value preserved (9223372036854775807)",
+      "Actual": "9223372036854775807"
+    },
+    {
+      "Id": "param-string",
+      "Pass": true,
+      "Expected": "typed value preserved (\u0022MATCH (n) DETACH DELETE n\u0022)",
+      "Actual": "\u0022MATCH (n) DETACH DELETE n\u0022"
+    },
+    {
+      "Id": "param-bool-true",
+      "Pass": true,
+      "Expected": "typed value preserved (true)",
+      "Actual": "true"
+    },
+    {
+      "Id": "param-bool-false",
+      "Pass": true,
+      "Expected": "typed value preserved (false)",
+      "Actual": "false"
+    },
+    {
+      "Id": "param-explicit-null",
+      "Pass": true,
+      "Expected": "typed value preserved (null)",
+      "Actual": "null"
+    },
+    {
+      "Id": "param-empty-list",
+      "Pass": true,
+      "Expected": "typed value preserved ([])",
+      "Actual": "[]"
+    },
+    {
+      "Id": "param-mixed-list",
+      "Pass": true,
+      "Expected": "typed value preserved ([1,\u0022x\u0022,null,true])",
+      "Actual": "[1,\u0022x\u0022,null,true]"
+    },
+    {
+      "Id": "param-nested-map",
+      "Pass": true,
+      "Expected": "typed map preserved",
+      "Actual": "k=1"
+    },
+    {
+      "Id": "param-missing-refused",
+      "Pass": true,
+      "Expected": "50N42 FAILURE;Failed",
+      "Actual": "50N42/Failed"
+    },
+    {
+      "Id": "param-null-distinct",
+      "Pass": true,
+      "Expected": "explicit null succeeds with a null record value",
+      "Actual": "state=Streaming"
+    },
+    {
+      "Id": "param-repeat-stable",
+      "Pass": true,
+      "Expected": "identical values across sessions",
+      "Actual": "7/7"
+    },
+    {
+      "Id": "cursor-pull1-first",
+      "Pass": true,
+      "Expected": "RECORD(Alice),SUCCESS{has_more}/Streaming",
+      "Actual": "RECORD,SUCCESS/Streaming"
+    },
+    {
+      "Id": "cursor-pull1-second",
+      "Pass": true,
+      "Expected": "RECORD(Bob),SUCCESS{terminal}/Ready",
+      "Actual": "RECORD,SUCCESS/Ready"
+    },
+    {
+      "Id": "cursor-pull1-once",
+      "Pass": true,
+      "Expected": "one disposal across both pulls",
+      "Actual": "attempts=1"
+    },
+    {
+      "Id": "cursor-exhaust",
+      "Pass": true,
+      "Expected": "RECORD,RECORD,SUCCESS/Ready",
+      "Actual": "RECORD,RECORD,SUCCESS/Ready"
+    },
+    {
+      "Id": "cursor-exhaust-readcount",
+      "Pass": true,
+      "Expected": "2 records \u002B 1 exhaustion read",
+      "Actual": "reads=3"
+    },
+    {
+      "Id": "cursor-pull-discard",
+      "Pass": true,
+      "Expected": "SUCCESS/Ready;cursor retired",
+      "Actual": "SUCCESS/Ready"
+    },
+    {
+      "Id": "cursor-discard-then-pull",
+      "Pass": true,
+      "Expected": "FAILURE/Defunct (no resurrection)",
+      "Actual": "FAILURE/Defunct"
+    },
+    {
+      "Id": "cursor-zero-remaining",
+      "Pass": true,
+      "Expected": "null on first read",
+      "Actual": "null"
+    },
+    {
+      "Id": "cursor-reset",
+      "Pass": true,
+      "Expected": "SUCCESS/Ready;cursor retired once",
+      "Actual": "SUCCESS;attempts=1"
+    },
+    {
+      "Id": "cursor-goodbye",
+      "Pass": true,
+      "Expected": "no response;DEFUNCT;one disposal",
+      "Actual": "responses=0"
+    },
+    {
+      "Id": "cursor-disconnect",
+      "Pass": true,
+      "Expected": "DEFUNCT;one disposal",
+      "Actual": "state=Defunct"
+    },
+    {
+      "Id": "fc-prepare-throw",
+      "Pass": true,
+      "Expected": "FAILURE/Failed;no operation",
+      "Actual": "FAILURE/Failed;ops=0"
+    },
+    {
+      "Id": "fc-null-fields",
+      "Pass": true,
+      "Expected": "FAILURE/Failed;one attempt;one metadata read",
+      "Actual": "FAILURE/Failed;attempts=1"
+    },
+    {
+      "Id": "fc-null-element",
+      "Pass": true,
+      "Expected": "FAILURE/Failed;one attempt;one metadata read",
+      "Actual": "FAILURE/Failed;attempts=1"
+    },
+    {
+      "Id": "fc-fields-throw",
+      "Pass": true,
+      "Expected": "contained;one read;one attempt",
+      "Actual": "FAILURE;reads=1;attempts=1"
+    },
+    {
+      "Id": "fc-read-first",
+      "Pass": true,
+      "Expected": "FAILURE/Failed;one attempt",
+      "Actual": "FAILURE/Failed"
+    },
+    {
+      "Id": "fc-read-second",
+      "Pass": true,
+      "Expected": "RECORD,FAILURE/Failed",
+      "Actual": "RECORD,FAILURE/Failed"
+    },
+    {
+      "Id": "fc-column-count",
+      "Pass": true,
+      "Expected": "no bad record;50N42 row-shape FAILURE",
+      "Actual": "50N42;records=0"
+    },
+    {
+      "Id": "fc-dispose-throw",
+      "Pass": true,
+      "Expected": "RECORD,FAILURE/DEFUNCT;one attempt",
+      "Actual": "RECORD,FAILURE/Defunct"
+    },
+    {
+      "Id": "fc-read-dispose",
+      "Pass": true,
+      "Expected": "primary FAILURE;DEFUNCT;one attempt;diagnostic",
+      "Actual": "FAILURE/Defunct;attempts=1"
+    },
+    {
+      "Id": "fc-meta-dispose",
+      "Pass": true,
+      "Expected": "FAILURE/DEFUNCT;one attempt;diagnostic",
+      "Actual": "FAILURE/Defunct;attempts=1"
+    },
+    {
+      "Id": "fc-use-after-dispose",
+      "Pass": true,
+      "Expected": "ObjectDisposedException on ReadRow",
+      "Actual": "rejected"
+    },
+    {
+      "Id": "fc-overlap",
+      "Pass": true,
+      "Expected": "opens=1;one attempt;DEFUNCT;no RESET recovery;no second RUN;no retry",
+      "Actual": "opens=1;attempts=1;pull=\u0027RECORD,RECORD,FAILURE\u0027;reset=\u0027\u0027;run=\u0027\u0027"
+    },
+    {
+      "Id": "bytes-t03-run-success",
+      "Pass": true,
+      "Expected": "RUN SUCCESS encodes to the authentic t03 golden",
+      "Actual": "B170A1866669656C64739186616E73776572"
+    },
+    {
+      "Id": "bytes-t03-record",
+      "Pass": true,
+      "Expected": "RECORD [42] encodes to the authentic t03 golden",
+      "Actual": "B171912A"
+    },
+    {
+      "Id": "bytes-t03-terminal",
+      "Pass": true,
+      "Expected": "terminal SUCCESS {} with absent has_more (defaults to false)",
+      "Actual": "B170A0;has_more=absent"
+    },
+    {
+      "Id": "bytes-t04-run-success",
+      "Pass": true,
+      "Expected": "graph RUN SUCCESS encodes to the authentic golden",
+      "Actual": "B170A1866669656C647393816181728162"
+    },
+    {
+      "Id": "bytes-t04-record",
+      "Pass": true,
+      "Expected": "graph RECORD encodes to the authentic t04 golden",
+      "Actual": "B17193B44E019186506572736F6EA1846E616D6585416C696365836E3A31B852010102854B4E4F5753A18573696E6365C907E883723A31836E3A31836E3A32B44E029186506572736F6EA1846E616D6583426F62836E3A32"
+    },
+    {
+      "Id": "bytes-t04-decode-oracle",
+      "Pass": true,
+      "Expected": "decoded t04 values match the independent oracle",
+      "Actual": "a=(1,n:1);r=(1,r:1);b=(2,n:2)"
+    },
+    {
+      "Id": "bytes-t04-corruption-detected",
+      "Pass": true,
+      "Expected": "one-byte corruption detected by the oracle",
+      "Actual": "name=Alicf"
+    },
+    {
+      "Id": "bytes-refusal-metadata",
+      "Pass": true,
+      "Expected": "exact four-field 50N42 metadata;no query-text echo",
+      "Actual": "50N42/Neo.ClientError.Request.Invalid;leak=False"
+    },
+    {
+      "Id": "nc-reversed-direction",
+      "Pass": true,
+      "Expected": "direction oracle rejects 2-\u003E1 and accepts 1-\u003E2",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-id-confusion",
+      "Pass": true,
+      "Expected": "distinct typed entities share the numeric ID",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-hardcoded-response",
+      "Pass": true,
+      "Expected": "alternate fixture produced alternate results through the real session",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-wrong-field-metadata",
+      "Pass": true,
+      "Expected": "exact field-list and golden-byte assertions passed",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-wrong-arity",
+      "Pass": true,
+      "Expected": "NC-05b column-count violation detected",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-duplicate-terminal",
+      "Pass": true,
+      "Expected": "exactly one terminal SUCCESS",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-unsupported-accepted",
+      "Pass": true,
+      "Expected": "allowlist battery refused every unsupported query",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-write-executed",
+      "Pass": true,
+      "Expected": "graph state unchanged after write attempts",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-option-ignored",
+      "Pass": true,
+      "Expected": "unsafe RUN options refused",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-parameter-interpolated",
+      "Pass": true,
+      "Expected": "query-like parameter returned verbatim",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-missing-vs-null",
+      "Pass": true,
+      "Expected": "missing and explicit null are distinct",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-cursor-reuse",
+      "Pass": true,
+      "Expected": "use after disposal rejected",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-fail-closed-overlap",
+      "Pass": true,
+      "Expected": "failed retirement overlap control passed",
+      "Actual": "detected"
+    },
+    {
+      "Id": "nc-byte-corruption",
+      "Pass": true,
+      "Expected": "corrupted graph bytes detected by the oracle",
+      "Actual": "detected"
+    }
+  ],
+  "trace": [
+    {
+      "scenario": "go-alternate-session",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "go-alternate-session",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "go-alternate-session",
+      "action": "RUN graph",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:3\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 2,
+      "cleanup": null
+    },
+    {
+      "scenario": "go-alternate-session",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            {
+              "node": {
+                "Id": 5,
+                "ElementId": "n:5",
+                "labels": [
+                  "Person"
+                ],
+                "name": "Carol"
+              }
+            },
+            {
+              "relationship": {
+                "Id": 3,
+                "StartNodeId": 5,
+                "EndNodeId": 6,
+                "Type": "KNOWS",
+                "ElementId": "r:3",
+                "StartNodeElementId": "n:5",
+                "EndNodeElementId": "n:6",
+                "since": 1999
+              }
+            },
+            {
+              "node": {
+                "Id": 6,
+                "ElementId": "n:6",
+                "labels": [
+                  "Person"
+                ],
+                "name": "Dave"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 2,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-a-scalar",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-a-scalar",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-b-graph",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:3\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-b-graph",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            {
+              "node": {
+                "Id": 1,
+                "ElementId": "n:1",
+                "labels": [
+                  "Person"
+                ],
+                "name": "Alice"
+              }
+            },
+            {
+              "relationship": {
+                "Id": 1,
+                "StartNodeId": 1,
+                "EndNodeId": 2,
+                "Type": "KNOWS",
+                "ElementId": "r:1",
+                "StartNodeElementId": "n:1",
+                "EndNodeElementId": "n:2",
+                "since": 2024
+              }
+            },
+            {
+              "node": {
+                "Id": 2,
+                "ElementId": "n:2",
+                "labels": [
+                  "Person"
+                ],
+                "name": "Bob"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-c-params",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-c-params",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-d-unsupported",
+      "action": "RUN unsupported",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-d-unsupported",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-d-unsupported",
+      "action": "RUN supported",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 2,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-d-unsupported",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 2,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-e-cleanup",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-e-cleanup",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,FAILURE",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "flow-e-cleanup",
+      "action": "RESET",
+      "starting_state": "Defunct",
+      "response": "",
+      "responses": [],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "flow-e-cleanup",
+      "action": "RUN",
+      "starting_state": "Defunct",
+      "response": "",
+      "responses": [],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "flow-positive",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-positive",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "flow-positive",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-leading-trailing-space",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-internal-spaces",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-tabs-newlines",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-nbsp",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-zero-width",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-lowercase",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-uppercase",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-semicolon",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-empty",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-whitespace-only",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "norm-norm-multiline-supported-form",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 2,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 2,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 3,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 3,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 4,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 4,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 5,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 5,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 6,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 6,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 7,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 7,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 8,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 8,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 9,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 9,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 10,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 10,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 11,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 11,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 12,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 12,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 13,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 13,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 14,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 14,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 15,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 15,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 16,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 16,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 17,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 17,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 18,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 18,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 19,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 19,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 20,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 20,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 21,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 21,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 22,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 22,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 23,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 23,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 24,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 24,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 25,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 25,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 26,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 26,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 27,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 27,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 28,
+      "cleanup": null
+    },
+    {
+      "scenario": "allow-0",
+      "action": "RESET",
+      "starting_state": "Failed",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 28,
+      "cleanup": null
+    },
+    {
+      "scenario": "bounded-padded",
+      "action": "long padded",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "bounded-unsupported",
+      "action": "long unsupported",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-empty",
+      "action": "RUN default extras",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-read",
+      "action": "RUN mode=r",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-write-mode",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-rw-mode",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-wrong-mode-type",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-null-mode",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-database",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-impersonation",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-timeout",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-bookmarks",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-unknown-key",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-wrong-typed-known-key",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-multiple-unsupported",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-supported-query-unsafe-option",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-null-db",
+      "action": "RUN db=null",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "opt-null-imp",
+      "action": "RUN imp_user=null",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-positive-int",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-positive-int",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-negative-int",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-negative-int",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            -7
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-long-min",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-long-min",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            -9223372036854775808
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-long-max",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-long-max",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            9223372036854775807
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-string",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-string",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "MATCH (n) DETACH DELETE n"
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-bool-true",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-bool-true",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            true
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-bool-false",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-bool-false",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            false
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-explicit-null",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-explicit-null",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            null
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-empty-list",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-empty-list",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            []
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-mixed-list",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-mixed-list",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            [
+              1,
+              "x",
+              null,
+              true
+            ]
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-nested-map",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-nested-map",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "PackStreamMap"
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-missing",
+      "action": "RUN missing",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-null-distinct",
+      "action": "RUN explicit null",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-null-distinct",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            null
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-repeat-1",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-repeat-1",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            7
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-repeat-2",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "param-repeat-2",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            7
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-property",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-property",
+      "action": "PULL(1)",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Alice"
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "has_more": "True"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-property",
+      "action": "PULL(1)",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Bob"
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-exhaust",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-exhaust",
+      "action": "PULL(-1)",
+      "starting_state": "Streaming",
+      "response": "RECORD,RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Alice"
+          ]
+        },
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Bob"
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-pull-discard",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-pull-discard",
+      "action": "PULL(1)",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Alice"
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "has_more": "True"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-pull-discard",
+      "action": "DISCARD(-1)",
+      "starting_state": "Streaming",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-discard-pull",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-discard-pull",
+      "action": "DISCARD(-1)",
+      "starting_state": "Streaming",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-discard-pull",
+      "action": "PULL",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "08N06",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The message cannot be handled in the current connection state.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-reset",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-reset",
+      "action": "RESET",
+      "starting_state": "Streaming",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-goodbye",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-goodbye",
+      "action": "GOODBYE",
+      "starting_state": "Streaming",
+      "response": "",
+      "responses": [],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-disconnect",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "cursor-disconnect",
+      "action": "Disconnect",
+      "starting_state": "Streaming",
+      "response": "(void)",
+      "responses": null,
+      "state": "Defunct",
+      "should_close": null,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-prepare-throw",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-null-fields",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-null-element",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-fields-throw",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-read-first",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-read-first",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-read-second",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-read-second",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,FAILURE",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Alice"
+          ]
+        },
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-column-count",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-column-count",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "A result row does not match the announced result fields.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-dispose-throw",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-dispose-throw",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,FAILURE",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "fc-read-dispose",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-read-dispose",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "fc-meta-dispose",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "fc-overlap",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "fc-overlap",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,RECORD,FAILURE",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Alice"
+          ]
+        },
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            "Bob"
+          ]
+        },
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N00",
+            "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+            "description": "The operation provider failed while executing the request.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "fc-overlap",
+      "action": "RESET",
+      "starting_state": "Defunct",
+      "response": "",
+      "responses": [],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "fc-overlap",
+      "action": "RUN",
+      "starting_state": "Defunct",
+      "response": "",
+      "responses": [],
+      "state": "Defunct",
+      "should_close": true,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "fc-overlap",
+      "action": "Disconnect",
+      "starting_state": "Defunct",
+      "response": "(void)",
+      "responses": null,
+      "state": "Defunct",
+      "should_close": null,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "fc-overlap",
+      "action": "Dispose",
+      "starting_state": "Defunct",
+      "response": "(void)",
+      "responses": null,
+      "state": "Defunct",
+      "should_close": null,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": "InvalidOperationException"
+    },
+    {
+      "scenario": "bytes-t03",
+      "action": "RUN t03",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "bytes-t03",
+      "action": "PULL t03",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "bytes-t04",
+      "action": "RUN graph",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:3\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "bytes-t04",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            {
+              "node": {
+                "Id": 1,
+                "ElementId": "n:1",
+                "labels": [
+                  "Person"
+                ],
+                "name": "Alice"
+              }
+            },
+            {
+              "relationship": {
+                "Id": 1,
+                "StartNodeId": 1,
+                "EndNodeId": 2,
+                "Type": "KNOWS",
+                "ElementId": "r:1",
+                "StartNodeElementId": "n:1",
+                "EndNodeElementId": "n:2",
+                "since": 2024
+              }
+            },
+            {
+              "node": {
+                "Id": 2,
+                "ElementId": "n:2",
+                "labels": [
+                  "Person"
+                ],
+                "name": "Bob"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "bytes-refusal",
+      "action": "RUN unsupported with marker",
+      "starting_state": "Ready",
+      "response": "FAILURE",
+      "responses": [
+        {
+          "kind": "FailureResponse",
+          "metadata": {
+            "gql_status": "50N42",
+            "neo4j_code": "Neo.ClientError.Request.Invalid",
+            "description": "The requested operation is not supported by this server.",
+            "diagnostic_record": "\u003Cmap:0\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Failed",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "nc-duplicate-terminal",
+      "action": "RUN",
+      "starting_state": "Ready",
+      "response": "SUCCESS",
+      "responses": [
+        {
+          "kind": "SuccessResponse",
+          "metadata": {
+            "fields": "\u003Clist:1\u003E"
+          },
+          "record_values": null
+        }
+      ],
+      "state": "Streaming",
+      "should_close": false,
+      "owned": true,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    },
+    {
+      "scenario": "nc-duplicate-terminal",
+      "action": "PULL",
+      "starting_state": "Streaming",
+      "response": "RECORD,SUCCESS",
+      "responses": [
+        {
+          "kind": "RecordResponse",
+          "metadata": null,
+          "record_values": [
+            42
+          ]
+        },
+        {
+          "kind": "SuccessResponse",
+          "metadata": {},
+          "record_values": null
+        }
+      ],
+      "state": "Ready",
+      "should_close": false,
+      "owned": false,
+      "escaped": null,
+      "opens": 1,
+      "cleanup": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+docs/reviews/evidence/B3-C-IMPL-01/manifest.json: 26/26 match
+docs/reviews/evidence/B3-B-Q3/manifest.json: 33/33 match
+docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json: 29/29 match
+docs/reviews/evidence/B3-B-Q2/manifest.json: 38/38 match
+docs/reviews/evidence/B3-B-Q1/manifest.json: 12/12 match
+docs/reviews/evidence/B3-B-IMPL-01/manifest.json: 19/22 match
+docs/reviews/evidence/B3-A-Q1/manifest.json: 14/14 match
+docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json: 13/13 match
+docs/reviews/evidence/B3-A-Q2/manifest.json: 15/15 match
+docs/reviews/evidence/B3-A-IMPL-01/manifest.json: 16/21 match
+docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json: 24/24 match
+docs/reviews/evidence/B0-B-Q1/manifest.json: 119/119 match

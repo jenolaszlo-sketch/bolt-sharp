@@ -1,0 +1,3 @@
+COMMAND: dotnet C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3cq1-20261109\artifacts\bin\IndependentProbe\debug\B3BQ1C.IndependentProbe.dll C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3cq1-20261109\evidence\q1-probe-results.json
+checks=125 passed=125 failed=0 traces=180
+EXIT: 0

@@ -1,0 +1,13 @@
+COMMAND: dotnet build D:\projects\bolt-sharp\docs\reviews\probes\B3-C-Q1\IndependentProbe\IndependentProbe.csproj -c Debug --nodeReuse:false --artifacts-path C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3cq1-20261109\artifacts
+  Determining projects to restore...
+  Restored D:\projects\bolt-sharp\docs\reviews\probes\B3-C-Q1\IndependentProbe\IndependentProbe.csproj (in 97 ms).
+  1 of 2 projects are up-to-date for restore.
+  BoltSharp -> C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3cq1-20261109\artifacts\bin\BoltSharp\debug\BoltSharp.dll
+  IndependentProbe -> C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3cq1-20261109\artifacts\bin\IndependentProbe\debug\B3BQ1C.IndependentProbe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.19
+EXIT: 0

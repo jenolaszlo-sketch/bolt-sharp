@@ -1,0 +1,4 @@
+t04/t03 golden hex vectors: introduced in B3-A implementation commit d99096a (git log -S);
+byte-identical in the current tree (regex-extracted RecordGraph/T03 hex comparison);
+independently decoded 23/23 by B0-B-Q1 standalone decoder (graph-independent-decode.json).
+fixture-file diff exit since d99096a for the RecordGraph constant: verified via -S pickaxe (single introduction commit).
