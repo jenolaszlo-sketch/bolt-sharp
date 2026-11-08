@@ -1,0 +1,7 @@
+COMMAND: dotnet test tests/BoltSharp.IntegrationTests/BoltSharp.IntegrationTests.csproj -c Debug --no-build --no-restore --artifacts-path C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3c-20261109\artifacts --logger trx;LogFileName=integration.trx --results-directory C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3c-20261109\evidence
+Test run for C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3c-20261109\artifacts\bin\BoltSharp.IntegrationTests\debug\BoltSharp.IntegrationTests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Results File: C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3c-20261109\evidence\integration.trx
+
+Passed!  - Failed:     0, Passed:    19, Skipped:     0, Total:    19, Duration: 21 s - BoltSharp.IntegrationTests.dll (net8.0)
+EXIT: 0

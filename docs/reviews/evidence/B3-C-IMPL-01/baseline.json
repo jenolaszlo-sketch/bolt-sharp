@@ -1,0 +1,28 @@
+{
+    "head":  "37fe40633624a62bc4c6bd6162de2c884e1f0188",
+    "tree":  "4fc8d822d36352d002252421543fb60db89cc64e",
+    "branch":  "main",
+    "worktrees":  [
+                      "worktree D:/projects/bolt-sharp",
+                      "HEAD 37fe40633624a62bc4c6bd6162de2c884e1f0188",
+                      "branch refs/heads/main",
+                      ""
+                  ],
+    "status":  [
+
+               ],
+    "change_isolation_since_owner_acceptance":  [
+                                                    "A\tsrc/BoltSharp/Backend/ReferenceGraph.cs",
+                                                    "A\tsrc/BoltSharp/Backend/ReferenceOperationProvider.cs",
+                                                    "A\tsrc/BoltSharp/Backend/ReferenceQueryEvaluator.cs",
+                                                    "A\tsrc/BoltSharp/Backend/ReferenceResultOperation.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/BackendTestSupport.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/ReadOnlyBoundaryTests.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/ReferenceBytePathTests.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/ReferenceFailureTests.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/ReferenceGraphTests.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/ReferenceResultTests.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/ReferenceSessionIntegrationTests.cs",
+                                                    "A\ttests/BoltSharp.Tests/Backend/SupportedQueryTests.cs"
+                                                ]
+}

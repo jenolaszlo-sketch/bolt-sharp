@@ -1,0 +1,2 @@
+COMMAND: dotnet format BoltSharp.slnx --verify-no-changes --include src/BoltSharp/Backend tests/BoltSharp.Tests/Backend
+EXIT: 0
