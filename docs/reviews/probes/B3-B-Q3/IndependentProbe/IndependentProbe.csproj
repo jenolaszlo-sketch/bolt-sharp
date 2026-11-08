@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B3-B-Q3 independent reviewer probe. References only the production BoltSharp sources;
+    no producer test or probe code is reused. Reviewer-owned adversarial scenarios.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>B3BQ3.IndependentProbe</AssemblyName>
+    <RootNamespace>B3BQ3.IndependentProbe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,712 @@
+1: using System.Diagnostics.CodeAnalysis;
+2: 
+3: using BoltSharp.Messages;
+4: using BoltSharp.PackStream;
+5: 
+6: namespace BoltSharp.Sessions;
+7: 
+8: /// <summary>
+9: /// A per-connection Bolt 5.8 protocol state machine. It consumes validated B3-A message objects and
+10: /// produces ordered B3-A response objects; it owns the session-level result lifecycle but performs
+11: /// no transport I/O, no Cypher parsing, no storage access and no authentication beyond delegating
+12: /// to the configured <see cref="IBoltCredentialVerifier"/>.
+13: /// <para>
+14: /// <b>Public and provisional.</b> The session engine is public so that the future B5 host and the
+15: /// B3-B test project can consume it (an <c>InternalsVisibleTo</c> grant was rejected because it
+16: /// changed overload resolution for pre-existing PackStream immutability tests). The
+17: /// <see cref="IBoltOperationProvider"/>/<see cref="IBoltOperation"/> pair is a provisional seam,
+18: /// not the frozen B3-C backend contract.
+19: /// </para>
+20: /// </summary>
+21: /// <remarks>
+22: /// <para>
+23: /// <b>States and transitions</b> follow the Bolt 5.8 server-state specification and its version-5
+24: /// appendix (preserved under <c>docs/reviews/evidence/B3-B-IMPL-01/spec/</c>). The explicit
+25: /// transaction states are out of scope; explicit-transaction messages are refused rather than
+26: /// mapped onto auto-commit.
+27: /// </para>
+28: /// <para>
+29: /// <b>Bounded RESET semantics.</b> This synchronous engine does not implement mid-flight jump-ahead
+30: /// interruption of a non-interruptible provider call. <c>RESET</c> is processed in arrival order:
+31: /// it cancels and disposes any outstanding result (using the provider's discretionary
+32: /// <see cref="IBoltOperation.Dispose"/>), clears recoverable failure state and returns the
+33: /// connection to <see cref="BoltConnectionState.Ready"/>. A provider call already executing inside
+34: /// <c>Prepare</c>/<c>ReadRow</c> cannot be preempted; no SUCCESS is claimed for work that is still
+35: /// active. This limitation is recorded in the B3-B implementation report. A provider
+36: /// <see cref="IBoltOperation.Dispose"/> failure during any retirement path is irreversible
+37: /// (B3-B-R2 fail-closed retirement): the connection becomes terminal instead of claiming recovery.
+38: /// </para>
+39: /// <para>
+40: /// <b>Diagnostics.</b> Responses never carry request values, and no exception raised by this type
+41: /// includes query text or credential material.
+42: /// </para>
+43: /// </remarks>
+44: public sealed class BoltConnectionSession : IDisposable
+45: {
+46:     private const int TelemetryMinApi = 0;
+47:     private const int TelemetryMaxApi = 3;
+48: 
+49:     private static readonly PackStreamMap EmptyMap =
+50:         new(Array.Empty<KeyValuePair<string, PackStreamValue?>>());
+51: 
+52:     private readonly BoltSessionOptions _options;
+53:     private readonly BoltMessageCodec _codec;
+54:     private readonly IBoltOperationProvider _provider;
+55:     private BoltConnectionState _state = BoltConnectionState.Negotiation;
+56:     private IBoltOperation? _operation;
+57:     private IReadOnlyList<PackStreamValue?>? _pendingRow;
+58:     private int _fieldCount;
+59:     private bool _disposed;
+60: 
+61:     public BoltConnectionSession(
+62:         IBoltOperationProvider provider,
+63:         BoltSessionOptions? options = null,
+64:         BoltMessageCodec? codec = null)
+65:     {
+66:         ArgumentNullException.ThrowIfNull(provider);
+67:         _provider = provider;
+68:         _options = options ?? BoltSessionOptions.Default;
+69:         _codec = codec ?? new BoltMessageCodec();
+70: 
+71:         if (_options.MaxBatchSize <= 0)
+72:         {
+73:             throw new ArgumentOutOfRangeException(nameof(options), "MaxBatchSize must be positive.");
+74:         }
+75: 
+76:         if (_options.MaxRecordsPerResponse <= 0)
+77:         {
+78:             throw new ArgumentOutOfRangeException(nameof(options), "MaxRecordsPerResponse must be positive.");
+79:         }
+80:     }
+81: 
+82:     /// <summary>The current connection state.</summary>
+83:     public BoltConnectionState State => _state;
+84: 
+85:     /// <summary>True when the session is terminal and processes no further messages.</summary>
+86:     public bool IsDefunct => _state == BoltConnectionState.Defunct;
+87: 
+88:     /// <summary>True while an auto-commit result is owned by the session.</summary>
+89:     public bool HasActiveOperation => _operation is not null;
+90: 
+91:     /// <summary>
+92:     /// The most recent provider <see cref="IBoltOperation.Dispose"/> failure, or <see langword="null"/>
+93:     /// when no cleanup attempt has failed. Disposal failures are contained (never thrown out of this
+94:     /// API) and recorded here as a diagnostic; they never prevent a terminal transition and never
+95:     /// change a primary protocol outcome. A failed retirement is irreversible (B3-B-R2): where the
+96:     /// session would otherwise continue or recover, it becomes <see cref="BoltConnectionState.Defunct"/>
+97:     /// instead of falsely reporting recovery, and the diagnostic survives that transition.
+98:     /// </summary>
+99:     public Exception? LastCleanupFailure { get; private set; }
+100: 
+101:     /// <summary>
+102:     /// Processes one complete, unchunked client request payload: decodes it with the B3-A codec and
+103:     /// handles it. Malformed, unknown and unsupported payloads produce a terminal protocol-error
+104:     /// response and transition the connection to <see cref="BoltConnectionState.Defunct"/>; they are
+105:     /// never interpreted as a valid request.
+106:     /// </summary>
+107:     public BoltSessionResult ReceiveBytes(ReadOnlyMemory<byte> payload)
+108:     {
+109:         ThrowIfDisposed();
+110: 
+111:         if (_state == BoltConnectionState.Defunct)
+112:         {
+113:             return BoltSessionResult.None(BoltConnectionState.Defunct, shouldClose: true);
+114:         }
+115: 
+116:         BoltRequest request;
+117:         try
+118:         {
+119:             request = _codec.DecodeRequest(payload);
+120:         }
+121:         catch (BoltMessageException ex) when (ex.Category == BoltMessageErrorCategory.UnsupportedMessage)
+122:         {
+123:             // BEGIN/COMMIT/ROLLBACK/ROUTE are valid Bolt 5.8 signatures that this bounded server does
+124:             // not implement. They are refused deterministically â€” never fabricated as SUCCESS.
+125:             return FailTerminal(UnsupportedMessageFailure());
+126:         }
+127:         catch (BoltMessageException)
+128:         {
+129:             // Malformed, unknown, wrong-arity or wrong-typed input: fatal protocol error. No request
+130:             // values are echoed.
+131:             return FailTerminal(ProtocolViolationFailure());
+132:         }
+133: 
+134:         return Receive(request);
+135:     }
+136: 
+137:     /// <summary>Processes one validated request object.</summary>
+138:     public BoltSessionResult Receive(BoltRequest request)
+139:     {
+140:         ThrowIfDisposed();
+141:         ArgumentNullException.ThrowIfNull(request);
+142: 
+143:         if (_state == BoltConnectionState.Defunct)
+144:         {
+145:             return BoltSessionResult.None(BoltConnectionState.Defunct, shouldClose: true);
+146:         }
+147: 
+148:         return request switch
+149:         {
+150:             HelloRequest hello => HandleHello(hello),
+151:             LogonRequest logon => HandleLogon(logon),
+152:             LogoffRequest => HandleLogoff(),
+153:             RunRequest run => HandleRun(run),
+154:             PullRequest pull => HandlePull(pull),
+155:             DiscardRequest discard => HandleDiscard(discard),
+156:             ResetRequest => HandleReset(),
+157:             GoodbyeRequest => HandleGoodbye(),
+158:             TelemetryRequest telemetry => HandleTelemetry(telemetry),
+159:             _ => FailTerminal(ProtocolViolationFailure()),
+160:         };
+161:     }
+162: 
+163:     /// <summary>
+164:     /// Processes an ordered batch of requests (pipelining). Processing stops at the first terminal
+165:     /// outcome; subsequent requests in the batch are not processed. The batch is bounded by
+166:     /// <see cref="BoltSessionOptions.MaxBatchSize"/>.
+167:     /// </summary>
+168:     public IReadOnlyList<BoltResponseEnvelope> ReceiveBatch(IReadOnlyList<BoltRequest> requests)
+169:     {
+170:         ThrowIfDisposed();
+171:         ArgumentNullException.ThrowIfNull(requests);
+172: 
+173:         if (requests.Count > _options.MaxBatchSize)
+174:         {
+175:             throw new ArgumentOutOfRangeException(
+176:                 nameof(requests), requests.Count,
+177:                 $"A batch may contain at most {_options.MaxBatchSize} requests.");
+178:         }
+179: 
+180:         var envelopes = new List<BoltResponseEnvelope>(requests.Count);
+181:         foreach (var request in requests)
+182:         {
+183:             var result = Receive(request);
+184:             envelopes.Add(new BoltResponseEnvelope(request.Signature, result.Responses, result.State));
+185:             if (result.ShouldClose)
+186:             {
+187:                 break;
+188:             }
+189:         }
+190: 
+191:         return envelopes;
+192:     }
+193: 
+194:     /// <summary>
+195:     /// Signals an unexpected transport disconnection or an orderly shutdown. Disposes the
+196:     /// outstanding operation, clears any authentication context and makes the session terminal.
+197:     /// Idempotent; performs no I/O and emits no response.
+198:     /// </summary>
+199:     public void Disconnect()
+200:     {
+201:         if (_state == BoltConnectionState.Defunct)
+202:         {
+203:             return;
+204:         }
+205: 
+206:         // Terminal state is established independently of whether provider cleanup succeeds; a
+207:         // throwing provider Dispose is contained and recorded (F-01).
+208:         _ = DetachAndDisposeOperation();
+209:         _state = BoltConnectionState.Defunct;
+210:     }
+211: 
+212:     /// <inheritdoc/>
+213:     public void Dispose()
+214:     {
+215:         if (_disposed)
+216:         {
+217:             return;
+218:         }
+219: 
+220:         try
+221:         {
+222:             Disconnect();
+223:         }
+224:         finally
+225:         {
+226:             // Idempotency must hold even if a cleanup path were to misbehave.
+227:             _disposed = true;
+228:         }
+229:     }
+230: 
+231:     // ---- Handlers ----
+232: 
+233:     private BoltSessionResult HandleHello(HelloRequest hello)
+234:     {
+235:         if (_state != BoltConnectionState.Negotiation)
+236:         {
+237:             return FailTerminal(ProtocolViolationFailure());
+238:         }
+239: 
+240:         var success = SuccessResponse.FromEntries(
+241:             ("server", new PackStreamString(_options.ServerName)),
+242:             ("connection_id", new PackStreamString(_options.ConnectionId)),
+243:             ("hints", EmptyMap));
+244: 
+245:         _state = BoltConnectionState.Authentication;
+246:         return BoltSessionResult.Single(_state, success);
+247:     }
+248: 
+249:     private BoltSessionResult HandleLogon(LogonRequest logon)
+250:     {
+251:         if (_state != BoltConnectionState.Authentication)
+252:         {
+253:             return FailTerminal(ProtocolViolationFailure());
+254:         }
+255: 
+256:         bool verified;
+257:         try
+258:         {
+259:             verified = _options.Verifier?.Verify(logon) ?? false;
+260:         }
+261:         catch (Exception)
+262:         {
+263:             // A throwing verifier is an unexpected failure and fails closed; no exception detail is
+264:             // surfaced (it could contain credential material).
+265:             verified = false;
+266:         }
+267: 
+268:         if (!verified)
+269:         {
+270:             // Authentication failure: documented Bolt 5.8 FAILURE followed by immediate closure.
+271:             return FailTerminal(AuthenticationFailure());
+272:         }
+273: 
+274:         _state = BoltConnectionState.Ready;
+275:         return BoltSessionResult.Single(_state, SuccessResponse.Empty);
+276:     }
+277: 
+278:     private BoltSessionResult HandleLogoff()
+279:     {
+280:         switch (_state)
+281:         {
+282:             case BoltConnectionState.Ready:
+283:                 // Clears the authenticated session context; queries require another LOGON.
+284:                 _state = BoltConnectionState.Authentication;
+285:                 return BoltSessionResult.Single(_state, SuccessResponse.Empty);
+286: 
+287:             case BoltConnectionState.Failed:
+288:                 return BoltSessionResult.Single(_state, IgnoredResponse.Instance);
+289: 
+290:             case BoltConnectionState.Interrupted:
+291:                 return BoltSessionResult.Single(_state, IgnoredResponse.Instance);
+292: 
+293:             default:
+294:                 // LOGOFF outside READY: the message description requires FAILURE followed by
+295:                 // immediate closure. (The version-5 appendix additionally lists a READY failure
+296:                 // branch into FAILED; this engine has no failing LOGOFF path, so that branch is
+297:                 // unreachable. Recorded as a resolved specification ambiguity.)
+298:                 return FailTerminal(ProtocolViolationFailure());
+299:         }
+300:     }
+301: 
+302:     private BoltSessionResult HandleRun(RunRequest run)
+303:     {
+304:         switch (_state)
+305:         {
+306:             case BoltConnectionState.Failed:
+307:             case BoltConnectionState.Interrupted:
+308:                 return BoltSessionResult.Single(_state, IgnoredResponse.Instance);
+309: 
+310:             case BoltConnectionState.Ready:
+311:                 break;
+312: 
+313:             default:
+314:                 return FailTerminal(ProtocolViolationFailure());
+315:         }
+316: 
+317:         IBoltOperation? operation;
+318:         try
+319:         {
+320:             operation = _provider.Prepare(run);
+321:         }
+322:         catch (Exception)
+323:         {
+324:             return FailRecoverable(ProviderFailure());
+325:         }
+326: 
+327:         if (operation is null)
+328:         {
+329:             return FailRecoverable(UnsupportedQueryFailure());
+330:         }
+331: 
+332:         // B3-B-R2: session ownership starts the moment Prepare returns a handle, before any
+333:         // provider-controlled metadata is touched (INV-01). Every later failure therefore retires
+334:         // this handle through the single session retirement path (INV-02). No provider metadata is
+335:         // read until that ownership is established.
+336:         _operation = operation;
+337:         _pendingRow = null;
+338: 
+339:         // The field metadata is acquired and snapshotted exactly once, inside the ownership
+340:         // boundary; no RUN response is ever built from a second provider read (INV-07).
+341:         if (!TryCaptureFields(operation, out var fields))
+342:         {
+343:             // Invalid or unavailable metadata is a provider failure: never publish a cursor and
+344:             // never enter STREAMING. Retirement is attempted exactly once; a failed retirement is
+345:             // irreversible, so the session fails closed rather than recoverable (R2-F02).
+346:             return FailRecoverable(ProviderFailure());
+347:         }
+348: 
+349:         _fieldCount = fields.Items.Count;
+350:         _state = BoltConnectionState.Streaming;
+351:         return BoltSessionResult.Single(
+352:             _state,
+353:             SuccessResponse.FromEntries(("fields", fields)));
+354:     }
+355: 
+356:     private BoltSessionResult HandlePull(PullRequest pull)
+357:     {
+358:         if (_state == BoltConnectionState.Failed || _state == BoltConnectionState.Interrupted)
+359:         {
+360:             return BoltSessionResult.Single(_state, IgnoredResponse.Instance);
+361:         }
+362: 
+363:         if (_state != BoltConnectionState.Streaming || _operation is null)
+364:         {
+365:             return FailTerminal(ProtocolViolationFailure());
+366:         }
+367: 
+368:         var responses = new List<BoltResponse>();
+369:         try
+370:         {
+371:             var requested = RequestedCount(pull.N);
+372:             for (var i = 0; i < requested; i++)
+373:             {
+374:                 var row = NextRow();
+375:                 if (row is null)
+376:                 {
+377:                     return CompleteResult(responses, hasMore: false);
+378:                 }
+379: 
+380:                 // NC-05b: the session validates cross-message column count against the RUN-time
+381:                 // metadata snapshot, never by re-reading the provider (B3-B-R2 / INV-07).
+382:                 if (row.Count != _fieldCount)
+383:                 {
+384:                     // Rows already emitted before the bad row stay in the response stream.
+385:                     return FailRecoverable(RowShapeFailure(), responses);
+386:                 }
+387: 
+388:                 responses.Add(RecordResponse.FromValues(row.ToArray()));
+389:             }
+390: 
+391:             if (NextRow() is { } pending)
+392:             {
+393:                 _pendingRow = pending;
+394:                 return BoltSessionResult.Of(_state, Append(responses, HasMoreSuccess(true)));
+395:             }
+396: 
+397:             return CompleteResult(responses, hasMore: false);
+398:         }
+399:         catch (Exception)
+400:         {
+401:             // A mid-stream provider failure emits the records already read, then FAILURE.
+402:             return FailRecoverable(ProviderFailure(), responses);
+403:         }
+404:     }
+405: 
+406:     private BoltSessionResult HandleDiscard(DiscardRequest discard)
+407:     {
+408:         if (_state == BoltConnectionState.Failed || _state == BoltConnectionState.Interrupted)
+409:         {
+410:             return BoltSessionResult.Single(_state, IgnoredResponse.Instance);
+411:         }
+412: 
+413:         if (_state != BoltConnectionState.Streaming || _operation is null)
+414:         {
+415:             return FailTerminal(ProtocolViolationFailure());
+416:         }
+417: 
+418:         try
+419:         {
+420:             var requested = RequestedCount(discard.N);
+421:             for (var i = 0; i < requested; i++)
+422:             {
+423:                 if (NextRow() is null)
+424:                 {
+425:                     return CompleteResult(Array.Empty<BoltResponse>(), hasMore: false);
+426:                 }
+427:             }
+428: 
+429:             if (NextRow() is { } pending)
+430:             {
+431:                 _pendingRow = pending;
+432:                 return BoltSessionResult.Single(_state, HasMoreSuccess(true));
+433:             }
+434: 
+435:             return CompleteResult(Array.Empty<BoltResponse>(), hasMore: false);
+436:         }
+437:         catch (Exception)
+438:         {
+439:             return FailRecoverable(ProviderFailure());
+440:         }
+441:     }
+442: 
+443:     private BoltSessionResult HandleReset()
+444:     {
+445:         switch (_state)
+446:         {
+447:             case BoltConnectionState.Ready:
+448:             case BoltConnectionState.Streaming:
+449:             case BoltConnectionState.Failed:
+450:             case BoltConnectionState.Interrupted:
+451:                 break;
+452: 
+453:             default:
+454:                 // RESET before the connection reaches READY: FAILURE followed by immediate closure.
+455:                 return FailTerminal(ProtocolViolationFailure());
+456:         }
+457: 
+458:         // Model the <INTERRUPT> signal, cancel and dispose outstanding work, then recover.
+459:         _state = BoltConnectionState.Interrupted;
+460:         if (DetachAndDisposeOperation() is not null)
+461:         {
+462:             // Cleanup failure makes safe recovery impossible: fail closed (unchanged from Q1).
+463:             return FailTerminal(ProviderFailure());
+464:         }
+465: 
+466:         _state = BoltConnectionState.Ready;
+467:         return BoltSessionResult.Single(_state, SuccessResponse.Empty);
+468:     }
+469: 
+470:     private BoltSessionResult HandleGoodbye()
+471:     {
+472:         // Graceful termination: no response is defined, outstanding work is released, connection ends.
+473:         // DEFUNCT is guaranteed even when provider cleanup throws; no protocol response is fabricated.
+474:         _ = DetachAndDisposeOperation();
+475:         _state = BoltConnectionState.Defunct;
+476:         return BoltSessionResult.None(_state, shouldClose: true);
+477:     }
+478: 
+479:     private BoltSessionResult HandleTelemetry(TelemetryRequest telemetry)
+480:     {
+481:         switch (_state)
+482:         {
+483:             case BoltConnectionState.Failed:
+484:             case BoltConnectionState.Interrupted:
+485:                 return BoltSessionResult.Single(_state, IgnoredResponse.Instance);
+486: 
+487:             case BoltConnectionState.Ready:
+488:                 if (telemetry.Api is >= TelemetryMinApi and <= TelemetryMaxApi)
+489:                 {
+490:                     return BoltSessionResult.Single(_state, SuccessResponse.Empty);
+491:                 }
+492: 
+493:                 return FailRecoverable(TelemetryFailure());
+494: 
+495:             default:
+496:                 return FailTerminal(ProtocolViolationFailure());
+497:         }
+498:     }
+499: 
+500:     // ---- Helpers ----
+501: 
+502:     private int RequestedCount(long n)
+503:     {
+504:         if (n < 0)
+505:         {
+506:             return _options.MaxRecordsPerResponse;
+507:         }
+508: 
+509:         return (int)Math.Min(n, _options.MaxRecordsPerResponse);
+510:     }
+511: 
+512:     private IReadOnlyList<PackStreamValue?>? NextRow()
+513:     {
+514:         if (_pendingRow is not null)
+515:         {
+516:             var pending = _pendingRow;
+517:             _pendingRow = null;
+518:             return pending;
+519:         }
+520: 
+521:         return _operation?.ReadRow();
+522:     }
+523: 
+524:     /// <summary>
+525:     /// Acquires the provider's field metadata once and converts it to a session-owned immutable
+526:     /// snapshot. Returns <see langword="false"/> when the provider returns null metadata, returns a
+527:     /// null field name, or throws while the metadata is read (including <c>Count</c> or indexer
+528:     /// access on a custom or deferred list). B3-B-R2: this is the only place the session reads
+529:     /// <see cref="IBoltOperation.Fields"/>.
+530:     /// </summary>
+531:     private static bool TryCaptureFields(
+532:         IBoltOperation operation,
+533:         [NotNullWhen(true)] out PackStreamList? fields)
+534:     {
+535:         fields = null;
+536:         try
+537:         {
+538:             var names = operation.Fields;
+539:             if (names is null)
+540:             {
+541:                 return false;
+542:             }
+543: 
+544:             var values = new PackStreamValue?[names.Count];
+545:             for (var i = 0; i < values.Length; i++)
+546:             {
+547:                 var name = names[i];
+548:                 if (name is null)
+549:                 {
+550:                     return false;
+551:                 }
+552: 
+553:                 values[i] = new PackStreamString(name);
+554:             }
+555: 
+556:             fields = new PackStreamList(values);
+557:             return true;
+558:         }
+559:         catch (Exception)
+560:         {
+561:             fields = null;
+562:             return false;
+563:         }
+564:     }
+565: 
+566:     private BoltSessionResult CompleteResult(IReadOnlyList<BoltResponse> responses, bool hasMore)
+567:     {
+568:         var summary = hasMore ? HasMoreSuccess(true) : SuccessResponse.Empty;
+569:         if (DetachAndDisposeOperation() is not null)
+570:         {
+571:             // B3-B-R2 (R2-F01): the exhausted result could not be released. The failed retirement is
+572:             // irreversible: report the completion as FAILURE (never SUCCESS) and make the connection
+573:             // permanently unusable instead of recoverable.
+574:             _state = BoltConnectionState.Defunct;
+575:             return BoltSessionResult.Of(_state, Append(responses, ProviderFailure()), shouldClose: true);
+576:         }
+577: 
+578:         _state = BoltConnectionState.Ready;
+579:         return BoltSessionResult.Of(_state, Append(responses, summary));
+580:     }
+581: 
+582:     private static BoltResponse HasMoreSuccess(bool hasMore) =>
+583:         SuccessResponse.FromEntries(("has_more", new PackStreamBoolean(hasMore)));
+584: 
+585:     private static IReadOnlyList<BoltResponse> Append(IReadOnlyList<BoltResponse> responses, BoltResponse terminal)
+586:     {
+587:         var list = new List<BoltResponse>(responses.Count + 1);
+588:         list.AddRange(responses);
+589:         list.Add(terminal);
+590:         return list;
+591:     }
+592: 
+593:     /// <summary>
+594:     /// Detaches and disposes the active operation exactly once. A throwing provider
+595:     /// <see cref="IBoltOperation.Dispose"/> is contained: the failure is recorded and returned, never
+596:     /// propagated. Returns <see langword="null"/> when there was nothing to dispose or disposal
+597:     /// succeeded. A failed attempt is not retried.
+598:     /// </summary>
+599:     private Exception? DetachAndDisposeOperation()
+600:     {
+601:         var operation = _operation;
+602:         _operation = null;
+603:         _pendingRow = null;
+604:         _fieldCount = 0;
+605:         return RecordCleanupFailure(DisposeGuarded(operation));
+606:     }
+607: 
+608:     /// <summary>Disposes one operation, containing any provider failure.</summary>
+609:     private static Exception? DisposeGuarded(IBoltOperation? operation)
+610:     {
+611:         if (operation is null)
+612:         {
+613:             return null;
+614:         }
+615: 
+616:         try
+617:         {
+618:             operation.Dispose();
+619:             return null;
+620:         }
+621:         catch (Exception ex)
+622:         {
+623:             return ex;
+624:         }
+625:     }
+626: 
+627:     private Exception? RecordCleanupFailure(Exception? failure)
+628:     {
+629:         if (failure is not null)
+630:         {
+631:             LastCleanupFailure = failure;
+632:         }
+633: 
+634:         return failure;
+635:     }
+636: 
+637:     private BoltSessionResult FailTerminal(BoltResponse failure)
+638:     {
+639:         // DEFUNCT is guaranteed regardless of the cleanup outcome (F-01).
+640:         _ = DetachAndDisposeOperation();
+641:         _state = BoltConnectionState.Defunct;
+642:         return BoltSessionResult.Single(_state, failure, shouldClose: true);
+643:     }
+644: 
+645:     /// <summary>
+646:     /// A recoverable execution failure: one FAILURE, enter FAILED, connection stays open — unless
+647:     /// retirement of an owned operation fails, in which case the session fails closed (B3-B-R2).
+648:     /// </summary>
+649:     private BoltSessionResult FailRecoverable(BoltResponse failure, IReadOnlyList<BoltResponse>? priorResponses = null)
+650:     {
+651:         // Cleanup failure never suppresses the primary protocol failure (F-01 / INV-08). It does,
+652:         // however, make recovery impossible (R2-F01 / INV-04): the FAILURE is still reported exactly
+653:         // once, and the session becomes terminal instead of recoverable (INV-05 / INV-09).
+654:         var responses = priorResponses is null ? new[] { failure } : Append(priorResponses, failure);
+655:         if (DetachAndDisposeOperation() is not null)
+656:         {
+657:             _state = BoltConnectionState.Defunct;
+658:             return BoltSessionResult.Of(_state, responses, shouldClose: true);
+659:         }
+660: 
+661:         _state = BoltConnectionState.Failed;
+662:         return BoltSessionResult.Of(_state, responses, shouldClose: false);
+663:     }
+664: 
+665:     private static FailureResponse AuthenticationFailure() => FailureResponse.FromEntries(
+666:         ("gql_status", new PackStreamString("50N42")),
+667:         ("neo4j_code", new PackStreamString("Neo.ClientError.Security.Unauthorized")),
+668:         ("description", new PackStreamString("The client is unauthorized due to authentication failure.")),
+669:         ("diagnostic_record", EmptyMap));
+670: 
+671:     private static FailureResponse UnsupportedQueryFailure() => FailureResponse.FromEntries(
+672:         ("gql_status", new PackStreamString("50N42")),
+673:         ("neo4j_code", new PackStreamString("Neo.ClientError.Request.Invalid")),
+674:         ("description", new PackStreamString("The requested operation is not supported by this server.")),
+675:         ("diagnostic_record", EmptyMap));
+676: 
+677:     private static FailureResponse ProviderFailure() => FailureResponse.FromEntries(
+678:         ("gql_status", new PackStreamString("50N00")),
+679:         ("neo4j_code", new PackStreamString("Neo.DatabaseError.General.UnknownError")),
+680:         ("description", new PackStreamString("The operation provider failed while executing the request.")),
+681:         ("diagnostic_record", EmptyMap));
+682: 
+683:     private static FailureResponse RowShapeFailure() => FailureResponse.FromEntries(
+684:         ("gql_status", new PackStreamString("50N42")),
+685:         ("neo4j_code", new PackStreamString("Neo.DatabaseError.General.UnknownError")),
+686:         ("description", new PackStreamString("A result row does not match the announced result fields.")),
+687:         ("diagnostic_record", EmptyMap));
+688: 
+689:     // Bolt 5.8: an integer identifier outside the defined domain is an invalid *value* (the
+690:     // specification's own TELEMETRY 9001 example answers 50N00 / General.UnknownError); 22G03 is
+691:     // reserved for an invalid value *type*, which B3-A rejects as a malformed message (F-02).
+692:     private static FailureResponse TelemetryFailure() => FailureResponse.FromEntries(
+693:         ("gql_status", new PackStreamString("50N00")),
+694:         ("neo4j_code", new PackStreamString("Neo.DatabaseError.General.UnknownError")),
+695:         ("description", new PackStreamString("The telemetry API identifier is not valid for this server.")),
+696:         ("diagnostic_record", EmptyMap));
+697: 
+698:     private static FailureResponse UnsupportedMessageFailure() => FailureResponse.FromEntries(
+699:         ("gql_status", new PackStreamString("08N06")),
+700:         ("neo4j_code", new PackStreamString("Neo.ClientError.Request.Invalid")),
+701:         ("description", new PackStreamString("Explicit transactions and routing are not supported by this server.")),
+702:         ("diagnostic_record", EmptyMap));
+703: 
+704:     private static FailureResponse ProtocolViolationFailure() => FailureResponse.FromEntries(
+705:         ("gql_status", new PackStreamString("08N06")),
+706:         ("neo4j_code", new PackStreamString("Neo.ClientError.Request.Invalid")),
+707:         ("description", new PackStreamString("The message cannot be handled in the current connection state.")),
+708:         ("diagnostic_record", EmptyMap));
+709: 
+710:     private void ThrowIfDisposed() =>
+711:         ObjectDisposedException.ThrowIf(_disposed, this);
+712: }

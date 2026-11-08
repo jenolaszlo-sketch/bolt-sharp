@@ -1,0 +1,30 @@
+[
+    {
+        "path":  "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+        "sha256":  "5fa1028ef81ab260a52241f9c1e86f474ece5fc0287a525bb652f8c595ee5d62"
+    },
+    {
+        "path":  "src/BoltSharp/Sessions/BoltSessionOptions.cs",
+        "sha256":  "ff59dd039ada08223985d516fce0ab8744e66c4682aea51ef66747be25101a87"
+    },
+    {
+        "path":  "src/BoltSharp/Sessions/BoltSessionResult.cs",
+        "sha256":  "151347efc7d735fc6d4309402ef8f61b2efba17130e77fd0b90dcc9e69529f52"
+    },
+    {
+        "path":  "src/BoltSharp/Sessions/BoltConnectionState.cs",
+        "sha256":  "21b95b965e3f76c767466e5da446dd2c80a7f0c7c49f145f4cddb00ccd487348"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Sessions/ResourceLifecycleRemediationTests.cs",
+        "sha256":  "e395ac0f827c67f7ffb8cb3f7a10ac992e1eefe53633b8d36e5c561135870dde"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs",
+        "sha256":  "7de3651b54e2e467b3309cded41920bb504a43c58ecd3f23a149d7b185b991de"
+    },
+    {
+        "path":  "tests/BoltSharp.Tests/Sessions/SessionTestHarness.cs",
+        "sha256":  "f71ac1c5b2b3bcd9fa68bd5bc9f42a600f16b75ec465f40eaa144d47aa3da804"
+    }
+]

@@ -1,0 +1,3 @@
+COMMAND: dotnet C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q3-20261108\artifacts\bin\SessionProbe\debug\B3BQ1.SessionProbe.dll C:\Users\Laszlos\source\repos\Solo\reviews\boltsharp-b3b-q3-20261108\evidence\q1-probe-after
+checks=118 failed=1 findings=0
+EXIT: 4
