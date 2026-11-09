@@ -1,0 +1,3170 @@
+﻿[
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/b3c-backend.trx",
+        "expected":  "09cc89d12fd9fa550838d90e929bd68dc3cedf2a6a6cf6f552d04fbc7b2d2c52",
+        "actual":  "09cc89d12fd9fa550838d90e929bd68dc3cedf2a6a6cf6f552d04fbc7b2d2c52",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/backend-tests.log",
+        "expected":  "c02c6c8ae1020bf17866f097c679976a269e7c3702d90bb9042e2eaff311032b",
+        "actual":  "c02c6c8ae1020bf17866f097c679976a269e7c3702d90bb9042e2eaff311032b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/baseline.json",
+        "expected":  "ca9967c21d580d448934a1ea71e7e79f601b2203c6be6526c25a2ee7c49903e2",
+        "actual":  "ca9967c21d580d448934a1ea71e7e79f601b2203c6be6526c25a2ee7c49903e2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/core.trx",
+        "expected":  "011b0aba2715e08103de4476416abb023fd664d4485a2e3a64c5fbf6acc35719",
+        "actual":  "011b0aba2715e08103de4476416abb023fd664d4485a2e3a64c5fbf6acc35719",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/core-build.log",
+        "expected":  "8de70c7f1a2f07771781dc9b1fd9e0f3f97c48fcdc3b157394118a2b4c92e799",
+        "actual":  "8de70c7f1a2f07771781dc9b1fd9e0f3f97c48fcdc3b157394118a2b4c92e799",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/core-tests.log",
+        "expected":  "48c6e6dec83dce2faaae59d2f417930013604e3f1c2f4c0f7240e9fbfd64d13e",
+        "actual":  "48c6e6dec83dce2faaae59d2f417930013604e3f1c2f4c0f7240e9fbfd64d13e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/environment.txt",
+        "expected":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "actual":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/format-check.log",
+        "expected":  "32fd50f0195078bc11f98e8be34ff6bdcf1fa2dc7e36e691368e9e039e87bece",
+        "actual":  "32fd50f0195078bc11f98e8be34ff6bdcf1fa2dc7e36e691368e9e039e87bece",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/historical-integrity.json",
+        "expected":  "f5ae60a85bc98c1e1eee610e8c2af4404f2d7bcf4a8caae76cfd87001203eb17",
+        "actual":  "f5ae60a85bc98c1e1eee610e8c2af4404f2d7bcf4a8caae76cfd87001203eb17",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/historical-integrity-summary.txt",
+        "expected":  "25762164a0f63813d1b2279c51dc66bb75af0ffb0514866a71ba1024c8f43dcb",
+        "actual":  "25762164a0f63813d1b2279c51dc66bb75af0ffb0514866a71ba1024c8f43dcb",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/integration.trx",
+        "expected":  "f2254309cc7c2d18cceebf3c6c18718c4df7855b6a7d9a87fc231c59f858d203",
+        "actual":  "f2254309cc7c2d18cceebf3c6c18718c4df7855b6a7d9a87fc231c59f858d203",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/integration-build.log",
+        "expected":  "32c37cebe6f8531cf340d1ba14c5e496b160af580cdab3e0339e13487debf6e5",
+        "actual":  "32c37cebe6f8531cf340d1ba14c5e496b160af580cdab3e0339e13487debf6e5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/integration-tests.log",
+        "expected":  "39c8b6b7a0fe4f68c3ad4c0c9a9479cde7fb85277c8a366962aacbad7121338f",
+        "actual":  "39c8b6b7a0fe4f68c3ad4c0c9a9479cde7fb85277c8a366962aacbad7121338f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/message.trx",
+        "expected":  "56950ad3c4aeeb7cee0b0a9ae7abdccf6bf0ba46eb5662ebe9208cad519d7772",
+        "actual":  "56950ad3c4aeeb7cee0b0a9ae7abdccf6bf0ba46eb5662ebe9208cad519d7772",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/message-tests.log",
+        "expected":  "561a3d86f67b89857ffc323ab8d9d404a6a591f41840aeaf769e5ef8cfd683da",
+        "actual":  "561a3d86f67b89857ffc323ab8d9d404a6a591f41840aeaf769e5ef8cfd683da",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/owner-decisions-diff.txt",
+        "expected":  "9736950ccf3d16d695f8dc05861d3b735e361c66b2de837f820e9d0fa2262512",
+        "actual":  "9736950ccf3d16d695f8dc05861d3b735e361c66b2de837f820e9d0fa2262512",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe.log",
+        "expected":  "3b205180d38a0fc2cba42111d40f7b3a5941889bd14e72b775348b2e76c3f583",
+        "actual":  "3b205180d38a0fc2cba42111d40f7b3a5941889bd14e72b775348b2e76c3f583",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-build.log",
+        "expected":  "045413b6bcadee333bc9bf216d80892c58b1120dc22adc13e7ec1870fedefe1f",
+        "actual":  "045413b6bcadee333bc9bf216d80892c58b1120dc22adc13e7ec1870fedefe1f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-determinism.txt",
+        "expected":  "926e5fafa40eba643a6550aae0bb8f5b6b5280ed8ea3d7b978f13c9e8b036f54",
+        "actual":  "926e5fafa40eba643a6550aae0bb8f5b6b5280ed8ea3d7b978f13c9e8b036f54",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-repeat.log",
+        "expected":  "33df4f31f37f694a8bc40fa57f007c65e36e4a2dd47fb130264bb67fc20d3c9a",
+        "actual":  "33df4f31f37f694a8bc40fa57f007c65e36e4a2dd47fb130264bb67fc20d3c9a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-results.json",
+        "expected":  "88136b579522c12c503fba1c574dd1ff6aa74f539f1744ca3b8b52bd3641f690",
+        "actual":  "88136b579522c12c503fba1c574dd1ff6aa74f539f1744ca3b8b52bd3641f690",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-results-repeat.json",
+        "expected":  "88136b579522c12c503fba1c574dd1ff6aa74f539f1744ca3b8b52bd3641f690",
+        "actual":  "88136b579522c12c503fba1c574dd1ff6aa74f539f1744ca3b8b52bd3641f690",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/README.md",
+        "expected":  "48deeae25a0cbfba1d25dde83b85e9eedf20560ac13695425b736b4c30a0e466",
+        "actual":  "48deeae25a0cbfba1d25dde83b85e9eedf20560ac13695425b736b4c30a0e466",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/reviewed-inputs.json",
+        "expected":  "3587aa0df6ad9c0cab8c7cb8553587658712cbd9d9496d02933d8c43e2710570",
+        "actual":  "3587aa0df6ad9c0cab8c7cb8553587658712cbd9d9496d02933d8c43e2710570",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/Run-B3CQ1.ps1",
+        "expected":  "81c271ba202b7e75e0e6fc24ec26ddb3116c43eff2707ab37dec481a7fe52a6a",
+        "actual":  "81c271ba202b7e75e0e6fc24ec26ddb3116c43eff2707ab37dec481a7fe52a6a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/session.trx",
+        "expected":  "b038cd24ec52f827115c07f1c16a5ce31181ae407f13bea482f67d1651e5c140",
+        "actual":  "b038cd24ec52f827115c07f1c16a5ce31181ae407f13bea482f67d1651e5c140",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/session-tests.log",
+        "expected":  "f77905d7f243f6a86e5855a00322d218227c26d00ec46a98233a91e2c5e7c826",
+        "actual":  "f77905d7f243f6a86e5855a00322d218227c26d00ec46a98233a91e2c5e7c826",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-Q1/t04-fixture-provenance.txt",
+        "expected":  "d1e28eb387536bf5a632498ad323c4503819d049b14736fe9415c0352b80e593",
+        "actual":  "d1e28eb387536bf5a632498ad323c4503819d049b14736fe9415c0352b80e593",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-C-Q1-independent-qualification.md",
+        "expected":  "cc74e68876660d888c3d8fb0c5f49c831f2065c104b1288fe91ed6926268a0fb",
+        "actual":  "cc74e68876660d888c3d8fb0c5f49c831f2065c104b1288fe91ed6926268a0fb",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/b3c-backend.trx",
+        "expected":  "63fbac475585701f058526a59c8fe7888f3a6394614a38215afc20b991f15d4b",
+        "actual":  "63fbac475585701f058526a59c8fe7888f3a6394614a38215afc20b991f15d4b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/backend-tests.log",
+        "expected":  "f95096b42efc703332e2bd4bde475a45854d1646d2c854e675f51ff149294d72",
+        "actual":  "f95096b42efc703332e2bd4bde475a45854d1646d2c854e675f51ff149294d72",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/baseline.json",
+        "expected":  "f69f4fa9a5c399c89cf8aac471ca1d2871bc44d83c7b422e23b823687fa26eee",
+        "actual":  "f69f4fa9a5c399c89cf8aac471ca1d2871bc44d83c7b422e23b823687fa26eee",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/core.trx",
+        "expected":  "3cad7b23b39492d8cd406fb0339f012aa439c13588231f1e1694a3c0dcd4a11a",
+        "actual":  "3cad7b23b39492d8cd406fb0339f012aa439c13588231f1e1694a3c0dcd4a11a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/core-build.log",
+        "expected":  "3fdabb3f266d7c8497c3375b4f932a0b6d26c56b534aaeef963c6e7103c4e229",
+        "actual":  "3fdabb3f266d7c8497c3375b4f932a0b6d26c56b534aaeef963c6e7103c4e229",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/core-tests.log",
+        "expected":  "529fb5feab6fc0a28967cf805066c9d450d1a3914f70210393426864c908d42c",
+        "actual":  "529fb5feab6fc0a28967cf805066c9d450d1a3914f70210393426864c908d42c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/environment.txt",
+        "expected":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "actual":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/format-check.log",
+        "expected":  "32fd50f0195078bc11f98e8be34ff6bdcf1fa2dc7e36e691368e9e039e87bece",
+        "actual":  "32fd50f0195078bc11f98e8be34ff6bdcf1fa2dc7e36e691368e9e039e87bece",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/historical-integrity.json",
+        "expected":  "1fdfa023a2c1bc38235f3df05e728ae473cf1e0610ec02b4b57d5417ed2aa813",
+        "actual":  "1fdfa023a2c1bc38235f3df05e728ae473cf1e0610ec02b4b57d5417ed2aa813",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/historical-integrity-summary.txt",
+        "expected":  "ab103fd6fd3c979ce5ed3078a5ba86860ff3e22c43c8e6630ad3d19c99a2bdd5",
+        "actual":  "ab103fd6fd3c979ce5ed3078a5ba86860ff3e22c43c8e6630ad3d19c99a2bdd5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/integration.trx",
+        "expected":  "d91cb257bbad525990d36b7e3dae0240899292bb1c85c319f84c184f9f12f84e",
+        "actual":  "d91cb257bbad525990d36b7e3dae0240899292bb1c85c319f84c184f9f12f84e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/integration-build.log",
+        "expected":  "9016e7d7c19b2ad063c5d77c895b4aae1252d548c866b070bdbece7cac311213",
+        "actual":  "9016e7d7c19b2ad063c5d77c895b4aae1252d548c866b070bdbece7cac311213",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/integration-tests.log",
+        "expected":  "a74c7bcd6dc1689732211ffb9e73cea63517f8d3c08a8dfbada544e16b48fba2",
+        "actual":  "a74c7bcd6dc1689732211ffb9e73cea63517f8d3c08a8dfbada544e16b48fba2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/message.trx",
+        "expected":  "997663cb3a0a877bb57d8c3707cbb2190075a75edd8ebb0e4ebf9817fa2f7cf9",
+        "actual":  "997663cb3a0a877bb57d8c3707cbb2190075a75edd8ebb0e4ebf9817fa2f7cf9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/message-tests.log",
+        "expected":  "e15e8fa422ea141f4fc8c32e1aabfe16238f3c5e2b1394128c0fbafdf4f6aded",
+        "actual":  "e15e8fa422ea141f4fc8c32e1aabfe16238f3c5e2b1394128c0fbafdf4f6aded",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/owner-decisions-diff.txt",
+        "expected":  "9736950ccf3d16d695f8dc05861d3b735e361c66b2de837f820e9d0fa2262512",
+        "actual":  "9736950ccf3d16d695f8dc05861d3b735e361c66b2de837f820e9d0fa2262512",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r1-remediation.trx",
+        "expected":  "60dfb15282054f967fc3d468e5a2bb3e7dfdc482bd765731dd8daa04f82cf5b9",
+        "actual":  "60dfb15282054f967fc3d468e5a2bb3e7dfdc482bd765731dd8daa04f82cf5b9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r1-remediation-tests.log",
+        "expected":  "9bcfa575ec09f9e06adea376fb3a3027d795712803f49a661638ca1352453d2c",
+        "actual":  "9bcfa575ec09f9e06adea376fb3a3027d795712803f49a661638ca1352453d2c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r2-remediation.trx",
+        "expected":  "7f60a108348c39b1c5305dc8835a80de85299b22ba23ea869eeb5c0358057f3a",
+        "actual":  "7f60a108348c39b1c5305dc8835a80de85299b22ba23ea869eeb5c0358057f3a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r2-remediation-tests.log",
+        "expected":  "d0935aa2dc7eb61cc1e1580f25b423247a04acc96beb8d54a59a3cd6b27446c5",
+        "actual":  "d0935aa2dc7eb61cc1e1580f25b423247a04acc96beb8d54a59a3cd6b27446c5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/README.md",
+        "expected":  "8430792561a77946be5f39e1436419b8475c6fe137d16136611dca48771f0482",
+        "actual":  "8430792561a77946be5f39e1436419b8475c6fe137d16136611dca48771f0482",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/reviewed-inputs.json",
+        "expected":  "3587aa0df6ad9c0cab8c7cb8553587658712cbd9d9496d02933d8c43e2710570",
+        "actual":  "3587aa0df6ad9c0cab8c7cb8553587658712cbd9d9496d02933d8c43e2710570",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/Run-B3C.ps1",
+        "expected":  "51dcc0b714bbe9e979904d8dba2d0250fb0cf257bac3b79192b7eb7ecaee6ee0",
+        "actual":  "51dcc0b714bbe9e979904d8dba2d0250fb0cf257bac3b79192b7eb7ecaee6ee0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/session.trx",
+        "expected":  "3bd42f783c78ad1062da96205a292979838f4e880002d66f7d4e25e0bf8efd80",
+        "actual":  "3bd42f783c78ad1062da96205a292979838f4e880002d66f7d4e25e0bf8efd80",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/session-tests.log",
+        "expected":  "afa34f09622d59c0e1909f6dd01c5a31c4e4de581f12418f829c8524990c94a6",
+        "actual":  "afa34f09622d59c0e1909f6dd01c5a31c4e4de581f12418f829c8524990c94a6",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-C-IMPL-01.md",
+        "expected":  "d7aee248e0789fce53c4a1853b8c6c9899380738ab7509b270f6e24a03513f91",
+        "actual":  "d7aee248e0789fce53c4a1853b8c6c9899380738ab7509b270f6e24a03513f91",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/baseline.json",
+        "expected":  "2e222c0ae1311e05ae1015614cd1f03d14cde77bdb3cdef2c92939b640a3be27",
+        "actual":  "2e222c0ae1311e05ae1015614cd1f03d14cde77bdb3cdef2c92939b640a3be27",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/core.trx",
+        "expected":  "f354623e120c44a84ea6253816086627cd5f361011ef20841fc66b56394694e7",
+        "actual":  "f354623e120c44a84ea6253816086627cd5f361011ef20841fc66b56394694e7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/core-build.log",
+        "expected":  "98c7a704352a00339f3491c94944c43a330dbd573a7d6da006a2b33a7ca44b82",
+        "actual":  "98c7a704352a00339f3491c94944c43a330dbd573a7d6da006a2b33a7ca44b82",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/core-tests.log",
+        "expected":  "393fb26798b835e44f9396ba2c420ba94989ec7bc9794ef30ab055b132cdf713",
+        "actual":  "393fb26798b835e44f9396ba2c420ba94989ec7bc9794ef30ab055b132cdf713",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/environment.txt",
+        "expected":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "actual":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/historical-integrity.json",
+        "expected":  "6bc812f31707f9164ceec775c629701342ab6adbf03b92c0b7cac7f646f85ee1",
+        "actual":  "6bc812f31707f9164ceec775c629701342ab6adbf03b92c0b7cac7f646f85ee1",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/historical-integrity-summary.txt",
+        "expected":  "d7d109a3774c980f478a690246290150bae20a30a05ef41f0b6171e514d9a5a8",
+        "actual":  "d7d109a3774c980f478a690246290150bae20a30a05ef41f0b6171e514d9a5a8",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/integration.trx",
+        "expected":  "cbdf95797e9bf62adfec2973cc40c433f56f8058f8310dad0f34e97b06a0aa7d",
+        "actual":  "cbdf95797e9bf62adfec2973cc40c433f56f8058f8310dad0f34e97b06a0aa7d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/integration-build.log",
+        "expected":  "54e356a77613c13511e8c27aaef992d2c7c68e087c35a22cfed27a6165f2b695",
+        "actual":  "54e356a77613c13511e8c27aaef992d2c7c68e087c35a22cfed27a6165f2b695",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/integration-tests.log",
+        "expected":  "9871ad70a0fce96d02e36b4a90ac3bbe49f58fd35fdb2bcf4c7c05b9f70f73a0",
+        "actual":  "9871ad70a0fce96d02e36b4a90ac3bbe49f58fd35fdb2bcf4c7c05b9f70f73a0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/message.trx",
+        "expected":  "edfbf701fadde31100e0832e0aa3e24c7c18b0fae1a3052aded4040066eabba9",
+        "actual":  "edfbf701fadde31100e0832e0aa3e24c7c18b0fae1a3052aded4040066eabba9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/message-tests.log",
+        "expected":  "e9670775eee0b0112437749d3bf214c743d7ee4c622539eb1f513115a2a88c0c",
+        "actual":  "e9670775eee0b0112437749d3bf214c743d7ee4c622539eb1f513115a2a88c0c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q1-probe.log",
+        "expected":  "cdbd73e6f70c3525290993a14a2ebfc4877479ca639ff2c730c4fa5bd43a40b0",
+        "actual":  "cdbd73e6f70c3525290993a14a2ebfc4877479ca639ff2c730c4fa5bd43a40b0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q1-probe-after/session-probe-results.json",
+        "expected":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+        "actual":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q1-probe-build.log",
+        "expected":  "cc8dcb87ca928d5139c0d3b697a6219dfe20b86990e22b0766c64eaef7285591",
+        "actual":  "cc8dcb87ca928d5139c0d3b697a6219dfe20b86990e22b0766c64eaef7285591",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q2-probe.log",
+        "expected":  "f0dd8724d19b552f96589ba3b9ab0301effebce0cc205aa2653719594173735d",
+        "actual":  "f0dd8724d19b552f96589ba3b9ab0301effebce0cc205aa2653719594173735d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q2-probe-after.json",
+        "expected":  "ae1d85e723cc83a0eaea65bde1baeeca16ccc157cbba9d2ee5bd2afeb5ac9201",
+        "actual":  "ae1d85e723cc83a0eaea65bde1baeeca16ccc157cbba9d2ee5bd2afeb5ac9201",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q2-probe-build.log",
+        "expected":  "5933398b39156da1bff7bacda08d7ef6f2a0e2353b91b5c9161acad115f38a1a",
+        "actual":  "5933398b39156da1bff7bacda08d7ef6f2a0e2353b91b5c9161acad115f38a1a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q3-probe.log",
+        "expected":  "fe8415e2c9a8042f32fb6705e26728c63c2ffff36f877a570709f190a8646f68",
+        "actual":  "fe8415e2c9a8042f32fb6705e26728c63c2ffff36f877a570709f190a8646f68",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q3-probe-build.log",
+        "expected":  "b22f68d52db9c74c704f5aaf6da5f9da55f27a7f1317daebb62f8279eae34d4a",
+        "actual":  "b22f68d52db9c74c704f5aaf6da5f9da55f27a7f1317daebb62f8279eae34d4a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q3-probe-results.json",
+        "expected":  "e232c146a682bcd50be59d5366955c61381dde20fecd0a074773808ef3bab0d4",
+        "actual":  "e232c146a682bcd50be59d5366955c61381dde20fecd0a074773808ef3bab0d4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/r2-lifecycle.trx",
+        "expected":  "52ef4070247b225e0b1cfe0e14df6b8501a4b0a5eed5255ac473b1c3b693efb3",
+        "actual":  "52ef4070247b225e0b1cfe0e14df6b8501a4b0a5eed5255ac473b1c3b693efb3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/r2-source-delta.patch",
+        "expected":  "b5c8534ea187344f90ac11df5f5545ee63b06b59685e24d95233af2aed2e2683",
+        "actual":  "b5c8534ea187344f90ac11df5f5545ee63b06b59685e24d95233af2aed2e2683",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/r2-tests.log",
+        "expected":  "d6b766203928d0c374af909803a78e8b401b8bae8d61a002da5ee527900ca479",
+        "actual":  "d6b766203928d0c374af909803a78e8b401b8bae8d61a002da5ee527900ca479",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/README.md",
+        "expected":  "b8df8bed9856f50b612da26a4da8cadaf0632301a4969ffe8e615385b096e4bd",
+        "actual":  "b8df8bed9856f50b612da26a4da8cadaf0632301a4969ffe8e615385b096e4bd",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/remediation.trx",
+        "expected":  "a8e751aaf2c7f098c1d2728c6490e09bbb11a7f9c37997720adeb30c6e049ac7",
+        "actual":  "a8e751aaf2c7f098c1d2728c6490e09bbb11a7f9c37997720adeb30c6e049ac7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/remediation-tests.log",
+        "expected":  "ac963333cbdc192b52d17b66e2971e0d9c6cf85570ced4ca3c0e2eb4fbd35e15",
+        "actual":  "ac963333cbdc192b52d17b66e2971e0d9c6cf85570ced4ca3c0e2eb4fbd35e15",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/reviewed-inputs.json",
+        "expected":  "11d859bc238a540741ea5abd376a62478a102fa554fce2e665a099a4cfb71d4f",
+        "actual":  "11d859bc238a540741ea5abd376a62478a102fa554fce2e665a099a4cfb71d4f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/reviewed-session-source.txt",
+        "expected":  "f3e7445da2b2350f65e2eb8f9f5635042f2c811a6b59298d9662848f220de4df",
+        "actual":  "f3e7445da2b2350f65e2eb8f9f5635042f2c811a6b59298d9662848f220de4df",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/Run-Q3.ps1",
+        "expected":  "68d4d422487656177631bedc8d759ad92e69c0b04ffaae49b9ce4f85beda2bff",
+        "actual":  "68d4d422487656177631bedc8d759ad92e69c0b04ffaae49b9ce4f85beda2bff",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/session.trx",
+        "expected":  "026d1d6960fce6677fae41a9a1ca56459ba656e041b6fe874ec855087a9b48d2",
+        "actual":  "026d1d6960fce6677fae41a9a1ca56459ba656e041b6fe874ec855087a9b48d2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q3/session-tests.log",
+        "expected":  "3a58cb02b3b25ed3b781c22cc18dff6e31330e4da80f794823ac75eb54741522",
+        "actual":  "3a58cb02b3b25ed3b781c22cc18dff6e31330e4da80f794823ac75eb54741522",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-B-Q3-independent-requalification.md",
+        "expected":  "3cdcc7e1ebf6f9f5ff1cc3cc0f99f382ff8f13d4847ca6c1a3be37087515ba92",
+        "actual":  "3cdcc7e1ebf6f9f5ff1cc3cc0f99f382ff8f13d4847ca6c1a3be37087515ba92",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/baseline.json",
+        "expected":  "f3b5f1f12dbb6f3c8410611e37e8bb11c143d95d16e4784f6d8f0adcc4e26c48",
+        "actual":  "f3b5f1f12dbb6f3c8410611e37e8bb11c143d95d16e4784f6d8f0adcc4e26c48",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core.trx",
+        "expected":  "65e6e12ee73bdfd56f4ec86178631e82c690e496de5b1c6a55c12d2c2734c28f",
+        "actual":  "65e6e12ee73bdfd56f4ec86178631e82c690e496de5b1c6a55c12d2c2734c28f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core-build.log",
+        "expected":  "b6f9bdcf2f34260a000ac64d38bdf3333fe159231960e92eb4e5cb0ca500b285",
+        "actual":  "b6f9bdcf2f34260a000ac64d38bdf3333fe159231960e92eb4e5cb0ca500b285",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core-tests.log",
+        "expected":  "c04e4a71944f6136228b71103f821c7e3ab8e8f4ca57b4ec594980483bff16b5",
+        "actual":  "c04e4a71944f6136228b71103f821c7e3ab8e8f4ca57b4ec594980483bff16b5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/environment.txt",
+        "expected":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "actual":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/historical-integrity.json",
+        "expected":  "ce082a2cf760d7f869d3ca086bceac118338c628cc950b03f158da8a5a037e2a",
+        "actual":  "ce082a2cf760d7f869d3ca086bceac118338c628cc950b03f158da8a5a037e2a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/historical-integrity-summary.txt",
+        "expected":  "ed5729b81e882870d6d4cc78089bb7c0cf77759cdb2658d995d9de52096b31ce",
+        "actual":  "ed5729b81e882870d6d4cc78089bb7c0cf77759cdb2658d995d9de52096b31ce",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration.trx",
+        "expected":  "04a4c39911956dc15be89c4fee3c756385fef203fc2695d85e0d41959a53bbd9",
+        "actual":  "04a4c39911956dc15be89c4fee3c756385fef203fc2695d85e0d41959a53bbd9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration-build.log",
+        "expected":  "79abc5563496e5d52d97dc063c781dd236cfbeab88b03e9c8800f198e4c80a2a",
+        "actual":  "79abc5563496e5d52d97dc063c781dd236cfbeab88b03e9c8800f198e4c80a2a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration-tests.log",
+        "expected":  "f7a3bd63fd72b58aed3a70074494290a2d5b6326a42c0f7695a8e48b561662cb",
+        "actual":  "f7a3bd63fd72b58aed3a70074494290a2d5b6326a42c0f7695a8e48b561662cb",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/message.trx",
+        "expected":  "adf42a72c4bcbe180b34acf25d9a75c803f248c6d866efe70bacf2305f526baa",
+        "actual":  "adf42a72c4bcbe180b34acf25d9a75c803f248c6d866efe70bacf2305f526baa",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/message-tests.log",
+        "expected":  "2187d9fcbdf980bc70a20857c718ce9ab6a7e079ec1e1ec7e77909f649181038",
+        "actual":  "2187d9fcbdf980bc70a20857c718ce9ab6a7e079ec1e1ec7e77909f649181038",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe.log",
+        "expected":  "253b0fdbf382ce107a2b0e794aabfa00f7315bce779226128693355d061f661b",
+        "actual":  "253b0fdbf382ce107a2b0e794aabfa00f7315bce779226128693355d061f661b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe-after/session-probe-results.json",
+        "expected":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+        "actual":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe-build.log",
+        "expected":  "235d8ce777ab1d76010810faad29ba45931f20ae587d44e372d995e54b9e990d",
+        "actual":  "235d8ce777ab1d76010810faad29ba45931f20ae587d44e372d995e54b9e990d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-after.json",
+        "expected":  "ae1d85e723cc83a0eaea65bde1baeeca16ccc157cbba9d2ee5bd2afeb5ac9201",
+        "actual":  "ae1d85e723cc83a0eaea65bde1baeeca16ccc157cbba9d2ee5bd2afeb5ac9201",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-after.log",
+        "expected":  "e3741517cf6ecf4fa3ea8d0f8ad6dc54aab679f8052cba8493c72e2d19783abd",
+        "actual":  "e3741517cf6ecf4fa3ea8d0f8ad6dc54aab679f8052cba8493c72e2d19783abd",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-before-after.json",
+        "expected":  "ee84d28fa5b0b81204083143cd472da912115c297f9d18ab203f274c9d42d968",
+        "actual":  "ee84d28fa5b0b81204083143cd472da912115c297f9d18ab203f274c9d42d968",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-build.log",
+        "expected":  "e6d95cec65a86d23d2b92d3c58c9fa6a494759bc716236054bee85f4c24fcec4",
+        "actual":  "e6d95cec65a86d23d2b92d3c58c9fa6a494759bc716236054bee85f4c24fcec4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-implementation-delta.patch",
+        "expected":  "b5c8534ea187344f90ac11df5f5545ee63b06b59685e24d95233af2aed2e2683",
+        "actual":  "b5c8534ea187344f90ac11df5f5545ee63b06b59685e24d95233af2aed2e2683",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-lifecycle.trx",
+        "expected":  "ee91d365ac0ce0fa760319ae946246504c71ed713e3221b4b101f2a3ca6ae1f2",
+        "actual":  "ee91d365ac0ce0fa760319ae946246504c71ed713e3221b4b101f2a3ca6ae1f2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-tests.log",
+        "expected":  "48fc6a9214c77300501b70c1deaf08ce3e1c4ba6cf3746031b16ce578f4cf92f",
+        "actual":  "48fc6a9214c77300501b70c1deaf08ce3e1c4ba6cf3746031b16ce578f4cf92f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/README.md",
+        "expected":  "8060190f04584307121cc466a10154fd8355fe8384aaf7dae456c622b0dc5ac6",
+        "actual":  "8060190f04584307121cc466a10154fd8355fe8384aaf7dae456c622b0dc5ac6",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/remediation.trx",
+        "expected":  "b2e13590d1931fc04e1050021e09474c45326b17625c5f25ec69c39dd275dbdf",
+        "actual":  "b2e13590d1931fc04e1050021e09474c45326b17625c5f25ec69c39dd275dbdf",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/remediation-tests.log",
+        "expected":  "26f5267f8dfc5b2a83631a1d24fb89da7a2dfdfed690694ae4bc6a493b4284a0",
+        "actual":  "26f5267f8dfc5b2a83631a1d24fb89da7a2dfdfed690694ae4bc6a493b4284a0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/Run-R2.ps1",
+        "expected":  "8de69e75a6f16738e7fceba02885608c6ea05e3bcb9d840991ff131569a128a7",
+        "actual":  "8de69e75a6f16738e7fceba02885608c6ea05e3bcb9d840991ff131569a128a7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/session.trx",
+        "expected":  "ac37e1692562a38ac5e38dc8347c15c4f96cf8f619de6ae4e0407c6bcc682f34",
+        "actual":  "ac37e1692562a38ac5e38dc8347c15c4f96cf8f619de6ae4e0407c6bcc682f34",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/session-tests.log",
+        "expected":  "bb0f6e40b41c93ef5264a8bbf8efa115340ed2116947576134f3db48bcde9259",
+        "actual":  "bb0f6e40b41c93ef5264a8bbf8efa115340ed2116947576134f3db48bcde9259",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-B-R2-IMPL-01.md",
+        "expected":  "a2ad9bf4876bdfa348b3b2035fe544e2034088cb69c5cb925a6ad1936c55cdef",
+        "actual":  "a2ad9bf4876bdfa348b3b2035fe544e2034088cb69c5cb925a6ad1936c55cdef",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/baseline.json",
+        "expected":  "9b00722d68b4c693bb53896c8470303750c65803bf1d06f766aea87c689f746a",
+        "actual":  "9b00722d68b4c693bb53896c8470303750c65803bf1d06f766aea87c689f746a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/baseline.txt",
+        "expected":  "c0287932d6d445d729c7225ee0e05b03aa8ae28c3b4637e9e55acd9c935ce244",
+        "actual":  "c0287932d6d445d729c7225ee0e05b03aa8ae28c3b4637e9e55acd9c935ce244",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/commission.md",
+        "expected":  "49cad8c0ef35e76c4f6c569ab7ce59a39867917ac5ddea16b5ab1cdb438ba538",
+        "actual":  "49cad8c0ef35e76c4f6c569ab7ce59a39867917ac5ddea16b5ab1cdb438ba538",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/core.trx",
+        "expected":  "05ee5bb31d10334c58f34385b22aa0a98d284c103f724c121d8c5bb36d779d88",
+        "actual":  "05ee5bb31d10334c58f34385b22aa0a98d284c103f724c121d8c5bb36d779d88",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/core-build.log",
+        "expected":  "735594cd1a3b9ed178d745519890b2e4d675301735acf796ce6a9c41d21ab66c",
+        "actual":  "735594cd1a3b9ed178d745519890b2e4d675301735acf796ce6a9c41d21ab66c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/core-tests.log",
+        "expected":  "bba61067b2cee5e2b83b6998db045da3982e5ce692a8582555af00e55d506fbb",
+        "actual":  "bba61067b2cee5e2b83b6998db045da3982e5ce692a8582555af00e55d506fbb",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/environment.txt",
+        "expected":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "actual":  "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/historical-integrity.json",
+        "expected":  "50865df997a7c10e922e37ad7f8591f89887dc0c4d14c9adbbe01cc421901e34",
+        "actual":  "50865df997a7c10e922e37ad7f8591f89887dc0c4d14c9adbbe01cc421901e34",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/history-audit.txt",
+        "expected":  "7871a48d84c1aad9173bcddf79ec59087cb51d1dc12e63f865d3369c71998561",
+        "actual":  "7871a48d84c1aad9173bcddf79ec59087cb51d1dc12e63f865d3369c71998561",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/implementation-delta.patch",
+        "expected":  "0da1c83b21584c7fa56227da507e0c8d38a7133294adc6d97e8af702c5b8d0c3",
+        "actual":  "0da1c83b21584c7fa56227da507e0c8d38a7133294adc6d97e8af702c5b8d0c3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/integration.trx",
+        "expected":  "e3f2cc9ac414e0c630dcac837d0b44894e00d1f200bb8cbcb478f5395214623a",
+        "actual":  "e3f2cc9ac414e0c630dcac837d0b44894e00d1f200bb8cbcb478f5395214623a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/integration-build.log",
+        "expected":  "577434a7c2fcb7547c575d20375328cc94740c97770832b5dd2bb9e2e87e0755",
+        "actual":  "577434a7c2fcb7547c575d20375328cc94740c97770832b5dd2bb9e2e87e0755",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/integration-tests.log",
+        "expected":  "2cd5a5697c52549045c41bdfbca3f96f262399f97d165bbe8cf4f74c7dec6e97",
+        "actual":  "2cd5a5697c52549045c41bdfbca3f96f262399f97d165bbe8cf4f74c7dec6e97",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/message.trx",
+        "expected":  "5524eebcfdbbf9dd92c8250153a9f58620b901180c0ee3ffda9a7853106712d8",
+        "actual":  "5524eebcfdbbf9dd92c8250153a9f58620b901180c0ee3ffda9a7853106712d8",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/message-tests.log",
+        "expected":  "07cdb2619e0ae5114a3deb3d97919b6c0d7aa897c3231468c74ebef7c219dd97",
+        "actual":  "07cdb2619e0ae5114a3deb3d97919b6c0d7aa897c3231468c74ebef7c219dd97",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/original-cleanup-subset.json",
+        "expected":  "c5ce6c080a12c359aa1ea62822def1c9dc380eba251876ee35dab7da299238d3",
+        "actual":  "c5ce6c080a12c359aa1ea62822def1c9dc380eba251876ee35dab7da299238d3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/prior-session.txt",
+        "expected":  "cb9f4afbc21b2392cf9acdfbb089fdfd5f4e13645d944f8de20a4f357162bf2f",
+        "actual":  "cb9f4afbc21b2392cf9acdfbb089fdfd5f4e13645d944f8de20a4f357162bf2f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-build.log",
+        "expected":  "09b7620c1dd1da329eefbea7c3bcd3b06deb6e2c639a3df23edd0240edd3d693",
+        "actual":  "09b7620c1dd1da329eefbea7c3bcd3b06deb6e2c639a3df23edd0240edd3d693",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-input-hashes.json",
+        "expected":  "4e37705c048aa1d9daf34e16a8f1efa88099d04d1ba7771a6ff8d0f724ab2b13",
+        "actual":  "4e37705c048aa1d9daf34e16a8f1efa88099d04d1ba7771a6ff8d0f724ab2b13",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-unchanged.log",
+        "expected":  "55d780462e9891c3df73eb6261988cbec47fb08c2c82180a566dd03b964fe5a7",
+        "actual":  "55d780462e9891c3df73eb6261988cbec47fb08c2c82180a566dd03b964fe5a7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-unchanged/session-probe-results.json",
+        "expected":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+        "actual":  "00d95de7e37b91e917510385929b6e6c3f437a27dbc6ce79fc6cf7a92cbf60fe",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-build.log",
+        "expected":  "873e986d06900a65656524a0b97e69ed8572f397622234fbad4f93b40134931b",
+        "actual":  "873e986d06900a65656524a0b97e69ed8572f397622234fbad4f93b40134931b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-build-initial.log",
+        "expected":  "b7d8800e7484dfb9e78e6ccbdb9411b09cf1847f4dbb7e85f98f2ecb8de8419e",
+        "actual":  "b7d8800e7484dfb9e78e6ccbdb9411b09cf1847f4dbb7e85f98f2ecb8de8419e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-probe-results.json",
+        "expected":  "1ef748c7ebffb821e867c78ab2c409d65b06cdd4e2527dcc7cefe8e9f635f73d",
+        "actual":  "1ef748c7ebffb821e867c78ab2c409d65b06cdd4e2527dcc7cefe8e9f635f73d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-run.log",
+        "expected":  "95e5d891891ec92fb525f42e295149d89e52b4ec52fe2c5230df601f6b097c63",
+        "actual":  "95e5d891891ec92fb525f42e295149d89e52b4ec52fe2c5230df601f6b097c63",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-run-initial.log",
+        "expected":  "e69252caa65cdb97199de062a44c935d02297f53e81b42c585e8ebcb023746c8",
+        "actual":  "e69252caa65cdb97199de062a44c935d02297f53e81b42c585e8ebcb023746c8",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/README.md",
+        "expected":  "91cd915bb3addf97b56bcd4ba0c7fb4271951222bb69726ceaf35ea5f1aaeaf4",
+        "actual":  "91cd915bb3addf97b56bcd4ba0c7fb4271951222bb69726ceaf35ea5f1aaeaf4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/remediation.trx",
+        "expected":  "065b5b839824072db49e3890047e51c5cd70b3f4cbd4e895911d69a9974cb347",
+        "actual":  "065b5b839824072db49e3890047e51c5cd70b3f4cbd4e895911d69a9974cb347",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/remediation-tests.log",
+        "expected":  "b10f7fbfaeb37b05e8cda848098a7f523d8f2c1df9fcbb99cb5b35ab523b29dc",
+        "actual":  "b10f7fbfaeb37b05e8cda848098a7f523d8f2c1df9fcbb99cb5b35ab523b29dc",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/reviewed-inputs.json",
+        "expected":  "b31852901179bd7c7917a564e5167b8362bed2ed81aa5540021598db0777b009",
+        "actual":  "b31852901179bd7c7917a564e5167b8362bed2ed81aa5540021598db0777b009",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/reviewed-session-numbered.txt",
+        "expected":  "a6709e83ce3d08a5af153c4eba789d4c745cfc5128161b2960ce1391f8133ba9",
+        "actual":  "a6709e83ce3d08a5af153c4eba789d4c745cfc5128161b2960ce1391f8133ba9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/Run-Q2.ps1",
+        "expected":  "468cda79e8ab5f8449690072fc2848ab12caa97e6e6dd9de9559bffb7b412d09",
+        "actual":  "468cda79e8ab5f8449690072fc2848ab12caa97e6e6dd9de9559bffb7b412d09",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/Run-Regression.ps1",
+        "expected":  "49899fe59b660d9e9bf40c28bd2c901355c03dc80b4cade34e2ba27889c9902e",
+        "actual":  "49899fe59b660d9e9bf40c28bd2c901355c03dc80b4cade34e2ba27889c9902e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/session.trx",
+        "expected":  "0967039ffae2cb853fcd89830eaef7714da0214be29ec01d91d7115d104e7d4b",
+        "actual":  "0967039ffae2cb853fcd89830eaef7714da0214be29ec01d91d7115d104e7d4b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/session-tests.log",
+        "expected":  "27f021e1d5061d7adf2b33de688850dc26c684006f9f1a03d3f8627537f756d8",
+        "actual":  "27f021e1d5061d7adf2b33de688850dc26c684006f9f1a03d3f8627537f756d8",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/probe/Program.cs",
+        "expected":  "754ac7e1c9c8591999041beb91467b7b10b020db57702dee0643cb1fbafca31a",
+        "actual":  "754ac7e1c9c8591999041beb91467b7b10b020db57702dee0643cb1fbafca31a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/evidence/B3-B-Q2/probe/Q2Probe.csproj",
+        "expected":  "6b594dcfc9223ef15eff6e18524d2e693f6949291e5c6ffb2a671e04206d447c",
+        "actual":  "6b594dcfc9223ef15eff6e18524d2e693f6949291e5c6ffb2a671e04206d447c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-B-Q2.md",
+        "expected":  "7effc9f63f422e84c86d78eb334efd4b0feb97920274b223a69c46186eba3303",
+        "actual":  "7effc9f63f422e84c86d78eb334efd4b0feb97920274b223a69c46186eba3303",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/core-build.log",
+        "expected":  "e3ca013ad1545bc25157ca1846ab5a4407cce864b179814f3982cda0df1e67e0",
+        "actual":  "e3ca013ad1545bc25157ca1846ab5a4407cce864b179814f3982cda0df1e67e0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/core-solution-tests.log",
+        "expected":  "2087efbea9c23c555e8d1e24e5be08bdc39a131dc0540f66363d666252d8e0ec",
+        "actual":  "2087efbea9c23c555e8d1e24e5be08bdc39a131dc0540f66363d666252d8e0ec",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/environment.txt",
+        "expected":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+        "actual":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/integration-tests.log",
+        "expected":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "actual":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/message-tests.log",
+        "expected":  "d5aa5b8e485a8d959d4ce677ee448c68e977109a2ea437b4ebd8c9ee07289194",
+        "actual":  "d5aa5b8e485a8d959d4ce677ee448c68e977109a2ea437b4ebd8c9ee07289194",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/probe/session-probe-results.json",
+        "expected":  "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab",
+        "actual":  "8b432f4733fc5c81d6fbf9df64191ea9a96b3495cc7ff33137aa9478416455ab",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/session-probe-run.log",
+        "expected":  "2cbe2c9dbc11c96b56b734308e68dbf7b84d1930db0c80254c10a048003fa366",
+        "actual":  "2cbe2c9dbc11c96b56b734308e68dbf7b84d1930db0c80254c10a048003fa366",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-B-Q1/session-tests.log",
+        "expected":  "0af5a35bc1de80ab4f1e94c5162dd45b009dfb499550062361add42c296c6c16",
+        "actual":  "0af5a35bc1de80ab4f1e94c5162dd45b009dfb499550062361add42c296c6c16",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/Harness.cs",
+        "expected":  "0650a888f427fcb43ce10abd549f92c3539cc033fbb6e400cec59e270418415f",
+        "actual":  "0650a888f427fcb43ce10abd549f92c3539cc033fbb6e400cec59e270418415f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/Program.cs",
+        "expected":  "29a7e3eeaab52257e7e1b82e2bbf5421ee8eb8ff1ceead1be7c4f49d879b2e5b",
+        "actual":  "29a7e3eeaab52257e7e1b82e2bbf5421ee8eb8ff1ceead1be7c4f49d879b2e5b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/SessionProbe.csproj",
+        "expected":  "2a551153120ef202471b9613309346632210cec3a9e2a7cdd959344c7de582c9",
+        "actual":  "2a551153120ef202471b9613309346632210cec3a9e2a7cdd959344c7de582c9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-B-Q1-independent-qualification.md",
+        "expected":  "03ba2687092d12a03fda26574fdf99cf574035dcbb21226fe554b5894ba4de49",
+        "actual":  "03ba2687092d12a03fda26574fdf99cf574035dcbb21226fe554b5894ba4de49",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q1/core-build.log",
+        "expected":  "bca8813f68241364aaa85b9b314ff7f4afc1fe1a07f855b2f339abb6727f12a0",
+        "actual":  "bca8813f68241364aaa85b9b314ff7f4afc1fe1a07f855b2f339abb6727f12a0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q1/core-solution-tests.log",
+        "expected":  "bc1bd9a2c4ac16e18c425258f60085eedabf831f474a9e054925e969dafc5bf2",
+        "actual":  "bc1bd9a2c4ac16e18c425258f60085eedabf831f474a9e054925e969dafc5bf2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q1/environment.txt",
+        "expected":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+        "actual":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q1/falsification-probe/falsification-results.json",
+        "expected":  "9f20391176135d723fbd6b4d7b796bc9d302e3ebc8d0df8f604a20bc359d19de",
+        "actual":  "9f20391176135d723fbd6b4d7b796bc9d302e3ebc8d0df8f604a20bc359d19de",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q1/falsification-probe-run.log",
+        "expected":  "d2971064ce3fef5912911631a239e316a0c99fc7db5c6a11db4bd51fab9e2d1e",
+        "actual":  "d2971064ce3fef5912911631a239e316a0c99fc7db5c6a11db4bd51fab9e2d1e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q1/integration-tests.log",
+        "expected":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "actual":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q1/message-tests.log",
+        "expected":  "570f6feb8c814cbf5ed9ca20c917e4fcfb8da7dd8ecdde0b954e67de44311f4e",
+        "actual":  "570f6feb8c814cbf5ed9ca20c917e4fcfb8da7dd8ecdde0b954e67de44311f4e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q1/.gitignore",
+        "expected":  "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+        "actual":  "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/.gitignore",
+        "expected":  "d717056e5eef4b08b2c976afd47b9d757f19c98f8f20c32afcccf224a4dc46ca",
+        "actual":  "d717056e5eef4b08b2c976afd47b9d757f19c98f8f20c32afcccf224a4dc46ca",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/FalsificationProbe.csproj",
+        "expected":  "a24327d741248fb377b82f97dd4bc4930ebd31e7b9a6f676358269b81d5320c1",
+        "actual":  "a24327d741248fb377b82f97dd4bc4930ebd31e7b9a6f676358269b81d5320c1",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/IndependentPackStream.cs",
+        "expected":  "6af5cc3486ec1b73005f9fc49065219c3f1483f534ac9c8cf2b87b6bed384863",
+        "actual":  "6af5cc3486ec1b73005f9fc49065219c3f1483f534ac9c8cf2b87b6bed384863",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/Program.cs",
+        "expected":  "bab03178a3a93bd9e701ff379b9967364caa4b5321656eb1b0023ecbc526edf3",
+        "actual":  "bab03178a3a93bd9e701ff379b9967364caa4b5321656eb1b0023ecbc526edf3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q1/README.md",
+        "expected":  "a104dc2e7baf3b817d99dbdf4df1f4f9525a775b40d1d2fd16f738b710709aa6",
+        "actual":  "a104dc2e7baf3b817d99dbdf4df1f4f9525a775b40d1d2fd16f738b710709aa6",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-A-Q1-independent-qualification.md",
+        "expected":  "adf6e729f668fb0fbc9ba76b3a447c61d0a86f4914ce8b818886e15140678ec9",
+        "actual":  "adf6e729f668fb0fbc9ba76b3a447c61d0a86f4914ce8b818886e15140678ec9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/core-build.log",
+        "expected":  "250a5329c0f8f7e936813ff0176f572ee4708bf295864e4ea96942d4c05da6ab",
+        "actual":  "250a5329c0f8f7e936813ff0176f572ee4708bf295864e4ea96942d4c05da6ab",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/core-solution-tests.log",
+        "expected":  "fd87031929db60b30d4db6b7a79a4edeee8f76947ec5e78a7f318a655e0a7e2f",
+        "actual":  "fd87031929db60b30d4db6b7a79a4edeee8f76947ec5e78a7f318a655e0a7e2f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/integration-tests.log",
+        "expected":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "actual":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-after-fix/falsification-results.json",
+        "expected":  "25ceb9237e12bb64c83725ea50588ceeab890c7908ad8488dd9a6a759f5f2aa3",
+        "actual":  "25ceb9237e12bb64c83725ea50588ceeab890c7908ad8488dd9a6a759f5f2aa3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-after-fix-run.log",
+        "expected":  "664a2c792428161dedffdc325d9e28929e98c6dbb4a0b3e04ff5e3c782ebbb82",
+        "actual":  "664a2c792428161dedffdc325d9e28929e98c6dbb4a0b3e04ff5e3c782ebbb82",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-before-fix/falsification-results.json",
+        "expected":  "9f20391176135d723fbd6b4d7b796bc9d302e3ebc8d0df8f604a20bc359d19de",
+        "actual":  "9f20391176135d723fbd6b4d7b796bc9d302e3ebc8d0df8f604a20bc359d19de",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-before-fix-run.log",
+        "expected":  "cd8fc055626208bf9950811213aae14bf4cbe370241da0416a1c42dcbf5b1192",
+        "actual":  "cd8fc055626208bf9950811213aae14bf4cbe370241da0416a1c42dcbf5b1192",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "changed_source_and_report_files",
+        "path":  "src/BoltSharp/Messages/BoltMessageCodec.cs",
+        "expected":  "4f20b992ed4cbf0a18ef24e23e1e1f0a277a83cc30dac569b5776d1e11121cfe",
+        "actual":  "4f20b992ed4cbf0a18ef24e23e1e1f0a277a83cc30dac569b5776d1e11121cfe",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "changed_source_and_report_files",
+        "path":  "src/BoltSharp/Messages/BoltRequests.cs",
+        "expected":  "77c8ec1f539b3f8b30a18091229c89caa2e397081e3915850ad034147550c059",
+        "actual":  "77c8ec1f539b3f8b30a18091229c89caa2e397081e3915850ad034147550c059",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "changed_source_and_report_files",
+        "path":  "tests/BoltSharp.Tests/Messages/BoltMessageFixtures.cs",
+        "expected":  "83b979acd55c9d76dc2b2c7ba5cbf83781eb011bc53b20b3cd50c4d5fcc4a0db",
+        "actual":  "83b979acd55c9d76dc2b2c7ba5cbf83781eb011bc53b20b3cd50c4d5fcc4a0db",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "changed_source_and_report_files",
+        "path":  "tests/BoltSharp.Tests/Messages/BoltMessageNegativeTests.cs",
+        "expected":  "542021b07b0134aab6da55e50cf19cf18b6a1945ea6f533e584d8af5d197198f",
+        "actual":  "542021b07b0134aab6da55e50cf19cf18b6a1945ea6f533e584d8af5d197198f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "changed_source_and_report_files",
+        "path":  "tests/BoltSharp.Tests/Messages/BoltRequestDecodeTests.cs",
+        "expected":  "18255130bf1714a045d576a8e3284898293eab559562aca7907af0f0db9bbd33",
+        "actual":  "18255130bf1714a045d576a8e3284898293eab559562aca7907af0f0db9bbd33",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "section":  "changed_source_and_report_files",
+        "path":  "docs/reviews/B3-A-R1-IMPL-01.md",
+        "expected":  "269daff14a7742ba08fcdc94d3fb8a0f259e7b9a3514266ba5b2437824bf8d16",
+        "actual":  "269daff14a7742ba08fcdc94d3fb8a0f259e7b9a3514266ba5b2437824bf8d16",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/closure-probe/closure-results.json",
+        "expected":  "7e0e85766fc6b2cb8c5a4069e4d51426a3dbd404e1c099cf258e91d5ca0eaa36",
+        "actual":  "7e0e85766fc6b2cb8c5a4069e4d51426a3dbd404e1c099cf258e91d5ca0eaa36",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/closure-probe-run.log",
+        "expected":  "8e29a5a5b81df7832e7506b1bb717fa8f9050c9c2f37bde8f9274a4db19d4050",
+        "actual":  "8e29a5a5b81df7832e7506b1bb717fa8f9050c9c2f37bde8f9274a4db19d4050",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/core-build.log",
+        "expected":  "da5a93fa58d26fa18902f65c201085bc7866cfc484d7b70ce4dabf5271ec8d00",
+        "actual":  "da5a93fa58d26fa18902f65c201085bc7866cfc484d7b70ce4dabf5271ec8d00",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/core-solution-tests.log",
+        "expected":  "0712bc26ad84c661e074e8e612643a72530002dd72f44036435943da3d9888db",
+        "actual":  "0712bc26ad84c661e074e8e612643a72530002dd72f44036435943da3d9888db",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/environment.txt",
+        "expected":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+        "actual":  "24603fefa8058a2cf2cf1dfab6813784698297cba54bf925e132f331b2ed505a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/integration-tests.log",
+        "expected":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "actual":  "779bcaa7f4751519431b0f10cc58fb086dae1566fca2e7e5cd6353a20a10219c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/message-tests.log",
+        "expected":  "54b7a7ec9918457e0960568d6c31c2beeca15c6dbd9c097d6b1370dfbddc0be5",
+        "actual":  "54b7a7ec9918457e0960568d6c31c2beeca15c6dbd9c097d6b1370dfbddc0be5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/q1-probe-rerun.log",
+        "expected":  "e7b6bcd530199081ab000f4ee5e69c20d891cc764912fb59997de9c8a8168c28",
+        "actual":  "e7b6bcd530199081ab000f4ee5e69c20d891cc764912fb59997de9c8a8168c28",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B3-A-Q2/q1-probe-rerun/falsification-results.json",
+        "expected":  "25ceb9237e12bb64c83725ea50588ceeab890c7908ad8488dd9a6a759f5f2aa3",
+        "actual":  "25ceb9237e12bb64c83725ea50588ceeab890c7908ad8488dd9a6a759f5f2aa3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/.gitignore",
+        "expected":  "d717056e5eef4b08b2c976afd47b9d757f19c98f8f20c32afcccf224a4dc46ca",
+        "actual":  "d717056e5eef4b08b2c976afd47b9d757f19c98f8f20c32afcccf224a4dc46ca",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/ClosureProbe.csproj",
+        "expected":  "c03b18b2a75e2276d4eb84454ff7c089143ace18dfe4fa95239065973854c9d3",
+        "actual":  "c03b18b2a75e2276d4eb84454ff7c089143ace18dfe4fa95239065973854c9d3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/IndependentFixtures.cs",
+        "expected":  "9bec15c661d928cc92edb9eabf33870337284df0f6c5a595a8684aabcc988865",
+        "actual":  "9bec15c661d928cc92edb9eabf33870337284df0f6c5a595a8684aabcc988865",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/Program.cs",
+        "expected":  "45304fff1e35ce9fae8e6dd62d617f8aa04860e9749c152b7b8ca9ef344f189b",
+        "actual":  "45304fff1e35ce9fae8e6dd62d617f8aa04860e9749c152b7b8ca9ef344f189b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B3-A-Q2/README.md",
+        "expected":  "7dbbe33c35414896b25eda344b53dfd16e259c43830a1ab42f708b698fcf268d",
+        "actual":  "7dbbe33c35414896b25eda344b53dfd16e259c43830a1ab42f708b698fcf268d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "section":  "report_files",
+        "path":  "docs/reviews/B3-A-Q2-independent-requalification.md",
+        "expected":  "ff38856fc70e1ed004d74f171d72081e87c5d2841bb92374c241ec3965f45135",
+        "actual":  "ff38856fc70e1ed004d74f171d72081e87c5d2841bb92374c241ec3965f45135",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/.gitattributes",
+        "expected":  "8B9C3028D6467FF3BE7C793141927841D70F47F52D0590677438F488CA154992",
+        "actual":  "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/commands.json",
+        "expected":  "A7E3A84A6F3E9B787053DB8C3BAAA908C923C4BB43B52A423B6145B66CB9E13C",
+        "actual":  "a7e3a84a6f3e9b787053db8c3baaa908c923c4bb43b52a423b6145b66cb9e13c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/environment.txt",
+        "expected":  "17B004E0E278D3CB2819E5DDA559A38A87B439F5A494FC94CBE2211D714E762C",
+        "actual":  "17b004e0e278d3cb2819e5dda559a38a87b439f5a494fc94cbe2211d714e762c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t01-handshake.json",
+        "expected":  "48FA13A8A93EE6B1BCFE2191F5FAD440099ACCE1F1EB6529F6551F3A28620A70",
+        "actual":  "48fa13a8a93ee6b1bcfe2191f5fad440099acce1f1eb6529f6551f3a28620a70",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t01-handshake-rejected.json",
+        "expected":  "8184D2180F7D1017B438FDCBBA54095B099C386A39F2040F63AD4256708D05F5",
+        "actual":  "8184d2180f7d1017b438fdcbba54095b099c386a39f2040f63ad4256708d05f5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t02-initialization.json",
+        "expected":  "10801EB456502E8E720A4A3FFD1B46EEFA40611C6DD83458A381406E2B6B32CE",
+        "actual":  "10801eb456502e8e720a4a3ffd1b46eefa40611c6dd83458a381406e2b6b32ce",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t02-invalid-credentials.json",
+        "expected":  "482F99DE82AEB0C13F5A4BB3D2541D530223C8AB65D76979E994900A9ED7A63C",
+        "actual":  "482f99de82aeb0c13f5a4bb3d2541d530223c8ab65d76979e994900a9ed7a63c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t03-query-scalar.json",
+        "expected":  "18AA3034945E54849005023AF84C510020A3AC0F7C11B5A67FE922506B71B660",
+        "actual":  "18aa3034945e54849005023af84c510020a3ac0f7c11b5a67fe922506b71b660",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t04-graph-values.json",
+        "expected":  "937CF5810BB03201FD643EE44A32471AA8DCE046F0AEE474E93011A5F677894D",
+        "actual":  "937cf5810bb03201fd643ee44a32471aa8dce046f0aee474e93011a5f677894d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-discard.json",
+        "expected":  "214A6B0700255921AE17E7A8FD9D5AC0E0BE65947FE10069F9F5CEDCFF90CA3F",
+        "actual":  "214a6b0700255921ae17e7a8fd9d5ac0e0be65947fe10069f9f5cedcff90ca3f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-early-disposal.json",
+        "expected":  "6D1199EFAB2FBEA59FF8029C7C2051046A6EF7C58141D3B7483593D61FDF6A59",
+        "actual":  "6d1199efab2fbea59ff8029c7c2051046a6ef7c58141d3b7483593d61fdf6a59",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-pagination.json",
+        "expected":  "879EA73147ECF7CCB33C73BB0EAC296AB7F208E2A64730AFE27B226BDD75A5AB",
+        "actual":  "879ea73147ecf7ccb33c73bb0eac296ab7f208e2a64730afe27b226bdd75a5ab",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-incomplete-response.json",
+        "expected":  "48EB65A111E550E8511FA6E72E08ADF88BD1E9B9AE619CC271B1FFA1C6239F79",
+        "actual":  "48eb65a111e550e8511fa6e72e08adf88bd1e9b9ae619cc271b1ffa1c6239f79",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-protocol-failure.json",
+        "expected":  "27502DA284D7D25702F28DF5070A7264E5AA61A54FC5182039FB27BE82B5DBB0",
+        "actual":  "27502da284d7d25702f28df5070a7264e5aa61a54fc5182039fb27be82b5dbb0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-socket-termination.json",
+        "expected":  "85B90F475D1A83E186E0C4FB18C14A0DA438057D56A06D4CE2ED1011AC6A6891",
+        "actual":  "85b90f475d1a83e186e0c4fb18c14a0da438057d56a06d4ce2ed1011ac6a6891",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-coalesced.json",
+        "expected":  "A0A04AF864DF8BCD93CE33006F583B8188ECD8599EA50CCE1C011A1196633BB4",
+        "actual":  "a0a04af864df8bcd93ce33006f583b8188ecd8599ea50cce1c011a1196633bb4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-fixedchunk-3.json",
+        "expected":  "69ACD1F49242FED9B3CA3CF2E2EB0022682750064918F000D3BB07D16981DBC1",
+        "actual":  "69acd1f49242fed9b3ca3cf2e2eb0022682750064918f000d3bb07d16981dbc1",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-perbyte-1.json",
+        "expected":  "04631B63B5604C1E565FF3FB972C740999A6A93EAC2D894C2D0F08020B37FC14",
+        "actual":  "04631b63b5604c1e565ff3fb972c740999a6a93eac2d894c2d0f08020b37fc14",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-whole-7.json",
+        "expected":  "B3DF1AC294DE341E213B9CB9FFB0AFDB9AF415DD5FB644934647EDF8005A81C2",
+        "actual":  "b3df1ac294de341e213b9cb9ffb0afdb9af415dd5fb644934647edf8005a81c2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-handshake-fragmentation.json",
+        "expected":  "D36747163C6DA3FCFCF968C1777F686AD99076F3CBD347A0BB398B2FCC06BD1F",
+        "actual":  "d36747163c6da3fcfcf968c1777f686ad99076f3cbd347a0bb398b2fcc06bd1f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t08-real-listener-legacy.json",
+        "expected":  "D1A9ED6FCFD4A74E6E88C8863527B18C338DA3B2E5E89358672CAEC481A6FFAA",
+        "actual":  "d1a9ed6fcfd4a74e6e88c8863527b18c338da3b2e5e89358672caec481a6ffaa",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "files",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t08-real-listener-manifest.json",
+        "expected":  "E16B7E4731D4CB6F4C6D31D691E5804B61B96E2AB483B2B036E2805E7EA26377",
+        "actual":  "e16b7e4731d4cb6f4c6d31d691e5804b61b96e2ab483b2b036e2805e7ea26377",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "reports",
+        "path":  "docs/reviews/B0-B-DRV-INT-01-implementation.md",
+        "expected":  "C0EA7E10CB11B5E4359351688F5130A5640FB9B737996C9C1C38F958865744E7",
+        "actual":  "c0ea7e10cb11b5e4359351688f5130a5640fb9b737996c9c1c38f958865744e7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "section":  "reports",
+        "path":  "docs/reviews/B0-B-DRV-INT-01-gap-matrix.md",
+        "expected":  "8DD3A59475724C17DDE76C9B104A4D61290CDBDD0ED376683A38264EA1399B67",
+        "actual":  "8dd3a59475724c17dde76c9b104a4d61290cdbdd0ed376683a38264ea1399b67",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/core-solution-build-rerun.log",
+        "expected":  "0353a2f0ec224eb3c1b599efb682010cf76a0f601244528097893f978c474f5d",
+        "actual":  "0353a2f0ec224eb3c1b599efb682010cf76a0f601244528097893f978c474f5d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/core-solution-tests.log",
+        "expected":  "05fd9c3d9d0b3ae1195953700aca0d37313d68513cae733ecb2572dfcec9c1ae",
+        "actual":  "05fd9c3d9d0b3ae1195953700aca0d37313d68513cae733ecb2572dfcec9c1ae",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/dotnet-info.txt",
+        "expected":  "88eb373c7018f650bb7c594ee095d9d8acb6f4d5d5583a18ef0a268d6bcb5243",
+        "actual":  "88eb373c7018f650bb7c594ee095d9d8acb6f4d5d5583a18ef0a268d6bcb5243",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/driver-source/BoltHandshaker.cs",
+        "expected":  "5b879f36e433e8804dc9a42f99bd4af4434bacf10f157236e5c5097e3f62224f",
+        "actual":  "5b879f36e433e8804dc9a42f99bd4af4434bacf10f157236e5c5097e3f62224f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-connection-id-only.json",
+        "expected":  "28d42bc3fea82901f990b4ddfdbf335e386c62039b518042ef1fa6cbaec8ada0",
+        "actual":  "28d42bc3fea82901f990b4ddfdbf335e386c62039b518042ef1fa6cbaec8ada0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-empty.json",
+        "expected":  "cc80402ba87997f3aedb4de50d21623d1ef139a9a96a0fe14c53bedf8f1237d8",
+        "actual":  "cc80402ba87997f3aedb4de50d21623d1ef139a9a96a0fe14c53bedf8f1237d8",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-full.json",
+        "expected":  "b7b373cf04b39dba62621ab98f3fb0a9f3dab664197d322cd8f4c8df9d3e37ad",
+        "actual":  "b7b373cf04b39dba62621ab98f3fb0a9f3dab664197d322cd8f4c8df9d3e37ad",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-hints-only.json",
+        "expected":  "295848f452174fa892669ad06e447488de1afdd8a0c71acc0761f79e4799684b",
+        "actual":  "295848f452174fa892669ad06e447488de1afdd8a0c71acc0761f79e4799684b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-no-hints.json",
+        "expected":  "0c9edff4a0f5e66549bc38e9e5ff874ac2276bcb3205773af315ddf8b1031acc",
+        "actual":  "0c9edff4a0f5e66549bc38e9e5ff874ac2276bcb3205773af315ddf8b1031acc",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-server-only.json",
+        "expected":  "c05c80493f1087980e2f91873647e6fbf3f9cded834b3c6135c8f6c5a9e76c82",
+        "actual":  "c05c80493f1087980e2f91873647e6fbf3f9cded834b3c6135c8f6c5a9e76c82",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-1-1-1.json",
+        "expected":  "f50cc304b5cd2a067a6d5dbcb26803984b08a7141a2e8d7925f1cfbe2cba4a91",
+        "actual":  "f50cc304b5cd2a067a6d5dbcb26803984b08a7141a2e8d7925f1cfbe2cba4a91",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-1-1-1-d10.json",
+        "expected":  "dbcccf2b8a55b5f3ac17fbc6e080f09bac95b3336d410d43c32da03fcb8eb50c",
+        "actual":  "dbcccf2b8a55b5f3ac17fbc6e080f09bac95b3336d410d43c32da03fcb8eb50c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3.json",
+        "expected":  "4d5748c082c6d9e127fb6c918abf3e1cff458e940435169e9d084552e0b315e7",
+        "actual":  "4d5748c082c6d9e127fb6c918abf3e1cff458e940435169e9d084552e0b315e7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d1.json",
+        "expected":  "8224d26e66fbd60c4c730d70071609373f6ad27058330f3eb2e66f25793c17e6",
+        "actual":  "8224d26e66fbd60c4c730d70071609373f6ad27058330f3eb2e66f25793c17e6",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d10.json",
+        "expected":  "7ea18e6b30a9de53456450eafa3d3284050f3588e9830f9d5c3ad48112e9935b",
+        "actual":  "7ea18e6b30a9de53456450eafa3d3284050f3588e9830f9d5c3ad48112e9935b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d1000.json",
+        "expected":  "3266f86c20a5f46537fd23de44456ccdd9ada8f802e955b3e639603b4a90038d",
+        "actual":  "3266f86c20a5f46537fd23de44456ccdd9ada8f802e955b3e639603b4a90038d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d3000.json",
+        "expected":  "26bfc866813fdb6d93516acd491de064c0f219fda9af6cf6c79f9fcd99b5066e",
+        "actual":  "26bfc866813fdb6d93516acd491de064c0f219fda9af6cf6c79f9fcd99b5066e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d50.json",
+        "expected":  "3d59145cc47082099b65069b7082a5f60227e0e6091c2b92ed6601fc18647091",
+        "actual":  "3d59145cc47082099b65069b7082a5f60227e0e6091c2b92ed6601fc18647091",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-2-2.json",
+        "expected":  "d924760b8e41722dfbceeeed76069c8e36c25c1bbde732d792c4390a632341f0",
+        "actual":  "d924760b8e41722dfbceeeed76069c8e36c25c1bbde732d792c4390a632341f0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-2-2-d10.json",
+        "expected":  "042005328c13bf841cdf30cae028411ef6b731e54408b4113f24dffd3391e8c3",
+        "actual":  "042005328c13bf841cdf30cae028411ef6b731e54408b4113f24dffd3391e8c3",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-3-1.json",
+        "expected":  "fe3cbd94ad620d587b70bb1ac1de7c78a0ee71e487a3275f31f678a71ccfdbf1",
+        "actual":  "fe3cbd94ad620d587b70bb1ac1de7c78a0ee71e487a3275f31f678a71ccfdbf1",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-manifest-whole.json",
+        "expected":  "7c453cca8697dd4e1e3bb630b52153dfdcfa7b483a57566bfdee99b6091b5fe5",
+        "actual":  "7c453cca8697dd4e1e3bb630b52153dfdcfa7b483a57566bfdee99b6091b5fe5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-whole.json",
+        "expected":  "52dade80e8f295e859ae84e556922544b7b6f7d309304a3197c9d50c763f8d0c",
+        "actual":  "52dade80e8f295e859ae84e556922544b7b6f7d309304a3197c9d50c763f8d0c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-whole-d0-wait.json",
+        "expected":  "322b7356eba5ef4d40550deffe623ed3d9664dcec8cd69609474a7d69b3a11c7",
+        "actual":  "322b7356eba5ef4d40550deffe623ed3d9664dcec8cd69609474a7d69b3a11c7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-code-gql-no-description.json",
+        "expected":  "f97b0992fa29f872a0e86f1cc04e795a423670d339c97d0ee34169fb7a51e644",
+        "actual":  "f97b0992fa29f872a0e86f1cc04e795a423670d339c97d0ee34169fb7a51e644",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-empty.json",
+        "expected":  "330cf3afaa87a6a4c6d28e8d198c8ef5a405208a90f1168b2066aa8762fc830e",
+        "actual":  "330cf3afaa87a6a4c6d28e8d198c8ef5a405208a90f1168b2066aa8762fc830e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-full.json",
+        "expected":  "6227ae03642f4ca148bdb3437ff476cf2335231c180ab17607897625d8774dd8",
+        "actual":  "6227ae03642f4ca148bdb3437ff476cf2335231c180ab17607897625d8774dd8",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-message-only.json",
+        "expected":  "d43f52b878a5f58d50b3d970e96252cbf95b915e845be1c3fe08ee1b072005c9",
+        "actual":  "d43f52b878a5f58d50b3d970e96252cbf95b915e845be1c3fe08ee1b072005c9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-neo4j-code-only.json",
+        "expected":  "f305445b4a01255e034050b1ac4b58231740712739e03cd5db79c3eeba25c07b",
+        "actual":  "f305445b4a01255e034050b1ac4b58231740712739e03cd5db79c3eeba25c07b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-no-code.json",
+        "expected":  "8b40c60c4d76421c03f286d6b408df9c047a375081a2e4bbdac1e993655dcf66",
+        "actual":  "8b40c60c4d76421c03f286d6b408df9c047a375081a2e4bbdac1e993655dcf66",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-no-gql.json",
+        "expected":  "c2ff1cfb0f0e820bfe1ba75976c26e192407bb513b16babe6ca8d653b00cd291",
+        "actual":  "c2ff1cfb0f0e820bfe1ba75976c26e192407bb513b16babe6ca8d653b00cd291",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-old-code.json",
+        "expected":  "9fb1d72d367622ac083cc5c973fc87a7dcbf417f0d3ccdf16adea8bd993fd106",
+        "actual":  "9fb1d72d367622ac083cc5c973fc87a7dcbf417f0d3ccdf16adea8bd993fd106",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-chunk-body.json",
+        "expected":  "5b069b4f4319b3d6788df527cdbd8eabaf8fcb01dcb42b1505687b7180b39a2e",
+        "actual":  "5b069b4f4319b3d6788df527cdbd8eabaf8fcb01dcb42b1505687b7180b39a2e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-chunk-header.json",
+        "expected":  "b7cf56f2882179ca1890493defee903369a33f2e6708115bef461f12a147e734",
+        "actual":  "b7cf56f2882179ca1890493defee903369a33f2e6708115bef461f12a147e734",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-header-slow.json",
+        "expected":  "cece040cf8fe1a4a7d996e99b108939f5b85b88d93268fa43e35f27d63657411",
+        "actual":  "cece040cf8fe1a4a7d996e99b108939f5b85b88d93268fa43e35f27d63657411",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-perbyte.json",
+        "expected":  "0da0d729ddce5f0c8c9fe83251cddb252ea7ae75c11bf2afc0decaa5448d50aa",
+        "actual":  "0da0d729ddce5f0c8c9fe83251cddb252ea7ae75c11bf2afc0decaa5448d50aa",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-terminator.json",
+        "expected":  "db9e3ee430c3877c9d561b34b2338b4be7b6cb40b33afdd16600642f65e54415",
+        "actual":  "db9e3ee430c3877c9d561b34b2338b4be7b6cb40b33afdd16600642f65e54415",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-two-chunks.json",
+        "expected":  "3edde201c7dded8a6c3659e2b9f7764bac59eeac11401a032e8ee78d3b10457f",
+        "actual":  "3edde201c7dded8a6c3659e2b9f7764bac59eeac11401a032e8ee78d3b10457f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-whole.json",
+        "expected":  "174ee98119b5d40c687ae838537789851bdcae182b19dc5cdc0f306bb198d415",
+        "actual":  "174ee98119b5d40c687ae838537789851bdcae182b19dc5cdc0f306bb198d415",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/smoke-hs-whole.json",
+        "expected":  "22e4d3982a97f0672eb12052ef71959247bbddaa830ebacf3ffa254c0e3a8cec",
+        "actual":  "22e4d3982a97f0672eb12052ef71959247bbddaa830ebacf3ffa254c0e3a8cec",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-probe-build.log",
+        "expected":  "63dbaafb630abb12d807e31dda03b1a80ba19b343fe028694132f5b6964e2730",
+        "actual":  "63dbaafb630abb12d807e31dda03b1a80ba19b343fe028694132f5b6964e2730",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run1.json",
+        "expected":  "17fbd1b5269b6531908ef0f9ac49c6294bc1c42f98f31689288406a98c3341a7",
+        "actual":  "17fbd1b5269b6531908ef0f9ac49c6294bc1c42f98f31689288406a98c3341a7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run2.json",
+        "expected":  "3c351fca31c16bc03d210669304ddefabe1b4c4b7e18d25fd1fd88558c51bd60",
+        "actual":  "3c351fca31c16bc03d210669304ddefabe1b4c4b7e18d25fd1fd88558c51bd60",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run3.json",
+        "expected":  "b868a21cf0d441ecfc4e911cc8fd3190382815d73f2f59ebb5165e1a62f4e961",
+        "actual":  "b868a21cf0d441ecfc4e911cc8fd3190382815d73f2f59ebb5165e1a62f4e961",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run4.json",
+        "expected":  "e1763633dd9b07a537ac497b2bb5d04b37678f63b655bae8d78017337d1f69b7",
+        "actual":  "e1763633dd9b07a537ac497b2bb5d04b37678f63b655bae8d78017337d1f69b7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run5.json",
+        "expected":  "eedfd4834fd2c4178450679010bfa5265c0eeb4c4b88fce9d65957347967beee",
+        "actual":  "eedfd4834fd2c4178450679010bfa5265c0eeb4c4b88fce9d65957347967beee",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run1.json",
+        "expected":  "a0071e3a89b95287376cfe531f5d7e5f3eacfbdceb2194a2c5dc9d6d706d929a",
+        "actual":  "a0071e3a89b95287376cfe531f5d7e5f3eacfbdceb2194a2c5dc9d6d706d929a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run2.json",
+        "expected":  "df4ec432fe7f2561067d3c0e336306bec9d6d2fbfb941cb1b03055fe99986ea4",
+        "actual":  "df4ec432fe7f2561067d3c0e336306bec9d6d2fbfb941cb1b03055fe99986ea4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run3.json",
+        "expected":  "d4a850e2cbea756677aa0d6e8d21d1ef0659c4bcbe8582ffb4ec9dc4fc88dd3e",
+        "actual":  "d4a850e2cbea756677aa0d6e8d21d1ef0659c4bcbe8582ffb4ec9dc4fc88dd3e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run4.json",
+        "expected":  "ee6039814ebd1cf846a9eaed129f668b5e8e738f7017cbb2f6bf7d0f98849531",
+        "actual":  "ee6039814ebd1cf846a9eaed129f668b5e8e738f7017cbb2f6bf7d0f98849531",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run5.json",
+        "expected":  "49e595a806003f5217d123cf5163e45187dea078f57f6133345e6e9954757250",
+        "actual":  "49e595a806003f5217d123cf5163e45187dea078f57f6133345e6e9954757250",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run1.json",
+        "expected":  "fce7db2c0cef3774922c7def9fb2ba23d00bf3949eeb837449500561e33c4e8e",
+        "actual":  "fce7db2c0cef3774922c7def9fb2ba23d00bf3949eeb837449500561e33c4e8e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run2.json",
+        "expected":  "2082f11acb5b37350b6fa6151f18e5da691ef53555767bdf44a11f3a73d9bd81",
+        "actual":  "2082f11acb5b37350b6fa6151f18e5da691ef53555767bdf44a11f3a73d9bd81",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run3.json",
+        "expected":  "984df3582f5b856aa18e5b358af2d0a569d063caa1694bafa6daf07295387e43",
+        "actual":  "984df3582f5b856aa18e5b358af2d0a569d063caa1694bafa6daf07295387e43",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run4.json",
+        "expected":  "effb37b49872b7c7e0ff26db3b2b13eb684eebca2f36a1fd664c3fd591d57fc9",
+        "actual":  "effb37b49872b7c7e0ff26db3b2b13eb684eebca2f36a1fd664c3fd591d57fc9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run5.json",
+        "expected":  "a94375a1e766aa79a2e1faac4f47dc87b2af5888629ca4a8b4da5fcbc8bf716a",
+        "actual":  "a94375a1e766aa79a2e1faac4f47dc87b2af5888629ca4a8b4da5fcbc8bf716a",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run1.json",
+        "expected":  "02b6d8d8d7fdd531639828bd706436b61f2cdcb35d5edc1f9df44e69158460cb",
+        "actual":  "02b6d8d8d7fdd531639828bd706436b61f2cdcb35d5edc1f9df44e69158460cb",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run2.json",
+        "expected":  "bced0911281ef51603fd7b8291a572542285ffefa5fbbbd278fa7d9d0ce869a0",
+        "actual":  "bced0911281ef51603fd7b8291a572542285ffefa5fbbbd278fa7d9d0ce869a0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run3.json",
+        "expected":  "cbfa83d4fcf970505d5cc36889e5db7f6442ee184e1aea4a50827cb9c77f23f6",
+        "actual":  "cbfa83d4fcf970505d5cc36889e5db7f6442ee184e1aea4a50827cb9c77f23f6",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run4.json",
+        "expected":  "bdc6dde62047d940d79b0d51cdf63d8bc18c62928a579ddffda5cababc5956c2",
+        "actual":  "bdc6dde62047d940d79b0d51cdf63d8bc18c62928a579ddffda5cababc5956c2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run5.json",
+        "expected":  "c94889f9b5fe71515b1e5b51fc51a21f82f0e8a5d4ee911eeac0765f0aa62905",
+        "actual":  "c94889f9b5fe71515b1e5b51fc51a21f82f0e8a5d4ee911eeac0765f0aa62905",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run1.json",
+        "expected":  "9d199841ca8d615c99cd7516c322dac218d76ee91483c05ca06ecfc92bcb1ce9",
+        "actual":  "9d199841ca8d615c99cd7516c322dac218d76ee91483c05ca06ecfc92bcb1ce9",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run2.json",
+        "expected":  "c2f5ee4e9e08d53bbf6718b83fde90ed5d4a39bd7b48eaf38902112d3675e256",
+        "actual":  "c2f5ee4e9e08d53bbf6718b83fde90ed5d4a39bd7b48eaf38902112d3675e256",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run3.json",
+        "expected":  "2d8ee5c74ec574f8104c6285627092d1e3e777d9da00351994696ce573073f52",
+        "actual":  "2d8ee5c74ec574f8104c6285627092d1e3e777d9da00351994696ce573073f52",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run4.json",
+        "expected":  "d7a567a1e108e95600ba6d75b71350644e442e604c80cb0749160f1ffd1b0eeb",
+        "actual":  "d7a567a1e108e95600ba6d75b71350644e442e604c80cb0749160f1ffd1b0eeb",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run5.json",
+        "expected":  "507d2ee1d08e7f715126ca7a17923eaaa379c40d6d54ee69459ce067ee6561d4",
+        "actual":  "507d2ee1d08e7f715126ca7a17923eaaa379c40d6d54ee69459ce067ee6561d4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run1.json",
+        "expected":  "63bf08fd569d3e9397252c37e13c181d056ed02a22c612171ec8460757a0d043",
+        "actual":  "63bf08fd569d3e9397252c37e13c181d056ed02a22c612171ec8460757a0d043",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run2.json",
+        "expected":  "bb0c1376a1d1c1f0e813a37362c56177efeab284b824ed2c2b42d86c703786f4",
+        "actual":  "bb0c1376a1d1c1f0e813a37362c56177efeab284b824ed2c2b42d86c703786f4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run3.json",
+        "expected":  "01feb64221f5fe72c00413ff892364b2f2c68ef66efc048cb3595b60ff5a1c43",
+        "actual":  "01feb64221f5fe72c00413ff892364b2f2c68ef66efc048cb3595b60ff5a1c43",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run4.json",
+        "expected":  "b2eb561ae66a970faced031a762bf98a05ee05e6071a5c00c33484c3c17d750d",
+        "actual":  "b2eb561ae66a970faced031a762bf98a05ee05e6071a5c00c33484c3c17d750d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run5.json",
+        "expected":  "ada4f1f10eea1918ffc43787b7154720baa643ade598e8e5a6c8a2c6933d1a3e",
+        "actual":  "ada4f1f10eea1918ffc43787b7154720baa643ade598e8e5a6c8a2c6933d1a3e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run1.json",
+        "expected":  "706bef0c20b3089873097d8b0e9b82d7ac7d2320fed794e84b0df541353f0020",
+        "actual":  "706bef0c20b3089873097d8b0e9b82d7ac7d2320fed794e84b0df541353f0020",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run2.json",
+        "expected":  "22c3cd358405d155b316e799acf8a611d99ee2f01074a246f33f4c2818e32f1d",
+        "actual":  "22c3cd358405d155b316e799acf8a611d99ee2f01074a246f33f4c2818e32f1d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run3.json",
+        "expected":  "a08e46580c0bee31d2d3bdf1f01aaa98af295c365c4bb8b3d0c2254c209cf2c2",
+        "actual":  "a08e46580c0bee31d2d3bdf1f01aaa98af295c365c4bb8b3d0c2254c209cf2c2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run4.json",
+        "expected":  "98b64fe6f0e9f9fe93f1f01df468185fe88744606e8e1d5ebe95bb841979df1c",
+        "actual":  "98b64fe6f0e9f9fe93f1f01df468185fe88744606e8e1d5ebe95bb841979df1c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run5.json",
+        "expected":  "67ca2aa147582a35a5163005563a2b65a5b3dec0aceba9fd84253f1017a7d8b7",
+        "actual":  "67ca2aa147582a35a5163005563a2b65a5b3dec0aceba9fd84253f1017a7d8b7",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run1.json",
+        "expected":  "7d466f2b3000ddbd1e65a41b8f41364fb98fafc22c1c5dd2f04d6b93ec397ca0",
+        "actual":  "7d466f2b3000ddbd1e65a41b8f41364fb98fafc22c1c5dd2f04d6b93ec397ca0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run2.json",
+        "expected":  "57797f4212698a44feaa957507ef30df8b57d9244952595abfa771ee6a652091",
+        "actual":  "57797f4212698a44feaa957507ef30df8b57d9244952595abfa771ee6a652091",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run3.json",
+        "expected":  "a0e90bda09adbfe2fcb11cdc41202bdcca561a1c3fd5b6ac94bc5605c61d714d",
+        "actual":  "a0e90bda09adbfe2fcb11cdc41202bdcca561a1c3fd5b6ac94bc5605c61d714d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run4.json",
+        "expected":  "c3dc1eb74fa0080cc036a7c8553ab264b2eb68e460ece9dd31292078a10893ca",
+        "actual":  "c3dc1eb74fa0080cc036a7c8553ab264b2eb68e460ece9dd31292078a10893ca",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run5.json",
+        "expected":  "54627e71b3f82385307644441043ecd72b6a37275a5e8e16f85096039edc2cd6",
+        "actual":  "54627e71b3f82385307644441043ecd72b6a37275a5e8e16f85096039edc2cd6",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-summary.json",
+        "expected":  "85c21d62e3a53a304edcae384bf0bf9a4037abaefe2e581b8f8734633a059f64",
+        "actual":  "85c21d62e3a53a304edcae384bf0bf9a4037abaefe2e581b8f8734633a059f64",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/graph-independent-decode.json",
+        "expected":  "3e14f0d897e18334673448a63fc719c02b4dd8e1801142f7708800998b5296ee",
+        "actual":  "3e14f0d897e18334673448a63fc719c02b4dd8e1801142f7708800998b5296ee",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/graph-independent-decode.log",
+        "expected":  "8cff6b908f577e14d92f733cc5683c8bd868aa61a1ec09735d65ccc11eae254c",
+        "actual":  "8cff6b908f577e14d92f733cc5683c8bd868aa61a1ec09735d65ccc11eae254c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/integration-build.log",
+        "expected":  "8562c4b76e954761c6ab205b7e638ab88446c018e395eea71de22c7d0d7533b5",
+        "actual":  "8562c4b76e954761c6ab205b7e638ab88446c018e395eea71de22c7d0d7533b5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/integration-tests.log",
+        "expected":  "4ec9c73c63922386a84a6a3c927ccf5fcf0c55cd2e9243fa073d72c82c65bf70",
+        "actual":  "4ec9c73c63922386a84a6a3c927ccf5fcf0c55cd2e9243fa073d72c82c65bf70",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/integration-tests-rerun.log",
+        "expected":  "218468421146addbb50670e76b54c8f7b1760c8374e64131570c84195830d51b",
+        "actual":  "218468421146addbb50670e76b54c8f7b1760c8374e64131570c84195830d51b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls/summary.json",
+        "expected":  "e6693e4dc6810fb65fd087a281a7e51fa8ea88abfed4145ad4bc5d233914337b",
+        "actual":  "e6693e4dc6810fb65fd087a281a7e51fa8ea88abfed4145ad4bc5d233914337b",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls-build.log",
+        "expected":  "cc20899f6ddae190e8f92d48c2ea16ec21438267788134929ce296c275f902f2",
+        "actual":  "cc20899f6ddae190e8f92d48c2ea16ec21438267788134929ce296c275f902f2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls-run.log",
+        "expected":  "dd787bbe991a321a31250b358c8fb2729d79c31f8d7637c2cbc5bcbd6b3fcd7e",
+        "actual":  "dd787bbe991a321a31250b358c8fb2729d79c31f8d7637c2cbc5bcbd6b3fcd7e",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/package-list.txt",
+        "expected":  "1d0c05b0a43f9e98096a617f707bdfba0b0d77784d15a9e2011a0ada0ab6ea0f",
+        "actual":  "1d0c05b0a43f9e98096a617f707bdfba0b0d77784d15a9e2011a0ada0ab6ea0f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t01-handshake.json",
+        "expected":  "48fa13a8a93ee6b1bcfe2191f5fad440099acce1f1eb6529f6551f3a28620a70",
+        "actual":  "48fa13a8a93ee6b1bcfe2191f5fad440099acce1f1eb6529f6551f3a28620a70",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t01-handshake-rejected.json",
+        "expected":  "8184d2180f7d1017b438fdcbba54095b099c386a39f2040f63ad4256708d05f5",
+        "actual":  "8184d2180f7d1017b438fdcbba54095b099c386a39f2040f63ad4256708d05f5",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t02-initialization.json",
+        "expected":  "10801eb456502e8e720a4a3ffd1b46eefa40611c6dd83458a381406e2b6b32ce",
+        "actual":  "10801eb456502e8e720a4a3ffd1b46eefa40611c6dd83458a381406e2b6b32ce",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t02-invalid-credentials.json",
+        "expected":  "482f99de82aeb0c13f5a4bb3d2541d530223c8ab65d76979e994900a9ed7a63c",
+        "actual":  "482f99de82aeb0c13f5a4bb3d2541d530223c8ab65d76979e994900a9ed7a63c",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t03-query-scalar.json",
+        "expected":  "18aa3034945e54849005023af84c510020a3ac0f7c11b5a67fe922506b71b660",
+        "actual":  "18aa3034945e54849005023af84c510020a3ac0f7c11b5a67fe922506b71b660",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t04-graph-values.json",
+        "expected":  "937cf5810bb03201fd643ee44a32471aa8dce046f0aee474e93011a5f677894d",
+        "actual":  "937cf5810bb03201fd643ee44a32471aa8dce046f0aee474e93011a5f677894d",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-discard.json",
+        "expected":  "214a6b0700255921ae17e7a8fd9d5ac0e0be65947fe10069f9f5cedcff90ca3f",
+        "actual":  "214a6b0700255921ae17e7a8fd9d5ac0e0be65947fe10069f9f5cedcff90ca3f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-early-disposal.json",
+        "expected":  "6d1199efab2fbea59ff8029c7c2051046a6ef7c58141d3b7483593d61fdf6a59",
+        "actual":  "6d1199efab2fbea59ff8029c7c2051046a6ef7c58141d3b7483593d61fdf6a59",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-pagination.json",
+        "expected":  "879ea73147ecf7ccb33c73bb0eac296ab7f208e2a64730afe27b226bdd75a5ab",
+        "actual":  "879ea73147ecf7ccb33c73bb0eac296ab7f208e2a64730afe27b226bdd75a5ab",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-incomplete-response.json",
+        "expected":  "48eb65a111e550e8511fa6e72e08adf88bd1e9b9ae619cc271b1ffa1c6239f79",
+        "actual":  "48eb65a111e550e8511fa6e72e08adf88bd1e9b9ae619cc271b1ffa1c6239f79",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-protocol-failure.json",
+        "expected":  "27502da284d7d25702f28df5070a7264e5aa61a54fc5182039fb27be82b5dbb0",
+        "actual":  "27502da284d7d25702f28df5070a7264e5aa61a54fc5182039fb27be82b5dbb0",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-socket-termination.json",
+        "expected":  "85b90f475d1a83e186e0c4fb18c14a0da438057d56a06d4ce2ed1011ac6a6891",
+        "actual":  "85b90f475d1a83e186e0c4fb18c14a0da438057d56a06d4ce2ed1011ac6a6891",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-coalesced.json",
+        "expected":  "a0a04af864df8bcd93ce33006f583b8188ecd8599ea50cce1c011a1196633bb4",
+        "actual":  "a0a04af864df8bcd93ce33006f583b8188ecd8599ea50cce1c011a1196633bb4",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-fixedchunk-3.json",
+        "expected":  "69acd1f49242fed9b3ca3cf2e2eb0022682750064918f000d3bb07d16981dbc1",
+        "actual":  "69acd1f49242fed9b3ca3cf2e2eb0022682750064918f000d3bb07d16981dbc1",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-perbyte-1.json",
+        "expected":  "04631b63b5604c1e565ff3fb972c740999a6a93eac2d894c2d0f08020b37fc14",
+        "actual":  "04631b63b5604c1e565ff3fb972c740999a6a93eac2d894c2d0f08020b37fc14",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-whole-7.json",
+        "expected":  "b3df1ac294de341e213b9cb9ffb0afdb9af415dd5fb644934647edf8005a81c2",
+        "actual":  "b3df1ac294de341e213b9cb9ffb0afdb9af415dd5fb644934647edf8005a81c2",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-handshake-fragmentation.json",
+        "expected":  "d36747163c6da3fcfcf968c1777f686ad99076f3cbd347a0bb398b2fcc06bd1f",
+        "actual":  "d36747163c6da3fcfcf968c1777f686ad99076f3cbd347a0bb398b2fcc06bd1f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t08-real-listener-legacy.json",
+        "expected":  "d1a9ed6fcfd4a74e6e88c8863527b18c338da3b2e5e89358672caec481a6ffaa",
+        "actual":  "d1a9ed6fcfd4a74e6e88c8863527b18c338da3b2e5e89358672caec481a6ffaa",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "evidence_files",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t08-real-listener-manifest.json",
+        "expected":  "e16b7e4731d4cb6f4c6d31d691e5804b61b96e2ab483b2b036e2805e7ea26377",
+        "actual":  "e16b7e4731d4cb6f4c6d31d691e5804b61b96e2ab483b2b036e2805e7ea26377",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/.gitignore",
+        "expected":  "6c5082c7e6de3e350189c67a1aacf757485ecc26e0a3cf96683528565f3e5f12",
+        "actual":  "6c5082c7e6de3e350189c67a1aacf757485ecc26e0a3cf96683528565f3e5f12",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/FragmentationProbe.csproj",
+        "expected":  "008c79f613dd5b45fe8c499b3a5c2323c01b640e9af429e01eb9c451e73b1c81",
+        "actual":  "008c79f613dd5b45fe8c499b3a5c2323c01b640e9af429e01eb9c451e73b1c81",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/Program.cs",
+        "expected":  "9a3bccf9a4f9b7a5ca86b85f95a2de0d7a01e7d07f0f724a0a29fea2f5e13518",
+        "actual":  "9a3bccf9a4f9b7a5ca86b85f95a2de0d7a01e7d07f0f724a0a29fea2f5e13518",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/README.md",
+        "expected":  "3e25bf2dcf22cd299aa34ea6efd9b7fd402198f622fbf041426cc49a671e451f",
+        "actual":  "3e25bf2dcf22cd299aa34ea6efd9b7fd402198f622fbf041426cc49a671e451f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/GraphDecode/decode-graph.ps1",
+        "expected":  "b3f1588d233b46fd9491695d2bb9c471c48ed4f5f07394e1838077bb3a92a40f",
+        "actual":  "b3f1588d233b46fd9491695d2bb9c471c48ed4f5f07394e1838077bb3a92a40f",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/NegativeControls.csproj",
+        "expected":  "97b2733d6b848010dbe91c403b5962b040e85e52b7c74adb92170e1e0d084b36",
+        "actual":  "97b2733d6b848010dbe91c403b5962b040e85e52b7c74adb92170e1e0d084b36",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/Program.cs",
+        "expected":  "e82930514adac8f5d899de89cc1f2ed7575d221c0d82cec9327f7a73fcf581ae",
+        "actual":  "e82930514adac8f5d899de89cc1f2ed7575d221c0d82cec9327f7a73fcf581ae",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/README.md",
+        "expected":  "f1a1c1335ba28ea7fefb3ae173c645add747af94b82d8b75026c3a5c4fef9e18",
+        "actual":  "f1a1c1335ba28ea7fefb3ae173c645add747af94b82d8b75026c3a5c4fef9e18",
+        "existing":  true,
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "section":  "probe_source_files",
+        "path":  "docs/reviews/probes/B0-B-Q1/README.md",
+        "expected":  "259a8f367c97fdb01af28e6c89c35a0c522f0867b0c5031c06299adb8ddf7d1f",
+        "actual":  "259a8f367c97fdb01af28e6c89c35a0c522f0867b0c5031c06299adb8ddf7d1f",
+        "existing":  true,
+        "matched":  true
+    }
+]

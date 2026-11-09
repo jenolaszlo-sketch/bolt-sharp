@@ -1,0 +1,111 @@
+﻿{
+    "task":  "B5-A-IMPL-01 - TCP/TLS transport and Bolt 5.8 network integration (producer evidence)",
+    "role":  "Implementation agent",
+    "base_head":  "853580659cc57ad959c026800c1e17de44cdddc1",
+    "base_tree":  "a00ab7b189608da4ebf5a61ead6557e402d0bac4",
+    "implementation_commits":  [
+                                   "943774c7388ad510090cdd6bf1664cd6e53ffb6b",
+                                   "07bcc29ddba139a7a644e76d11a8b047e5b4bb2a",
+                                   "11e5c85d22a7b3832e6721c72c39c2cf96502c68"
+                               ],
+    "transport_suite_tests":  80,
+    "full_regression_tests":  1217,
+    "driver_integration_tests":  19,
+    "build_warnings":  2,
+    "build_warnings_detail":  "the two pre-existing xUnit2012 advisories at tests/BoltSharp.Tests/Messages/BoltRequestDecodeTests.cs:71-72",
+    "historical_manifest_entries_verified":  352,
+    "generated_utc":  "2026-11-09T03:37:28Z",
+    "hash_convention":  "SHA-256 over exact working-tree bytes (canonical checkout form); manifest.json itself is excluded from the inventory",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/full-regression.trx",
+                               "sha256":  "5276a71855fa072efab670922089dbe8daf1965de3d72a75f3f9cb8f800759f3",
+                               "bytes":  1647415
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/historical-integrity.json",
+                               "sha256":  "5d0e0537382bfbd3d5b2fc9c45a212a2980d04479e282ad735a7d7708caa70a9",
+                               "bytes":  153363
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/network-probe-source.cs",
+                               "sha256":  "3c53dc62fa9181fb179d29536bfef27b48f7b9c8d8d7be8fdc69000910d3e94f",
+                               "bytes":  11142
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/network-traces.txt",
+                               "sha256":  "e2879baefe264e375733d8c344d5dcff1ba37a11a18b29b32fb2c5b8bc8c0397",
+                               "bytes":  6386
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/New-EvidenceManifest.ps1",
+                               "sha256":  "9584b6c3e1eea6b78653825bff43eb839f7d4ca7f37e3e3f7dcbe70feeaae30c",
+                               "bytes":  2134
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/README.md",
+                               "sha256":  "82dc96deddd6069d4b98ccf327d1ace19a1bb48e4948ee07c622251d1a0963aa",
+                               "bytes":  3288
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/Run-B5AImpl.ps1",
+                               "sha256":  "1b03c7e06bcd37631c99927ef2667c5712093cb1e78c5806fc1c3a36d247c1ad",
+                               "bytes":  4386
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/transport-tests.trx",
+                               "sha256":  "050c78677aae3ab296efbaaa70439c5776f5b1d6ab4b934625d89838c84f82b1",
+                               "bytes":  107889
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/Verify-HistoricalManifests.ps1",
+                               "sha256":  "8353dd11a0a2d4ede4ff1efe30d8a02a694ffa23c9e6bbcda5e4c05883eb59b3",
+                               "bytes":  5097
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/01-preflight.txt",
+                               "sha256":  "6aa4bdec48d83329167e8e8abc9f49bccaa0043921fc1db9a6a9612e84fd4f1e",
+                               "bytes":  969
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/02-build-production.txt",
+                               "sha256":  "88f44a3297cc6a4cc24f60f1436ed4792f631f0aa14f62d1104a133df0203282",
+                               "bytes":  251
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/03-build-solution.txt",
+                               "sha256":  "2d6ae9f7a9073ddcc4fa6d82f1d275afb40a151a2ad09045e6a82699a450bd41",
+                               "bytes":  1665
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/04-transport-suite.txt",
+                               "sha256":  "6d05c2d69feea367ae322cd2fc605abe9dbeadd62899c3ceea84bda0e9e050de",
+                               "bytes":  428
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/05-full-regression.txt",
+                               "sha256":  "e19e2504b4b5a964b14aa4c7d01a4c9d79da9d0c65e9e7227552b62da533d722",
+                               "bytes":  698
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/06-driver-integration.txt",
+                               "sha256":  "fbe953ee90cbc3f312a1641c15b8993b75f838b1406da469d464054722ec5bfb",
+                               "bytes":  638
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/07-historical-manifests.txt",
+                               "sha256":  "b848a1aabec5fc34ce68978f00cf74cf47f460f5d803cc0375ee26aa82bb920b",
+                               "bytes":  2361
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/08-owner-decisions.txt",
+                               "sha256":  "51402d77a5e3f785eefb72aa69cecaec7b417a029ba06d1821a85f44eaa46a9e",
+                               "bytes":  961
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/09-environment.txt",
+                               "sha256":  "7f53aa63f3a9c1ae63e0bc1a9a5f3c85e448f7add32ff35e5514ef0fea7a3c87",
+                               "bytes":  329
+                           }
+                       ]
+}
