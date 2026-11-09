@@ -5,7 +5,7 @@
 - **Repository:** `D:\projects\bolt-sharp`, canonical `main`, single worktree, never pushed
 - **Starting HEAD:** `853580659cc57ad959c026800c1e17de44cdddc1`
 - **Starting tree:** `a00ab7b189608da4ebf5a61ead6557e402d0bac4`
-- **Final HEAD:** `11e5c85d22a7b3832e6721c72c39c2cf96502c68`
+- **Final HEAD:** `30c66a7` (see §25 for the complete commit chain)
 - **Protocol target:** Bolt 5.8 / PackStream 1.0 (bounded; no other revision negotiated)
 - **Prerequisites:** B3-A, B3-B, B3-C accepted with qualifications (all carried forward)
 - **Evidence:** `docs/reviews/evidence/B5-A-IMPL-01/`
@@ -128,7 +128,7 @@ for TLS. Tests cover every refusal (`TcpListenerTests`).
   trust on the client side; no keys, PFX passwords or permanent secrets committed.
 - Production-deployment security (real CA chains, revocation, cipher policy tuning) is **not**
   claimed; `checkCertificateRevocation` is passed as `false` for server-side auth in this bounded
-  milestone and is recorded as a qualification (Q3, §23).
+  milestone and is recorded as a qualification (Q2, §23).
 
 ## 6. Handshake/version-negotiation behavior
 
@@ -395,8 +395,8 @@ tests/BoltSharp.Tests/Transport/TransportLimitsTests.cs
 tests/BoltSharp.Tests/Transport/MultiClientTests.cs
 ```
 
-Evidence (this commit): `docs/reviews/B5-A-IMPL-01.md` and
-`docs/reviews/evidence/B5-A-IMPL-01/` (18 files). No B2/B3 source file was touched.
+Evidence (commits `4ff26e1`, `30c66a7`): `docs/reviews/B5-A-IMPL-01.md` and
+`docs/reviews/evidence/B5-A-IMPL-01/` (19 tracked files). No B2/B3 source file was touched.
 
 ## 23. Remaining qualifications (B5-A-specific; all prior B3/B2 qualifications remain binding)
 
@@ -404,8 +404,7 @@ Evidence (this commit): `docs/reviews/B5-A-IMPL-01.md` and
 | --- | --- |
 | Q1 | **Reviewer independence:** this producer verification is same-executor; B5-A-Q1 must use a different reviewer executor/model. |
 | Q2 | **TLS depth:** TLS configuration validates certificate+key and TLS 1.2+ policy, but cipher-suite policy, revocation checking (`checkCertificateRevocation=false` for server auth in this milestone), CA-trust chains, and certificate rotation are unconfigured — production deployment hardening is a later milestone. Client-side URI scheme semantics (`bolt+s://`, `bolt+ssc://`) are documented, not driver-qualified. |
-| Q3 | **Cipher/protocol negotiation** uses platform `SslStream` defaults within the TLS 1.2+ floor; no explicit cipher policy surface. |
-| Q4 | **Manifest handshake end-to-end coverage** is not asserted over TCP in this suite (B2 manifest support exists and is integrated via the same negotiator path); B5-A-Q1 should probe it explicitly. |
+| Q3 | **Cipher/protocol negotiation** uses platform `SslStream` defaults within the TLS 1.2+ floor; no explicit cipher policy surface. || Q4 | **Manifest handshake end-to-end coverage** is not asserted over TCP in this suite (B2 manifest support exists and is integrated via the same negotiator path); B5-A-Q1 should probe it explicitly. |
 | Q5 | **Slow-provider responsiveness** remains bounded by the accepted B3-B limitation (no mid-flight RESET jump-ahead interruption); transport cancellation does not implement that behavior. |
 | Q6 | **Write-timeout slow-client behavior** is implemented (bounded write + closure) but not exercised by a test that fills the OS loopback buffer; B5-A-Q1 may probe it. No output-buffer-growth qualification beyond B3-B's `MaxRecordsPerResponse` bound is claimed. |
 | Q7 | **Session options passthrough:** the transport constructs each B3-B session with default `BoltSessionOptions` (only the verifier is injected); `MaxRecordsPerResponse`, `ServerName`, `ConnectionId` etc. are not yet configurable through `BoltTcpServerOptions`. |
@@ -432,7 +431,8 @@ Evidence (this commit): `docs/reviews/B5-A-IMPL-01.md` and
 | `943774c7388ad510090cdd6bf1664cd6e53ffb6b` | feat(boltsharp): add bounded TCP and TLS Bolt transport | `58c6d8fc4ad0f181583cd57ae807d6bd9e8e6c08` |
 | `07bcc29ddba139a7a644e76d11a8b047e5b4bb2a` | fix(boltsharp): report transport connection diagnostics exactly once | `064c7eeca30597bf79a7a06ca7896bc37833796f` |
 | `11e5c85d22a7b3832e6721c72c39c2cf96502c68` | test(boltsharp): add B5-A transport network integration tests | `0f88b037460d319430e650036481bf1f0b2af763` |
-| evidence commit | docs(boltsharp): record B5-A transport integration evidence | (recorded in `logs/01-preflight.txt` after commit) |
+| `4ff26e1c2ae90508ade740cd5f8fd2f47d3a7a70` | docs(boltsharp): record B5-A transport integration evidence | `fb8eea7de308a6fe808feba15a13bb80951986e2` |
+| `30c66a7` | docs(boltsharp): include B5-A evidence suite logs and TRX results | (final HEAD; see `git log`) |
 
 ## 26. Independent Q1 reviewer handoff
 
