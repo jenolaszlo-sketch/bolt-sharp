@@ -39,6 +39,7 @@ internal static class BoltTcpConnection
         using var clientOwnership = client;
         var networkStream = client.GetStream();
         var failed = false;
+        var outcome = "closed";
         BoltConnectionSession? session = null;
 
         try
@@ -121,43 +122,48 @@ internal static class BoltTcpConnection
         catch (Exception ex) when (IsClientDisconnect(ex))
         {
             // Clean client disconnect or deliberate closure: classified, not an error.
-            diagnostics.Report(BoltTransportEventKind.ConnectionCompleted, connectionId, "client-disconnect");
-            return;
+            outcome = "client-disconnect";
         }
         catch (OperationCanceledException) when (shutdownCancellationToken.IsCancellationRequested)
         {
             // Listener shutdown: classified as completed shutdown cleanup.
-            diagnostics.Report(BoltTransportEventKind.ConnectionCompleted, connectionId, "listener-shutdown");
-            return;
+            outcome = "listener-shutdown";
         }
         catch (OperationCanceledException)
         {
             // A bounded phase (TLS/handshake/read/write) timed out: fail closed.
             failed = true;
-            diagnostics.Report(BoltTransportEventKind.ConnectionFailed, connectionId, "timeout");
+            outcome = "timeout";
         }
         catch (BoltFramingException ex)
         {
             // Accepted B2 framing error classification: fail closed.
             failed = true;
-            diagnostics.Report(BoltTransportEventKind.ConnectionFailed, connectionId, $"framing:{ex.GetType().Name}");
+            outcome = $"framing:{ex.GetType().Name}";
+        }
+        catch (BoltHandshakeTruncatedException)
+        {
+            // EOF while reading the handshake: the client disconnected during negotiation. Per the
+            // B0-A closure classifications this is a clean disconnect, not a transport fault.
+            outcome = "client-disconnect-during-handshake";
         }
         catch (BoltHandshakeException ex)
         {
             failed = true;
-            diagnostics.Report(BoltTransportEventKind.ConnectionFailed, connectionId, $"handshake:{ex.GetType().Name}");
+            outcome = $"handshake:{ex.GetType().Name}";
+            diagnostics.Report(BoltTransportEventKind.BoltHandshakeFailed, connectionId, ex.GetType().Name);
         }
         catch (BoltMessageException ex)
         {
             // The accepted B3-A decode contract answers malformed messages at the session level;
             // a decode fault escaping to the transport boundary is a transport error.
             failed = true;
-            diagnostics.Report(BoltTransportEventKind.ConnectionFailed, connectionId, $"codec:{ex.Category}");
+            outcome = $"codec:{ex.Category}";
         }
         catch (Exception ex)
         {
             failed = true;
-            diagnostics.Report(BoltTransportEventKind.ConnectionFailed, connectionId, ex.GetType().Name);
+            outcome = ex.GetType().Name;
         }
         finally
         {
@@ -174,10 +180,12 @@ internal static class BoltTcpConnection
                 // residual fault so connection accounting stays accurate.
             }
 
+            // Connection accounting is reported exactly once per connection (the early returns
+            // above must never double-report: active-count bookkeeping would drift).
             diagnostics.Report(
                 failed ? BoltTransportEventKind.ConnectionFailed : BoltTransportEventKind.ConnectionCompleted,
                 connectionId,
-                "closed");
+                outcome);
         }
     }
 
@@ -204,7 +212,7 @@ internal static class BoltTcpConnection
             if (message is null)
             {
                 // Clean EOF before any message byte: the client disconnected deliberately.
-                diagnostics.Report(BoltTransportEventKind.ConnectionCompleted, connectionId, "clean-eof");
+                // Connection accounting is reported once by the pipeline's finally block.
                 return;
             }
 
@@ -227,8 +235,7 @@ internal static class BoltTcpConnection
             {
                 // Terminal outcome (GOODBYE, fatal protocol error, failed retirement): the final
                 // responses (if any) were written; the connection closes. No RESET recovery, no
-                // further messages.
-                diagnostics.Report(BoltTransportEventKind.ConnectionCompleted, connectionId, "terminal-outcome");
+                // further messages. Connection accounting is reported once by the finally block.
                 return;
             }
         }
