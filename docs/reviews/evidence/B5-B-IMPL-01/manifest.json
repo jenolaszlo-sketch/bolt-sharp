@@ -16,9 +16,14 @@
     "historical_manifest_entries_verified":  352,
     "b5a_manifests_verified":  "18 (producer) + 10 (Q1)",
     "owner_decisions_verified_identical":  4,
-    "generated_utc":  "2026-11-09T18:10:47Z",
+    "generated_utc":  "2026-11-09T18:21:00Z",
     "hash_convention":  "SHA-256 over exact working-tree bytes (canonical checkout form); manifest.json itself is excluded from the inventory",
     "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/.gitattributes",
+                               "sha256":  "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+                               "bytes":  8
+                           },
                            {
                                "path":  "docs/reviews/evidence/B5-B-IMPL-01/00-environment.json",
                                "sha256":  "d1a7c9a6ddcec333275fb5fa88e02f735be23ced058fb8b385f533e4b6c30c8b",
