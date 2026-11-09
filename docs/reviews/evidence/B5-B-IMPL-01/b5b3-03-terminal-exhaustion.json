@@ -1,0 +1,21 @@
+{
+  "scenario": "B5B3-03",
+  "title": "Terminal SUCCESS {} without has_more treated as result exhaustion",
+  "uri_scheme": "bolt",
+  "pull_count": 1,
+  "terminal_success_hex": "B170A0",
+  "driver_visible": {
+    "fetch_after_exhaustion": false,
+    "cursor_open_after_exhaustion": false
+  },
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 8
+  }
+}

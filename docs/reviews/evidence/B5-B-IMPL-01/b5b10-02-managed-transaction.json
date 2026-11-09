@@ -1,0 +1,32 @@
+{
+  "scenario": "B5B10-02",
+  "title": "Managed transaction callback refused (BEGIN not supported); auto-commit unaffected",
+  "uri_scheme": "bolt",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ServiceUnavailableException",
+    "message": "Failed after retried for 2 times in 1000 ms. Make sure that your database is online and retry again.",
+    "inner_types": [
+      "System.AggregateException",
+      "Neo4j.Driver.ServiceUnavailableException",
+      "System.IO.IOException"
+    ],
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "gql_status_description": null,
+    "retriable": true
+  },
+  "begin_attempt_connections": 2,
+  "run_processed": 1,
+  "notes": "With a 1s transaction retry bound the driver exhausts its retries quickly; each BEGIN attempt is refused at the decode boundary (finding B5-B-IMPL-F01) and never reaches RUN.",
+  "counters": {
+    "connections_accepted": 3,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 2,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 12
+  }
+}

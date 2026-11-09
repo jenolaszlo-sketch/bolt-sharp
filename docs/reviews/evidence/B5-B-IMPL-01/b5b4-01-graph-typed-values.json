@@ -1,0 +1,111 @@
+{
+  "scenario": "B5B4-01",
+  "title": "Typed INode/IRelationship materialization with distinct identity spaces",
+  "uri_scheme": "bolt",
+  "driver_visible": {
+    "a": {
+      "numeric_id": 1,
+      "element_id": "n:1",
+      "labels": [
+        "Person"
+      ],
+      "name": "Alice"
+    },
+    "r": {
+      "numeric_id": 1,
+      "element_id": "r:1",
+      "type": "KNOWS",
+      "start_element_id": "n:1",
+      "end_element_id": "n:2",
+      "start_numeric_id": 1,
+      "end_numeric_id": 2,
+      "since": 2024
+    },
+    "b": {
+      "numeric_id": 2,
+      "element_id": "n:2",
+      "labels": [
+        "Person"
+      ],
+      "name": "Bob"
+    }
+  },
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 8
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-09T17:58:28.4714248\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:12779"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4720456\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4721873\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4722363\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x6A responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4726099\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4726584\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4737794\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x10 responses=1 state=Streaming"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4738670\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x3F responses=2 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4746186\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4748550\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x02 responses=0 state=Defunct"
+    },
+    {
+      "at_utc": "2026-11-09T17:58:28.4748610\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0001",
+      "detail": "closed"
+    }
+  ]
+}

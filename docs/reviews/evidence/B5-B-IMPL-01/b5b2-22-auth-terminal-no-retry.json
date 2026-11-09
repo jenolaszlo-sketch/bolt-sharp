@@ -1,0 +1,47 @@
+{
+  "scenario": "B5B2-22",
+  "title": "Terminal authentication failure: single attempt, single connection",
+  "uri_scheme": "bolt",
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 2
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-09T17:57:21.2060610\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:36941"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:21.2067129\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:21.2072795\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:21.2078751\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x6A responses=1 state=Defunct"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:21.2078834\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0001",
+      "detail": "closed"
+    }
+  ]
+}

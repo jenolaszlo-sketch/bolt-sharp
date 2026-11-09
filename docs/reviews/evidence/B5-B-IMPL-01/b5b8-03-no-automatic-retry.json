@@ -1,0 +1,8 @@
+{
+  "scenario": "B5B8-03",
+  "title": "A non-retriable 50N42 refusal is never retried, with and without explicit retry disabling",
+  "uri_scheme": "bolt",
+  "default_config_run_count": 1,
+  "retries_disabled_run_count": 1,
+  "notes": "The driver\u0027s automatic one-shot retry applies to retriable failures only; 50N42/Request.Invalid is non-retriable (IsRetriable=false)."
+}

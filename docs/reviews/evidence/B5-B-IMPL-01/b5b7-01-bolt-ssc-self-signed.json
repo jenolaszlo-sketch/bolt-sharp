@@ -1,0 +1,96 @@
+{
+  "scenario": "B5B7-01",
+  "title": "bolt\u002Bssc:// against the real TLS listener with a self-signed certificate",
+  "uri_scheme": "bolt\u002Bssc",
+  "driver_visible": {
+    "answer": 42
+  },
+  "tls": {
+    "certificate": "ephemeral self-signed RSA-2048, CN=localhost, SAN localhost/127.0.0.1",
+    "trust": "driver scheme semantics: accepts any server certificate (\u002Bssc)"
+  },
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 8
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-09T17:59:07.8500737\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:23453"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8603822\u002B00:00",
+      "kind": "TlsHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "Tls12"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8619340\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8621729\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8622309\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x6A responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8625481\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8625906\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8637959\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x10 responses=1 state=Streaming"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8638779\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x3F responses=2 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8642295\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8645136\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x02 responses=0 state=Defunct"
+    },
+    {
+      "at_utc": "2026-11-09T17:59:07.8645199\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0001",
+      "detail": "closed"
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+﻿{
+    "task":  "B5-B-IMPL-01 - official Neo4j .NET driver interoperability (producer evidence)",
+    "role":  "Implementation agent",
+    "base_head":  "2bebd3ee77b12c190b2e48b763deb4444cc94e5d",
+    "base_tree":  "346611f5ebcd878432c924e50f0ff9d255b6822b",
+    "driver_package":  "Neo4j.Driver 6.4.0 (exact pin, test-only)",
+    "b5b_interop_tests":  40,
+    "full_regression_tests":  1217,
+    "transport_suite_tests":  80,
+    "b3c_backend_tests":  94,
+    "b3b_session_tests":  119,
+    "b3a_message_tests":  98,
+    "b0b_driver_integration_tests":  19,
+    "build_warnings":  2,
+    "build_warnings_detail":  "the two pre-existing xUnit2012 advisories at tests/BoltSharp.Tests/Messages/BoltRequestDecodeTests.cs:71-72",
+    "historical_manifest_entries_verified":  352,
+    "b5a_manifests_verified":  "18 (producer) + 10 (Q1)",
+    "owner_decisions_verified_identical":  4,
+    "generated_utc":  "2026-11-09T18:10:47Z",
+    "hash_convention":  "SHA-256 over exact working-tree bytes (canonical checkout form); manifest.json itself is excluded from the inventory",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/00-environment.json",
+                               "sha256":  "d1a7c9a6ddcec333275fb5fa88e02f735be23ced058fb8b385f533e4b6c30c8b",
+                               "bytes":  536
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b-interop-suite.trx",
+                               "sha256":  "1d5f6ebf3f0d39489fda7166ef0beb34c110ecaf6815c496466bf1b35e596407",
+                               "bytes":  59805
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-01-explicit-transaction.json",
+                               "sha256":  "8152a460e730fc27cfea6ce454ebe5f8e6a5f3762ccd78a1aa3234c035b0d7d3",
+                               "bytes":  7380
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-02-managed-transaction.json",
+                               "sha256":  "fd005712e4dc33001306038b350e2ef89d1c968f4f402484322e8f0f9b13c36c",
+                               "bytes":  1190
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-03-routing-scheme.json",
+                               "sha256":  "f5f3a2bdba895ebb3b5057b5c181bfd6d59f3805c6c7e3c19e09285254385977",
+                               "bytes":  6973
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-04-explicit-database.json",
+                               "sha256":  "add9366d72198c29eaedc0b484c2d1049514c0daf0f53df979495b28f40fee1e",
+                               "bytes":  9126
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-01-connectivity-plaintext.json",
+                               "sha256":  "ebfe346fc9b7510aa7486edcf23549fa22c31f4897b1ac292a069f14693cded3",
+                               "bytes":  2676
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-02-manifest-handshake.json",
+                               "sha256":  "5c8c718b4c9567afae15d33ecd97dbe75e04f053b58b5b73cf32a94ac552639a",
+                               "bytes":  6715
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-03-conventional-fallback.json",
+                               "sha256":  "dfdd812820b5190e5f9f33dde2d2d9a066b2bc9eff178974134eae08f300c6ed",
+                               "bytes":  8911
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-04-reject-all-versions.json",
+                               "sha256":  "0d481847314fee0522b57588d751e70daeea23970d6cce401ba4917a26e70c29",
+                               "bytes":  1440
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-05-hello-logon-metadata.json",
+                               "sha256":  "0c16e538ec84d4ef78785145fe1b26bbf7e75c181f75c32e0f9d1131ca2e6fc1",
+                               "bytes":  1687
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-06-close-sequence.json",
+                               "sha256":  "90d658bc0a5d0a86b1331eb8956113d1dd2f3388682f4471e1ab2ec9c419cf56",
+                               "bytes":  2947
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-07-driver-visible-version.json",
+                               "sha256":  "d8a69197fb941db6da033b3cb1450414c828c37493a39b6f44e8036b9045099c",
+                               "bytes":  370
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-20-invalid-credentials.json",
+                               "sha256":  "38d7471c149da7dacee5397ac5da0d54ab682b64ec2f5d40e164fa4df4228cb4",
+                               "bytes":  1213
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-21-missing-verifier.json",
+                               "sha256":  "d3ec46d001f44d50df2c9c1e9e280cfb1b913beead2be556eade9f91d6270436",
+                               "bytes":  1799
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-22-auth-terminal-no-retry.json",
+                               "sha256":  "21c1304f13d19b286f2236143f5ed5d9a586eabcd65b2a6801e76ecb2ced0c82",
+                               "bytes":  1411
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-01-scalar-auto-commit.json",
+                               "sha256":  "e45b3a5769a9b74e20fe3d6146773634b751a7967a5edc5b215052bb44c920d0",
+                               "bytes":  3333
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-02-scalar-wire-capture.json",
+                               "sha256":  "16b6168912f79c3ae0bbad6cc9dd926821c631ee459b5356bf8561b4410ef2cb",
+                               "bytes":  11898
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-03-terminal-exhaustion.json",
+                               "sha256":  "445867f3670f0c885cc42351d4192e4dda2b0fcdd7a83961862460526f4d81af",
+                               "bytes":  593
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-04-home-database-metadata.json",
+                               "sha256":  "e57d957c999b58804c4fd48a88a9b93145bc80c62619328b5bb3d4eb97700ed6",
+                               "bytes":  1208
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b4-01-graph-typed-values.json",
+                               "sha256":  "16c94237058df5a516e61622127c0b84b2a08e426f6ad4a078caccdce8492d25",
+                               "bytes":  3159
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b4-02-graph-wire-capture.json",
+                               "sha256":  "e469b654f75b1d748ad2f7b7408f3bdd228f167c323c36b670b55edd5390a079",
+                               "bytes":  9831
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b5-01-typed-parameters.json",
+                               "sha256":  "ef5d75d62610f0fcc38dae0dc42ba611fd7d16cf2aa37c80e307c075dc548ab1",
+                               "bytes":  8662
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b5-02-explicit-null-versus-missing.json",
+                               "sha256":  "99887471ff110d2f61ed7d827e5999e9673c1a937f445011d9cf3f1516c27021",
+                               "bytes":  19059
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b5-03-query-like-payload.json",
+                               "sha256":  "8cfb02fddafab5b0aeeff02fca871459d7bac0dabe5042543ddb749e65602efa",
+                               "bytes":  722
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-01-multiple-records.json",
+                               "sha256":  "13d4db61c23ef75472d6eea93ea4ffd628262983b1c6ab670f9839576a9fa0dd",
+                               "bytes":  9530
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-02-fetch-size-pagination.json",
+                               "sha256":  "0372f9200cd096fd7f04a8ff34a90fec9dfe54069dabfff7b6d74f5245c99ddd",
+                               "bytes":  12963
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-03-discard-partial-consumption.json",
+                               "sha256":  "8596bf6e56c124bacc78748ca4175b9752d6339b6dcb830c781f3d7848680952",
+                               "bytes":  12654
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-04-session-disposal-outstanding.json",
+                               "sha256":  "43be3582215e8179f484e8f3523e5183433d07d9e6fbe1c77af02b27a719380d",
+                               "bytes":  12800
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-05-repeated-queries-single-connection.json",
+                               "sha256":  "38a01dcc8c8333abac3ab6904787526216e15ddfd96babd1001e79a8b5ee76da",
+                               "bytes":  14425
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-01-bolt-ssc-self-signed.json",
+                               "sha256":  "9f1d9edaea06911ffd00f6ee21210b2ccc7119c162bfde396b0318eb97e35196",
+                               "bytes":  3041
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-02-bolt-s-untrusted.json",
+                               "sha256":  "88ca810a0c754f7eb80b78e6fc067f905bdb2c69979d0d8efc3b4c2b19ba16d9",
+                               "bytes":  3280
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-03-ca-trusted-trust-list.json",
+                               "sha256":  "d8a794b6556bc9eef197d37c12b5d572140d3d44f0b04f95956e9b01815cb504",
+                               "bytes":  3531
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-04-plaintext-vs-tls.json",
+                               "sha256":  "e6178fad0dcf3ee72980e3add66784a1a5aed36c530362bf037d10fcb3e760df",
+                               "bytes":  3438
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-05-invalid-credentials-tls.json",
+                               "sha256":  "8511b25548a7de68cc3b5a67671a0be35191e835ad179301955afdc7d3ebf8f7",
+                               "bytes":  1985
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-01-unsupported-query.json",
+                               "sha256":  "b1ed998da9fadd621b71b01d48fcd12d1e8b940e40c1ef146491a6b5c4402c56",
+                               "bytes":  16837
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-02-live-driver-ignored.json",
+                               "sha256":  "1db43d4a4403d5dc036f17875d006b05aba055765c3ac4bf953699f641c81ae4",
+                               "bytes":  9314
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-03-no-automatic-retry.json",
+                               "sha256":  "a83e4bfacffeaf33e9df4245bf9f400dc758e0fbf3a5f1a4f01ad1327dc7ab73",
+                               "bytes":  383
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-04-failure-isolation.json",
+                               "sha256":  "84f37509ed5b7637257504e461408a350220a7256b411b9167f658142c9cc997",
+                               "bytes":  4678
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b9-01-server-shutdown.json",
+                               "sha256":  "6e36a229f619e4ff9ab23a5da176244e7d8002defda5c077aaad8d8ef13ed321",
+                               "bytes":  3509
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b9-02-multi-client.json",
+                               "sha256":  "e672a67ff98d195ec1adbf6cbdaab79234f9a4a7928bc5cda6c48db7916ebc8a",
+                               "bytes":  7842
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b9-03-recovery-after-connection-loss.json",
+                               "sha256":  "d584e11061a7fe567c96f055bcd47fb89a53ec68e526fbfb4d017f0b03048937",
+                               "bytes":  4039
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/compatibility-matrix.json",
+                               "sha256":  "8ab4cc74fe17b0bfaf90d319f6c4f321d4fb01ea405fd00e9bb774ba51d19588",
+                               "bytes":  9315
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/full-regression.trx",
+                               "sha256":  "381e6ce1d50f63fdf9be81c6b451c21e149007d1c5996291b11cfdf7dcfa4812",
+                               "bytes":  1647415
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/historical-integrity.json",
+                               "sha256":  "deceb3653310b09fb8fc787ff2bb775aebdb926abb56ea4626af82476d37b4c3",
+                               "bytes":  165596
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/New-EvidenceManifest.ps1",
+                               "sha256":  "d1d54acf4f4ba2922877bce66be2c6f30ceb8262a5adb6efd6c36b9db87d6d3c",
+                               "bytes":  2210
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/README.md",
+                               "sha256":  "a629fda721af5ac22e92df5cdcbaf7719da5b481c601bd66d7da0611be8df800",
+                               "bytes":  4089
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/Run-B5BImpl.ps1",
+                               "sha256":  "7d2a80c3af4a77339ff94370a80c1e39e86b322a58500c51090f031a67de6abd",
+                               "bytes":  5307
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/Verify-HistoricalManifests.ps1",
+                               "sha256":  "fcca6c5e04dddaff7bd643b520f4fd4464f0cde0be3c6efdf442afd9405b6ba2",
+                               "bytes":  5225
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/01-preflight.txt",
+                               "sha256":  "250d0af16e8242f956e9fc3499c6f8dbba1a84d0325eb7bdc7b3f6dd01f4fafa",
+                               "bytes":  384
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/02-build-production.txt",
+                               "sha256":  "1377ffd87c54b3c1c1b07403c4e08a0f8e736e6ad1147b8a5f21093408507350",
+                               "bytes":  251
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/03-build-solution.txt",
+                               "sha256":  "24a4ce0db88f9165ddd8bfa61728d685362007bb18e493dd764bb5eae44615bb",
+                               "bytes":  1665
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/04-b5b-interop-suite.txt",
+                               "sha256":  "512403cd5e36c775bc827ef8a3d5c6e55145941b551e12aa64ed35331af0b9f1",
+                               "bytes":  761
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/05-transport-suite.txt",
+                               "sha256":  "f9b802e9dad74caed46bc57683c5c2e7563153b9dc76d82e3f3ec96ee1e869b9",
+                               "bytes":  571
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/06-b3c-backend.txt",
+                               "sha256":  "e14e86a83cbe988083e5ed51cf05f1889568f8dc94e30a451307e457b914f77d",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/07-b3b-sessions.txt",
+                               "sha256":  "989f2a5f5591869ad723362bf5d095073a73d786567d0061d76f5114cf583437",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/08-b3a-messages.txt",
+                               "sha256":  "83c85401b74d54a140164f343ad1d31c1f5577a6e24a3bc6f8de2f2e4a372393",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/09-full-regression.txt",
+                               "sha256":  "d370b9821ab7e2ac8b7806b3af8bf534e06587d52f36072681312ab717ef3c75",
+                               "bytes":  776
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/10-driver-integration-b0b.txt",
+                               "sha256":  "fbe953ee90cbc3f312a1641c15b8993b75f838b1406da469d464054722ec5bfb",
+                               "bytes":  638
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/11-historical-manifests.txt",
+                               "sha256":  "dc66b6613649a7981252504d444f13982d4bef3cfc4202e28234424ca8bb6d95",
+                               "bytes":  2870
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/12-format-check.txt",
+                               "sha256":  "7d25a9a9110d50efad35b42457504f8f5569fc5163b845e23626ee107236cbc2",
+                               "bytes":  30
+                           }
+                       ]
+}

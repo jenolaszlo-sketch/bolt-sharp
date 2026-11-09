@@ -1,0 +1,171 @@
+{
+  "task": "B5-B-IMPL-01",
+  "producer_status_convention": "Passed | Attempted | Failed | Not exercised | Outside scope | Deferred",
+  "driver": "Neo4j.Driver 6.4.0 (test-only, exact pin)",
+  "transport": "BoltSharp B5-A BoltTcpServer (real TCP/TLS)",
+  "backend": "B3-C deterministic read-only reference graph",
+  "rows": [
+    {
+      "capability": "Direct plaintext connection",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b2-01-connectivity-plaintext.json", "b5b2-02-manifest-handshake.json"]
+    },
+    {
+      "capability": "Driver authentication",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b2-05-hello-logon-metadata.json", "b5b2-20-invalid-credentials.json", "b5b2-21-missing-verifier.json", "b5b2-22-auth-terminal-no-retry.json"]
+    },
+    {
+      "capability": "Scalar auto-commit query",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b3-01-scalar-auto-commit.json", "b5b3-02-scalar-wire-capture.json", "b5b3-03-terminal-exhaustion.json"]
+    },
+    {
+      "capability": "Graph auto-commit query",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b4-01-graph-typed-values.json", "b5b4-02-graph-wire-capture.json"]
+    },
+    {
+      "capability": "Supported parameters",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b5-01-typed-parameters.json", "b5b5-02-explicit-null-versus-missing.json", "b5b5-03-query-like-payload.json"]
+    },
+    {
+      "capability": "Full result consumption",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b3-03-terminal-exhaustion.json", "b5b6-01-multiple-records.json"]
+    },
+    {
+      "capability": "Connection reuse after consumption",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b3-01-scalar-auto-commit.json", "b5b6-02-fetch-size-pagination.json", "b5b6-05-repeated-queries-single-connection.json"]
+    },
+    {
+      "capability": "Manifest negotiation",
+      "target_classification": "Required if exercised by driver",
+      "producer_status": "Passed",
+      "evidence": ["b5b2-02-manifest-handshake.json"],
+      "notes": "The driver proposes the manifest v1 marker; the server offer (one range, zero capabilities) is accepted and 5.8 selected. Conventional fallback also verified (b5b2-03)."
+    },
+    {
+      "capability": "Terminal has_more behavior",
+      "target_classification": "Required",
+      "producer_status": "Passed",
+      "evidence": ["b5b3-03-terminal-exhaustion.json", "b5b6-01-multiple-records.json", "b5b6-02-fetch-size-pagination.json", "b5b6-03-discard-partial-consumption.json"],
+      "notes": "Absent has_more treated as exhaustion; has_more=true drives additional PULLs; DISCARD terminal SUCCESS {} accepted."
+    },
+    {
+      "capability": "Self-signed TLS",
+      "target_classification": "Targeted",
+      "producer_status": "Passed",
+      "evidence": ["b5b7-01-bolt-ssc-self-signed.json"]
+    },
+    {
+      "capability": "CA-trusted TLS",
+      "target_classification": "Qualified where test trust is available",
+      "producer_status": "Passed",
+      "evidence": ["b5b7-02-bolt-s-untrusted.json", "b5b7-03-ca-trusted-trust-list.json"],
+      "notes": "Isolated in-memory trust-list arrangement (CA-signed leaf validated against an explicit test CA). The literal bolt+s:// scheme validates against the operating system trust store (documented driver behavior) and cannot use a test-only CA without an intrusive permanent machine change; recorded as an explicit trust-arrangement limitation."
+    },
+    {
+      "capability": "Unsupported-query error",
+      "target_classification": "Targeted",
+      "producer_status": "Passed",
+      "evidence": ["b5b8-01-unsupported-query.json", "b5b8-03-no-automatic-retry.json", "b5b8-04-failure-isolation.json"],
+      "notes": "Neo4jException with Neo.ClientError.Request.Invalid / 50N42, not retriable, no query execution, no mutation, no credential or query-text echo."
+    },
+    {
+      "capability": "Driver-level IGNORED recovery",
+      "target_classification": "Investigate, do not fabricate",
+      "producer_status": "Attempted",
+      "evidence": ["b5b8-02-live-driver-ignored.json"],
+      "notes": "LIVE-DRIVER IGNORED EXERCISED: the driver's pipelined PULL after a failed auto-commit RUN received the zero-field B0 7E and the driver completed its error handling without desynchronization. Same-connection RESET recovery after the IGNORED was NOT exercised: under the accepted 50N42 classification the driver destroys the connection (ProtocolException). B0-B T06 scripted evidence shows RESET + reuse for a driver-known 42001 classification. Not marked fully closed."
+    },
+    {
+      "capability": "Explicit transactions",
+      "target_classification": "Not supported",
+      "producer_status": "Attempted",
+      "evidence": ["b5b10-01-explicit-transaction.json"],
+      "notes": "BEGIN is refused; no execution; no mutation. Finding B5-B-IMPL-F01: the transport closes at the decode boundary without the B3-B documented 08N06 FAILURE."
+    },
+    {
+      "capability": "Managed transaction callbacks",
+      "target_classification": "Not supported by current reference backend",
+      "producer_status": "Attempted",
+      "evidence": ["b5b10-02-managed-transaction.json"],
+      "notes": "Every BEGIN attempt refused; the callback never reaches RUN; auto-commit remains usable."
+    },
+    {
+      "capability": "General Cypher",
+      "target_classification": "Not supported",
+      "producer_status": "Attempted",
+      "evidence": ["b5b8-01-unsupported-query.json"],
+      "notes": "The exact-form allowlist is preserved; non-allowlisted queries are refused."
+    },
+    {
+      "capability": "Mutations",
+      "target_classification": "Not supported",
+      "producer_status": "Attempted",
+      "evidence": ["b5b8-01-unsupported-query.json", "b5b8-04-failure-isolation.json", "b5b5-03-query-like-payload.json"],
+      "notes": "DETACH DELETE refused; reference graph verified unchanged through subsequent queries."
+    },
+    {
+      "capability": "Routing / neo4j://",
+      "target_classification": "Not supported",
+      "producer_status": "Attempted",
+      "evidence": ["b5b10-03-routing-scheme.json"],
+      "notes": "ROUTE attempted by the driver, refused; no query executed; driver reports no routing server."
+    },
+    {
+      "capability": "Cluster behavior",
+      "target_classification": "Not supported",
+      "producer_status": "Outside scope",
+      "evidence": ["b5b10-03-routing-scheme.json"],
+      "notes": "No cluster/routing semantics exist; the routing failure is documented."
+    },
+    {
+      "capability": "Multi-database support",
+      "target_classification": "Not supported",
+      "producer_status": "Attempted",
+      "evidence": ["b5b10-04-explicit-database.json"],
+      "notes": "Explicit db selection refused by the accepted RUN-option allowlist; the default single-database session is unaffected."
+    },
+    {
+      "capability": "Query notifications completeness",
+      "target_classification": "Not claimed",
+      "producer_status": "Not exercised",
+      "evidence": [],
+      "notes": "No notifications/statuses metadata is fabricated or claimed."
+    },
+    {
+      "capability": "Release-grade security/performance",
+      "target_classification": "Not claimed",
+      "producer_status": "Outside scope",
+      "evidence": [],
+      "notes": "No TLS deployment-depth, throughput or scalability claim."
+    }
+  ],
+  "findings": [
+    {
+      "id": "B5-B-IMPL-F01",
+      "severity": "Interoperability boundary (non-blocking for the B5-B minimum claim)",
+      "summary": "BEGIN/COMMIT/ROLLBACK/ROUTE are refused at the B3-A decode boundary: the accepted B5-A transport closes the connection without the B3-B documented 08N06 FAILURE, so the official driver surfaces ServiceUnavailableException instead of the richer refusal.",
+      "classification": "Accepted capability limitation / cross-component wiring difference (B5-A decode path vs B3-B ReceiveBytes handling); no production change authorized by B5-B.",
+      "remediation_candidate": "Route complete payloads through the accepted B3-B ReceiveBytes entry point (or map codec UnsupportedMessage rejections to the session-level terminal FAILURE) in a separately authorized bounded change."
+    },
+    {
+      "id": "B5-B-IMPL-F02",
+      "severity": "Interoperability observation (non-blocking)",
+      "summary": "Under the accepted generic 50N42 classification, the official driver classifies a refused auto-commit query as an unknown ProtocolException and destroys the connection instead of RESET-recovering it; session-level recovery via a fresh connection works.",
+      "classification": "Driver-specific behavior interacting with the accepted bounded error classification (B3-C owner decision permits future evaluation of more granular mapping).",
+      "remediation_candidate": "Optional separately authorized refinement of the reference backend's unsupported-query classification to a driver-recognized client-error code; requires requalification."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "scenario": "B5B2-21",
+  "title": "No verifier configured: LOGON fails closed, no query executes",
+  "uri_scheme": "bolt",
+  "driver_failure": {
+    "type": "Neo4j.Driver.AuthenticationException",
+    "message": "An unknown error occurred",
+    "inner_types": [],
+    "neo4j_code": "Neo.ClientError.Security.Unauthorized",
+    "gql_status": "50N42",
+    "gql_classification": "UNKNOWN",
+    "gql_status_description": "The client is unauthorized due to authentication failure.",
+    "retriable": false
+  },
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 2
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-09T17:57:19.0829430\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:36938"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:19.0988954\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:19.1161308\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:19.1171664\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x6A responses=1 state=Defunct"
+    },
+    {
+      "at_utc": "2026-11-09T17:57:19.1175673\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0001",
+      "detail": "closed"
+    }
+  ]
+}

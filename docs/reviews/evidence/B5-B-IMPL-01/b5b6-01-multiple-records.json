@@ -1,0 +1,318 @@
+{
+  "scenario": "B5B6-01",
+  "title": "Two-record result fully delivered and exhausted",
+  "uri_scheme": "bolt",
+  "driver_visible": {
+    "field": "name",
+    "values": [
+      "Alice",
+      "Bob"
+    ]
+  },
+  "transcript": {
+    "connection_id": 1,
+    "client_side_close": "eof",
+    "server_side_close": "reset",
+    "client_handshake_hex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+    "proposals": [
+      {
+        "slot": 0,
+        "raw": "000001FF",
+        "kind": "manifest-v1",
+        "version": null,
+        "range": null
+      },
+      {
+        "slot": 1,
+        "raw": "00080805",
+        "kind": "range",
+        "version": "5.8",
+        "range": "5.0..5.8"
+      },
+      {
+        "slot": 2,
+        "raw": "00020404",
+        "kind": "range",
+        "version": "4.4",
+        "range": "4.2..4.4"
+      },
+      {
+        "slot": 3,
+        "raw": "00000003",
+        "kind": "concrete",
+        "version": "3.0",
+        "range": null
+      }
+    ],
+    "server_manifest_offer_hex": "000001FF010000080500",
+    "server_manifest_offer": {
+      "range_count": 1,
+      "ranges": [
+        "00000805"
+      ],
+      "capabilities": 0
+    },
+    "server_legacy_reply_hex": null,
+    "client_manifest_selection_hex": "0000080500",
+    "client_manifest_selection_version": "5.8",
+    "client_manifest_selection_capabilities": 0,
+    "client_messages": [
+      {
+        "index": 0,
+        "name": "HELLO",
+        "decoded": true,
+        "redacted": false,
+        "description": "HELLO keys=[user_agent,routing,bolt_agent] user_agent=\u0022neo4j-dotnet/6.4\u0022 routing=null bolt_agent={product=\u0022neo4j-dotnet/6.4.12\u0022,platform=\u0022Microsoft Windows 10.0.26200;X64\u0022,language_details=\u0022.NET 8.0.31\u0022}",
+        "hex": "B101A38A757365725F6167656E74D0106E656F346A2D646F746E65742F362E3487726F7574696E67C08A626F6C745F6167656E74A38770726F64756374D0136E656F346A2D646F746E65742F362E342E313288706C6174666F726DD0204D6963726F736F66742057696E646F77732031302E302E32363230303B583634D0106C616E67756167655F64657461696C738B2E4E455420382E302E3331"
+      },
+      {
+        "index": 1,
+        "name": "LOGON",
+        "decoded": true,
+        "redacted": true,
+        "description": "LOGON keys=[scheme,principal,credentials] scheme=\u0022basic\u0022 principal=\u003Credacted\u003E credentials=\u003Credacted\u003E",
+        "hex": "\u003Credacted\u003E"
+      },
+      {
+        "index": 2,
+        "name": "RESET",
+        "decoded": true,
+        "redacted": false,
+        "description": "RESET",
+        "hex": "B00F"
+      },
+      {
+        "index": 3,
+        "name": "RESET",
+        "decoded": true,
+        "redacted": false,
+        "description": "RESET",
+        "hex": "B00F"
+      },
+      {
+        "index": 4,
+        "name": "RUN",
+        "decoded": true,
+        "redacted": false,
+        "description": "RUN \u0022MATCH (n:Person) RETURN n.name AS name ORDER BY name\u0022 parameters=0 entry(ies) extra={}",
+        "hex": "B310D0344D4154434820286E3A506572736F6E292052455455524E206E2E6E616D65204153206E616D65204F52444552204259206E616D65A0A0"
+      },
+      {
+        "index": 5,
+        "name": "PULL",
+        "decoded": true,
+        "redacted": false,
+        "description": "PULL n=1000",
+        "hex": "B13FA1816EC903E8"
+      },
+      {
+        "index": 6,
+        "name": "RESET",
+        "decoded": true,
+        "redacted": false,
+        "description": "RESET",
+        "hex": "B00F"
+      },
+      {
+        "index": 7,
+        "name": "GOODBYE",
+        "decoded": true,
+        "redacted": false,
+        "description": "GOODBYE",
+        "hex": "B002"
+      }
+    ],
+    "server_messages": [
+      {
+        "index": 0,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+        "hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0"
+      },
+      {
+        "index": 1,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      },
+      {
+        "index": 2,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      },
+      {
+        "index": 3,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      },
+      {
+        "index": 4,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {fields=[name]}",
+        "hex": "B170A1866669656C647391846E616D65"
+      },
+      {
+        "index": 5,
+        "name": "RECORD",
+        "decoded": true,
+        "redacted": false,
+        "description": "RECORD [1 value(s): PackStreamString]",
+        "hex": "B1719185416C696365"
+      },
+      {
+        "index": 6,
+        "name": "RECORD",
+        "decoded": true,
+        "redacted": false,
+        "description": "RECORD [1 value(s): PackStreamString]",
+        "hex": "B1719183426F62"
+      },
+      {
+        "index": 7,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      },
+      {
+        "index": 8,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      }
+    ],
+    "chunks": [
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-09T17:58:05.8356885\u002B00:00",
+        "length": 20,
+        "redacted": false,
+        "hex": "6060B017000001FF000808050002040400000003"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8363328\u002B00:00",
+        "length": 10,
+        "redacted": false,
+        "hex": "000001FF010000080500"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-09T17:58:05.8366080\u002B00:00",
+        "length": 5,
+        "redacted": false,
+        "hex": "0000080500"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-09T17:58:05.8367262\u002B00:00",
+        "length": 244,
+        "redacted": true,
+        "hex": "\u003Credacted: contains LOGON\u003E"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8370061\u002B00:00",
+        "length": 62,
+        "redacted": false,
+        "hex": "003AB170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A00000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8370375\u002B00:00",
+        "length": 7,
+        "redacted": false,
+        "hex": "0003B170A00000"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-09T17:58:05.8373656\u002B00:00",
+        "length": 12,
+        "redacted": false,
+        "hex": "0002B00F00000002B00F0000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8375998\u002B00:00",
+        "length": 7,
+        "redacted": false,
+        "hex": "0003B170A00000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8376483\u002B00:00",
+        "length": 7,
+        "redacted": false,
+        "hex": "0003B170A00000"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-09T17:58:05.8384083\u002B00:00",
+        "length": 74,
+        "redacted": false,
+        "hex": "003AB310D0344D4154434820286E3A506572736F6E292052455455524E206E2E6E616D65204153206E616D65204F52444552204259206E616D65A0A000000008B13FA1816EC903E80000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8401555\u002B00:00",
+        "length": 20,
+        "redacted": false,
+        "hex": "0010B170A1866669656C647391846E616D650000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8402010\u002B00:00",
+        "length": 31,
+        "redacted": false,
+        "hex": "0009B1719185416C69636500000007B1719183426F6200000003B170A00000"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-09T17:58:05.8404967\u002B00:00",
+        "length": 6,
+        "redacted": false,
+        "hex": "0002B00F0000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-09T17:58:05.8406797\u002B00:00",
+        "length": 7,
+        "redacted": false,
+        "hex": "0003B170A00000"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-09T17:58:05.8411288\u002B00:00",
+        "length": 6,
+        "redacted": false,
+        "hex": "0002B0020000"
+      }
+    ],
+    "parse_error": null
+  },
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 8
+  }
+}

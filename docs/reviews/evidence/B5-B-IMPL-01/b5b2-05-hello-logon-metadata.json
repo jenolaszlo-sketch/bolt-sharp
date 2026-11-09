@@ -1,0 +1,42 @@
+{
+  "scenario": "B5B2-05",
+  "title": "Actual HELLO/LOGON shapes and HELLO/LOGON SUCCESS metadata",
+  "uri_scheme": "bolt",
+  "hello": "HELLO keys=[user_agent,routing,bolt_agent] user_agent=\u0022neo4j-dotnet/6.4\u0022 routing=null bolt_agent={product=\u0022neo4j-dotnet/6.4.12\u0022,platform=\u0022Microsoft Windows 10.0.26200;X64\u0022,language_details=\u0022.NET 8.0.31\u0022}",
+  "logon": "LOGON keys=[scheme,principal,credentials] scheme=\u0022basic\u0022 principal=\u003Credacted\u003E credentials=\u003Credacted\u003E",
+  "hello_success": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+  "hello_success_hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0",
+  "logon_success_hex": "B170A0",
+  "server_messages": [
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+      "Hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0"
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0"
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0"
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0"
+    }
+  ],
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 5
+  }
+}
