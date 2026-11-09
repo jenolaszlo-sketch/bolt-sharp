@@ -1,0 +1,21 @@
+﻿B3 owner decision byte-identity verification (raw blob vs working tree)
+generated_utc: 2026-11-09T03:24:57Z
+
+docs/decisions/B3-A-OWNER-01-owner-acceptance.md
+  head blob:    ab84ffa973217612a1cc7033936ce23dcefe273a
+  working tree: ab84ffa973217612a1cc7033936ce23dcefe273a
+  sha256:       d715beac496560a359d1041efb8ed2b141fb9d967c6feab21c815e09a5669ce2
+  byte-identical to HEAD: True
+
+docs/decisions/B3-B-OWNER-01-owner-acceptance.md
+  head blob:    211a5d56a296e29ff4f5faad4abe22c2a0bec2a0
+  working tree: 211a5d56a296e29ff4f5faad4abe22c2a0bec2a0
+  sha256:       23b8462dd4b077c43072966eb149bca336f774b8bfdb5db1357b0a43b2e32e60
+  byte-identical to HEAD: True
+
+docs/decisions/B3-C-OWNER-01-owner-acceptance.md
+  head blob:    323303bd0eaa79e00458689af99e60fbf27a0836
+  working tree: 323303bd0eaa79e00458689af99e60fbf27a0836
+  sha256:       3c2eade57943c3af8e7dffb8ea3c2314e470ae3ddc87f11658aa260c41202624
+  byte-identical to HEAD: True
+

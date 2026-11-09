@@ -1,0 +1,30 @@
+﻿B5-A-IMPL-01 preflight verification
+generated_utc: 2026-11-09T03:21:52Z
+
+git branch --show-current:
+main
+
+git rev-parse HEAD (starting, commit 8535806):
+853580659cc57ad959c026800c1e17de44cdddc1
+git rev-parse HEAD^{tree} (starting):
+a00ab7b189608da4ebf5a61ead6557e402d0bac4
+
+starting working tree status: clean (verified before any B5-A change)
+
+worktrees:
+D:/projects/bolt-sharp 11e5c85 [main]
+
+final HEAD after B5-A commits:
+11e5c85d22a7b3832e6721c72c39c2cf96502c68
+final tree:
+0f88b037460d319430e650036481bf1f0b2af763
+
+commit chain:
+11e5c85 test(boltsharp): add B5-A transport network integration tests
+07bcc29 fix(boltsharp): report transport connection diagnostics exactly once
+943774c feat(boltsharp): add bounded TCP and TLS Bolt transport
+
+push status (must be ahead only, never pushed):
+## main...origin/main [ahead 47]
+
+prior B5-A work present before this task: none (src/BoltSharp/Transport and tests Transport did not exist)

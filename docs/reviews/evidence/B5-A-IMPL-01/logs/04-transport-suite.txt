@@ -1,0 +1,5 @@
+﻿Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Results File: D:\projects\bolt-sharp\tests\BoltSharp.Tests\TestResults\docs\reviews\evidence\B5-A-IMPL-01\transport-tests.trx
+
+Passed!  - Failed:     0, Passed:    80, Skipped:     0, Total:    80, Duration: 2 s - BoltSharp.Tests.dll (net8.0)
