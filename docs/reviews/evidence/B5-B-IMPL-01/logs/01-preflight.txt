@@ -1,0 +1,10 @@
+﻿B5-B-IMPL-01 reproduction run @ 2026-11-09T17:57:05Z
+branch: main
+HEAD: 2bebd3ee77b12c190b2e48b763deb4444cc94e5d
+tree:  346611f5ebcd878432c924e50f0ff9d255b6822b
+D:/projects/bolt-sharp 2bebd3e [main]
+## main...origin/main [ahead 52]
+?? docs/reviews/evidence/B5-B-IMPL-01/
+?? tests/BoltSharp.DriverInteropTests/
+dotnet --version: 10.0.401
+os: Microsoft Windows 10.0.26200 
