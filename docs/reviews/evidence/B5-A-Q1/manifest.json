@@ -1,0 +1,70 @@
+﻿{
+    "task":  "B5-A-Q1 - Independent TCP/TLS transport qualification (reviewer evidence)",
+    "role":  "Independent adversarial qualification reviewer",
+    "reviewed_head":  "21e649acae8b0f04c945a9899f314f4b345a9c3a",
+    "reviewed_tree":  "ec5cb4a8fe52ecf85dbcfe8fb1ff1b8a9561592a",
+    "reviewer_model":  "GLM 5.3 Flash (provider nvidia, model z-ai/glm-5.3-flash); same OpenCode session as the producer - organizational independence NOT established (see report disclosure)",
+    "producer_recorded_executor":  "DeepSeek V4.1 Flash (provider nvidia, OpenCode)",
+    "probe_checks_total":  165,
+    "probe_checks_passed":  162,
+    "probe_checks_inconclusive":  3,
+    "historical_manifest_entries_verified":  352,
+    "regression_total_tests":  1217,
+    "transport_tests":  80,
+    "driver_integration_tests":  19,
+    "disposition":  "SUPPORTED WITH QUALIFICATIONS",
+    "generated_utc":  "2026-11-09T09:04:34Z",
+    "hash_convention":  "SHA-256 over exact working-tree bytes; manifest.json itself is excluded from the inventory",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/integrity-failures.json",
+                               "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                               "bytes":  0
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/integrity-summary.txt",
+                               "sha256":  "61fa5723ab8130ab445021da1de5a82c571277abee98f37249c3f382f001a6aa",
+                               "bytes":  1096
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/New-EvidenceManifest.ps1",
+                               "sha256":  "3d1464f6a7b43e0cd6c5bf817339cfcdc4221350fd67d424498a2c2c5dcb2abf",
+                               "bytes":  2174
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/probe-all.log",
+                               "sha256":  "245bb1ca3aa951c463f04e287283fcaf99453489361ed49490f07ea5f175f264",
+                               "bytes":  30842
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/logs/01-preflight.txt",
+                               "sha256":  "978edadb68d9e7c05bb9cb1cee8747e9721dd75b8c80b38ffa581f995283bceb",
+                               "bytes":  923
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/logs/02-build-production.txt",
+                               "sha256":  "deca171a626a7c84e9704e05e47b2a8ef7e4026bdcf5b01af78bdf91f7301d5f",
+                               "bytes":  251
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/logs/03-build-solution.txt",
+                               "sha256":  "2945a42a5d574c7176fb05fa95f03629d5e8c5449e7889445e013ce519cf0d38",
+                               "bytes":  1665
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/logs/04-transport.txt",
+                               "sha256":  "0a533866bf471f74cf67a94fabea1e2e65291edbcf8a02270f9647f5021f6149",
+                               "bytes":  301
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/logs/05-full-regression.txt",
+                               "sha256":  "64f8477628ca67214c9c15d2780ee9e6d5b0b3d37a371414bd58ba94fc04ab40",
+                               "bytes":  301
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-A-Q1/logs/06-driver-integration.txt",
+                               "sha256":  "fbe953ee90cbc3f312a1641c15b8993b75f838b1406da469d464054722ec5bfb",
+                               "bytes":  638
+                           }
+                       ]
+}

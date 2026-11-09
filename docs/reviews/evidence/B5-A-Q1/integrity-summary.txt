@@ -1,0 +1,12 @@
+﻿docs/reviews/evidence/B5-A-IMPL-01/manifest.json | declared=18 expected=19 matched=18 bad=0
+docs/reviews/evidence/B3-C-Q1/manifest.json | declared=29 expected=29 matched=29 bad=0
+docs/reviews/evidence/B3-C-IMPL-01/manifest.json | declared=26 expected=26 matched=26 bad=0
+docs/reviews/evidence/B3-B-Q3/manifest.json | declared=33 expected=33 matched=33 bad=0
+docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json | declared=29 expected=29 matched=29 bad=0
+docs/reviews/evidence/B3-B-Q2/manifest.json | declared=38 expected=38 matched=38 bad=0
+docs/reviews/evidence/B3-B-Q1/manifest.json | declared=12 expected=12 matched=12 bad=0
+docs/reviews/evidence/B3-A-Q1/manifest.json | declared=14 expected=14 matched=14 bad=0
+docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json | declared=13 expected=13 matched=13 bad=0
+docs/reviews/evidence/B3-A-Q2/manifest.json | declared=15 expected=15 matched=15 bad=0
+docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json | declared=24 expected=24 matched=24 bad=0
+docs/reviews/evidence/B0-B-Q1/manifest.json | declared=119 expected=119 matched=119 bad=0
