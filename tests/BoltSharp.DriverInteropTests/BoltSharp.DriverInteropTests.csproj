@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B5-B-IMPL-01 official-driver interoperability harness. Test-only.
+
+    Deliberately NOT part of BoltSharp.slnx, following the repository convention established by
+    B2-C-01 and B0-B-DRV-INT-01: the core solution restore/build stays free of the official
+    Neo4j.Driver package and the accepted 1,217-test core-solution baseline is preserved. The
+    pinned driver package is never referenced by src/BoltSharp.
+  -->
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>BoltSharp.DriverInteropTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- Pinned exact version. No floating ranges. The previously qualified driver baseline. -->
+    <PackageReference Include="Neo4j.Driver" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+</Project>
