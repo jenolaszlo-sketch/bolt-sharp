@@ -1,0 +1,40 @@
+{
+  "probe": "Q1-H03",
+  "flow": "neo4j:// routing scheme",
+  "driver_failure": {
+    "type": "Neo4j.Driver.SessionExpiredException",
+    "message": "Server at neo4j://localhost:30867/ is no longer available due to error: Connection with the server breaks due to IOException: Unexpected end of stream, unable to read expected data from the network connection Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0..",
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "is_retriable": true,
+    "inner_type": "Neo4j.Driver.ServiceUnavailableException",
+    "inner_message": "Connection with the server breaks due to IOException: Unexpected end of stream, unable to read expected data from the network connection Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0."
+  },
+  "unsupported_messages_reaching_wire": [
+    "ROUTE"
+  ],
+  "server_failure_responses": [],
+  "client_messages": [
+    "HELLO",
+    "LOGON",
+    "RESET",
+    "ROUTE"
+  ],
+  "server_messages": [
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS"
+  ],
+  "connection_failed_outcome": "codec:UnsupportedMessage",
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 0,
+    "failed": 1,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 3
+  }
+}

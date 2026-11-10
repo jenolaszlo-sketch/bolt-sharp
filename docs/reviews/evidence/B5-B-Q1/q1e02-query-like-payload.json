@@ -1,0 +1,5 @@
+{
+  "probe": "Q1-E02",
+  "observed_value": "MATCH (n) DETACH DELETE n",
+  "graph_unchanged": true
+}

@@ -1,0 +1,24 @@
+{
+  "probe": "Q1-L01",
+  "physical_connections": 1,
+  "per_connection": [
+    {
+      "connection_index": 0,
+      "prepare_calls": 2,
+      "operations_opened": 2,
+      "dispose_calls": 2,
+      "dispose_failures": 0,
+      "read_row_calls": 5
+    }
+  ],
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 12
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "probe": "Q1-I01",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ProtocolException",
+    "message": "An unknown error occurred",
+    "neo4j_code": "Neo.ClientError.Request.Invalid",
+    "gql_status": "50N42",
+    "gql_classification": "UNKNOWN",
+    "is_retriable": false
+  },
+  "recovery_answer": 42,
+  "graph_unchanged": true,
+  "physical_connections": 2,
+  "connection_disposition": "connection-destroyed-fresh-connection",
+  "per_connection": [
+    {
+      "connection_index": 0,
+      "prepare_calls": 1,
+      "operations_opened": 0,
+      "dispose_calls": 0,
+      "dispose_failures": 0,
+      "read_row_calls": 0
+    },
+    {
+      "connection_index": 1,
+      "prepare_calls": 2,
+      "operations_opened": 2,
+      "dispose_calls": 2,
+      "dispose_failures": 0,
+      "read_row_calls": 4
+    }
+  ],
+  "run_events_total": 3,
+  "counters": {
+    "accepted": 2,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 2,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 13
+  }
+}

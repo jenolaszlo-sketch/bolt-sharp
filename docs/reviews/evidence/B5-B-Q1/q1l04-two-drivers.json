@@ -1,0 +1,17 @@
+{
+  "probe": "Q1-L04",
+  "answers": [
+    42,
+    42
+  ],
+  "counters": {
+    "accepted": 2,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 2,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 12
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "Q1-E01",
+  "case_name": "list",
+  "sent_type": "System.Int64[]",
+  "observed_type": "System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+  "preserved": true
+}

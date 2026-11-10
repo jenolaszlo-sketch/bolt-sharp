@@ -1,0 +1,21 @@
+{
+  "probe": "Q1-A01",
+  "uri_scheme": "bolt",
+  "handshake_mode": "ManifestV1",
+  "driver_visible": {
+    "verified": true,
+    "server_agent": "BoltSharp/0.1.0",
+    "protocol_version": "5.8",
+    "address": "localhost:25861"
+  },
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 7
+  }
+}

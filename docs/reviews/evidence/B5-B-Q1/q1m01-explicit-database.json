@@ -1,0 +1,12 @@
+{
+  "probe": "Q1-M01",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ProtocolException",
+    "message": "An unknown error occurred",
+    "neo4j_code": "Neo.ClientError.Request.Invalid",
+    "gql_status": "50N42",
+    "gql_classification": "UNKNOWN",
+    "is_retriable": false
+  },
+  "classification": "correctly-refused"
+}

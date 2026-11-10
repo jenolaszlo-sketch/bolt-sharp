@@ -1,0 +1,38 @@
+{
+  "probe": "Q1-H01",
+  "flow": "explicit BeginTransactionAsync",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ServiceUnavailableException",
+    "message": "Connection with the server breaks due to IOException: Unexpected end of stream, unable to read expected data from the network connection Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0.",
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "is_retriable": true,
+    "inner_type": "System.IO.IOException",
+    "inner_message": "Unexpected end of stream, unable to read expected data from the network connection"
+  },
+  "unsupported_messages_reaching_wire": [
+    "BEGIN"
+  ],
+  "server_failure_responses": [],
+  "client_messages": [
+    "HELLO",
+    "LOGON",
+    "BEGIN"
+  ],
+  "server_messages": [
+    "SUCCESS",
+    "SUCCESS"
+  ],
+  "connection_failed_outcome": "codec:UnsupportedMessage",
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 0,
+    "failed": 1,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 2
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "probe": "Q1-E03",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ProtocolException",
+    "message": "An unknown error occurred",
+    "neo4j_code": "Neo.ClientError.Request.Invalid",
+    "gql_status": "50N42",
+    "gql_classification": "UNKNOWN",
+    "is_retriable": false
+  },
+  "run_description": "RUN RETURN $value AS answer {} {}",
+  "server_failure": "FAILURE {gql_status=50N42,neo4j_code=Neo.ClientError.Request.Invalid,description=The requested operation is not supported by this server.,diagnostic_record={}}",
+  "classification": "server-side reference-backend refusal (RUN reached the wire with an empty parameter map)"
+}

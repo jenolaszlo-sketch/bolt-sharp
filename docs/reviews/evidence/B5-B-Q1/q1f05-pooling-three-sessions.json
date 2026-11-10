@@ -1,0 +1,43 @@
+{
+  "probe": "Q1-F05",
+  "observed": [
+    42,
+    42,
+    42
+  ],
+  "physical_connections": 1,
+  "per_connection": [
+    {
+      "connection_index": 0,
+      "prepare_calls": 3,
+      "operations_opened": 3,
+      "dispose_calls": 3,
+      "dispose_failures": 0,
+      "read_row_calls": 6
+    }
+  ],
+  "client_sequence": [
+    "HELLO",
+    "LOGON",
+    "RUN",
+    "PULL",
+    "RESET",
+    "RUN",
+    "PULL",
+    "RESET",
+    "RUN",
+    "PULL",
+    "RESET",
+    "GOODBYE"
+  ],
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 12
+  }
+}

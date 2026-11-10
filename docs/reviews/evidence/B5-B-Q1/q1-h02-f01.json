@@ -1,0 +1,60 @@
+{
+  "probe": "Q1-H02",
+  "flow": "managed ExecuteReadAsync",
+  "driver_failure": {
+    "type": "System.TimeoutException",
+    "message": "The operation has timed out.",
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "is_retriable": null
+  },
+  "unsupported_messages_reaching_wire": [
+    "BEGIN",
+    "BEGIN",
+    "BEGIN",
+    "BEGIN",
+    "BEGIN"
+  ],
+  "server_failure_responses": [],
+  "client_messages": [
+    "HELLO",
+    "LOGON",
+    "BEGIN",
+    "HELLO",
+    "LOGON",
+    "BEGIN",
+    "HELLO",
+    "LOGON",
+    "BEGIN",
+    "HELLO",
+    "LOGON",
+    "BEGIN",
+    "HELLO",
+    "LOGON",
+    "BEGIN"
+  ],
+  "server_messages": [
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS"
+  ],
+  "connection_failed_outcome": "codec:UnsupportedMessage",
+  "counters": {
+    "accepted": 5,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 0,
+    "failed": 5,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 10
+  }
+}

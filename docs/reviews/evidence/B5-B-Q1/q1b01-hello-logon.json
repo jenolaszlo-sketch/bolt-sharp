@@ -1,0 +1,99 @@
+{
+  "probe": "Q1-B01",
+  "hello": {
+    "keys_description": "HELLO {user_agent=neo4j-dotnet/6.4,routing=null,bolt_agent={product=neo4j-dotnet/6.4.12,platform=Microsoft Windows 10.0.26200;X64,language_details=.NET 8.0.31}}",
+    "hex": "B101A38A757365725F6167656E74D0106E656F346A2D646F746E65742F362E3487726F7574696E67C08A626F6C745F6167656E74A38770726F64756374D0136E656F346A2D646F746E65742F362E342E313288706C6174666F726DD0204D6963726F736F66742057696E646F77732031302E302E32363230303B583634D0106C616E67756167655F64657461696C738B2E4E455420382E302E3331"
+  },
+  "logon": {
+    "redacted": true,
+    "note": "<redacted LOGON payload: 81 bytes>"
+  },
+  "hello_success": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+  "hello_success_hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0",
+  "logon_success_hex": "B170A0",
+  "driver_visible": {
+    "server_agent": "BoltSharp/0.1.0"
+  },
+  "client_messages": [
+    {
+      "Name": "HELLO",
+      "Description": "HELLO {user_agent=neo4j-dotnet/6.4,routing=null,bolt_agent={product=neo4j-dotnet/6.4.12,platform=Microsoft Windows 10.0.26200;X64,language_details=.NET 8.0.31}}",
+      "Hex": "B101A38A757365725F6167656E74D0106E656F346A2D646F746E65742F362E3487726F7574696E67C08A626F6C745F6167656E74A38770726F64756374D0136E656F346A2D646F746E65742F362E342E313288706C6174666F726DD0204D6963726F736F66742057696E646F77732031302E302E32363230303B583634D0106C616E67756167655F64657461696C738B2E4E455420382E302E3331",
+      "Redacted": false
+    },
+    {
+      "Name": "LOGON",
+      "Description": "<redacted LOGON payload: 81 bytes>",
+      "Hex": "<redacted>",
+      "Redacted": true
+    },
+    {
+      "Name": "RESET",
+      "Description": "RESET ",
+      "Hex": "B00F",
+      "Redacted": false
+    },
+    {
+      "Name": "RESET",
+      "Description": "RESET ",
+      "Hex": "B00F",
+      "Redacted": false
+    },
+    {
+      "Name": "RESET",
+      "Description": "RESET ",
+      "Hex": "B00F",
+      "Redacted": false
+    },
+    {
+      "Name": "RESET",
+      "Description": "RESET ",
+      "Hex": "B00F",
+      "Redacted": false
+    },
+    {
+      "Name": "GOODBYE",
+      "Description": "GOODBYE ",
+      "Hex": "B002",
+      "Redacted": false
+    }
+  ],
+  "server_messages": [
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+      "Hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    }
+  ]
+}

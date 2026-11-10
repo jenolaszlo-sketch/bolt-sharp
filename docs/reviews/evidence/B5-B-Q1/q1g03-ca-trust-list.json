@@ -1,0 +1,18 @@
+{
+  "probe": "Q1-G03",
+  "uri_scheme": "bolt (WithEncryptionLevel Encrypted + CertificateTrustRule TrustList)",
+  "driver_visible": {
+    "answer": 42
+  },
+  "note": "Isolated driver trust-list arrangement; distinct from bolt+s system-store validation.",
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 8
+  }
+}

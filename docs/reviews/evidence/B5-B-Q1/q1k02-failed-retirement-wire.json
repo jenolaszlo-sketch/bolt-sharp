@@ -1,0 +1,37 @@
+{
+  "probe": "Q1-K02",
+  "driver_failure": {
+    "type": "Neo4j.Driver.DatabaseException",
+    "message": "An unknown error occurred",
+    "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+    "gql_status": "50N00",
+    "gql_classification": "UNKNOWN",
+    "is_retriable": false
+  },
+  "client_sequence": [
+    "HELLO",
+    "LOGON",
+    "RUN",
+    "PULL"
+  ],
+  "server_sequence": [
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "RECORD",
+    "FAILURE"
+  ],
+  "terminal_description": "FAILURE {gql_status=50N00,neo4j_code=Neo.DatabaseError.General.UnknownError,description=The operation provider failed while executing the request.,diagnostic_record={}}",
+  "server_close": [
+    "eof"
+  ],
+  "client_close": [
+    "IOException"
+  ],
+  "processed_events": [
+    "sig=0x01 responses=1 state=Authentication",
+    "sig=0x6A responses=1 state=Ready",
+    "sig=0x10 responses=1 state=Streaming",
+    "sig=0x3F responses=2 state=Defunct"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "Q1-E01",
+  "case_name": "boolean-false",
+  "sent_type": "System.Boolean",
+  "observed_type": "System.Boolean",
+  "preserved": true
+}

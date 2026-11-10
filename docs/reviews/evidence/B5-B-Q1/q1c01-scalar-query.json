@@ -1,0 +1,95 @@
+{
+  "probe": "Q1-C01",
+  "driver_visible": {
+    "answer": 42,
+    "raw_type": "System.Int64"
+  },
+  "client_messages": [
+    {
+      "Name": "HELLO",
+      "Description": "HELLO {user_agent=neo4j-dotnet/6.4,routing=null,bolt_agent={product=neo4j-dotnet/6.4.12,platform=Microsoft Windows 10.0.26200;X64,language_details=.NET 8.0.31}}",
+      "Hex": "B101A38A757365725F6167656E74D0106E656F346A2D646F746E65742F362E3487726F7574696E67C08A626F6C745F6167656E74A38770726F64756374D0136E656F346A2D646F746E65742F362E342E313288706C6174666F726DD0204D6963726F736F66742057696E646F77732031302E302E32363230303B583634D0106C616E67756167655F64657461696C738B2E4E455420382E302E3331",
+      "Redacted": false
+    },
+    {
+      "Name": "LOGON",
+      "Description": "<redacted LOGON payload: 81 bytes>",
+      "Hex": "<redacted>",
+      "Redacted": true
+    },
+    {
+      "Name": "RUN",
+      "Description": "RUN RETURN 42 AS answer {} {}",
+      "Hex": "B310D01352455455524E20343220415320616E73776572A0A0",
+      "Redacted": false
+    },
+    {
+      "Name": "PULL",
+      "Description": "PULL {n=1000}",
+      "Hex": "B13FA1816EC903E8",
+      "Redacted": false
+    },
+    {
+      "Name": "RESET",
+      "Description": "RESET ",
+      "Hex": "B00F",
+      "Redacted": false
+    },
+    {
+      "Name": "GOODBYE",
+      "Description": "GOODBYE ",
+      "Hex": "B002",
+      "Redacted": false
+    }
+  ],
+  "server_messages": [
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+      "Hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {fields=[answer]}",
+      "Hex": "B170A1866669656C64739186616E73776572",
+      "Redacted": false
+    },
+    {
+      "Name": "RECORD",
+      "Description": "RECORD [42]",
+      "Hex": "B171912A",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    }
+  ],
+  "record_hex": "B171912A",
+  "terminal_hex": "B170A0",
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 6
+  }
+}

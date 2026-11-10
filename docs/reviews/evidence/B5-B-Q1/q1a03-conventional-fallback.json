@@ -1,0 +1,16 @@
+{
+  "probe": "Q1-A03",
+  "server_handshake": "00000805",
+  "handshake_mode": "Legacy",
+  "observed_answer": 42,
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 8
+  }
+}

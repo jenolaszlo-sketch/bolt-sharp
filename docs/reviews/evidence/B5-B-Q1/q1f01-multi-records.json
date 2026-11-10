@@ -1,0 +1,54 @@
+{
+  "probe": "Q1-F01",
+  "names": [
+    "Alice",
+    "Bob"
+  ],
+  "record_count": 2,
+  "terminal_hex": "B170A0",
+  "pull_count": 1,
+  "server_messages": [
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+      "Hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {fields=[name]}",
+      "Hex": "B170A1866669656C647391846E616D65",
+      "Redacted": false
+    },
+    {
+      "Name": "RECORD",
+      "Description": "RECORD [Alice]",
+      "Hex": "B1719185416C696365",
+      "Redacted": false
+    },
+    {
+      "Name": "RECORD",
+      "Description": "RECORD [Bob]",
+      "Hex": "B1719183426F62",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    }
+  ]
+}

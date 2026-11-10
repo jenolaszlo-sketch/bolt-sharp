@@ -1,0 +1,394 @@
+{
+    "task":  "B5-B-Q1 - independent official Neo4j .NET driver interoperability qualification (reviewer evidence)",
+    "role":  "Independent reviewer",
+    "base_head":  "646c572912de9a2ca415ec3548a99159cb2f4905",
+    "base_tree":  "7670702e59933d84a685d09a0e44744a2dce34ec",
+    "driver_package":  "Neo4j.Driver 6.4.0 (exact pin, test-only)",
+    "reviewer_probes":  53,
+    "historical_and_producer_manifest_entries_verified":  442,
+    "credential_sentinel_scan":  "0 leaks over all evidence files (plain, hex, UTF-16-hex; reviewer and producer sentinels)",
+    "generated_utc":  "2026-11-10T03:07:15Z",
+    "hash_convention":  "SHA-256 over exact working-tree bytes (raw checkout form); manifest.json itself is excluded from the inventory",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/.gitattributes",
+                               "sha256":  "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+                               "bytes":  8
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/01-manifest-verification.txt",
+                               "sha256":  "2616cb8a52973744f6a5be0f5ff3eb1ec3b4d215684facb61419f9941ebc6a9b",
+                               "bytes":  2358
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/01-manifest-verification-detail.json",
+                               "sha256":  "44a757913b922cc6cf9bda915a3b43853a7f3930124622d85ed8fe47d34d9f00",
+                               "bytes":  85019
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/02-regression-preflight.txt",
+                               "sha256":  "efbf83dad4b9ef05d4a6b07b4be3690e69d88900c10701ebab5b9ffa9afd2215",
+                               "bytes":  166
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/03-build-production.txt",
+                               "sha256":  "65ad84d2fe2db4c069f51335b00f60c463db6b09b3b41aa666cc579300e06024",
+                               "bytes":  251
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/04-build-solution.txt",
+                               "sha256":  "14068821a8559fdf0748fff51c275fe2dfe5763eaf4dbe363f5be836f34ae6ab",
+                               "bytes":  1665
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/05-producer-interop-suite.txt",
+                               "sha256":  "7552b83b7450db8586e9e84097082efd78655166394c66ebceac323efcd71241",
+                               "bytes":  764
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/06-transport-suite.txt",
+                               "sha256":  "f9b802e9dad74caed46bc57683c5c2e7563153b9dc76d82e3f3ec96ee1e869b9",
+                               "bytes":  571
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/07-b3c-backend.txt",
+                               "sha256":  "e1ffd72949551d9310f11f9cdb6d9f4ce51ab09da162c318dace639dde30500c",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/08-b3b-sessions.txt",
+                               "sha256":  "50de5786c32f81480f902660ceb76b868946aee4ada98eb6c9447f1e071fa3b0",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/09-b3a-messages.txt",
+                               "sha256":  "1d27c1a5d244146571c224b5be5e8ad6c87cb0272a7ebf82481bf9fb3355ee98",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/10-full-regression.txt",
+                               "sha256":  "6abdb45ff8f78013f203338050deb7503f6992713c129970a46f36757e2873e2",
+                               "bytes":  669
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/11-driver-integration-b0b.txt",
+                               "sha256":  "fbe953ee90cbc3f312a1641c15b8993b75f838b1406da469d464054722ec5bfb",
+                               "bytes":  638
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/12-producer-interop-suite-repeat.txt",
+                               "sha256":  "eaa68fe409f75ed2ee5f0e917b6d0c6cdad113829d7268f806489c7a5c29fd74",
+                               "bytes":  345
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/13-regression-complete.txt",
+                               "sha256":  "9b65d9ba3044d0e09e66d31807255c37c42d76c108f9e7fab5c00d7d630aed1c",
+                               "bytes":  45
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/b5bq1-full-regression.trx",
+                               "sha256":  "3a74b797b477f4369b0fa3d8c96b129b3688468b0c4000b527615806e379ec28",
+                               "bytes":  1647415
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/b5bq1-probes.trx",
+                               "sha256":  "f9f67fdc1fdd46c0d5dd16cbfa419775340bef36a524d72a39ad083e3b1a4328",
+                               "bytes":  70612
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/b5bq1-producer-suite.trx",
+                               "sha256":  "2e87bd3cd153ec439ab6f14b7b149b8644b55426919a7f6417dfac2775319a40",
+                               "bytes":  59805
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/New-EvidenceManifest.ps1",
+                               "sha256":  "8b5082a57f7f32c1e7ddf8c8518551462d2bb34359a7af0c14f6c41ca5c1eb70",
+                               "bytes":  1992
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1a00-environment.json",
+                               "sha256":  "8fc900fcf7add8cf87b246b2228832891eb41ab0bcb89d7ccb26a104c4e99b2d",
+                               "bytes":  222
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1a01-connectivity.json",
+                               "sha256":  "454b7b214d5d9d9a31a11d8d95b1e20e522e5d1ad4e294b0a74cbf8c311cd947",
+                               "bytes":  474
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1a02-manifest-handshake.json",
+                               "sha256":  "b4b10178d22da9fd24c03dda34c4260fdabd6cb55b118b3ce49d7caa279e8001",
+                               "bytes":  2371
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1a03-conventional-fallback.json",
+                               "sha256":  "c0e78d3ea030961bf98b866910e7016662d79edb43641a9f9198abce22a25dae",
+                               "bytes":  348
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1a04-reject-all-versions.json",
+                               "sha256":  "f1a74742111a7d53e832d876c15c4909ef2c6798654f2b12d627f9a63aaab626",
+                               "bytes":  744
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1a05-connection-refused.json",
+                               "sha256":  "e47e1d96157c366f63278a469d2953b1065108d92372c26b0555289e371308ef",
+                               "bytes":  816
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1a06-early-eof.json",
+                               "sha256":  "7229a3cc6d8a06c0db47abdc89b375f09cc4e6b3d41015ff91f65d99dd55d143",
+                               "bytes":  834
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1b01-hello-logon.json",
+                               "sha256":  "3e315c8dce7c4b4d0824f3504c6cf0ac0b8337ac61c6f0d41a582470bb83e285",
+                               "bytes":  3291
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1b02-invalid-credentials.json",
+                               "sha256":  "53e2e1b136c506287b81a3c48abca80d8ec57d98fe3a9574e441ff10f5b9200d",
+                               "bytes":  727
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1b03-missing-verifier.json",
+                               "sha256":  "58f076bbe3317930120819b74046ac948dfc54e00e0f47b499167d509da98b5d",
+                               "bytes":  536
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1b04-throwing-verifier.json",
+                               "sha256":  "63d9526426e092087dc20407c5efd04d1ac1ddaa014fc28fb6cc4420c17eea53",
+                               "bytes":  536
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1c01-scalar-query.json",
+                               "sha256":  "60f6d08af41b33fc01221c03aaf13fda51363aa339ab104ac7bd0ee8ad5db48a",
+                               "bytes":  2711
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1c02-sequential-queries-one-connection.json",
+                               "sha256":  "4de6d0c591baabe6924510c96c92f08b68e769e8d00a56171edb2fc3bcb41fb9",
+                               "bytes":  541
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1d01-graph-query.json",
+                               "sha256":  "7f0641cd33de09c62c09124a5fe358b10f5d24d0c81ddf0d5f6000e23dc97bc5",
+                               "bytes":  1582
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-boolean-false.json",
+                               "sha256":  "3304c636766065ad5cfbc8fd1909c2442f91bb9db308936b6d1a3b5844c725f7",
+                               "bytes":  152
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-boolean-true.json",
+                               "sha256":  "a06de02fe5ae7686ea9ca8adecda5ac4ae6c6cb7c34e17954531e521cd3e4f27",
+                               "bytes":  151
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-boundary-integer.json",
+                               "sha256":  "ada2d380bc52c4e4ae53ebe22465e47e9357543f69e041dd2bfe48e6ca154d13",
+                               "bytes":  151
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-explicit-null.json",
+                               "sha256":  "6e91274b4f53cb3d00d5f0a29ea120c1a6fb4cfa593ae9c15029ffda076cd133",
+                               "bytes":  132
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-list.json",
+                               "sha256":  "9f8d4a5d96083eb060fe7ea35ea0a635904b3c9811bb877ecdc2146ca322b29f",
+                               "bytes":  270
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-negative-integer.json",
+                               "sha256":  "73f64096f9d232265138c97012e9be1eefa3a390fa5682c4aa4efb81994e2aeb",
+                               "bytes":  151
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-nested-map.json",
+                               "sha256":  "708b13301f16fc76deb24e79416e8bda31ec8566e4991d9f3e238762d94a2593",
+                               "bytes":  629
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-positive-integer.json",
+                               "sha256":  "7e6b2852c0ae03de39a1cbb088b3772f66c261e841b87230e96362b63ad0ed52",
+                               "bytes":  151
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-query-like-string.json",
+                               "sha256":  "5ad24deb89883451dd7fe743fbe1a2e95fc78c2043715a842a027632327de1d8",
+                               "bytes":  154
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e01-param-unicode-string.json",
+                               "sha256":  "df593d8b79d5918cc72f980525cc90e59bae134b4013b3a657711e2d2579c22b",
+                               "bytes":  151
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e02-query-like-payload.json",
+                               "sha256":  "6b8aebb7f3af5efcfc8cc4e789ea3f6c8e0c9bcda1a4eb29b14351521ef7370d",
+                               "bytes":  103
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1e03-missing-parameter.json",
+                               "sha256":  "63e9dd07653839730e628c13cf85663407f71ed0ad8298cbba52ec55407446b9",
+                               "bytes":  649
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1f01-multi-records.json",
+                               "sha256":  "7d1a7fc956c201b15b403a79a32f345ee476fac37edc5b14eed65bace5897ce9",
+                               "bytes":  1281
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1f02-has-more-pagination.json",
+                               "sha256":  "f27745d6200284d4df82079f8faf9adb1214d856a7812353831bcc5dcbcd294e",
+                               "bytes":  1413
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1f03-discard-partial.json",
+                               "sha256":  "46e12ba96524577e634be2d6184d378930b3cdd2eea13b357172037794ac8257",
+                               "bytes":  2082
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1f04-session-disposal-outstanding.json",
+                               "sha256":  "ea9f64a31499bc654f97e07038cfe42807df0b69b73da34f25965aad4e7a17fc",
+                               "bytes":  471
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1f05-pooling-three-sessions.json",
+                               "sha256":  "6dd93c0d96016635ae53502f15304fe03cd861143a928fda85539624fad563eb",
+                               "bytes":  741
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1f06-driver-disposal.json",
+                               "sha256":  "edf0abd2635e09a718a26fa225c7ab73c9221bdb51e2167adca68904b7e9ae82",
+                               "bytes":  471
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1g01-bolt-ssc-self-signed.json",
+                               "sha256":  "e03021fdd451ff7431e3b37bdb08770d942642a5efaca0c80c2d5ce42d19bb91",
+                               "bytes":  373
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1g02-bolt-s-untrusted.json",
+                               "sha256":  "93d7a00195956bedccdf32f01b3b2d4d8ef7bc4433e6f65d73788bab757554be",
+                               "bytes":  957
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1g03-ca-trust-list.json",
+                               "sha256":  "84c56a6c91fb4dd47490233fb019b762050ac09428cce8691c5d0fa016e68055",
+                               "bytes":  493
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1g04-plaintext-vs-tls.json",
+                               "sha256":  "eec8c34f773bc7c60d519ab48970a39d9a35ee3c95a62f24f555307c37e3af68",
+                               "bytes":  1019
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1g05-tls-vs-plaintext.json",
+                               "sha256":  "435a67f821679927af00232e907d129daa14b1f8d828c267bc61fcc4ee125700",
+                               "bytes":  736
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1g06-invalid-credentials-tls.json",
+                               "sha256":  "71dacace752076a341b136b780a743215c003f3f7b2481d1758853b868930df8",
+                               "bytes":  536
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1g07-tls-version.json",
+                               "sha256":  "12f3322854ec68bf703508f2adb3bb4c4bb5d3f14b1fb715285e0d906697fb3e",
+                               "bytes":  55
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1-h01-f01.json",
+                               "sha256":  "4a8cb4fc0d353070c5f4f02e5cf4426c35ed6e46fe6b3d099695f4f92c70e4e0",
+                               "bytes":  1317
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1-h02-f01.json",
+                               "sha256":  "829e38b81444c228233099582ed1993958245aae593487b21c26bf12705fa2bb",
+                               "bytes":  1163
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1-h03-f01.json",
+                               "sha256":  "397e337164b91e2fc55a23cab09d82f8aa503eb7d87a8d9a5b53dc198c4cbce2",
+                               "bytes":  1706
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1i01-f02-unsupported-query.json",
+                               "sha256":  "b0b149a84a2c3fdfbaa347d9e3132ddeb28ca3ed29e0389bbe47424e2da036dc",
+                               "bytes":  1107
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1j01-live-driver-ignored.json",
+                               "sha256":  "1e0114715102ec294cc358bce2e0966b589c6b288d850e5594e6c5c391ed7882",
+                               "bytes":  1751
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1k01-failed-retirement.json",
+                               "sha256":  "40ed114cc882b008ad72951aa063d81b643ee45371114c49f58510b649716aad",
+                               "bytes":  1107
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1k02-failed-retirement-wire.json",
+                               "sha256":  "613860fe309e2bcc2f3a47a731c0d8dd4e47ab020589e44c6dee31e88e306c9e",
+                               "bytes":  982
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1k03-recoverable-provider-failure.json",
+                               "sha256":  "daeb40044dcbbafb881845703af981b03737f8b317a8c7c64dea3f7ddb7d343a",
+                               "bytes":  990
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1k04-client-disposal-active-result.json",
+                               "sha256":  "f0d27b6dd7e2ebfd9e4ca7983078d2f81925b0ce0129f84fdb23d9aed4f4ffbe",
+                               "bytes":  471
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1l01-sequential-sessions.json",
+                               "sha256":  "f0c89d764f3a8f7b414b9038ce34fa0923beb9894609283d9a0715360793fdd6",
+                               "bytes":  502
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1l02-server-shutdown.json",
+                               "sha256":  "d5b08600f368f613138b11606514ee687469e9b7120888a9d26becedb03821d6",
+                               "bytes":  52
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1l03-recovery-after-server-closure.json",
+                               "sha256":  "274632acb8d4a57ae439266c7205efd125a8a8fe9826b090f39aeb698866cc31",
+                               "bytes":  838
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1l04-two-drivers.json",
+                               "sha256":  "c46aeffe436a82c9abe20769f2a592ef735e90b6046a1ea028d9d28999217440",
+                               "bytes":  296
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1m01-explicit-database.json",
+                               "sha256":  "2cd28b35b25c7987afcec51d9cf5f03a5de42d46397579cc32d9670d7f00a76a",
+                               "bytes":  335
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/q1m02-unsupported-queries.json",
+                               "sha256":  "95456a52e2c27dddb0a316ee20266999cee95144ef94369f45943d136e36c071",
+                               "bytes":  1235
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/README.md",
+                               "sha256":  "e74f655d22e4179c9e1727ad78e4f397fed242d25917a8c5df171852e64b1ac0",
+                               "bytes":  2312
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/Run-Q1Regression.ps1",
+                               "sha256":  "63663afb8f4da876e4905ada64553946d879e6f0e721895d33eb63da3cf1d61f",
+                               "bytes":  3224
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-Q1/Verify-AllManifests-Independent.ps1",
+                               "sha256":  "1cdeb193035686530255a652b02b0e52e81838848f788c7324949706d1e03fac",
+                               "bytes":  4435
+                           }
+                       ]
+}

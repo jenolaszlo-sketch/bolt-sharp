@@ -1,0 +1,4 @@
+﻿Test run for D:\projects\bolt-sharp\tests\BoltSharp.DriverInteropTests\bin\Debug\net8.0\BoltSharp.DriverInteropTests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:    40, Skipped:     0, Total:    40, Duration: 1 m 59 s - BoltSharp.DriverInteropTests.dll (net8.0)

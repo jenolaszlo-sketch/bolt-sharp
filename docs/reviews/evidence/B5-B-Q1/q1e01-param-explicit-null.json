@@ -1,0 +1,7 @@
+{
+  "probe": "Q1-E01",
+  "case_name": "explicit-null",
+  "sent_type": "null",
+  "observed_type": "null",
+  "preserved": true
+}

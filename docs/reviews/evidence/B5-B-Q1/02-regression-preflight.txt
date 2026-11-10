@@ -1,0 +1,5 @@
+﻿branch: main
+HEAD: 646c572912de9a2ca415ec3548a99159cb2f4905
+tree: 7670702e59933d84a685d09a0e44744a2dce34ec
+dotnet: 10.0.401
+os: Microsoft Windows 10.0.26200 

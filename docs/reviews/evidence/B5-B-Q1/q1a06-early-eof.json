@@ -1,0 +1,14 @@
+{
+  "probe": "Q1-A06",
+  "port": 25869,
+  "driver_failure": {
+    "type": "Neo4j.Driver.ServiceUnavailableException",
+    "message": "Connection with the server breaks due to IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host.. Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0.",
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "is_retriable": true,
+    "inner_type": "System.IO.IOException",
+    "inner_message": "Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host.."
+  }
+}

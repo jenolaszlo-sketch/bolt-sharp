@@ -1,0 +1,7 @@
+{
+  "probe": "B5-B-Q1",
+  "driver_assembly_version": "6.4.12.0",
+  "driver_informational_version": "6.4.0+4ed413b01906c5d1682c62a3ee3c982cb28f99cd",
+  "dotnet": ".NET 8.0.31",
+  "os": "Microsoft Windows 10.0.26200"
+}

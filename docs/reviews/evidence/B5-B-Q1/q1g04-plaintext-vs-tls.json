@@ -1,0 +1,23 @@
+{
+  "probe": "Q1-G04",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ServiceUnavailableException",
+    "message": "Connection with the server breaks due to IOException: Unexpected end of stream when performing handshake, read only returned 0 bytes but expected 4 bytes. Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0.",
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "is_retriable": true,
+    "inner_type": "System.IO.IOException",
+    "inner_message": "Unexpected end of stream when performing handshake, read only returned 0 bytes but expected 4 bytes."
+  },
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 0,
+    "failed": 1,
+    "tls_handshake_failures": 1,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 0
+  }
+}

@@ -1,0 +1,49 @@
+﻿=== docs/reviews/evidence/B5-B-IMPL-01/manifest.json (expected 62) ===
+declared: 62; matched: 62; unmatched: 0
+
+=== docs/reviews/evidence/B5-A-Q1/manifest.json (expected 10) ===
+declared: 10; matched: 10; unmatched: 0
+
+=== docs/reviews/evidence/B5-A-IMPL-01/manifest.json (expected 18) ===
+declared: 18; matched: 18; unmatched: 0
+
+=== docs/reviews/evidence/B3-C-Q1/manifest.json (expected 29) ===
+declared: 29; matched: 29; unmatched: 0
+
+=== docs/reviews/evidence/B3-C-IMPL-01/manifest.json (expected 26) ===
+declared: 26; matched: 26; unmatched: 0
+
+=== docs/reviews/evidence/B3-B-Q3/manifest.json (expected 33) ===
+declared: 33; matched: 33; unmatched: 0
+
+=== docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json (expected 29) ===
+declared: 29; matched: 29; unmatched: 0
+
+=== docs/reviews/evidence/B3-B-Q2/manifest.json (expected 38) ===
+declared: 38; matched: 38; unmatched: 0
+
+=== docs/reviews/evidence/B3-B-Q1/manifest.json (expected 12) ===
+declared: 12; matched: 12; unmatched: 0
+
+=== docs/reviews/evidence/B3-A-Q1/manifest.json (expected 14) ===
+declared: 14; matched: 14; unmatched: 0
+
+=== docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json (expected 13) ===
+declared: 13; matched: 13; unmatched: 0
+
+=== docs/reviews/evidence/B3-A-Q2/manifest.json (expected 15) ===
+declared: 15; matched: 15; unmatched: 0
+
+=== docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json (expected 24) ===
+declared: 24; matched: 24; unmatched: 0
+
+=== docs/reviews/evidence/B0-B-Q1/manifest.json (expected 119) ===
+declared: 119; matched: 119; unmatched: 0
+
+=== accepted owner decision byte-identity (working tree vs HEAD blob) ===
+docs/decisions/B3-A-OWNER-01-owner-acceptance.md: head=ab84ffa973217612a1cc7033936ce23dcefe273a worktree=ab84ffa973217612a1cc7033936ce23dcefe273a identical=True
+docs/decisions/B3-B-OWNER-01-owner-acceptance.md: head=211a5d56a296e29ff4f5faad4abe22c2a0bec2a0 worktree=211a5d56a296e29ff4f5faad4abe22c2a0bec2a0 identical=True
+docs/decisions/B3-C-OWNER-01-owner-acceptance.md: head=323303bd0eaa79e00458689af99e60fbf27a0836 worktree=323303bd0eaa79e00458689af99e60fbf27a0836 identical=True
+docs/decisions/B5-A-OWNER-01-owner-acceptance.md: head=385c820e2e046694fbfa3735a22034545d8068c0 worktree=385c820e2e046694fbfa3735a22034545d8068c0 identical=True
+
+TOTAL: 442 entries; matched: 442; unmatched: 0

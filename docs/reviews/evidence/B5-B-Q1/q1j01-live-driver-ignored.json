@@ -1,0 +1,71 @@
+{
+  "probe": "Q1-J01",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ProtocolException",
+    "message": "An unknown error occurred",
+    "neo4j_code": "Neo.ClientError.Request.Invalid",
+    "gql_status": "50N42",
+    "gql_classification": "UNKNOWN",
+    "is_retriable": false
+  },
+  "recovery_answer": 42,
+  "run_description": "RUN MATCH (n) DETACH DELETE n {} {}",
+  "pull_description": "PULL {n=1000}",
+  "server_failure": "FAILURE {gql_status=50N42,neo4j_code=Neo.ClientError.Request.Invalid,description=The requested operation is not supported by this server.,diagnostic_record={}}",
+  "ignored_hex": "B07E",
+  "ignored_is_zero_field": true,
+  "client_sequence": [
+    "HELLO",
+    "LOGON",
+    "RUN",
+    "PULL",
+    "HELLO",
+    "LOGON",
+    "RUN",
+    "PULL",
+    "RESET",
+    "GOODBYE"
+  ],
+  "server_sequence": [
+    "SUCCESS",
+    "SUCCESS",
+    "FAILURE",
+    "IGNORED",
+    "SUCCESS",
+    "SUCCESS",
+    "SUCCESS",
+    "RECORD",
+    "SUCCESS",
+    "SUCCESS"
+  ],
+  "physical_connections": 2,
+  "connection_disposition": "connection-destroyed-fresh-connection",
+  "per_connection": [
+    {
+      "connection_index": 0,
+      "prepare_calls": 1,
+      "operations_opened": 0,
+      "dispose_calls": 0,
+      "dispose_failures": 0,
+      "read_row_calls": 0
+    },
+    {
+      "connection_index": 1,
+      "prepare_calls": 1,
+      "operations_opened": 1,
+      "dispose_calls": 1,
+      "dispose_failures": 0,
+      "read_row_calls": 2
+    }
+  ],
+  "counters": {
+    "accepted": 2,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 2,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 10
+  }
+}

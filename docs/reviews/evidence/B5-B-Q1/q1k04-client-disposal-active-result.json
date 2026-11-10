@@ -1,0 +1,23 @@
+{
+  "probe": "Q1-K04",
+  "per_connection": [
+    {
+      "connection_index": 0,
+      "prepare_calls": 1,
+      "operations_opened": 1,
+      "dispose_calls": 1,
+      "dispose_failures": 0,
+      "read_row_calls": 3
+    }
+  ],
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 7
+  }
+}

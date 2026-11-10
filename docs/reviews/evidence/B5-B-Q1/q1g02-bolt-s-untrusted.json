@@ -1,0 +1,25 @@
+{
+  "probe": "Q1-G02",
+  "uri_scheme": "bolt+s",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ServiceUnavailableException",
+    "message": "Failed to establish encrypted connection with server bolt+s://localhost:56168/.",
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "is_retriable": true,
+    "inner_type": "System.Security.Authentication.AuthenticationException",
+    "inner_message": "The remote certificate was rejected by the provided RemoteCertificateValidationCallback."
+  },
+  "counters": {
+    "accepted": 1,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 1,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 0
+  },
+  "note": "bolt+s validates against the OS trust store only; a test certificate is rejected. This is the distinct system-trust path and is NOT proof of the trust-list arrangement below."
+}

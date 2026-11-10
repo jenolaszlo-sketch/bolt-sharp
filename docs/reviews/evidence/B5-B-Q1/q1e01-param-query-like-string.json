@@ -1,0 +1,7 @@
+{
+  "probe": "Q1-E01",
+  "case_name": "query-like-string",
+  "sent_type": "System.String",
+  "observed_type": "System.String",
+  "preserved": true
+}

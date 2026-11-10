@@ -1,0 +1,2212 @@
+﻿[
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/.gitattributes",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/00-environment.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b-interop-suite.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-01-explicit-transaction.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-02-managed-transaction.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-03-routing-scheme.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b10-04-explicit-database.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-01-connectivity-plaintext.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-02-manifest-handshake.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-03-conventional-fallback.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-04-reject-all-versions.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-05-hello-logon-metadata.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-06-close-sequence.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-07-driver-visible-version.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-20-invalid-credentials.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-21-missing-verifier.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b2-22-auth-terminal-no-retry.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-01-scalar-auto-commit.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-02-scalar-wire-capture.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-03-terminal-exhaustion.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b3-04-home-database-metadata.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b4-01-graph-typed-values.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b4-02-graph-wire-capture.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b5-01-typed-parameters.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b5-02-explicit-null-versus-missing.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b5-03-query-like-payload.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-01-multiple-records.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-02-fetch-size-pagination.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-03-discard-partial-consumption.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-04-session-disposal-outstanding.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b6-05-repeated-queries-single-connection.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-01-bolt-ssc-self-signed.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-02-bolt-s-untrusted.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-03-ca-trusted-trust-list.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-04-plaintext-vs-tls.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b7-05-invalid-credentials-tls.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-01-unsupported-query.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-02-live-driver-ignored.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-03-no-automatic-retry.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b8-04-failure-isolation.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b9-01-server-shutdown.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b9-02-multi-client.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/b5b9-03-recovery-after-connection-loss.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/compatibility-matrix.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/full-regression.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/historical-integrity.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/New-EvidenceManifest.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/Run-B5BImpl.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/Verify-HistoricalManifests.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/01-preflight.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/02-build-production.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/03-build-solution.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/04-b5b-interop-suite.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/05-transport-suite.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/06-b3c-backend.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/07-b3b-sessions.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/08-b3a-messages.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/09-full-regression.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/10-driver-integration-b0b.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/11-historical-manifests.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-B-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-B-IMPL-01/logs/12-format-check.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/integrity-failures.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/integrity-summary.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/New-EvidenceManifest.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/probe-all.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/logs/01-preflight.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/logs/02-build-production.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/logs/03-build-solution.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/logs/04-transport.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/logs/05-full-regression.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-Q1/logs/06-driver-integration.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/full-regression.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/historical-integrity.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/network-probe-source.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/network-traces.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/New-EvidenceManifest.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/Run-B5AImpl.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/transport-tests.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/Verify-HistoricalManifests.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/01-preflight.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/02-build-production.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/03-build-solution.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/04-transport-suite.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/05-full-regression.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/06-driver-integration.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/07-historical-manifests.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/08-owner-decisions.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B5-A-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B5-A-IMPL-01/logs/09-environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/b3c-backend.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/backend-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/baseline.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/core.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/core-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/format-check.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/historical-integrity.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/historical-integrity-summary.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/integration.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/integration-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/message.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/owner-decisions-diff.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-determinism.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-repeat.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/q1-probe-results-repeat.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/reviewed-inputs.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/Run-B3CQ1.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/session.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/session-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-Q1/t04-fixture-provenance.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-Q1/manifest.json",
+        "path":  "docs/reviews/B3-C-Q1-independent-qualification.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/b3c-backend.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/backend-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/baseline.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/core.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/core-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/format-check.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/historical-integrity.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/historical-integrity-summary.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/integration.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/integration-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/message.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/owner-decisions-diff.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r1-remediation.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r1-remediation-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r2-remediation.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/r2-remediation-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/reviewed-inputs.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/Run-B3C.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/session.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-C-IMPL-01/session-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-C-IMPL-01/manifest.json",
+        "path":  "docs/reviews/B3-C-IMPL-01.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/baseline.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/core.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/core-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/historical-integrity.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/historical-integrity-summary.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/integration.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/integration-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/message.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q1-probe.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q1-probe-after/session-probe-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q1-probe-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q2-probe.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q2-probe-after.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q2-probe-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q3-probe.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q3-probe-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/q3-probe-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/r2-lifecycle.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/r2-source-delta.patch",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/r2-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/remediation.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/remediation-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/reviewed-inputs.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/reviewed-session-source.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/Run-Q3.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/session.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q3/session-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q3/manifest.json",
+        "path":  "docs/reviews/B3-B-Q3-independent-requalification.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/baseline.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/core-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/historical-integrity.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/historical-integrity-summary.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/message.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe-after/session-probe-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q1-probe-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-after.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-after.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-before-after.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/q2-probe-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-implementation-delta.patch",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-lifecycle.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/r2-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/remediation.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/remediation-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/Run-R2.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/session.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-R2-IMPL-01/session-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json",
+        "path":  "docs/reviews/B3-B-R2-IMPL-01.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/baseline.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/baseline.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/commission.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/core.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/core-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/historical-integrity.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/history-audit.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/implementation-delta.patch",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/integration.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/integration-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/message.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/original-cleanup-subset.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/prior-session.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-input-hashes.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-unchanged.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q1-unchanged/session-probe-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-build-initial.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-probe-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-run.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/q2-run-initial.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/remediation.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/remediation-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/reviewed-inputs.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/reviewed-session-numbered.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/Run-Q2.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/Run-Regression.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/session.trx",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/session-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/probe/Program.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q2/probe/Q2Probe.csproj",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q2/manifest.json",
+        "path":  "docs/reviews/B3-B-Q2.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/core-solution-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/probe/session-probe-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/session-probe-run.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-B-Q1/session-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/Harness.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/Program.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-B-Q1/SessionProbe/SessionProbe.csproj",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-B-Q1/manifest.json",
+        "path":  "docs/reviews/B3-B-Q1-independent-qualification.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q1/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q1/core-solution-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q1/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q1/falsification-probe/falsification-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q1/falsification-probe-run.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q1/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q1/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q1/.gitignore",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/.gitignore",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/FalsificationProbe.csproj",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/IndependentPackStream.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q1/FalsificationProbe/Program.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q1/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q1/manifest.json",
+        "path":  "docs/reviews/B3-A-Q1-independent-qualification.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/core-solution-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/baseline/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-after-fix/falsification-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-after-fix-run.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-before-fix/falsification-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-R1-IMPL-01/q1-probe-before-fix-run.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "src/BoltSharp/Messages/BoltMessageCodec.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "src/BoltSharp/Messages/BoltRequests.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "tests/BoltSharp.Tests/Messages/BoltMessageFixtures.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "tests/BoltSharp.Tests/Messages/BoltMessageNegativeTests.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "tests/BoltSharp.Tests/Messages/BoltRequestDecodeTests.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json",
+        "path":  "docs/reviews/B3-A-R1-IMPL-01.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/closure-probe/closure-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/closure-probe-run.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/core-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/core-solution-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/message-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/q1-probe-rerun.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/evidence/B3-A-Q2/q1-probe-rerun/falsification-results.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/.gitignore",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/ClosureProbe.csproj",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/IndependentFixtures.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q2/ClosureProbe/Program.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/probes/B3-A-Q2/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B3-A-Q2/manifest.json",
+        "path":  "docs/reviews/B3-A-Q2-independent-requalification.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/.gitattributes",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/commands.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/environment.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t01-handshake.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t01-handshake-rejected.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t02-initialization.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t02-invalid-credentials.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t03-query-scalar.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t04-graph-values.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-discard.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-early-disposal.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t05-pagination.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-incomplete-response.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-protocol-failure.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t06-socket-termination.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-coalesced.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-fixedchunk-3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-perbyte-1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-fragmentation-whole-7.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t07-handshake-fragmentation.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t08-real-listener-legacy.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-DRV-INT-01/t08-real-listener-manifest.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/B0-B-DRV-INT-01-implementation.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json",
+        "path":  "docs/reviews/B0-B-DRV-INT-01-gap-matrix.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/core-solution-build-rerun.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/core-solution-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/dotnet-info.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/driver-source/BoltHandshaker.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-connection-id-only.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-empty.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-full.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-hints-only.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-no-hints.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hello-server-only.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-1-1-1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-1-1-1-d10.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d10.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d1000.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d3000.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-1-3-d50.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-2-2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-2-2-d10.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-3-1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-manifest-whole.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-whole.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/hs-whole-d0-wait.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-code-gql-no-description.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-empty.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-full.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-message-only.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-neo4j-code-only.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-no-code.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-no-gql.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/logon-failure-old-code.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-chunk-body.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-chunk-header.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-header-slow.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-perbyte.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-terminator.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-two-chunks.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/ph-whole.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation/smoke-hs-whole.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-probe-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-connection-id-only-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-empty-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hello-server-only-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-1-1-1-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-1-3-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-2-2-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-3-1-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run2.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run4.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-repeat/hs-whole-run5.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/fragmentation-summary.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/graph-independent-decode.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/graph-independent-decode.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/integration-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/integration-tests.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/integration-tests-rerun.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls/summary.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls-build.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/negative-controls-run.log",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/package-list.txt",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t01-handshake.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t01-handshake-rejected.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t02-initialization.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t02-invalid-credentials.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t03-query-scalar.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t04-graph-values.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-discard.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-early-disposal.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t05-pagination.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-incomplete-response.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-protocol-failure.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t06-socket-termination.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-coalesced.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-fixedchunk-3.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-perbyte-1.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-fragmentation-whole-7.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t07-handshake-fragmentation.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t08-real-listener-legacy.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/evidence/B0-B-Q1/producer-reproduction/t08-real-listener-manifest.json",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/.gitignore",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/FragmentationProbe.csproj",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/Program.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/FragmentationProbe/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/GraphDecode/decode-graph.ps1",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/NegativeControls.csproj",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/Program.cs",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/NegativeControls/README.md",
+        "matched":  true
+    },
+    {
+        "manifest":  "docs/reviews/evidence/B0-B-Q1/manifest.json",
+        "path":  "docs/reviews/probes/B0-B-Q1/README.md",
+        "matched":  true
+    }
+]

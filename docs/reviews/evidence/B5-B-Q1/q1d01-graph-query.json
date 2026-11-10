@@ -1,0 +1,65 @@
+{
+  "probe": "Q1-D01",
+  "alice": {
+    "id": 1,
+    "element_id": "n:1",
+    "labels": [
+      "Person"
+    ],
+    "name": "Alice"
+  },
+  "bob": {
+    "id": 2,
+    "element_id": "n:2",
+    "labels": [
+      "Person"
+    ],
+    "name": "Bob"
+  },
+  "knows": {
+    "id": 1,
+    "element_id": "r:1",
+    "type": "KNOWS",
+    "start": "n:1",
+    "end": "n:2",
+    "since": 2024
+  },
+  "server_messages": [
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+      "Hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {fields=[a,r,b]}",
+      "Hex": "B170A1866669656C647393816181728162",
+      "Redacted": false
+    },
+    {
+      "Name": "RECORD",
+      "Description": "RECORD [<struct:4>,78,1]",
+      "Hex": "B17193B44E019186506572736F6EA1846E616D6585416C696365836E3A31B852010102854B4E4F5753A18573696E6365C907E883723A31836E3A31836E3A32B44E029186506572736F6EA1846E616D6583426F62836E3A32",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    },
+    {
+      "Name": "SUCCESS",
+      "Description": "SUCCESS {}",
+      "Hex": "B170A0",
+      "Redacted": false
+    }
+  ]
+}

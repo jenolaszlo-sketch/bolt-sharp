@@ -1,0 +1,41 @@
+{
+  "probe": "Q1-K01",
+  "driver_failure": {
+    "type": "Neo4j.Driver.DatabaseException",
+    "message": "An unknown error occurred",
+    "neo4j_code": "Neo.DatabaseError.General.UnknownError",
+    "gql_status": "50N00",
+    "gql_classification": "UNKNOWN",
+    "is_retriable": false
+  },
+  "affected_connection": [
+    {
+      "connection_index": 0,
+      "prepare_calls": 1,
+      "operations_opened": 1,
+      "dispose_calls": 1,
+      "dispose_failures": 1,
+      "read_row_calls": 2
+    },
+    {
+      "connection_index": 1,
+      "prepare_calls": 1,
+      "operations_opened": 1,
+      "dispose_calls": 1,
+      "dispose_failures": 0,
+      "read_row_calls": 2
+    }
+  ],
+  "physical_connections": 2,
+  "counters": {
+    "accepted": 2,
+    "rejected_for_capacity": 0,
+    "active": 0,
+    "completed": 2,
+    "failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 10
+  },
+  "verdict": "fail-closed: exactly one disposal attempt, no successful terminal result, no second operation on the affected connection"
+}
