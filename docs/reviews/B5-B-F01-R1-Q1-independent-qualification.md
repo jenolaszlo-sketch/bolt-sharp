@@ -543,3 +543,21 @@ blocking finding remains. Independence is established at the session/model level
 operator-designation limitation recorded (§1).
 
 This is independent reviewer qualification, not formal owner closure.
+
+---
+
+### 23.1 Operator-recorded session provenance (added by the operator session)
+
+The following provenance facts are attestable only from outside the reviewer session and are
+recorded here verbatim by the operator (spawning) session. This addendum adds provenance only; it
+does not alter any reviewer finding, evidence or disposition above.
+
+- **Reviewer session ID:** `ses_e3957b5b2ffei7mSUdvmcu2Dk9` — a dedicated child OpenCode session
+  created by the operator for this commission, running the assigned reviewer model
+  `nvidia/z-ai/glm-5.3-flash` (NVIDIA provider), a different model from the producer
+  (DeepSeek V4.1 Flash, `nvidia`), in fresh context.
+- **First spawn attempt:** model `zai/glm-5.3` (Z.AI provider) failed before any work began
+  (`Insufficient balance or no resource package`); the review of record was executed in the
+  session above.
+- **Producer session separation:** the producer of B5-B-F01-R1 ran in a distinct OpenCode
+  session; the reviewer session above received no producer conversation context.
