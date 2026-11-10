@@ -132,9 +132,10 @@ Additional integrity results:
 - **Credential hygiene:** a read-only scan of 1114 evidence/probe/report files found **zero**
   plaintext, hex-encoded or UTF-16-hex-encoded occurrences of the B5-B producer, B5-B-Q1 reviewer,
   B5-A probe or B0-B integration credential sentinels, and **zero** private-key markers. The only
-  plain-text sentinel occurrences are the previously documented B5-A synthetic probe values
-  (`probe-secret`) in the B5-A evidence that its README explicitly labels synthetic; that is
-  historical, documented, test-only material outside B5-B scope. LOGON payloads are redacted at
+  plain-text sentinel occurrences are the previously documented B5-A synthetic probe credential
+  values in the B5-A evidence, which its README explicitly labels synthetic; those are historical,
+  documented, test-only material outside B5-B scope (their literal values are deliberately not
+  reproduced in this decision). LOGON payloads are redacted at
   decoded-message and raw-chunk level in both B5-B evidence sets.
 
 ## 7. Regression results
