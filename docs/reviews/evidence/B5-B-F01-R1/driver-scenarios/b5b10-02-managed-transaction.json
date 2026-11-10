@@ -1,0 +1,28 @@
+{
+  "scenario": "B5B10-02",
+  "title": "Managed transaction callback refused through the accepted session path (08N06); auto-commit unaffected",
+  "uri_scheme": "bolt",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ProtocolException",
+    "message": "An unknown error occurred",
+    "inner_types": [],
+    "neo4j_code": "Neo.ClientError.Request.Invalid",
+    "gql_status": "08N06",
+    "gql_classification": "UNKNOWN",
+    "gql_status_description": "Explicit transactions and routing are not supported by this server.",
+    "retriable": false
+  },
+  "begin_attempt_connections": 1,
+  "run_processed": 1,
+  "notes": "With a 1s transaction retry bound the driver exhausts its retries quickly; each BEGIN attempt receives the accepted B3-B unsupported-command terminal FAILURE (08N06) through the transport (B5-B-F01-R1) and never reaches RUN.",
+  "counters": {
+    "connections_accepted": 2,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 2,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 11
+  }
+}

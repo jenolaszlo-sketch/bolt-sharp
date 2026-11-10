@@ -1,0 +1,97 @@
+{
+  "scenario": "B5B7-03",
+  "title": "CA-trusted TLS with an isolated in-memory trust list",
+  "uri_scheme": "bolt \u002B EncryptionLevel.Encrypted \u002B CertificateTrustRule.TrustList",
+  "driver_visible": {
+    "answer": 42
+  },
+  "tls": {
+    "certificate": "ephemeral RSA-2048 leaf signed by an in-memory test CA (no chain committed)",
+    "trust": "documented driver TrustList rule: chain must validate to the supplied CA certificate"
+  },
+  "qualification": "The literal bolt\u002Bs:// scheme always validates against the operating system trust store and ignores the trust list (documented driver behavior), so it cannot be used with a test-only CA without an intrusive, permanent machine trust change. This trust-list arrangement is the reproducible isolated alternative and the reason bolt\u002Bs:// itself is recorded as an explicit trust-arrangement limitation.",
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 8
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-10T16:53:06.7853244\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:26322"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8083495\u002B00:00",
+      "kind": "TlsHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "Tls12"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8149957\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8152654\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8153149\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x6A responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8156076\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8156382\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8164974\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x10 responses=1 state=Streaming"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8165673\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x3F responses=2 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8168855\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8170703\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x02 responses=0 state=Defunct"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:06.8170752\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0001",
+      "detail": "closed"
+    }
+  ]
+}

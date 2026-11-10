@@ -1,0 +1,101 @@
+{
+  "scenario": "B5B7-04",
+  "title": "Plaintext bolt:// against a TLS-only listener fails closed; no downgrade",
+  "uri_scheme": "bolt",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ServiceUnavailableException",
+    "message": "Connection with the server breaks due to IOException: Unexpected end of stream when performing handshake, read only returned 0 bytes but expected 4 bytes. Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0.",
+    "inner_types": [
+      "System.IO.IOException"
+    ],
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "gql_status_description": null,
+    "retriable": true
+  },
+  "counters": {
+    "connections_accepted": 2,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 1,
+    "tls_handshake_failures": 1,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 5
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-10T16:53:09.0539355\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:26325"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:09.0550044\u002B00:00",
+      "kind": "TlsHandshakeFailed",
+      "connection_id": "conn-0001",
+      "detail": "AuthenticationException"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:09.0554618\u002B00:00",
+      "kind": "ConnectionFailed",
+      "connection_id": "conn-0001",
+      "detail": "AuthenticationException"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.0911677\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0002",
+      "detail": "127.0.0.1:9949"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1028078\u002B00:00",
+      "kind": "TlsHandshakeCompleted",
+      "connection_id": "conn-0002",
+      "detail": "Tls12"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1041176\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0002",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1043885\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1044319\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x6A responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1046610\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1046914\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1049708\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x02 responses=0 state=Defunct"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:11.1049773\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0002",
+      "detail": "closed"
+    }
+  ]
+}

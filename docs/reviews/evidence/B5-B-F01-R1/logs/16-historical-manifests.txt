@@ -1,0 +1,84 @@
+﻿=== docs/reviews/evidence/B3-C-Q1/manifest.json ===
+declared hashed entries: 29 (commission expectation: 29)
+verified: 29 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-C-IMPL-01/manifest.json ===
+declared hashed entries: 26 (commission expectation: 26)
+verified: 26 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-B-Q3/manifest.json ===
+declared hashed entries: 33 (commission expectation: 33)
+verified: 33 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json ===
+declared hashed entries: 29 (commission expectation: 29)
+verified: 29 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-B-Q2/manifest.json ===
+declared hashed entries: 38 (commission expectation: 38)
+verified: 38 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-B-Q1/manifest.json ===
+declared hashed entries: 12 (commission expectation: 12)
+verified: 12 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-A-Q1/manifest.json ===
+declared hashed entries: 14 (commission expectation: 14)
+verified: 14 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json ===
+declared hashed entries: 13 (commission expectation: 13)
+verified: 13 matched, 0 not matched
+
+=== docs/reviews/evidence/B3-A-Q2/manifest.json ===
+declared hashed entries: 15 (commission expectation: 15)
+verified: 15 matched, 0 not matched
+
+=== docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json ===
+declared hashed entries: 24 (commission expectation: 24)
+verified: 24 matched, 0 not matched
+
+=== docs/reviews/evidence/B0-B-Q1/manifest.json ===
+declared hashed entries: 119 (commission expectation: 119)
+verified: 119 matched, 0 not matched
+
+=== docs/reviews/evidence/B5-A-IMPL-01/manifest.json ===
+declared hashed entries: 18 (commission expectation: 18)
+verified: 18 matched, 0 not matched
+
+=== docs/reviews/evidence/B5-A-Q1/manifest.json ===
+declared hashed entries: 10 (commission expectation: 10)
+verified: 10 matched, 0 not matched
+
+=== docs/reviews/evidence/B5-B-IMPL-01/manifest.json ===
+declared hashed entries: 62 (commission expectation: 62)
+verified: 62 matched, 0 not matched
+
+=== docs/reviews/evidence/B5-B-Q1/manifest.json ===
+declared hashed entries: 76 (commission expectation: 76)
+verified: 76 matched, 0 not matched
+
+=== accepted owner decision byte-identity (working tree vs committed blob at HEAD) ===
+docs/decisions/B3-A-OWNER-01-owner-acceptance.md
+  head blob:    ab84ffa973217612a1cc7033936ce23dcefe273a
+  working tree: ab84ffa973217612a1cc7033936ce23dcefe273a
+  byte-identical to HEAD: True
+docs/decisions/B3-B-OWNER-01-owner-acceptance.md
+  head blob:    211a5d56a296e29ff4f5faad4abe22c2a0bec2a0
+  working tree: 211a5d56a296e29ff4f5faad4abe22c2a0bec2a0
+  byte-identical to HEAD: True
+docs/decisions/B3-C-OWNER-01-owner-acceptance.md
+  head blob:    323303bd0eaa79e00458689af99e60fbf27a0836
+  working tree: 323303bd0eaa79e00458689af99e60fbf27a0836
+  byte-identical to HEAD: True
+docs/decisions/B5-A-OWNER-01-owner-acceptance.md
+  head blob:    385c820e2e046694fbfa3735a22034545d8068c0
+  working tree: 385c820e2e046694fbfa3735a22034545d8068c0
+  byte-identical to HEAD: True
+docs/decisions/B5-B-OWNER-01-owner-acceptance.md
+  head blob:    7d23b6bb50c66f134bc33f8ba89cb7d09813c97e
+  working tree: 7d23b6bb50c66f134bc33f8ba89cb7d09813c97e
+  byte-identical to HEAD: True
+=== F01-R1 source-evolution note ===
+The authorized B5-B-F01-R1 production change supersedes src/BoltSharp/Transport/BoltTcpConnection.cs.
+No historical manifest hashes that file; the 518-entry verification above is unaffected, and no historical evidence was rewritten.

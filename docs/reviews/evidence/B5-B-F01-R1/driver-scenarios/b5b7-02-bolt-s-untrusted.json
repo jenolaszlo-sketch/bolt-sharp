@@ -1,0 +1,102 @@
+{
+  "scenario": "B5B7-02",
+  "title": "bolt\u002Bs:// always validates against the system CA store: test certificate rejected",
+  "uri_scheme": "bolt\u002Bs",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ServiceUnavailableException",
+    "message": "Failed to establish encrypted connection with server bolt\u002Bs://localhost:27272/.",
+    "inner_types": [
+      "System.Security.Authentication.AuthenticationException"
+    ],
+    "neo4j_code": null,
+    "gql_status": null,
+    "gql_classification": null,
+    "gql_status_description": null,
+    "retriable": true
+  },
+  "counters": {
+    "connections_accepted": 2,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 2,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 5
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-10T16:52:57.9416272\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:27274"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:57.9868481\u002B00:00",
+      "kind": "TlsHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "Tls12"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:57.9925280\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0001",
+      "detail": "client-disconnect"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0581891\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0002",
+      "detail": "127.0.0.1:27276"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0606478\u002B00:00",
+      "kind": "TlsHandshakeCompleted",
+      "connection_id": "conn-0002",
+      "detail": "Tls12"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0625907\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0002",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0628711\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0629273\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x6A responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0632714\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0633140\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0635594\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0002",
+      "detail": "sig=0x02 responses=0 state=Defunct"
+    },
+    {
+      "at_utc": "2026-11-10T16:53:00.0635650\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0002",
+      "detail": "closed"
+    }
+  ],
+  "note": "No machine trust store was modified; the test certificate is intentionally untrusted."
+}

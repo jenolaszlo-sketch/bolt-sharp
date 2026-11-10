@@ -1,0 +1,11 @@
+{
+  "scenario": "B5B2-07",
+  "title": "Driver-visible server agent and negotiated protocol version",
+  "uri_scheme": "bolt",
+  "driver_visible": {
+    "server_agent": "BoltSharp/0.1.0",
+    "protocol_version": "5.8",
+    "summary_protocol_version": "5.8"
+  },
+  "note": "HELLO SUCCESS omits the optional protocol_version field; the driver still exposes 5.8."
+}

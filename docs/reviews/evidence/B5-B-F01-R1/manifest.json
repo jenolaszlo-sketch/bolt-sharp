@@ -1,0 +1,369 @@
+﻿{
+    "task":  "B5-B-F01-R1 - restore unsupported-command refusal across the transport/session boundary (producer evidence)",
+    "role":  "Bounded remediation implementation agent",
+    "base_head":  "3953bdd9962a8e4dc4c43c0bb3996b5fed76fb08",
+    "base_tree":  "f3fd25af19261f754d7d601b5c214f315c74af7d",
+    "core_tests":  1227,
+    "transport_suite_tests":  90,
+    "driver_suite_tests":  41,
+    "b3c_backend_tests":  94,
+    "b3b_session_tests":  119,
+    "b3a_message_tests":  98,
+    "b0b_driver_integration_tests":  19,
+    "historical_manifest_entries_verified":  518,
+    "owner_decisions_verified_identical":  5,
+    "generated_utc":  "2026-11-10T16:53:53Z",
+    "hash_convention":  "SHA-256 over exact working-tree bytes (canonical checkout form); manifest.json itself is excluded from the inventory",
+    "evidence_files":  [
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/.gitattributes",
+                               "sha256":  "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+                               "bytes":  8
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/f01-repro-probe-source.cs",
+                               "sha256":  "c2a0434a130b92d767eafb0835dbb107d58a3920caddbdc186806fbad792f21b",
+                               "bytes":  15174
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/f01r1-driver-suite.trx",
+                               "sha256":  "a73513edd22ac35f5f926fea9e299f3a3f28e96d85dc042f37efd317d117739e",
+                               "bytes":  61283
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/f01r1-full-regression.trx",
+                               "sha256":  "e2155f55afdbaf5b2886770c9a631489d9c31415052237c1e902f9738c150dd7",
+                               "bytes":  1662063
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/f01r1-transport.trx",
+                               "sha256":  "a60f394aa7e9fb430ae6c9cbeaa1c2b9be7d390e412123bff366e0e8328d8790",
+                               "bytes":  122537
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/historical-integrity.json",
+                               "sha256":  "dd8662b50a148870b0fb4ba2bea72cc72bdf0cb5295976c5131741d668143d34",
+                               "bytes":  226269
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/New-EvidenceManifest.ps1",
+                               "sha256":  "5b4771e6edfe8c4c48e2449fd25fa8fa8fd6638bf9412ce402129c66d9d7ceb8",
+                               "bytes":  1966
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/README.md",
+                               "sha256":  "d62bfc1529b0555d11e7fc7765b046ac2258a1004903ec233d16d7eebfa05d90",
+                               "bytes":  4429
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/repro-post-remediation.txt",
+                               "sha256":  "61a1915bd2ebe8078210a1873b67d034e75336985612adf58c36696d75135cc8",
+                               "bytes":  7638
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/repro-pre-remediation.txt",
+                               "sha256":  "c1571d4c7cf43cc1f7f0cbc80069859341c3927b7b88c975a7a2a42301831b2a",
+                               "bytes":  5357
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/Run-F01R1.ps1",
+                               "sha256":  "2276776518ec670a0df34610ddbfc43c2a19acb031690bbecad6f8e2a919fa70",
+                               "bytes":  7984
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/Verify-HistoricalManifests.ps1",
+                               "sha256":  "1cf84fab970ed7d555bc7761f80dfb74b1fa4b214b28ff0fefc609025cbdbaf3",
+                               "bytes":  5592
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/00-environment.json",
+                               "sha256":  "ea5e8d482a41ae581c0b483dfc0246c32a905253e53447a5cbfbb02b91e75eed",
+                               "bytes":  536
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b10-01-explicit-transaction.json",
+                               "sha256":  "bc22514a9aad72fe2a2a1c0d881455ec3d2151b50ac0dacdf99e417cdc0ed9f7",
+                               "bytes":  8345
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b10-02-managed-transaction.json",
+                               "sha256":  "4bf4a7b6ac5de0886371aeecdef9a3921baa696c12ead905373ae4c2fc3b3793",
+                               "bytes":  1154
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b10-03-routing-scheme.json",
+                               "sha256":  "b5a0405b16fe09c006ca90155b6bfa5eda3873b350f2aa0669e8329c96779105",
+                               "bytes":  8205
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b10-04-explicit-database.json",
+                               "sha256":  "d757e9cd38c17fbc709c92baad4aa18df0d53f0df071b99781cbc20dd0439762",
+                               "bytes":  9131
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b10-05-begin-refusal-driver-visible.json",
+                               "sha256":  "0d7236ef633d81d40103ed29d4152648f3ee77abba300570d0c1348a41132c3f",
+                               "bytes":  8310
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-01-connectivity-plaintext.json",
+                               "sha256":  "e77c0a05deb254212974dd8481668ec94c28383272a3fb2d20543c4c51aa3241",
+                               "bytes":  2675
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-02-manifest-handshake.json",
+                               "sha256":  "8168693ef1b5e6c884209c6ae8bf20421ffd48e7a662e17ec60e755f16cc6578",
+                               "bytes":  6715
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-03-conventional-fallback.json",
+                               "sha256":  "3e0580cbe4b49e234fd453389273465fbe3f11e37b22d294979cfbc8ce6ed817",
+                               "bytes":  8911
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-04-reject-all-versions.json",
+                               "sha256":  "f58130cc599380ae03e0a7897deac2687ce447b880ab63b0cbde465b655c8a63",
+                               "bytes":  1439
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-05-hello-logon-metadata.json",
+                               "sha256":  "0c16e538ec84d4ef78785145fe1b26bbf7e75c181f75c32e0f9d1131ca2e6fc1",
+                               "bytes":  1687
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-06-close-sequence.json",
+                               "sha256":  "292139938667cf31554ab69db0a2a26bc53e9478313068031966177a7429d190",
+                               "bytes":  2947
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-07-driver-visible-version.json",
+                               "sha256":  "d8a69197fb941db6da033b3cb1450414c828c37493a39b6f44e8036b9045099c",
+                               "bytes":  370
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-20-invalid-credentials.json",
+                               "sha256":  "38d7471c149da7dacee5397ac5da0d54ab682b64ec2f5d40e164fa4df4228cb4",
+                               "bytes":  1213
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-21-missing-verifier.json",
+                               "sha256":  "429a0691332bd0e430dd11eff80e2e63905ea32e22b0ff0bd1d7b842be80eb71",
+                               "bytes":  1799
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b2-22-auth-terminal-no-retry.json",
+                               "sha256":  "c1211bf807425a62fe952962505d3e5677d4aa5e719f9d235f788c73e91e89e4",
+                               "bytes":  1411
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b3-01-scalar-auto-commit.json",
+                               "sha256":  "c4065a114527e17782438bbcf0f81d5c8b43b8774ba3855f96a429e6f43782bc",
+                               "bytes":  3332
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b3-02-scalar-wire-capture.json",
+                               "sha256":  "328ac0149819208d713f01609bc5c503da11549e39af294dce3592d16a3ffe9f",
+                               "bytes":  11898
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b3-03-terminal-exhaustion.json",
+                               "sha256":  "445867f3670f0c885cc42351d4192e4dda2b0fcdd7a83961862460526f4d81af",
+                               "bytes":  593
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b3-04-home-database-metadata.json",
+                               "sha256":  "e57d957c999b58804c4fd48a88a9b93145bc80c62619328b5bb3d4eb97700ed6",
+                               "bytes":  1208
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b4-01-graph-typed-values.json",
+                               "sha256":  "e7a9f1daf36769cfa089466d0c8850a13f7caa593d172eeb69ecf82092b20a60",
+                               "bytes":  3159
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b4-02-graph-wire-capture.json",
+                               "sha256":  "34dcf440f4c0e62d6f5a337a8a3fd06ee52b95fd20cca6d202c325b8955280bd",
+                               "bytes":  9831
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b5-01-typed-parameters.json",
+                               "sha256":  "1170f3ec638108af4a930b6048ca891c8b8b52a845432be2e9448de8d6e180d7",
+                               "bytes":  8662
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b5-02-explicit-null-versus-missing.json",
+                               "sha256":  "d97eacb84face880c640968eae58bfda82bc4cff28931d4af60649e42e145268",
+                               "bytes":  19059
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b5-03-query-like-payload.json",
+                               "sha256":  "8cfb02fddafab5b0aeeff02fca871459d7bac0dabe5042543ddb749e65602efa",
+                               "bytes":  722
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b6-01-multiple-records.json",
+                               "sha256":  "e03f46824097d7bbd7fe0f038de910ba590ef5b85a91df7a8531aaa63898d100",
+                               "bytes":  9530
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b6-02-fetch-size-pagination.json",
+                               "sha256":  "fb460e03dca341c7571c4c17294ff56c77a71e67840f06594f989ac6fda00908",
+                               "bytes":  12963
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b6-03-discard-partial-consumption.json",
+                               "sha256":  "430e20cd3cc2eea61021cc1086e11a5c242fe6f3caa502dad1e33206c38f4e14",
+                               "bytes":  12654
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b6-04-session-disposal-outstanding.json",
+                               "sha256":  "57c21e9987c44d350beb63a73c172c7eaf1a749a99643fe7b913cf61cd4648f4",
+                               "bytes":  12800
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b6-05-repeated-queries-single-connection.json",
+                               "sha256":  "0f6305406614fe7b3e885f4d7e73545a472f5479ff7f7f749da826524a1850c9",
+                               "bytes":  14425
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b7-01-bolt-ssc-self-signed.json",
+                               "sha256":  "bbedfa2683d5a59c8d4c4e21e0382b002d4274c6445a0b041993a3896bae616b",
+                               "bytes":  3041
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b7-02-bolt-s-untrusted.json",
+                               "sha256":  "104016232d43831bfd4a2becfa615c1e7a714e51c25fc733f4c414e491bf1034",
+                               "bytes":  3280
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b7-03-ca-trusted-trust-list.json",
+                               "sha256":  "02b61c104ae04a26b37fabd70af42c4868d5ce73ad9cf12da9596cb5768b862e",
+                               "bytes":  3531
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b7-04-plaintext-vs-tls.json",
+                               "sha256":  "ba9b3b883eb10095647d57d6bccc51de1e7fbd45362edf2a58633875d8569a51",
+                               "bytes":  3437
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b7-05-invalid-credentials-tls.json",
+                               "sha256":  "1b46a0fcecc51b5bdaeeaba08939a9bc0df4df97b38923a14df3e3b0e773d095",
+                               "bytes":  1985
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b8-01-unsupported-query.json",
+                               "sha256":  "357f51bc1f223ab79636bc32778a40c1807470a81fae71746f76514114204008",
+                               "bytes":  16837
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b8-02-live-driver-ignored.json",
+                               "sha256":  "205761b57213fd0577b063c2ea0cf1efacd1e124db1f51d47c2d4c77dfc2e6e5",
+                               "bytes":  9314
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b8-03-no-automatic-retry.json",
+                               "sha256":  "a83e4bfacffeaf33e9df4245bf9f400dc758e0fbf3a5f1a4f01ad1327dc7ab73",
+                               "bytes":  383
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b8-04-failure-isolation.json",
+                               "sha256":  "2a9c759f3f2dd86e9e19c60719419870b82b40d2ad474996bae79ea788135213",
+                               "bytes":  4678
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b9-01-server-shutdown.json",
+                               "sha256":  "8889604b9b9e8b5e9fb5664cbfe612a41da2182c4fc5d5471badde59288d53e8",
+                               "bytes":  3506
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b9-02-multi-client.json",
+                               "sha256":  "657747445a4f6de62e2cb1880562106197ea3f3db6d010a71ab5e1581e7a17e8",
+                               "bytes":  7840
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/driver-scenarios/b5b9-03-recovery-after-connection-loss.json",
+                               "sha256":  "684c0c1f36e486404be66e9a99041ca098cd81f115bc25d81176aeb444784bf3",
+                               "bytes":  4037
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/01-preflight.txt",
+                               "sha256":  "43ea10467294baf3fda1c4a244b797339b1befb893795bdbd34e54f039187b86",
+                               "bytes":  537
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/02-build-production.txt",
+                               "sha256":  "68ded230730763bda93413cc3e103337fafb796634e9f202ca3a7c8793b5a438",
+                               "bytes":  251
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/03-build-solution.txt",
+                               "sha256":  "0ac6e1053fbf4214f63e105bf1aa69977664e629db853feed7904dfee5a505c3",
+                               "bytes":  1665
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/04-build-driver-tests.txt",
+                               "sha256":  "ce7d69184168a6624b7f00586c934913e0e6af55bcefaa357b4a7415f53a4953",
+                               "bytes":  394
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/05-core-full-regression.txt",
+                               "sha256":  "80031bcc986a4a1e3919126bd2b704171bada8a1e16fa79830852b330b201831",
+                               "bytes":  669
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/06-transport-suite.txt",
+                               "sha256":  "0894ab74a2be71c5860aac967820fa0a0e116f5bf079707587852b1c6b6e1993",
+                               "bytes":  663
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/07-b3c-backend.txt",
+                               "sha256":  "e1ffd72949551d9310f11f9cdb6d9f4ce51ab09da162c318dace639dde30500c",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/08-b3b-sessions.txt",
+                               "sha256":  "fc660e8c1bfd5d844477bd2de518412b1ea8fbe18d4af52f2b43f7ee1615649d",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/09-b3a-messages.txt",
+                               "sha256":  "32b7146d3041e17f80557bcbdf41f832086a4e382b6a67420b9d21b4020f6c68",
+                               "bytes":  573
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/10-driver-suite.txt",
+                               "sha256":  "ff40d321dab54817a343cf155da654c0b832767389036c6c83802102bb34be1f",
+                               "bytes":  448
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/11-driver-integration-b0b.txt",
+                               "sha256":  "fbe953ee90cbc3f312a1641c15b8993b75f838b1406da469d464054722ec5bfb",
+                               "bytes":  638
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/12-format-driver.txt",
+                               "sha256":  "5e7396d27630ccef46cf66ee7b12f12cf4e0bec940953c6b57fb8cda1ace4c7f",
+                               "bytes":  31
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/13-format-src-transport.txt",
+                               "sha256":  "d96fc5a0e7b5d1ab9dd4bb9258e20f84dfbcf3f6eb255665d88a0e9c388c2245",
+                               "bytes":  38
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/14-format-tests-transport.txt",
+                               "sha256":  "80129c35b7d41f009fd8104edefc1df37d4800e3fec819686e001bdc394c5e50",
+                               "bytes":  397
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/15-probe-build.txt",
+                               "sha256":  "455608b751f5d3ab563dc0174e68148a6ba8e22fe41c4621f218bc00118dca9f",
+                               "bytes":  455
+                           },
+                           {
+                               "path":  "docs/reviews/evidence/B5-B-F01-R1/logs/16-historical-manifests.txt",
+                               "sha256":  "c15f1b33e68f06800e527bd4dc384fd5a8c3a070496b046744f45dd441892067",
+                               "bytes":  3646
+                           }
+                       ]
+}

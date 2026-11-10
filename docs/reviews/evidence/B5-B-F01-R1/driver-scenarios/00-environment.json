@@ -1,0 +1,13 @@
+{
+  "task": "B5-B-IMPL-01",
+  "os": "Microsoft Windows 10.0.26200",
+  "framework": ".NET 8.0.31",
+  "process_architecture": "X64",
+  "driver_package": "Neo4j.Driver 6.4.0 (exact pin)",
+  "driver_assembly_version": "6.4.12.0",
+  "driver_informational_version": "6.4.0\u002B4ed413b01906c5d1682c62a3ee3c982cb28f99cd",
+  "server_assembly": "1.0.0.0",
+  "git_head": "3953bdd9962a8e4dc4c43c0bb3996b5fed76fb08",
+  "git_tree": "f3fd25af19261f754d7d601b5c214f315c74af7d",
+  "generated_utc": "2026-11-10T16:51:10.4500127\u002B00:00"
+}

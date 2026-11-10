@@ -1,0 +1,257 @@
+{
+  "scenario": "B5B8-02",
+  "title": "Live-driver IGNORED: pipelined RUN-\u003EFAILURE and PULL-\u003EIGNORED (B0 7E)",
+  "uri_scheme": "bolt",
+  "driver_failure": {
+    "type": "Neo4j.Driver.ProtocolException",
+    "message": "An unknown error occurred",
+    "inner_types": [],
+    "neo4j_code": "Neo.ClientError.Request.Invalid",
+    "gql_status": "50N42",
+    "gql_classification": "UNKNOWN",
+    "gql_status_description": "The requested operation is not supported by this server.",
+    "retriable": false
+  },
+  "ignored_hex": "B07E",
+  "ignored_decoded": true,
+  "pipelined_run_plus_pull_in_one_client_chunk": true,
+  "requests_after_ignored_on_failing_connection": [],
+  "same_session_recovery_value": 42,
+  "recovery_connection": "new connection after driver-side destroy",
+  "disposition": "LIVE-DRIVER IGNORED - EXERCISED (automatic pipelined PULL after a failed auto-commit RUN received the zero-field B0 7E IGNORED and the driver completed its error handling without desynchronization). Same-connection RESET recovery after the IGNORED was NOT exercised: under the accepted 50N42 classification the driver treats the failure as an unknown ProtocolException and destroys the connection instead of sending RESET. Historical scripted evidence (B0-B T06) shows RESET \u002B reuse for a driver-known 42001 SyntaxError classification.",
+  "failing_connection": {
+    "connection_id": 1,
+    "client_side_close": "reset",
+    "server_side_close": "reset",
+    "client_handshake_hex": "60 60 B0 17 00 00 01 FF 00 08 08 05 00 02 04 04 00 00 00 03",
+    "proposals": [
+      {
+        "slot": 0,
+        "raw": "000001FF",
+        "kind": "manifest-v1",
+        "version": null,
+        "range": null
+      },
+      {
+        "slot": 1,
+        "raw": "00080805",
+        "kind": "range",
+        "version": "5.8",
+        "range": "5.0..5.8"
+      },
+      {
+        "slot": 2,
+        "raw": "00020404",
+        "kind": "range",
+        "version": "4.4",
+        "range": "4.2..4.4"
+      },
+      {
+        "slot": 3,
+        "raw": "00000003",
+        "kind": "concrete",
+        "version": "3.0",
+        "range": null
+      }
+    ],
+    "server_manifest_offer_hex": "000001FF010000080500",
+    "server_manifest_offer": {
+      "range_count": 1,
+      "ranges": [
+        "00000805"
+      ],
+      "capabilities": 0
+    },
+    "server_legacy_reply_hex": null,
+    "client_manifest_selection_hex": "0000080500",
+    "client_manifest_selection_version": "5.8",
+    "client_manifest_selection_capabilities": 0,
+    "client_messages": [
+      {
+        "index": 0,
+        "name": "HELLO",
+        "decoded": true,
+        "redacted": false,
+        "description": "HELLO keys=[user_agent,routing,bolt_agent] user_agent=\u0022neo4j-dotnet/6.4\u0022 routing=null bolt_agent={product=\u0022neo4j-dotnet/6.4.12\u0022,platform=\u0022Microsoft Windows 10.0.26200;X64\u0022,language_details=\u0022.NET 8.0.31\u0022}",
+        "hex": "B101A38A757365725F6167656E74D0106E656F346A2D646F746E65742F362E3487726F7574696E67C08A626F6C745F6167656E74A38770726F64756374D0136E656F346A2D646F746E65742F362E342E313288706C6174666F726DD0204D6963726F736F66742057696E646F77732031302E302E32363230303B583634D0106C616E67756167655F64657461696C738B2E4E455420382E302E3331"
+      },
+      {
+        "index": 1,
+        "name": "LOGON",
+        "decoded": true,
+        "redacted": true,
+        "description": "LOGON keys=[scheme,principal,credentials] scheme=\u0022basic\u0022 principal=\u003Credacted\u003E credentials=\u003Credacted\u003E",
+        "hex": "\u003Credacted\u003E"
+      },
+      {
+        "index": 2,
+        "name": "RESET",
+        "decoded": true,
+        "redacted": false,
+        "description": "RESET",
+        "hex": "B00F"
+      },
+      {
+        "index": 3,
+        "name": "RESET",
+        "decoded": true,
+        "redacted": false,
+        "description": "RESET",
+        "hex": "B00F"
+      },
+      {
+        "index": 4,
+        "name": "RUN",
+        "decoded": true,
+        "redacted": false,
+        "description": "RUN \u0022MATCH (n) DETACH DELETE n\u0022 parameters=0 entry(ies) extra={}",
+        "hex": "B310D0194D4154434820286E29204445544143482044454C455445206EA0A0"
+      },
+      {
+        "index": 5,
+        "name": "PULL",
+        "decoded": true,
+        "redacted": false,
+        "description": "PULL n=1000",
+        "hex": "B13FA1816EC903E8"
+      }
+    ],
+    "server_messages": [
+      {
+        "index": 0,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {server=BoltSharp/0.1.0,connection_id=bolt-b3b-1,hints={}}",
+        "hex": "B170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A0"
+      },
+      {
+        "index": 1,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      },
+      {
+        "index": 2,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      },
+      {
+        "index": 3,
+        "name": "SUCCESS",
+        "decoded": true,
+        "redacted": false,
+        "description": "SUCCESS {}",
+        "hex": "B170A0"
+      },
+      {
+        "index": 4,
+        "name": "FAILURE",
+        "decoded": true,
+        "redacted": false,
+        "description": "FAILURE {gql_status=50N42,neo4j_code=Neo.ClientError.Request.Invalid,description=The requested operation is not supported by this server.,diagnostic_record={0 entry(ies)}}",
+        "hex": "B17FA48A67716C5F7374617475738535304E34328A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED03854686520726571756573746564206F7065726174696F6E206973206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0"
+      },
+      {
+        "index": 5,
+        "name": "IGNORED",
+        "decoded": true,
+        "redacted": false,
+        "description": "IGNORED",
+        "hex": "B07E"
+      }
+    ],
+    "chunks": [
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-10T16:52:12.6092457\u002B00:00",
+        "length": 20,
+        "redacted": false,
+        "hex": "6060B017000001FF000808050002040400000003"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-10T16:52:12.6095160\u002B00:00",
+        "length": 10,
+        "redacted": false,
+        "hex": "000001FF010000080500"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-10T16:52:12.6096768\u002B00:00",
+        "length": 5,
+        "redacted": false,
+        "hex": "0000080500"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-10T16:52:12.6098577\u002B00:00",
+        "length": 244,
+        "redacted": true,
+        "hex": "\u003Credacted: contains LOGON\u003E"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-10T16:52:12.6100694\u002B00:00",
+        "length": 62,
+        "redacted": false,
+        "hex": "003AB170A3867365727665728F426F6C7453686172702F302E312E308D636F6E6E656374696F6E5F69648A626F6C742D6233622D318568696E7473A00000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-10T16:52:12.6100954\u002B00:00",
+        "length": 7,
+        "redacted": false,
+        "hex": "0003B170A00000"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-10T16:52:12.6103476\u002B00:00",
+        "length": 12,
+        "redacted": false,
+        "hex": "0002B00F00000002B00F0000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-10T16:52:12.6105047\u002B00:00",
+        "length": 7,
+        "redacted": false,
+        "hex": "0003B170A00000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-10T16:52:12.6105466\u002B00:00",
+        "length": 7,
+        "redacted": false,
+        "hex": "0003B170A00000"
+      },
+      {
+        "direction": "ClientToServer",
+        "at_utc": "2026-11-10T16:52:12.6114270\u002B00:00",
+        "length": 47,
+        "redacted": false,
+        "hex": "001FB310D0194D4154434820286E29204445544143482044454C455445206EA0A000000008B13FA1816EC903E80000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-10T16:52:12.6117185\u002B00:00",
+        "length": 158,
+        "redacted": false,
+        "hex": "009AB17FA48A67716C5F7374617475738535304E34328A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED03854686520726571756573746564206F7065726174696F6E206973206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A00000"
+      },
+      {
+        "direction": "ServerToClient",
+        "at_utc": "2026-11-10T16:52:12.6117440\u002B00:00",
+        "length": 6,
+        "redacted": false,
+        "hex": "0002B07E0000"
+      }
+    ],
+    "parse_error": null
+  }
+}

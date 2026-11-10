@@ -1,0 +1,101 @@
+{
+  "scenario": "B5B9-01",
+  "title": "Server shutdown during an active driver connection",
+  "uri_scheme": "bolt",
+  "driver_visible": {
+    "before_shutdown": 42,
+    "after_shutdown_failure": {
+      "type": "Neo4j.Driver.ServiceUnavailableException",
+      "message": "Connection with the server breaks due to IOException: Failed to connect to server \u0027bolt://localhost:4856/\u0027 via IP addresses\u0027[::1, 127.0.0.1]\u0027 at port \u00274856\u0027. Please ensure that your database is listening on the correct host and port and that you have compatible encryption settings both on Neo4j server and driver. Note that the default encryption setting has changed in Neo4j 4.0.",
+      "inner_types": [
+        "System.IO.IOException",
+        "System.AggregateException",
+        "System.IO.IOException",
+        "System.Net.Sockets.SocketException"
+      ],
+      "neo4j_code": null,
+      "gql_status": null,
+      "gql_classification": null,
+      "gql_status_description": null,
+      "retriable": true
+    }
+  },
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 7
+  },
+  "server_events": [
+    {
+      "at_utc": "2026-11-10T16:52:35.1250968\u002B00:00",
+      "kind": "ConnectionAccepted",
+      "connection_id": "conn-0001",
+      "detail": "127.0.0.1:4858"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1255406\u002B00:00",
+      "kind": "BoltHandshakeCompleted",
+      "connection_id": "conn-0001",
+      "detail": "v5.8 mode=ManifestV1"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1257037\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x01 responses=1 state=Authentication"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1257529\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x6A responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1260168\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1260463\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1272798\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x10 responses=1 state=Streaming"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1273584\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x3F responses=2 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1276462\u002B00:00",
+      "kind": "MessageProcessed",
+      "connection_id": "conn-0001",
+      "detail": "sig=0x0F responses=1 state=Ready"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1280133\u002B00:00",
+      "kind": "ConnectionCompleted",
+      "connection_id": "conn-0001",
+      "detail": "listener-shutdown"
+    },
+    {
+      "at_utc": "2026-11-10T16:52:35.1281842\u002B00:00",
+      "kind": "ListenerStopped",
+      "connection_id": "listener",
+      "detail": "activeRemaining=0"
+    }
+  ]
+}

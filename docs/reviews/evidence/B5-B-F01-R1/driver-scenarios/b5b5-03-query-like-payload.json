@@ -1,0 +1,23 @@
+{
+  "scenario": "B5B5-03",
+  "title": "Query-like string parameter returned verbatim; graph unchanged",
+  "uri_scheme": "bolt",
+  "driver_visible": {
+    "returned_payload": "MATCH (n) DETACH DELETE n",
+    "person_names_after": [
+      "Alice",
+      "Bob"
+    ]
+  },
+  "payload_run_hex": "B310D01752455455524E202476616C756520415320616E73776572A18576616C7565D0194D4154434820286E29204445544143482044454C455445206EA0",
+  "counters": {
+    "connections_accepted": 1,
+    "connections_rejected_for_capacity": 0,
+    "connections_active": 0,
+    "connections_completed": 1,
+    "connections_failed": 0,
+    "tls_handshake_failures": 0,
+    "bolt_handshake_failures": 0,
+    "messages_processed": 11
+  }
+}

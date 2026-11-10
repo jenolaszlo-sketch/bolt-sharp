@@ -1,0 +1,12 @@
+﻿B5-B-F01-R1 reproduction run @ 2026-11-10T16:50:40Z
+branch: main
+HEAD: 3953bdd9962a8e4dc4c43c0bb3996b5fed76fb08
+tree:  f3fd25af19261f754d7d601b5c214f315c74af7d
+D:/projects/bolt-sharp 3953bdd [main]
+## main...origin/main [ahead 61]
+ M src/BoltSharp/Transport/BoltTcpConnection.cs
+ M tests/BoltSharp.DriverInteropTests/Scenarios/CapabilityBoundaryTests.cs
+?? docs/reviews/evidence/B5-B-F01-R1/
+?? tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs
+dotnet --version: 10.0.401
+os: Microsoft Windows 10.0.26200 

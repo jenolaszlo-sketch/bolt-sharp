@@ -1,0 +1,2 @@
+﻿tests/Transport format exit code: 0
+Pre-existing observation (unchanged by F01-R1): the full tests/BoltSharp.Tests project format check reports WHITESPACE findings in tests/BoltSharp.Tests/Messages/BoltMessageFixtures.cs (B3-A-era file, recorded as a pre-existing observation in the B3-A owner acceptance 6.4 and not modified by this remediation; the same file produces no compile warnings).
