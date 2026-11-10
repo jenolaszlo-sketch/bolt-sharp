@@ -712,3 +712,19 @@ individually authorized next steps.
 - Platform: Windows 10.0.26200, .NET SDK 10.0.401, runtime .NET 8.0.31, x64.
 - Probe project builds 0 warnings/0 errors; `dotnet format --verify-no-changes` exit 0.
 - All probes passing 53/53, executed twice in fresh processes.
+
+### 15.1 Operator-recorded session provenance (added by the operator session)
+
+The following provenance facts are attestable only from outside the reviewer session and are
+recorded here verbatim by the operator (spawning) session. This addendum adds provenance only;
+it does not alter any reviewer finding, evidence or disposition above.
+
+- **Reviewer session ID:** `ses_e3d0c2395ffeRFdJp7sKXquvv1` — a dedicated child OpenCode session
+  created by the operator for this commission, corroborated by the operator's session tooling
+  (the session was renamed to `B5-B-Q1 reviewer session (nvidia/z-ai/glm-5.3-flash)`).
+- **First spawn attempt:** model `zai/glm-5.3` (Z.AI provider) failed before any work began
+  (`Insufficient balance or no resource package`); the review of record was executed in the
+  session above with the assigned model `nvidia/z-ai/glm-5.3-flash`.
+- **Producer session separation:** the producer of B5-B-IMPL-01 (DeepSeek V4.1 Flash, `nvidia`)
+  ran in a distinct OpenCode session; the reviewer session above started with fresh context and
+  received no producer conversation context.
