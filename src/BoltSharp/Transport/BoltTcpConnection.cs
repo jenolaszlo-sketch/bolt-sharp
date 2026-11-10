@@ -12,8 +12,8 @@ namespace BoltSharp.Transport;
 
 /// <summary>
 /// The per-connection pipeline: TLS authentication (when configured), the B2 Bolt handshake,
-/// then a sequential loop of one decoded request at a time through the B3-B session, with B3-A
-/// encoded responses written back through B2 framing.
+/// then a sequential loop of one complete message at a time through the B3-B session's
+/// payload-processing entry point, with B3-A encoded responses written back through B2 framing.
 /// <para>
 /// <b>Single ownership.</b> One connection runs one pipeline task; B3-B session calls are
 /// strictly sequential within it (the accepted single-owner contract). The handshake reader
@@ -155,8 +155,9 @@ internal static class BoltTcpConnection
         }
         catch (BoltMessageException ex)
         {
-            // The accepted B3-A decode contract answers malformed messages at the session level;
-            // a decode fault escaping to the transport boundary is a transport error.
+            // Defensive classification: under the accepted B3-B contract the session's payload
+            // entry point owns decoding and answers malformed or unsupported messages itself
+            // (B5-B-F01-R1); a codec fault escaping that boundary would still be a transport error.
             failed = true;
             outcome = $"codec:{ex.Category}";
         }
@@ -216,8 +217,12 @@ internal static class BoltTcpConnection
                 return;
             }
 
-            var request = codec.DecodeRequest(message);
-            var result = session.Receive(request);
+            // B5-B-F01-R1: the complete payload is processed by the accepted B3-B session entry
+            // point, which owns decoding and the documented refusal classification. The transport
+            // must not pre-decode: doing so closed the connection at the B3-A boundary for valid
+            // but unsupported commands (BEGIN/COMMIT/ROLLBACK/ROUTE) before the session's
+            // documented terminal refusal could run (finding B5-B-IMPL-F01 / B5-B-Q1-F01).
+            var result = session.ReceiveBytes(message);
 
             await WriteResponsesAsync(
                     stream,
@@ -229,7 +234,7 @@ internal static class BoltTcpConnection
             diagnostics.Report(
                 BoltTransportEventKind.MessageProcessed,
                 connectionId,
-                $"sig=0x{request.Signature:X2} responses={result.Responses.Count} state={result.State}");
+                $"sig={DescribePayloadSignature(message)} responses={result.Responses.Count} state={result.State}");
 
             if (result.ShouldClose || session.IsDefunct)
             {
@@ -276,6 +281,16 @@ internal static class BoltTcpConnection
 
         await stream.FlushAsync(writeCts.Token).ConfigureAwait(false);
     }
+
+    /// <summary>
+    /// Diagnostic-only peek at the message signature byte. A Bolt message payload is a PackStream
+    /// structure whose tag byte identifies the message; decoding and validation remain owned by
+    /// the B3-B session entry point, and this label is used only in the transport diagnostic event.
+    /// </summary>
+    private static string DescribePayloadSignature(ReadOnlySpan<byte> payload) =>
+        payload.Length >= 2 && (payload[0] & 0xF0) == 0xB0
+            ? $"0x{payload[1]:X2}"
+            : "unknown";
 
     /// <summary>
     /// Clean client disconnects (EOF, connection reset, orderly socket closure) are completion,
