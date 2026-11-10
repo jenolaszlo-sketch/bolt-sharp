@@ -1,0 +1,1 @@
+valid Basic OK; RUN-before-LOGON terminal protocol violation; missing verifier fail-closed; LOGOFF accepted; no operation opened unauthenticated

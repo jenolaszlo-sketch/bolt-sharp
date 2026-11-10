@@ -1,0 +1,2 @@
+DEFUNCT session: no second RUN, no RESET revival, no disposal retry; new connection healthy (B171912A)
+injected disposal failure: one operation, one disposal attempt, FAILURE (50N00) instead of summary, connection closed

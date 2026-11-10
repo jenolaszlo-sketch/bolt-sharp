@@ -1,0 +1,4 @@
+RESET after terminal BEGIN refusal: no revival, no response, no provider activity
+pipelined malformed in one write: attempt 1: FAILURE delivered byte-exact
+pipelined unsupported-begin in one write: attempt 1: FAILURE delivered byte-exact
+pipelined unsupported-route in one write: attempt 1: FAILURE delivered byte-exact

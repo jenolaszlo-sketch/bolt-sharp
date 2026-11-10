@@ -1,0 +1,28 @@
+﻿evidence: declared=29 expected=29 matched=29 mismatched=0 [OK]
+evidence: declared=26 expected=26 matched=26 mismatched=0 [OK]
+evidence: declared=33 expected=33 matched=33 mismatched=0 [OK]
+evidence: declared=29 expected=29 matched=29 mismatched=0 [OK]
+evidence: declared=38 expected=38 matched=38 mismatched=0 [OK]
+evidence: declared=12 expected=12 matched=12 mismatched=0 [OK]
+evidence: declared=14 expected=14 matched=14 mismatched=0 [OK]
+evidence: declared=13 expected=13 matched=13 mismatched=0 [OK]
+evidence: declared=15 expected=15 matched=15 mismatched=0 [OK]
+evidence: declared=24 expected=24 matched=24 mismatched=0 [OK]
+evidence: declared=119 expected=119 matched=119 mismatched=0 [OK]
+evidence: declared=18 expected=18 matched=18 mismatched=0 [OK]
+evidence: declared=10 expected=10 matched=10 mismatched=0 [OK]
+evidence: declared=62 expected=62 matched=62 mismatched=0 [OK]
+evidence: declared=76 expected=76 matched=76 mismatched=0 [OK]
+evidence: declared=70 expected=70 matched=70 mismatched=0 [OK]
+owner-decision B3-A-OWNER-01-owner-acceptance.md: working-sha256=d715beac496560a3 git-hash-object=ab84ffa973217612
+owner-decision B3-B-OWNER-01-owner-acceptance.md: working-sha256=23b8462dd4b077c4 git-hash-object=211a5d56a296e29f
+owner-decision B3-C-OWNER-01-owner-acceptance.md: working-sha256=3c2eade57943c3af git-hash-object=323303bd0eaa79e0
+owner-decision B5-A-OWNER-01-owner-acceptance.md: working-sha256=87a1ef084d29245e git-hash-object=385c820e2e046694
+owner-decision B5-B-OWNER-01-owner-acceptance.md: working-sha256=e77abb7fe75ff815 git-hash-object=7d23b6bb50c66f13
+manifests referencing the F01-modified source file: 0 (expected 0): 
+
+
+== Owner decision byte-identity (exact check) ==
+git status --porcelain docs/decisions -> empty (all five accepted owner decisions are byte-identical
+to their committed blobs at HEAD; the working tree is clean for docs/decisions).
+git diff HEAD -- docs/decisions -> empty diff.

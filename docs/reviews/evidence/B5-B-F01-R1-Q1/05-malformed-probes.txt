@@ -1,0 +1,11 @@
+truncated-structure: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+wrong-field-type-query-list: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+wrong-arity-B010: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+invalid-protocol-tag-0F: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+malformed-nested-params: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+invalid-marker-non-structure: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+unknown-signature-B17BA0: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+invalid-hello-metadata: terminal protocol-violation FAILURE transmitted, connection closed, no recovery path, prepareCount=0
+FRAMING oversized-message: connection closed without response (accepted B2 framing contract)
+FRAMING truncated-chunk-header: connection closed without response (accepted B2 framing contract)
+FRAMING premature-eof-mid-message: connection closed without response (accepted B2 framing contract)

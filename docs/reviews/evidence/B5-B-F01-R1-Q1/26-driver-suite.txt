@@ -1,0 +1,5 @@
+﻿
+Passed!  - Failed:     0, Passed:    41, Skipped:     0, Total:    41, Duration: 1 m 59 s - 
+BoltSharp.DriverInteropTests.dll (net8.0)
+
+

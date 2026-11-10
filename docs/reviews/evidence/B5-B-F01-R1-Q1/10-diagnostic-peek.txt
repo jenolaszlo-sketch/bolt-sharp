@@ -1,0 +1,4 @@
+one-byte payload: sig=unknown reported, protocol-violation FAILURE unchanged, no diagnostic exception
+MessageProcessed: sig=0x01 responses=1 state=Authentication
+MessageProcessed: sig=0x6A responses=1 state=Ready
+MessageProcessed: sig=0x11 responses=1 state=Defunct

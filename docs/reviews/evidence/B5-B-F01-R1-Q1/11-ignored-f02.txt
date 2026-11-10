@@ -1,0 +1,2 @@
+unsupported query: FAILURE 50N42; pipelined PULL → B0 7E; RESET → SUCCESS; same-connection recovery OK
+F02 non-regression: 50N42 classification unchanged; reference graph unchanged after refusals

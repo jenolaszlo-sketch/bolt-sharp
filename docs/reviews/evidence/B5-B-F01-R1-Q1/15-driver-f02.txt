@@ -1,0 +1,1 @@
+driver unsupported query: ProtocolException (Neo4jException subtype) code=Neo.ClientError.Request.Invalid gql=50N42 retriable=false; no execution; recovery 42 on a fresh connection

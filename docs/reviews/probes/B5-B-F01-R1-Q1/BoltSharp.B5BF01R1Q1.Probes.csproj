@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    B5-B-F01-R1-Q1 independent reviewer probe project. Test-only; NOT part of BoltSharp.slnx
+    (repository convention for driver-dependent test projects). Written independently by the
+    B5-B-F01-R1-Q1 reviewer. Reuses only public production seams (BoltTcpServer/Options,
+    BoltConnectionSession, IBoltOperationProvider, ReferenceOperationProvider) and the pinned
+    official Neo4j.Driver 6.4.0 package. All expectations are built from reviewer-owned oracles:
+    an independent PackStream encoder, an independent raw Bolt client, an independent recording
+    proxy and reviewer-owned providers. No production change.
+  -->
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>BoltSharp.B5BF01R1Q1.Probes</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- Pinned exact version; the qualified driver baseline. Never upgraded. -->
+    <PackageReference Include="Neo4j.Driver" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+</Project>

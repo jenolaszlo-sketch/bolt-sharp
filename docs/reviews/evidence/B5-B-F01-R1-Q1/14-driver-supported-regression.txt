@@ -1,0 +1,1 @@
+driver scalar 42; typed parameter 7; graph Alice→KNOWS→Bob with direction and IDs; pooling: 3 sessions served by 1 physical connection(s)

@@ -1,0 +1,4 @@
+﻿
+Passed!  - Failed:     0, Passed:   119, Skipped:     0, Total:   119, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+
+

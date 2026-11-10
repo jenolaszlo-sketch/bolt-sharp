@@ -1,0 +1,5 @@
+﻿
+Passed!  - Failed:     0, Passed:    19, Skipped:     0, Total:    19, Duration: 21 s - BoltSharp.IntegrationTests.dll 
+(net8.0)
+
+

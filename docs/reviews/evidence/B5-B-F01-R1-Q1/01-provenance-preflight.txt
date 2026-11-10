@@ -1,0 +1,32 @@
+﻿B5-B-F01-R1-Q1 reviewer provenance and preflight (recorded at review time)
+===========================================================================
+Reviewer model: GLM-5.3-Flash (model id nvidia/z-ai/glm-5.3-flash)
+Reviewer provider: nvidia
+Reviewer session: dedicated new OpenCode child session spawned in fresh context by the
+  operator session (task B5-B-F01-R1-Q1). Fresh context: yes - no producer execution
+  context was continued.
+Producer provenance (per committed evidence, docs/reviews/B5-B-F01-R1-implementation.md):
+  DeepSeek V4.1 Flash, provider nvidia, OpenCode, distinct producer session.
+Independence limitations (recorded honestly):
+  - Session/model separation: established by this dedicated child session running a
+    different model (GLM-5.3-Flash vs DeepSeek V4.1 Flash). Execution-session
+    separation is genuine; no producer context was reused.
+  - Organizational independence: NOT claimed. Same operator, machine and repository.
+  - The reviewer model/provider assignment was operator-designated and is not
+    independently attestable from inside the session.
+Shared execution infrastructure: same machine (Windows, D:\projects\bolt-sharp),
+  same .NET SDK and NuGet caches. Probes, oracles and expected bytes were constructed
+  independently (reviewer-owned encoder, raw client, proxy, providers).
+
+Preflight (verified values):
+  branch:            main
+  HEAD:              4cebc7cc40785f8cf502aeb25be74e39d1883670
+  tree:              947d8826eb53ba70eb467c055cce852ea872a380
+  worktrees:         1 (canonical only)
+  dirty files:       2 (reviewer-owned artifacts only, none committed yet)
+  stash entries:     0
+  ahead of origin/main: 63 (nothing pushed; no fetch performed)
+  implementation commit present: 1e3c8f89f1bab38903001dc25edc96b7a7adbc01
+  evidence commit present:       4cebc7cc40785f8cf502aeb25be74e39d1883670 (starting HEAD)
+  five owner decisions present: B3-A, B3-B, B3-C, B5-A, B5-B (docs/decisions/)
+  previous F01-R1-Q1 work: none (no report, probes or evidence existed at start)

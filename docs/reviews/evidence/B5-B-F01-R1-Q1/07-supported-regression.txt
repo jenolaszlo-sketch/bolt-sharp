@@ -1,0 +1,2 @@
+scalar: RUN SUCCESS B170A1866669656C64739186616E73776572; RECORD B171912A; SUCCESS B170A0; reuse OK
+graph: one (a, r, b) record, cursor exhaustion observed (terminal SUCCESS after the record), graph unchanged
