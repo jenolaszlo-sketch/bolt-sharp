@@ -1,4 +1,5 @@
 using System.Buffers;
+using System.Net.Sockets;
 
 using BoltSharp.Handshake;
 using BoltSharp.Messages;
@@ -148,10 +149,18 @@ public sealed class UnsupportedCommandRefusalTests
         await using var server = await TransportTestSupport.StartServerAsync();
         using var client = TransportTestSupport.ConnectAndAuthorize(server);
 
+        // Standalone terminal refusal: no pipelined tail is sent, so there is no unread request
+        // input and the terminal close is orderly (FIN). Client-visible delivery of the complete
+        // FAILURE is therefore required here — a reset or EOF before the response fails the test.
         client.SendFramed(BeginPayload);
         var message = client.ReadMessage();
         Assert.NotNull(message);
         Assert.Equal(AcceptedUnsupportedCommandFailureHex, Convert.ToHexString(message!));
+
+        // Exactly one terminal response, followed by an orderly end of stream (not a reset).
+        Assert.Null(client.ReadFramedMessage());
+        Assert.True(TransportTestSupport.WaitUntil(
+            () => server.Diagnostics.ConnectionsActive == 0, TimeSpan.FromSeconds(5)));
     }
 
     [Fact]
@@ -204,8 +213,22 @@ public sealed class UnsupportedCommandRefusalTests
         });
         using var client = TransportTestSupport.ConnectAndAuthorize(server);
 
+        // Subscribe before the terminal write, filtered to the BEGIN signature so the preceding
+        // LOGON MessageProcessed event (which can be reported just after the client reads the
+        // LOGON SUCCESS) cannot satisfy the probe. The connection task reports MessageProcessed
+        // only after the accepted FAILURE has been written and flushed, and reports completion
+        // only after session disposal and counter finalization. Both are authoritative
+        // server-side observations independent of client-side TCP delivery (owner finding OWNER-F01).
+        var processed = TransportTestSupport.ProbeEvent(
+            server,
+            BoltTransportEventKind.MessageProcessed,
+            e => e.Detail?.Contains("sig=0x11") == true);
+        var completed = TransportTestSupport.ProbeEvent(server, BoltTransportEventKind.ConnectionCompleted);
+
         // One client write: BEGIN, PULL, RESET, RUN, PULL. Only the BEGIN refusal may be answered;
-        // everything pipelined after the terminal outcome must never be processed.
+        // everything pipelined after the terminal outcome must never be processed. The unread
+        // tail is exactly what can turn the terminal close into an OS abortive close (RST), so
+        // server-side terminality and client-visible delivery are asserted separately.
         client.SendRaw(
             TransportTestSupport.Frame(BeginPayload)
                 .Concat(TransportTestSupport.Frame(TransportRequestEncoder.Encode(SessionHarness.Pull(1000))))
@@ -214,16 +237,40 @@ public sealed class UnsupportedCommandRefusalTests
                 .Concat(TransportTestSupport.Frame(TransportRequestEncoder.Encode(SessionHarness.Pull(1000))))
                 .ToArray());
 
-        var failure = Assert.IsType<FailureResponse>(client.ReadResponse());
-        AssertFailure(failure, "Explicit transactions and routing are not supported by this server.");
-        Assert.Equal("closed", client.WaitForClose(5_000)); // terminal: no further responses
-        Assert.Null(TryReadAnyFinalMessage(client));
-        Assert.Equal(0, provider.PrepareCount);
+        // Property C (client-visible delivery) may be suppressed by the characterized abortive
+        // close. Only a connection reset/abort is accepted as the alternative; EOF, timeout and
+        // every other fault are rejected by TryReadTerminalFailure.
+        var delivered = TryReadTerminalFailure(
+            client, "Explicit transactions and routing are not supported by this server.");
 
-        Assert.True(TransportTestSupport.WaitUntil(
-            () => server.Diagnostics.MessagesProcessed == 3, // HELLO, LOGON, BEGIN only
-            TimeSpan.FromSeconds(5)));
-        Assert.True(TransportTestSupport.WaitUntil(() => server.Diagnostics.ConnectionsActive == 0, TimeSpan.FromSeconds(5)));
+        // Property A/B (generation and server-side write): exactly one response for BEGIN, and
+        // the session reached the terminal Defunct state.
+        var processedEvent = await TransportTestSupport.AwaitEventAsync(
+            processed, server, "terminal MessageProcessed");
+        Assert.Contains("sig=0x11", processedEvent.Detail);
+        Assert.Contains("responses=1", processedEvent.Detail);
+        Assert.Contains("state=Defunct", processedEvent.Detail);
+
+        // Connection retirement completed cleanly (terminal refusal is not a transport fault).
+        var completedEvent = await TransportTestSupport.AwaitEventAsync(
+            completed, server, "connection completion");
+        Assert.Equal("closed", completedEvent.Detail);
+
+        // Only HELLO, LOGON and BEGIN were processed: the PULL/RESET/RUN tail never reached the
+        // session, so RESET could not revive it and the second RUN could not execute.
+        Assert.Equal(3, server.Diagnostics.MessagesProcessed);
+        Assert.Equal(0, provider.PrepareCount);
+        Assert.Equal(1, server.Diagnostics.ConnectionsAccepted);
+        Assert.Equal(1, server.Diagnostics.ConnectionsCompleted);
+        Assert.Equal(0, server.Diagnostics.ConnectionsFailed);
+        Assert.Equal(0, server.Diagnostics.ConnectionsActive);
+
+        if (delivered)
+        {
+            // The complete FAILURE was observed before the close: nothing else may follow it.
+            Assert.Equal("closed", client.WaitForClose(5_000));
+            Assert.Null(TryReadAnyFinalMessage(client));
+        }
     }
 
     [Fact]
@@ -237,26 +284,85 @@ public sealed class UnsupportedCommandRefusalTests
         });
         using var client = TransportTestSupport.ConnectAndAuthorize(server);
 
+        // Filtered to the malformed RUN signature (0x10) so the preceding LOGON event cannot
+        // satisfy the probe; see the unsupported-command test for the full rationale.
+        var processed = TransportTestSupport.ProbeEvent(
+            server,
+            BoltTransportEventKind.MessageProcessed,
+            e => e.Detail?.Contains("sig=0x10") == true);
+        var completed = TransportTestSupport.ProbeEvent(server, BoltTransportEventKind.ConnectionCompleted);
+
         client.SendRaw(
             TransportTestSupport.Frame(MalformedRunPayload)
                 .Concat(TransportTestSupport.Frame(TransportRequestEncoder.Encode(SessionHarness.Run("RETURN 42 AS answer"))))
                 .Concat(TransportTestSupport.Frame(TransportRequestEncoder.Encode(SessionHarness.Pull(1000))))
                 .ToArray());
 
-        var failure = Assert.IsType<FailureResponse>(client.ReadResponse());
-        AssertFailure(failure, "The message cannot be handled in the current connection state.");
-        Assert.Equal("closed", client.WaitForClose(5_000)); // terminal: no further responses
-        Assert.Null(TryReadAnyFinalMessage(client));
+        var delivered = TryReadTerminalFailure(
+            client, "The message cannot be handled in the current connection state.");
+
+        var processedEvent = await TransportTestSupport.AwaitEventAsync(
+            processed, server, "terminal MessageProcessed");
+        Assert.Contains("sig=0x10", processedEvent.Detail);
+        Assert.Contains("responses=1", processedEvent.Detail);
+        Assert.Contains("state=Defunct", processedEvent.Detail);
+
+        var completedEvent = await TransportTestSupport.AwaitEventAsync(
+            completed, server, "connection completion");
+        Assert.Equal("closed", completedEvent.Detail);
+
+        // Only HELLO, LOGON and the malformed payload were processed; the RUN/PULL tail never ran.
+        Assert.Equal(3, server.Diagnostics.MessagesProcessed);
         Assert.Equal(0, provider.PrepareCount);
-        Assert.True(TransportTestSupport.WaitUntil(
-            () => server.Diagnostics.MessagesProcessed == 3, // HELLO, LOGON, malformed payload only
-            TimeSpan.FromSeconds(5)));
+        Assert.Equal(1, server.Diagnostics.ConnectionsAccepted);
+        Assert.Equal(1, server.Diagnostics.ConnectionsCompleted);
+        Assert.Equal(0, server.Diagnostics.ConnectionsFailed);
+        Assert.Equal(0, server.Diagnostics.ConnectionsActive);
+
+        if (delivered)
+        {
+            Assert.Equal("closed", client.WaitForClose(5_000));
+            Assert.Null(TryReadAnyFinalMessage(client));
+        }
     }
 
     /// <summary>
-    /// After a terminal response the server closes the connection; with pipelined input still in
-    /// the socket buffer the close may be abortive (RST), so a final read attempt can surface an
-    /// IOException. Either way no further message may be delivered.
+    /// Reads the single expected terminal FAILURE. Returns <see langword="true"/> when the complete
+    /// response was client-visible. The only accepted alternative is the characterized abortive
+    /// close retained as owner finding OWNER-F01 / <c>Q-B5B-09</c>: a connection reset or abort
+    /// while reading the in-flight response, with unread pipelined input deliberately present.
+    /// A clean EOF before any response, a receive timeout, or any other fault is rethrown.
+    /// </summary>
+    private static bool TryReadTerminalFailure(TestBoltClient client, string expectedDescription)
+    {
+        try
+        {
+            var failure = Assert.IsType<FailureResponse>(client.ReadResponse());
+            AssertFailure(failure, expectedDescription);
+            return true;
+        }
+        catch (IOException ex) when (IsCharacterizedAbortiveClose(ex))
+        {
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// True only for the OS abortive-close signature (connection reset/abort). Deliberately
+    /// excludes clean EOF (<see cref="EndOfStreamException"/>), timeouts and every other I/O
+    /// fault, so an unexpected transport failure can never be accepted as the documented race.
+    /// </summary>
+    private static bool IsCharacterizedAbortiveClose(IOException exception)
+    {
+        var socketError = (exception.InnerException as SocketException)?.SocketErrorCode;
+        return exception is not EndOfStreamException
+            && socketError is SocketError.ConnectionReset or SocketError.ConnectionAborted;
+    }
+
+    /// <summary>
+    /// After a delivered terminal response the server closes the connection; with pipelined input
+    /// still in the socket buffer the close may be abortive (RST), so a final read attempt can
+    /// surface only that characterized reset. Anything else is a test failure.
     /// </summary>
     private static byte[]? TryReadAnyFinalMessage(TestBoltClient client)
     {
@@ -264,11 +370,7 @@ public sealed class UnsupportedCommandRefusalTests
         {
             return client.ReadFramedMessage();
         }
-        catch (IOException)
-        {
-            return null;
-        }
-        catch (ObjectDisposedException)
+        catch (IOException ex) when (IsCharacterizedAbortiveClose(ex))
         {
             return null;
         }

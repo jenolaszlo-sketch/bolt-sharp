@@ -64,18 +64,47 @@ public sealed class MultiClientTests
     public async Task FailureInOneClient_IsolatedFromOthers()
     {
         await using var server = await TransportTestSupport.StartServerAsync();
+
+        // Subscribe before any connection is made: the diagnostics events are raised by the
+        // server's connection task after its counters are updated, so they are the authoritative
+        // completion signal for this test (owner finding OWNER-F02). Observing the bad client's
+        // local socket disposal is NOT evidence that the server finished failure accounting.
+        var failed = TransportTestSupport.ProbeEvent(server, BoltTransportEventKind.ConnectionFailed);
+        var completed = TransportTestSupport.ProbeEvent(server, BoltTransportEventKind.ConnectionCompleted);
+
         using var bad = TestBoltClient.Connect(server.BoundEndPoint!);
         using var good = TransportTestSupport.ConnectAndAuthorize(server, "RETURN 42 AS answer");
 
-        // The bad client sends framing garbage and disconnects: its connection fails closed; the
-        // listener and the good client are unaffected.
+        // The bad client sends invalid handshake bytes (not the Bolt magic) and disconnects: the
+        // server rejects the connection during the B2 handshake and fails it closed.
         bad.SendRaw(new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08 });
         bad.Dispose();
-        Assert.Equal("closed", bad.WaitForClose(5_000));
 
+        // Wait for the server-side failure transition before asserting counters or isolation.
+        var failureEvent = await TransportTestSupport.AwaitEventAsync(
+            failed, server, "ConnectionFailed for the invalid-handshake client");
+        Assert.Equal("handshake:BoltHandshakeFormatException", failureEvent.Detail);
+        Assert.Equal(2, server.Diagnostics.ConnectionsAccepted);
+        Assert.Equal(1, server.Diagnostics.ConnectionsFailed);
+        Assert.Equal(0, server.Diagnostics.ConnectionsCompleted);
+        Assert.Equal(1, server.Diagnostics.ConnectionsActive);
+
+        // The good client is unaffected: its already-open operation still completes normally.
         good.SendRequest(new PullRequest(1000, null));
         Assert.Equal(2, good.ReadResult().Length);
+
+        // Retire the good connection and wait for its authoritative completion accounting too.
+        good.Dispose();
+        var completionEvent = await TransportTestSupport.AwaitEventAsync(
+            completed, server, "ConnectionCompleted for the healthy client");
+        Assert.Equal("closed", completionEvent.Detail);
+
+        Assert.Equal(0, server.Diagnostics.ConnectionsActive);
+        Assert.Equal(1, server.Diagnostics.ConnectionsCompleted);
         Assert.Equal(1, server.Diagnostics.ConnectionsFailed);
+        Assert.Equal(2, server.Diagnostics.ConnectionsAccepted);
+        Assert.Equal(0, server.Diagnostics.ConnectionsRejectedForCapacity);
+        Assert.Equal(4, server.Diagnostics.MessagesProcessed); // HELLO, LOGON, RUN, PULL on the good client
     }
 
     [Fact]
