@@ -1,0 +1,67 @@
+B5-B-TS1-Q1 - evidence hash portability analysis
+==================================================
+Captured UTC: 2026-11-15T11:37:46.2723716Z
+Reviewed HEAD: d8c28a9bed0af6305936b2b6e427ca1365bed757
+Producer manifest: docs/reviews/evidence/B5-B-TS1/manifest.json
+Producer convention: SHA-256 over exact working-tree bytes; manifest.json excluded.
+
+1) per-entry comparison (producer expected vs Git blob vs checkout forms)
+path | expected_sha256 | expected_bytes | blob_sha256 | blob_bytes | worktree_sha256 | worktree_bytes | expected==blob | expected==worktree | CR(blob) | CR(worktree)
+docs/reviews/evidence/B5-B-TS1/.gitattributes | 705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da | 8 | 705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da | 8 | 705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da | 8 | True | True | 0 | 0
+docs/reviews/evidence/B5-B-TS1/00-baseline-summary.txt | 9719e05a5336156865ea70abec3dbea86faa191066ae77e0c977ee762c84104a | 4892 | 9719e05a5336156865ea70abec3dbea86faa191066ae77e0c977ee762c84104a | 4892 | 9719e05a5336156865ea70abec3dbea86faa191066ae77e0c977ee762c84104a | 4892 | True | True | 0 | 0
+docs/reviews/evidence/B5-B-TS1/01-campaign-A-terminal-refusal-100.tsv | 78ae61ed098172b317402153752936249eb72290ea4eac0bb2710bc41d0db75d | 15321 | 78ae61ed098172b317402153752936249eb72290ea4eac0bb2710bc41d0db75d | 15321 | 78ae61ed098172b317402153752936249eb72290ea4eac0bb2710bc41d0db75d | 15321 | True | True | 101 | 101
+docs/reviews/evidence/B5-B-TS1/02-campaign-B-multi-client-100.tsv | eb165e10bfde331b1dc3a980ba1f5b8ca9b13b836d4246d2daa3cd99e943530c | 15327 | eb165e10bfde331b1dc3a980ba1f5b8ca9b13b836d4246d2daa3cd99e943530c | 15327 | eb165e10bfde331b1dc3a980ba1f5b8ca9b13b836d4246d2daa3cd99e943530c | 15327 | True | True | 101 | 101
+docs/reviews/evidence/B5-B-TS1/03-campaign-C-full-suite-30.tsv | cdc89f3371ac626a6208e8c7a94864ae44fa9ca59d098b328af98d4e6189c843 | 4543 | cdc89f3371ac626a6208e8c7a94864ae44fa9ca59d098b328af98d4e6189c843 | 4543 | cdc89f3371ac626a6208e8c7a94864ae44fa9ca59d098b328af98d4e6189c843 | 4543 | True | True | 31 | 31
+docs/reviews/evidence/B5-B-TS1/04-campaign-D-official-driver-3.tsv | 0b5cb824d0af46930d811b7d7d5cfabcc3977c002e828dbe14281f7dbbebf953 | 519 | 0b5cb824d0af46930d811b7d7d5cfabcc3977c002e828dbe14281f7dbbebf953 | 519 | 0b5cb824d0af46930d811b7d7d5cfabcc3977c002e828dbe14281f7dbbebf953 | 519 | True | True | 4 | 4
+docs/reviews/evidence/B5-B-TS1/05-builds-and-regression-filters.txt | efdbd2a8bff813faf1dcf232478f990b79f6955e9f41a28f1c661e4c9ea557fa | 3944 | efdbd2a8bff813faf1dcf232478f990b79f6955e9f41a28f1c661e4c9ea557fa | 3944 | efdbd2a8bff813faf1dcf232478f990b79f6955e9f41a28f1c661e4c9ea557fa | 3944 | True | True | 47 | 47
+docs/reviews/evidence/B5-B-TS1/06-historical-integrity.txt | 9f9ab03be248b6bfa3e7912b1066e31b71916dde38152d1a653c89e19e928261 | 2626 | 9f9ab03be248b6bfa3e7912b1066e31b71916dde38152d1a653c89e19e928261 | 2626 | 9f9ab03be248b6bfa3e7912b1066e31b71916dde38152d1a653c89e19e928261 | 2626 | True | True | 40 | 40
+docs/reviews/B5-B-TS1-implementation.md | f6c0f869565f6474525c7fe59834112fe9f6385193eac2ebaf0e13f669283596 | 20284 | f6c0f869565f6474525c7fe59834112fe9f6385193eac2ebaf0e13f669283596 | 20284 | f6c0f869565f6474525c7fe59834112fe9f6385193eac2ebaf0e13f669283596 | 20284 | True | True | 0 | 0
+tests/BoltSharp.Tests/Transport/MultiClientTests.cs | df6832c85a7cd1922f5a0767e9943643ec855fbcd0dd8474862adb135d027b13 | 8786 | df6832c85a7cd1922f5a0767e9943643ec855fbcd0dd8474862adb135d027b13 | 8786 | df6832c85a7cd1922f5a0767e9943643ec855fbcd0dd8474862adb135d027b13 | 8786 | True | True | 0 | 0
+tests/BoltSharp.Tests/Transport/TransportTestSupport.cs | 3849b1e3db015daa1ac98992b2c015e20d5aceb5d0f25eced419b312cbefd4a8 | 20066 | e26ea718d47dc7a8eebbddf5c3799b79877b52d08ea19dd3594a82e8d9496bd0 | 19563 | 3849b1e3db015daa1ac98992b2c015e20d5aceb5d0f25eced419b312cbefd4a8 | 20066 | False | True | 0 | 503
+tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs | a697ef06ac85c96c54d6eccd3abbf37329738972c15cbe70461973f907fef179 | 20445 | a697ef06ac85c96c54d6eccd3abbf37329738972c15cbe70461973f907fef179 | 20445 | a697ef06ac85c96c54d6eccd3abbf37329738972c15cbe70461973f907fef179 | 20445 | True | True | 0 | 0
+
+totals: entries=12 expected==blob=11/12 expected==worktree=12/12
+
+2) the TransportTestSupport.cs hash anatomy
+  blob (Git object bytes):        bytes=19563 sha256=e26ea718d47dc7a8eebbddf5c3799b79877b52d08ea19dd3594a82e8d9496bd0 CR=0
+  worktree (producer form):       bytes=20066 sha256=3849b1e3db015daa1ac98992b2c015e20d5aceb5d0f25eced419b312cbefd4a8 CR=503
+  reconstructed CRLF from blob:   bytes=20066 sha256=3849b1e3db015daa1ac98992b2c015e20d5aceb5d0f25eced419b312cbefd4a8 CR=503
+  worktree is byte-identical to reconstructed CRLF: True
+  producer manifest expected:     bytes=20066 sha256=3849b1e3db015daa1ac98992b2c015e20d5aceb5d0f25eced419b312cbefd4a8
+
+3) reproducibility by checkout form
+  (a) producer authoring worktree: 12/12. The worktree is mixed: TransportTestSupport.cs is
+      CRLF while the report, MultiClientTests.cs and UnsupportedCommandRefusalTests.cs are LF.
+  (b) Git blob bytes at HEAD: 11/12. The sole mismatch is TransportTestSupport.cs (LF blob
+      vs CRLF producer form).
+  (c) Linux / core.autocrlf=input or false checkout: 11/12. Text files without attributes
+      check out as LF, so TransportTestSupport.cs mismatches; the eight evidence files are
+      byte-exact because that directory is marked * -text.
+  (d) Fresh Windows checkout with core.autocrlf=true: 9/12. The report, MultiClientTests.cs
+      and UnsupportedCommandRefusalTests.cs become CRLF (three new mismatches), while
+      TransportTestSupport.cs becomes CRLF (one match); the eight -text evidence files stay exact.
+
+  Conclusion: the producer manifest is self-consistent against the producer's exact mixed
+  worktree, but no uniform fresh checkout (Windows or Linux) reproduces 12/12. It is
+  reproducible only by reconstructing the CRLF form of TransportTestSupport.cs from its LF blob.
+  The manifest documents "exact working-tree bytes" but does not record the mixed checkout form.
+
+4) historical aggregate context (pre-existing, out of scope)
+  canonical 17-manifest aggregate: worktree=619/619, blob=313/619
+  entries matching only the CRLF worktree form: 306; matching both forms: 313; neither: 0
+  The 619/619 historical verification therefore uses the documented raw-working-tree convention
+  in this Windows core.autocrlf=true checkout. It is not a cross-platform byte guarantee. This
+  is a pre-existing property of historical evidence and is not changed by TS1 or by this review.
+
+5) Q1 package convention (checkout-independent)
+  Every Q1 evidence file is written as LF text and the directory carries * -text, so Git stores
+  and returns the exact bytes. The Q1 manifest records SHA-256 over Git blob bytes, resolved with
+  git cat-file blob <qualification-commit>:<path>. The report is LF and is also hashed from its
+  Git blob, never from a platform-dependent checkout. Verify-Evidence.ps1 enforces this convention.
+
+6) classification
+  B5-B-TS1-Q1-F01: LOW, evidence portability. The substantive evidence is independently
+  reproducible (11/12 from blobs; the twelfth is a deterministic LF->CRLF transform of the same
+  blob), so this does not invalidate the TS1 qualification. It does mean a naive fresh-checkout
+  verification cannot reproduce the producer manifest without the reconstruction above.
+  No canonical evidence or manifest was changed.

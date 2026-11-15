@@ -1,0 +1,15 @@
+===== run 1 | 2026-11-15T11:16:01.9265166Z | exit=0 | elapsed_ms=124223 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.DriverInteropTests\bin\Debug\net8.0\BoltSharp.DriverInteropTests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:    41, Skipped:     0, Total:    41, Duration: 2 m 1 s - BoltSharp.DriverInteropTests.dll (net8.0)
+===== run 2 | 2026-11-15T11:18:05.0348331Z | exit=0 | elapsed_ms=123092 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.DriverInteropTests\bin\Debug\net8.0\BoltSharp.DriverInteropTests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:    41, Skipped:     0, Total:    41, Duration: 2 m 1 s - BoltSharp.DriverInteropTests.dll (net8.0)
+===== run 3 | 2026-11-15T11:20:07.0067136Z | exit=0 | elapsed_ms=121968 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.DriverInteropTests\bin\Debug\net8.0\BoltSharp.DriverInteropTests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:    41, Skipped:     0, Total:    41, Duration: 2 m - BoltSharp.DriverInteropTests.dll (net8.0)

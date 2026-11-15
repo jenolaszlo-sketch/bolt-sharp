@@ -1,0 +1,37 @@
+[
+    {
+        "mutation":  "M0 unmodified control",
+        "standalone_failed":  "0/1",
+        "pipelined_failed":  "0/2"
+    },
+    {
+        "mutation":  "M1 missing terminal write (event still reported)",
+        "standalone_failed":  "1/1",
+        "pipelined_failed":  "0/10"
+    },
+    {
+        "mutation":  "M2 wrong FAILURE content",
+        "standalone_failed":  "1/1",
+        "pipelined_failed":  "8/10"
+    },
+    {
+        "mutation":  "M3 extra fabricated response",
+        "standalone_failed":  "1/1",
+        "pipelined_failed":  "5/5"
+    },
+    {
+        "mutation":  "M4 wrong terminal state",
+        "standalone_failed":  "0/1",
+        "pipelined_failed":  "5/5"
+    },
+    {
+        "mutation":  "M5 transport fault after write",
+        "standalone_failed":  "0/1",
+        "pipelined_failed":  "1/1"
+    },
+    {
+        "mutation":  "M6 no response/no terminal event",
+        "standalone_failed":  "1/1",
+        "pipelined_failed":  "1/1"
+    }
+]

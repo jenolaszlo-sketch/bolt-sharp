@@ -1,0 +1,27 @@
+B5-B-TS1-Q1 - targeted test inventory
+=====================================
+Captured UTC: 2026-11-15T11:37:02.8363355Z
+cmd: dotnet test tests\BoltSharp.Tests\BoltSharp.Tests.csproj -c Debug --no-build --nodeReuse:false --list-tests --filter "FullyQualifiedName~UnsupportedCommandRefusalTests|FullyQualifiedName~MultiClientTests"
+
+===== terminal refusal tests (campaign A: 10) =====
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.Begin_AfterCompletedQuery_ReceivesAcceptedTerminalFailure_AndNoOperationOpens
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommands_ReceiveTheAcceptedTerminalFailure_NoOperationOpens(command: "BEGIN")
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommands_ReceiveTheAcceptedTerminalFailure_NoOperationOpens(command: "COMMIT")
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommands_ReceiveTheAcceptedTerminalFailure_NoOperationOpens(command: "ROLLBACK")
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommands_ReceiveTheAcceptedTerminalFailure_NoOperationOpens(command: "ROUTE")
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.MalformedPayload_ReceivesTerminalProtocolViolation_NotRecoverable_NoExecution
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnknownSignature_ReceivesTerminalProtocolViolation_NoExecution
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes
+  BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes
+
+===== multi-client tests (campaign B: 6) =====
+  BoltSharp.Tests.Transport.MultiClientTests.TwoClients_MaintainIndependentSessions
+  BoltSharp.Tests.Transport.MultiClientTests.OneIdleClient_DoesNotBlockAnother
+  BoltSharp.Tests.Transport.MultiClientTests.FailureInOneClient_IsolatedFromOthers
+  BoltSharp.Tests.Transport.MultiClientTests.ShutdownWithMultipleActiveClients_SignalsAll
+  BoltSharp.Tests.Transport.MultiClientTests.ConcurrentAdmission_RespectsCapacityBound
+  BoltSharp.Tests.Transport.MultiClientTests.CredentialsNeverAppearInDiagnostics_AcrossClients
+
+terminal refusal count: 10
+multi-client count: 6

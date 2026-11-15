@@ -1,0 +1,500 @@
+===== run 1 | 2026-11-15T11:09:36.2547315Z | exit=0 | elapsed_ms=1482 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 79 ms - BoltSharp.Tests.dll (net8.0)
+===== run 2 | 2026-11-15T11:09:37.7623853Z | exit=0 | elapsed_ms=1492 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 80 ms - BoltSharp.Tests.dll (net8.0)
+===== run 3 | 2026-11-15T11:09:39.1960530Z | exit=0 | elapsed_ms=1437 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 81 ms - BoltSharp.Tests.dll (net8.0)
+===== run 4 | 2026-11-15T11:09:40.6425619Z | exit=0 | elapsed_ms=1442 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 79 ms - BoltSharp.Tests.dll (net8.0)
+===== run 5 | 2026-11-15T11:09:42.1351983Z | exit=0 | elapsed_ms=1492 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 85 ms - BoltSharp.Tests.dll (net8.0)
+===== run 6 | 2026-11-15T11:09:43.5791412Z | exit=0 | elapsed_ms=1446 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 80 ms - BoltSharp.Tests.dll (net8.0)
+===== run 7 | 2026-11-15T11:09:45.0221602Z | exit=0 | elapsed_ms=1449 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 87 ms - BoltSharp.Tests.dll (net8.0)
+===== run 8 | 2026-11-15T11:09:46.4690761Z | exit=0 | elapsed_ms=1436 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 67 ms - BoltSharp.Tests.dll (net8.0)
+===== run 9 | 2026-11-15T11:09:47.8922642Z | exit=0 | elapsed_ms=1427 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 72 ms - BoltSharp.Tests.dll (net8.0)
+===== run 10 | 2026-11-15T11:09:49.3491485Z | exit=0 | elapsed_ms=1451 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 96 ms - BoltSharp.Tests.dll (net8.0)
+===== run 11 | 2026-11-15T11:09:50.7734075Z | exit=0 | elapsed_ms=1434 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 75 ms - BoltSharp.Tests.dll (net8.0)
+===== run 12 | 2026-11-15T11:09:52.2220291Z | exit=0 | elapsed_ms=1436 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 71 ms - BoltSharp.Tests.dll (net8.0)
+===== run 13 | 2026-11-15T11:09:53.6507527Z | exit=0 | elapsed_ms=1431 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 67 ms - BoltSharp.Tests.dll (net8.0)
+===== run 14 | 2026-11-15T11:09:55.1567380Z | exit=0 | elapsed_ms=1501 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 67 ms - BoltSharp.Tests.dll (net8.0)
+===== run 15 | 2026-11-15T11:09:56.6199657Z | exit=0 | elapsed_ms=1464 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 82 ms - BoltSharp.Tests.dll (net8.0)
+===== run 16 | 2026-11-15T11:09:58.1315907Z | exit=0 | elapsed_ms=1509 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 101 ms - BoltSharp.Tests.dll (net8.0)
+===== run 17 | 2026-11-15T11:09:59.5877220Z | exit=0 | elapsed_ms=1447 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 79 ms - BoltSharp.Tests.dll (net8.0)
+===== run 18 | 2026-11-15T11:10:01.1102146Z | exit=0 | elapsed_ms=1521 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 86 ms - BoltSharp.Tests.dll (net8.0)
+===== run 19 | 2026-11-15T11:10:02.5817679Z | exit=0 | elapsed_ms=1480 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 84 ms - BoltSharp.Tests.dll (net8.0)
+===== run 20 | 2026-11-15T11:10:04.0699172Z | exit=0 | elapsed_ms=1478 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 66 ms - BoltSharp.Tests.dll (net8.0)
+===== run 21 | 2026-11-15T11:10:05.5419420Z | exit=0 | elapsed_ms=1471 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 96 ms - BoltSharp.Tests.dll (net8.0)
+===== run 22 | 2026-11-15T11:10:07.0476993Z | exit=0 | elapsed_ms=1509 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 70 ms - BoltSharp.Tests.dll (net8.0)
+===== run 23 | 2026-11-15T11:10:08.4783712Z | exit=0 | elapsed_ms=1427 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 71 ms - BoltSharp.Tests.dll (net8.0)
+===== run 24 | 2026-11-15T11:10:09.9940120Z | exit=0 | elapsed_ms=1522 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 90 ms - BoltSharp.Tests.dll (net8.0)
+===== run 25 | 2026-11-15T11:10:11.4268936Z | exit=0 | elapsed_ms=1429 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 67 ms - BoltSharp.Tests.dll (net8.0)
+===== run 26 | 2026-11-15T11:10:12.8714142Z | exit=0 | elapsed_ms=1441 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 79 ms - BoltSharp.Tests.dll (net8.0)
+===== run 27 | 2026-11-15T11:10:14.3249126Z | exit=0 | elapsed_ms=1450 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 83 ms - BoltSharp.Tests.dll (net8.0)
+===== run 28 | 2026-11-15T11:10:15.8430673Z | exit=0 | elapsed_ms=1523 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 89 ms - BoltSharp.Tests.dll (net8.0)
+===== run 29 | 2026-11-15T11:10:17.3190319Z | exit=0 | elapsed_ms=1470 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 68 ms - BoltSharp.Tests.dll (net8.0)
+===== run 30 | 2026-11-15T11:10:18.7707761Z | exit=0 | elapsed_ms=1451 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 74 ms - BoltSharp.Tests.dll (net8.0)
+===== run 31 | 2026-11-15T11:10:20.2285957Z | exit=0 | elapsed_ms=1463 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 83 ms - BoltSharp.Tests.dll (net8.0)
+===== run 32 | 2026-11-15T11:10:21.6728951Z | exit=0 | elapsed_ms=1436 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 33 | 2026-11-15T11:10:23.1452744Z | exit=0 | elapsed_ms=1471 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 96 ms - BoltSharp.Tests.dll (net8.0)
+===== run 34 | 2026-11-15T11:10:24.6182366Z | exit=0 | elapsed_ms=1477 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 105 ms - BoltSharp.Tests.dll (net8.0)
+===== run 35 | 2026-11-15T11:10:26.0597009Z | exit=0 | elapsed_ms=1441 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 81 ms - BoltSharp.Tests.dll (net8.0)
+===== run 36 | 2026-11-15T11:10:27.4998906Z | exit=0 | elapsed_ms=1436 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 73 ms - BoltSharp.Tests.dll (net8.0)
+===== run 37 | 2026-11-15T11:10:28.9541023Z | exit=0 | elapsed_ms=1453 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 74 ms - BoltSharp.Tests.dll (net8.0)
+===== run 38 | 2026-11-15T11:10:30.3966580Z | exit=0 | elapsed_ms=1443 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 85 ms - BoltSharp.Tests.dll (net8.0)
+===== run 39 | 2026-11-15T11:10:31.8194036Z | exit=0 | elapsed_ms=1427 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 68 ms - BoltSharp.Tests.dll (net8.0)
+===== run 40 | 2026-11-15T11:10:33.2536880Z | exit=0 | elapsed_ms=1425 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 68 ms - BoltSharp.Tests.dll (net8.0)
+===== run 41 | 2026-11-15T11:10:34.6864083Z | exit=0 | elapsed_ms=1435 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 75 ms - BoltSharp.Tests.dll (net8.0)
+===== run 42 | 2026-11-15T11:10:36.1266177Z | exit=0 | elapsed_ms=1445 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 83 ms - BoltSharp.Tests.dll (net8.0)
+===== run 43 | 2026-11-15T11:10:37.6071080Z | exit=0 | elapsed_ms=1481 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 86 ms - BoltSharp.Tests.dll (net8.0)
+===== run 44 | 2026-11-15T11:10:39.0626337Z | exit=0 | elapsed_ms=1448 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 45 | 2026-11-15T11:10:40.4953669Z | exit=0 | elapsed_ms=1435 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 74 ms - BoltSharp.Tests.dll (net8.0)
+===== run 46 | 2026-11-15T11:10:41.9790394Z | exit=0 | elapsed_ms=1479 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 81 ms - BoltSharp.Tests.dll (net8.0)
+===== run 47 | 2026-11-15T11:10:43.5412642Z | exit=0 | elapsed_ms=1565 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 103 ms - BoltSharp.Tests.dll (net8.0)
+===== run 48 | 2026-11-15T11:10:45.0883243Z | exit=0 | elapsed_ms=1555 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 76 ms - BoltSharp.Tests.dll (net8.0)
+===== run 49 | 2026-11-15T11:10:46.6463909Z | exit=0 | elapsed_ms=1542 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 84 ms - BoltSharp.Tests.dll (net8.0)
+===== run 50 | 2026-11-15T11:10:48.1973959Z | exit=0 | elapsed_ms=1562 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 84 ms - BoltSharp.Tests.dll (net8.0)
+===== run 51 | 2026-11-15T11:10:49.7659961Z | exit=0 | elapsed_ms=1557 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 90 ms - BoltSharp.Tests.dll (net8.0)
+===== run 52 | 2026-11-15T11:10:51.2372014Z | exit=0 | elapsed_ms=1481 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 81 ms - BoltSharp.Tests.dll (net8.0)
+===== run 53 | 2026-11-15T11:10:52.7398953Z | exit=0 | elapsed_ms=1493 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 82 ms - BoltSharp.Tests.dll (net8.0)
+===== run 54 | 2026-11-15T11:10:54.2656631Z | exit=0 | elapsed_ms=1522 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 55 | 2026-11-15T11:10:55.7290460Z | exit=0 | elapsed_ms=1463 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 56 | 2026-11-15T11:10:57.1833331Z | exit=0 | elapsed_ms=1456 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 77 ms - BoltSharp.Tests.dll (net8.0)
+===== run 57 | 2026-11-15T11:10:58.6997155Z | exit=0 | elapsed_ms=1518 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 72 ms - BoltSharp.Tests.dll (net8.0)
+===== run 58 | 2026-11-15T11:11:00.1490745Z | exit=0 | elapsed_ms=1451 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 74 ms - BoltSharp.Tests.dll (net8.0)
+===== run 59 | 2026-11-15T11:11:01.6215237Z | exit=0 | elapsed_ms=1466 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 84 ms - BoltSharp.Tests.dll (net8.0)
+===== run 60 | 2026-11-15T11:11:03.1331469Z | exit=0 | elapsed_ms=1510 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 77 ms - BoltSharp.Tests.dll (net8.0)
+===== run 61 | 2026-11-15T11:11:04.5512568Z | exit=0 | elapsed_ms=1419 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 68 ms - BoltSharp.Tests.dll (net8.0)
+===== run 62 | 2026-11-15T11:11:05.9759405Z | exit=0 | elapsed_ms=1433 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 73 ms - BoltSharp.Tests.dll (net8.0)
+===== run 63 | 2026-11-15T11:11:07.4756294Z | exit=0 | elapsed_ms=1492 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 64 | 2026-11-15T11:11:08.9272894Z | exit=0 | elapsed_ms=1450 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 69 ms - BoltSharp.Tests.dll (net8.0)
+===== run 65 | 2026-11-15T11:11:10.3598144Z | exit=0 | elapsed_ms=1428 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 84 ms - BoltSharp.Tests.dll (net8.0)
+===== run 66 | 2026-11-15T11:11:11.7907263Z | exit=0 | elapsed_ms=1432 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 66 ms - BoltSharp.Tests.dll (net8.0)
+===== run 67 | 2026-11-15T11:11:13.2294544Z | exit=0 | elapsed_ms=1445 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 68 | 2026-11-15T11:11:14.6993033Z | exit=0 | elapsed_ms=1464 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 70 ms - BoltSharp.Tests.dll (net8.0)
+===== run 69 | 2026-11-15T11:11:16.1488420Z | exit=0 | elapsed_ms=1445 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 75 ms - BoltSharp.Tests.dll (net8.0)
+===== run 70 | 2026-11-15T11:11:17.6654653Z | exit=0 | elapsed_ms=1518 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 76 ms - BoltSharp.Tests.dll (net8.0)
+===== run 71 | 2026-11-15T11:11:19.2191769Z | exit=0 | elapsed_ms=1556 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 83 ms - BoltSharp.Tests.dll (net8.0)
+===== run 72 | 2026-11-15T11:11:20.7820850Z | exit=0 | elapsed_ms=1562 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 75 ms - BoltSharp.Tests.dll (net8.0)
+===== run 73 | 2026-11-15T11:11:22.4041458Z | exit=0 | elapsed_ms=1616 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 89 ms - BoltSharp.Tests.dll (net8.0)
+===== run 74 | 2026-11-15T11:11:23.9306430Z | exit=0 | elapsed_ms=1531 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 72 ms - BoltSharp.Tests.dll (net8.0)
+===== run 75 | 2026-11-15T11:11:25.4685296Z | exit=0 | elapsed_ms=1533 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 86 ms - BoltSharp.Tests.dll (net8.0)
+===== run 76 | 2026-11-15T11:11:27.0125163Z | exit=0 | elapsed_ms=1541 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 84 ms - BoltSharp.Tests.dll (net8.0)
+===== run 77 | 2026-11-15T11:11:28.5456550Z | exit=0 | elapsed_ms=1542 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 93 ms - BoltSharp.Tests.dll (net8.0)
+===== run 78 | 2026-11-15T11:11:30.1467311Z | exit=0 | elapsed_ms=1592 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 94 ms - BoltSharp.Tests.dll (net8.0)
+===== run 79 | 2026-11-15T11:11:31.7334929Z | exit=0 | elapsed_ms=1586 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 85 ms - BoltSharp.Tests.dll (net8.0)
+===== run 80 | 2026-11-15T11:11:33.3448631Z | exit=0 | elapsed_ms=1609 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 80 ms - BoltSharp.Tests.dll (net8.0)
+===== run 81 | 2026-11-15T11:11:34.8374512Z | exit=0 | elapsed_ms=1505 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 76 ms - BoltSharp.Tests.dll (net8.0)
+===== run 82 | 2026-11-15T11:11:36.3761749Z | exit=0 | elapsed_ms=1524 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 104 ms - BoltSharp.Tests.dll (net8.0)
+===== run 83 | 2026-11-15T11:11:37.9139331Z | exit=0 | elapsed_ms=1546 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 80 ms - BoltSharp.Tests.dll (net8.0)
+===== run 84 | 2026-11-15T11:11:39.3749426Z | exit=0 | elapsed_ms=1453 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 89 ms - BoltSharp.Tests.dll (net8.0)
+===== run 85 | 2026-11-15T11:11:40.8230249Z | exit=0 | elapsed_ms=1445 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 75 ms - BoltSharp.Tests.dll (net8.0)
+===== run 86 | 2026-11-15T11:11:42.2617439Z | exit=0 | elapsed_ms=1440 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 75 ms - BoltSharp.Tests.dll (net8.0)
+===== run 87 | 2026-11-15T11:11:43.7121509Z | exit=0 | elapsed_ms=1447 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 88 | 2026-11-15T11:11:45.1598031Z | exit=0 | elapsed_ms=1454 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 70 ms - BoltSharp.Tests.dll (net8.0)
+===== run 89 | 2026-11-15T11:11:46.6229870Z | exit=0 | elapsed_ms=1459 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 83 ms - BoltSharp.Tests.dll (net8.0)
+===== run 90 | 2026-11-15T11:11:48.1483267Z | exit=0 | elapsed_ms=1524 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 77 ms - BoltSharp.Tests.dll (net8.0)
+===== run 91 | 2026-11-15T11:11:49.5846045Z | exit=0 | elapsed_ms=1439 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 72 ms - BoltSharp.Tests.dll (net8.0)
+===== run 92 | 2026-11-15T11:11:51.0453751Z | exit=0 | elapsed_ms=1455 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 86 ms - BoltSharp.Tests.dll (net8.0)
+===== run 93 | 2026-11-15T11:11:52.4714862Z | exit=0 | elapsed_ms=1424 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 67 ms - BoltSharp.Tests.dll (net8.0)
+===== run 94 | 2026-11-15T11:11:53.9313764Z | exit=0 | elapsed_ms=1460 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 93 ms - BoltSharp.Tests.dll (net8.0)
+===== run 95 | 2026-11-15T11:11:55.4180713Z | exit=0 | elapsed_ms=1485 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== run 96 | 2026-11-15T11:11:56.9563894Z | exit=0 | elapsed_ms=1537 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 70 ms - BoltSharp.Tests.dll (net8.0)
+===== run 97 | 2026-11-15T11:11:58.3952747Z | exit=0 | elapsed_ms=1442 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 82 ms - BoltSharp.Tests.dll (net8.0)
+===== run 98 | 2026-11-15T11:11:59.8413965Z | exit=0 | elapsed_ms=1446 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 73 ms - BoltSharp.Tests.dll (net8.0)
+===== run 99 | 2026-11-15T11:12:01.4389641Z | exit=0 | elapsed_ms=1596 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 99 ms - BoltSharp.Tests.dll (net8.0)
+===== run 100 | 2026-11-15T11:12:03.0516970Z | exit=0 | elapsed_ms=1608 =====
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 86 ms - BoltSharp.Tests.dll (net8.0)

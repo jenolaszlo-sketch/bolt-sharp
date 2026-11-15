@@ -1,0 +1,143 @@
+{
+    "description":  "B5-B-TS1-Q1 independent qualification evidence package",
+    "algorithm":  "SHA-256",
+    "hash_convention":  "SHA-256 over Git blob bytes at the qualification commit; resolve with git cat-file blob \u003cqualification-commit\u003e:\u003cpath\u003e. The evidence directory is marked * -text and every file is LF, so blob bytes equal the audited bytes. manifest.json is excluded from its own inventory.",
+    "qualified_head":  "d8c28a9bed0af6305936b2b6e427ca1365bed757",
+    "qualified_tree":  "9e7f07ca2664e44230b10b4b92c9f435fd58fdcd",
+    "implementation_commit":  "2e0b9da0b8920a2f6cdd7de9fa968891d779090e",
+    "implementation_tree":  "3fbdbebf21aacd545fd3384c289c649e8c7ab75b",
+    "base_commit":  "17886a5e7f709ef1e01624e49c9d90b50808566c",
+    "base_tree":  "e7d3be41483ab7aa22b51b27c619d7f211d8520b",
+    "qualification_report":  "docs/reviews/B5-B-TS1-Q1-qualification.md",
+    "excluded_from_inventory":  [
+                                    "docs/reviews/evidence/B5-B-TS1-Q1/manifest.json"
+                                ],
+    "entry_count":  25,
+    "entries":  [
+                    {
+                        "path":  "docs/reviews/B5-B-TS1-Q1-qualification.md",
+                        "sha256":  "2228de765e3a24964693fb915dd30bc0d10f5cdd917199b2c11536cdee1a9aa4",
+                        "bytes":  37464
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/.gitattributes",
+                        "sha256":  "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+                        "bytes":  8
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/01-preflight.txt",
+                        "sha256":  "a91a83ed81377a58640721a6335ac12801a9e370083b929c6f9532a69b89c78b",
+                        "bytes":  5309
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/02-environment.txt",
+                        "sha256":  "8ddbb49370c0f42bd82b029c2f7f7b5620317475c6aa3d7956f3421242c68ceb",
+                        "bytes":  2402
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/03-builds-and-format.txt",
+                        "sha256":  "113289debe862ee0399547f9a613f1319aef084f4e2fd32424d000ce54ea8819",
+                        "bytes":  2982
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/04-campaign-A-terminal-refusal.tsv",
+                        "sha256":  "0b6394ac705d38a4fd5693a02e146d913c5647cbff4f58b3f841a7fbdc7d626b",
+                        "bytes":  15726
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/04-campaign-A-terminal-refusal-raw.log",
+                        "sha256":  "14f08449a03aa396f79b852369b1876f1f05cccc47b3a437b9eb8f2e7e84ceb5",
+                        "bytes":  37294
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/05-campaign-B-multi-client.tsv",
+                        "sha256":  "b483b7f710db9d2f0f6b8276d4edde5b8d4f69ba675fbba637433c0bdf150339",
+                        "bytes":  15728
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/05-campaign-B-multi-client-raw.log",
+                        "sha256":  "86f182b4bd512b4ea113d66da148c0d5ceb0dcd09ad4c63066cda8a6319ba11f",
+                        "bytes":  37296
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/06-campaign-C-full-core.tsv",
+                        "sha256":  "38b4d75a99aa8bb1b505b74d8fb239773080cfc0c936f77855ce4231a7ee86a1",
+                        "bytes":  4673
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/06-campaign-C-full-core-raw.log",
+                        "sha256":  "3b489d99de8bbe3ddbe8a37e1ba6f5e38f3470263f0d373f32b214a1805662bf",
+                        "bytes":  11121
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/07-campaign-D-official-driver.tsv",
+                        "sha256":  "2a55018bd5b6c234d3245d37958355b402c931884c13a176f031cdfd2211aea1",
+                        "bytes":  546
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/07-campaign-D-official-driver-raw.log",
+                        "sha256":  "05ba0b969395f92e736b9738caa446e42f121ceec5acfdf470a48921dab67574",
+                        "bytes":  1241
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/08-regressions.tsv",
+                        "sha256":  "639e564f11ff55354118a605f3a72444465d91a093573aec58494833584467f0",
+                        "bytes":  1038
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/08-regressions-raw.log",
+                        "sha256":  "425eb485ee1ebd4b8cd36746fa930d310dee71ee35821b5d002b5bddc35b4bdd",
+                        "bytes":  1902
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/09-baseline-reproduction.tsv",
+                        "sha256":  "241b14bd486e13a22a6ad5fc54817d1aeae378e057ea021f71a56fed406e01cd",
+                        "bytes":  5032
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/09-baseline-reproduction-raw.log",
+                        "sha256":  "b88abfbbd0c016b79d75548a573832fa8a7b4e1346f87d5e237ecfd259de6e7d",
+                        "bytes":  22022
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/10-mutations-raw.log",
+                        "sha256":  "fc2a153c660777512afa9413d6e828755ef43a64beed290dc22fc2d1303fc789",
+                        "bytes":  71395
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/10-mutations-summary.json",
+                        "sha256":  "f94d3b882ec34bfe2c6af536be6194d492c92a4a9a65c0d12463923d865b3e61",
+                        "bytes":  981
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/11-integrity-detail.json",
+                        "sha256":  "6b25d4fd07fcdb242d5074951de2dfe5a7cc885734405e7606b84c6aadd23790",
+                        "bytes":  226324
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/11-integrity-verification.txt",
+                        "sha256":  "b5e174e8c0a678ee05b1c200a10044777f491b5da375259d60cee41f77f91a42",
+                        "bytes":  8770
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/12-portability-analysis.txt",
+                        "sha256":  "9adb4f9ae3804c55e6b92100b677888e8d370198993ffd7031b41cda693c706d",
+                        "bytes":  7516
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/13-test-inventory.txt",
+                        "sha256":  "3f7f2dcdf5b447095df539262f8b867db3bb0332512065286c11ce766a26a390",
+                        "bytes":  2375
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/README.md",
+                        "sha256":  "4b263dd636ab6a2ac907d674a8a2fff09dfe11cc3ee8f34e24a93ce7fcde1d5b",
+                        "bytes":  10009
+                    },
+                    {
+                        "path":  "docs/reviews/evidence/B5-B-TS1-Q1/Verify-Evidence.ps1",
+                        "sha256":  "96ece76aebd9082eda363d5918752b960270ae1ade2d2d1170814c7e9c013ac6",
+                        "bytes":  6084
+                    }
+                ]
+}
