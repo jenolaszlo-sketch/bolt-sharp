@@ -1,0 +1,63 @@
+{
+  "task": "Q-B5B-09-INV-01",
+  "parent_commit": "29d521cea9e65fe2d240421156454444e0d055ea",
+  "parent_tree": "5063e16258354ecebd3587ac2d7e38bdd75d7e5a",
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": [
+    {
+      "path": "docs/reviews/Q-B5B-09-INV-01-investigation.md",
+      "bytes": 19591,
+      "sha256": "3d34115bf7d5979472308dee9f1c52096d8188680dec2e36a33345fdf6854925"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/README.md",
+      "bytes": 3685,
+      "sha256": "d5720fa15426bea105a89d91f1072d895dd392d9127de3b52180103a57bd2ae2"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/driver-baseline.log",
+      "bytes": 1166,
+      "sha256": "89b993179778b1b0a4bf66b5cf0432b29a85cbac51a8602d67c7e0bf4cf273ae"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/driver-baseline.trx",
+      "bytes": 7839,
+      "sha256": "89af094a1ef95822e14bf7de3ba956d388b7e48c315bc3bfd0df025155379bb7"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/matrix-summary.txt",
+      "bytes": 15919,
+      "sha256": "42d9127e40fd21dd5bc1fa6a7c8dce39833e438e86db8397ca3d065b04e0513e"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/summarize.py",
+      "bytes": 948,
+      "sha256": "05bf3b92ea770f842087bacfc55a56483a11d6e6513e25591e497fae9cf259fd"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/tcp-close-harness.py",
+      "bytes": 9107,
+      "sha256": "5f9aa85f581db97fcb3534517b3533866e427a4968f81daa7aaf9cfa9d06824b"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/verify-evidence.py",
+      "bytes": 3147,
+      "sha256": "e798b21bca6b79ca73f43ec86d76180433d6c0fa97aa031ab23b53743e699b14"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/windows.json",
+      "bytes": 142880,
+      "sha256": "ae6f543eba24d0e247d11353bdd7ff54f99ee938ca548d62d00bd29607be38ce"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-01/wsl2.json",
+      "bytes": 146776,
+      "sha256": "59be2d42d4f48259c441e22fd0dc6abd5c0bbd67a202042f539fd6c8f0ebfba0"
+    }
+  ]
+}

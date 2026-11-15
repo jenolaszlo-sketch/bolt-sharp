@@ -1,0 +1,114 @@
+windows.json {'platform': 'Windows-11-10.0.26200-SP0', 'python': '3.14.8', 'response_hex': '73796e746865746963207465726d696e616c20726573706f6e73650a', 'duration_budget_ms': 75, 'byte_budget': 8192, 'scratch_bytes': 2048, 'repeat': 5, 'concurrent_group_size': 6} 280 380
+immediate        empty               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.084ms    0B
+immediate        small               0/ 5 {'reset': 5}                               {'immediate': 5}                      0.067ms    0B
+immediate        large               0/ 5 {'reset': 5}                               {'immediate': 5}                      0.080ms    0B
+immediate        partial-opaque      0/ 5 {'reset': 5}                               {'immediate': 5}                      0.102ms    0B
+immediate        malformed-opaque    0/ 5 {'reset': 5}                               {'immediate': 5}                      0.132ms    0B
+immediate        continuous-input    0/ 5 {'ConnectionAbortedError:10053': 5}        {'immediate': 5}                      0.086ms    0B
+immediate        stalled             0/ 5 {'ConnectionAbortedError:10053': 5}        {'immediate': 5}                      0.103ms    0B
+immediate        never-fin           5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.077ms    0B
+immediate        early-close         0/ 5 {'peer-closed-first': 5}                   {'immediate': 5}                      0.065ms    0B
+immediate        peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.089ms    0B
+immediate        no-read             0/ 5 {'not-read': 5}                            {'immediate': 5}                      0.101ms    0B
+immediate        cancel-connection   5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.081ms    0B
+immediate        stop-listener       5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.184ms    0B
+immediate        concurrent          0/30 {'reset': 30}                              {'immediate': 30}                     0.372ms    0B
+send-then-drain  empty               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.133ms    0B
+send-then-drain  small               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.333ms   32B
+send-then-drain  large               5/ 5 {'eof': 5}                                 {'byte-cap': 5}                       0.240ms 8192B
+send-then-drain  partial-opaque      5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.281ms    3B
+send-then-drain  malformed-opaque    5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.389ms    5B
+send-then-drain  continuous-input    0/ 5 {'ConnectionAbortedError:10053': 5}        {'deadline': 5}                      85.300ms 6144B
+send-then-drain  stalled             5/ 5 {'eof': 5}                                 {'peer-eof': 5}                      48.308ms    1B
+send-then-drain  never-fin           5/ 5 {'eof': 5}                                 {'deadline': 5}                      83.775ms    0B
+send-then-drain  early-close         0/ 5 {'peer-closed-first': 5}                   {'ConnectionAbortedError:10053': 5}    0.196ms    0B
+send-then-drain  peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.098ms    0B
+send-then-drain  no-read             0/ 5 {'not-read': 5}                            {'deadline': 5}                      89.932ms    0B
+send-then-drain  cancel-connection   5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.208ms    0B
+send-then-drain  stop-listener       5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.215ms    0B
+send-then-drain  concurrent         30/30 {'eof': 30}                                {'peer-eof': 30}                      0.627ms   32B
+drain-then-close empty               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.192ms    0B
+drain-then-close small               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.292ms   32B
+drain-then-close large               0/ 5 {'reset': 5}                               {'byte-cap': 5}                       0.329ms 8192B
+drain-then-close partial-opaque      5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.318ms    3B
+drain-then-close malformed-opaque    5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.241ms    5B
+drain-then-close continuous-input    0/ 5 {'reset': 5}                               {'deadline': 5}                      81.863ms 6144B
+drain-then-close stalled             5/ 5 {'eof': 5}                                 {'deadline': 5}                      89.223ms    1B
+drain-then-close never-fin           5/ 5 {'eof': 5}                                 {'deadline': 5}                      87.886ms    0B
+drain-then-close early-close         0/ 5 {'peer-closed-first': 5}                   {'ConnectionAbortedError:10053': 5}    0.221ms    0B
+drain-then-close peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.100ms    0B
+drain-then-close no-read             0/ 5 {'not-read': 5}                            {'deadline': 5}                      89.202ms    0B
+drain-then-close cancel-connection   5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.214ms    0B
+drain-then-close stop-listener       5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.232ms    0B
+drain-then-close concurrent         30/30 {'eof': 30}                                {'peer-eof': 30}                      0.911ms   32B
+send-only        empty               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.150ms    0B
+send-only        small               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.134ms    0B
+send-only        large               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.111ms    0B
+send-only        partial-opaque      5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.119ms    0B
+send-only        malformed-opaque    5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.125ms    0B
+send-only        continuous-input    0/ 5 {'ConnectionAbortedError:10053': 5}        {'immediate': 5}                      0.151ms    0B
+send-only        stalled             0/ 5 {'ConnectionAbortedError:10053': 5}        {'immediate': 5}                      0.141ms    0B
+send-only        never-fin           5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.147ms    0B
+send-only        early-close         0/ 5 {'peer-closed-first': 5}                   {'immediate': 5}                      0.122ms    0B
+send-only        peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.124ms    0B
+send-only        no-read             0/ 5 {'not-read': 5}                            {'immediate': 5}                      0.147ms    0B
+send-only        cancel-connection   5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.123ms    0B
+send-only        stop-listener       5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.140ms    0B
+send-only        concurrent         30/30 {'eof': 30}                                {'immediate': 30}                     0.640ms    0B
+wsl2.json {'platform': 'Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43', 'python': '3.14.4', 'response_hex': '73796e746865746963207465726d696e616c20726573706f6e73650a', 'duration_budget_ms': 75, 'byte_budget': 8192, 'scratch_bytes': 2048, 'repeat': 5, 'concurrent_group_size': 6} 280 380
+immediate        empty               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.049ms    0B
+immediate        small               5/ 5 {'reset': 5}                               {'immediate': 5}                      0.027ms    0B
+immediate        large               5/ 5 {'reset': 5}                               {'immediate': 5}                      0.029ms    0B
+immediate        partial-opaque      5/ 5 {'reset': 5}                               {'immediate': 5}                      0.031ms    0B
+immediate        malformed-opaque    5/ 5 {'reset': 5}                               {'immediate': 5}                      0.029ms    0B
+immediate        continuous-input    5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.029ms    0B
+immediate        stalled             5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.033ms    0B
+immediate        never-fin           5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.032ms    0B
+immediate        early-close         0/ 5 {'peer-closed-first': 5}                   {'immediate': 5}                      0.028ms    0B
+immediate        peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.038ms    0B
+immediate        no-read             0/ 5 {'not-read': 5}                            {'immediate': 5}                      0.032ms    0B
+immediate        cancel-connection   5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.026ms    0B
+immediate        stop-listener       5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.042ms    0B
+immediate        concurrent         30/30 {'reset': 30}                              {'immediate': 30}                     0.102ms    0B
+send-then-drain  empty               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.056ms    0B
+send-then-drain  small               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.051ms   32B
+send-then-drain  large               5/ 5 {'eof': 5}                                 {'byte-cap': 5}                       0.130ms 8192B
+send-then-drain  partial-opaque      5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.052ms    3B
+send-then-drain  malformed-opaque    5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.062ms    5B
+send-then-drain  continuous-input    5/ 5 {'eof': 5}                                 {'byte-cap': 5}                      50.316ms 8192B
+send-then-drain  stalled             5/ 5 {'eof': 5}                                 {'peer-eof': 5}                      27.755ms    1B
+send-then-drain  never-fin           5/ 5 {'eof': 5}                                 {'deadline': 5}                      76.166ms    0B
+send-then-drain  early-close         0/ 5 {'peer-closed-first': 5}                   {'OSError:107': 5}                    0.038ms    0B
+send-then-drain  peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.028ms    0B
+send-then-drain  no-read             0/ 5 {'not-read': 5}                            {'deadline': 5}                      75.406ms    0B
+send-then-drain  cancel-connection   5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.076ms    0B
+send-then-drain  stop-listener       5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.098ms    0B
+send-then-drain  concurrent         30/30 {'eof': 30}                                {'peer-eof': 30}                      0.278ms   32B
+drain-then-close empty               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.057ms    0B
+drain-then-close small               5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.046ms   32B
+drain-then-close large               5/ 5 {'reset': 5}                               {'byte-cap': 5}                       0.045ms 8192B
+drain-then-close partial-opaque      5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.051ms    3B
+drain-then-close malformed-opaque    5/ 5 {'eof': 5}                                 {'peer-eof': 5}                       0.053ms    5B
+drain-then-close continuous-input    5/ 5 {'eof': 5}                                 {'byte-cap': 5}                      50.940ms 8192B
+drain-then-close stalled             5/ 5 {'eof': 5}                                 {'deadline': 5}                      76.432ms    1B
+drain-then-close never-fin           5/ 5 {'eof': 5}                                 {'deadline': 5}                      75.858ms    0B
+drain-then-close early-close         0/ 5 {'peer-closed-first': 5}                   {'peer-eof': 5}                       0.042ms    0B
+drain-then-close peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.031ms    0B
+drain-then-close no-read             0/ 5 {'not-read': 5}                            {'deadline': 5}                      75.642ms    0B
+drain-then-close cancel-connection   5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.096ms    0B
+drain-then-close stop-listener       5/ 5 {'eof': 5}                                 {'cancelled': 5}                      0.092ms    0B
+drain-then-close concurrent         30/30 {'eof': 30}                                {'peer-eof': 30}                      0.432ms   32B
+send-only        empty               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.055ms    0B
+send-only        small               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.045ms    0B
+send-only        large               5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.036ms    0B
+send-only        partial-opaque      5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.037ms    0B
+send-only        malformed-opaque    5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.065ms    0B
+send-only        continuous-input    5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.039ms    0B
+send-only        stalled             5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.033ms    0B
+send-only        never-fin           5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.043ms    0B
+send-only        early-close         0/ 5 {'peer-closed-first': 5}                   {'OSError:107': 5}                    0.041ms    0B
+send-only        peer-reset          0/ 5 {'peer-closed-first': 5}                   {'reset': 5}                          0.042ms    0B
+send-only        no-read             0/ 5 {'not-read': 5}                            {'immediate': 5}                      0.028ms    0B
+send-only        cancel-connection   5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.029ms    0B
+send-only        stop-listener       5/ 5 {'eof': 5}                                 {'immediate': 5}                      0.027ms    0B
+send-only        concurrent         30/30 {'eof': 30}                                {'immediate': 30}                     0.139ms    0B

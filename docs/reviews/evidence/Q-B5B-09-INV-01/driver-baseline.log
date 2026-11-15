@@ -1,0 +1,12 @@
+  Determining projects to restore...
+  Restored C:\Users\Laszlos\source\repos\Solo\qb5b09-inv01-scratch-29d521c\baseline\src\BoltSharp\BoltSharp.csproj (in 62 ms).
+  Restored C:\Users\Laszlos\source\repos\Solo\qb5b09-inv01-scratch-29d521c\baseline\tests\BoltSharp.DriverInteropTests\BoltSharp.DriverInteropTests.csproj (in 174 ms).
+restore_exit=0
+  BoltSharp -> C:\Users\Laszlos\source\repos\Solo\qb5b09-inv01-scratch-29d521c\baseline\src\BoltSharp\bin\Debug\net8.0\BoltSharp.dll
+  BoltSharp.DriverInteropTests -> C:\Users\Laszlos\source\repos\Solo\qb5b09-inv01-scratch-29d521c\baseline\tests\BoltSharp.DriverInteropTests\bin\Debug\net8.0\BoltSharp.DriverInteropTests.dll
+Test run for C:\Users\Laszlos\source\repos\Solo\qb5b09-inv01-scratch-29d521c\baseline\tests\BoltSharp.DriverInteropTests\bin\Debug\net8.0\BoltSharp.DriverInteropTests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Results File: C:\Users\Laszlos\source\repos\Solo\qb5b09-inv01-scratch-29d521c\driver-baseline.trx
+
+Passed!  - Failed:     0, Passed:     4, Skipped:     0, Total:     4, Duration: 17 s - BoltSharp.DriverInteropTests.dll (net8.0)
+test_exit=0
