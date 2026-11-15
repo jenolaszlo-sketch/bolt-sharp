@@ -1,0 +1,47 @@
+B5-B-TS1 - builds, scoped formatting and regression filters
+===============================================================
+Revision: 2e0b9da0b8920a2f6cdd7de9fa968891d779090e (tree 3fbdbebf21aacd545fd3384c289c649e8c7ab75b)
+Generated: 2026-11-14T14:43:18.0628713Z
+
+1) production build
+   cmd: dotnet build src\BoltSharp\BoltSharp.csproj -c Debug --no-incremental --nodeReuse:false
+   Build succeeded.
+   0 Warning(s)
+   0 Error(s)
+
+2) solution build
+   cmd: dotnet build BoltSharp.slnx -c Debug --no-incremental --nodeReuse:false
+   D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(71,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+   D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(72,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+   D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(71,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+   D:\projects\bolt-sharp\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(72,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [D:\projects\bolt-sharp\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+   Build succeeded.
+   2 Warning(s)
+   0 Error(s)
+
+3) filter: transport
+   cmd: dotnet test tests\BoltSharp.Tests\BoltSharp.Tests.csproj -c Debug --no-build --nodeReuse:false --filter 'FullyQualifiedName~BoltSharp.Tests.Transport'
+   Passed!  - Failed:     0, Passed:    90, Skipped:     0, Total:    90, Duration: 2 s - BoltSharp.Tests.dll (net8.0)
+3) filter: B3-C backend
+   cmd: dotnet test tests\BoltSharp.Tests\BoltSharp.Tests.csproj -c Debug --no-build --nodeReuse:false --filter 'FullyQualifiedName~BoltSharp.Tests.Backend'
+   Passed!  - Failed:     0, Passed:    94, Skipped:     0, Total:    94, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+3) filter: B3-B sessions
+   cmd: dotnet test tests\BoltSharp.Tests\BoltSharp.Tests.csproj -c Debug --no-build --nodeReuse:false --filter 'FullyQualifiedName~BoltSharp.Tests.Sessions'
+   Passed!  - Failed:     0, Passed:   119, Skipped:     0, Total:   119, Duration: 57 ms - BoltSharp.Tests.dll (net8.0)
+3) filter: B3-A messages
+   cmd: dotnet test tests\BoltSharp.Tests\BoltSharp.Tests.csproj -c Debug --no-build --nodeReuse:false --filter 'FullyQualifiedName~BoltSharp.Tests.Messages'
+   Passed!  - Failed:     0, Passed:    98, Skipped:     0, Total:    98, Duration: 46 ms - BoltSharp.Tests.dll (net8.0)
+
+4) historical B0-B driver integration
+   cmd: dotnet test tests\BoltSharp.IntegrationTests\BoltSharp.IntegrationTests.csproj -c Debug --no-build --nodeReuse:false
+   Passed!  - Failed:     0, Passed:    19, Skipped:     0, Total:    19, Duration: 21 s - BoltSharp.IntegrationTests.dll (net8.0)
+
+5) scoped formatting (modified test files only)
+   cmd: dotnet format tests\BoltSharp.Tests\BoltSharp.Tests.csproj --verify-no-changes --no-restore --include
+        tests\BoltSharp.Tests\Transport\MultiClientTests.cs
+        tests\BoltSharp.Tests\Transport\TransportTestSupport.cs
+        tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs
+   exit: 0 (0 = no formatting findings)
+
+6) working tree after all commands
+   git status --porcelain: '?? docs/reviews/evidence/B5-B-TS1/'

@@ -1,0 +1,40 @@
+B5-B-TS1 - historical evidence and owner-decision integrity
+==============================================================
+Generated: 2026-11-14T14:44:43.7610942Z
+Revision: 2e0b9da0b8920a2f6cdd7de9fa968891d779090e (tree 3fbdbebf21aacd545fd3384c289c649e8c7ab75b)
+
+1) canonical 17-manifest aggregate (current working tree, raw SHA-256 bytes)
+   TOTAL: 619 / 619 matched; mismatches: 0
+
+2) two excluded historical implementation-source manifests
+   These hash source/test files at their original revisions by design and are outside the
+   canonical aggregate. Every entry was verified: unchanged entries against the current
+   tree, changed entries against the recorded implementation commit blob.
+   B3-B-IMPL-01 : 22 entries; 19 verified against the current tree; 3 verified against recorded commit 9f224cf41656e4baf155532e682b862ed8e910b0
+   B3-B-R1-IMPL-01 : 14 entries; 12 verified against the current tree; 2 verified against recorded commit 454ae005245d6511b672f8962092829839fb7153
+     src/BoltSharp/Sessions/BoltConnectionSession.cs @ 9f224cf41656 : MATCH
+     src/BoltSharp/Sessions/BoltSessionOptions.cs @ 9f224cf41656 : MATCH
+     tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs @ 9f224cf41656 : MATCH
+     src/BoltSharp/Sessions/BoltConnectionSession.cs @ 454ae005245d : MATCH
+     tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs @ 454ae005245d : MATCH
+
+3) no historical manifest references any file changed by TS1
+   manifest references: 0
+
+4) six accepted owner decisions byte-identical
+   B3-A-OWNER-01-owner-acceptance.md : identical=True blob=ab84ffa97321 sha256=d715beac496560a3...
+   B3-B-OWNER-01-owner-acceptance.md : identical=True blob=211a5d56a296 sha256=23b8462dd4b077c4...
+   B3-C-OWNER-01-owner-acceptance.md : identical=True blob=323303bd0eaa sha256=3c2eade57943c3af...
+   B5-A-OWNER-01-owner-acceptance.md : identical=True blob=385c820e2e04 sha256=87a1ef084d29245e...
+   B5-B-OWNER-01-owner-acceptance.md : identical=True blob=7d23b6bb50c6 sha256=e77abb7fe75ff815...
+   B5-B-F01-R1-OWNER-01-owner-closure.md : identical=True blob=67f2846ea24e sha256=631a021b351f2f94...
+
+5) credential hygiene of the new TS1 evidence package
+   The package contains no credentials, certificates, keys or raw payload dumps; a scan for
+   credential markers returned 0 findings.
+
+6) TS1 change scope
+   git diff --name-status 17886a5e..HEAD:
+     M	tests/BoltSharp.Tests/Transport/MultiClientTests.cs
+     M	tests/BoltSharp.Tests/Transport/TransportTestSupport.cs
+     M	tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs
