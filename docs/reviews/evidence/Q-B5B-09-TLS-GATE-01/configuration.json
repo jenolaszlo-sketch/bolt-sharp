@@ -1,0 +1,49 @@
+{
+  "maximum_attempts_per_cell_per_platform": 3,
+  "fixed_link": "ephemeral IPv4 loopback; peer reader parked before the finite legal result",
+  "maximum_attempt_lifetime_ms": 3500,
+  "minimum_pending_observation_ms": 20,
+  "pending_sampling_ms": 2,
+  "candidate_total_ms": 300,
+  "candidate_close_ms": 75,
+  "independent_preceding_write_timeout_ms": 750,
+  "cells": {
+    "T1": [
+      "terminal-write",
+      "deadline"
+    ],
+    "T2": [
+      "terminal-write",
+      "listener"
+    ],
+    "T3": [
+      "close-notify",
+      "deadline"
+    ],
+    "T4": [
+      "close-notify",
+      "listener"
+    ]
+  },
+  "configurations": [
+    {
+      "ordinal": 1,
+      "preceding_fixture_bytes": 131072,
+      "requested_peer_receive_bytes": 4096,
+      "requested_target_send_bytes": 4096
+    },
+    {
+      "ordinal": 2,
+      "preceding_fixture_bytes": 262144,
+      "requested_peer_receive_bytes": 1024,
+      "requested_target_send_bytes": 2048
+    },
+    {
+      "ordinal": 3,
+      "preceding_fixture_bytes": 524288,
+      "requested_peer_receive_bytes": 2048,
+      "requested_target_send_bytes": 1024
+    }
+  ],
+  "selection": "same ordered profiles per cell; stop that cell after a qualifying result; stop the platform on a demonstrated defect"
+}

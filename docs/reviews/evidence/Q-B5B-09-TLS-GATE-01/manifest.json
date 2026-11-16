@@ -1,0 +1,68 @@
+{
+  "task": "Q-B5B-09-TLS-GATE-01",
+  "parent_commit": "44093f65df2b49de380e4debd64b9606f9e11733",
+  "parent_tree": "4137367cf955671e1a31a8890c9ca2e54cc30215",
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": [
+    {
+      "path": "docs/reviews/Q-B5B-09-TLS-GATE-01-report.md",
+      "bytes": 10437,
+      "sha256": "2868020d1f838ccf64cef7ecc6384bdaf65aa7747e79ad0604c701d2a912e518"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/.gitattributes",
+      "bytes": 34,
+      "sha256": "41666464c04ae59dd75181249c1d9b625a62e56af7155338c306646bde92fa94"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/README.md",
+      "bytes": 3621,
+      "sha256": "4e8e988c2b54f0b8b443297f012a7d5a7f17a7cd73c9ecb44b589af166f7bdbe"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/TlsGate01Tests.cs.txt",
+      "bytes": 16229,
+      "sha256": "2db7ceca650fba4b1ea7adcc1dace4cb11d85b79d1d9c74cb0ad9bfcadfdd90d"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/configuration.json",
+      "bytes": 1251,
+      "sha256": "a38a5d1c76bbfc035aec52967e5afc5afe69c3f4913b625b8cdc54319a4b351e"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/execution-records.zip",
+      "bytes": 6327,
+      "sha256": "0c7a66c5e725e7e2d5a186d52a36f1ec38b1e0407b00bb50cd6468d1d2378308"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/link-observation.patch",
+      "bytes": 581,
+      "sha256": "db1d34243fec2af7914cea20ed6cdfb1bf427afb899bd9f91379e0d00c9853b7"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/matrix.json",
+      "bytes": 17802,
+      "sha256": "ddb2365b6011ff33759a64bdb20334e3f3c8fdcb0eb26e1a0ec7595eb01bd716"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/source-identity.json",
+      "bytes": 3468,
+      "sha256": "eaade4274e8d843cf378771d5ebf0e351ac87681aa4389c361736b978b92e836"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/verify-evidence.py",
+      "bytes": 5409,
+      "sha256": "a2a9004fbe09bc3a8bcaf15a042bc2852f7301bfde98883090b2a49723ed5083"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/windows.jsonl",
+      "bytes": 12379,
+      "sha256": "65649ef7f5a76325de78b3bc76026a76b4701e765f12f76a1353455100a5677d"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/wsl2.jsonl",
+      "bytes": 12628,
+      "sha256": "0416093d45e1218f152e74999103aabee78026710cbca27bfbfea8862ae9d1d0"
+    }
+  ]
+}
