@@ -1,0 +1,26 @@
+{
+  "commit": "23d58da4e0c0e10aa46a31f05ef6a0c31ad3f2fa",
+  "tree": "bd841c86886587d38276fba2798ef13404ce002d",
+  "windows_archive_sha256": "05d87c8f12af664cb07a8e0be17cf816ee39bcdce74c202f87495c1ebf1dd3d9",
+  "replayed_prototype_source_bytes": [
+    {
+      "path": "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+      "sha256": "6db79fe5feb17dd9ef381ae64186fd769f1a9688bea70a81808c964538328e4a"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTcpConnection.cs",
+      "sha256": "b56c2edb749193aec9e731d6f722d901ef4e6ef5847bb7effe0f89f89a8174e5"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTcpServer.cs",
+      "sha256": "00fac654682ef6b50562cc2e55e94e20d3ee1804d9d141cead9c03519b8d6c0e"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTerminalClose.cs",
+      "sha256": "31a98c7853591931ddc9f27d10f424b83ac73ecf0aa41be03c71e2174f712bf5"
+    }
+  ],
+  "execution_archive_members": 60,
+  "inv01_manifest_verified": "11/11",
+  "ts1_owner_manifest_verified": "5/5"
+}

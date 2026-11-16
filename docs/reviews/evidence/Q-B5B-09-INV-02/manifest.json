@@ -1,0 +1,73 @@
+{
+  "task": "Q-B5B-09-INV-02",
+  "parent_commit": "23d58da4e0c0e10aa46a31f05ef6a0c31ad3f2fa",
+  "parent_tree": "bd841c86886587d38276fba2798ef13404ce002d",
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": [
+    {
+      "path": "docs/reviews/Q-B5B-09-INV-02-investigation.md",
+      "bytes": 16735,
+      "sha256": "924a2a8289cd82de4bd20a45f2817617edd2155a8c371496cdaa298a0aa024bf"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/.gitattributes",
+      "bytes": 34,
+      "sha256": "41666464c04ae59dd75181249c1d9b625a62e56af7155338c306646bde92fa94"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/Inv02DriverTests.cs.txt",
+      "bytes": 3057,
+      "sha256": "54e2a428249c76c174e78c5b784c2a59a4bc336f61ce9231de52809de14b829a"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/Inv02TerminalTests.cs.txt",
+      "bytes": 17609,
+      "sha256": "964a2815e9ae3513dab76723bf3462aedcf7a2162973551adccdae04f87563a2"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/README.md",
+      "bytes": 5334,
+      "sha256": "1e9f34d8d3844e262414690b17474323616865c968a4d305f99400e2805a779a"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/cancel-timing-results.json",
+      "bytes": 206,
+      "sha256": "1c04f05a60869cf83eab0af136aa571dec1671b9b872d2737dfd4f6d9b56f24b"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/controls-results.json",
+      "bytes": 1378,
+      "sha256": "be9da14a830542115e108dc9cf600ec6519fea1f216d3d9115ef4ec43adf80d0"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/execution-records.zip",
+      "bytes": 1044289,
+      "sha256": "093ce826c771b66fdc181620329ddb6475ad917ed2568f7b553f6450a1b46710"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/matrix-observations.txt",
+      "bytes": 16951,
+      "sha256": "bef2d981dcedb604426f0c8f7fc79161be5e016ec8445be09ec584d35e276c46"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/prototype.patch",
+      "bytes": 15246,
+      "sha256": "e97f640b0b3ff84326b935820cfdb77e0a639c040ea6b5f7dc64e979b9c3da79"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/source-identity.json",
+      "bytes": 996,
+      "sha256": "6fe0e298eeb761f9c39ef535b8e06f0403ae757b09b288b26e01a0d4d3330d83"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/verify-evidence.py",
+      "bytes": 4018,
+      "sha256": "24088a1b7d3bf6436f8d0a499e41c3cebaa9a0ae34cb200e6f5d9f92660b3f71"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/wsl-listener-adapter.patch",
+      "bytes": 571,
+      "sha256": "05311b8e76dd46754e0475e649f99c84d90d51e495ec7d6744a8781e82d74e6b"
+    }
+  ]
+}
