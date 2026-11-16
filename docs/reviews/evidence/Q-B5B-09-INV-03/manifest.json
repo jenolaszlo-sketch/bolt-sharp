@@ -1,0 +1,68 @@
+{
+  "task": "Q-B5B-09-INV-03",
+  "parent_commit": "4beafcdd4ce48e0c0a4f8a6e05a52db328d7e017",
+  "parent_tree": "a3a8bc2d651ec81c95e59167a914de65b268745e",
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": [
+    {
+      "path": "docs/reviews/Q-B5B-09-INV-03-investigation.md",
+      "bytes": 15147,
+      "sha256": "0e8bed50d0a5bef244e0cfdd86b37c3fcde69d5370cc274b3dede6b769e9c184"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/.gitattributes",
+      "bytes": 34,
+      "sha256": "41666464c04ae59dd75181249c1d9b625a62e56af7155338c306646bde92fa94"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/Inv03QualificationTests.cs.txt",
+      "bytes": 22706,
+      "sha256": "f26d0a1f53eeb203fb5d2aeb23e35f3f0cb46112e8031ceb27d4eec608aa19c6"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/README.md",
+      "bytes": 4086,
+      "sha256": "db13dc3118d1f5ca185d89fbd2397cfcee4fc5958b4d65975fb5c9702c9248b3"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/campaign-summary.json",
+      "bytes": 38916,
+      "sha256": "b42997cc61caf6cd89b2ec72152296ff9d3fa0ee5055f7040885e979492b9abe"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/controls.json",
+      "bytes": 712,
+      "sha256": "c0d756f72fb1ad87f78aa3592635a361e618758bc1a4884aa1b94c3bc7f7182f"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/execution-records.zip",
+      "bytes": 28665,
+      "sha256": "96ff47c99f35e965f71e7a16835133a570fb2b9a4df44f352e9ac4f49487d1fd"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/native-linux.sh",
+      "bytes": 3157,
+      "sha256": "34a1a26c3ebc87875145fe8897c851152908316c7476e5d1b4f4198bbb814d73"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/real-write-observation.patch",
+      "bytes": 1054,
+      "sha256": "f728d3125e225fad207e4cbe1e326fe043ec57f894122956ed30f6a31678c3a4"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/refinement.patch",
+      "bytes": 6979,
+      "sha256": "30061d42f8891e4f804e570105f556995e4f82a7cd542334284fce23a0dd57b5"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/source-identity.json",
+      "bytes": 1993,
+      "sha256": "5464da0aaf77d2c546fa2e0e5ccb3053028806286816bd6d0fa7b782717cd034"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/verify-evidence.py",
+      "bytes": 3834,
+      "sha256": "26ef69ebb8fbb0a90c297fb6064d3fd63a5d4ed059b8f10979142cfe661a25b3"
+    }
+  ]
+}

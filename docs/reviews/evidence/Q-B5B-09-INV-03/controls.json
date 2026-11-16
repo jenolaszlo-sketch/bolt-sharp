@@ -1,0 +1,29 @@
+[
+  {
+    "control": "NC-03",
+    "test": "PendingEncryptedOperation",
+    "exit": 1,
+    "total": 5,
+    "passed": 3,
+    "failed": 2,
+    "restored_source_sha256": "e424046505055cdbe2526e4d698587ebb5aef3df57c93bacba867a8ee1ccd714"
+  },
+  {
+    "control": "NC-04",
+    "test": "DeadlineSharedAcrossEncryptedPhases",
+    "exit": 1,
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "restored_source_sha256": "e424046505055cdbe2526e4d698587ebb5aef3df57c93bacba867a8ee1ccd714"
+  },
+  {
+    "control": "NC-05",
+    "test": "ResourceCampaign",
+    "exit": 1,
+    "total": 2,
+    "passed": 0,
+    "failed": 2,
+    "restored_source_sha256": "e424046505055cdbe2526e4d698587ebb5aef3df57c93bacba867a8ee1ccd714"
+  }
+]
