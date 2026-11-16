@@ -30,6 +30,14 @@ public sealed class BoltSessionResult
     /// <summary>True when the session is now terminal (<see cref="BoltConnectionState.Defunct"/>).</summary>
     public bool IsDefunct => State == BoltConnectionState.Defunct;
 
+    internal bool PlaintextCloseEligible { get; private set; }
+
+    internal BoltSessionResult MarkPlaintextCloseEligible()
+    {
+        PlaintextCloseEligible = true;
+        return this;
+    }
+
     /// <summary>Creates a result with a single response.</summary>
     public static BoltSessionResult Single(BoltConnectionState state, BoltResponse response, bool shouldClose = false) =>
         new(state, new[] { response }, shouldClose);

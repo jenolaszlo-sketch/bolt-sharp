@@ -1,0 +1,71 @@
+using System.Text.Json;
+using BoltSharp.DriverInteropTests.Infrastructure;
+using BoltSharp.Transport;
+using Neo4j.Driver;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace BoltSharp.DriverInteropTests.Scenarios;
+
+[Collection("B5-B")]
+public sealed class PlaintextTerminalCloseInteropTests(ITestOutputHelper output)
+{
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task RefusalFollowedByPooledRecoveryAndShutdown(bool tls)
+    {
+        using var certificate = tls ? TestCertificates.CreateSelfSignedLocalhost() : null;
+        await using var server = certificate is null
+            ? await B5BServerHost.StartPlaintextAsync(TestCredentials.Verifier)
+            : await B5BServerHost.StartTlsAsync(certificate, TestCredentials.Verifier);
+        await using var driver = tls
+            ? DriverFactory.SelfSignedTls(server.HostPort, configure: config => config.WithMaxConnectionPoolSize(1))
+            : DriverFactory.Plaintext(server.HostPort, configure: config => config.WithMaxConnectionPoolSize(1));
+        await DriverFactory.Bounded(driver.VerifyConnectivityAsync());
+        Neo4jException failure;
+        await using (var session = driver.AsyncSession())
+        {
+            failure = await Assert.ThrowsAnyAsync<Neo4jException>(
+                () => DriverFactory.Bounded(session.BeginTransactionAsync()));
+        }
+
+        await Query();
+        await Query();
+        var events = server.Events();
+        var refused = Assert.Single(events, e => e.Kind == BoltTransportEventKind.MessageProcessed
+            && e.Detail!.Contains("sig=0x11", StringComparison.Ordinal));
+        var queries = events.Where(e => e.Kind == BoltTransportEventKind.MessageProcessed
+            && e.Detail!.Contains("sig=0x10", StringComparison.Ordinal)).ToArray();
+        Assert.Equal(2, queries.Length);
+        Assert.All(queries, e => Assert.NotEqual(refused.ConnectionId, e.ConnectionId));
+        Assert.Single(queries.Select(e => e.ConnectionId).Distinct());
+        await DriverFactory.Bounded(server.Server.StopAsync());
+        output.WriteLine(JsonSerializer.Serialize(new
+        {
+            tls,
+            failure.Code,
+            failure.GqlStatus,
+            failure.IsRetriable,
+            type = failure.GetType().Name,
+            attempts = 1,
+            refused = refused.ConnectionId,
+            reusedReplacement = queries[0].ConnectionId,
+            counters = server.Counters()
+        }));
+        Assert.Equal("Neo.ClientError.Request.Invalid", failure.Code);
+        Assert.Equal("08N06", failure.GqlStatus);
+        Assert.False(failure.IsRetriable);
+        Assert.Equal(0, server.Counters().Active);
+        Assert.Equal(0, server.Counters().Failed);
+
+        async Task Query()
+        {
+            await using var session = driver.AsyncSession();
+            var cursor = await DriverFactory.Bounded(session.RunAsync("RETURN 42 AS answer"));
+            Assert.True(await DriverFactory.Bounded(cursor.FetchAsync()));
+            Assert.Equal(42, cursor.Current["answer"].As<long>());
+            await DriverFactory.Bounded(cursor.ConsumeAsync());
+        }
+    }
+}
