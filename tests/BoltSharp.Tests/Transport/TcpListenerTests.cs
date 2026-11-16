@@ -13,6 +13,26 @@ namespace BoltSharp.Tests.Transport;
 public sealed class TcpListenerTests
 {
     [Fact]
+    public async Task PlaintextStartup_UsesDisabledLinger()
+    {
+        await using var server = await TransportTestSupport.StartServerAsync();
+        AssertDisabledLinger(server);
+        using var peer = TransportTestSupport.ConnectAndAuthorize(server);
+        await server.StopAsync();
+        Assert.Equal(0, server.Diagnostics.ConnectionsActive);
+    }
+
+    internal static void AssertDisabledLinger(BoltTcpServer server)
+    {
+        var field = typeof(BoltTcpServer).GetField("_listener",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        var listener = Assert.IsType<System.Net.Sockets.TcpListener>(field!.GetValue(server));
+        var setting = Assert.IsType<System.Net.Sockets.LingerOption>(listener.Server.LingerState);
+        Assert.False(setting.Enabled);
+        Assert.Equal(0, setting.LingerTime);
+    }
+
+    [Fact]
     public async Task Start_BindsEphemeralPort_AndReportsEndPoint()
     {
         await using var server = await TransportTestSupport.StartServerAsync();

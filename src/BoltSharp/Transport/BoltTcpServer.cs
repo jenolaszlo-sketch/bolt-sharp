@@ -76,7 +76,7 @@ public sealed class BoltTcpServer : IAsyncDisposable
         }
 
         _listener = new TcpListener(Options.BindAddress, Options.Port);
-        _listener.Server.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Linger, false);
+        _listener.Server.LingerState = new LingerOption(false, 0);
         _listener.Start(Options.Backlog);
         BoundEndPoint = (IPEndPoint)_listener.LocalEndpoint;
 
