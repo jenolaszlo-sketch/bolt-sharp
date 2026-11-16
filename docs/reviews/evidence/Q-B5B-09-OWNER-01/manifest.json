@@ -1,0 +1,43 @@
+{
+  "task": "Q-B5B-09-OWNER-01",
+  "parent_commit": "608eb3f0e07b059eb3bddd86de9235d422e1540c",
+  "parent_tree": "86ea9450d0fd5935af5a3ab851553934e39bfa20",
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": [
+    {
+      "path": "docs/decisions/Q-B5B-09-OWNER-01-production-remediation-scope-decision.md",
+      "bytes": 9646,
+      "sha256": "82e64184657b4334bf7012bb4fa0add56aeb0e7adf8c0d0d063a2f851b38d9d3"
+    },
+    {
+      "path": "docs/decisions/Q-B5B-09-PLAIN-IMPL-01-implementation-specification.md",
+      "bytes": 16039,
+      "sha256": "ae9eaf247d699356f4512acd51e8475b9a7970f7cbea5c5987839a6c178ec243"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-OWNER-01/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-OWNER-01/README.md",
+      "bytes": 1259,
+      "sha256": "2d8552e1610af3ca87441cde3f61db57158d05c914c0c31a07075ad86ca6e73d"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-OWNER-01/audit-reviewed-inputs.py",
+      "bytes": 11552,
+      "sha256": "b9c06409e9db229300b9c1d5ae50e68b0b742288d5550704904ed474ec03143b"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-OWNER-01/verification.json",
+      "bytes": 6387,
+      "sha256": "1783b9c3972fad753e81c60d9bde7413758e59efa512d152433b3cdd20f8c34f"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-OWNER-01/verify-evidence.py",
+      "bytes": 3476,
+      "sha256": "afe9f3c843a1dc7127b8402e039cef3f08c50525c5ef0864d2e9934d169baee3"
+    }
+  ]
+}
