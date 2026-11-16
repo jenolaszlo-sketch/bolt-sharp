@@ -1,0 +1,52 @@
+{
+  "baseline": {
+    "commit": "fac10f6c5ece37dbc3f38c9c831c668d49a3d290",
+    "tree": "d464e85f810b50a00f768a9111dcc2a7f60cd699"
+  },
+  "linger": {
+    "commit": "dac52d55ade0a9ae703b801c8a4066e8aef2bd58",
+    "tree": "dcc1687c6c8fe8dd6b55863f7324e5c64c478416"
+  },
+  "implementation": {
+    "commit": "20fbc461c0257620db28fb78a463218b242455bc",
+    "tree": "116ee015f1ae9a30bf991c2db470996db47996c0"
+  },
+  "origin_main": {
+    "commit": "79f7965a0e8e351baf2dd388218290804c31389a",
+    "tree": "80bc7b4f3ec18341251ea4e04195d051489dacb5"
+  },
+  "implementation_tested_blobs": {
+    "src/BoltSharp/Sessions/BoltConnectionSession.cs": {
+      "bytes": 27965,
+      "sha256": "c236fb1c0cd0754e23ed19d15aaf01f246abfc022dace8efc7c989fe3670d44f"
+    },
+    "src/BoltSharp/Sessions/BoltSessionResult.cs": {
+      "bytes": 2561,
+      "sha256": "b667578409ffec98b9647b0b326566dd6b684603c75f6568f1cd0d67f8e24b52"
+    },
+    "src/BoltSharp/Transport/BoltTcpConnection.cs": {
+      "bytes": 14690,
+      "sha256": "e758b1de93b1284bb5801451dfcde425c954a0a40ae121cf19220dc33eb4164b"
+    },
+    "src/BoltSharp/Transport/BoltTcpServer.cs": {
+      "bytes": 8907,
+      "sha256": "41501ea879edc703e463d2d140c1bf593817372f62b74513be744950c9869587"
+    },
+    "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs": {
+      "bytes": 7341,
+      "sha256": "532850700804919107cd2e13412d840b69dc2fc45db72c312d4a491b99ac2cb7"
+    },
+    "src/BoltSharp/Transport/BoltPlaintextTerminalCloseDiagnostics.cs": {
+      "bytes": 991,
+      "sha256": "16fadb75819b750861d2527b63020a24f0f9f51a1c9ba167a9ad21c0a30f901d"
+    },
+    "tests/BoltSharp.Tests/Transport/PlaintextTerminalCloseTests.cs": {
+      "bytes": 23549,
+      "sha256": "1585b4690153b9f2175fd13165c51e3fe4b8a7778ae5da36b073d61c3b07d264"
+    },
+    "tests/BoltSharp.DriverInteropTests/Scenarios/PlaintextTerminalCloseInteropTests.cs": {
+      "bytes": 3141,
+      "sha256": "5bf3ebc7da87d8c994b78c189396052c9da88e9faf5b4bd0a0b049004d7b568f"
+    }
+  }
+}

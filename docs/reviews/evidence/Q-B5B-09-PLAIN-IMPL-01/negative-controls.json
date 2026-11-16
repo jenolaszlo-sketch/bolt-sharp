@@ -1,0 +1,157 @@
+{
+  "restored_sha256": {
+    "src/BoltSharp/Sessions/BoltConnectionSession.cs": "c236fb1c0cd0754e23ed19d15aaf01f246abfc022dace8efc7c989fe3670d44f",
+    "src/BoltSharp/Transport/BoltTcpConnection.cs": "e758b1de93b1284bb5801451dfcde425c954a0a40ae121cf19220dc33eb4164b",
+    "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs": "532850700804919107cd2e13412d840b69dc2fc45db72c312d4a491b99ac2cb7",
+    "src/BoltSharp/Transport/BoltTcpServer.cs": "41501ea879edc703e463d2d140c1bf593817372f62b74513be744950c9869587"
+  },
+  "cases": [
+    {
+      "control": "NC-00",
+      "mutation": "Unmodified integrated control",
+      "changed_paths": [],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests",
+      "exit": 0,
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "failures": {},
+      "source_restored": true,
+      "expected_violation_or_control_result": "Production source passes the integrated focused suite.",
+      "detected": false
+    },
+    {
+      "control": "NC-01",
+      "mutation": "Restore Ready after capturing the original terminal result and feed one queued frame through the actual session entry before the unchanged response. No second response is emitted.",
+      "changed_paths": [
+        "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+        "src/BoltSharp/Transport/BoltTcpConnection.cs"
+      ],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution",
+      "exit": 1,
+      "total": 6,
+      "passed": 1,
+      "failed": 5,
+      "failures": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: \"partial\")": "System.ArgumentNullException : Value cannot be null. (Parameter 'inArray')",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: \"small\")": "Assert.Equal() Failure: Values differ\r\nExpected: 0\r\nActual:   1",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: \"malformed\")": "Assert.Equal() Failure: Values differ\r\nExpected: 6\r\nActual:   0",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: \"large\")": "System.OperationCanceledException : The operation was canceled.",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: \"delayed\")": "Assert.Equal() Failure: Values differ\r\nExpected: 0\r\nActual:   1"
+      },
+      "source_restored": true,
+      "expected_violation_or_control_result": "A trailing command enters the provider even with no extra response.",
+      "detected": true
+    },
+    {
+      "control": "NC-02",
+      "mutation": "Suppress both owner disposal and its outer using fallback on listener stop. Keep the same completion accounting so the physical handle oracle matters.",
+      "changed_paths": [
+        "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs",
+        "src/BoltSharp/Transport/BoltTcpConnection.cs"
+      ],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit",
+      "exit": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "failures": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "Assert.All() Failure: 1 out of 1 items in the collection did not pass.\r\n[0]: Item:  SafeSocketHandle { IsClosed = False, IsInvalid = False }\r\n     Error: Assert.True() Failure\r\n            Expected: True\r\n            Actual:   False"
+      },
+      "source_restored": true,
+      "expected_violation_or_control_result": "The physical socket remains open after listener shutdown.",
+      "detected": true
+    },
+    {
+      "control": "NC-03",
+      "mutation": "Omit listener shutdown registration while preserving phase and total deadlines.",
+      "changed_paths": [
+        "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs"
+      ],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit",
+      "exit": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "failures": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"listener-shutdown\"\r\nActual:   \"drain-deadline\"\r\n           \u2191 (pos 0)"
+      },
+      "source_restored": true,
+      "expected_violation_or_control_result": "The independent drain deadline masks the missing listener cancellation.",
+      "detected": true
+    },
+    {
+      "control": "NC-04",
+      "mutation": "Renew the complete timeout immediately after write completion and leave the other phase logic intact.",
+      "changed_paths": [
+        "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs"
+      ],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain",
+      "exit": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "failures": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain": "Assert.InRange() Failure: Value not in range\r\nRange:  (205 - 370)\r\nActual: 478.13049999999998"
+      },
+      "source_restored": true,
+      "expected_violation_or_control_result": "Elapsed terminal time exceeds the original absolute budget allowance.",
+      "detected": true
+    },
+    {
+      "control": "NC-05",
+      "mutation": "Raise the byte limit from 8 KiB to 16 KiB with the same scratch allocation.",
+      "changed_paths": [
+        "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs"
+      ],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution",
+      "exit": 1,
+      "total": 6,
+      "passed": 5,
+      "failed": 1,
+      "failures": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: \"large\")": "Assert.Equal() Failure: Values differ\r\nExpected: 8192\r\nActual:   16384"
+      },
+      "source_restored": true,
+      "expected_violation_or_control_result": "Discarded bytes exceed the eight-kibibyte limit.",
+      "detected": true
+    },
+    {
+      "control": "NC-06",
+      "mutation": "Allow up to two concurrent drains instead of one while retaining ordinary listener admission.",
+      "changed_paths": [
+        "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs"
+      ],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests.DrainAdmissionAndRecovery",
+      "exit": 1,
+      "total": 3,
+      "passed": 2,
+      "failed": 1,
+      "failures": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1)": "Assert.Equal() Failure: Values differ\r\nExpected: 1\r\nActual:   2"
+      },
+      "source_restored": true,
+      "expected_violation_or_control_result": "Two simultaneous terminal drains violate the single-permit limit.",
+      "detected": true
+    },
+    {
+      "control": "NC-07",
+      "mutation": "Allow TLS to select and enter the plaintext helper, then stop the mutant after the original TLS write and before raw draining. The helper activity remains observable.",
+      "changed_paths": [
+        "src/BoltSharp/Transport/BoltTcpConnection.cs",
+        "src/BoltSharp/Transport/BoltTcpServer.cs"
+      ],
+      "test_filter": "FullyQualifiedName~PlaintextTerminalCloseTests.TlsRefusalNeverEntersPlaintextHelper",
+      "exit": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "failures": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.TlsRefusalNeverEntersPlaintextHelper": "Assert.Empty() Failure: Collection was not empty\r\nCollection: [Event { Name = write-start, Id = conn-0001, Phase = write, Reason = , Bytes = 0, Admitted = False, Elapsed = 0.2356 }, Event { Name = disposed, Id = conn-0001, Phase = write, Reason = transport-error, Bytes = 0, Admitted = False, Elapsed = 2.7306 }]"
+      },
+      "source_restored": true,
+      "expected_violation_or_control_result": "An eligible TLS refusal reaches the plaintext helper.",
+      "detected": true
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": {
+    "docs/reviews/Q-B5B-09-PLAIN-IMPL-01-implementation.md": {
+      "bytes": 11582,
+      "sha256": "d1d43d1f7b6156fc5f0bb35b528a208140da05378028683c25198ed5538bc123"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01/.gitattributes": {
+      "bytes": 20,
+      "sha256": "543df040b8539f3402962e951c2fa592e68cd43fb70d8a04080e526a6ffbdfcb"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01/identity.json": {
+      "bytes": 1990,
+      "sha256": "00cbb9c8f806fa14b1ff035dd4468548d145d225958d74bcd57b3f26f91fcc75"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01/negative-controls.json": {
+      "bytes": 8334,
+      "sha256": "e09c663e57f09f7ca9ab19d9d2f336e0bfbcaac8059f08044a980d68d33e1bbe"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01/producer-results.zip": {
+      "bytes": 1313393,
+      "sha256": "d455320a3abad8ad45ae01c642f631e000310c2cf36d85fbec2a90e01dedd2a2"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01/README.md": {
+      "bytes": 5035,
+      "sha256": "ef78209f214b15e364ea49f1b1b97efe508358ee9688652a190ea4b2a74850b4"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01/summary.json": {
+      "bytes": 25797,
+      "sha256": "2332af700d1cadc57da963e2adcc62cc603f5445c70886bc71fd5797005173a4"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01/verify-evidence.py": {
+      "bytes": 6922,
+      "sha256": "470732008fcca8d8b2d6b863dacf91d95b96fe16ca892671e02bc63c1b757e2e"
+    }
+  }
+}
