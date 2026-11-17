@@ -1,0 +1,640 @@
+{
+  "archive": {
+    "campaign/baseline-probe.patch": {
+      "bytes": 2083,
+      "sha256": "8b41f6b41aa98d3710757168636ba939d33b25c002fa422fdbb3cf39aa435bbf"
+    },
+    "campaign/baseline-status.log": {
+      "bytes": 13,
+      "sha256": "c750ffcd2246120d02531db8f6cf9b267723fc2bf0009dd3ecb562f537b60ce6"
+    },
+    "campaign/before-disposal-timestamp-refinement/controls-candidate.patch": {
+      "bytes": 20881,
+      "sha256": "fa329442b3856b109ef0fde798398ff204cda4bc4a76337603a93bb555fd4630"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-01.patch": {
+      "bytes": 21874,
+      "sha256": "e211698b29eb0e02162dbf1335953d3912cfcdf2fbc2321512338a198e959405"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-02.patch": {
+      "bytes": 21543,
+      "sha256": "79c1e7084af3eaa5fe2d5f9a54240a5be6cc032c3883943004a20edace64f94d"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-03.patch": {
+      "bytes": 20947,
+      "sha256": "a8330f15cdb7ea8a9481ddfca736bb3681ccf57fbe196ed4bf12812558a2c25d"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-04.patch": {
+      "bytes": 21022,
+      "sha256": "295a77e9547143b5ae6fd449dc615a31a38a5b7828dd7505d0cc8c82384eab69"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-05.patch": {
+      "bytes": 21494,
+      "sha256": "89743bc1b438dd656e34c6efb829d0dc1c5039108afb09311bfab30dedf4d183"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-06.patch": {
+      "bytes": 21251,
+      "sha256": "73fb71dc27a015afa80cff04a582624f7eac9bc7a42ea985d9072221035b4831"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-07.patch": {
+      "bytes": 21733,
+      "sha256": "40fd1a22f1bbf4484cbf98a3ec17ab953b9bd907c58ee969bedb5bdd7be91a56"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-08.patch": {
+      "bytes": 20991,
+      "sha256": "deea2a872ea166a886187560726085954cb19ee82a0879e4a3b95bef58a005e0"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-restore.log": {
+      "bytes": 283,
+      "sha256": "4336c91f995b49a1c8a476f04939bb6c3892c7fe2e1259374763dd1783fc7fb1"
+    },
+    "campaign/before-disposal-timestamp-refinement/nc-status.log": {
+      "bytes": 856,
+      "sha256": "5318c484aaa7e092466a8b0dd3b08902819e154d39ebda2655512c1d18b070c6"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-build-driver.log": {
+      "bytes": 379,
+      "sha256": "64a52bca4980197b84f2ffd2dc0e40e67786cb971e7cb217f58f8f6cc2e121bb"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-build-production-first-attempt.log": {
+      "bytes": 1823,
+      "sha256": "8598afc777902f050195659dd48d2e4cd73efde8d69aaef93163c7867e077cc2"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-build-production.log": {
+      "bytes": 201,
+      "sha256": "47c708b9b880c5b7270418679780862c6fd6f7fa1ef428f3dd36fe90b558eca3"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-build-solution.log": {
+      "bytes": 1930,
+      "sha256": "d96dce8e1a79a9255244c226e4d944b574da2d14f912f512b11355abb9b7a478"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-core.log": {
+      "bytes": 421,
+      "sha256": "ae52f9120d1054e33b4c987792f6649b0e180984cf963ab06649389bb2cc2885"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-core.trx": {
+      "bytes": 1795166,
+      "sha256": "82c26eb8ecf149d04ac9f1d7a84a6d5616ffb695b494018edab97bda5715849b"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-driver.log": {
+      "bytes": 466,
+      "sha256": "7a6a7ec104cf4adb58df3cdc8e2861c5c85dca3da71ece2499405f3c9ed5a086"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-driver.trx": {
+      "bytes": 68116,
+      "sha256": "eeb1016caf06a8049adaac6bc82cd8b1b952d6b3b670cde2d94731bd80d62dc4"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-focused-1.log": {
+      "bytes": 426,
+      "sha256": "3100c8e88c0220f328cebee3c7c3781e44c0cbb9ab07c3966411661d064144fa"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-focused-1.trx": {
+      "bytes": 86221,
+      "sha256": "4663614e7ef9ad80c83d7af27a47c6bf2b059633061b2970364b4019ec27bd92"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-focused-2.log": {
+      "bytes": 426,
+      "sha256": "7d175d56f5e201b01470ece0d417607965284583fbc16f52b224920b76d4d1d2"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-focused-2.trx": {
+      "bytes": 86221,
+      "sha256": "61c6a56e4c0e5206c6f31eb7a1f54531bc897b4d3e64a0eb0e26a144b275a03a"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-focused-3.log": {
+      "bytes": 426,
+      "sha256": "b7bac6af78e92652abc63fea024c1df8b2b13d3912fa5196fc3a29f82b1ee3bf"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-focused-3.trx": {
+      "bytes": 86221,
+      "sha256": "f60519ef7912bdb0962959b137fc7ed2753c01e0259120df4b08f0902ae5897b"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-format-status.log": {
+      "bytes": 15,
+      "sha256": "8e22c152f52148dac2f3b56a22e5825ebc330a56a37221d67053881157b253a3"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-format.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-00-restored.log": {
+      "bytes": 695,
+      "sha256": "90ab5c36e324d4874cd218dc8603911d73c22d3777e634f53a46946b000a2f1d"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-00-restored.trx": {
+      "bytes": 30707,
+      "sha256": "c9cc7125d232a7b57877993d3b161527e84a44531fef93c944a2c5a827e50a4b"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-00.log": {
+      "bytes": 1488,
+      "sha256": "ea8bd1e28cb6a976e926930c8f685c3bca280254a06be6065f27eab49871d8a8"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-00.trx": {
+      "bytes": 30707,
+      "sha256": "8dca527233318cc44986a374c5f47683058b8ce192c6b0e65d9a55bf0a3e656d"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-01.log": {
+      "bytes": 6103,
+      "sha256": "f97047e9393dde34950f53505cf2f973eae65a08acb9638d6378602f209ae92c"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-01.trx": {
+      "bytes": 20191,
+      "sha256": "355e32006060055fb75ea081d07497a3a66955c67b72d73d338af04e3c6357e9"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-02.log": {
+      "bytes": 2796,
+      "sha256": "bd9bedf189697552e4f13b85892d40799f5d730f593373e8a4cb73ab455b34f7"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-02.trx": {
+      "bytes": 5919,
+      "sha256": "602d479bb3d8f32d3e91d2e75bf2c89ff222e99de2deecf2d99beb262ecb15bc"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-03.log": {
+      "bytes": 1669,
+      "sha256": "35b69194870b3c1e08dc3af274854fe0b6fca025119fc152cdc48f1843637bae"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-03.trx": {
+      "bytes": 5232,
+      "sha256": "d40929d329b7e67ba5d095ee362e8570c117aef1fc232cc0736934d4395cabc2"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-04.log": {
+      "bytes": 1606,
+      "sha256": "0c89a09541ad9dbad9401d85dad71744bf0982e3cc15f8bce7753683ea5ffb30"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-04.trx": {
+      "bytes": 5106,
+      "sha256": "9721e82c8646061cb68e792bddb554b5ad4b486a0651e2616a7f774a191acb34"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-05.log": {
+      "bytes": 1615,
+      "sha256": "210c356b15d2e3ff19515c853b996cfa4bb076d80579dfee24a5a46a506980d5"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-05.trx": {
+      "bytes": 12927,
+      "sha256": "c7a94edf33e1f8df4dc0aafb489d7340d8e7b244cf9c0acad716f5e6e71ad548"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-06.log": {
+      "bytes": 1720,
+      "sha256": "0ee365546e04450dd10b860055b6ffe449ac5d2b7a724e0317b256ca830167fa"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-06.trx": {
+      "bytes": 8384,
+      "sha256": "99eaaa5a6a7021ec1c9edc1ecbb9f7c2ccd379014a32f542c7ff7aa4a4eed750"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-07.log": {
+      "bytes": 2727,
+      "sha256": "38d8a71dba53b78299ef40690662d130ad736a00793956bb4940ffdb53d6b325"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-07.trx": {
+      "bytes": 5630,
+      "sha256": "45478421b24c03d67049daf3564496d8e6243c6b72fa0d3d5d3894b99ce60efe"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-08.log": {
+      "bytes": 8093,
+      "sha256": "f43e44887b1265b02051634953cb0deabeab97f3ed0393812b00044850fdeb79"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-nc-08.trx": {
+      "bytes": 24552,
+      "sha256": "809d3a04687f5aad28cd7eeb5b5584c3225bd5e6f9682c2419da5339d93b95e1"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-restore-driver.log": {
+      "bytes": 239,
+      "sha256": "6aa0fb32bb59e1a591feb6195ce5719a5f4c5ca4ef83098b454f8fad83ca291c"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-restore.log": {
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    "campaign/before-disposal-timestamp-refinement/win-sdk.log": {
+      "bytes": 1910,
+      "sha256": "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-core.log": {
+      "bytes": 332,
+      "sha256": "52939294de1a6164b2c3495daf49951ba17c8760bee04dbad894a4f31b1cdc43"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-core.trx": {
+      "bytes": 1799354,
+      "sha256": "c0e39ad8745ddb9ddc7e409ca5439b07730f6c17c5c6170cc98af9cff68b4828"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-driver.log": {
+      "bytes": 348,
+      "sha256": "8bc1fd693f900860cdf19332bb6202b3d69cfb6b7436d174e3fd26fa5052363b"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-driver.trx": {
+      "bytes": 68100,
+      "sha256": "d36530c4dbd1338783e13857a791fa401d7152003ca79ad219f99b10ec4cbd3d"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-focused-1.log": {
+      "bytes": 337,
+      "sha256": "18e4147cf8df919ef2d194d6aed0399e8c6709af09ad13b294b9c2ce55c5a20f"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-focused-1.trx": {
+      "bytes": 88008,
+      "sha256": "284ab52b27c93d7f16ec073731df58954da6db148cfd1f6b63abaf12699046eb"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-focused-2.log": {
+      "bytes": 337,
+      "sha256": "0849185cb5d7e026aed92e9859b1d4065a4c2cb68229d911e1e31d5b8b8a1a56"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-focused-2.trx": {
+      "bytes": 88008,
+      "sha256": "d925686fa2ac5f66ebe658f2992a056c2960ea500a1d055d7e8c472905794b4e"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-focused-3.log": {
+      "bytes": 337,
+      "sha256": "c987a98964224b45d527403bc15f1b89a2ca6e78d0c105840e841efc521cf259"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-focused-3.trx": {
+      "bytes": 88008,
+      "sha256": "23a2dc767375a2e0d428dbce1a980fe11e6b78a6d2067b999f1242e65ce61192"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-launch.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-nc-00-restored.log": {
+      "bytes": 345,
+      "sha256": "cd7594ad5b4142c88b39e763f6e7fe294cbe2b32d49e2d200f041837fede8f24"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-nc-00-restored.trx": {
+      "bytes": 11963,
+      "sha256": "2893f3cb3144b25a5731757c999723bffacd70b92f224072f69a2597db79ab95"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-nc-08.log": {
+      "bytes": 5875,
+      "sha256": "5b55170955bbbece48a1ae83630a5df03bc7ea43777f2e6dc057b5531be446af"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-nc-08.trx": {
+      "bytes": 24042,
+      "sha256": "d87d7326dd9cd5e0d8ed6ea27a5b48c6e34e03cc174570061fb5ebba529097f4"
+    },
+    "campaign/before-disposal-timestamp-refinement/wsl-sdk.log": {
+      "bytes": 1153,
+      "sha256": "613fe8ee18d32ee14b74a10f66971b493439e07ae4d14f93bf2044c6f3afc0bf"
+    },
+    "campaign/controls-candidate.patch": {
+      "bytes": 21100,
+      "sha256": "c889e7f55e85c0b10c4a1b9d476c8f23892be8e2d5c1722c751ad234cf72fa8d"
+    },
+    "campaign/implementation-scope.log": {
+      "bytes": 211,
+      "sha256": "12ce45d0c4b2ef240ef2c798f9802992df671f4bb40a946d721d7c5848fade55"
+    },
+    "campaign/implemented-source.patch": {
+      "bytes": 21100,
+      "sha256": "c889e7f55e85c0b10c4a1b9d476c8f23892be8e2d5c1722c751ad234cf72fa8d"
+    },
+    "campaign/nc-01.patch": {
+      "bytes": 22093,
+      "sha256": "9ef9f30b1777079dda3d91d84cd18803da28228cdfae755a63731efe9ff7d277"
+    },
+    "campaign/nc-02.patch": {
+      "bytes": 21762,
+      "sha256": "fe664111a987d16425cce6ebd7fab704dedbf310000a6375f21f88c0a2eabd2c"
+    },
+    "campaign/nc-03.patch": {
+      "bytes": 21166,
+      "sha256": "a1d92f48cc52a4eee38324c867651c0bd04927f3439fe88d8cb31be009043537"
+    },
+    "campaign/nc-04.patch": {
+      "bytes": 21241,
+      "sha256": "ffdb41831e9bc1d53892d84ea9989c48b8fa6ad55ce9a81e9b36506009ea9d57"
+    },
+    "campaign/nc-05.patch": {
+      "bytes": 21713,
+      "sha256": "953b8e6a392526fbedfa0bce8051f97c8ab7893507d0c6c9d3a83c5c24d4f2b8"
+    },
+    "campaign/nc-06.patch": {
+      "bytes": 21470,
+      "sha256": "697ca6091cb87464708fb2679a5a4abdaf8189514edf0d7c83a89eead3cc106d"
+    },
+    "campaign/nc-07.patch": {
+      "bytes": 21952,
+      "sha256": "f67c300aa259d731e2a7b1bf0bfb836a0b662a8cc31552c6667a74ab00a28901"
+    },
+    "campaign/nc-08.patch": {
+      "bytes": 21210,
+      "sha256": "1b9e2a6973838e8d95f8e1994c0329f9baa8e70db493123a28762bb4d59d712a"
+    },
+    "campaign/nc-restore.log": {
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    "campaign/nc-status.log": {
+      "bytes": 856,
+      "sha256": "82e4738a1ecd8f26efe05822446976376db2dc3d3bd33c5bcfdc164b44c2288c"
+    },
+    "campaign/verify-producer.log": {
+      "bytes": 403,
+      "sha256": "2c5cc8bf5f592e2515abd5b38878d0c81d5a0bb7d6ac088e78ebf43beead037b"
+    },
+    "campaign/verify-q1.log": {
+      "bytes": 174,
+      "sha256": "1c16378cfe9e712f5c657d795500a7d4f313473480060ded377cc79dd13718bf"
+    },
+    "campaign/win-baseline.log": {
+      "bytes": 2845,
+      "sha256": "6ae1758b6632b0d07086b99dd4fb5ccb04c968cfac23babba4e0be186c5ad138"
+    },
+    "campaign/win-baseline.trx": {
+      "bytes": 5444,
+      "sha256": "7ba704da1358245ef3932bc435e11d32e5d4a78c8559dee42665b1855617e479"
+    },
+    "campaign/win-build-driver.log": {
+      "bytes": 379,
+      "sha256": "b11ce340f914405b712926a62ed22d851b5bfbad0dca62d64e98e03ae0c3e5bb"
+    },
+    "campaign/win-build-production-first-attempt.log": {
+      "bytes": 1823,
+      "sha256": "8598afc777902f050195659dd48d2e4cd73efde8d69aaef93163c7867e077cc2"
+    },
+    "campaign/win-build-production.log": {
+      "bytes": 201,
+      "sha256": "f7812c2095156424aabc72ee1626076460115f62d615b8e2ad5aae2a968cbe51"
+    },
+    "campaign/win-build-solution.log": {
+      "bytes": 340,
+      "sha256": "4914d00c7fe7f8e181dca5ea3106bd8483772dc1570bb28c50092c63c61076c3"
+    },
+    "campaign/win-core.log": {
+      "bytes": 530,
+      "sha256": "4dbcf500999bf17ef4f6db3643472745bdc909a4479cb0b2457547550c618c49"
+    },
+    "campaign/win-core.trx": {
+      "bytes": 1795167,
+      "sha256": "3d620b18a6038d3808cff24ade0fb0875a35decfc6612e60910b20fdecf48703"
+    },
+    "campaign/win-driver.log": {
+      "bytes": 578,
+      "sha256": "12e9628144d1c16c599f28b510de762bf5c2c9321bfa063da93e146c0b83c102"
+    },
+    "campaign/win-driver.trx": {
+      "bytes": 68116,
+      "sha256": "93df440d5826bbf716e7f7fad190a63b69b806eef10c732ae82c6d2c0f888d58"
+    },
+    "campaign/win-focused-1.log": {
+      "bytes": 540,
+      "sha256": "a2ce8ada7d89db7d8812d8b32ded64ec77c60693865796c07503331d5a7309bd"
+    },
+    "campaign/win-focused-1.trx": {
+      "bytes": 86220,
+      "sha256": "d082085e95c3fdc3ccd19d5ab6dd9174a51b4a00a06abcb355de9a2df3e81304"
+    },
+    "campaign/win-focused-2.log": {
+      "bytes": 540,
+      "sha256": "6edb186b7bb8ca5ad4feaab0fb371beae086bc364b476fa95ba14d9762868e0e"
+    },
+    "campaign/win-focused-2.trx": {
+      "bytes": 86220,
+      "sha256": "b319a3f9ed806fdea92cbe7192352a9a24802a456162dbd0036c441f11126e15"
+    },
+    "campaign/win-focused-3.log": {
+      "bytes": 540,
+      "sha256": "5bb13d889d517c0641d1afef0c9aa9610fd48c9f6009f0ea317918a41b7acbb2"
+    },
+    "campaign/win-focused-3.trx": {
+      "bytes": 86221,
+      "sha256": "b8d2f815ac19f9f11cd4aac8361cd4228999453e6af662cfb7025b8bde79b82e"
+    },
+    "campaign/win-format-status.log": {
+      "bytes": 15,
+      "sha256": "8e22c152f52148dac2f3b56a22e5825ebc330a56a37221d67053881157b253a3"
+    },
+    "campaign/win-format.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "campaign/win-nc-00-restored.log": {
+      "bytes": 814,
+      "sha256": "086b861dc16f096680f7e892beb84b33314647eadc0fe33832856b09c08fe813"
+    },
+    "campaign/win-nc-00-restored.trx": {
+      "bytes": 30707,
+      "sha256": "4b5246592fe03128e9657a241dec30067d6a21ce6a881c04619778d16c692c6b"
+    },
+    "campaign/win-nc-00.log": {
+      "bytes": 1598,
+      "sha256": "b590ce92f5d946c70750a99494f77f988d163b4cc2ab72d4f5465dc853206865"
+    },
+    "campaign/win-nc-00.trx": {
+      "bytes": 30707,
+      "sha256": "f965ef4b1edaf82ddc4dc63e6a234a374bd6fd904d7b119b70c4ebfd0ff340af"
+    },
+    "campaign/win-nc-01.log": {
+      "bytes": 6213,
+      "sha256": "a4345a2e3aa6e3ac130f4b7bf244831e3c919dba34090645f39452e2ecef86c4"
+    },
+    "campaign/win-nc-01.trx": {
+      "bytes": 20191,
+      "sha256": "43ced19e95a010894f14533c805d9288d914de1625e759b4190a0bad08c5ceae"
+    },
+    "campaign/win-nc-02.log": {
+      "bytes": 2906,
+      "sha256": "ad62fa8c2cd95788531b3f368a0dfe462ee71e7e6aa28010644183577d23c864"
+    },
+    "campaign/win-nc-02.trx": {
+      "bytes": 5919,
+      "sha256": "d846cf11e1f3597a96964302ff96b633c1a9f0b8f904e7e212e06d267037ffd8"
+    },
+    "campaign/win-nc-03.log": {
+      "bytes": 1779,
+      "sha256": "e753f6fc23432bbb9bb349df2bf29092d7cb226591c41ae707443468f8d26ef7"
+    },
+    "campaign/win-nc-03.trx": {
+      "bytes": 5232,
+      "sha256": "1555613c4d69dc906542aa402a2ee7f36b00ffb9f1df98d339e085975ed0b55c"
+    },
+    "campaign/win-nc-04.log": {
+      "bytes": 1716,
+      "sha256": "93f9da9ed2958f1c122f00178882d69a6f9632085983cf0c9df131f84205f16a"
+    },
+    "campaign/win-nc-04.trx": {
+      "bytes": 5106,
+      "sha256": "122017074a5d0fcb1e216b7aa691bb4a34ac48ba060b3bac64fe7b6bdc1e0dc4"
+    },
+    "campaign/win-nc-05.log": {
+      "bytes": 1725,
+      "sha256": "f751b927785b14f4be97eacb4df85f804073074dca9bb6e08abafa9e0d58d655"
+    },
+    "campaign/win-nc-05.trx": {
+      "bytes": 12927,
+      "sha256": "d06f4d60a861f05643d5f3bc98c6236053cb64f6999ba760b6d27315d7e5f05d"
+    },
+    "campaign/win-nc-06.log": {
+      "bytes": 1830,
+      "sha256": "5e8d974543ac704c952cf64ed819c24bc7792437220c43698e7a9282c1981333"
+    },
+    "campaign/win-nc-06.trx": {
+      "bytes": 8384,
+      "sha256": "0c9f28735948038dfeb615ec83abc6a123fea3c2e7b785259ac9979871b66884"
+    },
+    "campaign/win-nc-07.log": {
+      "bytes": 2836,
+      "sha256": "73347efe6716e270deeb9ca0ef330819fb7dc8bb5c8aa610bf60190294b35944"
+    },
+    "campaign/win-nc-07.trx": {
+      "bytes": 5628,
+      "sha256": "e4119d5bba022c58aaa6bac7e497c6d5093e999eab16c033c32b5ad2b10af7f7"
+    },
+    "campaign/win-nc-08.log": {
+      "bytes": 8203,
+      "sha256": "4de3842a1ee68ad4ded1516fcb7f8759d01ebd6e4cdd91c2cd5a7e34e259c8d3"
+    },
+    "campaign/win-nc-08.trx": {
+      "bytes": 24552,
+      "sha256": "a9385fb7a2cec49a0f5e0d9af0fb105d6903b2da8e42901217adf24cac517caf"
+    },
+    "campaign/win-rebuild-warning-inventory.log": {
+      "bytes": 1930,
+      "sha256": "bf1e1b4b987750d7025c8b288bb7399c49082711402719334cd060cdc71e480e"
+    },
+    "campaign/win-restore-driver.log": {
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    "campaign/win-restore.log": {
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    "campaign/win-sdk.log": {
+      "bytes": 1910,
+      "sha256": "9c7c62f625e1ebff320974cad8cdf287b0c9c6d36ba19187a7de8103fefbed18"
+    },
+    "campaign/wsl-baseline.log": {
+      "bytes": 1414,
+      "sha256": "45a5f8d770182e5b6dfdba16270feb4dc92a575053412438f45610d134ad9265"
+    },
+    "campaign/wsl-baseline.trx": {
+      "bytes": 5254,
+      "sha256": "24df2520875e25c09fad8de451847ac85b6b52dc17342104fdc36cb3a22bbc64"
+    },
+    "campaign/wsl-core.log": {
+      "bytes": 444,
+      "sha256": "052c22536b00de7c84fc7df2345a6ce9f30b97cc268b4103ef68606244f4cdeb"
+    },
+    "campaign/wsl-core.trx": {
+      "bytes": 1799354,
+      "sha256": "894fcee173f1773a72011a5130797775d71b99ce5562e40065d0cc49dd96fb5d"
+    },
+    "campaign/wsl-driver.log": {
+      "bytes": 462,
+      "sha256": "a423501313d5d179269686abc4ae60ef75fe71451a17e3e8cb0736ffaee89c18"
+    },
+    "campaign/wsl-driver.trx": {
+      "bytes": 68100,
+      "sha256": "ac2ab9510bb98b63ced952a436387d04d43973b1b7a3c2d5b0c50574730554dd"
+    },
+    "campaign/wsl-focused-1.log": {
+      "bytes": 454,
+      "sha256": "0185b3afa0a68eb809caf5eb22fcde642ae23e7d80a34b2fdc27af05b7c76a44"
+    },
+    "campaign/wsl-focused-1.trx": {
+      "bytes": 88008,
+      "sha256": "4ca6bf6e36d03bf09d2ab87edde76ecb571ccc7fdb504934f05ac03451803fbf"
+    },
+    "campaign/wsl-focused-2.log": {
+      "bytes": 454,
+      "sha256": "a69f289b45164fff94933d31545c71a9127d611e4d55faf7e822215c5b80c8a5"
+    },
+    "campaign/wsl-focused-2.trx": {
+      "bytes": 88008,
+      "sha256": "ae99f72275a7929fc9f217a9292ff48786cb1ee2900508cca36ad598cf71b409"
+    },
+    "campaign/wsl-focused-3.log": {
+      "bytes": 454,
+      "sha256": "f2b97aa708be74a7d336d52a384117cc75a9f17044daf5ba9a2de23fb0edda4b"
+    },
+    "campaign/wsl-focused-3.trx": {
+      "bytes": 88008,
+      "sha256": "2b5dc7fdb5e4843f619fcaeac28f7f4bdb2f6a47d24463df6bded53d3d2fbf13"
+    },
+    "campaign/wsl-launch.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "campaign/wsl-nc-00-restored.log": {
+      "bytes": 464,
+      "sha256": "3ae8394f5d091e5d8f8b4266dc62c27daa9a80495d55d73187c5959c3952c7ac"
+    },
+    "campaign/wsl-nc-00-restored.trx": {
+      "bytes": 11963,
+      "sha256": "4cd6d3bcba7c3217d11f48c66dc755b7c61a6b26b874f0d9bb5ce51b61b33765"
+    },
+    "campaign/wsl-nc-08.log": {
+      "bytes": 5990,
+      "sha256": "c981884550c9dd05dc8c3917e26cfb008722ccd5e844b90578897beeb33d45c7"
+    },
+    "campaign/wsl-nc-08.trx": {
+      "bytes": 24044,
+      "sha256": "89748cdcf8b31591ba8ead6afd2bf19c03680b9d2262caef6eab8bdcc90f0029"
+    },
+    "campaign/wsl-sdk.log": {
+      "bytes": 1153,
+      "sha256": "613fe8ee18d32ee14b74a10f66971b493439e07ae4d14f93bf2044c6f3afc0bf"
+    },
+    "commands/run-controls.py": {
+      "bytes": 7119,
+      "sha256": "9eebd901a324c26b4eedc4658c8f224a048bfeb935e4704adf7e2026543ad65d"
+    },
+    "commands/win-campaign.ps1": {
+      "bytes": 1702,
+      "sha256": "099e5f8c195ec4436d0adbe51e3cf08ef349992f1e0cedc7ea756c69087d90c5"
+    },
+    "commands/wsl-baseline.sh": {
+      "bytes": 368,
+      "sha256": "7b96bdc32a21fdce709cbd37096fbba325262133b6103a23c7bbf653e03268f2"
+    },
+    "commands/wsl-campaign.sh": {
+      "bytes": 1012,
+      "sha256": "4728a94aed69ee9b8b76aec5bfca2144b158b7153947c8760365aab7a473c6be"
+    },
+    "commands/wsl-controls.sh": {
+      "bytes": 378,
+      "sha256": "a87b2053a27bac0afc60f7e68b905d7cf538c3ef77f0c51fb23c9cff959e301f"
+    }
+  },
+  "files": {
+    "docs/reviews/Q-B5B-09-PLAIN-R1-implementation.md": {
+      "bytes": 9642,
+      "sha256": "f45782a855a9a639f225fe9669622e7fa8dbb9588786e0f75f9c8051c3f3f4a5"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/README.md": {
+      "bytes": 5193,
+      "sha256": "e25e099bfe32d09540591ffd5d485b240961a2894ce5b909eafb69befc9b477a"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/r1-results.zip": {
+      "bytes": 1535271,
+      "sha256": "f4e12172b6e505abbe69f8000651df6833f9ff58dfdff68c3cbd206a9968d9ae"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/verify-evidence.py": {
+      "bytes": 6514,
+      "sha256": "13e73086c0cc1e20666dd18faabf26d3264fd503ecba6a3a0ece73ea9411f21c"
+    }
+  },
+  "implementation": {
+    "commit": "6a40c4b84993dec77deb165cef31e419df05be2e",
+    "tree": "a23edab4242711fffc28da63f254ff0f8b4d3082"
+  },
+  "source": {
+    "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs": {
+      "bytes": 8933,
+      "sha256": "05bee0f6c2dd0353a1a1359e90d1719f80ed6b377df6418895297411b7c58470"
+    },
+    "src/BoltSharp/Transport/BoltTcpConnection.cs": {
+      "bytes": 15031,
+      "sha256": "330045222e73ce5fb11e7b752e59db3e407105bb26748189f5d3f088ec7cbc1c"
+    },
+    "src/BoltSharp/Transport/BoltTcpServer.cs": {
+      "bytes": 8902,
+      "sha256": "10459f66ec6308fbcf60c0050f5171591f5d245f5ab5d4e29c93c30052fb17d3"
+    },
+    "tests/BoltSharp.Tests/Transport/PlaintextTerminalCloseTests.cs": {
+      "bytes": 29657,
+      "sha256": "7ea13bda2e537fb0f6e43069d2092dcaa1d2864c972ef6ff0078a0b5c4be5221"
+    }
+  }
+}
