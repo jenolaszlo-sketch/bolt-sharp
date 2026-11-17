@@ -11,7 +11,7 @@ namespace BoltSharp.Transport;
 /// <para>
 /// <b>Lifecycle.</b> An instance is single-use: Start binds and begins accepting; Stop (or
 /// Dispose) stops accepting, signals active connections and awaits their tasks within a bounded
-/// shutdown policy. Restart is not supported â€” create a new instance.
+/// shutdown policy. Restart is not supported — create a new instance.
 /// </para>
 /// <para>
 /// <b>Admission and isolation.</b> At most MaxConnections connections are active; excess

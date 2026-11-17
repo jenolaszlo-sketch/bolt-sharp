@@ -269,6 +269,7 @@ public sealed class PlaintextTerminalCloseTests(ITestOutputHelper output)
     }
 
     [Theory]
+    [InlineData("write-timeout")]
     [InlineData("deadline")]
     [InlineData("owner")]
     [InlineData("listener")]
@@ -290,7 +291,8 @@ public sealed class PlaintextTerminalCloseTests(ITestOutputHelper output)
             using var deadline = Limit();
             var row = new PackStreamValue?[] { new PackStreamString(new string('x', profile.Size)) };
             var provider = ScriptedOperationProvider.WithOperation(new ScriptedOperation(["value"], row));
-            await using var server = await Start(provider: provider, writeTimeout: TimeSpan.FromMilliseconds(650));
+            var writeTimeout = stimulus == "write-timeout" ? 150 : 650;
+            await using var server = await Start(provider: provider, writeTimeout: TimeSpan.FromMilliseconds(writeTimeout));
             using var trace = new Capture(server, item =>
             {
                 if (profile.Send != 0 && item.Name == "write-start")
@@ -334,14 +336,25 @@ public sealed class PlaintextTerminalCloseTests(ITestOutputHelper output)
             Assert.Equal("write", end.Phase);
             Assert.Equal(stimulus switch
             {
+                "write-timeout" => "write-deadline",
                 "deadline" => "total-deadline",
                 "listener" => "listener-shutdown",
                 _ => "owner-cancelled"
             }, end.Reason);
-            if (stimulus != "deadline")
+            if (stimulus is "listener" or "owner")
                 Assert.InRange(Stopwatch.GetElapsedTime(signalAt).TotalMilliseconds, 0, 130);
+            else if (stimulus == "write-timeout")
+            {
+                Assert.InRange(end.Elapsed, 120, 245);
+                Assert.Equal(1, server.Diagnostics.ConnectionsFailed);
+            }
             else
                 Assert.InRange(end.Elapsed, 200, 450);
+            var pending = Assert.Single(trace.Named("write-pending"));
+            Assert.Equal("write", pending.Phase);
+            Assert.True(pending.Elapsed > 0);
+            Assert.Equal(end.Reason, Assert.Single(trace.Named("write-failed")).Reason);
+            Assert.Empty(trace.Named("drain-admitted"));
             Assert.Equal(4, server.Diagnostics.MessagesProcessed);
             Assert.Equal(1, server.Diagnostics.ConnectionsCompleted + server.Diagnostics.ConnectionsFailed);
             Assert.False(end.Admitted);
@@ -351,6 +364,120 @@ public sealed class PlaintextTerminalCloseTests(ITestOutputHelper output)
         }
 
         Assert.Fail("No profile produced a persistent pending plaintext terminal write.");
+    }
+
+    [Theory]
+    [InlineData("delay", "peer-eof", true)]
+    [InlineData("absolute", "total-deadline", false)]
+    [InlineData("listener", "listener-shutdown", false)]
+    [InlineData("owner", "owner-cancelled", false)]
+    [InlineData("clamp", "total-deadline", true)]
+    [InlineData("exception", "peer-eof", true)]
+    public async Task SuccessfulWriteEndsWriteTimeoutBeforeObserver(string scenario, string reason, bool admitted)
+    {
+        using var deadline = Limit();
+        using var release = new ManualResetEventSlim();
+        var published = new TaskCompletionSource<BoltTransportDiagnosticEvent>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        await using var server = await Start(writeTimeout: TimeSpan.FromMilliseconds(80));
+        using var trace = new Capture(server);
+        server.Diagnostics.Event += item =>
+        {
+            if (item.Kind != BoltTransportEventKind.MessageProcessed ||
+                !item.Detail!.StartsWith("sig=0x11 ", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            published.TrySetResult(item);
+            if (scenario == "exception")
+                throw new InvalidOperationException("Observer failure after terminal flush");
+            release.Wait(deadline.Token);
+        };
+
+        using var peer = await Peer.Open(server, deadline.Token);
+        await peer.Send(Begin, deadline.Token);
+        if (scenario != "clamp")
+            peer.Socket.Client.Shutdown(SocketShutdown.Send);
+
+        Task? stop = null;
+        try
+        {
+            var message = await published.Task.WaitAsync(deadline.Token);
+            Assert.Equal("sig=0x11 responses=1 state=Defunct", message.Detail);
+            Assert.Equal(ExactFailure, Convert.ToHexString((await peer.Read(deadline.Token))!));
+            if (scenario != "exception")
+                Assert.Empty(trace.Named("drain-admitted"));
+            var handle = trace.Handle(message.ConnectionId);
+            switch (scenario)
+            {
+                case "delay":
+                    // The observer remains inside the callback past the short write budget.
+                    await Task.Delay(140, deadline.Token);
+                    break;
+                case "clamp":
+                    // Leave a shorter remainder than the normal 75 ms drain budget.
+                    await Task.Delay(200, deadline.Token);
+                    break;
+                case "listener":
+                    stop = server.StopAsync(deadline.Token);
+                    await WaitUntil(() => handle.IsClosed, deadline.Token);
+                    Assert.False(stop.IsCompleted);
+                    break;
+                case "owner":
+                    var cancel = typeof(BoltTcpServer).GetMethod("CancelPlaintextCloseAsync", Private)!;
+                    Assert.True(await ((Task<bool>)cancel.Invoke(server, [message.ConnectionId])!).WaitAsync(deadline.Token));
+                    Assert.True(handle.IsClosed);
+                    break;
+                case "absolute":
+                    // Socket closure proves the absolute timer fired while the observer was held.
+                    await WaitUntil(() => handle.IsClosed, deadline.Token);
+                    Assert.Equal(1, server.Diagnostics.ConnectionsActive);
+                    break;
+            }
+        }
+        finally
+        {
+            release.Set();
+        }
+
+        if (stop is not null)
+            await stop;
+        if (admitted)
+            Assert.Null(await peer.Read(deadline.Token));
+        await WaitUntil(() => server.Diagnostics.ConnectionsCompleted + server.Diagnostics.ConnectionsFailed == 1,
+            deadline.Token);
+        var end = Assert.Single(trace.Named("disposed"));
+        output.WriteLine($"{scenario}: {end.Phase}, {end.Reason}, admitted={end.Admitted}, {end.Elapsed:F2} ms, failed={server.Diagnostics.ConnectionsFailed}");
+        Assert.Equal(reason, end.Reason);
+        Assert.Equal(admitted, end.Admitted);
+        Assert.Empty(trace.Named("write-failed"));
+        Assert.Equal(3, server.Diagnostics.MessagesProcessed);
+        Assert.Equal(1, server.Diagnostics.ConnectionsCompleted);
+        Assert.Equal(0, server.Diagnostics.ConnectionsFailed);
+        Assert.Equal(0, server.Diagnostics.ConnectionsActive);
+        trace.AssertHandlesClosed(1);
+
+        if (admitted)
+        {
+            var admission = Assert.Single(trace.Named("drain-admitted"));
+            var drainEnd = Assert.Single(trace.Named("drain-end"));
+            Assert.Equal(reason, drainEnd.Reason);
+            Assert.InRange(drainEnd.Elapsed, admission.Elapsed, end.Elapsed);
+            if (scenario == "clamp")
+            {
+                Assert.InRange(admission.Elapsed, 175, 249.99);
+                Assert.InRange(end.Elapsed, 200, 310);
+            }
+
+            using var next = await Peer.Open(server, deadline.Token);
+            await next.Send(Begin, deadline.Token);
+            next.Socket.Client.Shutdown(SocketShutdown.Send);
+            Assert.Equal(ExactFailure, Convert.ToHexString((await next.Read(deadline.Token))!));
+            await WaitUntil(() => server.Diagnostics.ConnectionsCompleted == 2, deadline.Token);
+            Assert.Equal(2, trace.Named("drain-admitted").Count());
+            trace.AssertHandlesClosed(2);
+        }
     }
 
     [Fact]
@@ -495,6 +622,7 @@ public sealed class PlaintextTerminalCloseTests(ITestOutputHelper output)
         }
 
         internal IEnumerable<Event> Named(string name) => Events.Where(item => item.Name == name);
+        internal SafeSocketHandle Handle(string id) => _handles[id];
 
         internal void AssertHandlesClosed(int expected)
         {

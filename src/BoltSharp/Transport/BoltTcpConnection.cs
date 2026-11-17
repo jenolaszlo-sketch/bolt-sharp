@@ -235,15 +235,13 @@ internal static class BoltTcpConnection
             var result = session.ReceiveBytes(message);
             if (plaintextClose is not null && result.PlaintextCloseEligible)
             {
-                return await plaintextClose.RunAsync(client, (NetworkStream)stream, connectionId, options.WriteTimeout,
-                    async cancellation =>
-                    {
-                        await WriteResponsesAsync(stream, codec, result.Responses, null, cancellation,
-                            () => BoltPlaintextTerminalCloseDiagnostics.Report(connectionId, "write-pending"))
-                            .ConfigureAwait(false);
-                        diagnostics.Report(BoltTransportEventKind.MessageProcessed, connectionId,
-                            $"sig={DescribePayloadSignature(message)} responses={result.Responses.Count} state={result.State}");
-                    }, shutdownCancellationToken).ConfigureAwait(false);
+                var plaintext = (NetworkStream)stream;
+                return await plaintextClose.RunAsync(client, plaintext, connectionId, options.WriteTimeout,
+                    (cancellation, pending) => WritePlaintextTerminalResponseAsync(
+                        plaintext, codec, result.Responses, cancellation, pending),
+                    () => diagnostics.Report(BoltTransportEventKind.MessageProcessed, connectionId,
+                        $"sig={DescribePayloadSignature(message)} responses={result.Responses.Count} state={result.State}"),
+                    shutdownCancellationToken).ConfigureAwait(false);
             }
 
             await WriteResponsesAsync(
@@ -274,9 +272,8 @@ internal static class BoltTcpConnection
         Stream stream,
         BoltMessageCodec codec,
         IReadOnlyList<BoltResponse> responses,
-        TimeSpan? writeTimeout,
-        CancellationToken shutdownCancellationToken,
-        Action? reportPendingWrite = null)
+        TimeSpan writeTimeout,
+        CancellationToken shutdownCancellationToken)
     {
         if (responses.Count == 0)
         {
@@ -284,6 +281,39 @@ internal static class BoltTcpConnection
             return;
         }
 
+        var buffer = FrameResponses(codec, responses);
+        using var writeCts = CancellationTokenSource.CreateLinkedTokenSource(shutdownCancellationToken);
+        writeCts.CancelAfter(writeTimeout);
+        var payload = buffer.WrittenSpan.ToArray();
+        var written = 0;
+        while (written < payload.Length)
+        {
+            // NetworkStream/SslStream on a blocking socket write the whole buffer; the loop
+            // bounds repeated writes for partial-write robustness across stream types.
+            await stream.WriteAsync(payload.AsMemory(written), writeCts.Token).ConfigureAwait(false);
+            written = payload.Length;
+        }
+
+        await stream.FlushAsync(writeCts.Token).ConfigureAwait(false);
+    }
+
+    private static async Task WritePlaintextTerminalResponseAsync(
+        NetworkStream stream,
+        BoltMessageCodec codec,
+        IReadOnlyList<BoltResponse> responses,
+        CancellationToken cancellation,
+        Action reportPendingWrite)
+    {
+        var payload = FrameResponses(codec, responses).WrittenMemory;
+        var operation = stream.WriteAsync(payload, cancellation);
+        if (!operation.IsCompleted)
+            reportPendingWrite();
+        await operation.ConfigureAwait(false);
+        await stream.FlushAsync(cancellation).ConfigureAwait(false);
+    }
+
+    private static ArrayBufferWriter<byte> FrameResponses(BoltMessageCodec codec, IReadOnlyList<BoltResponse> responses)
+    {
         var buffer = new ArrayBufferWriter<byte>();
         var writer = new BoltMessageWriter(buffer);
         foreach (var response in responses)
@@ -291,27 +321,7 @@ internal static class BoltTcpConnection
             // B3-A owns response encoding; B2 owns chunk framing.
             writer.WriteMessage(codec.EncodeResponse(response));
         }
-
-        using var writeCts = writeTimeout.HasValue
-            ? CancellationTokenSource.CreateLinkedTokenSource(shutdownCancellationToken)
-            : null;
-        if (writeCts is not null)
-            writeCts.CancelAfter(writeTimeout!.Value);
-        var writeToken = writeCts?.Token ?? shutdownCancellationToken;
-        var payload = buffer.WrittenSpan.ToArray();
-        var written = 0;
-        while (written < payload.Length)
-        {
-            // NetworkStream/SslStream on a blocking socket write the whole buffer; the loop
-            // bounds repeated writes for partial-write robustness across stream types.
-            var operation = stream.WriteAsync(payload.AsMemory(written), writeToken);
-            if (!operation.IsCompleted)
-                reportPendingWrite?.Invoke();
-            await operation.ConfigureAwait(false);
-            written = payload.Length;
-        }
-
-        await stream.FlushAsync(writeToken).ConfigureAwait(false);
+        return buffer;
     }
 
     /// <summary>
