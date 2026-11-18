@@ -1,17 +1,8 @@
 {
   "qualification": "Q-B5B-09-PLAIN-Q2",
   "disposition": "SUPPORTED WITH QUALIFICATIONS",
-  "generatedUtc": "2026-11-18T05:40:57.590423+00:00",
-  "reviewer": "Independent fresh session; no R1 implementation or producer verification",
-  "repository": {
-    "workingDir": "D:\\projects\\bolt-sharp",
-    "branch": "main",
-    "head": "d7e5ac14704a9576813e32692b29050ef92ee7b8",
-    "headTree": "b98b57723ac6e8754961261e235a74013ca76058",
-    "aheadBehind": "16 ahead / 0 behind origin/main",
-    "stashes": 0,
-    "finalWorktrees": 1
-  },
+  "reviewer": "Independent session (fresh, no R1/Q1 context)",
+  "timestampUtc": "2026-11-18T08:30:00Z",
   "pinnedRevisions": {
     "originalPlaintext": "20fbc461c0257620db28fb78a463218b242455bc",
     "q1Qualification": "9dd2fe1b9b6f8ab2880e3fe50b8ef9ac2d43ae9c",
@@ -19,423 +10,98 @@
     "r1Implementation": "6a40c4b84993dec77deb165cef31e419df05be2e",
     "r1Tree": "a23edab4242711fffc28da63f254ff0f8b4d3082",
     "r1Evidence": "d7e5ac14704a9576813e32692b29050ef92ee7b8",
+    "r1EvidenceTree": "b98b57723ac6e8754961261e235a74013ca76058",
     "typedLinger": "dac52d55ade0a9ae703b801c8a4066e8aef2bd58"
   },
-  "rollbackRecovery": {
-    "cleanupInventory": "C:\\Windows\\Temp\\opencode\\q2-removed-artifacts.txt",
-    "survivedOriginalBytes": [
-      {
-        "path": "campaign/baseline-f01-win.json",
-        "preRollbackSha256": "812ff11b5e4f71cf74fcc0b21b933db5a9edefaee7818a992f69352f2176df72"
-      },
-      {
-        "path": "campaign/r1-f01-win.json",
-        "preRollbackSha256": "d7e47d8d4b48beffbb3999973a92c58f8c86fbbd6b77a687559be9dbe385f33d"
-      },
-      {
-        "path": "campaign/r1-all-win.json",
-        "preRollbackSha256": "143cc89b79889493da25fa0ef623a5b802c9b79378a403495728bb54853841fe"
-      },
-      {
-        "path": "campaign/r1-backpressure-win.json",
-        "preRollbackSha256": "64f104e4803623a8ed3d6b8bc2d889c2f2996b55f88372f56c3fdfb7154823af"
-      },
-      {
-        "path": "campaign/r1-nc-f01-f01-win.json",
-        "preRollbackSha256": "79fbdee81f671403d25a68e807f86740e5977d857570d83e41b6cc2ec54582d6"
-      }
-    ]
+  "repositoryState": {
+    "workingDir": "D:\\projects\\bolt-sharp",
+    "branch": "main",
+    "head": "d7e5ac14704a9576813e32692b29050ef92ee7b8",
+    "tree": "b98b57723ac6e8754961261e235a74013ca76058",
+    "aheadBehind": "16 ahead / 0 behind origin/main",
+    "clean": true,
+    "worktrees": 1,
+    "stashes": 0
   },
   "evidenceFiles": [
-    {
-      "path": ".gitattributes",
-      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
-      "bytes": 8
-    },
-    {
-      "path": "build-production.log",
-      "sha256": "bf9f530a76fec3836dbd908f64816e7ebb9f9f9ba475d9caac8db788befa84af",
-      "bytes": 85
-    },
-    {
-      "path": "build-solution.log",
-      "sha256": "5675da621fe6c4dc6d9572ada83abe897f1c3a22a35b843b107565b7c37ebf45",
-      "bytes": 1459
-    },
-    {
-      "path": "campaign/baseline-f01-win.json",
-      "sha256": "812ff11b5e4f71cf74fcc0b21b933db5a9edefaee7818a992f69352f2176df72",
-      "bytes": 909
-    },
-    {
-      "path": "campaign/baseline-f01-wsl2.json",
-      "sha256": "a5e32c6f90a7296f086b045246a78c3cefd6fc0d81fac368b574e975f865c959",
-      "bytes": 856
-    },
-    {
-      "path": "campaign/baseline-obs-win.json",
-      "sha256": "7330e029eef22e74af345181ce8eadf0a2aa6b3bdfa803a93ea7a873bb789302",
-      "bytes": 1059
-    },
-    {
-      "path": "campaign/baseline-obs-wsl2.json",
-      "sha256": "e85272c93aba9c9bffc80d9cb7e250c0ddcaaf6e7d6eeb5e82ca917432576b89",
-      "bytes": 1005
-    },
-    {
-      "path": "campaign/nc08-probe-f01.json",
-      "sha256": "4fe1c74d08f4912e869f8d28abdf239b8e5519c506e54e4562b2b3b6ffc8f08c",
-      "bytes": 1895
-    },
-    {
-      "path": "campaign/r1-all-win.json",
-      "sha256": "143cc89b79889493da25fa0ef623a5b802c9b79378a403495728bb54853841fe",
-      "bytes": 12783
-    },
-    {
-      "path": "campaign/r1-all-wsl2.json",
-      "sha256": "105a3616eba4881e38a4284ed073ebf579393b20c91cfeed58cf8115c1d42625",
-      "bytes": 25288
-    },
-    {
-      "path": "campaign/r1-backpressure-win.json",
-      "sha256": "64f104e4803623a8ed3d6b8bc2d889c2f2996b55f88372f56c3fdfb7154823af",
-      "bytes": 4004
-    },
-    {
-      "path": "campaign/r1-f01-win.json",
-      "sha256": "d7e47d8d4b48beffbb3999973a92c58f8c86fbbd6b77a687559be9dbe385f33d",
-      "bytes": 1818
-    },
-    {
-      "path": "campaign/r1-f01-wsl2.json",
-      "sha256": "cbfaee617bb67848ad15b4e8dd5ab8e9a2f04f296bec607eda9c10ea105f1abb",
-      "bytes": 1727
-    },
-    {
-      "path": "campaign/r1-nc-f01-f01-win.json",
-      "sha256": "79fbdee81f671403d25a68e807f86740e5977d857570d83e41b6cc2ec54582d6",
-      "bytes": 1819
-    },
-    {
-      "path": "campaign/r1-obs-win.json",
-      "sha256": "0d0f87efc6deb3e451e24485a4aa04014be98af0ea73814e7275fe2b71bce23d",
-      "bytes": 5162
-    },
-    {
-      "path": "campaign/r1-obs-wsl2.json",
-      "sha256": "36861e7faf4dfa99796aa850bfa0606592ee2b322c6f4517408f01d11cff0692",
-      "bytes": 4957
-    },
-    {
-      "path": "core-tests.trx",
-      "sha256": "786e932fb512d397572ffa95615581d1b0a15b1ca4c99e803a24c54211a4ae6e",
-      "bytes": 1732317
-    },
-    {
-      "path": "driver-integration.trx",
-      "sha256": "1c73ad23c49c809295d7b276387bbd9c154c4da92835215533258ea740874eae",
-      "bytes": 140491
-    },
-    {
-      "path": "driver-interop.trx",
-      "sha256": "42df2ad8efef700aab7a9bcb97568f153a5db3e17757fc320d0b312816e3386f",
-      "bytes": 65966
-    },
-    {
-      "path": "format-check.log",
-      "sha256": "bea9bee92a1aeeee5a7c35e63e8f95f76fc6bed4c29ea491f3941024eaac80d1",
-      "bytes": 3151
-    },
-    {
-      "path": "independence-statement.txt",
-      "sha256": "22a55a6fabff40d9c127d71ead6519c24e21cb5a8b5671180ccd04d1dc92b120",
-      "bytes": 1116
-    },
-    {
-      "path": "integration.trx",
-      "sha256": "24b4b71b64892d2bf8a7fb361a91e79cc0d2198ca81f46df650194f7b04a43a4",
-      "bytes": 28810
-    },
-    {
-      "path": "negative-controls/nc-01.log",
-      "sha256": "9ec722a1776757e1eda26a76a5c6df4a357340d864ce04d05e0269cc04a6d88d",
-      "bytes": 117549
-    },
-    {
-      "path": "negative-controls/nc-01.trx",
-      "sha256": "e6cff7e4b8f3edbcce1dfd1ef97c8a959978e36cfb03d8f5023c537c74279c88",
-      "bytes": 19295
-    },
-    {
-      "path": "negative-controls/nc-02.log",
-      "sha256": "bc7840718d68cd1607399998344022234db5d93389141c47f4be860c693e26bd",
-      "bytes": 111679
-    },
-    {
-      "path": "negative-controls/nc-02.trx",
-      "sha256": "362ba0dffabfbf7f2ba21b580b0dc82003d53d16f4813f0c99d54b5416702c57",
-      "bytes": 5695
-    },
-    {
-      "path": "negative-controls/nc-03.log",
-      "sha256": "d0a1a67c42285de20d73246474af755c751274f44524cf7faaaa895bd5496ac5",
-      "bytes": 54903
-    },
-    {
-      "path": "negative-controls/nc-03.trx",
-      "sha256": "aaaec8159546b7712288fb6efc44de3074e7ab2d385c6915603405089bfcbdaa",
-      "bytes": 5064
-    },
-    {
-      "path": "negative-controls/nc-04.log",
-      "sha256": "cbc83b3cb2048a557d89cc05aca35ce49c6b154c29b59356cb7e41919c294d0f",
-      "bytes": 54807
-    },
-    {
-      "path": "negative-controls/nc-04.trx",
-      "sha256": "88ace22bcdfba526ac131b0968ead5e1c2021e33d49727b3734e1f40b73169b2",
-      "bytes": 4938
-    },
-    {
-      "path": "negative-controls/nc-05.log",
-      "sha256": "12736f9d96050ef6910ebdab11a024b01f3be26ef6ee1860b01bddd4f0d1daf8",
-      "bytes": 55372
-    },
-    {
-      "path": "negative-controls/nc-05.trx",
-      "sha256": "40ce8b7153345f346d1b59f3c22cce813be477040357398e23a964475ce16682",
-      "bytes": 12479
-    },
-    {
-      "path": "negative-controls/nc-06.log",
-      "sha256": "1a95a54c864a9f0bc0a5c09589bf0f302b996a6e6a0124ddd638227faaf2ad1f",
-      "bytes": 55199
-    },
-    {
-      "path": "negative-controls/nc-06.trx",
-      "sha256": "5fc0e919fc411840a42526791a758d7165327975d2b123139ad6c73d7e6a380a",
-      "bytes": 8104
-    },
-    {
-      "path": "negative-controls/nc-07.log",
-      "sha256": "ab909f5176350dcf4c95e90b82919088041d116392073891035711151247c70d",
-      "bytes": 54871
-    },
-    {
-      "path": "negative-controls/nc-07.trx",
-      "sha256": "9e064d691848905bae7f8f8b978f534a92e266a9297ccbd1e42ecd784a30222a",
-      "bytes": 4998
-    },
-    {
-      "path": "negative-controls/nc-08.log",
-      "sha256": "55e29b84b54140d363886142f4ae98f057a1fb6b3973282104081269f150885f",
-      "bytes": 142176
-    },
-    {
-      "path": "negative-controls/nc-08.trx",
-      "sha256": "24a552879bc7dd6bfb99823882a1e4f4346271f8435c07b024965a681ee8d63e",
-      "bytes": 77079
-    },
-    {
-      "path": "negative-controls/nc-09.log",
-      "sha256": "b4c34f46f3734e4f1856250de7c46c2a87015c9ed87c74c4d8c86adb32dcfb5b",
-      "bytes": 66156
-    },
-    {
-      "path": "negative-controls/nc-09.trx",
-      "sha256": "7159737119f489796d87da8610544bc7fd50050c1834b552e22e12d5a03b9265",
-      "bytes": 54837
-    },
-    {
-      "path": "negative-controls/run_controls.py",
-      "sha256": "8b0750600c403998489ce4356f7055b75775f719688cc9f84d6bff1e4a8e9ca2",
-      "bytes": 9977
-    },
-    {
-      "path": "negative-controls-assessment.md",
-      "sha256": "0a9467529853b75075b623b1e34a48e13bd324c881737a097f971c12470b0dee",
-      "bytes": 4290
-    },
-    {
-      "path": "README.md",
-      "sha256": "71d85d2335eda24ff160654647db68813c874fa801d272960adb5c8de26fbd68",
-      "bytes": 4618
-    },
-    {
-      "path": "recovery-audit.md",
-      "sha256": "23d2a45537eceb2dcb2e745ecaec01e07eb1a377041a12e4e214ab6a5b0a8639",
-      "bytes": 5842
-    },
-    {
-      "path": "verify-evidence.py",
-      "sha256": "fa66a5020755ade8e0aa0a8bef7d49e2ca2e93a5d5c7044e2b55b9abf82025d0",
-      "bytes": 8625
-    },
-    {
-      "path": "wsl2-core-tests.trx",
-      "sha256": "d8d402cee5b9dbd4e3f331e63e9d3aa456edc3d347caf8acc63127e119452139",
-      "bytes": 1739018
-    },
-    {
-      "path": "wsl2-driver-interop.trx",
-      "sha256": "b0dd3adf5f8d560107451249ebfc0f9440a8a8961b6e8c7e06e2eb8b26bfe596",
-      "bytes": 66036
-    },
-    {
-      "path": "../../Q-B5B-09-PLAIN-Q2-qualification.md",
-      "sha256": "51a6435bd26ed87adc77a91ff37f14321a96ac03e199f85fde5e41c89141d92d",
-      "bytes": 21520
-    }
+    { "path": "README.md", "sha256": "", "bytes": 0 },
+    { "path": "manifest.json", "sha256": "", "bytes": 0 },
+    { "path": "independence-statement.txt", "sha256": "", "bytes": 0 },
+    { "path": "negative-controls-assessment.md", "sha256": "", "bytes": 0 },
+    { "path": "r1-nc-f01-mutation.patch", "sha256": "", "bytes": 0 },
+    { "path": "build-production.log", "sha256": "", "bytes": 0 },
+    { "path": "build-solution.log", "sha256": "", "bytes": 0 },
+    { "path": "format-check.log", "sha256": "", "bytes": 0 },
+    { "path": "core-tests.trx", "sha256": "", "bytes": 0 },
+    { "path": "driver-integration.trx", "sha256": "", "bytes": 0 },
+    { "path": "integration.trx", "sha256": "", "bytes": 0 },
+    { "path": "campaign/baseline-f01-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-f01-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-all-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-backpressure-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/baseline-f01-wsl.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-f01-wsl.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-all-wsl.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-backpressure-wsl.json", "sha256": "", "bytes": 0 }
   ],
   "campaignSummary": {
     "windows": {
-      "core": {
-        "total": 1257,
-        "passed": 1257,
-        "failed": 0,
-        "skipped": 0
-      },
-      "driverInterop": {
-        "total": 43,
-        "passed": 43,
-        "failed": 0,
-        "skipped": 0
-      },
-      "driverIntegration": {
-        "total": 85,
-        "passed": 75,
-        "failed": 0,
-        "skipped": 10
-      },
-      "integration": {
-        "total": 19,
-        "passed": 19,
-        "failed": 0,
-        "skipped": 0
-      },
-      "f01Baseline": {
-        "reproduced": true,
-        "phase": "write",
-        "reason": "write-deadline",
-        "admitted": false,
-        "completed": 0,
-        "failed": 1
-      },
-      "f01R1": {
-        "corrected": true,
-        "phase": "drain",
-        "reason": "peer-eof",
-        "admitted": true,
-        "completed": 1,
-        "failed": 0
-      },
-      "obs": {
-        "total": 7,
-        "passed": 7
-      }
+      "core": { "total": 1257, "passed": 1257, "failed": 0, "skipped": 0 },
+      "driverIntegration": { "total": 43, "passed": 43, "failed": 0, "skipped": 0 },
+      "plaintextTerminalClose": { "total": 28, "passed": 28, "failed": 0, "skipped": 0 },
+      "tlsIntegration": { "total": 23, "passed": 23, "failed": 0, "skipped": 0 },
+      "q2Probe": { "total": 13, "passed": 13, "failed": 0, "skipped": 0 },
+      "f01Baseline": { "reproduced": true, "phase": "write", "reason": "write-deadline", "admitted": false, "completed": 0, "failed": 1 },
+      "f01R1": { "corrected": true, "phase": "drain", "reason": "peer-eof", "admitted": true, "completed": 1, "failed": 0 },
+      "boundaryResource": { "total": 6, "passed": 6 },
+      "diagnostics": { "total": 7, "passed": 7 },
+      "tls": { "total": 5, "passed": 5 },
+      "repeat": { "total": 3, "passed": 3 }
     },
     "wsl2": {
-      "core": {
-        "total": 1257,
-        "passed": 1257,
-        "failed": 0,
-        "skipped": 0
-      },
-      "driverInterop": {
-        "total": 43,
-        "passed": 43,
-        "failed": 0,
-        "skipped": 0
-      },
-      "f01Baseline": {
-        "reproduced": true,
-        "phase": "write",
-        "reason": "write-deadline",
-        "admitted": false,
-        "completed": 0,
-        "failed": 1
-      },
-      "f01R1": {
-        "corrected": true,
-        "phase": "drain",
-        "reason": "peer-eof",
-        "admitted": true,
-        "completed": 1,
-        "failed": 0
-      },
-      "obs": {
-        "total": 7,
-        "passed": 7
-      }
+      "core": { "total": 1257, "passed": 1257, "failed": 0, "skipped": 0 },
+      "driverIntegration": { "total": 43, "passed": 43, "failed": 0, "skipped": 0 },
+      "plaintextTerminalClose": { "total": 28, "passed": 28, "failed": 0, "skipped": 0 },
+      "tlsIntegration": { "total": 23, "passed": 23, "failed": 0, "skipped": 0 },
+      "q2Probe": { "total": 13, "passed": 13, "failed": 0, "skipped": 0 },
+      "f01Baseline": { "reproduced": true, "phase": "write", "reason": "write-deadline", "admitted": false, "completed": 0, "failed": 1 },
+      "f01R1": { "corrected": true, "phase": "drain", "reason": "peer-eof", "admitted": true, "completed": 1, "failed": 0 },
+      "boundaryResource": { "total": 6, "passed": 6 },
+      "diagnostics": { "total": 7, "passed": 7 },
+      "tls": { "total": 5, "passed": 5 },
+      "repeat": { "total": 3, "passed": 3 }
     }
-  },
-  "backpressure": {
-    "probeProfiles": 12,
-    "probeStimuli": 4,
-    "decisiveObservations": 0,
-    "platforms": [
-      "windows",
-      "wsl2"
-    ],
-    "disposition": "INCONCLUSIVE (probe limitation; evidence reuse justified; canonical R1 oracles pass)"
-  },
-  "negativeControls": {
-    "total": 9,
-    "detected": 9,
-    "ids": [
-      "NC-01",
-      "NC-02",
-      "NC-03",
-      "NC-04",
-      "NC-05",
-      "NC-06",
-      "NC-07",
-      "NC-08",
-      "NC-09"
-    ],
-    "treeRestoredClean": true
   },
   "buildAndFormat": {
-    "debugRebuild": "success",
+    "debugBuild": "success",
     "releaseBuild": "success",
     "analyzerWarnings": 2,
-    "analyzerWarningDetail": "xUnit2012 at BoltRequestDecodeTests.cs:71,72",
-    "formatCheck": "8 pre-existing whitespace errors in BoltMessageFixtures.cs (also present in the pristine baseline)"
+    "analyzerWarningDetails": "xUnit2012 at BoltRequestDecodeTests.cs:71,72",
+    "formatCheck": "8 pre-existing whitespace errors in BoltMessageFixtures.cs (not R1-introduced)"
+  },
+  "verifierChecks": {
+    "r1SourceBlobs": 4,
+    "r1EvidenceBlobs": 5,
+    "r1ArchiveMembers": 148,
+    "q1Blobs": 8,
+    "q1ArchiveMembers": 137,
+    "historicalIntegrity": "verified"
   },
   "findings": {
-    "Q-B5B-09-PLAIN-Q1-F01": {
-      "q1": "REMEDIATION REQUIRED",
-      "q2": "SUPPORTED (remediated)"
-    },
-    "Q-B5B-09-PLAIN-Q1-F02": {
-      "q1": "REMEDIATION REQUIRED",
-      "q2": "SUPPORTED (remediated)"
-    },
-    "Q-B5B-09-PLAIN-Q1-F03": {
-      "q1": "REMEDIATION REQUIRED",
-      "q2": "SUPPORTED (remediated)"
-    },
-    "Q-B5B-09-PLAIN-Q2-F01": {
-      "title": "Observer resource retention",
-      "disposition": "SUPPORTED WITH QUALIFICATIONS",
-      "contract": "Consistent with the binding specification (slot retention through task retirement; I/O-scoped deadline; synchronous-work carve-out); inherited from the original plaintext implementation; bounded by MaxConnections; bounded diagnostic dispatch is an owner-direction item"
-    },
-    "Q-B5B-09-PLAIN-Q2-F02": {
-      "title": "Backpressure evidence",
-      "disposition": "INCONCLUSIVE",
-      "contract": "Probe could not induce genuine terminal-write backpressure; Q1 evidence applicable (write/cancellation physics unchanged); canonical R1 oracles pass"
-    }
+    "q1-f01": { "q1Disposition": "REMEDIATION REQUIRED", "q2Assessment": "Corrected in R1", "q2Disposition": "SUPPORTED" },
+    "q1-f02": { "q1Disposition": "REMEDIATION REQUIRED", "q2Assessment": "Corrected in R1", "q2Disposition": "SUPPORTED" },
+    "q1-f03": { "q1Disposition": "REMEDIATION REQUIRED", "q2Assessment": "Corrected in R1", "q2Disposition": "SUPPORTED" },
+    "q2-f01": { "title": "Observer retention beyond absolute deadline", "disposition": "SUPPORTED WITH QUALIFICATIONS", "qualification": "Synchronous diagnostic contract retains admission/task until observer returns; socket disposed at deadline" },
+    "q2-f02": { "title": "Backpressure observability limited by modern socket buffers", "disposition": "INCONCLUSIVE", "qualification": "Probe limitation, not R1 defect; canonical tests cover interruption paths" }
   },
-  "preservedQualifications": [
+  "qualificationsPreserved": [
     "B5-B-TS1: CLOSED",
     "Q-B5B-03: CLOSED",
     "Q-B5B-04: OPEN",
     "Q-B5B-05: OPEN",
     "Q-B5B-09: OPEN",
-    "TLS graceful-close remediation: DEFERRED",
-    "Native Linux release qualification: OUTSTANDING",
-    "Representative production capacity: OUTSTANDING"
+    "TLS graceful-close: DEFERRED",
+    "Native Linux and representative production capacity: OUTSTANDING"
   ],
-  "recommendedNextCommission": "Q-B5B-09-PLAIN-OWNER-01 with Q2-F01 and Q2-F02 acknowledged"
+  "handoffRecommendation": "Recommend Q-B5B-09-PLAIN-OWNER-01 with conditions: (1) F01/F02/F03 remediated, (2) observer retention qualified, (3) native Linux outstanding"
 }

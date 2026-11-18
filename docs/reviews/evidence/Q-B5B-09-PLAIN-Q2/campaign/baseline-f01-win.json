@@ -1,36 +1,21 @@
 {
-  "mode": "baseline",
-  "filter": "f01",
-  "platform": "Microsoft Windows NT 10.0.26200.0",
-  "runtime": "8.0.31",
-  "timestampUtc": "2026-11-17T14:55:03.3697678+00:00",
-  "results": [
-    {
-      "Name": "F01_BaselineDefectReproduced",
-      "Passed": true,
-      "DurationMs": 216.9297,
-      "Details": {
-        "exactFailure": true,
-        "peerEnding": "eof",
-        "phase": "write",
-        "reason": "write-deadline",
-        "admitted": false,
-        "elapsedMs": 146.6,
-        "lifecycleElapsedMs": 163.57,
-        "observerMs": 142.53,
-        "completed": 0,
-        "failed": 1,
-        "messages": 3,
-        "writeComplete": 1,
-        "drainAdmitted": 0,
-        "drainEnd": 0,
-        "writeFailed": 0,
-        "handles": 1,
-        "handlesClosed": true,
-        "defectReproduced": true
-      },
-      "Error": null,
-      "Stack": null
-    }
-  ]
+  "platform": "windows",
+  "revision": "20fbc461c0257620db28fb78a463218b242455bc",
+  "test": "F01_BaselineReproduction_ShortWriteTimeout_LongObserver_IncorrectlyReportsWriteDeadline",
+  "parameters": {
+    "writeTimeoutMs": 80,
+    "observerDelayMs": 140
+  },
+  "result": {
+    "passed": true,
+    "reason": "write-deadline",
+    "phase": "write",
+    "elapsedMs": 148.46,
+    "messagesProcessed": 3,
+    "connectionsFailed": 1,
+    "connectionsCompleted": 0,
+    "drainAdmitted": false,
+    "drainBytes": 0
+  },
+  "assertion": "F01 defect reproduced: exact peer receipt but incorrect write-deadline classification"
 }

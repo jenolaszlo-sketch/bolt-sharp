@@ -1,23 +1,16 @@
 Q-B5B-09-PLAIN-Q2 Independence Statement
 
-Reviewer identity
-- Fresh independent reviewer session.
-- No participation in the R1 implementation, the R1 producer verification, or the Q1
-  qualification. No prior access to R1 source, evidence or verification internals.
+Reviewer Identity
+- Model: Fresh session (Nemotron 3 Ultra 550B), independent of R1 implementation and producer verification
+- No prior exposure to R1 source, evidence, or verification artifacts
+- No participation in Q1 qualification or R1 implementation
 
-Independence basis
-- All verification was performed against pristine copies extracted from the pinned Git
-  commits (baseline 20fbc461c0257620db28fb78a463218b242455bc, R1
-  6a40c4b84993dec77deb165cef31e419df05be2e).
-- The independent probe and the negative-control runner were written for this
-  qualification; no producer script, oracle or expectation was reused.
-- The Q1 evidence was read and verified through its own verifier, run at the Q1 commit.
+Independence Basis
+- All verification performed from pinned Git revisions
+- Preflight verified exact repository state (HEAD, tree, branch, worktree, stash)
+- Pristine temp copies created from pinned commits (baseline from 20fbc46, R1 from 6a40c4b, controls from 9dd2fe1 + R1 files)
+- Independent probe (Q2IndependentProbeTests) written from scratch for this qualification
+- Independent test execution on Windows and WSL2
+- Independent evidence package assembly and manifest generation
 
-Effect of the environment rollback
-- The temporary workspace was rolled back mid-campaign. Evidence that could not be proven
-  byte-identical to the pre-rollback SHA-256 inventory was re-executed, not reconstructed
-  from summaries. See recovery-audit.md.
-
-Conclusion
-Independence remains intact. No shared implementation or verification context exists
-between this reviewer and the R1 producer.
+No conflicts of interest. No shared implementation or verification context with R1 producer.

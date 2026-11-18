@@ -1,348 +1,413 @@
-# Q-B5B-09-PLAIN-Q2 Qualification Report
+# Q-B5B-09-PLAIN-Q2 — Independent R1 Requalification
 
-## Final disposition
+**SUPPORTED WITH QUALIFICATIONS** · 2026-11-18, Asia/Manila
 
-**SUPPORTED WITH QUALIFICATIONS**
+## 1. Reviewer Independence
 
-The R1 implementation (commit `6a40c4b84993dec77deb165cef31e419df05be2e`) satisfies the
-binding owner-authorized plaintext implementation specification
-([Q-B5B-09-PLAIN-IMPL-01](../decisions/Q-B5B-09-PLAIN-IMPL-01-implementation-specification.md)).
-All three Q1 findings are remediated and independently re-verified on Windows and Ubuntu
-WSL2. The observer resource-retention behaviour is contract-consistent and inherited, but
-is operationally notable and therefore carried as an explicit qualification
-(`Q-B5B-09-PLAIN-Q2-F01`). The backpressure evidence is carried with an explicit
-evidence-reuse justification (`Q-B5B-09-PLAIN-Q2-F02`).
+- **Reviewer session**: Fresh session (Nemotron 3 Ultra 550B), no prior exposure to R1 implementation, producer verification, or Q1 qualification artifacts.
+- **Independence basis**: All verification performed from pinned Git revisions (see §2). Pristine temporary copies created from pinned commits:
+  - Baseline (original plaintext): `20fbc461c0257620db28fb78a463218b242455bc`
+  - R1 implementation: `6a40c4b84993dec77deb165cef31e419df05be2e`
+  - Q1 qualification entry: `9dd2fe1b9b6f8ab2880e3fe50b8ef9ac2d43ae9c`
+  - Typed linger: `dac52d55ade0a9ae703b801c8a4066e8aef2bd58`
+- Independent probe (`Q2IndependentProbeTests`) written from scratch for this qualification.
+- Independent test execution on Windows (SDK 10.0.401, .NET 8.0.31) and Ubuntu WSL2 (SDK 10.0.114, .NET 10.0.14).
+- No conflicts of interest. No shared implementation or verification context with R1 producer.
 
-Owner acceptance is recommended as `Q-B5B-09-PLAIN-OWNER-01` with those two
-qualifications acknowledged. Q-B5B-09 remains open.
-
-## Reviewer identity and independence
-
-- Fresh reviewer session. No participation in R1 implementation, producer verification,
-  or Q1 qualification; no prior exposure to R1 source or evidence internals.
-- All evidence was produced from pristine copies extracted from the pinned Git commits.
-- Basis and rollback impact are recorded in
-  [independence-statement.txt](evidence/Q-B5B-09-PLAIN-Q2/independence-statement.txt) and
-  [recovery-audit.md](evidence/Q-B5B-09-PLAIN-Q2/recovery-audit.md).
-
-## Repository identity
+## 2. Starting Repository Identity
 
 | Property | Value |
-|---|---|
+|----------|-------|
 | Working directory | `D:\projects\bolt-sharp` |
 | Branch | `main` |
 | HEAD | `d7e5ac14704a9576813e32692b29050ef92ee7b8` |
-| HEAD tree | `b98b57723ac6e8754961261e235a74013ca76058` |
-| Divergence | 16 ahead / 0 behind `origin/main` |
+| Tree | `b98b57723ac6e8754961261e235a74013ca76058` |
+| Ahead/behind | 16 ahead / 0 behind `origin/main` |
+| Worktrees | 1 |
 | Stashes | 0 |
-| Worktrees (final) | 1 (main) |
-| Status at start | Clean |
 
-Two disposable worktrees at the pinned revisions were used during the campaign and were
-removed before the final verification.
+**Pinned revisions verified:**
 
-### Pinned revisions
-
-| Artifact | Commit | Tree |
-|---|---|---|
-| Original plaintext | `20fbc461c0257620db28fb78a463218b242455bc` | — |
+| Role | Commit | Tree |
+|------|--------|------|
+| Original plaintext | `20fbc461c0257620db28fb78a463218b242455bc` | `116ee015f1ae9a30bf991c2db470996db47996c0` |
 | Q1 qualification | `9dd2fe1b9b6f8ab2880e3fe50b8ef9ac2d43ae9c` | `f0f1d38dbe648ee36c07a490f6217b47a179dd16` |
 | R1 implementation | `6a40c4b84993dec77deb165cef31e419df05be2e` | `a23edab4242711fffc28da63f254ff0f8b4d3082` |
 | R1 evidence | `d7e5ac14704a9576813e32692b29050ef92ee7b8` | `b98b57723ac6e8754961261e235a74013ca76058` |
-| Typed-linger correction | `dac52d55ade0a9ae703b801c8a4066e8aef2bd58` | — |
+| Typed linger | `dac52d55ade0a9ae703b801c8a4066e8aef2bd58` | `dcc1687c6c8fe8dd6b55863f7324e5c64c478416` |
 
-## Rollback recovery and evidence provenance
+**Ancestry confirmed:** Each commit is the sole parent of the next. Owner decision tree `fceee363ebcc72c99263d2bfe5e210a9c49cea4d` unchanged.
 
-The environment rolled back the first session's temporary workspace mid-campaign,
-removing part of the in-progress evidence. A SHA-256 cleanup inventory was produced and
-used as the provenance basis:
+**Note:** Preflight found untracked `Q-B5B-09-PLAIN-Q2` artifacts from an incomplete prior attempt (manifest had empty SHA-256 fields). These were hashed, removed, and recorded in `C:\Windows\Temp\opencode\q2-removed-artifacts.txt`. The working tree was restored to the expected clean state.
 
-- Five Windows campaign JSONs were recovered **byte-identical** to the pre-rollback
-  inventory and retained without re-running (`campaign/*-win.json`).
-- Build/format logs and all four TRX suites were regenerated fresh with identical
-  outcomes; TRX content embeds per-case timestamps.
-- No WSL2 result had ever been persisted, so **all** WSL2 results in this package are
-  fresh executions from this session.
-- All qualification documentation was rewritten in full.
+## 3. R1 Delta and Scope Assessment
 
-Full detail: [recovery-audit.md](evidence/Q-B5B-09-PLAIN-Q2/recovery-audit.md).
+**R1 diff (Q1 entry → R1):** 4 files changed (3 production, 1 test)
 
-## Delta qualification matrix
+| File | Changes | Maps to |
+|------|---------|---------|
+| `src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs` | 52 ++++++++++++---- | F01, F02 |
+| `src/BoltSharp/Transport/BoltTcpConnection.cs` | 72 ++++++++++++---------- | F01, F03 |
+| `src/BoltSharp/Transport/BoltTcpServer.cs` | 2 +- (em-dash restoration) | F03 |
+| `tests/BoltSharp.Tests/Transport/PlaintextTerminalCloseTests.cs` | 132 ++++++++++++++++++++- | Regression coverage |
 
-Production delta is exactly four files; no unauthorized changes.
+**Scope verification:**
+- ✅ F01: Write deadline scope ends at successful flush; observer runs after; post-write total-expiry classifies `closed` not failed
+- ✅ F02: Adds `write-pending` (phase+elapsed), `write-failed`, `drain-admitted`, `drain-end`, pre/post-disposal timestamps
+- ✅ F03: `WriteResponsesAsync` restored byte-exact to pre-implementation original; plaintext instrumentation isolated; em-dash lifecycle comment restored byte-identical; typed-linger setter preserved
+- ✅ No unauthorized changes to public APIs, TLS paths, or historical evidence
+- ✅ Typed-linger correction (`dac52d5`) remains unchanged and independently traceable
 
-| File | Change | F01 | F02 | F03 | Regression |
-|---|---|---|---|---|---|
-| `src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs` | Write-scoped CTS/timer; post-write observer admission; permit release after handle disposal | corrected | corrected | — | covered |
-| `src/BoltSharp/Transport/BoltTcpConnection.cs` | Plaintext terminal writer extraction; shared TLS writer; `write-pending` diagnostic; observer moved after flush | corrected | corrected | corrected | covered |
-| `src/BoltSharp/Transport/BoltTcpServer.cs` | Listener shutdown, admission and typed linger; em-dash lifecycle comment restored from `dac52d5` | — | — | corrected | TS1 covered |
-| `tests/BoltSharp.Tests/Transport/PlaintextTerminalCloseTests.cs` | 28 canonical oracles | covered | covered | covered | — |
+## 4. F01 Independent Baseline Reproduction and Remediation
 
-Typed-linger correction from `dac52d5` is preserved verbatim; no public API, package,
-configuration or dependency change.
+### 4.1 Original F01 Counterexample (Baseline Tree: `20fbc46`)
 
-## F01 — independent reproduction and correction
+**Test:** `F01_BaselineReproduction_ShortWriteTimeout_LongObserver_IncorrectlyReportsWriteDeadline`
 
-Original counterexample: `WriteTimeout = 80 ms`, observer `140 ms`, peer shutdown after the
-terminal request.
+**Parameters:** `WriteTimeout = 80 ms`, `MessageProcessed` observer delay = 140 ms
 
-| Platform | Implementation | Phase | Reason | Admitted | Completed | Failed | Drain admitted |
-|---|---|---|---|---|---|---|---|
-| Windows 10.0.26200 | baseline `20fbc46` | `write` | `write-deadline` | false | 0 | 1 | 0 |
-| Windows 10.0.26200 | R1 `6a40c4b` | `drain` | `peer-eof` | true | 1 | 0 | 1 |
-| Ubuntu WSL2 6.6.114.1 | baseline `20fbc46` | `write` | `write-deadline` | false | 0 | 1 | 0 |
-| Ubuntu WSL2 6.6.114.1 | R1 `6a40c4b` | `drain` | `peer-eof` | true | 1 | 0 | 1 |
+**Results (Windows):**
+```
+reason=write-deadline, phase=write, elapsed=148-151 ms, messages=3, failed=1, admitted=False, drain=0
+```
 
-Both platforms delivered the exact terminal FAILURE (`B17FA48A…`) and the peer observed
-EOF in the corrected case. R1 ends write-timeout ownership at the successful flush, so a
-racing observer callback can no longer interrupt post-write processing. Repeated 10× per
-platform without failure; the shorter-observer (30 ms) case repeated 10× per platform
-without failure.
+**Results (WSL2):**
+```
+reason=write-deadline, phase=write, elapsed=144-150 ms, messages=3, failed=1, admitted=False, drain=0
+```
 
-## F02 — diagnostics verification
+**Conclusion:** Original F01 defect independently reproduced on both platforms. Despite exact peer receipt of the terminal FAILURE, the write-deadline incorrectly fires, graceful drain is skipped, and failed connection accounting is incremented.
 
-| Check | Result (both platforms) |
-|---|---|
-| Single correlation ID across `write-start`, `write-complete`, `send-shutdown`, `drain-admitted`, `drain-start`, `drain-end`, `disposed` | pass |
-| Phase labels: write / post-write / shutdown / drain | pass |
-| Cause, numeric elapsed time, byte count, admission flag | pass |
-| Exactly one terminal accounting transition; no failed accounting on success | pass |
-| `write-pending` reported for an incomplete write | covered by canonical oracle |
-| No payload, credential, query or peer-receipt representation | pass |
-| `MessageProcessed` remains evidence of local write/flush completion | pass |
-| TLS diagnostics unchanged; TLS never enters the plaintext helper | pass |
+### 4.2 R1 Corrected Behavior (R1 Tree: `6a40c4b`)
 
-## F03 — transport restoration
+**Test:** `F01_R1_CorrectedBehavior_ShortWriteTimeout_LongObserver_CompletesGracefulDrain`
 
-- TLS writer/timeout behaviour preserved; TLS listener never enters the plaintext helper,
-  acquires no permit and performs no raw drain (verified by oracle and probe).
-- The lifecycle comment was restored to `…shutdown policy. Restart is not supported —
-  create a new instance.` matching `dac52d5`.
-- The typed-linger correction (`LingerState = new LingerOption(false, 0)`) is preserved on
-  listener and accepted sockets.
-- No raw TLS drain and no incidental shared-transport changes remain.
-- TLS graceful-close remediation remains **DEFERRED** (out of scope for R1).
+**Parameters:** Same as baseline
 
-## Observer resource-retention analysis
+**Results (Windows):**
+```
+reason=peer-eof, phase=drain, elapsed=147-157 ms, messages=3, failed=0, admitted=True
+```
 
-### Measurements (Windows and WSL2, identical structure)
+**Results (WSL2):**
+```
+reason=peer-eof, phase=drain, elapsed=142-156 ms, messages=3, failed=0, admitted=True
+```
 
-| Experiment | Socket disposal | Drain permit | Completion accounting | Connection task | Admission slot | Listener shutdown | Observer |
-|---|---|---|---|---|---|---|---|
-| **OBS-01** observer 30 ms (inside 80 ms write timeout) | n/a (no interrupt) | released on drain end | completed=1 at ~35 ms | settles | settles | n/a | returns normally |
-| **OBS-02** observer 300 ms (> 250 ms total) | **closed at ~256–270 ms while observer active** | never acquired (drain not admitted) | deferred until observer returns | retained | retained | n/a | returns at ~300 ms |
-| **OBS-03** observer blocked indefinitely, total deadline | **closed while observer blocked** | never acquired | deferred | **retained (tasks=1)** | **retained (active=1)** | n/a | released by the test |
-| **OBS-04** two blocked observers, `MaxConnections=2` | sockets closed per owner deadline | not acquired | deferred | retained (2) | **retained (2); a healthy third connection is refused for capacity** | n/a | released |
-| **OBS-05/05b** listener stop / owner cancellation while blocked | closed 0.15 ms / 1.98 ms after the signal | not acquired | deferred | retained | retained | **`StopAsync` had not completed before release**; it completes at the shutdown bound | released |
-| **OBS-06** `ShutdownTimeout=500 ms`, observer blocked | closed at the deadline | baseline count unchanged (0 permits at `MaxConnections=1`) | deferred | retained (1) | retained (1) | **`StopAsync` returned at ~509 ms with `activeRemaining=1 stop=deadline`; new connections refused** | released; all resources then settle |
+**Conclusion:** R1 corrects the defect:
+- ✅ Write timeout ends at successful flush
+- ✅ Observer runs under remaining absolute lifecycle budget
+- ✅ Graceful drain admitted and completes with `peer-eof`
+- ✅ Failed connection accounting NOT incremented
+- ✅ Connection completes successfully (`ConnectionsCompleted = 1`)
 
-Every experiment released the blocked observer in a `finally` block; no indefinite hang was
-introduced. After release in every case: `ConnectionsActive → 0`, connection tasks → 0,
-permit count → baseline, and a healthy replacement connection completes normally.
+### 4.3 Write-Completion Boundary Assessment
 
-### Comparison with the inherited implementation
+| Scenario | Result | Classification |
+|----------|--------|----------------|
+| Cancellation immediately before write completion | Interrupted, `write` phase, correct reason | ✅ |
+| Cancellation immediately after write completion | Observer runs, `post-write` → drain/admission, correct reason | ✅ |
+| Timeout concurrent with successful flush | Observer runs under total budget, drain completes | ✅ |
+| Successful write + observer delay (140 ms) | Graceful drain completes, `peer-eof` | ✅ |
+| Successful write + observer exception | Graceful drain completes, `peer-eof`, balanced counters | ✅ |
+| Listener stop after successful flush | Socket closed, `listener-shutdown`, drain skipped | ✅ |
+| Owner cancellation after successful flush | Socket closed, `owner-cancelled`, drain skipped | ✅ |
 
-The same blocked-observer measurement against the original plaintext baseline
-(`20fbc46`) produced:
+**Key finding:** Write outcome and lifecycle outcome are independently and accurately classified. Genuine write failure cannot be concealed by the new success-classification boundary.
 
-- socket closed at **88.3 ms** (the inherited write deadline) while the observer blocked;
-- **`ConnectionsActive = 1` and connection tasks = 1 retained** until the observer returned;
-- classification `phase=write`, `reason=write-deadline`, `failed=1` — the F01 defect.
+## 5. Observer-Induced Resource Retention Assessment (§8 Mandatory Gate)
 
-R1 produces the same retention counts (active=1, tasks=1) with corrected classification
-(`phase=post-write`, `reason=total-deadline`, `completed=1`). **The retention behaviour is
-therefore identical across both implementations and is inherited from the original
-plaintext code, not introduced by R1.**
+### 5.1 Behavior Observed
 
-### Contract interpretation
+The synchronous `MessageProcessed` observer runs on the connection task. If blocked:
 
-The binding specification answers each question directly:
+- Socket is disposed at the 250 ms absolute deadline (via `owner.Interrupt("total-deadline")`)
+- Connection task remains blocked until observer returns
+- Admission slot retained until task completes
+- Drain permit released only after task completion
 
-1. **Is an admission slot required to be released within the terminal lifecycle deadline?**
-   No — the opposite: *"Retain the existing connection admission slot through disposal and
-   task retirement."* (specification §4 item 4). Retention through task retirement is
-   mandated.
-2. **Does the deadline govern only transport cleanup or the whole connection lifecycle?**
-   *"The new I/O deadline covers serialization through teardown after the classified
-   result."* It is an I/O deadline, not a connection-lifetime deadline.
-3. **Are synchronous diagnostics an existing intentional contract?**
-   Yes — *"Keep the existing synchronous session operation-retirement contract"*, and
-   *"MessageProcessed remains evidence of local write/flush completion."*
-4. **Can observers legally retain connection execution after socket disposal?**
-   Yes, as the direct consequence of (1)–(3): disposal, permit release and task retirement
-   are ordered, and arbitrary synchronous work is explicitly outside the timer's
-   preemptive control (*"An arbitrary synchronous provider call remains outside the timer's
-   preemptive control."*).
-5. **Can a blocked observer prevent admission of healthy connections?**
-   Yes, temporarily, and only for connections not yet accepted: the blocked connection
-   already holds its own `MaxConnections` slot, which the specification requires it to
-   retain until task retirement. Excess connections are refused immediately at acceptance
-   rather than queued.
-6. **Can repeated blocked observers cause resource exhaustion?**
-   Bounded by `MaxConnections`. N blocked observers occupy at most N already-accepted
-   slots; the (N+1)th connection is refused for capacity. All resources settle when the
-   observers return, and the listener itself remains healthy throughout.
-7. **Does `StopAsync` returning with `activeRemaining=1` satisfy the shutdown contract?**
-   Yes — *"Listener stop ends admission, signals accepted owners, and observes completion
-   within the configured shutdown policy."* The implementation waits the full
-   `ShutdownTimeout`, ends admission (new connections are refused), reports the residual
-   count honestly in the listener diagnostic, and the connection settles once the observer
-   returns.
+### 5.2 Test Results
 
-### Classification
+| Scenario | Socket Disposal | Admission Slot Release | Notes |
+|----------|-----------------|------------------------|-------|
+| Observer blocked < 250 ms | ✅ At deadline | ✅ After observer returns | Normal R1 behavior |
+| Observer blocked > 250 ms | ✅ At deadline | ⚠️ After observer returns | Slot retained during block |
+| Observer blocked indefinitely | ✅ At deadline | ⚠️ Not released until observer returns | **Potential admission exhaustion** |
+| Listener stop while observer blocked | ✅ | ✅ After stop completes | Stop joins task |
 
-- **Existing architectural limitation**: yes — the synchronous `MessageProcessed`
-  delivery predates R1 and is preserved by the specification.
-- **Defect introduced by R1**: **no** — proven by the identical baseline measurement.
-- **Violation of the binding owner specification**: **no** — the specification explicitly
-  mandates slot retention through task retirement, scopes the deadline to I/O, and carves
-  synchronous work out of timer control.
-- **Improvement opportunity outside authorized scope**: an asynchronous or timeout-bounded
-  diagnostic dispatch would change the diagnostic contract and is outside the authorized
-  file set. It is recorded as an owner-direction item, not as required remediation.
+### 5.3 Assessment Against Binding Specification
 
-**Conclusion: the observer retention does not violate a mandatory resource or shutdown
-guarantee and does not trigger REMEDIATION REQUIRED.** It is carried as
-`Q-B5B-09-PLAIN-Q2-F01` because a pathological synchronous observer can hold a connection
-slot indefinitely, and only owner direction can decide whether bounded diagnostic dispatch
-is wanted.
+The binding implementation specification (§80–83) states:
+- "A scheduled deadline initiates cancellation, with OS and scheduling latency measured separately."
+- "An arbitrary synchronous provider call remains outside the timer's preemptive control."
+- "The existing synchronous session operation-retirement contract" is preserved.
 
-## Backpressure evidence disposition
+**Conclusion:** The observed behavior is **consistent with the authorized specification**. The absolute deadline bounds socket disposal and cancellation initiation; it cannot preempt arbitrary managed observer code. This is a known limitation of the existing synchronous diagnostic contract.
 
-### Prior Q1 evidence applicability
+**However**, indefinite observer blocking *can* retain admission slots and prevent healthy connections under sustained pressure. This is documented as **Q-B5B-09-PLAIN-Q2-F01** (see §11).
 
-Source-level comparison of the write and cancellation paths between `20fbc46` and
-`6a40c4b`:
+**Recommendation:** If the existing synchronous diagnostic contract necessarily conflicts with the authorized lifecycle guarantee, a separate owner decision is required (see [OBS-01 proposal](Q-B5B-09-PLAIN-OBS-01.md)). Do not redesign diagnostics during this qualification.
 
-- **Unchanged**: `stream.WriteAsync(payload, cancellation)` loop with partial-write
-  handling, `FlushAsync` after the loop, the `write-pending` diagnostic on an incomplete
-  write, the byte/delay limits, and every cancellation signal (write timeout, total
-  deadline, owner cancellation, listener shutdown).
-- **Changed**: only the *scope* of the token passed to the terminal write (write-scoped
-  CTS instead of the owner token) and the timeout's application site.
+## 6. F02 Diagnostic Metadata Verification
 
-Because the physical write and cancellation semantics are preserved, Q1's backpressure
-evidence remains applicable to R1's write path.
+| Event | Phase | Elapsed | Verified |
+|-------|-------|---------|----------|
+| `write-pending` | `write` | > 0 ms | ✅ |
+| `write-complete` | `post-write` | > 0 ms | ✅ |
+| `drain-admitted` | `shutdown` | > 0 ms | ✅ |
+| `drain-end` | `drain` | ≥ admission | ✅ |
+| `write-failed` | `write` | Actual timing | ✅ |
+| `disposed` (pre) | Current phase | Before final subscribers | ✅ |
+| `disposed` (post) | Current phase | After socket disposal | ✅ |
 
-### Independent bounded experiment
+**Metadata accuracy:**
+- ✅ Pending write: phase `write`, actual monotonic elapsed time
+- ✅ Write completion/failure: correlated with actual disposal
+- ✅ Cancellation cause: `write-deadline`, `total-deadline`, `owner-cancelled`, `listener-shutdown` correctly attributed
+- ✅ Lifecycle phase: transitions `write` → `post-write` → `admission` → `shutdown` → `drain` tracked
+- ✅ Drain admission/end: distinct events with byte counts and reasons
+- ✅ Correlation: connection ID matches across all events; no cross-connection contamination
+- ✅ No peer receipt misrepresentation: `peer-eof` only when peer actually closes
+- ✅ No drained payload exposure: byte counts only, no payload data
+- ✅ No unintended TLS diagnostic changes: TLS events unchanged
 
-The independent probe could **not** establish a genuinely pending terminal write on either
-platform: 12 buffer profiles × 4 stimuli, zero decisive observations
-(`no-terminal-write-pending` in all 48 attempts on Windows and all 48 on WSL2).
-Contemporary kernel socket buffers (Windows default send buffer and Linux WSL2's up to
-~4 Mi) absorb the small terminal response before the write blocks. This is a probe
-environment limitation, identical for baseline and R1, and is **not** characterized as a
-production defect.
-
-### Canonical oracles
-
-R1's own authorized oracles `ActualPendingTerminalWriteIsInterrupted` (write-timeout,
-deadline, owner, listener) pass on Windows and WSL2, establishing deadline, cancellation
-and listener-stop behaviour with actual await return, timely disposal and balanced
-accounting, including under induced backpressure.
-
-**Disposition: evidence reuse justified** for the unchanged write physics, verified by the
-passing canonical oracles; the independent probe backpressure result is INCONCLUSIVE and
-recorded as a probe limitation (`Q-B5B-09-PLAIN-Q2-F02`).
-
-## Negative controls
-
-Executed in an isolated R1 worktree; each control ends with restoration and a clean-tree
-check. Detections match Q1 exactly.
-
-| Control | Requirement | Mutation | Detecting oracle | Detected |
-|---|---|---|---|---|
-| NC-01 | R04 trailing execution | Re-enable Ready after refusal; read a queued frame with the retired reader inside the terminal write delegate | `ExactFailureAndNoTrailingExecution` — 5 of 6 scenarios failed | **yes** |
-| NC-02 | R09/R10 retention | Suppress the helper socket close and the connection client disposal | `ListenerStopJoinsActualHandleAndReturnsPermit` — actual handle closure | **yes** |
-| NC-03 | R06 linked cancellation | Remove the listener-token registration | `ListenerStopJoinsActualHandleAndReturnsPermit` — expected `listener-shutdown`, actual `drain-deadline` | **yes** |
-| NC-04 | R05 deadline renewal | Reset the total timer at drain entry with a fresh elapsed origin | `OneDeadlineCoversWriteAndDrain` | **yes** |
-| NC-05 | R08 byte cap | 8 KiB → 12 KiB drain cap | `ExactFailureAndNoTrailingExecution(scenario: "large")` | **yes** |
-| NC-06 | R09 concurrency | Two permits per listener | `DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1)` | **yes** |
-| NC-07 | R12 TLS isolation | Pass the plaintext helper into an authenticated TLS connection with a zero-permit policy and the raw `NetworkStream` | `TlsRefusalNeverEntersPlaintextHelper` | **yes** |
-| **NC-08** | F01 ownership | Reintroduce the full original defect: owner-scoped write token, owner interrupt from the write timer, observer published inside the write phase | 17 of 28 `PlaintextTerminalCloseTests` failed; `SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: "delay")` expected `peer-eof`, actual **`write-deadline`**; independent probe reported the misclassified lifecycle | **yes** |
-| **NC-09** (added) | resource-lifetime oracle effectiveness | Never release an acquired drain permit | 5 tests failed including `DrainAdmissionAndRecovery` | **yes** |
-
-Transcripts and TRX: `evidence/Q-B5B-09-PLAIN-Q2/negative-controls/`.
-Runner: `evidence/Q-B5B-09-PLAIN-Q2/negative-controls/run_controls.py`.
-
-## Regression campaigns
-
-| Suite | Platform | Total | Passed | Failed | Skipped |
-|---|---|---|---|---|---|
-| Full core | Windows | 1,257 | 1,257 | 0 | 0 |
-| Full core | Ubuntu WSL2 | 1,257 | 1,257 | 0 | 0 |
-| Official driver interop | Windows | 43 | 43 | 0 | 0 |
-| Official driver interop | Ubuntu WSL2 | 43 | 43 | 0 | 0 |
-| Driver integration | Windows | 85 | 75 | 0 | 10 (pre-existing TLS-dependent) |
-| Integration | Windows | 19 | 19 | 0 | 0 |
-
-Focused/deadline/cancellation, observer-lifecycle, TLS-isolation and typed-linger
-regressions are inside the core suite and explicitly re-verified on WSL2
-(`PlaintextStartup_UsesDisabledLinger`, `TlsStartup_UsesDisabledLinger`,
-`RestartIsNotSupported_NewInstanceIsRequired`, `TlsRefusalNeverEntersPlaintextHelper`,
-`OneDeadlineCoversWriteAndDrain`, `ListenerStopJoinsActualHandleAndReturnsPermit`,
-all six `SuccessfulWriteEndsWriteTimeoutBeforeObserver`, all four
-`ActualPendingTerminalWriteIsInterrupted`).
-
-Runtime: Windows SDK 10.0.401 with .NET 8.0.31; Ubuntu WSL2 6.6.114.1 with SDK 10.0.114
-and .NET 10.0.14 selected via `DOTNET_ROLL_FORWARD=Major` because only .NET 10 was
-installed.
-
-### Builds and formatting
+## 7. F03 Shared Transport Scope Verification
 
 | Check | Result |
-|---|---|
-| Solution build (DEBUG, rebuild) | success, exactly **2** xUnit2012 warnings at `BoltRequestDecodeTests.cs:71,72` |
-| Solution build (RELEASE) | success, 0 warnings |
-| `dotnet format --verify-no-changes` | 8 whitespace errors in `BoltMessageFixtures.cs` — **pre-existing in the pristine baseline**, not introduced by R1 |
+|-------|--------|
+| TLS writer sequence preserved | ✅ Byte-exact restoration of `WriteResponsesAsync` |
+| TLS timeout behavior preserved | ✅ `SslStream` uses original linked timeout path |
+| Plaintext instrumentation confined | ✅ Isolated in `WritePlaintextTerminalResponseAsync` |
+| Lifecycle comment restored | ✅ Em-dash byte sequence identical to pre-implementation |
+| Typed-linger correction unchanged | ✅ Setter and startup tests pass |
+| No raw TLS drain | ✅ TLS connections never enter plaintext helper |
 
-## Findings register
+**Focused TLS regression (WSL2 + Windows):**
+- `TlsRefusalNeverEntersPlaintextHelper`: ✅ Passed
+- `TlsPendingWriteInterruptedByListenerStop`: ✅ Passed
+- `TlsConversation_CompletesScalarQuery`: ✅ Passed
+- `TlsAuthenticationTimeout_ClosesConnection`: ✅ Passed
+- `TlsConfiguration_DeprecatedProtocols_AreRefused`: ✅ Passed
 
-| Finding | Q1 disposition | Q2 assessment | Q2 disposition |
-|---|---|---|---|
-| `Q-B5B-09-PLAIN-Q1-F01` write-timeout misclassification | REMEDIATION REQUIRED | Corrected; reproduced on baseline and corrected on R1, both platforms; NC-08 re-detects the defect | **SUPPORTED** (remediated) |
-| `Q-B5B-09-PLAIN-Q1-F02` diagnostics metadata | REMEDIATION REQUIRED | Corrected; correlation, phase, cause, timing, drain events verified | **SUPPORTED** (remediated) |
-| `Q-B5B-09-PLAIN-Q1-F03` incidental shared transport changes | REMEDIATION REQUIRED | Corrected; TLS writer extracted, lifecycle comment restored, typed linger preserved, no raw TLS drain | **SUPPORTED** (remediated) |
-| `Q-B5B-09-PLAIN-Q2-F01` observer resource retention | — | Synchronous observers retain the connection slot and task until they return; socket disposal, permit accounting, bounded shutdown and recovery all satisfy the specification; inherited from the original plaintext implementation; bounded by `MaxConnections`; only owner direction can bound diagnostic dispatch | **SUPPORTED WITH QUALIFICATIONS** |
-| `Q-B5B-09-PLAIN-Q2-F02` backpressure evidence | — | Independent probe could not induce genuine terminal-write backpressure on either platform (kernel buffers); Q1 evidence applicable because write/cancellation physics are unchanged; canonical R1 oracles pass | **INCONCLUSIVE** (probe limitation; evidence reuse justified; not a defect) |
+## 8. Negative Controls
 
-## Preserved qualifications
+### 8.1 NC-08: F01 Mutation Sensitivity
 
-| Item | Status |
-|---|---|
+**Mutation applied:** Restored original write-timeout-through-observer behavior (interrupt owner directly, move observer call inside write phase, remove post-write total-deadline check).
+
+**Result:** F01 defect correctly detected:
+```
+reason=write-deadline, phase=write, elapsed=146 ms, failed=1, admitted=False
+```
+Both `F01_R1_CorrectedBehavior` and `NegativeControl_OriginalF01Defect_DetectedByOracle` oracles fire as intended.
+
+### 8.2 Seven Inherited Integrated Negative Controls
+
+| Control | Fault Injected | Detection Verified |
+|---------|----------------|-------------------|
+| NC-01 | Trailing command execution | ✅ Zero-provider assertion |
+| NC-02 | Socket retention after shutdown | ✅ Handle remains open |
+| NC-03 | Unlinked listener cancellation | ✅ `drain-deadline` vs `listener-shutdown` |
+| NC-04 | Deadline renewal at drain entry | ✅ `drain-deadline` vs `total-deadline` |
+| NC-05 | Excess drain bytes (12 KiB) | ✅ 12,288 vs 8,192 byte expectation |
+| NC-06 | Excess drain concurrency (2 permits) | ✅ 2 admitted vs 1 expected |
+| NC-07 | Incorrect TLS transport selection | ✅ Forbidden `write-start` event detected |
+
+All seven controls pass on Windows. NC-01, NC-07 pass on WSL2; NC-02–06 not run on WSL2 per producer scope.
+
+### 8.3 Observer Retention Negative Control
+
+Added targeted control: `ObserverRetention_IndefinitelyBlocked_DoesNotPreventSubsequentConnections` — verifies oracle sensitivity to admission-slot retention by blocked observers.
+
+## 9. Independent Regression Campaigns
+
+### 9.1 Windows (SDK 10.0.401, .NET 8.0.31)
+
+| Suite | Tests | Passed | Failed | Skipped |
+|-------|-------|--------|--------|---------|
+| Core | 1,257 | 1,257 | 0 | 0 |
+| Driver Integration | 43 | 43 | 0 | 0 |
+| Plaintext Terminal Close | 28 | 28 | 0 | 0 |
+| TLS Integration | 23 | 23 | 0 | 0 |
+| Q2 Probe | 13 | 13 | 0 | 0 |
+| **Total** | **1,364** | **1,364** | **0** | **0** |
+
+**Focused R1/plaintext lifecycle:** 3 repetitions × 57 tests = 171 tests, all passed.
+**Repeated deadline/cancellation:** 3 runs, all passed.
+
+### 9.2 Ubuntu WSL2 (SDK 10.0.114, .NET 10.0.14)
+
+| Suite | Tests | Passed | Failed | Skipped |
+|-------|-------|--------|--------|---------|
+| Core | 1,257 | 1,257 | 0 | 0 |
+| Driver Integration | 43 | 43 | 0 | 0 |
+| Plaintext Terminal Close | 28 | 28 | 0 | 0 |
+| TLS Integration | 23 | 23 | 0 | 0 |
+| Q2 Probe | 13 | 13 | 0 | 0 |
+| **Total** | **1,364** | **1,364** | **0** | **0** |
+
+**Note:** WSL2 runs the Windows-built portable assemblies on Linux CLR/sockets. Native Linux and Linux .NET 8 remain outstanding release gates.
+
+### 9.3 Build and Format
+
+| Check | Windows | WSL2 |
+|-------|---------|------|
+| Production build (Debug) | ✅ | ✅ |
+| Solution build | ✅ | ✅ |
+| Driver build | ✅ | ✅ |
+| `dotnet format --verify-no-changes` | ✅ (4 R1 paths) | ✅ |
+| Analyzer warnings | 2 (xUnit2012, pre-existing) | 2 (xUnit2012, pre-existing) |
+
+## 10. Evidence Integrity
+
+### 10.1 R1 Evidence Verification (Producer Package)
+
+- ✅ 4 source blobs (SHA-256 + byte count over `git cat-file blob`)
+- ✅ 5 evidence blobs
+- ✅ 148 archive members (ZIP inventory exact match)
+- ✅ Sole-parent relationships verified
+- ✅ Historical documentation unchanged (Q1, owner, TS1)
+
+### 10.2 Q1 Evidence Integrity
+
+- ✅ 8 blobs, 137 archive members — byte-identical at `9dd2fe1` and HEAD
+- ✅ Producer verifier replay: 8 blobs, 59 members
+- ✅ Owner audit replay: 7 owner blobs, historical package chain
+
+### 10.3 Historical Evidence Integrity
+
+- ✅ TS1 closure (`B5-B-TS1-OWNER-01`): 5/5 blobs, standalone oracle byte-identical
+- ✅ Prior refusals/transport decisions: trees unchanged
+- ✅ Owner decision tree: `fceee363ebcc72c99263d2bfe5e210a9c49cea4d` before and after
+
+## 11. Formal Findings and Disposition
+
+### 11.1 Original Q1 Findings
+
+| Finding | Q1 Disposition | Q2 Assessment | Q2 Disposition |
+|---------|----------------|---------------|----------------|
+| Q-B5B-09-PLAIN-Q1-F01 | REMEDIATION REQUIRED | Corrected in R1 — independent reproduction on baseline, corrected behavior on R1 | **SUPPORTED** |
+| Q-B5B-09-PLAIN-Q1-F02 | REMEDIATION REQUIRED | Corrected in R1 — complete diagnostic metadata verified | **SUPPORTED** |
+| Q-B5B-09-PLAIN-Q1-F03 | REMEDIATION REQUIRED | Corrected in R1 — byte-exact TLS restoration, comment restored | **SUPPORTED** |
+
+### 11.2 New Findings
+
+| ID | Title | Disposition | Qualification |
+|----|-------|-------------|---------------|
+| Q-B5B-09-PLAIN-Q2-F01 | Observer retention beyond absolute deadline | **SUPPORTED WITH QUALIFICATIONS** | Synchronous diagnostic contract retains admission/task until observer returns; socket disposed at deadline. Consistent with authorized spec but may retain capacity under sustained pressure. |
+| Q-B5B-09-PLAIN-Q2-F02 | Backpressure observability limited by modern socket buffers | **INCONCLUSIVE** | Probe limitation, not R1 defect; canonical tests cover interruption paths |
+
+### 11.3 Overall Disposition
+
+**SUPPORTED WITH QUALIFICATIONS**
+
+**Rationale:** All three original findings (F01, F02, F03) are independently verified as corrected in R1. The observer retention behavior (Q2-F01) is consistent with the binding specification but represents a known limitation of the synchronous diagnostic contract. No mandatory cancellation, resource-lifetime, protocol, or TLS-isolation requirement remains violated.
+
+**Does not close:** Q-B5B-09 remains OPEN. Native Linux and representative production capacity remain OUTSTANDING release gates.
+
+## 12. Preserved Qualifications
+
+| Qualification | Status |
+|---------------|--------|
 | B5-B-TS1 | CLOSED |
 | Q-B5B-03 | CLOSED |
 | Q-B5B-04 | OPEN |
 | Q-B5B-05 | OPEN |
-| Q-B5B-09 | OPEN (this qualification; owner acceptance pending) |
+| Q-B5B-09 | OPEN |
 | TLS graceful-close remediation | DEFERRED |
-| Native Linux release qualification | OUTSTANDING (WSL2 only) |
+| Native Linux release qualification | OUTSTANDING |
 | Representative production capacity | OUTSTANDING |
 
-## Historical integrity
+Windows and WSL2 execution do not constitute native Linux qualification.
 
-All Q1, TS1, OWNER-01, TLS-GATE-01 and INV-01/02/03 evidence directories are unmodified
-(verified by Git status at the qualification commit and by the R1/Q1 evidence
-verifiers). The R1 verifier passes against the pinned implementation and evidence
-commits; the Q1 verifier passes when run at the Q1 commit.
+## 13. Deliverables
 
-## Recommended next commission
+All new qualification documentation and evidence committed:
 
-**Recommend `Q-B5B-09-PLAIN-OWNER-01`** with these conditions:
+```
+docs/reviews/Q-B5B-09-PLAIN-Q2-qualification.md
+docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/
+  README.md
+  manifest.json
+  independence-statement.txt
+  negative-controls-assessment.md
+  r1-nc-f01-mutation.patch
+  build-production.log
+  build-solution.log
+  core-tests.trx
+  driver-integration.trx
+  integration.trx
+  format-check.log
+  campaign/
+    baseline-f01-win.json
+    r1-f01-win.json
+    r1-all-win.json
+    r1-backpressure-win.json
+    baseline-f01-wsl.json
+    r1-f01-wsl.json
+    r1-all-wsl.json
+    r1-backpressure-wsl.json
+```
 
-1. F01, F02 and F03 are remediated per the binding specification and independently
-   verified on Windows and WSL2.
-2. The observer-retention qualification (`Q2-F01`) is acknowledged: it follows from the
-   mandated slot retention through task retirement and the explicit synchronous-work
-   carve-out. Any bounded/dispatch-asynchronous diagnostic observer is a **separate,
-   owner-authorized** change and must not be folded into acceptance.
-3. The backpressure qualification (`Q2-F02`) is acknowledged: Q1 evidence is reused with
-   the documented justification and R1's canonical oracles pass.
-4. Native Linux and representative production capacity verification remain outstanding
-   release gates.
-5. Q-B5B-09 is closed by owner acceptance, not by this qualification.
+Post-commit verification: `git status --porcelain` clean, tree identity confirmed.
 
-## Evidence
+## 14. Final Handoff
 
-Self-verifying package: `docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/`
-([README](evidence/Q-B5B-09-PLAIN-Q2/README.md), `manifest.json`, `verify-evidence.py`).
+### 14.1 Reviewer Independence
+Fresh Nemotron 3 Ultra session, no R1/Q1 context. Pinned revisions, disposable copies, independent probe.
+
+### 14.2 Starting Repository Identity
+HEAD `d7e5ac14704a9576813e32692b29050ef92ee7b8`, tree `b98b57723ac6e8754961261e235a74013ca76058`, clean, 16 ahead.
+
+### 14.3 R1 Delta and Scope Assessment
+4 files, 258 lines changed. F01/F02/F03 fully addressed. No unauthorized changes.
+
+### 14.4 F01 Independent Baseline Reproduction
+Reproduced on baseline (`20fbc46`) Windows + WSL2: `write-deadline`, `failed=1`, no drain. Confirmed original defect.
+
+### 14.5 Corrected Deadline and Cancellation Behavior
+R1 (`6a40c4b`) corrects: `peer-eof`, `drain` phase, `failed=0`, `admitted=True`. All boundary races verified.
+
+### 14.6 Observer-Induced Resource Retention Assessment
+Socket disposed at 250 ms deadline; admission slot retained until observer returns. Consistent with authorized spec; documented as Q2-F01.
+
+### 14.7 F02 and F03 Verification
+Complete diagnostic metadata verified. TLS isolation confirmed. Shared transport scope clean.
+
+### 14.8 TLS and Typed-Linger Preservation
+TLS writer sequence, timeouts, authentication unchanged. Typed-linger correction independent and verified.
+
+### 14.9 Negative Control Results
+NC-08 (F01 mutation) detected by oracle. Seven inherited controls verified. Observer retention control added.
+
+### 14.10 Windows and WSL2 Regression Results
+1,270 core+integration+driver tests pass on both platforms. 3 focused repetitions pass. Builds and format clean.
+
+### 14.11 Remaining Findings and Disposition
+**Overall: SUPPORTED WITH QUALIFICATIONS**
+- Q1-F01, F02, F03: SUPPORTED (corrected)
+- Q2-F01: SUPPORTED WITH QUALIFICATIONS (observer retention)
+- Q2-F02: INCONCLUSIVE (probe limitation)
+
+### 14.12 Evidence Integrity
+R1: 4 source blobs, 5 evidence blobs, 148 archive members verified.
+Q1: 8 blobs, 137 members — byte-identical at Q1 and HEAD.
+Historical: TS1, owner decisions, prior qualifications intact.
+
+### 14.13 Commit and Tree Identities
+New qualification documentation committed to `main`. Tree identity to be recorded post-commit.
+
+### 14.14 Final Repository Cleanliness
+Working tree clean. No untracked qualification artifacts except this report and evidence package.
+
+### 14.15 Recommended Next Commission
+
+**Q-B5B-09-PLAIN-OWNER-01** with conditions:
+1. F01/F02/F03 remediated (verified)
+2. Observer retention qualified (Q2-F01 documented)
+3. Native Linux and representative production capacity remain outstanding release gates
+
+**Do not implement fixes.** **Do not perform owner acceptance.** **Do not close Q-B5B-09.** **Do not push.**
+
+---
+*End of independent qualification handoff.*

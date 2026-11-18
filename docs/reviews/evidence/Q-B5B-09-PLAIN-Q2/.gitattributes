@@ -1,1 +1,8 @@
-* -text
+* text=auto
+*.trx text
+*.zip binary
+*.json text
+*.md text
+*.log text
+*.patch text
+*.py text

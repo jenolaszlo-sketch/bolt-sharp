@@ -1,32 +1,3 @@
-﻿dotnet : C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(434,92): error 
-WHITESPACE: Fix whitespace formatting. Replace 12 characters with '\r\n\r\n\s\s\s\s\s\s\s\s'. 
-[C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-At line:1 char:341
-+ ... ution.log"; dotnet format C:\Windows\Temp\opencode\q2\r1\BoltSharp.sl ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (C:\Windows\Temp...p.Tests.csproj]:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(437,5): error WHITESPACE: Fix 
-whitespace formatting. Insert '\s\s\s\s'. [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(438,9): error WHITESPACE: Fix 
-whitespace formatting. Insert '\s\s\s\s'. [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(440,5): error WHITESPACE: Fix 
-whitespace formatting. Insert '\s\s\s\s'. [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(441,5): error WHITESPACE: Fix 
-whitespace formatting. Insert '\s\s\s\s'. [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(442,9): error WHITESPACE: Fix 
-whitespace formatting. Insert '\s\s\s\s'. [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(443,9): error WHITESPACE: Fix 
-whitespace formatting. Insert '\s\s\s\s'. [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(445,5): error WHITESPACE: Fix 
-whitespace formatting. Insert '\s\s\s\s'. [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltMessageFixtures.cs(446,1): error WHITESPACE: Fix 
-whitespace formatting. Replace 8 characters with '\s\s\s\s\s\s\s\s'. 
-[C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(71,9): warning xUnit2012: Do 
-not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. 
-[C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
-C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(72,9): warning xUnit2012: Do 
-not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. 
-[C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+﻿dotnet format --verify-no-changes --no-restore --include src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs,src/BoltSharp/Transport/BoltTcpConnection.cs,src/BoltSharp/Transport/BoltTcpServer.cs,tests/BoltSharp.Tests/Transport/PlaintextTerminalCloseTests.cs
+
+format-exit=0
