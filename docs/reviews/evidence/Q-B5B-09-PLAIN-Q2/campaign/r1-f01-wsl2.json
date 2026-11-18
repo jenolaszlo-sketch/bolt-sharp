@@ -1,0 +1,73 @@
+{
+  "mode": "r1",
+  "filter": "f01",
+  "platform": "Unix 6.6.114.1",
+  "runtime": "10.0.14",
+  "timestampUtc": "2026-11-18T04:58:01.1137469+00:00",
+  "results": [
+    {
+      "Name": "F01_Corrected_SuccessfulWritePastWriteTimeout",
+      "Passed": true,
+      "DurationMs": 381.5349,
+      "Details": {
+        "exactFailure": true,
+        "peerEnding": "eof",
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 148.02,
+        "lifecycleElapsedMs": 155.89,
+        "observerMs": 140.58,
+        "completed": 1,
+        "failed": 0,
+        "messages": 3,
+        "writeComplete": 1,
+        "drainAdmitted": 1,
+        "drainEnd": 1,
+        "writeFailed": 0,
+        "handles": 1,
+        "handlesClosed": true
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverShorterThanWriteTimeout",
+      "Passed": true,
+      "DurationMs": 38.638,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": false,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 30.5,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverExceptionContained",
+      "Passed": true,
+      "DurationMs": 32.0385,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": true,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 30.28,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

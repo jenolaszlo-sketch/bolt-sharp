@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="954d3217-3288-4015-921d-ce8d1635b096" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-18 13:20:46" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-18T13:20:46.6189839+08:00" queuing="2026-11-18T13:20:46.6189841+08:00" start="2026-11-18T13:20:45.5697111+08:00" finish="2026-11-18T13:20:46.6234945+08:00" />
+  <TestSettings name="default" id="214fb2d8-4926-4310-a99e-1dd33204cbfd">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-18_13_20_46" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="4b6198b8-d241-4837-8be2-d3dc3f1be73c" testId="ed303477-f386-64b6-aca8-cc448e063991" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.3623635" startTime="2026-11-18T13:20:46.5382868+08:00" endTime="2026-11-18T13:20:46.5382987+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4b6198b8-d241-4837-8be2-d3dc3f1be73c">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "total-deadline"&#xD;
+Actual:   "drain-deadline"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain() in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 265&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain() in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 268&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="ed303477-f386-64b6-aca8-cc448e063991">
+      <Execution id="4b6198b8-d241-4837-8be2-d3dc3f1be73c" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="OneDeadlineCoversWriteAndDrain" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ed303477-f386-64b6-aca8-cc448e063991" executionId="4b6198b8-d241-4837-8be2-d3dc3f1be73c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.16]   Discovering: BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.27]   Discovered:  BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.27]   Starting:    BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.67]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.67]       Expected: "total-deadline"&#xD;
+[xUnit.net 00:00:00.67]       Actual:   "drain-deadline"&#xD;
+[xUnit.net 00:00:00.67]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(265,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain()&#xD;
+[xUnit.net 00:00:00.67]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(268,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain()&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.68]   Finished:    BoltSharp.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:46.5368456+08:00">
+        <Text>[xUnit.net 00:00:00.67]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

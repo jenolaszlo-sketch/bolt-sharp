@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e3936aaa-d05a-499d-b6e4-333eba3fb558" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-18 13:20:58" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-18T13:20:58.0090262+08:00" queuing="2026-11-18T13:20:58.0090267+08:00" start="2026-11-18T13:20:56.5408636+08:00" finish="2026-11-18T13:21:00.0496053+08:00" />
+  <TestSettings name="default" id="86f7edb9-8528-4a0b-a4c2-ff08aff0472d">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-18_13_20_58" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="01a2bde4-6764-4ffe-b52b-165327c2b65a" testId="8615a6f0-8712-96e8-ab8c-4b5b4394a437" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0178919" startTime="2026-11-18T13:20:59.6802711+08:00" endTime="2026-11-18T13:20:59.6802713+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="01a2bde4-6764-4ffe-b52b-165327c2b65a">
+      <Output>
+        <StdOut>stop=2.59 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fa6a3ead-b78d-4aa5-bf8d-d29dca7aa74b" testId="8d89885c-45c6-1fc8-4436-17271f8ced39" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;empty&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0156079" startTime="2026-11-18T13:20:58.0156271+08:00" endTime="2026-11-18T13:20:58.0156274+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa6a3ead-b78d-4aa5-bf8d-d29dca7aa74b">
+      <Output>
+        <StdOut>empty: peer-eof, 0 bytes, 0.14 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b3027c49-f30d-461d-9851-08cc173b2af5" testId="247dde6c-65d2-1967-1d16-65ecf0458567" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;listener&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0868171" startTime="2026-11-18T13:20:58.4865379+08:00" endTime="2026-11-18T13:20:58.4865382+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b3027c49-f30d-461d-9851-08cc173b2af5">
+      <Output>
+        <StdOut>profile (4194304, 4096, 0): listener-shutdown, 43.49 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c8c75071-e58d-4c36-9e4d-7b820e84ecab" testId="0e91055f-7be1-702e-83f2-e1f0584ad092" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;delay&quot;, reason: &quot;peer-eof&quot;, admitted: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2040279" startTime="2026-11-18T13:20:57.3499469+08:00" endTime="2026-11-18T13:20:57.3499571+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8c75071-e58d-4c36-9e4d-7b820e84ecab">
+      <Output>
+        <StdOut>delay: drain, peer-eof, admitted=True, 130.70 ms, failed=0</StdOut>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 2&#xD;
+Actual:   1</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 478&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 480&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0c076d59-01c5-4b81-9ee0-648efb4ef6b0" testId="d7e83a07-3b23-6646-78b0-520781e5a277" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.BoundedAdversePeer(scenario: &quot;continues&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0937556" startTime="2026-11-18T13:20:59.5340011+08:00" endTime="2026-11-18T13:20:59.5340016+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c076d59-01c5-4b81-9ee0-648efb4ef6b0">
+      <Output>
+        <StdOut>continues: drain-deadline, 2048 bytes, 73.63 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="17e474e6-c3f1-409e-9907-f70c5d62fc58" testId="ccb27250-f2a1-19b4-940b-ad2fe14bed49" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;owner&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1046135" startTime="2026-11-18T13:20:58.3994204+08:00" endTime="2026-11-18T13:20:58.3994208+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="17e474e6-c3f1-409e-9907-f70c5d62fc58">
+      <Output>
+        <StdOut>profile (4194304, 4096, 0): owner-cancelled, 45.27 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="175b42b1-31e2-459b-a59d-4fb9bcda881c" testId="69a49385-2052-c00c-8626-46f98e409ae1" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;partial&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0062644" startTime="2026-11-18T13:20:57.9513056+08:00" endTime="2026-11-18T13:20:57.9513058+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="175b42b1-31e2-459b-a59d-4fb9bcda881c">
+      <Output>
+        <StdOut>partial: peer-eof, 1 bytes, 0.12 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c9d5dcee-a408-4e5e-a55f-5d5e97523efc" testId="a6ca2a14-c5cc-9be8-41e6-81f7ecc258eb" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;exception&quot;, reason: &quot;peer-eof&quot;, admitted: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0250424" startTime="2026-11-18T13:20:57.9366215+08:00" endTime="2026-11-18T13:20:57.9366216+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9d5dcee-a408-4e5e-a55f-5d5e97523efc">
+      <Output>
+        <StdOut>exception: drain, peer-eof, admitted=True, 0.15 ms, failed=0</StdOut>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 2&#xD;
+Actual:   1</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 478&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 480&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="840cd633-8cd3-444e-aed0-5068411c3f14" testId="01f83d43-4bd9-c4fe-d175-4d7c25f6c63a" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.BoundedAdversePeer(scenario: &quot;reset&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0303744" startTime="2026-11-18T13:20:59.5647902+08:00" endTime="2026-11-18T13:20:59.5647905+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="840cd633-8cd3-444e-aed0-5068411c3f14">
+      <Output>
+        <StdOut>reset: peer-disconnect, 0 bytes, 12.07 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c4e72c57-0a87-4d2f-86cd-32a58405506c" testId="cdba9367-ce24-cbda-26a9-da51a6b78567" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;clamp&quot;, reason: &quot;total-deadline&quot;, admitted: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2760610" startTime="2026-11-18T13:20:57.9109665+08:00" endTime="2026-11-18T13:20:57.9109669+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c4e72c57-0a87-4d2f-86cd-32a58405506c">
+      <Output>
+        <StdOut>clamp: drain, total-deadline, admitted=True, 253.00 ms, failed=0</StdOut>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 2&#xD;
+Actual:   1</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 478&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 480&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d5ee2464-0a63-43fa-9b06-96e2e72009ea" testId="92e1d73f-deac-1796-0380-09577ae15f07" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;write-timeout&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2144928" startTime="2026-11-18T13:20:58.7015104+08:00" endTime="2026-11-18T13:20:58.7015111+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5ee2464-0a63-43fa-9b06-96e2e72009ea">
+      <Output>
+        <StdOut>profile (4194304, 4096, 0): write-deadline, 151.43 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4ef01d71-afca-4916-8a2e-c66e3e1373fd" testId="573d0e39-35cb-455d-f8eb-d8308b8d2621" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.BoundedAdversePeer(scenario: &quot;stalled&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0964765" startTime="2026-11-18T13:20:59.6618925+08:00" endTime="2026-11-18T13:20:59.6618927+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ef01d71-afca-4916-8a2e-c66e3e1373fd">
+      <Output>
+        <StdOut>stalled: drain-deadline, 0 bytes, 77.85 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7f77257a-8a2a-442f-b501-6506b80684d5" testId="23b5d67f-0a29-3f69-d92b-30ed7c38fd7d" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;large&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0164955" startTime="2026-11-18T13:20:57.9680667+08:00" endTime="2026-11-18T13:20:57.9680670+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f77257a-8a2a-442f-b501-6506b80684d5">
+      <Output>
+        <StdOut>large: byte-limit, 8192 bytes, 0.13 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="134ca42d-65b1-4ff6-9a52-96610ee070fd" testId="4ecfa99f-a5ae-b34e-2ec3-fadb515c3ed9" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 3, simultaneous: 1, admitted: 1)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1002325" startTime="2026-11-18T13:20:59.3341867+08:00" endTime="2026-11-18T13:20:59.3341869+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="134ca42d-65b1-4ff6-9a52-96610ee070fd">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 2&#xD;
+Actual:   1</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 180&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 188&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2dadbe6a-097f-4dbd-8817-85c082cabe23" testId="2f8c443a-6ddd-0582-4051-5c50bc34e202" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1029953" startTime="2026-11-18T13:20:59.4376044+08:00" endTime="2026-11-18T13:20:59.4376047+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2dadbe6a-097f-4dbd-8817-85c082cabe23">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 2&#xD;
+Actual:   1</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 180&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 188&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c7962b41-76e2-4cb2-8b52-51b24e1a3a86" testId="90727a1e-da7e-9671-c80a-6c5b4cc7c41f" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;listener&quot;, reason: &quot;listener-shutdown&quot;, admitted: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0020040" startTime="2026-11-18T13:20:57.9385230+08:00" endTime="2026-11-18T13:20:57.9385232+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7962b41-76e2-4cb2-8b52-51b24e1a3a86">
+      <Output>
+        <StdOut>listener: post-write, listener-shutdown, admitted=False, 0.52 ms, failed=0</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0c4f111d-543b-4c9f-9ddc-750a9b73b2ef" testId="10c69965-b116-e6b8-e25b-75dd705e2f99" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1069832" startTime="2026-11-18T13:20:59.1241842+08:00" endTime="2026-11-18T13:20:59.1241845+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c4f111d-543b-4c9f-9ddc-750a9b73b2ef">
+      <Output>
+        <StdOut>delayed=True exactFailure=True ending=reader-eof</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="32d46913-fa86-4479-a78c-1fb18d54f1de" testId="6bdbdcaf-0286-7bbd-a987-7af35ee6ffbc" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0930449" startTime="2026-11-18T13:20:59.2176374+08:00" endTime="2026-11-18T13:20:59.2176377+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="32d46913-fa86-4479-a78c-1fb18d54f1de">
+      <Output>
+        <StdOut>delayed=False exactFailure=True ending=reader-eof</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1de771c7-3d4b-43c5-a8a6-a66090975018" testId="d820e194-e1b6-5245-56cb-6740063efde3" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 1, simultaneous: 1, admitted: 0)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0144086" startTime="2026-11-18T13:20:59.2324046+08:00" endTime="2026-11-18T13:20:59.2324048+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1de771c7-3d4b-43c5-a8a6-a66090975018">
+      <Output>
+        <StdOut>admitted=0 capacity=1 connections=1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5d122836-ae1a-4e88-a644-d7b9fa454c49" testId="604af1cc-f2e6-14b4-d7c7-f500a9b5cbbb" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;absolute&quot;, reason: &quot;total-deadline&quot;, admitted: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2701424" startTime="2026-11-18T13:20:57.6183360+08:00" endTime="2026-11-18T13:20:57.6183362+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5d122836-ae1a-4e88-a644-d7b9fa454c49">
+      <Output>
+        <StdOut>absolute: post-write, total-deadline, admitted=False, 257.74 ms, failed=0</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8e531048-16f9-4233-aaca-073bfd50e75c" testId="3bf5fdee-508d-f2ca-18ca-2dd5e2c854f4" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.TlsRefusalNeverEntersPlaintextHelper" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2857662" startTime="2026-11-18T13:20:59.9665569+08:00" endTime="2026-11-18T13:20:59.9665571+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8e531048-16f9-4233-aaca-073bfd50e75c" />
+    <UnitTestResult executionId="2b8a5f4d-1b27-45ce-b7e4-141741648974" testId="615dea7f-1c8b-2b56-ebcc-62502feccdca" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ShutdownObservesConnectionAcceptedDuringStop" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0024947" startTime="2026-11-18T13:20:59.4398740+08:00" endTime="2026-11-18T13:20:59.4398741+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b8a5f4d-1b27-45ce-b7e4-141741648974" />
+    <UnitTestResult executionId="42539e17-0173-417f-90f3-9fdbedc32523" testId="3ac847ae-bb27-2c52-1459-a5bf77d62a09" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;malformed&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0052570" startTime="2026-11-18T13:20:57.9447781+08:00" endTime="2026-11-18T13:20:57.9447784+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="42539e17-0173-417f-90f3-9fdbedc32523">
+      <Output>
+        <StdOut>malformed: peer-eof, 6 bytes, 0.13 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5e940659-a821-4c01-a9ac-20f61e08fb22" testId="3d4db3e0-f0be-d480-85ed-b4b3e1652659" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;small&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0151346" startTime="2026-11-18T13:20:57.9997698+08:00" endTime="2026-11-18T13:20:57.9997702+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5e940659-a821-4c01-a9ac-20f61e08fb22">
+      <Output>
+        <StdOut>small: peer-eof, 29 bytes, 0.13 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c8aa103a-23f2-4f3f-b019-53e4ffb06adc" testId="5b39ebc4-348b-2af5-14d7-c66b40e62be6" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;owner&quot;, reason: &quot;owner-cancelled&quot;, admitted: False)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0151235" startTime="2026-11-18T13:20:57.6334146+08:00" endTime="2026-11-18T13:20:57.6334150+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8aa103a-23f2-4f3f-b019-53e4ffb06adc">
+      <Output>
+        <StdOut>owner: post-write, owner-cancelled, admitted=False, 1.07 ms, failed=0</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="06aad630-0492-4b4e-adbe-2e65a8e36c8f" testId="058eab1a-985e-9f2b-3522-c998fe35f231" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;delayed&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0157525" startTime="2026-11-18T13:20:57.9868817+08:00" endTime="2026-11-18T13:20:57.9868820+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06aad630-0492-4b4e-adbe-2e65a8e36c8f">
+      <Output>
+        <StdOut>delayed: peer-eof, 29 bytes, 0.12 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="283904ea-d0d9-4ce2-ba7a-feb30e742d22" testId="9d2a587e-4e12-2dc1-9b67-a3dbff70342f" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;deadline&quot;)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.3148830" startTime="2026-11-18T13:20:59.0167804+08:00" endTime="2026-11-18T13:20:59.0167807+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="283904ea-d0d9-4ce2-ba7a-feb30e742d22">
+      <Output>
+        <StdOut>profile (4194304, 4096, 0): total-deadline, 253.71 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="60635e54-9752-4d0c-8a58-be8e745be0b8" testId="ed303477-f386-64b6-aca8-cc448e063991" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2782304" startTime="2026-11-18T13:20:58.2944393+08:00" endTime="2026-11-18T13:20:58.2944396+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60635e54-9752-4d0c-8a58-be8e745be0b8">
+      <Output>
+        <StdOut>absolute deadline: 258.25 ms</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="6bdbdcaf-0286-7bbd-a987-7af35ee6ffbc">
+      <Execution id="32d46913-fa86-4479-a78c-1fb18d54f1de" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="QueuedTailComparison" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ShutdownObservesConnectionAcceptedDuringStop" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="615dea7f-1c8b-2b56-ebcc-62502feccdca">
+      <Execution id="2b8a5f4d-1b27-45ce-b7e4-141741648974" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ShutdownObservesConnectionAcceptedDuringStop" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.BoundedAdversePeer(scenario: &quot;continues&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="d7e83a07-3b23-6646-78b0-520781e5a277">
+      <Execution id="0c076d59-01c5-4b81-9ee0-648efb4ef6b0" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="BoundedAdversePeer" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;exception&quot;, reason: &quot;peer-eof&quot;, admitted: True)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="a6ca2a14-c5cc-9be8-41e6-81f7ecc258eb">
+      <Execution id="c9d5dcee-a408-4e5e-a55f-5d5e97523efc" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="SuccessfulWriteEndsWriteTimeoutBeforeObserver" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.BoundedAdversePeer(scenario: &quot;reset&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="01f83d43-4bd9-c4fe-d175-4d7c25f6c63a">
+      <Execution id="840cd633-8cd3-444e-aed0-5068411c3f14" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="BoundedAdversePeer" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;large&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="23b5d67f-0a29-3f69-d92b-30ed7c38fd7d">
+      <Execution id="7f77257a-8a2a-442f-b501-6506b80684d5" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ExactFailureAndNoTrailingExecution" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;absolute&quot;, reason: &quot;total-deadline&quot;, admitted: False)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="604af1cc-f2e6-14b4-d7c7-f500a9b5cbbb">
+      <Execution id="5d122836-ae1a-4e88-a644-d7b9fa454c49" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="SuccessfulWriteEndsWriteTimeoutBeforeObserver" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="8615a6f0-8712-96e8-ab8c-4b5b4394a437">
+      <Execution id="01a2bde4-6764-4ffe-b52b-165327c2b65a" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ListenerStopJoinsActualHandleAndReturnsPermit" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;small&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="3d4db3e0-f0be-d480-85ed-b4b3e1652659">
+      <Execution id="5e940659-a821-4c01-a9ac-20f61e08fb22" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ExactFailureAndNoTrailingExecution" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;listener&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="247dde6c-65d2-1967-1d16-65ecf0458567">
+      <Execution id="b3027c49-f30d-461d-9851-08cc173b2af5" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ActualPendingTerminalWriteIsInterrupted" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;owner&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="ccb27250-f2a1-19b4-940b-ad2fe14bed49">
+      <Execution id="17e474e6-c3f1-409e-9907-f70c5d62fc58" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ActualPendingTerminalWriteIsInterrupted" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;empty&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="8d89885c-45c6-1fc8-4436-17271f8ced39">
+      <Execution id="fa6a3ead-b78d-4aa5-bf8d-d29dca7aa74b" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ExactFailureAndNoTrailingExecution" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;listener&quot;, reason: &quot;listener-shutdown&quot;, admitted: False)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="90727a1e-da7e-9671-c80a-6c5b4cc7c41f">
+      <Execution id="c7962b41-76e2-4cb2-8b52-51b24e1a3a86" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="SuccessfulWriteEndsWriteTimeoutBeforeObserver" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;delayed&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="058eab1a-985e-9f2b-3522-c998fe35f231">
+      <Execution id="06aad630-0492-4b4e-adbe-2e65a8e36c8f" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ExactFailureAndNoTrailingExecution" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 3, simultaneous: 1, admitted: 1)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="4ecfa99f-a5ae-b34e-2ec3-fadb515c3ed9">
+      <Execution id="134ca42d-65b1-4ff6-9a52-96610ee070fd" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="DrainAdmissionAndRecovery" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.OneDeadlineCoversWriteAndDrain" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="ed303477-f386-64b6-aca8-cc448e063991">
+      <Execution id="60635e54-9752-4d0c-8a58-be8e745be0b8" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="OneDeadlineCoversWriteAndDrain" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="10c69965-b116-e6b8-e25b-75dd705e2f99">
+      <Execution id="0c4f111d-543b-4c9f-9ddc-750a9b73b2ef" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="QueuedTailComparison" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;deadline&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="9d2a587e-4e12-2dc1-9b67-a3dbff70342f">
+      <Execution id="283904ea-d0d9-4ce2-ba7a-feb30e742d22" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ActualPendingTerminalWriteIsInterrupted" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 1, simultaneous: 1, admitted: 0)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="d820e194-e1b6-5245-56cb-6740063efde3">
+      <Execution id="1de771c7-3d4b-43c5-a8a6-a66090975018" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="DrainAdmissionAndRecovery" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.TlsRefusalNeverEntersPlaintextHelper" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="3bf5fdee-508d-f2ca-18ca-2dd5e2c854f4">
+      <Execution id="8e531048-16f9-4233-aaca-073bfd50e75c" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="TlsRefusalNeverEntersPlaintextHelper" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="2f8c443a-6ddd-0582-4051-5c50bc34e202">
+      <Execution id="2dadbe6a-097f-4dbd-8817-85c082cabe23" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="DrainAdmissionAndRecovery" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;owner&quot;, reason: &quot;owner-cancelled&quot;, admitted: False)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="5b39ebc4-348b-2af5-14d7-c66b40e62be6">
+      <Execution id="c8aa103a-23f2-4f3f-b019-53e4ffb06adc" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="SuccessfulWriteEndsWriteTimeoutBeforeObserver" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;clamp&quot;, reason: &quot;total-deadline&quot;, admitted: True)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="cdba9367-ce24-cbda-26a9-da51a6b78567">
+      <Execution id="c4e72c57-0a87-4d2f-86cd-32a58405506c" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="SuccessfulWriteEndsWriteTimeoutBeforeObserver" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: &quot;delay&quot;, reason: &quot;peer-eof&quot;, admitted: True)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="0e91055f-7be1-702e-83f2-e1f0584ad092">
+      <Execution id="c8c75071-e58d-4c36-9e4d-7b820e84ecab" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="SuccessfulWriteEndsWriteTimeoutBeforeObserver" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.BoundedAdversePeer(scenario: &quot;stalled&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="573d0e39-35cb-455d-f8eb-d8308b8d2621">
+      <Execution id="4ef01d71-afca-4916-8a2e-c66e3e1373fd" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="BoundedAdversePeer" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: &quot;write-timeout&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="92e1d73f-deac-1796-0380-09577ae15f07">
+      <Execution id="d5ee2464-0a63-43fa-9b06-96e2e72009ea" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ActualPendingTerminalWriteIsInterrupted" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;malformed&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="3ac847ae-bb27-2c52-1459-a5bf77d62a09">
+      <Execution id="42539e17-0173-417f-90f3-9fdbedc32523" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ExactFailureAndNoTrailingExecution" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ExactFailureAndNoTrailingExecution(scenario: &quot;partial&quot;)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="69a49385-2052-c00c-8626-46f98e409ae1">
+      <Execution id="175b42b1-31e2-459b-a59d-4fb9bcda881c" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ExactFailureAndNoTrailingExecution" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="8615a6f0-8712-96e8-ab8c-4b5b4394a437" executionId="01a2bde4-6764-4ffe-b52b-165327c2b65a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d89885c-45c6-1fc8-4436-17271f8ced39" executionId="fa6a3ead-b78d-4aa5-bf8d-d29dca7aa74b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="247dde6c-65d2-1967-1d16-65ecf0458567" executionId="b3027c49-f30d-461d-9851-08cc173b2af5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e91055f-7be1-702e-83f2-e1f0584ad092" executionId="c8c75071-e58d-4c36-9e4d-7b820e84ecab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d7e83a07-3b23-6646-78b0-520781e5a277" executionId="0c076d59-01c5-4b81-9ee0-648efb4ef6b0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ccb27250-f2a1-19b4-940b-ad2fe14bed49" executionId="17e474e6-c3f1-409e-9907-f70c5d62fc58" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="69a49385-2052-c00c-8626-46f98e409ae1" executionId="175b42b1-31e2-459b-a59d-4fb9bcda881c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6ca2a14-c5cc-9be8-41e6-81f7ecc258eb" executionId="c9d5dcee-a408-4e5e-a55f-5d5e97523efc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="01f83d43-4bd9-c4fe-d175-4d7c25f6c63a" executionId="840cd633-8cd3-444e-aed0-5068411c3f14" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cdba9367-ce24-cbda-26a9-da51a6b78567" executionId="c4e72c57-0a87-4d2f-86cd-32a58405506c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="92e1d73f-deac-1796-0380-09577ae15f07" executionId="d5ee2464-0a63-43fa-9b06-96e2e72009ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="573d0e39-35cb-455d-f8eb-d8308b8d2621" executionId="4ef01d71-afca-4916-8a2e-c66e3e1373fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23b5d67f-0a29-3f69-d92b-30ed7c38fd7d" executionId="7f77257a-8a2a-442f-b501-6506b80684d5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ecfa99f-a5ae-b34e-2ec3-fadb515c3ed9" executionId="134ca42d-65b1-4ff6-9a52-96610ee070fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2f8c443a-6ddd-0582-4051-5c50bc34e202" executionId="2dadbe6a-097f-4dbd-8817-85c082cabe23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90727a1e-da7e-9671-c80a-6c5b4cc7c41f" executionId="c7962b41-76e2-4cb2-8b52-51b24e1a3a86" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="10c69965-b116-e6b8-e25b-75dd705e2f99" executionId="0c4f111d-543b-4c9f-9ddc-750a9b73b2ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6bdbdcaf-0286-7bbd-a987-7af35ee6ffbc" executionId="32d46913-fa86-4479-a78c-1fb18d54f1de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d820e194-e1b6-5245-56cb-6740063efde3" executionId="1de771c7-3d4b-43c5-a8a6-a66090975018" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="604af1cc-f2e6-14b4-d7c7-f500a9b5cbbb" executionId="5d122836-ae1a-4e88-a644-d7b9fa454c49" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3bf5fdee-508d-f2ca-18ca-2dd5e2c854f4" executionId="8e531048-16f9-4233-aaca-073bfd50e75c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="615dea7f-1c8b-2b56-ebcc-62502feccdca" executionId="2b8a5f4d-1b27-45ce-b7e4-141741648974" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3ac847ae-bb27-2c52-1459-a5bf77d62a09" executionId="42539e17-0173-417f-90f3-9fdbedc32523" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3d4db3e0-f0be-d480-85ed-b4b3e1652659" executionId="5e940659-a821-4c01-a9ac-20f61e08fb22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5b39ebc4-348b-2af5-14d7-c66b40e62be6" executionId="c8aa103a-23f2-4f3f-b019-53e4ffb06adc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="058eab1a-985e-9f2b-3522-c998fe35f231" executionId="06aad630-0492-4b4e-adbe-2e65a8e36c8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9d2a587e-4e12-2dc1-9b67-a3dbff70342f" executionId="283904ea-d0d9-4ce2-ba7a-feb30e742d22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ed303477-f386-64b6-aca8-cc448e063991" executionId="60635e54-9752-4d0c-8a58-be8e745be0b8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="28" executed="28" passed="23" failed="5" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.16]   Discovering: BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.27]   Discovered:  BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.27]   Starting:    BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.51]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.51]       Expected: 2&#xD;
+[xUnit.net 00:00:00.51]       Actual:   1&#xD;
+[xUnit.net 00:00:00.51]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.51]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(478,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted)&#xD;
+[xUnit.net 00:00:00.51]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(480,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted)&#xD;
+[xUnit.net 00:00:00.51]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.51]       Output:&#xD;
+[xUnit.net 00:00:00.51]         delay: drain, peer-eof, admitted=True, 130.70 ms, failed=0&#xD;
+[xUnit.net 00:00:01.07]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.07]       Expected: 2&#xD;
+[xUnit.net 00:00:01.07]       Actual:   1&#xD;
+[xUnit.net 00:00:01.07]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.07]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(478,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted)&#xD;
+[xUnit.net 00:00:01.07]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(480,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted)&#xD;
+[xUnit.net 00:00:01.07]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.07]       Output:&#xD;
+[xUnit.net 00:00:01.07]         clamp: drain, total-deadline, admitted=True, 253.00 ms, failed=0&#xD;
+[xUnit.net 00:00:01.10]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.10]       Expected: 2&#xD;
+[xUnit.net 00:00:01.10]       Actual:   1&#xD;
+[xUnit.net 00:00:01.10]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.10]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(478,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted)&#xD;
+[xUnit.net 00:00:01.10]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(480,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(String scenario, String reason, Boolean admitted)&#xD;
+[xUnit.net 00:00:01.10]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.10]       Output:&#xD;
+[xUnit.net 00:00:01.10]         exception: drain, peer-eof, admitted=True, 0.15 ms, failed=0&#xD;
+[xUnit.net 00:00:02.50]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:02.50]       Expected: 2&#xD;
+[xUnit.net 00:00:02.50]       Actual:   1&#xD;
+[xUnit.net 00:00:02.50]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.50]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(180,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted)&#xD;
+[xUnit.net 00:00:02.50]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(188,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted)&#xD;
+[xUnit.net 00:00:02.50]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.60]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:02.60]       Expected: 2&#xD;
+[xUnit.net 00:00:02.60]       Actual:   1&#xD;
+[xUnit.net 00:00:02.60]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.60]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(180,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted)&#xD;
+[xUnit.net 00:00:02.60]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(188,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted)&#xD;
+[xUnit.net 00:00:02.60]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.14]   Finished:    BoltSharp.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:57.3488290+08:00">
+        <Text>[xUnit.net 00:00:00.51]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: "delay", reason: "peer-eof", admitted: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:57.9110759+08:00">
+        <Text>[xUnit.net 00:00:01.07]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: "clamp", reason: "total-deadline", admitted: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:57.9365210+08:00">
+        <Text>[xUnit.net 00:00:01.10]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.SuccessfulWriteEndsWriteTimeoutBeforeObserver(scenario: "exception", reason: "peer-eof", admitted: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:59.3339417+08:00">
+        <Text>[xUnit.net 00:00:02.50]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 3, simultaneous: 1, admitted: 1) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:59.4376074+08:00">
+        <Text>[xUnit.net 00:00:02.60]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
