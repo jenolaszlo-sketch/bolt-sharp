@@ -1,0 +1,3 @@
+﻿dotnet format --verify-no-changes --no-restore --include src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs,src/BoltSharp/Transport/BoltTcpConnection.cs,src/BoltSharp/Transport/BoltTcpServer.cs,tests/BoltSharp.Tests/Transport/PlaintextTerminalCloseTests.cs
+
+format-exit=0

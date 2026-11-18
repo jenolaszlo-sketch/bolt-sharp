@@ -1,0 +1,11 @@
+﻿C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(71,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(72,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+
+Build succeeded.
+
+C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(71,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\Messages\BoltRequestDecodeTests.cs(72,9): warning xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [C:\Windows\Temp\opencode\q2\r1\tests\BoltSharp.Tests\BoltSharp.Tests.csproj]
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.59

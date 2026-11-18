@@ -1,0 +1,34 @@
+﻿Fresh Windows checkout of session B's own commit 3c2144a0d655f1e0b7187ca0bf8ac6de1bef8e8f
+core.autocrlf=true. Session B's .gitattributes declares '* text=auto' together with '*.trx text', '*.log text', '*.json text' and '*.md text', but 26 of the blobs it inherited from session A (which committed them under '* -text') contain CRLF.
+Git therefore reports the inherited evidence files as modified in a clean checkout of session B's own commit.
+
+git status --porcelain -- docs/reviews/evidence/Q-B5B-09-PLAIN-Q2
+
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/campaign/baseline-obs-win.json
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/campaign/nc08-probe-f01.json
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/campaign/r1-nc-f01-f01-win.json
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/campaign/r1-obs-win.json
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/core-tests.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/driver-integration.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/driver-interop.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/integration.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-01.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-01.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-02.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-02.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-03.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-03.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-04.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-04.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-05.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-05.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-06.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-06.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-07.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-07.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-08.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-08.trx
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-09.log
+ M docs/reviews/evidence/Q-B5B-09-PLAIN-Q2/negative-controls/nc-09.trx
+
+modified entries: 26

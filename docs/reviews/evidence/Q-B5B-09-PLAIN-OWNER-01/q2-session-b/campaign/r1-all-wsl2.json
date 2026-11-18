@@ -1,0 +1,401 @@
+{
+  "mode": "r1",
+  "filter": "all",
+  "platform": "Unix 6.6.114.1",
+  "runtime": "10.0.14",
+  "timestampUtc": "2026-11-18T04:58:20.6011899+00:00",
+  "results": [
+    {
+      "Name": "F01_Corrected_SuccessfulWritePastWriteTimeout",
+      "Passed": true,
+      "DurationMs": 244.598,
+      "Details": {
+        "exactFailure": true,
+        "peerEnding": "eof",
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 147.14,
+        "lifecycleElapsedMs": 155.24,
+        "observerMs": 140.49,
+        "completed": 1,
+        "failed": 0,
+        "messages": 3,
+        "writeComplete": 1,
+        "drainAdmitted": 1,
+        "drainEnd": 1,
+        "writeFailed": 0,
+        "handles": 1,
+        "handlesClosed": true
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverShorterThanWriteTimeout",
+      "Passed": true,
+      "DurationMs": 37.3947,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": false,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 30.62,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverExceptionContained",
+      "Passed": true,
+      "DurationMs": 31.8733,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": true,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 30.42,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS01_ObserverWithinLifecycleDeadline",
+      "Passed": true,
+      "DurationMs": 35.2606,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": false,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 30.37,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS02_ObserverBeyondAbsoluteDeadline",
+      "Passed": true,
+      "DurationMs": 304.8644,
+      "Details": {
+        "phase": "post-write",
+        "reason": "total-deadline",
+        "admitted": false,
+        "elapsedMs": 300.36,
+        "closedAtMs": 253.16,
+        "closedWhileObserverActive": true,
+        "observerMs": 300.1,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "writeFailed": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS03_ObserverBlockedAfterSocketDisposal",
+      "Passed": true,
+      "DurationMs": 263.5566,
+      "Details": {
+        "stimulus": "total",
+        "phase": "post-write",
+        "reason": "total-deadline",
+        "admitted": false,
+        "elapsedMs": 256.82,
+        "signalToSocketCloseMs": null,
+        "stopCompletedBeforeObserverRelease": null,
+        "whileObserverBlocked": {
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS05_ListenerStopWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 1.7816,
+      "Details": {
+        "stimulus": "listener",
+        "phase": "post-write",
+        "reason": "listener-shutdown",
+        "admitted": false,
+        "elapsedMs": 0.61,
+        "signalToSocketCloseMs": 0.14,
+        "stopCompletedBeforeObserverRelease": false,
+        "whileObserverBlocked": {
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS05b_OwnerCancellationWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 5.8029,
+      "Details": {
+        "stimulus": "owner",
+        "phase": "post-write",
+        "reason": "owner-cancelled",
+        "admitted": false,
+        "elapsedMs": 2.73,
+        "signalToSocketCloseMs": 2.56,
+        "stopCompletedBeforeObserverRelease": null,
+        "whileObserverBlocked": {
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS04_CapacityHeldWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 16.9513,
+      "Details": {
+        "activeWhileBlocked": 2,
+        "connectionTasksWhileBlocked": 2,
+        "permitsAvailableWhileBlocked": 1,
+        "rejectedCapacity": 1,
+        "activeAfterRelease": 0,
+        "connectionTasksAfterRelease": 0,
+        "permitsAvailableAfterRelease": 1,
+        "completed": 3,
+        "failed": 0,
+        "healthyReplacement": true
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS06_StopBeyondShutdownPolicyThenSettle",
+      "Passed": true,
+      "DurationMs": 511.9384,
+      "Details": {
+        "stopElapsedMs": 504.02,
+        "activeAfterStop": 1,
+        "connectionTasksAfterStop": 1,
+        "permitsAtStop": 0,
+        "permitsAvailableAfterStop": 0,
+        "listenerStoppedDetail": "activeRemaining=1 stop=deadline",
+        "connectAfterStop": "refused",
+        "socketClosedAtDeadline": true,
+        "reasonAfterRelease": "listener-shutdown",
+        "settledAfterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 0
+        },
+        "completed": 1,
+        "failed": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Backpressure_WriteSpecificTimeout",
+      "Passed": false,
+      "DurationMs": 1034.5581,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:262144,\u0022Receive\u0022:1024,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:2048,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048576,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:262016,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524160,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048448,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572864,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097024,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097152,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572352,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2096640,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2621312,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 614\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 129"
+    },
+    {
+      "Name": "Backpressure_AbsoluteDeadline",
+      "Passed": false,
+      "DurationMs": 966.2059,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:262144,\u0022Receive\u0022:1024,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:2048,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048576,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:262016,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524160,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048448,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572864,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097024,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097152,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572352,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2096640,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2621312,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 614\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 129"
+    },
+    {
+      "Name": "Backpressure_OwnerCancellation",
+      "Passed": false,
+      "DurationMs": 967.7279,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:262144,\u0022Receive\u0022:1024,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:2048,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048576,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:262016,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524160,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048448,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572864,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097024,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097152,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572352,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2096640,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2621312,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 614\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 129"
+    },
+    {
+      "Name": "Backpressure_ListenerCancellation",
+      "Passed": false,
+      "DurationMs": 971.1193,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:262144,\u0022Receive\u0022:1024,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:2048,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048576,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:262016,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524160,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048448,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572864,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097024,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097152,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572352,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2096640,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2621312,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 614\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 129"
+    },
+    {
+      "Name": "Diagnostics_SuccessfulLifecycleMetadata",
+      "Passed": true,
+      "DurationMs": 42.2274,
+      "Details": {
+        "names": [
+          "write-start",
+          "write-complete",
+          "drain-admitted",
+          "send-shutdown",
+          "drain-start",
+          "drain-end",
+          "disposed"
+        ],
+        "connectionIds": [
+          "conn-0001"
+        ],
+        "phases": {
+          "write-start@0.00": "write",
+          "write-complete@0.04": "post-write",
+          "drain-admitted@30.11": "shutdown",
+          "send-shutdown@30.15": "shutdown",
+          "drain-start@30.15": "drain",
+          "drain-end@30.17": "drain",
+          "disposed@30.18": "drain"
+        },
+        "writeStartPhase": "write",
+        "writeCompletePhase": "post-write",
+        "drainAdmittedPhase": "shutdown",
+        "drainEndPhase": "drain",
+        "drainEndReason": "peer-eof",
+        "disposedPhase": "drain",
+        "disposedReason": "peer-eof",
+        "elapsedMonotonic": true,
+        "maxBytes": 0,
+        "writeFailed": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Diagnostics_PendingWriteMetadata",
+      "Passed": false,
+      "DurationMs": 971.299,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:262144,\u0022Receive\u0022:1024,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:2048,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048576,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:262016,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524160,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1048448,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572864,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097024,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2097152,\u0022Receive\u0022:1024,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:1572352,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2096640,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:2621312,\u0022Receive\u0022:4096,\u0022Send\u0022:1024},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 614\n   at Q2Probe.Program.DiagnosticsPendingWrite() in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 781\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 129"
+    },
+    {
+      "Name": "Diagnostics_CapacityFallbackMetadata",
+      "Passed": true,
+      "DurationMs": 3.3848,
+      "Details": {
+        "phase": "admission",
+        "reason": "capacity",
+        "admitted": false,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "drainEnd": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Tls_IsolationFromPlaintextHelper",
+      "Passed": true,
+      "DurationMs": 192.3422,
+      "Details": {
+        "exactFailureOverTls": true,
+        "plaintextEvents": 0,
+        "completed": 1,
+        "failed": 0,
+        "tlsHandshakeFailures": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Repeat_F01_10x",
+      "Passed": true,
+      "DurationMs": 1424.9251,
+      "Details": {
+        "count": 10,
+        "failures": [],
+        "minMs": 141.57,
+        "maxMs": 142.67,
+        "meanMs": 142.03
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Repeat_ShorterObserver_10x",
+      "Passed": true,
+      "DurationMs": 345.7933,
+      "Details": {
+        "count": 10,
+        "failures": [],
+        "minMs": 31.97,
+        "maxMs": 37.45,
+        "meanMs": 34.57
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Repeat_ObserverExceedsDeadline_5x",
+      "Passed": true,
+      "DurationMs": 1527.4731,
+      "Details": {
+        "count": 5,
+        "failures": [],
+        "minMs": 303.95,
+        "maxMs": 307.86,
+        "meanMs": 305.45
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

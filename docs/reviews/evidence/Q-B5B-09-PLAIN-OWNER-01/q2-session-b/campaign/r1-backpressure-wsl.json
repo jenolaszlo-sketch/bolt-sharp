@@ -1,0 +1,28 @@
+{
+  "platform": "wsl2",
+  "revision": "6a40c4b84993dec77deb165cef31e419df05be2e",
+  "tests": [
+    {
+      "name": "ActualPendingTerminalWriteIsInterrupted",
+      "stimuli": ["write-timeout", "deadline", "owner", "listener"],
+      "results": {
+        "write-timeout": { "reason": "write-deadline", "phase": "write", "admitted": false, "elapsedMs": 151.50 },
+        "deadline": { "reason": "total-deadline", "phase": "write", "admitted": false, "elapsedMs": 253.63 },
+        "owner": { "reason": "owner-cancelled", "phase": "write", "admitted": false, "elapsedMs": 24.20 },
+        "listener": { "reason": "listener-shutdown", "phase": "write", "admitted": false, "elapsedMs": 23.17 }
+      }
+    },
+    {
+      "name": "SuccessfulWriteEndsWriteTimeoutBeforeObserver",
+      "scenarios": ["delay", "absolute", "listener", "owner", "clamp", "exception"],
+      "results": {
+        "delay": { "reason": "peer-eof", "phase": "drain", "admitted": true, "elapsedMs": 147.32 },
+        "absolute": { "reason": "total-deadline", "phase": "post-write", "admitted": false, "elapsedMs": 255.12 },
+        "listener": { "reason": "listener-shutdown", "phase": "post-write", "admitted": false, "elapsedMs": 23.17 },
+        "owner": { "reason": "owner-cancelled", "phase": "post-write", "admitted": false, "elapsedMs": 24.20 },
+        "clamp": { "reason": "total-deadline", "phase": "drain", "admitted": true, "elapsedMs": 248.90 },
+        "exception": { "reason": "peer-eof", "phase": "drain", "admitted": true, "elapsedMs": 140.22 }
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "mode": "r1",
+  "filter": "f01",
+  "platform": "Microsoft Windows NT 10.0.26200.0",
+  "runtime": "8.0.31",
+  "timestampUtc": "2026-11-17T15:06:03.1231627+00:00",
+  "results": [
+    {
+      "Name": "F01_Corrected_SuccessfulWritePastWriteTimeout",
+      "Passed": true,
+      "DurationMs": 231.6073,
+      "Details": {
+        "exactFailure": true,
+        "peerEnding": "eof",
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 157.87,
+        "lifecycleElapsedMs": 176.63,
+        "observerMs": 154.66,
+        "completed": 1,
+        "failed": 0,
+        "messages": 3,
+        "writeComplete": 1,
+        "drainAdmitted": 1,
+        "drainEnd": 1,
+        "writeFailed": 0,
+        "handles": 1,
+        "handlesClosed": true
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverShorterThanWriteTimeout",
+      "Passed": true,
+      "DurationMs": 60.7393,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": false,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 39.07,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverExceptionContained",
+      "Passed": true,
+      "DurationMs": 57.3152,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": true,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 38.17,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "mode": "baseline",
+  "filter": "obs",
+  "platform": "Microsoft Windows NT 10.0.26200.0",
+  "runtime": "8.0.31",
+  "timestampUtc": "2026-11-18T04:55:34.7638743+00:00",
+  "results": [
+    {
+      "Name": "OBS03_BaselineObserverBlockedAfterSocketDisposal",
+      "Passed": true,
+      "DurationMs": 163.8934,
+      "Details": {
+        "inheritedImplementation": "baseline 20fbc461c0257620db28fb78a463218b242455bc",
+        "whileObserverBlocked": {
+          "socketClosedWaitMs": 88.3,
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "phase": "write",
+        "reason": "write-deadline",
+        "admitted": false,
+        "elapsedMs": 93.27,
+        "completed": 0,
+        "failed": 1,
+        "drainAdmitted": 0
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

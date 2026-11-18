@@ -1,0 +1,25 @@
+﻿Q-B5B-09-PLAIN-Q2 session B verifier, executed in a disposable worktree at 3c2144a0d655f1e0b7187ca0bf8ac6de1bef8e8f
+The verifier hard-codes that the Q2 qualification commit's parent is the R1 evidence commit d7e5ac14704a9576813e32692b29050ef92ee7b8.
+Session B's actual parent is 96a1a3cd0f059b554c6e7ab2ce099ef29b161ace (session A), so the check cannot pass.
+
+python : Traceback (most recent call last):
+At line:1 char:707
++ ... v-b; $out = python docs\reviews\evidence\Q-B5B-09-PLAIN-Q2\verify-evi ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Windows\Temp\opencode\q2v-b\docs\reviews\evidence\Q-B5B-09-PLAIN-Q2\verify-evidence.py", line 88, in 
+<module>
+    verify(sys.argv[1] if len(sys.argv) > 1 else "HEAD")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Windows\Temp\opencode\q2v-b\docs\reviews\evidence\Q-B5B-09-PLAIN-Q2\verify-evidence.py", line 45, in verify
+    require(git("show", "-s", "--format=%P", rev).decode().strip() == R1_EVIDENCE,
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "Unexpected Q2 qualification parent (should be R1 evidence commit)")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Windows\Temp\opencode\q2v-b\docs\reviews\evidence\Q-B5B-09-PLAIN-Q2\verify-evidence.py", line 29, in require
+    raise ValueError(what)
+ValueError: Unexpected Q2 qualification parent (should be R1 evidence commit)
+
+exit code: 1

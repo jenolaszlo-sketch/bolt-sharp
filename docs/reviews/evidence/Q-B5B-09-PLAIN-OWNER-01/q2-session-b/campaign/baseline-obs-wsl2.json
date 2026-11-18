@@ -1,0 +1,38 @@
+{
+  "mode": "baseline",
+  "filter": "obs",
+  "platform": "Unix 6.6.114.1",
+  "runtime": "10.0.14",
+  "timestampUtc": "2026-11-18T04:57:31.3621266+00:00",
+  "results": [
+    {
+      "Name": "OBS03_BaselineObserverBlockedAfterSocketDisposal",
+      "Passed": true,
+      "DurationMs": 190.9252,
+      "Details": {
+        "inheritedImplementation": "baseline 20fbc461c0257620db28fb78a463218b242455bc",
+        "whileObserverBlocked": {
+          "socketClosedWaitMs": 78.47,
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "phase": "write",
+        "reason": "write-deadline",
+        "admitted": false,
+        "elapsedMs": 85.67,
+        "completed": 0,
+        "failed": 1,
+        "drainAdmitted": 0
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

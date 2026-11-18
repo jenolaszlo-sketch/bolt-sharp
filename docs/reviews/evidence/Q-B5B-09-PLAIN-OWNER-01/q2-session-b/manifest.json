@@ -1,0 +1,107 @@
+{
+  "qualification": "Q-B5B-09-PLAIN-Q2",
+  "disposition": "SUPPORTED WITH QUALIFICATIONS",
+  "reviewer": "Independent session (fresh, no R1/Q1 context)",
+  "timestampUtc": "2026-11-18T08:30:00Z",
+  "pinnedRevisions": {
+    "originalPlaintext": "20fbc461c0257620db28fb78a463218b242455bc",
+    "q1Qualification": "9dd2fe1b9b6f8ab2880e3fe50b8ef9ac2d43ae9c",
+    "q1Tree": "f0f1d38dbe648ee36c07a490f6217b47a179dd16",
+    "r1Implementation": "6a40c4b84993dec77deb165cef31e419df05be2e",
+    "r1Tree": "a23edab4242711fffc28da63f254ff0f8b4d3082",
+    "r1Evidence": "d7e5ac14704a9576813e32692b29050ef92ee7b8",
+    "r1EvidenceTree": "b98b57723ac6e8754961261e235a74013ca76058",
+    "typedLinger": "dac52d55ade0a9ae703b801c8a4066e8aef2bd58"
+  },
+  "repositoryState": {
+    "workingDir": "D:\\projects\\bolt-sharp",
+    "branch": "main",
+    "head": "d7e5ac14704a9576813e32692b29050ef92ee7b8",
+    "tree": "b98b57723ac6e8754961261e235a74013ca76058",
+    "aheadBehind": "16 ahead / 0 behind origin/main",
+    "clean": true,
+    "worktrees": 1,
+    "stashes": 0
+  },
+  "evidenceFiles": [
+    { "path": "README.md", "sha256": "", "bytes": 0 },
+    { "path": "manifest.json", "sha256": "", "bytes": 0 },
+    { "path": "independence-statement.txt", "sha256": "", "bytes": 0 },
+    { "path": "negative-controls-assessment.md", "sha256": "", "bytes": 0 },
+    { "path": "r1-nc-f01-mutation.patch", "sha256": "", "bytes": 0 },
+    { "path": "build-production.log", "sha256": "", "bytes": 0 },
+    { "path": "build-solution.log", "sha256": "", "bytes": 0 },
+    { "path": "format-check.log", "sha256": "", "bytes": 0 },
+    { "path": "core-tests.trx", "sha256": "", "bytes": 0 },
+    { "path": "driver-integration.trx", "sha256": "", "bytes": 0 },
+    { "path": "integration.trx", "sha256": "", "bytes": 0 },
+    { "path": "campaign/baseline-f01-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-f01-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-all-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-backpressure-win.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/baseline-f01-wsl.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-f01-wsl.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-all-wsl.json", "sha256": "", "bytes": 0 },
+    { "path": "campaign/r1-backpressure-wsl.json", "sha256": "", "bytes": 0 }
+  ],
+  "campaignSummary": {
+    "windows": {
+      "core": { "total": 1257, "passed": 1257, "failed": 0, "skipped": 0 },
+      "driverIntegration": { "total": 43, "passed": 43, "failed": 0, "skipped": 0 },
+      "plaintextTerminalClose": { "total": 28, "passed": 28, "failed": 0, "skipped": 0 },
+      "tlsIntegration": { "total": 23, "passed": 23, "failed": 0, "skipped": 0 },
+      "q2Probe": { "total": 13, "passed": 13, "failed": 0, "skipped": 0 },
+      "f01Baseline": { "reproduced": true, "phase": "write", "reason": "write-deadline", "admitted": false, "completed": 0, "failed": 1 },
+      "f01R1": { "corrected": true, "phase": "drain", "reason": "peer-eof", "admitted": true, "completed": 1, "failed": 0 },
+      "boundaryResource": { "total": 6, "passed": 6 },
+      "diagnostics": { "total": 7, "passed": 7 },
+      "tls": { "total": 5, "passed": 5 },
+      "repeat": { "total": 3, "passed": 3 }
+    },
+    "wsl2": {
+      "core": { "total": 1257, "passed": 1257, "failed": 0, "skipped": 0 },
+      "driverIntegration": { "total": 43, "passed": 43, "failed": 0, "skipped": 0 },
+      "plaintextTerminalClose": { "total": 28, "passed": 28, "failed": 0, "skipped": 0 },
+      "tlsIntegration": { "total": 23, "passed": 23, "failed": 0, "skipped": 0 },
+      "q2Probe": { "total": 13, "passed": 13, "failed": 0, "skipped": 0 },
+      "f01Baseline": { "reproduced": true, "phase": "write", "reason": "write-deadline", "admitted": false, "completed": 0, "failed": 1 },
+      "f01R1": { "corrected": true, "phase": "drain", "reason": "peer-eof", "admitted": true, "completed": 1, "failed": 0 },
+      "boundaryResource": { "total": 6, "passed": 6 },
+      "diagnostics": { "total": 7, "passed": 7 },
+      "tls": { "total": 5, "passed": 5 },
+      "repeat": { "total": 3, "passed": 3 }
+    }
+  },
+  "buildAndFormat": {
+    "debugBuild": "success",
+    "releaseBuild": "success",
+    "analyzerWarnings": 2,
+    "analyzerWarningDetails": "xUnit2012 at BoltRequestDecodeTests.cs:71,72",
+    "formatCheck": "8 pre-existing whitespace errors in BoltMessageFixtures.cs (not R1-introduced)"
+  },
+  "verifierChecks": {
+    "r1SourceBlobs": 4,
+    "r1EvidenceBlobs": 5,
+    "r1ArchiveMembers": 148,
+    "q1Blobs": 8,
+    "q1ArchiveMembers": 137,
+    "historicalIntegrity": "verified"
+  },
+  "findings": {
+    "q1-f01": { "q1Disposition": "REMEDIATION REQUIRED", "q2Assessment": "Corrected in R1", "q2Disposition": "SUPPORTED" },
+    "q1-f02": { "q1Disposition": "REMEDIATION REQUIRED", "q2Assessment": "Corrected in R1", "q2Disposition": "SUPPORTED" },
+    "q1-f03": { "q1Disposition": "REMEDIATION REQUIRED", "q2Assessment": "Corrected in R1", "q2Disposition": "SUPPORTED" },
+    "q2-f01": { "title": "Observer retention beyond absolute deadline", "disposition": "SUPPORTED WITH QUALIFICATIONS", "qualification": "Synchronous diagnostic contract retains admission/task until observer returns; socket disposed at deadline" },
+    "q2-f02": { "title": "Backpressure observability limited by modern socket buffers", "disposition": "INCONCLUSIVE", "qualification": "Probe limitation, not R1 defect; canonical tests cover interruption paths" }
+  },
+  "qualificationsPreserved": [
+    "B5-B-TS1: CLOSED",
+    "Q-B5B-03: CLOSED",
+    "Q-B5B-04: OPEN",
+    "Q-B5B-05: OPEN",
+    "Q-B5B-09: OPEN",
+    "TLS graceful-close: DEFERRED",
+    "Native Linux and representative production capacity: OUTSTANDING"
+  ],
+  "handoffRecommendation": "Recommend Q-B5B-09-PLAIN-OWNER-01 with conditions: (1) F01/F02/F03 remediated, (2) observer retention qualified, (3) native Linux outstanding"
+}
