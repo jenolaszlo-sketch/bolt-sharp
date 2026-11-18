@@ -1,0 +1,357 @@
+{
+  "baseCommit": "e0b762a5ae716544c7d3a5fa3f4e7c08372b7ac1",
+  "baseTree": "42c64bcc93c5d11206430fe611382fd665d5eb30",
+  "commission": "Q-B5B-05-PROBE-01",
+  "disposition": "PRODUCTION LIMITATION IDENTIFIED - OWNER DECISION REQUIRED",
+  "evidencePackage": "docs/reviews/evidence/Q-B5B-05-PROBE-01",
+  "fileCount": 51,
+  "files": [
+    {
+      "bytes": 17550,
+      "gitBlob": "ea3c46b9ac930854d5f933ec4a450f6ae571745c",
+      "path": "docs/reviews/Q-B5B-05-PROBE-01-producer-report.md",
+      "sha256": "45baa012e84d2aabe329001c1ee1b5cdae651aca6844c9a30801e599e05b6ed4"
+    },
+    {
+      "bytes": 2964,
+      "gitBlob": "26fa6551bad0f986f1edc1e9ab8171a2d6b1e9ed",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/README.md",
+      "sha256": "460cbf1a73fe970676f461a912e0820ea5f47e5975fa4250adb7d206f715fbe9"
+    },
+    {
+      "bytes": 9530,
+      "gitBlob": "c996f3d797289dbf599eebf9fbf45a85bcb7b243",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/audit-probe-inputs.py",
+      "sha256": "77fb264d3cfe165bb388284980f7d6ddd5cb4fa86ef0143dbe2376d33f0c2f25"
+    },
+    {
+      "bytes": 525,
+      "gitBlob": "34185cd27cb376ba2bb602c755130e2ff3dda432",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/build-probe-release.log",
+      "sha256": "618426c7653f69171dce28a02210f2280672b9d1282a4e8ac90fd8612fb1575b"
+    },
+    {
+      "bytes": 6354,
+      "gitBlob": "abf30342bb2ee10183bac149703c3351fe219770",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/commissioning-record.md",
+      "sha256": "cf4f1ef2810e9e4399bae20e547ca32b2e68609c967b109daf7d2de2133cec0b"
+    },
+    {
+      "bytes": 5581,
+      "gitBlob": "6fa96826a8ae28436021e43e7d610bff1b3cd38e",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/driver-behavior-assessment.md",
+      "sha256": "af176cb9ef9935ddccfb1659ed167308fc49ede51c27c5f763c628a4c5b98ba6"
+    },
+    {
+      "bytes": 119,
+      "gitBlob": "cddf68d19f877c0488f536802c005efc96727b94",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/format-check.log",
+      "sha256": "147a68fcfbf21ef7d5889a60877cdb93848f528707ab9a25b83cf1ec76fced81"
+    },
+    {
+      "bytes": 4056,
+      "gitBlob": "3d71dd8f8f0c6d4e4aee0531ef8f48951ecdbc82",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/generate-manifest.py",
+      "sha256": "0eb1ae7ee9cc238d82e7f9b91d418af9821f11f821acaee4206fcd5451e5a9b6"
+    },
+    {
+      "bytes": 4394,
+      "gitBlob": "2350ea37db5633ef03d6b7fdf2e6750424fc541c",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/negative-controls-results.md",
+      "sha256": "5cc3aedff26403e865fc5cd8ac342fe23d04b08fa9cc19a46b142a68c92b292b"
+    },
+    {
+      "bytes": 1704536,
+      "gitBlob": "b02f45ac671a4d0149e77f4cdd53bb8a2043b673",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/q5b05-core-windows.trx",
+      "sha256": "d9ae339ee7029da2e5786c5ce85fa7e0c5f6792880edc97abaff3a283786f724"
+    },
+    {
+      "bytes": 1716392,
+      "gitBlob": "d0cb8bdb216ed3a6ba97ebf5b189fe685b1e4a1a",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/q5b05-core-wsl2.trx",
+      "sha256": "a89e907b8e00578cb974aa7649a71c618d484ef344de35d9c1ef8f0e4e9a3825"
+    },
+    {
+      "bytes": 64990,
+      "gitBlob": "ceec182444cc8c5a4f8fdea30d8a40729e7e4751",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/q5b05-driver-interop-windows.trx",
+      "sha256": "b46c661504f56b6785bdc8ef27801e4e7b98cc7a460829cf3928669a1298cada"
+    },
+    {
+      "bytes": 65262,
+      "gitBlob": "25d41a03e547643c1d7dbfaddf40c9ae5b0cb946",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/q5b05-driver-interop-wsl2.trx",
+      "sha256": "9e3fdb2210fa15bdbdca6bc09efa1c571e6f3f0e2ff1a7c0d39dd766d3039da5"
+    },
+    {
+      "bytes": 19916,
+      "gitBlob": "583443a2f1885364bce94458cf467fb76fd048bc",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/q5b05-probe-wsl2.trx",
+      "sha256": "99816c04a6c07f7301c02d264769b1ea063cf135cade74a5804c9b0f366d4fd3"
+    },
+    {
+      "bytes": 19884,
+      "gitBlob": "5495843e974dfa06efff1171fc729400104e1627",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/q5b05-probe.trx",
+      "sha256": "06702684e6646ada0c35c4b921fb91130bb34cf64ff4bce26af8f0c3f465c252"
+    },
+    {
+      "bytes": 9318,
+      "gitBlob": "44b91d7b08ca219f25b2624c3e96196b47169352",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/requirements-matrix.md",
+      "sha256": "5adc44519de9f997b898cb7f03404f8470528200b796049053b8564fc41d4864"
+    },
+    {
+      "bytes": 2590,
+      "gitBlob": "fe1840e62b5196debc11037d95fb48303db7c8d7",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/d01-driver-failure-ignored-sequence.txt",
+      "sha256": "777573f9276ae0683ca7c9a3e930e9449cf3c379d443014ee14fc5c6c63c9136"
+    },
+    {
+      "bytes": 4351,
+      "gitBlob": "ef95ac8d236053a34e3cb64ffb4c43a752e9da26",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/d02-driver-recovery-disposition.txt",
+      "sha256": "608470af801283f4f2a7809641c44dd5b9e3fe6ff84581167697d4232de588e5"
+    },
+    {
+      "bytes": 2831,
+      "gitBlob": "87ae84d24edd238355219a750794b35b8388d620",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/d03-driver-retriable-provider-failure.txt",
+      "sha256": "05ccd8fe9e50d29925d8faa280297d16f487b605c0689bb60a3b678f89044db4"
+    },
+    {
+      "bytes": 3144,
+      "gitBlob": "b3d64a3807fe349257a825a4db58b115a0c0db0d",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/d04-driver-pooling.txt",
+      "sha256": "c15ee1bc84498989eae6e084542c99d7959213f1b77f2893777876ac116e2602"
+    },
+    {
+      "bytes": 1928,
+      "gitBlob": "378633ea93c4d4ca6413877651e079c36b4a3875",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/nc01-replacement-connection.txt",
+      "sha256": "6b4586c5eccbbaed9c4715ac1a88d69406c3d97cfc5d19d6fcf0057e4779f89b"
+    },
+    {
+      "bytes": 1597,
+      "gitBlob": "bc404e8b7f1d9873f99578228f62576b4c4fcb22",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/nc02-missing-reset.txt",
+      "sha256": "a0b3fb9d3c64a686bfbc57bb09072d10bdc9a34f63811306d64d6adecb4fcda5"
+    },
+    {
+      "bytes": 1469,
+      "gitBlob": "0497509b17f0e4311761c9498f01568fa5b890f5",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/nc03-injected-recovery-failure.txt",
+      "sha256": "a3aa5f10d5ccb217b9371184cd056fb22d1e69198a1cc49e5f2dd44c32881463"
+    },
+    {
+      "bytes": 1315,
+      "gitBlob": "b06d13d614c43a4fe056e05c8b0ea41d66c3010f",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/nc04-terminal-failure-substituted.txt",
+      "sha256": "6da563edf91bfc2a52c647046a626856e71a5e10c23ee98ebbb021322fe44dbd"
+    },
+    {
+      "bytes": 2841,
+      "gitBlob": "a831aabeee68d970d3c89fdd80d74c38c500bf26",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/p01-plaintext-reset-recovery.txt",
+      "sha256": "9935199d4b116b6d94afca985a6a7036e59681e9f6d927282462438d4d12c364"
+    },
+    {
+      "bytes": 3964,
+      "gitBlob": "d9ff7d09076bffa96382231df123c061ec1051c2",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/p02-plaintext-repeated-reset.txt",
+      "sha256": "1abcd935a2ea887082c34ef7987a5a57223f0cf783c557d066067e23ac4be93a"
+    },
+    {
+      "bytes": 2454,
+      "gitBlob": "41ca3c1b653985a290cc7d3fa12eacfcf9eea16d",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/p03-plaintext-pipelined-ignored.txt",
+      "sha256": "5da07b473ecdb16e088fbca592a9581ab4f03c279e4fb0d9666531d848ea0ec2"
+    },
+    {
+      "bytes": 1746,
+      "gitBlob": "4ed291b3286423f0a63a087656181d4b4ce6bce2",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/p04-tls-reset-recovery.txt",
+      "sha256": "0fec5d3952a02565158165455d8597501a7bb98626cffa91b515952f6b27646f"
+    },
+    {
+      "bytes": 2251,
+      "gitBlob": "eea57f0e0e917b0816a9fc3fb42e9eeb25def1d8",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/windows/p05-plaintext-concurrent-client.txt",
+      "sha256": "f019dc81f39a17c81d815d54ad43bb1f760b1a47345b0c68ecb5b7193117f68b"
+    },
+    {
+      "bytes": 2572,
+      "gitBlob": "e0d5a84d9b4c29349a157c2ca64e365830f10859",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/d01-driver-failure-ignored-sequence.txt",
+      "sha256": "60b79554cc6f04513721cfe9a28ad2434cfe64cd9c6775a41194f3c0ad37e8f7"
+    },
+    {
+      "bytes": 4315,
+      "gitBlob": "df484a44820dfd16ea1eb95317ff63af6f864c7f",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/d02-driver-recovery-disposition.txt",
+      "sha256": "c3084c095d2743743a3ec264c406958c6c456ebaaa3a4639f4c521e4beb63c79"
+    },
+    {
+      "bytes": 2813,
+      "gitBlob": "f56682420f191d0afae591fef6b7207b80e62850",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/d03-driver-retriable-provider-failure.txt",
+      "sha256": "7d0e0a06c671087ff95f4d0aefe02e0f2b3a99d59a862a9c53cc0b0ea3a901c1"
+    },
+    {
+      "bytes": 3126,
+      "gitBlob": "a13fd0f7320da211a5968ceeb24308f1aeb41842",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/d04-driver-pooling.txt",
+      "sha256": "0c46a95c6cb3eecc2e503be72872bedf6171c3af26b40b4069e7dab52d625467"
+    },
+    {
+      "bytes": 1928,
+      "gitBlob": "cd792234c3a70ceba2d1ba452a425fb70e6d68a6",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/nc01-replacement-connection.txt",
+      "sha256": "505dbf2118c56709a44a0beca7898c4cee08fccee54e1683ca32f55fc2eac23f"
+    },
+    {
+      "bytes": 1597,
+      "gitBlob": "54033f6ac9010921d1eb975130655984aec73aa1",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/nc02-missing-reset.txt",
+      "sha256": "df9b6adeed121f4e2ce0ef87468ca7de5444ea1499965a3ad6d8278df6170c63"
+    },
+    {
+      "bytes": 1469,
+      "gitBlob": "9888f0bac85e10092cf548b91cf5f0819786b369",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/nc03-injected-recovery-failure.txt",
+      "sha256": "96706b1cfd7ffb081abfaa8878c5a3c8770e5985f710d63717ff286e657d7cd9"
+    },
+    {
+      "bytes": 1315,
+      "gitBlob": "203b82ed3e1192f7171d9f7f90bd47536d773264",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/nc04-terminal-failure-substituted.txt",
+      "sha256": "7deb65e7a8f237d7ac89e56d7144df41c49a356d8fba9d35111bc4d2c3fbe018"
+    },
+    {
+      "bytes": 2841,
+      "gitBlob": "6282a06957d8a576ac621a73939ac9f68344ee16",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/p01-plaintext-reset-recovery.txt",
+      "sha256": "88d3fcac72c37df0aae8c37e6d3264f3cbe5d288ba26f15a113232f7a86476e8"
+    },
+    {
+      "bytes": 3964,
+      "gitBlob": "6480422e05dbe13ecffe56ca20de6058f4eb0c61",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/p02-plaintext-repeated-reset.txt",
+      "sha256": "ed64cb3ed07d595962ce779364af8aaa065b07c2596d8bb4d92fa2e5e7f0d938"
+    },
+    {
+      "bytes": 2454,
+      "gitBlob": "5cee5bc44914232ffd3dde04d4716f9ccea238a0",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/p03-plaintext-pipelined-ignored.txt",
+      "sha256": "304e1175ef07446141fda5d79b99a525767ceca4f3c73d968f9b7fcd50cbecd3"
+    },
+    {
+      "bytes": 1746,
+      "gitBlob": "8a2ba9fa6d7f1a84c8870d120cc823d9e6e8ab6e",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/p04-tls-reset-recovery.txt",
+      "sha256": "fe32364a2cfb2143e3828710b15cb93d02f31ace81db496f912907a89b616196"
+    },
+    {
+      "bytes": 2251,
+      "gitBlob": "223c438b5585777a197631e31b797c4e6bdde8cb",
+      "path": "docs/reviews/evidence/Q-B5B-05-PROBE-01/wsl2/p05-plaintext-concurrent-client.txt",
+      "sha256": "15f9c77f476e1a770b74088358582c84fe681822b373cc35b2df46ed121f4223"
+    },
+    {
+      "bytes": 1997,
+      "gitBlob": "8f65ee0c8892fd6ac9b7d1f3ef7ac67c444a98a0",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/BoltSharp.Q5B05.Probe.csproj",
+      "sha256": "a0c05583e72650745dbe3fc9021d88cddf585ad2629950566e18ba54a9ac51c4"
+    },
+    {
+      "bytes": 16204,
+      "gitBlob": "de5ecbaf6ae1a0eb6ce19568da18fabe6d2635f0",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/DriverResetBehavior.cs",
+      "sha256": "b0b9b8c21c9b9fa2eb5889d6813b4df2972216486d0b23bb0bb9c18ae9d553f9"
+    },
+    {
+      "bytes": 16408,
+      "gitBlob": "19d2340972949131fde9ac7eda8fa41de26ffab6",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ConnectionIdentity.cs",
+      "sha256": "cacee8b948687bc685572cb2ce392f6798e12fbfa7cf7281b49aad0462e17442"
+    },
+    {
+      "bytes": 6780,
+      "gitBlob": "139a885b3aa0df12c92174422217bddf277443cc",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ProbeClient.cs",
+      "sha256": "d4c8074666f7c16e7254efe8c210e3e155a6c0788e0581d998298fac7355bad3"
+    },
+    {
+      "bytes": 14588,
+      "gitBlob": "e818522c5dd91bedc2b3a383ae641756e7e02b16",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ProbeHost.cs",
+      "sha256": "f33578774770a0a14602df3ea7b03ff948d58395c97c6a423afa78b6cc23a747"
+    },
+    {
+      "bytes": 9407,
+      "gitBlob": "a4d16a034d799815c37f6be34342e74593e07b97",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ProbeMessages.cs",
+      "sha256": "b62c04ff81142103b83b423b152f971704eb3ff4a7f18fd24d7a1029f12bf57e"
+    },
+    {
+      "bytes": 16409,
+      "gitBlob": "786551b62b369f8ca789a474107e0290d41136e1",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/NegativeControls.cs",
+      "sha256": "74a2dbfe817dd86f2e6ac617d3693856482864cc7707411cba455722a6ffde41"
+    },
+    {
+      "bytes": 20395,
+      "gitBlob": "691e7e219778ac13fdb7a6220d45895a7086c752",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/ResetRecovery.cs",
+      "sha256": "12ea20f875be5429a8a25d77986b74a3eebc7a5a5981064afe061ed4d1549d0d"
+    },
+    {
+      "bytes": 7833,
+      "gitBlob": "8776d7f4efc6a4c4c4ec624d03d4464ecab2c4db",
+      "path": "docs/reviews/probes/Q-B5B-05-PROBE-01/TlsRecovery.cs",
+      "sha256": "cd16a1215e9e45af98b580ce6d16f92977aa99fa3d657572a580509f0e99abdb"
+    }
+  ],
+  "hashSemantics": "SHA-256 and byte count over exact Git blob payload bytes",
+  "negativeControls": {
+    "detected": 4,
+    "total": 4
+  },
+  "parentQualificationStatus": "Q-B5B-05 remains OPEN",
+  "probeProject": "docs/reviews/probes/Q-B5B-05-PROBE-01",
+  "producerReport": "docs/reviews/Q-B5B-05-PROBE-01-producer-report.md",
+  "totalBytes": 3826264,
+  "trxExpected": {
+    "q5b05-core-windows.trx": [
+      1257,
+      1257,
+      0
+    ],
+    "q5b05-core-wsl2.trx": [
+      1257,
+      1257,
+      0
+    ],
+    "q5b05-driver-interop-windows.trx": [
+      43,
+      43,
+      0
+    ],
+    "q5b05-driver-interop-wsl2.trx": [
+      43,
+      43,
+      0
+    ],
+    "q5b05-probe-wsl2.trx": [
+      13,
+      13,
+      0
+    ],
+    "q5b05-probe.trx": [
+      13,
+      13,
+      0
+    ]
+  }
+}

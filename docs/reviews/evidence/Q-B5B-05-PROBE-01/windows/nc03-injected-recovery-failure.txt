@@ -1,0 +1,14 @@
+NC-03 injected recovery failure: the provider's operation Dispose throws while RESET retires the outstanding result, so the recovery answers the terminal 50N00 FAILURE instead of the expected B1 70 A0. The RESET oracle detects it and no subsequent operation runs.
+server: accepted=1 active=0 completed=1 failed=0 rejectedCapacity=0 tlsFailed=0 boltHandshakeFailed=0 messagesProcessed=4
+RESET response hex: B17FA48A67716C5F7374617475738535304E30308A6E656F346A5F636F6465D0264E656F2E44617461626173654572726F722E47656E6572616C2E556E6B6E6F776E4572726F728B6465736372697074696F6ED03A546865206F7065726174696F6E2070726F7669646572206661696C6564207768696C6520657865637574696E672074686520726571756573742ED011646961676E6F737469635F7265636F7264A0
+RESET messages observed server-side: 1
+provider prepares: 1; disposal failures: 1
+trace:
+2026-11-18T21:25:02.7103312+00:00  ConnectionAccepted  conn-0001  127.0.0.1:24752
+2026-11-18T21:25:02.7114654+00:00  BoltHandshakeCompleted  conn-0001  v5.8 mode=Legacy
+2026-11-18T21:25:02.7116043+00:00  MessageProcessed  conn-0001  sig=0x01 responses=1 state=Authentication
+2026-11-18T21:25:02.7116880+00:00  MessageProcessed  conn-0001  sig=0x6A responses=1 state=Ready
+2026-11-18T21:25:02.7124487+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-18T21:25:02.7127778+00:00  MessageProcessed  conn-0001  sig=0x0F responses=1 state=Defunct
+2026-11-18T21:25:02.7127843+00:00  ConnectionCompleted  conn-0001  closed
+

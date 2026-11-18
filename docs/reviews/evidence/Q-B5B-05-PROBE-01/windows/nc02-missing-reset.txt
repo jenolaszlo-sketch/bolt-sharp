@@ -1,0 +1,20 @@
+NC-02 missing RESET: without RESET the subsequent operation is answered with IGNORED and the session stays failed, so no valid recovery can be reported; recovery only follows the RESET itself.
+server: accepted=1 active=1 completed=0 failed=0 rejectedCapacity=0 tlsFailed=0 boltHandshakeFailed=0 messagesProcessed=8
+connection ids: accepted=[conn-0001]
+client local port: 24750 (was 24750)
+RESET messages observed: 1
+per-connection providers: #1 prepare=2
+trace:
+2026-11-18T21:25:02.7039208+00:00  ConnectionAccepted  conn-0001  127.0.0.1:24750
+2026-11-18T21:25:02.7046514+00:00  BoltHandshakeCompleted  conn-0001  v5.8 mode=Legacy
+2026-11-18T21:25:02.7048120+00:00  MessageProcessed  conn-0001  sig=0x01 responses=1 state=Authentication
+2026-11-18T21:25:02.7049248+00:00  MessageProcessed  conn-0001  sig=0x6A responses=1 state=Ready
+2026-11-18T21:25:02.7055731+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Failed
+2026-11-18T21:25:02.7057107+00:00  MessageProcessed  conn-0001  sig=0x3F responses=1 state=Failed
+2026-11-18T21:25:02.7058031+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Failed
+2026-11-18T21:25:02.7059162+00:00  MessageProcessed  conn-0001  sig=0x0F responses=1 state=Ready
+2026-11-18T21:25:02.7060641+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-18T21:25:02.7061699+00:00  MessageProcessed  conn-0001  sig=0x3F responses=2 state=Ready
+2026-11-18T21:25:02.7062435+00:00  MessageProcessed  conn-0001  sig=0x02 responses=0 state=Defunct
+2026-11-18T21:25:02.7062483+00:00  ConnectionCompleted  conn-0001  closed
+

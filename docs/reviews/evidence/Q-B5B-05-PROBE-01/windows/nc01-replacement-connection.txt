@@ -1,0 +1,23 @@
+NC-01 replacement connection: a subsequent successful operation on a different physical connection must be rejected by the same-connection oracle.
+server: accepted=2 active=1 completed=1 failed=0 rejectedCapacity=0 tlsFailed=0 boltHandshakeFailed=0 messagesProcessed=9
+connection ids: accepted=[conn-0001,conn-0002]
+first client local port: 24747; replacement client local port: 24748
+per-connection providers: #1 prepare=1, #2 prepare=1
+trace:
+2026-11-18T21:25:02.6975949+00:00  ConnectionAccepted  conn-0001  127.0.0.1:24747
+2026-11-18T21:25:02.6987382+00:00  BoltHandshakeCompleted  conn-0001  v5.8 mode=Legacy
+2026-11-18T21:25:02.6988302+00:00  MessageProcessed  conn-0001  sig=0x01 responses=1 state=Authentication
+2026-11-18T21:25:02.6989583+00:00  MessageProcessed  conn-0001  sig=0x6A responses=1 state=Ready
+2026-11-18T21:25:02.6996954+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Failed
+2026-11-18T21:25:02.6997990+00:00  MessageProcessed  conn-0001  sig=0x3F responses=1 state=Failed
+2026-11-18T21:25:02.6998577+00:00  MessageProcessed  conn-0001  sig=0x0F responses=1 state=Ready
+2026-11-18T21:25:02.6999322+00:00  ConnectionCompleted  conn-0001  closed
+2026-11-18T21:25:02.7003548+00:00  ConnectionAccepted  conn-0002  127.0.0.1:24748
+2026-11-18T21:25:02.7004702+00:00  BoltHandshakeCompleted  conn-0002  v5.8 mode=Legacy
+2026-11-18T21:25:02.7005379+00:00  MessageProcessed  conn-0002  sig=0x01 responses=1 state=Authentication
+2026-11-18T21:25:02.7006381+00:00  MessageProcessed  conn-0002  sig=0x6A responses=1 state=Ready
+2026-11-18T21:25:02.7007469+00:00  MessageProcessed  conn-0002  sig=0x10 responses=1 state=Streaming
+2026-11-18T21:25:02.7008503+00:00  MessageProcessed  conn-0002  sig=0x3F responses=2 state=Ready
+2026-11-18T21:25:02.7009118+00:00  MessageProcessed  conn-0002  sig=0x02 responses=0 state=Defunct
+2026-11-18T21:25:02.7009152+00:00  ConnectionCompleted  conn-0002  closed
+

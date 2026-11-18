@@ -1,0 +1,380 @@
+{
+  "base": {
+    "commit": "e0b762a5ae716544c7d3a5fa3f4e7c08372b7ac1",
+    "tree": "42c64bcc93c5d11206430fe611382fd665d5eb30"
+  },
+  "baseTreeMatches": true,
+  "commission": "Q-B5B-05-PROBE-01",
+  "disposition": "PRODUCTION LIMITATION IDENTIFIED - OWNER DECISION REQUIRED",
+  "driverMarkers": {
+    "windows/d01-driver-failure-ignored-sequence.txt": {
+      "allPresent": true,
+      "required": [
+        "driver exception: ProtocolException",
+        "gqlStatus=50N42",
+        "retriable=False"
+      ]
+    },
+    "windows/d02-driver-recovery-disposition.txt": {
+      "allPresent": true,
+      "required": [
+        "recovery on the SAME physical connection: False"
+      ]
+    },
+    "windows/d03-driver-retriable-provider-failure.txt": {
+      "allPresent": true,
+      "required": [
+        "DatabaseException",
+        "gqlStatus=50N00"
+      ]
+    },
+    "windows/d04-driver-pooling.txt": {
+      "allPresent": true,
+      "required": [
+        "physical connections observed by the proxy: 1"
+      ]
+    },
+    "wsl2/d01-driver-failure-ignored-sequence.txt": {
+      "allPresent": true,
+      "required": [
+        "driver exception: ProtocolException",
+        "gqlStatus=50N42",
+        "retriable=False"
+      ]
+    },
+    "wsl2/d02-driver-recovery-disposition.txt": {
+      "allPresent": true,
+      "required": [
+        "recovery on the SAME physical connection: False"
+      ]
+    },
+    "wsl2/d03-driver-retriable-provider-failure.txt": {
+      "allPresent": true,
+      "required": [
+        "DatabaseException",
+        "gqlStatus=50N00"
+      ]
+    },
+    "wsl2/d04-driver-pooling.txt": {
+      "allPresent": true,
+      "required": [
+        "physical connections observed by the proxy: 1"
+      ]
+    }
+  },
+  "parentQualificationStatus": "Q-B5B-05 remains OPEN",
+  "platformArtifacts": {
+    "windows/d01-driver-failure-ignored-sequence.txt": {
+      "bytes": 2590,
+      "present": true,
+      "sha256": "777573f9276ae0683ca7c9a3e930e9449cf3c379d443014ee14fc5c6c63c9136"
+    },
+    "windows/d02-driver-recovery-disposition.txt": {
+      "bytes": 4351,
+      "present": true,
+      "sha256": "608470af801283f4f2a7809641c44dd5b9e3fe6ff84581167697d4232de588e5"
+    },
+    "windows/d03-driver-retriable-provider-failure.txt": {
+      "bytes": 2831,
+      "present": true,
+      "sha256": "05ccd8fe9e50d29925d8faa280297d16f487b605c0689bb60a3b678f89044db4"
+    },
+    "windows/d04-driver-pooling.txt": {
+      "bytes": 3144,
+      "present": true,
+      "sha256": "c15ee1bc84498989eae6e084542c99d7959213f1b77f2893777876ac116e2602"
+    },
+    "windows/nc01-replacement-connection.txt": {
+      "bytes": 1928,
+      "present": true,
+      "sha256": "6b4586c5eccbbaed9c4715ac1a88d69406c3d97cfc5d19d6fcf0057e4779f89b"
+    },
+    "windows/nc02-missing-reset.txt": {
+      "bytes": 1597,
+      "present": true,
+      "sha256": "a0b3fb9d3c64a686bfbc57bb09072d10bdc9a34f63811306d64d6adecb4fcda5"
+    },
+    "windows/nc03-injected-recovery-failure.txt": {
+      "bytes": 1469,
+      "present": true,
+      "sha256": "a3aa5f10d5ccb217b9371184cd056fb22d1e69198a1cc49e5f2dd44c32881463"
+    },
+    "windows/nc04-terminal-failure-substituted.txt": {
+      "bytes": 1315,
+      "present": true,
+      "sha256": "6da563edf91bfc2a52c647046a626856e71a5e10c23ee98ebbb021322fe44dbd"
+    },
+    "windows/p01-plaintext-reset-recovery.txt": {
+      "bytes": 2841,
+      "present": true,
+      "sha256": "9935199d4b116b6d94afca985a6a7036e59681e9f6d927282462438d4d12c364"
+    },
+    "windows/p02-plaintext-repeated-reset.txt": {
+      "bytes": 3964,
+      "present": true,
+      "sha256": "1abcd935a2ea887082c34ef7987a5a57223f0cf783c557d066067e23ac4be93a"
+    },
+    "windows/p03-plaintext-pipelined-ignored.txt": {
+      "bytes": 2454,
+      "present": true,
+      "sha256": "5da07b473ecdb16e088fbca592a9581ab4f03c279e4fb0d9666531d848ea0ec2"
+    },
+    "windows/p04-tls-reset-recovery.txt": {
+      "bytes": 1746,
+      "present": true,
+      "sha256": "0fec5d3952a02565158165455d8597501a7bb98626cffa91b515952f6b27646f"
+    },
+    "windows/p05-plaintext-concurrent-client.txt": {
+      "bytes": 2251,
+      "present": true,
+      "sha256": "f019dc81f39a17c81d815d54ad43bb1f760b1a47345b0c68ecb5b7193117f68b"
+    },
+    "wsl2/d01-driver-failure-ignored-sequence.txt": {
+      "bytes": 2572,
+      "present": true,
+      "sha256": "60b79554cc6f04513721cfe9a28ad2434cfe64cd9c6775a41194f3c0ad37e8f7"
+    },
+    "wsl2/d02-driver-recovery-disposition.txt": {
+      "bytes": 4315,
+      "present": true,
+      "sha256": "c3084c095d2743743a3ec264c406958c6c456ebaaa3a4639f4c521e4beb63c79"
+    },
+    "wsl2/d03-driver-retriable-provider-failure.txt": {
+      "bytes": 2813,
+      "present": true,
+      "sha256": "7d0e0a06c671087ff95f4d0aefe02e0f2b3a99d59a862a9c53cc0b0ea3a901c1"
+    },
+    "wsl2/d04-driver-pooling.txt": {
+      "bytes": 3126,
+      "present": true,
+      "sha256": "0c46a95c6cb3eecc2e503be72872bedf6171c3af26b40b4069e7dab52d625467"
+    },
+    "wsl2/nc01-replacement-connection.txt": {
+      "bytes": 1928,
+      "present": true,
+      "sha256": "505dbf2118c56709a44a0beca7898c4cee08fccee54e1683ca32f55fc2eac23f"
+    },
+    "wsl2/nc02-missing-reset.txt": {
+      "bytes": 1597,
+      "present": true,
+      "sha256": "df9b6adeed121f4e2ce0ef87468ca7de5444ea1499965a3ad6d8278df6170c63"
+    },
+    "wsl2/nc03-injected-recovery-failure.txt": {
+      "bytes": 1469,
+      "present": true,
+      "sha256": "96706b1cfd7ffb081abfaa8878c5a3c8770e5985f710d63717ff286e657d7cd9"
+    },
+    "wsl2/nc04-terminal-failure-substituted.txt": {
+      "bytes": 1315,
+      "present": true,
+      "sha256": "7deb65e7a8f237d7ac89e56d7144df41c49a356d8fba9d35111bc4d2c3fbe018"
+    },
+    "wsl2/p01-plaintext-reset-recovery.txt": {
+      "bytes": 2841,
+      "present": true,
+      "sha256": "88d3fcac72c37df0aae8c37e6d3264f3cbe5d288ba26f15a113232f7a86476e8"
+    },
+    "wsl2/p02-plaintext-repeated-reset.txt": {
+      "bytes": 3964,
+      "present": true,
+      "sha256": "ed64cb3ed07d595962ce779364af8aaa065b07c2596d8bb4d92fa2e5e7f0d938"
+    },
+    "wsl2/p03-plaintext-pipelined-ignored.txt": {
+      "bytes": 2454,
+      "present": true,
+      "sha256": "304e1175ef07446141fda5d79b99a525767ceca4f3c73d968f9b7fcd50cbecd3"
+    },
+    "wsl2/p04-tls-reset-recovery.txt": {
+      "bytes": 1746,
+      "present": true,
+      "sha256": "fe32364a2cfb2143e3828710b15cb93d02f31ace81db496f912907a89b616196"
+    },
+    "wsl2/p05-plaintext-concurrent-client.txt": {
+      "bytes": 2251,
+      "present": true,
+      "sha256": "15f9c77f476e1a770b74088358582c84fe681822b373cc35b2df46ed121f4223"
+    }
+  },
+  "probeSource": {
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/BoltSharp.Q5B05.Probe.csproj": {
+      "bytes": 1997,
+      "present": true,
+      "sha256": "a0c05583e72650745dbe3fc9021d88cddf585ad2629950566e18ba54a9ac51c4"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/DriverResetBehavior.cs": {
+      "bytes": 16204,
+      "present": true,
+      "sha256": "b0b9b8c21c9b9fa2eb5889d6813b4df2972216486d0b23bb0bb9c18ae9d553f9"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ConnectionIdentity.cs": {
+      "bytes": 16408,
+      "present": true,
+      "sha256": "cacee8b948687bc685572cb2ce392f6798e12fbfa7cf7281b49aad0462e17442"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ProbeClient.cs": {
+      "bytes": 6780,
+      "present": true,
+      "sha256": "d4c8074666f7c16e7254efe8c210e3e155a6c0788e0581d998298fac7355bad3"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ProbeHost.cs": {
+      "bytes": 14588,
+      "present": true,
+      "sha256": "f33578774770a0a14602df3ea7b03ff948d58395c97c6a423afa78b6cc23a747"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/Infra/ProbeMessages.cs": {
+      "bytes": 9407,
+      "present": true,
+      "sha256": "b62c04ff81142103b83b423b152f971704eb3ff4a7f18fd24d7a1029f12bf57e"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/NegativeControls.cs": {
+      "bytes": 16409,
+      "present": true,
+      "sha256": "74a2dbfe817dd86f2e6ac617d3693856482864cc7707411cba455722a6ffde41"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/ResetRecovery.cs": {
+      "bytes": 20395,
+      "present": true,
+      "sha256": "12ea20f875be5429a8a25d77986b74a3eebc7a5a5981064afe061ed4d1549d0d"
+    },
+    "docs/reviews/probes/Q-B5B-05-PROBE-01/TlsRecovery.cs": {
+      "bytes": 7833,
+      "present": true,
+      "sha256": "cd16a1215e9e45af98b580ce6d16f92977aa99fa3d657572a580509f0e99abdb"
+    }
+  },
+  "redaction": {
+    "clean": true,
+    "credentialLeaks": [],
+    "filesChecked": 32
+  },
+  "traceMarkers": {
+    "windows/nc01-replacement-connection.txt": {
+      "allPresent": true,
+      "required": [
+        "accepted=2"
+      ]
+    },
+    "windows/nc03-injected-recovery-failure.txt": {
+      "allPresent": true,
+      "required": [
+        "disposal failures: 1"
+      ]
+    },
+    "windows/nc04-terminal-failure-substituted.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed: 0"
+      ]
+    },
+    "windows/p01-plaintext-reset-recovery.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed server-side: 1"
+      ]
+    },
+    "windows/p02-plaintext-repeated-reset.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed server-side: 3"
+      ]
+    },
+    "windows/p03-plaintext-pipelined-ignored.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed server-side: 1"
+      ]
+    },
+    "windows/p05-plaintext-concurrent-client.txt": {
+      "allPresent": true,
+      "required": [
+        "accepted=2"
+      ]
+    },
+    "wsl2/nc01-replacement-connection.txt": {
+      "allPresent": true,
+      "required": [
+        "accepted=2"
+      ]
+    },
+    "wsl2/nc03-injected-recovery-failure.txt": {
+      "allPresent": true,
+      "required": [
+        "disposal failures: 1"
+      ]
+    },
+    "wsl2/nc04-terminal-failure-substituted.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed: 0"
+      ]
+    },
+    "wsl2/p01-plaintext-reset-recovery.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed server-side: 1"
+      ]
+    },
+    "wsl2/p02-plaintext-repeated-reset.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed server-side: 3"
+      ]
+    },
+    "wsl2/p03-plaintext-pipelined-ignored.txt": {
+      "allPresent": true,
+      "required": [
+        "RESET messages observed server-side: 1"
+      ]
+    },
+    "wsl2/p05-plaintext-concurrent-client.txt": {
+      "allPresent": true,
+      "required": [
+        "accepted=2"
+      ]
+    }
+  },
+  "trxCounters": {
+    "q5b05-core-windows.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 1257,
+      "skipped": 0,
+      "total": 1257
+    },
+    "q5b05-core-wsl2.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 1257,
+      "skipped": 0,
+      "total": 1257
+    },
+    "q5b05-driver-interop-windows.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 43,
+      "skipped": 0,
+      "total": 43
+    },
+    "q5b05-driver-interop-wsl2.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 43,
+      "skipped": 0,
+      "total": 43
+    },
+    "q5b05-probe-wsl2.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 13,
+      "skipped": 0,
+      "total": 13
+    },
+    "q5b05-probe.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 13,
+      "skipped": 0,
+      "total": 13
+    }
+  }
+}

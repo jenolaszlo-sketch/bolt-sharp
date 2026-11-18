@@ -1,0 +1,11 @@
+﻿  Determining projects to restore...
+  Restored D:\projects\bolt-sharp\src\BoltSharp\BoltSharp.csproj (in 76 ms).
+  Restored D:\projects\bolt-sharp\docs\reviews\probes\Q-B5B-05-PROBE-01\BoltSharp.Q5B05.Probe.csproj (in 657 ms).
+  BoltSharp -> D:\projects\bolt-sharp\src\BoltSharp\bin\Release\net8.0\BoltSharp.dll
+  BoltSharp.Q5B05.Probe -> D:\projects\bolt-sharp\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.40

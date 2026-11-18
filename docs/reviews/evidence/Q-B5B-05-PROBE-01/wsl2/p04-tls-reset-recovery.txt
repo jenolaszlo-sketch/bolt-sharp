@@ -1,0 +1,22 @@
+P-04 TLS: recoverable FAILURE -> IGNORED -> RESET -> successful operation -> orderly close, all on one physical TLS connection
+server: accepted=1 active=0 completed=1 failed=0 rejectedCapacity=0 tlsFailed=0 boltHandshakeFailed=0 messagesProcessed=10
+TLS handshake failures: 0
+connection ids: accepted=[conn-0001] messageProcessed=[conn-0001]
+RESET messages observed server-side: 1
+client local port: 54348 (unchanged from 54348)
+trace:
+2026-11-18T21:27:24.1667218+00:00  ConnectionAccepted  conn-0001  127.0.0.1:54348
+2026-11-18T21:27:24.2643773+00:00  TlsHandshakeCompleted  conn-0001  Tls13
+2026-11-18T21:27:24.2663827+00:00  BoltHandshakeCompleted  conn-0001  v5.8 mode=Legacy
+2026-11-18T21:27:24.2667496+00:00  MessageProcessed  conn-0001  sig=0x01 responses=1 state=Authentication
+2026-11-18T21:27:24.2670707+00:00  MessageProcessed  conn-0001  sig=0x6A responses=1 state=Ready
+2026-11-18T21:27:24.2672754+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-18T21:27:24.2675782+00:00  MessageProcessed  conn-0001  sig=0x3F responses=2 state=Ready
+2026-11-18T21:27:24.2677742+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Failed
+2026-11-18T21:27:24.2679756+00:00  MessageProcessed  conn-0001  sig=0x3F responses=1 state=Failed
+2026-11-18T21:27:24.2681759+00:00  MessageProcessed  conn-0001  sig=0x0F responses=1 state=Ready
+2026-11-18T21:27:24.2684147+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-18T21:27:24.2686261+00:00  MessageProcessed  conn-0001  sig=0x3F responses=2 state=Ready
+2026-11-18T21:27:24.2751016+00:00  MessageProcessed  conn-0001  sig=0x02 responses=0 state=Defunct
+2026-11-18T21:27:24.2751071+00:00  ConnectionCompleted  conn-0001  closed
+

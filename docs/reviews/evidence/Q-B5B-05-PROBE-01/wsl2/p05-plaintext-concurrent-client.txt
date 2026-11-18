@@ -1,0 +1,26 @@
+P-05 plaintext: healthy client unaffected while the other session is failed; each connection then recovers and completes independently
+server: accepted=2 active=0 completed=2 failed=0 rejectedCapacity=0 tlsFailed=0 boltHandshakeFailed=0 messagesProcessed=13
+connection ids: accepted=[conn-0001,conn-0002]
+healthy local port: 44534; failed-session local port: 44544
+per-connection provider counts: #1 prepare=1 success=1 refused=0, #2 prepare=2 success=1 refused=1
+trace:
+2026-11-18T21:27:24.3124351+00:00  ConnectionAccepted  conn-0001  127.0.0.1:44534
+2026-11-18T21:27:24.3135631+00:00  BoltHandshakeCompleted  conn-0001  v5.8 mode=Legacy
+2026-11-18T21:27:24.3138118+00:00  MessageProcessed  conn-0001  sig=0x01 responses=1 state=Authentication
+2026-11-18T21:27:24.3139463+00:00  MessageProcessed  conn-0001  sig=0x6A responses=1 state=Ready
+2026-11-18T21:27:24.3141792+00:00  ConnectionAccepted  conn-0002  127.0.0.1:44544
+2026-11-18T21:27:24.3143148+00:00  BoltHandshakeCompleted  conn-0002  v5.8 mode=Legacy
+2026-11-18T21:27:24.3144968+00:00  MessageProcessed  conn-0002  sig=0x01 responses=1 state=Authentication
+2026-11-18T21:27:24.3146566+00:00  MessageProcessed  conn-0002  sig=0x6A responses=1 state=Ready
+2026-11-18T21:27:24.3171304+00:00  MessageProcessed  conn-0002  sig=0x10 responses=1 state=Failed
+2026-11-18T21:27:24.3171718+00:00  MessageProcessed  conn-0002  sig=0x3F responses=1 state=Failed
+2026-11-18T21:27:24.3172439+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-18T21:27:24.3173596+00:00  MessageProcessed  conn-0001  sig=0x3F responses=2 state=Ready
+2026-11-18T21:27:24.3175102+00:00  MessageProcessed  conn-0002  sig=0x0F responses=1 state=Ready
+2026-11-18T21:27:24.3176547+00:00  MessageProcessed  conn-0002  sig=0x10 responses=1 state=Streaming
+2026-11-18T21:27:24.3177534+00:00  MessageProcessed  conn-0002  sig=0x3F responses=2 state=Ready
+2026-11-18T21:27:24.3178236+00:00  MessageProcessed  conn-0001  sig=0x02 responses=0 state=Defunct
+2026-11-18T21:27:24.3178278+00:00  ConnectionCompleted  conn-0001  closed
+2026-11-18T21:27:24.3180017+00:00  MessageProcessed  conn-0002  sig=0x02 responses=0 state=Defunct
+2026-11-18T21:27:24.3180035+00:00  ConnectionCompleted  conn-0002  closed
+

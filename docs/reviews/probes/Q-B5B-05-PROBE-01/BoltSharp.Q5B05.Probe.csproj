@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Q-B5B-05-PROBE-01 producer probe project. Bounded same-connection RESET-recovery demonstration.
+
+    Test-only. NOT part of BoltSharp.slnx, following the repository convention for
+    driver-dependent test projects (see B2-C-01, B0-B-DRV-INT-01, B5-B-Q1, B5-B-F01-R1-Q1).
+
+    Written independently for the Q-B5B-05-PROBE-01 producer commission. Uses the accepted
+    production seam types (BoltTcpServer / BoltTcpServerOptions / BoltTlsServerOptions,
+    BoltHandshakeOptions, BoltFramingLimits, IBoltCredentialVerifier, IBoltOperationProvider,
+    ReferenceOperationProvider) through their public APIs and the pinned official
+    Neo4j.Driver 6.4.0 package. No production source, existing test, public API, project or
+    package dependency is modified or added by this commission.
+
+    Scope identification (commission §13):
+      path   : docs/reviews/probes/Q-B5B-05-PROBE-01/
+      role   : producer demonstration probe (this project) + negative controls
+      output : docs/reviews/evidence/Q-B5B-05-PROBE-01/
+  -->
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>BoltSharp.Q5B05.Probe</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- Pinned exact version; the previously qualified driver baseline. Never upgraded. -->
+    <PackageReference Include="Neo4j.Driver" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\BoltSharp\BoltSharp.csproj" />
+  </ItemGroup>
+
+</Project>
