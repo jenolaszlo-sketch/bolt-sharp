@@ -3,7 +3,7 @@
   "commission": "Q-B5B-05-Q1",
   "disposition": "SUPPORTED WITH QUALIFICATIONS",
   "evidencePackage": "docs/reviews/evidence/Q-B5B-05-Q1",
-  "fileCount": 56,
+  "fileCount": 57,
   "files": [
     {
       "gitBlob": "9617dc30e1ccee1c867c4df300dded7633a585bb",
@@ -58,6 +58,12 @@
       "path": "docs/reviews/evidence/Q-B5B-05-Q1/08-campaign-wsl2.md",
       "sha256": "50633671957e540407f2ce6c786da2d5738df91ffadb87929d60fbd335605266",
       "bytes": 3219
+    },
+    {
+      "gitBlob": "73ddbe4aa7e4feb04a2caf2896633a0709d0687a",
+      "path": "docs/reviews/evidence/Q-B5B-05-Q1/09-integrity-verification.txt",
+      "sha256": "ba1592e5640eb22449c45fce3375242d504f89ea4312b6e0f80b8d30cd703f89",
+      "bytes": 5140
     },
     {
       "gitBlob": "f222ab4214fd45c7d30eeaca027e339cb5bc0cba",
@@ -342,5 +348,5 @@
       "bytes": 3686
     }
   ],
-  "totalBytes": 3903607
+  "totalBytes": 3908747
 }
