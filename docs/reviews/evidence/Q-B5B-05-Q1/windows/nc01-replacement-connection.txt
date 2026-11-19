@@ -1,0 +1,25 @@
+NC-01: replacement connection — the subsequent operation ran on a second physical connection
+server: accepted=2 active=0 completed=2 failed=0 tlsFailed=0 boltHandshakeFailed=0 messagesProcessed=13
+connection ids: accepted=[conn-0001,conn-0002]
+first client local port: 58228; replacement client local port: 58229
+provider instances: 2
+oracle verdict: SAME_PHYSICAL_CONNECTION=False (must be False — detected)
+2026-11-19T20:05:29.3785111+00:00  ConnectionAccepted  conn-0001  127.0.0.1:58228
+2026-11-19T20:05:29.3786805+00:00  BoltHandshakeCompleted  conn-0001  v5.8 mode=Legacy
+2026-11-19T20:05:29.3788275+00:00  MessageProcessed  conn-0001  sig=0x01 responses=1 state=Authentication
+2026-11-19T20:05:29.3789093+00:00  MessageProcessed  conn-0001  sig=0x6A responses=1 state=Ready
+2026-11-19T20:05:29.3793025+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-19T20:05:29.3794266+00:00  MessageProcessed  conn-0001  sig=0x3F responses=2 state=Ready
+2026-11-19T20:05:29.3795646+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Failed
+2026-11-19T20:05:29.3796417+00:00  MessageProcessed  conn-0001  sig=0x3F responses=1 state=Failed
+2026-11-19T20:05:29.3797044+00:00  MessageProcessed  conn-0001  sig=0x0F responses=1 state=Ready
+2026-11-19T20:05:29.3797443+00:00  MessageProcessed  conn-0001  sig=0x02 responses=0 state=Defunct
+2026-11-19T20:05:29.3797484+00:00  ConnectionCompleted  conn-0001  closed
+2026-11-19T20:05:29.3801979+00:00  ConnectionAccepted  conn-0002  127.0.0.1:58229
+2026-11-19T20:05:29.3802677+00:00  BoltHandshakeCompleted  conn-0002  v5.8 mode=Legacy
+2026-11-19T20:05:29.3803652+00:00  MessageProcessed  conn-0002  sig=0x01 responses=1 state=Authentication
+2026-11-19T20:05:29.3804526+00:00  MessageProcessed  conn-0002  sig=0x6A responses=1 state=Ready
+2026-11-19T20:05:29.3805276+00:00  MessageProcessed  conn-0002  sig=0x10 responses=1 state=Streaming
+2026-11-19T20:05:29.3805878+00:00  MessageProcessed  conn-0002  sig=0x3F responses=2 state=Ready
+2026-11-19T20:05:29.3806428+00:00  MessageProcessed  conn-0002  sig=0x02 responses=0 state=Defunct
+2026-11-19T20:05:29.3806452+00:00  ConnectionCompleted  conn-0002  closed

@@ -1,0 +1,4 @@
+D-01: exception type=Neo4j.Driver.ProtocolException code=Neo.ClientError.Request.Invalid gqlStatus=50N42 gqlClassification=UNKNOWN retriable=False message=An unknown error occurred
+D-02 first session: exception type=Neo4j.Driver.ProtocolException code=Neo.ClientError.Request.Invalid gqlStatus=50N42 gqlClassification=UNKNOWN retriable=False message=An unknown error occurred
+D-03: exception type=Neo4j.Driver.DatabaseException code=Neo.DatabaseError.General.UnknownError gqlStatus=50N00 gqlClassification=UNKNOWN retriable=False message=An unknown error occurred
+D-05: second run on the same session: value=42 exception= 

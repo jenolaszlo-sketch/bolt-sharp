@@ -1,0 +1,26 @@
+Q-B5B-05-Q1 STARTING REPOSITORY IDENTITY (commission section 3)
+captured at reviewer session start, canonical repository: D:\projects\bolt-sharp
+
+  property                 expected                                    actual
+  branch                   main                                         main
+  HEAD                     8d762dd50502260e32f569f42f9cbfa92e37b862    8d762dd50502260e32f569f42f9cbfa92e37b862
+  tree                     50f214a713ca3a490dcb437c831f9f881653a743    50f214a713ca3a490dcb437c831f9f881653a743
+  parent                   e0b762a5ae716544c7d3a5fa3f4e7c08372b7ac1    e0b762a5ae716544c7d3a5fa3f4e7c08372b7ac1
+  ahead/behind origin/main 20 / 0                                       0	20  (behind<TAB>ahead)
+  worktrees                1                                            1
+  stashes                  0                                            0
+  working tree             clean                                        1 porcelain entries ("?? docs/reviews/evidence/Q-B5B-05-Q1/" — this commission's own
+                                                                        untracked Q1 package; zero tracked modifications at start)
+
+producer commit scope (git diff --name-status HEAD^ HEAD):
+  54 added files (all status "A"), 21,297 insertions, 0 modifications, 0 deletions.
+  All paths inside docs/reviews/Q-B5B-05-PROBE-01-producer-report.md,
+  docs/reviews/probes/Q-B5B-05-PROBE-01/ (9 source files, no build artifacts tracked) and
+  docs/reviews/evidence/Q-B5B-05-PROBE-01/ (44 files; 51 of them hashed in the manifest).
+  No production source, existing test, project, package or historical evidence change.
+
+reviewer clones (for all executions; canonical tree read-only):
+  reviewer (Windows)    HEAD 8d762dd50502260e32f569f42f9cbfa92e37b862  tree 50f214a713ca3a490dcb437c831f9f881653a743
+  reviewer-wsl2 (Linux) HEAD 8d762dd50502260e32f569f42f9cbfa92e37b862  tree 50f214a713ca3a490dcb437c831f9f881653a743
+
+No unexpected repository change was found; nothing was reset or overwritten.
