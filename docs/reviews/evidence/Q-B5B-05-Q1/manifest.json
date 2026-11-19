@@ -3,7 +3,7 @@
   "commission": "Q-B5B-05-Q1",
   "disposition": "SUPPORTED WITH QUALIFICATIONS",
   "evidencePackage": "docs/reviews/evidence/Q-B5B-05-Q1",
-  "fileCount": 50,
+  "fileCount": 56,
   "files": [
     {
       "gitBlob": "9617dc30e1ccee1c867c4df300dded7633a585bb",
@@ -76,6 +76,42 @@
       "path": "docs/reviews/evidence/Q-B5B-05-Q1/README.md",
       "sha256": "c934ee3f6e8d847541b01ea177c342840b49c366981df8c33a06d032f874e06a",
       "bytes": 3560
+    },
+    {
+      "gitBlob": "ac24086262f90f27e66fd806b0e5884a3bb27968",
+      "path": "docs/reviews/evidence/Q-B5B-05-Q1/q5b05q1-core-windows.trx",
+      "sha256": "d1c94b4c463ded14261b06817e534e58e9b79bbebad4c4b095e384caea53c3b9",
+      "bytes": 1752302
+    },
+    {
+      "gitBlob": "a72cdf554805d5cfca4c36768cc3e9c1914911b3",
+      "path": "docs/reviews/evidence/Q-B5B-05-Q1/q5b05q1-core-wsl2.trx",
+      "sha256": "bd097a65854ac32fa23142a793e64d852a20d747746160e2ab750ef10879849a",
+      "bytes": 1776728
+    },
+    {
+      "gitBlob": "03425dfc51540bed2c92d3f6ecd29f87810a89c7",
+      "path": "docs/reviews/evidence/Q-B5B-05-Q1/q5b05q1-interop-windows.trx",
+      "sha256": "32bc305d3217fd2af12a2f3d021f54a99939f46f4740c187c21c44ec243c25bd",
+      "bytes": 66624
+    },
+    {
+      "gitBlob": "b821669ce63cc36e63a291dd2947f55cd8290c02",
+      "path": "docs/reviews/evidence/Q-B5B-05-Q1/q5b05q1-interop-wsl2.trx",
+      "sha256": "913a803500329ec3e12e67dff00753063be171de8bc3e809b4a268d47fd7b63e",
+      "bytes": 67326
+    },
+    {
+      "gitBlob": "53092160ce83d014fc059d6d763e367198e0866e",
+      "path": "docs/reviews/evidence/Q-B5B-05-Q1/q5b05q1-probe-windows.trx",
+      "sha256": "649fefcd492c67f1281c6aa6cc5359556e5a3ec9bd26d7518644049bc16f1a88",
+      "bytes": 20378
+    },
+    {
+      "gitBlob": "093a0182d99292e072361c0909dd0b8dd37ef101",
+      "path": "docs/reviews/evidence/Q-B5B-05-Q1/q5b05q1-probe-wsl2.trx",
+      "sha256": "f8bb29f4de21a46dd5a9f1c953cf2db265f657ac180be057f80aa5a5c98e1d9f",
+      "bytes": 20540
     },
     {
       "gitBlob": "a286259af959430ee6f6e31875b1f177346b7050",
@@ -306,5 +342,5 @@
       "bytes": 3686
     }
   ],
-  "totalBytes": 199709
+  "totalBytes": 3903607
 }

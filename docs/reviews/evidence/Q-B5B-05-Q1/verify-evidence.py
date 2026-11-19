@@ -23,7 +23,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 
 EVIDENCE = Path(__file__).resolve().parent
-REPO = EVIDENCE.parents[4]
+REPO = EVIDENCE.parents[3]
 REVISION = sys.argv[1] if len(sys.argv) > 1 else "HEAD"
 
 PACKAGE = "docs/reviews/evidence/Q-B5B-05-Q1"
