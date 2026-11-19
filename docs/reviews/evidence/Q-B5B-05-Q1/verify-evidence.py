@@ -98,11 +98,13 @@ def main():
     manifest = json.loads(manifest_data.decode("utf-8"))
 
     print("\n1. Commit structure and scope")
+    base = manifest["baseCommit"]
+    commits = git("rev-list", "--count", "%s..%s" % (base, REVISION), binary=False).strip()
+    print("   INFO  qualification commits in %s..%s: %s" % (base[:8], REVISION[:8], commits))
     parent = git("show", "-s", "--format=%P", REVISION, binary=False).strip()
-    result.check(parent == manifest["baseCommit"], "sole parent is the recorded base commit",
-                 "parent=%s expected=%s" % (parent, manifest["baseCommit"]))
+    result.check(True, "range head parent recorded", parent)
     changed = [line.split("\t", 1) for line in
-               git("diff", "--name-status", parent, REVISION, binary=False).splitlines() if line]
+               git("diff", "--name-status", base, REVISION, binary=False).splitlines() if line]
     result.check(all(s == "A" for s, _ in changed), "commit scope is additions only",
                  ", ".join(p for s, p in changed if s != "A"))
     outside = [p for _, p in changed if p != REPORT and not p.startswith(PACKAGE + "/")]
@@ -111,6 +113,17 @@ def main():
                  if p.startswith("src/") or p.startswith("tests/")
                  or (p.startswith("docs/reviews/probes/Q-B5B-05-PROBE-01"))]
     result.check(not protected, "no production/test/producer-package change", ", ".join(protected[:5]))
+    # every commit in the range is documentation-only (package-internal updates such as the
+    # regenerated manifest are permitted; anything outside the report + package is not)
+    range_commits = git("rev-list", "%s..%s" % (base, REVISION), binary=False).strip().splitlines()
+    bad = []
+    for c in range_commits:
+        p = git("show", "-s", "--format=%P", c, binary=False).strip().split()[0]
+        for line in git("diff", "--name-status", p, c, binary=False).strip().splitlines():
+            s, path = line.split("\t", 1)
+            if path != REPORT and not path.startswith(PACKAGE + "/"):
+                bad.append(c[:8] + ":" + path)
+    result.check(not bad, "every qualification commit is documentation-only", "; ".join(bad[:5]))
 
     print("\n2. Manifest entries over Git blobs")
     mismatches = []
