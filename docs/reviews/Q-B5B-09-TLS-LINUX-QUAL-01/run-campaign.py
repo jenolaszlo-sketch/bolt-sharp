@@ -14,13 +14,16 @@ class Pair:
     def __init__(self):
         self.ready=threading.Event(); self.peer=None; self.server=None; self.port=None; self.err=None
         threading.Thread(target=self._server,daemon=True).start(); self.ready.wait(5)
+        if self.err: raise RuntimeError(f"campaign server failed: {self.err}")
     def _server(self):
         try:
             lst=socket.socket(); lst.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1); lst.bind(("127.0.0.1",0)); lst.listen(1)
-            ctx=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER); ctx.load_cert_chain("/tmp/qb5b-cert.pem","/tmp/qb5b-cert.key"); self.ready.set()
-            raw=lst.accept()[0]; self.port=raw.getsockname()[1]; raw.setsockopt(socket.SOL_SOCKET,socket.SO_SNDBUF,512)
+            ctx=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER); ctx.load_cert_chain("/tmp/qb5b-cert.pem","/tmp/qb5b-cert.key")
+            raw=lst.accept()[0]; self.port=raw.getsockname()[1]; self.ready.set(); raw.setsockopt(socket.SOL_SOCKET,socket.SO_SNDBUF,512)
             self.peer=ctx.wrap_socket(raw,server_side=True); self.peer.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF,8192)
         except Exception as e: self.err=e; self.ready.set()
+    def __post_init__(self):
+        if self.err: raise RuntimeError(f"campaign server failed: {self.err}")
     def close(self):
         for s in (self.peer,self.server):
             try:
