@@ -1,0 +1,31 @@
+{
+  "commission": "Q-B5B-09-TLS-E1",
+  "kind": "post-execution evidence-record reconciliation",
+  "issue": "The aggregate attempt fields in commissioning-matrix.json are inconsistent with the same file's per-cell repeatability rule and with the executed journal counts.",
+  "original_aggregate_fields": {
+    "windows_platform_attempts_total": 21,
+    "wsl2_campaign_attempts_total": 21
+  },
+  "effective_declarations": {
+    "discovery_attempts_per_cell": 4,
+    "repeat_attempts_after_qualifying": 2,
+    "maximum_runs_per_cell": 6,
+    "cap_cell_attempts": 3,
+    "maximum_attempt_lifetime_ms": 3500
+  },
+  "interpretation": "The configuration field maximum_attempts_per_cell_per_platform=4 is the discovery-attempt limit; the two explicitly declared repeats are additional. The effective hard bounds are the per-cell bounds above. The aggregate fields of 21 are retained unchanged as part of the pre-execution record but are not valid aggregate caps.",
+  "executed_attempt_counts": {
+    "windows_final_candidate": 30,
+    "windows_preserved_first_run": 11,
+    "windows_negative_controls": 26,
+    "windows_mechanism_cases": 3,
+    "windows_production_characterization": 11,
+    "windows_total_records": 81,
+    "wsl2_final_candidate": 26,
+    "wsl2_candidate_repeat": 26,
+    "wsl2_mechanism_cases": 3,
+    "wsl2_production_characterization": 22,
+    "wsl2_total_records": 77
+  },
+  "disposition": "Every final candidate cell, repeat, mechanism case, production case and negative control remained within its explicit per-case or per-cell bound and watchdog. The stale aggregate fields are an investigation-record qualification, not a BoltSharp defect and not evidence that an individual experiment was unbounded. This reconciliation does not rewrite the pre-execution matrix and does not authorize an aggregate-cap claim."
+}

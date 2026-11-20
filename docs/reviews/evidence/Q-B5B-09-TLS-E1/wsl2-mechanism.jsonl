@@ -1,0 +1,5 @@
+{"kind":"mechanism-start","platform":"Unix 6.6.114.1","runtime":"10.0.14"}
+{"kind":"mechanism-case","result":{"Ordinal":1,"RowBytes":36864,"PeerReceiveActual":4096,"SendBefore":2626560,"RowCompletedMs":0.4123,"RowError":null,"ControlCompletedMs":0.0153,"ControlError":null,"ShrinkRequested":2048,"SendAfter":4608,"ShrinkError":"","TerminalState":"completed","TerminalMs":0.0023}}
+{"kind":"mechanism-case","result":{"Ordinal":2,"RowBytes":45056,"PeerReceiveActual":2304,"SendBefore":2626560,"RowCompletedMs":0.1707,"RowError":null,"ControlCompletedMs":0.0028,"ControlError":null,"ShrinkRequested":1024,"SendAfter":4608,"ShrinkError":"","TerminalState":"completed","TerminalMs":0.0007}}
+{"kind":"mechanism-case","result":{"Ordinal":3,"RowBytes":49152,"PeerReceiveActual":2304,"SendBefore":2626560,"RowCompletedMs":0.0532,"RowError":null,"ControlCompletedMs":0.0018,"ControlError":null,"ShrinkRequested":512,"SendAfter":4608,"ShrinkError":"","TerminalState":"completed","TerminalMs":0.0007}}
+{"kind":"mechanism-end"}

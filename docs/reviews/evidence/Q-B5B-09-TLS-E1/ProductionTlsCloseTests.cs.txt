@@ -1,0 +1,391 @@
+using System.Diagnostics;
+using System.Net;
+using System.Net.Security;
+using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
+using BoltSharp.Framing;
+using BoltSharp.Handshake;
+using BoltSharp.Messages;
+using BoltSharp.PackStream;
+using BoltSharp.Tests.Sessions;
+using BoltSharp.Transport;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace BoltSharp.Tests.Transport;
+
+[CollectionDefinition("TLS-E1 production", DisableParallelization = true)]
+public sealed class TlsE1ProductionCollection;
+
+/// <summary>
+/// Q-B5B-09-TLS-E1 characterization of the CURRENT production TLS terminal close behavior.
+/// No production code, test, API or dependency is modified: the production assembly at the
+/// investigation HEAD is exercised over a real loopback TLS connection and observed from the
+/// peer boundary plus the listener's own diagnostics events.
+/// </summary>
+[Collection("TLS-E1 production")]
+public sealed class ProductionTlsCloseTests(ITestOutputHelper output)
+{
+    // BEGIN with one empty-map field: the accepted unsupported-command terminal refusal.
+    private static readonly byte[] TerminalPayload = { 0xB1, 0x11, 0xA0 };
+
+    private sealed record Case(string Name, int RowBytes, int PeerReceive, int WriteTimeoutMs,
+        bool StopListener, int StopAfterMs, bool Cooperative, int Attempts);
+
+    private static readonly Case[] Cases =
+    [
+        // Terminal FAILURE, small preceding result, parked peer, production defaults.
+        new("P1-small-result-parked", 4096, 2048, 30000, false, 0, false, 2),
+        // Deep preceding result: the preceding PULL write itself blocks on the Windows send
+        // buffer; the production write timeout bounds the connection.
+        new("P2-deep-default-timeout", 131072, 2048, 30000, false, 0, false, 1),
+        new("P3-deep-750ms-timeout", 131072, 2048, 750, false, 0, false, 2),
+        // Listener stop during the genuinely pending terminal/preceding write.
+        new("P4-deep-listener-stop", 131072, 2048, 750, true, 500, false, 2),
+        // GOODBYE: no terminal write at all; observe the close notification behavior.
+        new("P5-goodbye", 4096, 2048, 30000, false, 0, false, 2),
+        // Cooperative peer: the terminal FAILURE is received and read; then the close behavior.
+        new("P6-cooperative-receipt", 4096, 2048, 30000, false, 0, true, 2)
+    ];
+
+    [Fact]
+    public async Task FixedCharacterization()
+    {
+        var path = Environment.GetEnvironmentVariable("BOLTSHARP_TLS_E1_PRODUCTION")
+            ?? throw new InvalidOperationException("Set BOLTSHARP_TLS_E1_PRODUCTION to a new file.");
+        using (File.Open(path, FileMode.CreateNew, FileAccess.Write, FileShare.Read))
+        {
+        }
+
+        using var certificate = TransportTestSupport.CreateSelfSignedCertificate();
+        void Write(object value)
+        {
+            var text = JsonSerializer.Serialize(value);
+            File.AppendAllText(path, text + "\n");
+            output.WriteLine(text);
+        }
+
+        Write(new
+        {
+            kind = "production-start",
+            platform = Environment.OSVersion.VersionString,
+            runtime = Environment.Version.ToString()
+        });
+
+        foreach (var probe in Cases)
+        {
+            for (var attempt = 1; attempt <= probe.Attempts; attempt++)
+            {
+                Write(new { kind = "started", @case = probe.Name, attempt, rowBytes = probe.RowBytes });
+                var result = await RunCase(probe, certificate);
+                Write(new { kind = "completed", @case = probe.Name, attempt, result });
+            }
+        }
+
+        Write(new { kind = "production-end" });
+    }
+
+    private static async Task<CaseResult> RunCase(Case probe, X509Certificate2 certificate)
+    {
+        var row = new PackStreamValue?[] { new PackStreamString(new string('x', probe.RowBytes)) };
+        var provider = ScriptedOperationProvider.WithOperation(new ScriptedOperation(["value"], row));
+        var started = Stopwatch.GetTimestamp();
+        var outcome = "environment";
+        string? error = null;
+        double connectionEndMs = -1;
+        double? stopMs = null;
+        var messageProcessed = false;
+        var messageDetail = "";
+        var connectionOutcome = "";
+        long accepted = 0, active = 0, completed = 0, failed = 0, messages = 0;
+        var peerUnreadAtEnd = 0;
+        var tlsRead = "not-observed";
+        var rawRead = "not-observed";
+        var failureCode = "";
+        var failureMessage = "";
+        var tlsProtocol = "";
+        BoltTcpServer? server = null;
+        PeerClient? peer = null;
+        try
+        {
+            server = await TransportTestSupport.StartServerAsync(() => new BoltTcpServerOptions
+            {
+                CredentialVerifier = TestCredentialVerifier.AcceptAll(),
+                OperationProviderFactory = () => provider,
+                Tls = new BoltTlsServerOptions(certificate),
+                MaxConnections = 10,
+                WriteTimeout = TimeSpan.FromMilliseconds(probe.WriteTimeoutMs)
+            });
+
+            peer = await PeerClient.ConnectAsync(server.BoundEndPoint!, certificate, probe.PeerReceive);
+            tlsProtocol = peer.Tls.SslProtocol.ToString();
+            await peer.AuthenticateAsync();
+            await peer.SendAsync(Frame(TransportRequestEncoder.Encode(SessionHarness.Run())));
+            await peer.ReadSuccessAsync();
+
+            var endProbe = TransportTestSupport.ProbeEvent(server, BoltTransportEventKind.ConnectionCompleted);
+            var failProbe = TransportTestSupport.ProbeEvent(server, BoltTransportEventKind.ConnectionFailed);
+            var messageProbe = TransportTestSupport.ProbeEvent(server, BoltTransportEventKind.MessageProcessed,
+                ev => ev.Detail?.Contains("state=Defunct", StringComparison.Ordinal) == true);
+
+            // Each request is sent as its own complete framed message; the pipelined trio is
+            // three complete messages in one write, so the server parser enters per message.
+            if (probe.Cooperative)
+            {
+                await peer.SendAsync(Frame(TransportRequestEncoder.Encode(SessionHarness.Pull(2))));
+                await foreach (var response in peer.ReadUntilFailureAsync(TimeSpan.FromSeconds(10)))
+                {
+                    if (response is FailureResponse failure)
+                    {
+                        failureCode = failure.GqlStatus ?? "";
+                        failureMessage = failure.Neo4jCode ?? "";
+                    }
+                }
+
+                await peer.SendAsync(Frame(TerminalPayload));
+                await foreach (var response in peer.ReadUntilFailureAsync(TimeSpan.FromSeconds(10)))
+                {
+                    if (response is FailureResponse failure)
+                    {
+                        failureCode = failure.GqlStatus ?? "";
+                        failureMessage = failure.Neo4jCode ?? "";
+                    }
+                }
+            }
+            else
+            {
+                var pipelined = Frame(TransportRequestEncoder.Encode(SessionHarness.Pull(2)))
+                    .Concat(Frame(TerminalPayload))
+                    .Concat(Frame(TransportRequestEncoder.Encode(SessionHarness.Run())))
+                    .ToArray();
+                if (probe.Name.StartsWith("P5", StringComparison.Ordinal))
+                {
+                    pipelined = Frame(TransportRequestEncoder.Encode(SessionHarness.Pull(2)))
+                        .Concat(Frame(TransportRequestEncoder.Encode(SessionHarness.Goodbye())))
+                        .ToArray();
+                }
+
+                // The peer parks its receive direction from here.
+                await peer.SendAsync(pipelined);
+            }
+
+            if (probe.StopListener)
+            {
+                await Task.Delay(probe.StopAfterMs);
+                var stopStarted = Stopwatch.GetTimestamp();
+                await server.StopAsync(CancellationToken.None);
+                stopMs = Stopwatch.GetElapsedTime(stopStarted).TotalMilliseconds;
+            }
+
+            var settled = await Task.WhenAny(endProbe.Task, failProbe.Task).WaitAsync(TimeSpan.FromSeconds(45));
+            if (settled == endProbe.Task)
+            {
+                var ev = await endProbe.Task;
+                connectionOutcome = Report(ev);
+                completed = server.Diagnostics.ConnectionsCompleted;
+            }
+            else
+            {
+                var ev = await failProbe.Task;
+                connectionOutcome = Report(ev);
+                failed = server.Diagnostics.ConnectionsFailed;
+            }
+
+            connectionEndMs = Stopwatch.GetElapsedTime(started).TotalMilliseconds;
+            if (messageProbe.Task.IsCompletedSuccessfully)
+            {
+                messageProcessed = true;
+                messageDetail = messageProbe.Task.Result.Detail ?? "";
+            }
+
+            peerUnreadAtEnd = peer.Available;
+            tlsRead = await peer.TryTlsReadAsync();
+            rawRead = await peer.TryRawReadAsync();
+            accepted = server.Diagnostics.ConnectionsAccepted;
+            active = server.Diagnostics.ConnectionsActive;
+            messages = server.Diagnostics.MessagesProcessed;
+            outcome = "characterized";
+        }
+        catch (Exception ex)
+        {
+            error = ex.GetType().Name + ":" + ex.Message[..Math.Min(120, ex.Message.Length)];
+            outcome = "environment";
+            if (server is not null)
+            {
+                accepted = server.Diagnostics.ConnectionsAccepted;
+                active = server.Diagnostics.ConnectionsActive;
+                completed = server.Diagnostics.ConnectionsCompleted;
+                failed = server.Diagnostics.ConnectionsFailed;
+                messages = server.Diagnostics.MessagesProcessed;
+            }
+        }
+        finally
+        {
+            peer?.Dispose();
+            if (server is not null)
+                await server.DisposeAsync();
+        }
+
+        return new CaseResult(probe.Name, outcome, error, connectionOutcome, connectionEndMs,
+            stopMs, messageProcessed, messageDetail, accepted, active, completed, failed, messages,
+            peerUnreadAtEnd, tlsRead, rawRead, failureCode, failureMessage, tlsProtocol,
+            Stopwatch.GetElapsedTime(started).TotalMilliseconds);
+
+        static string Report(BoltTransportDiagnosticEvent ev) => $"{ev.Kind}:{ev.Detail}";
+    }
+
+    /// <summary>Frames one complete chunked message: one length-prefixed chunk plus the terminator.</summary>
+    private static byte[] Frame(byte[] payload)
+    {
+        var bytes = new List<byte> { (byte)(payload.Length >> 8), (byte)(payload.Length & 0xFF) };
+        bytes.AddRange(payload);
+        bytes.Add(0);
+        bytes.Add(0);
+        return bytes.ToArray();
+    }
+
+    private sealed record CaseResult(string Name, string Outcome, string? Error, string ConnectionOutcome,
+        double ConnectionEndMs, double? StopMs, bool MessageProcessed, string MessageDetail,
+        long Accepted, long Active, long Completed, long Failed, long Messages, int PeerUnreadAtEnd,
+        string TlsRead, string RawRead, string FailureCode, string FailureMessage, string TlsProtocol,
+        double ElapsedMs);
+
+    /// <summary>A peer that owns both the raw socket and its TLS stream for close observation.</summary>
+    private sealed class PeerClient : IDisposable
+    {
+        private readonly BoltMessageCodec _codec = new();
+        private BoltMessageReader _reader;
+
+        private PeerClient(TcpClient tcp, NetworkStream raw, SslStream tls, BoltMessageReader reader)
+        {
+            Tcp = tcp;
+            Raw = raw;
+            Tls = tls;
+            _reader = reader;
+        }
+
+        private TcpClient Tcp { get; }
+
+        private NetworkStream Raw { get; }
+
+        internal SslStream Tls { get; }
+
+        internal int Available => Tcp.Available;
+
+        public static async Task<PeerClient> ConnectAsync(IPEndPoint endpoint, X509Certificate2 expected, int receiveBufferSize)
+        {
+            var tcp = new TcpClient(AddressFamily.InterNetwork) { ReceiveBufferSize = receiveBufferSize };
+            await tcp.ConnectAsync(endpoint);
+            var raw = tcp.GetStream();
+            var tls = new SslStream(raw, leaveInnerStreamOpen: true);
+            await tls.AuthenticateAsClientAsync(new SslClientAuthenticationOptions
+            {
+                TargetHost = "localhost",
+                RemoteCertificateValidationCallback = (_, cert, _, _) => cert?.GetCertHashString() == expected.Thumbprint
+            });
+            return new PeerClient(tcp, raw, tls, new BoltMessageReader(tls));
+        }
+
+        internal async Task AuthenticateAsync()
+        {
+            await Tls.WriteAsync(TransportTestSupport.HandshakeFromVersions(new BoltProtocolVersion(5, 8)));
+            var selected = new byte[4];
+            await ReadExactlyAsync(selected);
+            Assert.Equal(new byte[] { 0, 0, 8, 5 }, selected);
+            await SendAsync(Frame(TransportRequestEncoder.Encode(SessionHarness.Hello())));
+            await ReadSuccessAsync();
+            await SendAsync(Frame(TransportRequestEncoder.Encode(SessionHarness.Logon())));
+            await ReadSuccessAsync();
+        }
+
+        internal Task SendAsync(byte[] payload) => Tls.WriteAsync(payload).AsTask();
+
+        internal async IAsyncEnumerable<BoltResponse> ReadUntilFailureAsync(TimeSpan timeout)
+        {
+            for (var guard = 0; guard < 16; guard++)
+            {
+                var message = await _reader.ReadMessageAsync(CancellationToken.None).AsTask().WaitAsync(timeout);
+                if (message is null)
+                    yield break;
+                var response = _codec.DecodeResponse(message);
+                yield return response;
+                if (response is FailureResponse or SuccessResponse)
+                    yield break;
+            }
+        }
+
+        internal async Task ReadSuccessAsync()
+        {
+            var message = await _reader.ReadMessageAsync(CancellationToken.None).AsTask()
+                .WaitAsync(TimeSpan.FromSeconds(10))
+                ?? throw new EndOfStreamException("connection closed before a response arrived");
+            Assert.IsType<SuccessResponse>(_codec.DecodeResponse(message));
+        }
+
+        /// <summary>
+        /// Reads the TLS stream until EOF or fault, bounded. Distinguishes a compliant
+        /// close_notify (clean EOF after the data) from an abrupt transport close (fault).
+        /// </summary>
+        internal async Task<string> TryTlsReadAsync()
+        {
+            var total = 0;
+            try
+            {
+                var buffer = new byte[4096];
+                for (var guard = 0; guard < 64; guard++)
+                {
+                    var read = await Tls.ReadAsync(buffer.AsMemory()).AsTask()
+                        .WaitAsync(TimeSpan.FromSeconds(3));
+                    if (read == 0)
+                        return $"clean-eof after {total} bytes";
+                    total += read;
+                }
+
+                return $"still-data after {total} bytes";
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                var end = ex.InnerException is { } inner ? "|inner:" + inner.GetType().Name : "";
+                return $"{ex.GetType().Name} after {total} bytes:" + message[..Math.Min(100, message.Length)] + end;
+            }
+        }
+
+        /// <summary>Reads one raw transport byte after the server closed, or times out.</summary>
+        internal async Task<string> TryRawReadAsync()
+        {
+            try
+            {
+                var buffer = new byte[1];
+                var read = await Raw.ReadAsync(buffer.AsMemory()).AsTask().WaitAsync(TimeSpan.FromSeconds(3));
+                return read == 0 ? "clean-eof" : "data";
+            }
+            catch (Exception ex)
+            {
+                return ex.GetType().Name;
+            }
+        }
+
+        private async Task ReadExactlyAsync(byte[] destination)
+        {
+            var read = 0;
+            while (read < destination.Length)
+            {
+                var count = await Tls.ReadAsync(destination.AsMemory(read));
+                if (count == 0)
+                    throw new EndOfStreamException("connection closed during read");
+                read += count;
+            }
+        }
+
+        public void Dispose()
+        {
+            _reader = null!;
+            Tls.Dispose();
+            Raw.Dispose();
+            Tcp.Dispose();
+            GC.SuppressFinalize(this);
+        }
+    }
+}

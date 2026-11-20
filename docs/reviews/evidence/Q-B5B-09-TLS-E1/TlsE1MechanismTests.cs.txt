@@ -1,0 +1,158 @@
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using System.Text.Json;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace BoltSharp.Tests.Transport;
+
+/// <summary>
+/// Q-B5B-09-TLS-E1 raw-socket mechanism probe. Isolates the Windows/WSL2 TCP send-buffer
+/// semantics used to induce genuine terminal-write backpressure, independent of the Bolt and
+/// TLS layers. No BoltSharp production code is involved.
+/// </summary>
+public sealed class TlsE1MechanismTests(ITestOutputHelper output)
+{
+    private readonly record struct Case(int Ordinal, int RowBytes, int PeerReceive, int ShrinkTo);
+
+    private static readonly Case[] Cases =
+    [
+        new(1, 36864, 2048, 2048),
+        new(2, 45056, 1024, 1024),
+        new(3, 49152, 512, 512)
+    ];
+
+    [Fact]
+    public async Task FixedProbe()
+    {
+        var path = Environment.GetEnvironmentVariable("BOLTSHARP_TLS_E1_MECHANISM")
+            ?? throw new InvalidOperationException("Set BOLTSHARP_TLS_E1_MECHANISM to a new file.");
+        using (File.Open(path, FileMode.CreateNew, FileAccess.Write, FileShare.Read))
+        {
+        }
+
+        void Write(object value)
+        {
+            var text = JsonSerializer.Serialize(value);
+            File.AppendAllText(path, text + "\n");
+            output.WriteLine(text);
+        }
+
+        Write(new
+        {
+            kind = "mechanism-start",
+            platform = Environment.OSVersion.VersionString,
+            runtime = Environment.Version.ToString()
+        });
+
+        foreach (var probe in Cases)
+        {
+            var result = await RunCase(probe);
+            Write(new { kind = "mechanism-case", result });
+        }
+
+        Write(new { kind = "mechanism-end" });
+
+        static async Task<CaseResult> RunCase(Case probe)
+        {
+            using var listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            listener.Bind(new IPEndPoint(IPAddress.Loopback, 0));
+            listener.Listen(1);
+            var endpoint = (IPEndPoint)listener.LocalEndPoint!;
+
+            using var peer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            peer.ReceiveBufferSize = probe.PeerReceive;
+            await peer.ConnectAsync(endpoint);
+            using var server = await listener.AcceptAsync();
+
+            var peerReceiveActual = peer.ReceiveBufferSize;
+            var sendBefore = server.SendBufferSize;
+
+            // (1) Preceding finite result, peer parks unread.
+            var row = new byte[probe.RowBytes];
+            var rowCompleted = -1d;
+            string? rowError = null;
+            var rowWatch = new CancellationTokenSource(TimeSpan.FromMilliseconds(1500));
+            try
+            {
+                var rowStarted = Stopwatch.GetTimestamp();
+                await server.SendAsync(row, rowWatch.Token);
+                rowCompleted = Stopwatch.GetElapsedTime(rowStarted).TotalMilliseconds;
+            }
+            catch (Exception ex)
+            {
+                rowError = ex.GetType().Name;
+            }
+
+            // (2) Control: a small write with the original buffer must complete.
+            var controlCompleted = -1d;
+            string? controlError = null;
+            var controlWatch = new CancellationTokenSource(TimeSpan.FromMilliseconds(750));
+            try
+            {
+                var controlStarted = Stopwatch.GetTimestamp();
+                await server.SendAsync(new byte[100], controlWatch.Token);
+                controlCompleted = Stopwatch.GetElapsedTime(controlStarted).TotalMilliseconds;
+            }
+            catch (Exception ex)
+            {
+                controlError = ex.GetType().Name;
+            }
+
+            // (3) Shrink the owned send buffer at the armed stage, read back the actual size.
+            var shrinkError = "";
+            var sendAfter = -1;
+            try
+            {
+                server.SendBufferSize = probe.ShrinkTo;
+                sendAfter = server.SendBufferSize;
+            }
+            catch (Exception ex)
+            {
+                shrinkError = ex.GetType().Name;
+            }
+
+            // (4) Terminal-sized write after the shrink: pending or completed?
+            var terminalCompleted = -1d;
+            string? terminalState = null;
+            var terminalWatch = new CancellationTokenSource(TimeSpan.FromMilliseconds(750));
+            var terminalStarted = Stopwatch.GetTimestamp();
+            try
+            {
+                var send = server.SendAsync(new byte[130], terminalWatch.Token);
+                var pendingAtTimeout = false;
+                while (!send.IsCompleted)
+                {
+                    if (Stopwatch.GetElapsedTime(terminalStarted).TotalMilliseconds >= 400)
+                    {
+                        pendingAtTimeout = true;
+                        break;
+                    }
+
+                    await Task.Delay(2);
+                }
+
+                terminalState = pendingAtTimeout ? "pending-at-400ms" : "completed";
+                if (!pendingAtTimeout)
+                    await send;
+                terminalCompleted = Stopwatch.GetElapsedTime(terminalStarted).TotalMilliseconds;
+            }
+            catch (Exception ex)
+            {
+                terminalState = "faulted:" + ex.GetType().Name;
+                terminalCompleted = Stopwatch.GetElapsedTime(terminalStarted).TotalMilliseconds;
+            }
+
+            peer.Dispose();
+            server.Dispose();
+            return new CaseResult(probe.Ordinal, probe.RowBytes, peerReceiveActual, sendBefore,
+                rowCompleted, rowError, controlCompleted, controlError, probe.ShrinkTo, sendAfter,
+                shrinkError, terminalState, terminalCompleted);
+        }
+    }
+
+    private sealed record CaseResult(int Ordinal, int RowBytes, int PeerReceiveActual, int SendBefore,
+        double RowCompletedMs, string? RowError, double ControlCompletedMs, string? ControlError,
+        int ShrinkRequested, int SendAfter, string ShrinkError, string? TerminalState, double TerminalMs);
+}

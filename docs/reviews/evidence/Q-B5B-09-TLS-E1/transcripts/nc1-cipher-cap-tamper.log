@@ -1,0 +1,5 @@
+﻿Test run for C:\Windows\Temp\opencode\q-b5b-09-tls-e1\nc1-cipher-cap-tamper\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 5 s - BoltSharp.Tests.dll (net8.0)

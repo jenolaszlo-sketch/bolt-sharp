@@ -1,0 +1,68 @@
+﻿{
+  "commission": "Q-B5B-09-TLS-E1",
+  "canonical_repository": {
+    "path": "D:/projects/bolt-sharp",
+    "branch": "main",
+    "head": "250fb99273f975ae6552eb4e0ebefcc149796fa7",
+    "tree": "bb69f2e3986dbae6a5db705c20690cb9f1cb9568"
+  },
+  "candidate_base_commit": "23d58da4e0c0e10aa46a31f05ef6a0c31ad3f2fa",
+  "candidate_base_export": {
+    "sha256": "0eee2e548c2eed21b26f9fb609eaad5311fb46eb792262d260e459de78e01b98",
+    "bytes": 55971840,
+    "note": "git -c core.autocrlf=false archive --format=tar; PowerShell binary pipelines corrupt tar streams, so the archive was written with --output; blank-extraction verified byte-exact against the git blob of at least one file"
+  },
+  "replay_patches": [
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/prototype.patch",
+      "sha256": "e97f640b0b3ff84326b935820cfdb77e0a639c040ea6b5f7dc64e979b9c3da79"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/refinement.patch",
+      "sha256": "30061d42f8891e4f804e570105f556995e4f82a7cd542334284fce23a0dd57b5"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-03/real-write-observation.patch",
+      "sha256": "f728d3125e225fad207e4cbe1e326fe043ec57f894122956ed30f6a31678c3a4"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/link-observation.patch",
+      "sha256": "db1d34243fec2af7914cea20ed6cdfb1bf427afb899bd9f91379e0d00c9853b7"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-INV-02/wsl-listener-adapter.patch",
+      "sha256": "05311b8e76dd46754e0475e649f99c84d90d51e495ec7d6744a8781e82d74e6b"
+    }
+  ],
+  "gate_isolated_source_sha256": {
+    "src/BoltSharp/Sessions/BoltConnectionSession.cs": "6db79fe5feb17dd9ef381ae64186fd769f1a9688bea70a81808c964538328e4a",
+    "src/BoltSharp/Transport/BoltTcpConnection.cs": "0de5fb6b4d50c4802c0fcdab069c04f430c0792d0a97e02cb95957ff10c1423a",
+    "src/BoltSharp/Transport/BoltTcpServer.cs": "00fac654682ef6b50562cc2e55e94e20d3ee1804d9d141cead9c03519b8d6c0e",
+    "src/BoltSharp/Transport/BoltTerminalClose.cs": "e424046505055cdbe2526e4d698587ebb5aef3df57c93bacba867a8ee1ccd714",
+    "src/BoltSharp/Transport/Inv03Probe.cs": "7428ebf195411a8d854c1fc194acd71c57ff40d1d3b5ac7673a755fea07b2159"
+  },
+  "wsl2_listener_source_sha256": "c935031985cd921eb9e56857ca6ffe8b838c4f4e33747e96b853d9c69ebb29c7",
+  "gate_wsl2_listener_sha256": "c935031985cd921eb9e56857ca6ffe8b838c4f4e33747e96b853d9c69ebb29c7",
+  "gate_wsl2_listener_note": "The reconstructed adapted WSL2 listener matches the TLS-GATE-01 recorded wsL2_listener_source_sha256 byte for byte. The INV-03 refinement patch does not touch BoltTcpServer.cs; an intermediate workspace copy that omitted the prototype patch (no _terminalDrains) was discarded, never executed, and is not evidence.",
+  "fixtures": {
+    "TlsE1Tests.cs.txt": "439c93a1241905f6694ba91d3dae2fb3425a86a2dbc3a26c9c49b47d70a973cd",
+    "TlsE1MechanismTests.cs.txt": "7a177cf07171cd2f1e6f63d766211ffa3808c5e0c0258fe0bdf5235f880e5e26",
+    "ProductionTlsCloseTests.cs.txt": "f65728f9253a08a965338bb7ad12c63aaa26ea150c31043f46bb6ef22d44bf7f"
+  },
+  "predeclared_configuration": {
+    "sha256": "651c664282bf7afd9dc787411daed6cec2140ed939eb8848268f35e652fea1ed",
+    "bytes": 2827
+  },
+  "platforms": {
+    "windows": {
+      "os": "Microsoft Windows NT 10.0.26200.0",
+      "sdk": "10.0.401",
+      "runtime": "8.0.31"
+    },
+    "wsl2": {
+      "os": "Unix 6.6.114.1",
+      "runtime": "10.0.14",
+      "mode": "portable net8.0 assembly with DOTNET_ROLL_FORWARD=Major on dotnet vstest 18.0.2"
+    }
+  }
+}
