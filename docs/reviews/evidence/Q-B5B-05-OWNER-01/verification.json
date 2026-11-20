@@ -1,0 +1,35 @@
+{
+    "commission":  "Q-B5B-05-OWNER-01",
+    "decision":  "Q-B5B-05 - ACCEPTED WITH QUALIFICATIONS - CLOSED",
+    "acceptedQu1Disposition":  "SUPPORTED WITH QUALIFICATIONS",
+    "preflight":  {
+                      "branch":  "main",
+                      "head":  "7704fe6a9400c24217cf327e3b5910669c2f7c70",
+                      "tree":  "ac9626dbcb714ec93c9e72ea5ab0b9de19aef89e",
+                      "parent":  "4c3b6895a7b1366521f80df44ebca371377b7d0e",
+                      "statusEntries":  2,
+                      "worktrees":  1,
+                      "stashes":  0,
+                      "divergence":  "0\t24",
+                      "statusNote":  "0 tracked modifications; the 2 porcelain entries at capture were this owner commission own untracked decision file and evidence package"
+                  },
+    "qualificationCommitsAheadOfProducer":  4,
+    "protectedScopeChangesOutsideDecisionPackage":  0,
+    "q1EvidenceVerifierPassedAtEntryHead":  true,
+    "q1PackageFilesVerified":  57,
+    "trxCounters":  {
+                        "probeWindows":  "13/13/0/0",
+                        "probeWsl2":  "13/13/0/0",
+                        "coreWindows":  "1257/1257/0/0",
+                        "coreWsl2":  "1257/1257/0/0",
+                        "interopWindows":  "43/43/0/0",
+                        "interopWsl2":  "43/43/0/0"
+                    },
+    "reviewerReproductionAssertions":  {
+                                           "windows":  364,
+                                           "wsl2":  364,
+                                           "scenariosPassed":  "15/15 per platform"
+                                       },
+    "negativeControlsDetected":  "4 of 4 (reviewer-owned injections, both platforms)",
+    "pushedOrPublished":  false
+}
