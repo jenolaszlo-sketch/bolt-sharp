@@ -1,0 +1,136 @@
+# Q-B5B-09 TLS Native-Linux Qualification — bounded observational campaign
+#
+# Commission: Q-B5B-09-TLS-LINUX-QUAL-01
+# Campaign plan:      docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/campaign-plan.json
+# Preparation report: docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-preparation-report.md
+# Commissioning:      docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/COMMISSIONING.md
+#
+# Design constraints (bounded campaign):
+#   - Native Linux execution: runs-on: ubuntu-latest is a GitHub-hosted Linux VM
+#     (public docs: docs.github.com/en/actions/reference/runners/github-hosted-runners —
+#     "With the exception of single-CPU runners, each GitHub-hosted runner is a new
+#     virtual machine (VM) hosted by GitHub"; ubuntu-latest maps to the Ubuntu2404
+#     image per github.com/actions/runner-images).
+#   - Pinned revision: campaign revision pinned via inputs.revision; actions pinned by commit SHA.
+#   - Bounded: timeout-minutes (job), max-parallel: 1, timeout 2700 s on the campaign step.
+#   - Private cache strategy: campaign-scoped keyspace (key includes campaign id, revision,
+#     and the plan hash); restore-keys limited to the campaign namespace.
+#   - No push: read-only permissions, persist-credentials: false, manual dispatch only.
+
+name: Q-B5B-09 TLS Native-Linux Qualification
+
+on:
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: "Pinned revision the campaign is commissioned against"
+        required: false
+        default: "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: q-b5b-09-tls-linux-qual-01
+  cancel-in-progress: false
+
+env:
+  CAMPAIGN_ID: Q-B5B-09-TLS-LINUX-QUAL-01
+  CAMPAIGN_DIR: docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01
+  RESULTS_DIR: docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results
+
+jobs:
+  qualify:
+    name: Q-B5B-09-TLS-LINUX-QUAL-01 (native Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+    steps:
+      - name: Check out pinned campaign revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.revision }}
+          persist-credentials: false
+
+      - name: Verify native Linux runner
+        run: |
+          echo "RUNNER_OS=$RUNNER_OS"
+          uname -a
+          python3 - <<'PY'
+          import os, sys
+          info = os.uname()
+          print("native-Linux gate:", info.sysname, info.release)
+          if info.sysname != "Linux":
+              sys.exit("stop: campaign requires native Linux; runner is " + info.sysname)
+          if os.environ.get("RUNNER_OS") != "Linux":
+              sys.exit("stop: RUNNER_OS is not Linux; refusing a non-native environment")
+          print("native-Linux gate passed")
+          PY
+
+      - name: Restore private campaign cache
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: |
+            docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results
+            ~/.cache/q-b5b-09-tls-linux-qual-01
+          key: q-b5b-09-tls-linux-qual-01-linux-x64-2404-${{ inputs.revision }}-${{ hashFiles('docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/**') }}
+          restore-keys: |
+            q-b5b-09-tls-linux-qual-01-linux-x64-2404-${{ inputs.revision }}-
+          # Private strategy: this cache keyspace is restricted to the campaign;
+          # restore-keys cannot match other campaigns or repositories, and the key
+          # includes the pinned revision and the campaign plan hash.
+
+      - name: Run bounded campaign driver
+        run: |
+          set +e
+          timeout 2700s python3 "${{ env.CAMPAIGN_DIR }}/run-campaign.py" \
+            --revision "${{ inputs.revision }}" \
+            --campaign-id "${{ env.CAMPAIGN_ID }}" \
+            --results-dir "${{ env.RESULTS_DIR }}" \
+            --timeout-seconds 2700
+          code=$?
+          echo "campaign driver exit: $code"
+          exit $code
+
+      - name: Append campaign summary
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          summary_path = Path("${{ env.RESULTS_DIR }}/campaign-summary.json")
+          lines = ["", "### Q-B5B-09-TLS-LINUX-QUAL-01 campaign summary", ""]
+          if summary_path.is_file():
+              data = json.loads(summary_path.read_text(encoding="utf-8"))
+              revision = data.get("campaign", {}).get("revision", {}).get("commit", "n/a")
+              status = data.get("campaign", {}).get("status", "unknown")
+              lines.append("- revision: `" + str(revision) + "`")
+              lines.append("- campaign status: `" + str(status) + "`")
+              lines.append("- min matrix:")
+              for cell in (data.get("matrix", {}) or {}).get("min_matrix", []):
+                  lines.append("  - `" + str(cell.get("id")) + "`: " + str(cell.get("outcome", "not recorded")))
+          else:
+              lines.append("- campaign summary not produced; see job log.")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+              summary.write("\n".join(lines) + "\n")
+          PY
+
+      - name: Upload campaign artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: q-b5b-09-tls-linux-qual-01-${{ github.run_id }}
+          path: ${{ env.RESULTS_DIR }}
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Save private campaign cache
+        if: always()
+        uses: actions/cache/save@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: |
+            docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results
+            ~/.cache/q-b5b-09-tls-linux-qual-01
+          key: q-b5b-09-tls-linux-qual-01-linux-x64-2404-${{ inputs.revision }}-${{ hashFiles('docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/**') }}
