@@ -20,12 +20,8 @@
 name: Q-B5B-09 TLS Native-Linux Qualification
 
 on:
-  workflow_dispatch:
-    inputs:
-      revision:
-        description: "Pinned revision the campaign is commissioned against"
-        required: false
-        default: "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f"
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 permissions:
   contents: read
@@ -42,16 +38,16 @@ env:
 jobs:
   qualify:
     name: Q-B5B-09-TLS-LINUX-QUAL-01 (native Linux)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     strategy:
       fail-fast: false
       max-parallel: 1
     steps:
-      - name: Check out pinned campaign revision
+      - name: Check out qualified campaign branch
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: ${{ inputs.revision }}
+          ref: qualification/q-b5b-09-tls-linux-qual-01
           persist-credentials: false
 
       - name: Verify native Linux runner
@@ -75,9 +71,9 @@ jobs:
           path: |
             docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results
             ~/.cache/q-b5b-09-tls-linux-qual-01
-          key: q-b5b-09-tls-linux-qual-01-linux-x64-2404-${{ inputs.revision }}-${{ hashFiles('docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/**') }}
+          key: q-b5b-09-tls-linux-qual-01-linux-x64-2404-7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f-${{ hashFiles('docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/**') }}
           restore-keys: |
-            q-b5b-09-tls-linux-qual-01-linux-x64-2404-${{ inputs.revision }}-
+            q-b5b-09-tls-linux-qual-01-linux-x64-2404-7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f-
           # Private strategy: this cache keyspace is restricted to the campaign;
           # restore-keys cannot match other campaigns or repositories, and the key
           # includes the pinned revision and the campaign plan hash.
@@ -86,7 +82,7 @@ jobs:
         run: |
           set +e
           timeout 2700s python3 "${{ env.CAMPAIGN_DIR }}/run-campaign.py" \
-            --revision "${{ inputs.revision }}" \
+            --revision "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f" \
             --campaign-id "${{ env.CAMPAIGN_ID }}" \
             --results-dir "${{ env.RESULTS_DIR }}" \
             --timeout-seconds 2700
@@ -133,4 +129,4 @@ jobs:
           path: |
             docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results
             ~/.cache/q-b5b-09-tls-linux-qual-01
-          key: q-b5b-09-tls-linux-qual-01-linux-x64-2404-${{ inputs.revision }}-${{ hashFiles('docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/**') }}
+          key: q-b5b-09-tls-linux-qual-01-linux-x64-2404-7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f-${{ hashFiles('docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/**') }}
