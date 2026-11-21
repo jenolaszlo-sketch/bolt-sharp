@@ -6,7 +6,7 @@
 # Commissioning:      docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/COMMISSIONING.md
 #
 # Design constraints (bounded campaign):
-#   - Native Linux execution: runs-on: ubuntu-latest is a GitHub-hosted Linux VM
+#   - Native Linux execution: runs-on: ubuntu-24.04 is a GitHub-hosted Linux VM
 #     (public docs: docs.github.com/en/actions/reference/runners/github-hosted-runners —
 #     "With the exception of single-CPU runners, each GitHub-hosted runner is a new
 #     virtual machine (VM) hosted by GitHub"; ubuntu-latest maps to the Ubuntu2404
@@ -44,7 +44,7 @@ jobs:
       fail-fast: false
       max-parallel: 1
     steps:
-      - name: Check out qualified campaign branch
+      - name: Check out qualification branch
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: qualification/q-b5b-09-tls-linux-qual-01
@@ -64,6 +64,14 @@ jobs:
               sys.exit("stop: RUNNER_OS is not Linux; refusing a non-native environment")
           print("native-Linux gate passed")
           PY
+
+      - name: Harness smoke test
+        run: |
+          set +e
+          timeout 30s python3 "${{ env.CAMPAIGN_DIR }}/run-harness-selftest.py"
+          code=$?
+          echo "harness self-test exit: $code"
+          exit $code
 
       - name: Restore private campaign cache
         uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
