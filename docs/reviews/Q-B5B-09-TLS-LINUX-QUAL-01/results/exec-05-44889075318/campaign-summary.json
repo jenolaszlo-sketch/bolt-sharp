@@ -1,0 +1,77 @@
+{
+  "budgets": {
+    "attempt_lifetime_ms": 3500,
+    "campaign_seconds": 2700,
+    "job_seconds": 2700
+  },
+  "campaign": {
+    "id": "Q-B5B-09-TLS-LINUX-QUAL-01",
+    "revision": {
+      "commit": "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f",
+      "tree": "2fdf1c3b96586465eb7547d23b6b1792240692ba"
+    },
+    "status": "qualified"
+  },
+  "cells": {
+    "L1": {
+      "evidence": {
+        "journal": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/campaign-journal.jsonl",
+        "transcript": "transcripts/L1.log"
+      },
+      "outcome": "induced-and-interrupted"
+    },
+    "L2": {
+      "evidence": {
+        "journal": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/campaign-journal.jsonl",
+        "transcript": "transcripts/L2.log"
+      },
+      "outcome": "induced-and-interrupted"
+    },
+    "L3": {
+      "evidence": {
+        "journal": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/campaign-journal.jsonl",
+        "transcript": "transcripts/L3.log"
+      },
+      "outcome": "induced-and-interrupted"
+    },
+    "L4": {
+      "evidence": {
+        "journal": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/campaign-journal.jsonl",
+        "transcript": "transcripts/L4.log"
+      },
+      "outcome": "induced-and-interrupted"
+    },
+    "L5": {
+      "evidence": {
+        "journal": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/campaign-journal.jsonl",
+        "transcript": "transcripts/L5.log"
+      },
+      "outcome": "cap-bounded-and-clean"
+    },
+    "L6": {
+      "evidence": {
+        "journal": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/campaign-journal.jsonl",
+        "transcript": "transcripts/L6.log"
+      },
+      "outcome": "cap-bounded-and-clean"
+    },
+    "L7": {
+      "evidence": {
+        "journal": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/campaign-journal.jsonl",
+        "transcript": "transcripts/L7.log"
+      },
+      "outcome": "peer-receipt-verified"
+    }
+  },
+  "negative_controls": {
+    "NC-1": {
+      "detected": true
+    },
+    "NC-2": {
+      "detected": true
+    }
+  },
+  "validation": {
+    "passed": false
+  }
+}

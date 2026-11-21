@@ -1,0 +1,11 @@
+{
+  "cell": "L1",
+  "attempt": 1,
+  "outcome": "induced-and-interrupted",
+  "Confirmed": true,
+  "PendingMs": 100.99612600001251,
+  "SenderWritableAtSample": false,
+  "PeerUnreadAtSample": 1,
+  "ElapsedMs": 100.99612600001251,
+  "Interruption": "deadline"
+}

@@ -1,0 +1,9 @@
+{
+  "cell": "L5",
+  "attempt": 1,
+  "outcome": "cap-bounded-and-clean",
+  "WireBytes": 32768,
+  "PlaintextBytes": 32768,
+  "ElapsedMs": 0.19022700001869453,
+  "DeclaredLimit": 32768
+}

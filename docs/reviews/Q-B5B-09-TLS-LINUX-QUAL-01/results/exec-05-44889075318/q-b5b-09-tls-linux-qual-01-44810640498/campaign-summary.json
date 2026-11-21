@@ -1,0 +1,149 @@
+{
+  "budgets": {
+    "attempts": {
+      "attempt_lifetime_ms": 3500,
+      "cap_cell_attempts": 3,
+      "discovery_attempts_per_cell": 4,
+      "maximum_runs_per_cell": 6,
+      "negative_control_attempts": 3
+    },
+    "job_time": {
+      "campaign_step_timeout_seconds": 2700,
+      "expected_max_minutes": 20,
+      "note": "hard cap: timeout-minutes 45 on the job; the campaign driver step is bounded with coreutils timeout 2700 s; per-attempt watchdog 3500 ms",
+      "timeout_minutes": 45
+    },
+    "resources": {
+      "concurrency": "max-parallel: 1; cells serialized; one job per campaign",
+      "disk": "results/ only (journals and transcripts); bounded upload of results/",
+      "network": "ephemeral IPv4 loopback only; no external endpoints"
+    },
+    "runner": {
+      "architecture": "x64",
+      "image": "Ubuntu2404",
+      "label": "ubuntu-latest",
+      "note": "GitHub-hosted standard runner: 'each GitHub-hosted runner is a new virtual machine (VM) hosted by GitHub' (docs.github.com/en/actions/reference/runners/github-hosted-runners); ubuntu-latest maps to the Ubuntu2404 VM image (github.com/actions/runner-images).",
+      "public_repo_spec": {
+        "memory_gb": 16,
+        "storage_gb": 14,
+        "vcpus": 4
+      }
+    },
+    "total": {
+      "expected_max_minutes": 20,
+      "hard_cap": "timeout-minutes 45"
+    }
+  },
+  "campaign": {
+    "id": "Q-B5B-09-TLS-LINUX-QUAL-01",
+    "note": "preparation driver; owner-authorized native-Linux campaign not executed",
+    "revision": {
+      "commit": "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f",
+      "tree": "2fdf1c3b96586465eb7547d23b6b1792240692ba"
+    },
+    "status": "prepared"
+  },
+  "matrix": {
+    "bounds": {
+      "attempt_lifetime_ms": 3500,
+      "cap_limits": {
+        "ciphertext": 32768,
+        "plaintext": 8192
+      },
+      "close_notify_pending_bound_ms": 120,
+      "cpu_time_per_attempt": "bounded by the attempt watchdog (3500 ms) and loopback workloads",
+      "minimum_pending_observation_ms": 20,
+      "network": "ephemeral IPv4 loopback TLS listener; peer parks its receive direction; no relay, no delayed encrypted-write await, no privileged network change, no external endpoint",
+      "terminal_pending_bound_ms": 310,
+      "total_elapsed_bound_ms": 500
+    },
+    "min_matrix": [
+      {
+        "discovery_attempts_bound": 4,
+        "id": "L1",
+        "interruption": "absolute total deadline (terminal-write pending bound 310 ms; total elapsed bound 500 ms)",
+        "objectives": [
+          "O1",
+          "O11"
+        ],
+        "outcome": "induced-and-interrupted",
+        "repeat_on_qualified": true,
+        "seed": 1001,
+        "stimulus": "pipelined terminal write to a parked zero-window peer; deep queue profiles 1-4 (preceding 36864/45056/49152/262144 bytes; requested peer receive 2048/1024/512/1024 bytes; requested target send 2048/1024/512/2048 bytes)"
+      },
+      {
+        "discovery_attempts_bound": 4,
+        "id": "L2",
+        "interruption": "peer listener cancellation after a bounded interval",
+        "objectives": [
+          "O2"
+        ],
+        "outcome": "induced-and-interrupted",
+        "repeat_on_qualified": true,
+        "seed": 1002,
+        "stimulus": "same as L1"
+      },
+      {
+        "discovery_attempts_bound": 4,
+        "id": "L3",
+        "interruption": "phase deadline (<= 120 ms close_notify sub-budget; total elapsed bound 500 ms)",
+        "objectives": [
+          "O3",
+          "O11"
+        ],
+        "outcome": "induced-and-interrupted",
+        "repeat_on_qualified": true,
+        "seed": 1003,
+        "stimulus": "peer parks its receive direction after the handshake; close_notify write to the zero-window peer"
+      },
+      {
+        "discovery_attempts_bound": 4,
+        "id": "L4",
+        "interruption": "peer listener cancellation after a bounded interval",
+        "objectives": [
+          "O4"
+        ],
+        "outcome": "induced-and-interrupted",
+        "repeat_on_qualified": true,
+        "seed": 1004,
+        "stimulus": "zero-window peer plus a gated TLS proxy between sender and peer (the proxy journals the close_notify observation and gates forwarding)"
+      },
+      {
+        "discovery_attempts_bound": 3,
+        "id": "L5",
+        "interruption": "none required; the drain terminates at the encrypted-byte cap",
+        "objectives": [
+          "O5",
+          "O9"
+        ],
+        "outcome": "cap-bounded-and-clean",
+        "seed": 1005,
+        "stimulus": "peer flood (tiny 1 byte; large 4096 bytes); declared encrypted cap 32768 bytes; preceding fixture 4096 bytes"
+      },
+      {
+        "discovery_attempts_bound": 3,
+        "id": "L6",
+        "interruption": "none required; the drain terminates at the plaintext-byte cap; observed WireBytes <= 32768",
+        "objectives": [
+          "O6"
+        ],
+        "outcome": "cap-bounded-and-clean",
+        "seed": 1006,
+        "stimulus": "peer flood up to 131072 bytes; declared plaintext cap 8192 bytes"
+      },
+      {
+        "discovery_attempts_bound": 4,
+        "id": "L7",
+        "interruption": "none required",
+        "objectives": [
+          "O7",
+          "O8"
+        ],
+        "outcome": "peer-receipt-verified",
+        "repeat_on_qualified": true,
+        "seed": 1007,
+        "stimulus": "cooperative peer application reads the terminal message and records a receipt; the runner validates digest + byte count"
+      }
+    ]
+  }
+}

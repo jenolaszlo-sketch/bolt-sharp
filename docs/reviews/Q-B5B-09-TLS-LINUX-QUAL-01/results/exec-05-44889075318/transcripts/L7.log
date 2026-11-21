@@ -1,0 +1,15 @@
+{
+  "cell": "L7",
+  "attempt": 1,
+  "outcome": "peer-receipt-verified",
+  "receipt": {
+    "record_type": "peer-receipt",
+    "cell": "L7",
+    "attempt": 1,
+    "message_bytes": 16,
+    "sha256": "6fcf9eef383f2722165844f58fff1706ef8438a6f57f7ff7cb8cbfd5c5ec95c3",
+    "receipt_ms": 3.3858999984204274e-05
+  },
+  "ExpectedSha256": "6fcf9eef383f2722165844f58fff1706ef8438a6f57f7ff7cb8cbfd5c5ec95c3",
+  "ExpectedBytes": 16
+}
