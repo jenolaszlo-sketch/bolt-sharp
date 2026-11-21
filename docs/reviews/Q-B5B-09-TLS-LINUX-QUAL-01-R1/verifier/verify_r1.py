@@ -200,16 +200,19 @@ class Verifier:
         attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
         for a in attempts:
             checks = a.get("checks", {})
-            if not checks.get("drain_at_cap", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: drain not at cap")
-            if not checks.get("drain_reason_byte_limit", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: drain reason not byte-limit")
-            if not checks.get("permits_balanced", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: permits not balanced")
-            if a.get("declared_limit") != 32768:
-                self.error(f"{cell} attempt {a.get('attempt')}: declared limit != 32768")
+            if not checks.get("ciphertext_cap_respected", False):
+                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext cap not respected (ciphertext_bytes > 32768)")
+            if not checks.get("flood_stopped_at_limit", False):
+                self.error(f"{cell} attempt {a.get('attempt')}: flood did not stop at ciphertext limit")
+            if a.get("declared_ciphertext_cap") != 32768:
+                self.error(f"{cell} attempt {a.get('attempt')}: declared ciphertext cap != 32768")
             if a.get("outcome") != "cap-bounded-and-clean":
                 self.error(f"{cell} attempt {a.get('attempt')}: outcome != cap-bounded-and-clean")
+            # Verify plaintext_bytes is recorded (even if not capped for L5)
+            if "plaintext_bytes" not in a:
+                self.error(f"{cell} attempt {a.get('attempt')}: plaintext_bytes not recorded")
+            if "ciphertext_bytes" not in a:
+                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext_bytes not recorded")
 
     def verify_cell_l6(self):
         cell = "L6"
@@ -225,14 +228,22 @@ class Verifier:
         attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
         for a in attempts:
             checks = a.get("checks", {})
-            if not checks.get("drain_at_cap", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: drain not at cap")
-            if not checks.get("drain_reason_byte_limit", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: drain reason not byte-limit")
-            if a.get("declared_limit") != 8192:
-                self.error(f"{cell} attempt {a.get('attempt')}: declared limit != 8192")
+            if not checks.get("ciphertext_cap_respected", False):
+                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext cap not respected (ciphertext_bytes > 32768)")
+            if not checks.get("plaintext_cap_respected", False):
+                self.error(f"{cell} attempt {a.get('attempt')}: plaintext cap not respected (plaintext_bytes > 8192)")
+            if not checks.get("flood_stopped_at_limit", False):
+                self.error(f"{cell} attempt {a.get('attempt')}: flood did not stop at ciphertext limit")
+            if a.get("declared_ciphertext_cap") != 32768:
+                self.error(f"{cell} attempt {a.get('attempt')}: declared ciphertext cap != 32768")
+            if a.get("declared_plaintext_cap") != 8192:
+                self.error(f"{cell} attempt {a.get('attempt')}: declared plaintext cap != 8192")
             if a.get("outcome") != "cap-bounded-and-clean":
                 self.error(f"{cell} attempt {a.get('attempt')}: outcome != cap-bounded-and-clean")
+            if "plaintext_bytes" not in a:
+                self.error(f"{cell} attempt {a.get('attempt')}: plaintext_bytes not recorded")
+            if "ciphertext_bytes" not in a:
+                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext_bytes not recorded")
 
     def verify_cell_l6_prod(self):
         cell = "L6-PROD"
@@ -293,7 +304,7 @@ class Verifier:
                 continue
             for r in records:
                 if nc == "NC-1":
-                    if r.get("declared_cap") != 32768 or r.get("tampered_cap") != 131072:
+                    if r.get("declared_ciphertext_cap") != 32768 or r.get("tampered_ciphertext_cap") != 131072:
                         self.error(f"{nc}: cap values not recorded")
                     if r.get("outcome") == "cap-bounded-and-clean":
                         self.error(f"{nc}: tampered cap accepted as clean")

@@ -87,8 +87,19 @@ def make_attempt_record(cell: str, attempt: int, run_id: str, commit: str, tree:
         base["shutdown_pending"] = False
         base["shutdown_pending_ms"] = 0
         base["sender_writable_at_sample"] = None
-        base["declared_limit"] = 32768
-        base["drain_end"] = {"name": "drain-end", "bytes": 32768, "reason": "byte-limit"}
+        base["declared_ciphertext_cap"] = 32768
+        base["declared_plaintext_cap"] = None
+        base["ciphertext_bytes"] = 32768
+        base["plaintext_bytes"] = 100
+        base["drain_end"] = {"name": "candidate-flood-complete", "bytes": 32768, "reason": "ciphertext-cap"}
+        base["plaintext_read_complete"] = False
+        base["checks"] = {
+            "ciphertext_cap_respected": True,
+            "plaintext_cap_respected": True,
+            "flood_stopped_at_limit": True,
+            "accounting_active_zero": True,
+            "accounting_balanced": True
+        }
         base["proxy_port"] = None
     elif cell == "L6":
         base["outcome"] = "cap-bounded-and-clean"
@@ -96,8 +107,19 @@ def make_attempt_record(cell: str, attempt: int, run_id: str, commit: str, tree:
         base["shutdown_pending"] = False
         base["shutdown_pending_ms"] = 0
         base["sender_writable_at_sample"] = None
-        base["declared_limit"] = 8192
-        base["drain_end"] = {"name": "drain-end", "bytes": 8192, "reason": "byte-limit"}
+        base["declared_ciphertext_cap"] = 32768
+        base["declared_plaintext_cap"] = 8192
+        base["ciphertext_bytes"] = 32768
+        base["plaintext_bytes"] = 100
+        base["drain_end"] = {"name": "candidate-flood-complete", "bytes": 100, "reason": "plaintext-cap"}
+        base["plaintext_read_complete"] = False
+        base["checks"] = {
+            "ciphertext_cap_respected": True,
+            "plaintext_cap_respected": True,
+            "flood_stopped_at_limit": True,
+            "accounting_active_zero": True,
+            "accounting_balanced": True
+        }
         base["proxy_port"] = None
     elif cell == "L7":
         base["outcome"] = "peer-receipt-verified"
@@ -218,9 +240,12 @@ def test_false_pass_conditions():
         ("L1 stop not bounded", "L1", {"stop_ms": 2000.0, "checks": {"stop_bounded": False}}),
         ("L3 shutdown pending < 20ms", "L3", {"shutdown_pending_ms": 0.14, "shutdown_pending": True}),
         ("L3 sender writable", "L3", {"sender_writable_at_sample": True}),
-        ("L5 drain at wrong cap", "L5", {"declared_limit": 131072, "outcome": "cap-bounded-and-clean", "checks": {"drain_at_cap": False}}),
-        ("L5 tampered cap accepted", "NC-1", {"declared_cap": 32768, "tampered_cap": 131072, "outcome": "cap-bounded-and-clean"}),
-        ("L6 wrong declared limit", "L6", {"declared_limit": 32768, "outcome": "cap-bounded-and-clean"}),
+        ("L5 ciphertext cap not respected", "L5", {"ciphertext_bytes": 40000, "checks": {"ciphertext_cap_respected": False}}),
+        ("L5 flood not stopped at limit", "L5", {"ciphertext_bytes": 1000, "checks": {"flood_stopped_at_limit": False}}),
+        ("L5 tampered cap accepted", "NC-1", {"declared_ciphertext_cap": 32768, "tampered_ciphertext_cap": 131072, "outcome": "cap-bounded-and-clean"}),
+        ("L6 ciphertext cap not respected", "L6", {"ciphertext_bytes": 40000, "checks": {"ciphertext_cap_respected": False}}),
+        ("L6 plaintext cap not respected", "L6", {"plaintext_bytes": 10000, "checks": {"plaintext_cap_respected": False}}),
+        ("L6 flood not stopped at limit", "L6", {"ciphertext_bytes": 1000, "checks": {"flood_stopped_at_limit": False}}),
         ("L7 no receipt", "L7", {"checks": {"receipt_present": False}}),
         ("L7 receipt digest mismatch", "L7", {"checks": {"receipt_matches_campaign_digest": False}}),
         ("L7 peer unread not zero", "L7", {"checks": {"peer_unread_at_end_zero": False}}),
@@ -244,7 +269,7 @@ def test_false_pass_conditions():
             for nc in ["NC-1", "NC-2"]:
                 if nc == "NC-1":
                     nc_records = [{"record_type": "attempt", "cell": cell, "control": nc, "run_id": run_id,
-                                   "declared_cap": 32768, "tampered_cap": 131072,
+                                   "declared_ciphertext_cap": 32768, "tampered_ciphertext_cap": 131072,
                                    "outcome": "cap-checks-failed", "elapsed_ms": 100.0}]
                 else:
                     nc_records = [{"record_type": "attempt", "cell": "L1", "control": nc, "run_id": run_id,

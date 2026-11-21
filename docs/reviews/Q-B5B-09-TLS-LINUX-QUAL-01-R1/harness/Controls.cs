@@ -26,8 +26,8 @@ internal static class Controls
         var record = await Candidate.WithWatchdog(ctx, cell, profile, 1, 0, null,
             (token) => Candidate.RunCapAttemptAsync(ctx, cell, profile, 1, 131072, token));
         record["control"] = "NC-1";
-        record["tampered_cap"] = 131072;
-        record["declared_cap"] = Campaign.CiphertextLimit;
+        record["tampered_ciphertext_cap"] = 131072;
+        record["declared_ciphertext_cap"] = Campaign.CiphertextLimit;
         ctx.Journal.WriteControl("NC-1", record);
         var outcome = (string)record["outcome"]!;
         ctx.Journal.Transcript("NC-1", $"outcome={outcome} declared={Campaign.CiphertextLimit} tampered=131072");

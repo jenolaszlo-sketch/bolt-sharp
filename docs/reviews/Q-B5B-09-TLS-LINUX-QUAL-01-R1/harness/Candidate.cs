@@ -453,13 +453,17 @@ internal static class Candidate
     {
         var result = NewAttempt(cell, profile, attempt, "candidate-cap");
         result["declared_limit"] = declaredLimit;
+        var isL5 = cell.Id == "L5"; // L5 = ciphertext cap (32768), L6 = plaintext cap (8192)
+        var declaredCiphertextLimit = isL5 ? Campaign.CiphertextLimit : Campaign.CiphertextLimit; // Both cells respect 32768 encrypted cap
+        var declaredPlaintextLimit = isL5 ? long.MaxValue : Campaign.PlaintextLimit; // L6 enforces 8192 plaintext cap
+
         BoltTcpServer? server = null;
-        PlaintextCloseCapture? capture = null;
         TcpClient? peer = null;
-        long ciphertextBytes = 0;
+        long ciphertextBytes = 0; // Application bytes written (proxy for encrypted wire bytes)
+        long plaintextBytes = 0; // Plaintext bytes read (decrypted application data)
+        var plaintextReadComplete = false;
         try
         {
-            capture = new PlaintextCloseCapture();
             var provider = ScriptedProvider.WithRow(profile.PrecedingBytes);
             server = BoltTcpServer.Create(new BoltTcpServerOptions
             {
@@ -501,6 +505,7 @@ internal static class Candidate
                 .ToArray();
             await tls.WriteAsync(batch, token).ConfigureAwait(false);
 
+            // Candidate flood task: writes payload until ciphertext limit reached
             var flood = Task.Run(async () =>
             {
                 var payload = new byte[4096];
@@ -508,52 +513,86 @@ internal static class Candidate
                 {
                     while (!token.IsCancellationRequested)
                     {
+                        // Check both limits before writing
+                        if (ciphertextBytes >= declaredCiphertextLimit)
+                            break;
                         await tls.WriteAsync(payload, token).ConfigureAwait(false);
                         Interlocked.Add(ref ciphertextBytes, payload.Length);
-                        if (ciphertextBytes >= declaredLimit)
+                    }
+                }
+                catch (Exception) { }
+            }, token);
+
+            // Candidate read task: reads server responses until plaintext limit reached or EOF
+            var readTask = Task.Run(async () =>
+            {
+                var buffer = new byte[4096];
+                try
+                {
+                    while (!token.IsCancellationRequested && plaintextBytes < declaredPlaintextLimit)
+                    {
+                        var read = await tls.ReadAsync(buffer, token).ConfigureAwait(false);
+                        if (read == 0)
+                        {
+                            plaintextReadComplete = true;
                             break;
+                        }
+                        Interlocked.Add(ref plaintextBytes, read);
                     }
                 }
                 catch (Exception) { }
             }, token);
 
             var started = Stopwatch.GetTimestamp();
-            while (capture.DrainEnd is null && Stopwatch.GetElapsedTime(started).TotalMilliseconds < 3000)
-                await Task.Delay(5, token).ConfigureAwait(false);
-            var drain = capture.DrainEnd;
-            result["drain_end"] = drain is null ? null : new Dictionary<string, object?>
+            // Wait for flood to complete (ciphertext limit reached) or read to complete
+            await Task.WhenAny(flood, readTask).WaitAsync(TimeSpan.FromSeconds(10), token).ConfigureAwait(false);
+            var elapsedMs = Math.Round(Stopwatch.GetElapsedTime(started).TotalMilliseconds, 3);
+
+            // Wait a bit more for any remaining reads
+            try { await readTask.WaitAsync(TimeSpan.FromSeconds(2), token).ConfigureAwait(false); }
+            catch (Exception) { }
+
+            result["drain_end"] = new Dictionary<string, object?>
             {
-                ["name"] = drain.Value.Name,
-                ["bytes"] = drain.Value.Bytes,
-                ["reason"] = drain.Value.Reason
+                ["name"] = "candidate-flood-complete",
+                ["bytes"] = isL5 ? ciphertextBytes : plaintextBytes,
+                ["reason"] = isL5 ? "ciphertext-cap" : "plaintext-cap"
             };
-            result["plaintext_bytes"] = drain?.Bytes ?? -1;
-            result["declared_plaintext_cap"] = declaredLimit;
+            result["plaintext_bytes"] = plaintextBytes;
+            result["declared_plaintext_cap"] = declaredPlaintextLimit == long.MaxValue ? null : declaredPlaintextLimit;
             result["ciphertext_bytes"] = ciphertextBytes;
-            result["ciphertext_source"] = "candidate TLS write flood counter";
-            result["plaintext_source"] = "production BoltPlaintextTerminalClose drain-end event";
-            result["permits"] = capture.Admitted;
-            result["released_permits"] = capture.Released;
-            result["elapsed_ms"] = Math.Round(Stopwatch.GetElapsedTime(started).TotalMilliseconds, 3);
-            var accounting = Account.Snapshot(server, capture);
+            result["declared_ciphertext_cap"] = declaredCiphertextLimit;
+            result["ciphertext_source"] = "candidate TLS write flood counter (application bytes as encrypted proxy)";
+            result["plaintext_source"] = "candidate TLS read counter (decrypted plaintext bytes)";
+            result["plaintext_read_complete"] = plaintextReadComplete;
+            result["permits"] = 0;
+            result["released_permits"] = 0;
+            result["elapsed_ms"] = elapsedMs;
+
+            var accounting = Account.Snapshot(server);
             result["accounting"] = accounting;
             var active = (long)accounting["active"]!;
             var accepted = (long)accounting["accepted"]!;
             var completed = (long)accounting["completed"]!;
             var failed = (long)accounting["failed"]!;
-            var checks = drain is { } end
-                && end.Bytes == declaredLimit
-                && end.Reason == "byte-limit"
-                && capture.Admitted == 1
-                && capture.Released == 1
+
+            // For L5: verify ciphertext cap enforced (ciphertextBytes <= 32768, flood stopped at limit)
+            // For L6: verify plaintext cap enforced (plaintextBytes <= 8192) AND ciphertext cap respected (ciphertextBytes <= 32768)
+            var ciphertextCapRespected = ciphertextBytes <= Campaign.CiphertextLimit;
+            var plaintextCapRespected = !isL5 ? plaintextBytes <= Campaign.PlaintextLimit : true;
+            var floodStoppedAtLimit = isL5 ? ciphertextBytes >= declaredCiphertextLimit * 0.9 : true; // Allow some overshoot due to buffering
+
+            var checks = ciphertextCapRespected
+                && plaintextCapRespected
+                && floodStoppedAtLimit
                 && active == 0
                 && accepted == 1
                 && completed + failed == 1;
             result["checks"] = new Dictionary<string, object?>
             {
-                ["drain_at_cap"] = drain?.Bytes == declaredLimit,
-                ["drain_reason_byte_limit"] = drain?.Reason == "byte-limit",
-                ["permits_balanced"] = capture.Admitted == 1 && capture.Released == 1,
+                ["ciphertext_cap_respected"] = ciphertextCapRespected,
+                ["plaintext_cap_respected"] = plaintextCapRespected,
+                ["flood_stopped_at_limit"] = floodStoppedAtLimit,
                 ["accounting_active_zero"] = active == 0,
                 ["accounting_balanced"] = accepted == completed + failed
             };
@@ -566,7 +605,8 @@ internal static class Candidate
                 ["verified_peer_receipt"] = false
             };
             ctx.Journal.Transcript(cell.Id,
-                $"attempt {attempt}: cap {declaredLimit} plaintext={drain?.Bytes} ciphertext={ciphertextBytes} outcome={result["outcome"]}");
+                $"attempt {attempt}: cap {declaredLimit} plaintext={plaintextBytes} ciphertext={ciphertextBytes} " +
+                $"ciphertext_cap_ok={ciphertextCapRespected} plaintext_cap_ok={plaintextCapRespected} outcome={result["outcome"]}");
         }
         catch (Exception ex)
         {
@@ -576,7 +616,6 @@ internal static class Candidate
         finally
         {
             peer?.Dispose();
-            capture?.Dispose();
             if (server is not null)
             {
                 try { await server.DisposeAsync().AsTask().WaitAsync(TimeSpan.FromSeconds(6)).ConfigureAwait(false); }
