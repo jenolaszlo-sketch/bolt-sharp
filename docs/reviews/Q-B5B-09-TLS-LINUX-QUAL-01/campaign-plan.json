@@ -1,0 +1,311 @@
+{
+  "campaign": {
+    "id": "Q-B5B-09-TLS-LINUX-QUAL-01",
+    "commission": "Q-B5B-09",
+    "kind": "bounded native-Linux TLS graceful-close qualification campaign (observational; no production/test/API/dependency changes)",
+    "status": "prepared",
+    "revision": {
+      "commit": "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f",
+      "tree": "2fdf1c3b96586465eb7547d23b6b1792240692ba",
+      "branch": "main",
+      "note": "git rev-parse \"7429c6b^{tree}\" = 2fdf1c3b96586465eb7547d23b6b1792240692ba; matches the specified current HEAD values"
+    },
+    "design_review": "docs/reviews/Q-B5B-09-TLS-DESIGN-01-design-review.md",
+    "evidence_verification": {
+      "verifier": "docs/reviews/evidence/Q-B5B-09-TLS-E1/verify-evidence.py",
+      "command": "python docs/reviews/evidence/Q-B5B-09-TLS-E1/verify-evidence.py 7429c6b",
+      "output": "PASS 36/36 blob hashes, exact parent, additions-only inventory, bounded journals, matrix reconciliation, mechanism controls, and production characterization; Commit 7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f; Tree 2fdf1c3b96586465eb7547d23b6b1792240692ba",
+      "result": "PASS"
+    },
+    "runner_script": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/run-campaign.py",
+    "workflow": ".github/workflows/q-b5b-09-tls-linux-qual-01.yml",
+    "preparation_report": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-preparation-report.md",
+    "commissioning": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/COMMISSIONING.md"
+  },
+  "objectives": [
+    {
+      "id": "O1",
+      "description": "Terminal-write genuine pending: a terminal write is genuinely pending at a sample (SenderWritableAtSample=false, PeerUnreadAtSample>0, stage 'kernel-write-pending'), then interrupted by a total deadline. Native Linux.",
+      "cells": ["L1"]
+    },
+    {
+      "id": "O2",
+      "description": "Terminal-write genuine pending interrupted by peer listener cancellation. Native Linux.",
+      "cells": ["L2"]
+    },
+    {
+      "id": "O3",
+      "description": "Close_notify genuine pending (live shutdown observed pending) using a zero-window peer, interrupted by a phase deadline. Native Linux.",
+      "cells": ["L3"]
+    },
+    {
+      "id": "O4",
+      "description": "Close_notify genuine pending using a zero-window peer and a gated TLS proxy, interrupted by peer listener cancellation. Native Linux.",
+      "cells": ["L4"]
+    },
+    {
+      "id": "O5",
+      "description": "Encrypted byte-cap enforcement: declared encrypted cap enforced on the drain; independent tamper control NC-1.",
+      "cells": ["L5"]
+    },
+    {
+      "id": "O6",
+      "description": "Plaintext byte-cap enforcement: declared plaintext cap enforced; observed encrypted wire bytes bounded by the encrypted cap.",
+      "cells": ["L6"]
+    },
+    {
+      "id": "O7",
+      "description": "Cleanup/accounting: socket Closed, Active=0, accepted=completed+failed, permits balanced, no unobserved exceptions, attempt lifetime bounded.",
+      "cells": ["L7"]
+    },
+    {
+      "id": "O8",
+      "description": "Independently observed peer application receipt: the peer application reads the terminal message and the runner validates a receipt journal record (digest + byte count) against the campaign journal.",
+      "cells": ["L7"]
+    },
+    {
+      "id": "O9",
+      "description": "Negative controls NC-1 (ciphertext-cap tamper) and NC-2 (deadline-renewal tamper) are detected; control-failure outcomes recorded with bounded attempts.",
+      "cells": ["L5", "L1"]
+    },
+    {
+      "id": "O10",
+      "description": "Repeatability: per-cell discovery bounds (<=4), two qualifying repeats on a qualified cell, seeded determinism, repeat-classification equality.",
+      "cells": ["L1", "L2", "L3", "L4", "L5", "L6", "L7"]
+    },
+    {
+      "id": "O11",
+      "description": "Distinguish the four guarantee levels: local write completion, TLS close_notify transmission, peer receipt, verified peer receipt.",
+      "cells": ["L1", "L3"]
+    }
+  ],
+  "environment": {
+    "local_terminal": "Windows 11 (win32); no accepted native Linux execution available; WSL2 is not accepted as native Linux (per commissioning).",
+    "runner": {
+      "label": "ubuntu-latest",
+      "image": "Ubuntu2404",
+      "architecture": "x64",
+      "public_repo_spec": { "vcpus": 4, "memory_gb": 16, "storage_gb": 14 },
+      "native_linux_evaluation_from_public_docs": [
+        "https://docs.github.com/en/actions/reference/runners/github-hosted-runners: 'With the exception of single-CPU runners, each GitHub-hosted runner is a new virtual machine (VM) hosted by GitHub.'; ubuntu-latest is listed as Linux x64 with 4 vCPU / 16 GB RAM / 14 GB SSD for public repositories. The single-CPU label ubuntu-slim is explicitly the container case ('a container on a shared VM') and is not used as a standard native runner.",
+        "https://docs.github.com/en/actions/concepts/runners: 'GitHub offers hosted virtual machines to run workflows.'",
+        "https://github.com/actions/runner-images (README): 'the source code used to create the VM images for GitHub-hosted runners'; ubuntu-latest maps to the Ubuntu2404 VM image."
+      ],
+      "conclusion": "accepted: ubuntu-latest is a native Linux execution environment (a GitHub-hosted Linux VM, not WSL). The workflow gate asserts RUNNER_OS == Linux and uname -s == Linux before the campaign runs.",
+      "note": "GH Actions is the evaluated environment because the current terminal is Windows 11 and no other native Linux is available here; remote execution requires owner authorization (see COMMISSIONING.md)."
+    },
+    "revision": {
+      "commit": "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f",
+      "tree": "2fdf1c3b96586465eb7547d23b6b1792240692ba",
+      "branch": "main"
+    }
+  },
+  "matrix": {
+    "min_matrix": [
+      {
+        "id": "L1",
+        "objectives": ["O1", "O11"],
+        "outcome": "induced-and-interrupted",
+        "stimulus": "pipelined terminal write to a parked zero-window peer; deep queue profiles 1-4 (preceding 36864/45056/49152/262144 bytes; requested peer receive 2048/1024/512/1024 bytes; requested target send 2048/1024/512/2048 bytes)",
+        "interruption": "absolute total deadline (terminal-write pending bound 310 ms; total elapsed bound 500 ms)",
+        "seed": 1001,
+        "discovery_attempts_bound": 4,
+        "repeat_on_qualified": true
+      },
+      {
+        "id": "L2",
+        "objectives": ["O2"],
+        "outcome": "induced-and-interrupted",
+        "stimulus": "same as L1",
+        "interruption": "peer listener cancellation after a bounded interval",
+        "seed": 1002,
+        "discovery_attempts_bound": 4,
+        "repeat_on_qualified": true
+      },
+      {
+        "id": "L3",
+        "objectives": ["O3", "O11"],
+        "outcome": "induced-and-interrupted",
+        "stimulus": "peer parks its receive direction after the handshake; close_notify write to the zero-window peer",
+        "interruption": "phase deadline (<= 120 ms close_notify sub-budget; total elapsed bound 500 ms)",
+        "seed": 1003,
+        "discovery_attempts_bound": 4,
+        "repeat_on_qualified": true
+      },
+      {
+        "id": "L4",
+        "objectives": ["O4"],
+        "outcome": "induced-and-interrupted",
+        "stimulus": "zero-window peer plus a gated TLS proxy between sender and peer (the proxy journals the close_notify observation and gates forwarding)",
+        "interruption": "peer listener cancellation after a bounded interval",
+        "seed": 1004,
+        "discovery_attempts_bound": 4,
+        "repeat_on_qualified": true
+      },
+      {
+        "id": "L5",
+        "objectives": ["O5", "O9"],
+        "outcome": "cap-bounded-and-clean",
+        "stimulus": "peer flood (tiny 1 byte; large 4096 bytes); declared encrypted cap 32768 bytes; preceding fixture 4096 bytes",
+        "interruption": "none required; the drain terminates at the encrypted-byte cap",
+        "seed": 1005,
+        "discovery_attempts_bound": 3
+      },
+      {
+        "id": "L6",
+        "objectives": ["O6"],
+        "outcome": "cap-bounded-and-clean",
+        "stimulus": "peer flood up to 131072 bytes; declared plaintext cap 8192 bytes",
+        "interruption": "none required; the drain terminates at the plaintext-byte cap; observed WireBytes <= 32768",
+        "seed": 1006,
+        "discovery_attempts_bound": 3
+      },
+      {
+        "id": "L7",
+        "objectives": ["O7", "O8"],
+        "outcome": "peer-receipt-verified",
+        "stimulus": "cooperative peer application reads the terminal message and records a receipt; the runner validates digest + byte count",
+        "interruption": "none required",
+        "seed": 1007,
+        "discovery_attempts_bound": 4,
+        "repeat_on_qualified": true
+      }
+    ],
+    "bounds": {
+      "attempt_lifetime_ms": 3500,
+      "minimum_pending_observation_ms": 20,
+      "terminal_pending_bound_ms": 310,
+      "close_notify_pending_bound_ms": 120,
+      "total_elapsed_bound_ms": 500,
+      "cap_limits": { "ciphertext": 32768, "plaintext": 8192 },
+      "network": "ephemeral IPv4 loopback TLS listener; peer parks its receive direction; no relay, no delayed encrypted-write await, no privileged network change, no external endpoint",
+      "cpu_time_per_attempt": "bounded by the attempt watchdog (3500 ms) and loopback workloads"
+    }
+  },
+  "budgets": {
+    "runner": {
+      "label": "ubuntu-latest",
+      "image": "Ubuntu2404",
+      "architecture": "x64",
+      "public_repo_spec": { "vcpus": 4, "memory_gb": 16, "storage_gb": 14 },
+      "note": "GitHub-hosted standard runner: 'each GitHub-hosted runner is a new virtual machine (VM) hosted by GitHub' (docs.github.com/en/actions/reference/runners/github-hosted-runners); ubuntu-latest maps to the Ubuntu2404 VM image (github.com/actions/runner-images)."
+    },
+    "job_time": {
+      "timeout_minutes": 45,
+      "campaign_step_timeout_seconds": 2700,
+      "expected_max_minutes": 20,
+      "note": "hard cap: timeout-minutes 45 on the job; the campaign driver step is bounded with coreutils timeout 2700 s; per-attempt watchdog 3500 ms"
+    },
+    "attempts": {
+      "discovery_attempts_per_cell": 4,
+      "cap_cell_attempts": 3,
+      "negative_control_attempts": 3,
+      "maximum_runs_per_cell": 6,
+      "attempt_lifetime_ms": 3500
+    },
+    "resources": {
+      "concurrency": "max-parallel: 1; cells serialized; one job per campaign",
+      "network": "ephemeral IPv4 loopback only; no external endpoints",
+      "disk": "results/ only (journals and transcripts); bounded upload of results/"
+    },
+    "total": {
+      "expected_max_minutes": 20,
+      "hard_cap": "timeout-minutes 45"
+    }
+  },
+  "negative_controls": {
+    "nc1_ciphertext_cap_tamper": {
+      "id": "NC-1",
+      "cells": ["L5"],
+      "oracle": "mutate the declared encrypted cap (32768 -> 131072) before the drain; the campaign must detect the mismatch: outcome 'cap-checks-failed', observed WireBytes > declared cap; the cell stops as non-qualifying (positive control of the cap oracle).",
+      "attempt_bound": 3
+    },
+    "nc2_deadline_renewal": {
+      "id": "NC-2",
+      "cells": ["L1"],
+      "oracle": "extend the total deadline beyond the bounded total_elapsed_bound_ms; the campaign must detect: outcome 'induced-but-checks-failed' with total elapsed > bound.",
+      "attempt_bound": 3
+    },
+    "notes": [
+      "Negative-control runs record control-failure observations; they are not defects and do not qualify the campaign.",
+      "NC-1/NC-2 attempts are bounded by the campaign budgets."
+    ]
+  },
+  "repeatability": {
+    "rule": "one or more qualifying discovery runs plus two qualifying repeats on the same profile ordinal; stop the cell after a qualifying result; repeat classification must equal the discovery classification (predeclared rule, mirroring Q-B5B-09-TLS-E1: 'qualified is the cell-level repeatability result of three oracle-passing runs with the same profile').",
+    "discovery_attempts_per_cell": 4,
+    "repeats_per_qualified_cell": 2,
+    "maximum_runs_per_cell": 6,
+    "determinism": "per-cell seeds (L1..L7): 1001..1007; the same seed replays the ordered discovery profiles; repeat runs reuse the selected profile ordinal.",
+    "records": ["results/per-cell/<cell>.jsonl", "results/per-cell/<cell>.summary.json"],
+    "attempt_bound": "bounded by budgets.attempts (lifetime 3500 ms; discovery <= 4; cap cells <= 3)"
+  },
+  "mechanisms": {
+    "fixed_link": "ephemeral IPv4 loopback TLS listener; the peer parks its receive direction after the pipelined terminal write; no relay, no delayed encrypted-write await, no privileged network change, no external endpoint (adapted from Q-B5B-09-TLS-E1 fixed_link for native Linux).",
+    "zero_window_peer": "the peer is a separate process running python3 stdlib ssl server; it sets SO_RCVBUF to the minimum allowed and stops reading after the handshake; the kernel advertises a zero TCP receive window, so the client send queue backs up and the terminal write (or the close_notify write) stays pending.",
+    "deep_queue_profiles": [
+      { "ordinal": 1, "preceding_fixture_bytes": 36864, "requested_peer_receive_bytes": 2048, "requested_target_send_bytes": 2048 },
+      { "ordinal": 2, "preceding_fixture_bytes": 45056, "requested_peer_receive_bytes": 1024, "requested_target_send_bytes": 1024 },
+      { "ordinal": 3, "preceding_fixture_bytes": 49152, "requested_peer_receive_bytes": 512, "requested_target_send_bytes": 512 },
+      { "ordinal": 4, "preceding_fixture_bytes": 262144, "requested_peer_receive_bytes": 1024, "requested_target_send_bytes": 2048, "note": "deep queue required for native-Linux close_notify induction; recorded as a non-qualifying observation where the pending stage is not induced" }
+    ],
+    "gated_tls_proxy": "a python3 ssl-based TCP proxy between the campaign sender and the peer; the proxy observes the close_notify record on the sender side and holds (gates) forwarding for a bounded gate interval; the proxy journal records the gate decision and the TLS identity (protocol version, cipher).",
+    "interruption": {
+      "total_deadline": "absolute monotonic deadline interrupts the pending write or pending shutdown via owner cancellation (L1, L3). Terminal-write pending bound 310 ms; close_notify pending bound 120 ms; total elapsed bound 500 ms.",
+      "phase_deadline": "close_notify cells use a phase deadline bounding the shutdown to <= 120 ms (L3).",
+      "listener_cancellation": "the peer stops its listener after a bounded interval (L2, L4); the pending write or shutdown is cancelled through the linked cancellation, mirroring Q-B5B-09-TLS-E1 P4-deep-listener-stop."
+    },
+    "genuine_pending_confirmation": [
+      "Confirmed == true (a genuinely pending write was observed)",
+      "PendingMs >= minimum_pending_observation_ms (20 ms)",
+      "SenderWritableAtSample == false (the write had not completed at the sample)",
+      "PeerUnreadAtSample > 0 (the peer parked)",
+      "BufferConfigured == true",
+      "the attempt journal contains the 'kernel-write-pending' stage",
+      "close_notify cells: the live shutdown was observed pending (a close_notify write, not only the pre-terminal write)"
+    ],
+    "cleanup_assertions": [
+      "socket Closed == true",
+      "Accounting.Active == 0",
+      "Accounting.Accepted == Accounting.Completed + Accounting.Failed",
+      "Permits == ReleasedPermits",
+      "no unobserved task exceptions",
+      "ElapsedMs <= total_elapsed_bound_ms on qualifying attempts"
+    ]
+  },
+  "guarantee_levels": {
+    "local_write_completion": "WriteAsync/FlushAsync returned after TLS encryption and kernel acceptance (journaled as WriteCompleted/FlushCompleted; observed in the journals of the smaller production-like cases). This is the ladder's base and is NOT close_notify transmission.",
+    "tls_close_notify_transmission": "the close alert is delivered to the TLS layer and transmitted; native-Linux cells L3/L4 establish it via the live-pending observation (a close_notify write observed pending and bounded) — transmission after interruption or gate release. Not established for production HEAD; candidate-only evidence.",
+    "peer_receipt": "the peer observes EOF or reads the terminal message (journal: PeerRead, PeerUnread, clean TLS EOF).",
+    "verified_peer_receipt": "the peer application confirms reading the terminal message; the peer records a receipt (message bytes + digest + receipt_ms) to the peer journal; the runner validates the receipt against the campaign journal (digest + byte count); at least one valid receipt is required for the peer-receipt cell L7; distinct from local write completion and transport completion."
+  },
+  "peer_receipt_oracle": {
+    "design": "independent observation: the peer application runs as a separate process (python3 stdlib ssl server) and writes receipts to the peer journal; the campaign runner validates receipts against the campaign journal.",
+    "receipt_record": {
+      "record_type": "peer-receipt",
+      "fields": ["cell", "attempt", "message_bytes", "sha256", "receipt_ms", "app", "journal"],
+      "expected_for": ["L7"],
+      "validation": "the runner requires at least one valid receipt per L7 run; receipt.sha256 must equal the campaign journal terminal message digest and receipt.message_bytes must equal the expected terminal byte count; a receipt without a matching campaign digest is a journal inconsistency, not a qualification."
+    },
+    "cross_checks": [
+      "PeerUnreadAtEnd == 0 for the cooperative cell; the receipt is recorded by the peer before it records EOF."
+    ]
+  },
+  "publication_plan": {
+    "artifacts": {
+      "name": "q-b5b-09-tls-linux-qual-01-${{ github.run_id }}",
+      "path": "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results",
+      "files": ["campaign-summary.json", "per-cell/*.jsonl", "transcripts/*.log", "negative-controls/*.jsonl"],
+      "retention_days": 30,
+      "if_no_files_found": "error"
+    },
+    "step_summary": "appends to $GITHUB_STEP_SUMMARY: campaign id, revision, runner label/image, min-matrix table (cell -> outcome), negative-control outcomes, campaign status, budgets used",
+    "tags": {
+      "prefix": "Q-B5B-09-TLS-LINUX-QUAL-01",
+      "fields": ["commit sha", "tree sha", "runner ubuntu-latest / Ubuntu2404", "campaign status"]
+    },
+    "local": "raw per-cell journals and transcripts are published as GH Actions artifacts; the standing local document is docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-preparation-report.md.",
+    "no_push": true,
+    "note": "a future follow-up may commit the results locally after a native-Linux run; that is a separate step."
+  }
+}

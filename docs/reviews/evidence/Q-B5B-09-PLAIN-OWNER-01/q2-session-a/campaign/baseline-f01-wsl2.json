@@ -1,0 +1,36 @@
+{
+  "mode": "baseline",
+  "filter": "f01",
+  "platform": "Unix 6.6.114.1",
+  "runtime": "10.0.14",
+  "timestampUtc": "2026-11-18T04:57:31.010608+00:00",
+  "results": [
+    {
+      "Name": "F01_BaselineDefectReproduced",
+      "Passed": true,
+      "DurationMs": 376.7043,
+      "Details": {
+        "exactFailure": true,
+        "peerEnding": "eof",
+        "phase": "write",
+        "reason": "write-deadline",
+        "admitted": false,
+        "elapsedMs": 148.02,
+        "lifecycleElapsedMs": 155.09,
+        "observerMs": 140.11,
+        "completed": 0,
+        "failed": 1,
+        "messages": 3,
+        "writeComplete": 1,
+        "drainAdmitted": 0,
+        "drainEnd": 0,
+        "writeFailed": 0,
+        "handles": 1,
+        "handlesClosed": true,
+        "defectReproduced": true
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

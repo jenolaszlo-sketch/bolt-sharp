@@ -1,0 +1,6 @@
+suite	filter	utc	exit	elapsed_ms	summary
+Transport	FullyQualifiedName~BoltSharp.Tests.Transport	2026-11-15T11:20:15.4154572Z	0	3398	Passed!  - Failed:     0, Passed:    90, Skipped:     0, Total:    90, Duration: 2 s - BoltSharp.Tests.dll (net8.0)
+Backend	FullyQualifiedName~BoltSharp.Tests.Backend	2026-11-15T11:20:16.7992263Z	0	1363	Passed!  - Failed:     0, Passed:    94, Skipped:     0, Total:    94, Duration: 36 ms - BoltSharp.Tests.dll (net8.0)
+Sessions	FullyQualifiedName~BoltSharp.Tests.Sessions	2026-11-15T11:20:18.1401402Z	0	1337	Passed!  - Failed:     0, Passed:   119, Skipped:     0, Total:   119, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+Messages	FullyQualifiedName~BoltSharp.Tests.Messages	2026-11-15T11:20:19.4648158Z	0	1326	Passed!  - Failed:     0, Passed:    98, Skipped:     0, Total:    98, Duration: 37 ms - BoltSharp.Tests.dll (net8.0)
+B0-B		2026-11-15T11:20:43.6300025Z	0	24168	Passed!  - Failed:     0, Passed:    19, Skipped:     0, Total:    19, Duration: 21 s - BoltSharp.IntegrationTests.dll (net8.0)

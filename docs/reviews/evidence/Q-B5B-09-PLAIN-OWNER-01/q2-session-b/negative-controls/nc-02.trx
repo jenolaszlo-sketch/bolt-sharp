@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="6b84f6f0-be13-4d66-8dc8-74a5cd0f623f" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-18 13:20:41" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-18T13:20:41.0986963+08:00" queuing="2026-11-18T13:20:41.0986968+08:00" start="2026-11-18T13:20:40.3350509+08:00" finish="2026-11-18T13:20:41.1028075+08:00" />
+  <TestSettings name="default" id="5f5dd2a5-e3f7-4110-908f-9b31d78cf89d">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-18_13_20_41" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="4db9d0f7-156a-446f-b3c9-06ebdafd63c1" testId="8615a6f0-8712-96e8-ab8c-4b5b4394a437" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0554089" startTime="2026-11-18T13:20:41.0212832+08:00" endTime="2026-11-18T13:20:41.0212943+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4db9d0f7-156a-446f-b3c9-06ebdafd63c1">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.All() Failure: 1 out of 1 items in the collection did not pass.&#xD;
+[0]: Item:  SafeSocketHandle { IsClosed = False, IsInvalid = False }&#xD;
+     Error: Assert.True() Failure&#xD;
+            Expected: True&#xD;
+            Actual:   False</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.Capture.AssertHandlesClosed(Int32 expected) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 630&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit() in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 205&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit() in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 208&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="8615a6f0-8712-96e8-ab8c-4b5b4394a437">
+      <Execution id="4db9d0f7-156a-446f-b3c9-06ebdafd63c1" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ListenerStopJoinsActualHandleAndReturnsPermit" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="8615a6f0-8712-96e8-ab8c-4b5b4394a437" executionId="4db9d0f7-156a-446f-b3c9-06ebdafd63c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.18]   Discovering: BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.29]   Discovered:  BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.29]   Starting:    BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.38]       Assert.All() Failure: 1 out of 1 items in the collection did not pass.&#xD;
+[xUnit.net 00:00:00.38]       [0]: Item:  SafeSocketHandle { IsClosed = False, IsInvalid = False }&#xD;
+[xUnit.net 00:00:00.38]            Error: Assert.True() Failure&#xD;
+[xUnit.net 00:00:00.38]                   Expected: True&#xD;
+[xUnit.net 00:00:00.38]                   Actual:   False&#xD;
+[xUnit.net 00:00:00.38]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.38]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(630,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.Capture.AssertHandlesClosed(Int32 expected)&#xD;
+[xUnit.net 00:00:00.38]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(205,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit()&#xD;
+[xUnit.net 00:00:00.38]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(208,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit()&#xD;
+[xUnit.net 00:00:00.38]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.38]   Finished:    BoltSharp.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:41.0202838+08:00">
+        <Text>[xUnit.net 00:00:00.38]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="851cbedd-3953-4b11-85ed-5a68614c51da" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-18 13:20:52" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-18T13:20:52.0418568+08:00" queuing="2026-11-18T13:20:52.0418569+08:00" start="2026-11-18T13:20:51.1010505+08:00" finish="2026-11-18T13:20:52.0461541+08:00" />
+  <TestSettings name="default" id="c20fc5b9-2277-40ed-bb9a-d308e6d75a99">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-18_13_20_52" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="6e0333f8-9b79-43e2-bde5-3952ab9387d4" testId="d820e194-e1b6-5245-56cb-6740063efde3" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 1, simultaneous: 1, admitted: 0)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0500928" startTime="2026-11-18T13:20:51.7578477+08:00" endTime="2026-11-18T13:20:51.7578590+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6e0333f8-9b79-43e2-bde5-3952ab9387d4">
+      <Output>
+        <StdOut>admitted=0 capacity=1 connections=1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6f3c1ee6-7a7f-4696-8fed-d43dda8d6b53" testId="2f8c443a-6ddd-0582-4051-5c50bc34e202" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1034036" startTime="2026-11-18T13:20:51.9648014+08:00" endTime="2026-11-18T13:20:51.9648017+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6f3c1ee6-7a7f-4696-8fed-d43dda8d6b53">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   2</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 169&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted) in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 188&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="df05dbde-760d-4713-9748-d12cd7fd3f46" testId="4ecfa99f-a5ae-b34e-2ec3-fadb515c3ed9" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 3, simultaneous: 1, admitted: 1)" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0941295" startTime="2026-11-18T13:20:51.8521631+08:00" endTime="2026-11-18T13:20:51.8521635+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df05dbde-760d-4713-9748-d12cd7fd3f46">
+      <Output>
+        <StdOut>admitted=1 capacity=0 connections=1</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 1, simultaneous: 1, admitted: 0)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="d820e194-e1b6-5245-56cb-6740063efde3">
+      <Execution id="6e0333f8-9b79-43e2-bde5-3952ab9387d4" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="DrainAdmissionAndRecovery" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="2f8c443a-6ddd-0582-4051-5c50bc34e202">
+      <Execution id="6f3c1ee6-7a7f-4696-8fed-d43dda8d6b53" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="DrainAdmissionAndRecovery" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 3, simultaneous: 1, admitted: 1)" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="4ecfa99f-a5ae-b34e-2ec3-fadb515c3ed9">
+      <Execution id="df05dbde-760d-4713-9748-d12cd7fd3f46" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="DrainAdmissionAndRecovery" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="d820e194-e1b6-5245-56cb-6740063efde3" executionId="6e0333f8-9b79-43e2-bde5-3952ab9387d4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2f8c443a-6ddd-0582-4051-5c50bc34e202" executionId="6f3c1ee6-7a7f-4696-8fed-d43dda8d6b53" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ecfa99f-a5ae-b34e-2ec3-fadb515c3ed9" executionId="df05dbde-760d-4713-9748-d12cd7fd3f46" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="2" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.16]   Discovering: BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.28]   Discovered:  BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.28]   Starting:    BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.56]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.56]       Expected: 1&#xD;
+[xUnit.net 00:00:00.56]       Actual:   2&#xD;
+[xUnit.net 00:00:00.56]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.56]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(169,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted)&#xD;
+[xUnit.net 00:00:00.56]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(188,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(Int32 connectionLimit, Int32 simultaneous, Int32 admitted)&#xD;
+[xUnit.net 00:00:00.56]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.57]   Finished:    BoltSharp.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:51.9642266+08:00">
+        <Text>[xUnit.net 00:00:00.56]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.DrainAdmissionAndRecovery(connectionLimit: 4, simultaneous: 3, admitted: 1) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

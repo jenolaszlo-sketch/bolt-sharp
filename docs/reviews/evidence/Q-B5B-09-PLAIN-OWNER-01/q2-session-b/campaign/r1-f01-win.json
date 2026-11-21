@@ -1,0 +1,22 @@
+{
+  "platform": "windows",
+  "revision": "6a40c4b84993dec77deb165cef31e419df05be2e",
+  "test": "F01_R1_CorrectedBehavior_ShortWriteTimeout_LongObserver_CompletesGracefulDrain",
+  "parameters": {
+    "writeTimeoutMs": 80,
+    "observerDelayMs": 140
+  },
+  "result": {
+    "passed": true,
+    "reason": "peer-eof",
+    "phase": "drain",
+    "elapsedMs": 148.16,
+    "messagesProcessed": 3,
+    "connectionsFailed": 0,
+    "connectionsCompleted": 1,
+    "drainAdmitted": true,
+    "drainReason": "peer-eof",
+    "drainEndElapsedMs": 149.23
+  },
+  "assertion": "F01 corrected: write timeout ends at flush, graceful drain completes"
+}

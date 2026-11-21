@@ -1,0 +1,75 @@
+{
+  "commission": "Q-B5B-09-TLS-E1",
+  "title": "Bounded TLS Graceful-Close Investigation",
+  "established_before_execution": true,
+  "binding_requirements": [
+    "Q-B5B-09-OWNER-01 production remediation scope decision: Track B (TLS) DEFERRED, preserve current TLS behavior, no TLS disablement/downgrade/raw drain/experimental shutdown path authorized",
+    "Q-B5B-09-OWNER-01 carried-forward items: Windows real terminal TLS write interruption, real pending close_notify interruption, independent encrypted-byte-cap verification, native Linux TLS execution, integrated TLS resource and lifecycle controls",
+    "Q-B5B-05-OWNER-01 recommended next commission: Q-B5B-09-TLS bounded investigation of terminal TLS write backpressure and close-notification behavior",
+    "Q-B5B-09-TLS-GATE-01: platform budgets closed; two WSL2 terminal cases; Windows terminal and close-notification questions preserved; no automatic follow-up scheduled"
+  ],
+  "investigation_questions": [
+    "Q1: Can a genuine terminal TLS write backpressure be induced and interrupted on Windows, with bounded termination and cleanup?",
+    "Q2: Can a genuine TLS close_notify write be induced pending and interrupted? On which platforms?",
+    "Q3: Are the encrypted-byte limits (ciphertext input cap and decrypted discard cap) enforced independently, exactly, and detectably?",
+    "Q4: What does the current production TLS terminal path do under backpressure on Windows, and is its termination bounded and its cleanup complete?",
+    "Q5: Are any observed behaviors platform-specific socket semantics, TLS runtime behavior, harness limitations, or actual BoltSharp defects?"
+  ],
+  "tracks": {
+    "candidate": "Reconstructed isolated candidate (23d58da + INV-02 prototype + INV-03 refinement + real-write observation + gate link-observation patches), the deferred TLS graceful-close design used as an investigation prototype only. No production code is modified.",
+    "production": "The production assembly at the investigation HEAD, exercised without any code change; observed from the peer boundary and the listener diagnostics."
+  },
+  "cells": [
+    {"id": "T1", "track": "candidate", "stage": "terminal-write", "stimulus": "absolute-total-deadline", "positive_case": true},
+    {"id": "T2", "track": "candidate", "stage": "terminal-write", "stimulus": "listener-stop", "positive_case": true},
+    {"id": "T3", "track": "candidate", "stage": "close-notify", "stimulus": "phase-deadline", "positive_case": true},
+    {"id": "T4", "track": "candidate", "stage": "close-notify", "stimulus": "listener-stop", "positive_case": true},
+    {"id": "T5", "track": "candidate", "stage": "drain", "stimulus": "ciphertext-cap", "peer_flood": "tiny-records", "positive_case": true},
+    {"id": "T6", "track": "candidate", "stage": "drain", "stimulus": "plaintext-cap", "peer_flood": "large-records", "positive_case": true},
+    {"id": "P1", "track": "production", "case": "small-result-parked", "positive_case": false, "characterization": true},
+    {"id": "P2", "track": "production", "case": "deep-default-timeout", "positive_case": false, "characterization": true},
+    {"id": "P3", "track": "production", "case": "deep-750ms-timeout", "positive_case": false, "characterization": true},
+    {"id": "P4", "track": "production", "case": "deep-listener-stop", "positive_case": false, "characterization": true},
+    {"id": "P5", "track": "production", "case": "goodbye", "positive_case": false, "characterization": true},
+    {"id": "P6", "track": "production", "case": "cooperative-receipt", "positive_case": false, "characterization": true}
+  ],
+  "negative_controls": [
+    {"id": "NC-1", "tamper": "CiphertextLimit 32768 -> 131072", "detection": "cipher-cap drain exit with wire bytes above the declared 32768 bound fails the T5 oracle"},
+    {"id": "NC-2", "tamper": "TotalMilliseconds 300 -> 600", "detection": "pending terminal write settling after the 310 ms deadline-causality bound and the 500 ms total bound fails the T1 oracle"}
+  ],
+  "harness_limitation_controls": [
+    {"id": "MECH", "description": "raw-socket mechanism probe: isolates the send-buffer shrink and pending-write semantics per platform, independent of Bolt and TLS layers"}
+  ],
+  "repeatability": {
+    "qualifying_cell": "one oracle-passing attempt",
+    "repeatable_cell": "three oracle-passing attempts with the same profile (one discovery plus two repeats)",
+    "discovery_attempts_per_cell": 4,
+    "maximum_runs_per_cell": 6,
+    "cap_cell_attempts": 3,
+    "stop_conditions": ["stop a cell at a qualifying result", "stop the platform campaign on a demonstrated defect", "at most four ordered profiles per cell, one for cap cells"]
+  },
+  "budgets": {
+    "maximum_attempt_lifetime_ms": 3500,
+    "minimum_pending_observation_ms": 20,
+    "candidate_total_ms": 300,
+    "candidate_close_ms": 75,
+    "independent_preceding_write_timeout_ms": 750,
+    "total_elapsed_bound_ms": 500,
+    "terminal_pending_lifetime_bound_ms": 310,
+    "close_notify_pending_lifetime_bound_ms": 120,
+    "windows_platform_attempts_total": 21,
+    "wsl2_campaign_attempts_total": 21,
+    "production_attempts_per_case": 2
+  },
+  "platforms": {
+    "windows": {"os": "Windows 11 build 26200", "sdk": "10.0.401", "runtime": "8.0.31", "native": true},
+    "wsl2": {"os": "Ubuntu WSL2, Linux 6.6.114.1", "runtime": "10.0.14 roll-forward", "native": false, "note": "WSL2 is not native Linux; results are recorded separately and never claimed as native Linux"}
+  },
+  "non_claims": [
+    "no native Linux qualification",
+    "no production capacity qualification",
+    "no TLS graceful-close production authorization",
+    "no reopening of Q-B5B-04, Q-B5B-05, Q-B5B-09 plaintext, TS1 or Q-B3C-03 closures",
+    "no reopening of the accepted TLS-GATE-01 WSL2 terminal-write evidence"
+  ]
+}

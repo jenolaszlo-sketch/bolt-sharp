@@ -1,0 +1,30 @@
+{
+  "maximum_attempts_per_cell_per_platform": 4,
+  "maximum_attempt_lifetime_ms": 3500,
+  "minimum_pending_observation_ms": 20,
+  "pending_sampling_ms": 2,
+  "candidate_total_ms": 300,
+  "candidate_close_ms": 75,
+  "independent_preceding_write_timeout_ms": 750,
+  "total_elapsed_bound_ms": 500,
+  "repeat_attempts_after_qualifying": 2,
+  "fixed_link": "ephemeral IPv4 loopback TLS bolt+ssc-style listener; peer parks its receive direction after the pipelined request write; no relay, delayed encrypted-write await, privileged network change, or external endpoint",
+  "harness_change_from_TLS_GATE_01": "the preceding application result is small enough to complete within the independent 750 ms write timeout on Windows (the gate's 131072-524288-byte preceding results could not complete on the 65536-byte Windows send buffer), and the owned socket's send buffer is shrunk at the armed encrypted stage; a fourth deep-queue profile covers the adapted-WSL2 kernel behavior measured by the raw-socket mechanism probe",
+  "profiles": [
+    {"ordinal": 1, "preceding_fixture_bytes": 36864, "requested_peer_receive_bytes": 2048, "requested_target_send_bytes": 2048},
+    {"ordinal": 2, "preceding_fixture_bytes": 45056, "requested_peer_receive_bytes": 1024, "requested_target_send_bytes": 1024},
+    {"ordinal": 3, "preceding_fixture_bytes": 49152, "requested_peer_receive_bytes": 512, "requested_target_send_bytes": 512},
+    {"ordinal": 4, "preceding_fixture_bytes": 262144, "requested_peer_receive_bytes": 1024, "requested_target_send_bytes": 2048, "note": "deep queue required on adapted WSL2; recorded as preceding-write-did-not-complete on Windows"}
+  ],
+  "cap_profile": {"ordinal": 1, "preceding_fixture_bytes": 4096, "requested_peer_receive_bytes": 4096, "requested_target_send_bytes": 0, "peer_flood_bytes": {"tiny": 1, "large": 4096}},
+  "candidate_limits": {"ciphertext": 32768, "plaintext": 8192, "scratch_bytes": 2048, "drain_slots": 2},
+  "production_cases": [
+    {"name": "P1-small-result-parked", "row_bytes": 4096, "peer_receive": 2048, "write_timeout_ms": 30000},
+    {"name": "P2-deep-default-timeout", "row_bytes": 131072, "peer_receive": 2048, "write_timeout_ms": 30000},
+    {"name": "P3-deep-750ms-timeout", "row_bytes": 131072, "peer_receive": 2048, "write_timeout_ms": 750},
+    {"name": "P4-deep-listener-stop", "row_bytes": 131072, "peer_receive": 2048, "write_timeout_ms": 750, "listener_stop_after_ms": 500},
+    {"name": "P5-goodbye", "row_bytes": 4096, "peer_receive": 2048, "write_timeout_ms": 30000},
+    {"name": "P6-cooperative-receipt", "row_bytes": 4096, "peer_receive": 2048, "write_timeout_ms": 30000}
+  ],
+  "selection": "same ordered profiles per cell per platform; stop the cell after a qualifying result; two repeats of the qualifying profile; stop the platform on a demonstrated defect"
+}

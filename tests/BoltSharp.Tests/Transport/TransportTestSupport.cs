@@ -140,6 +140,59 @@ internal static class TransportTestSupport
     }
 
     /// <summary>
+    /// Subscribes a one-shot probe for the next diagnostic event of <paramref name="kind"/> that
+    /// also satisfies <paramref name="predicate"/> (when supplied). Diagnostic events are raised
+    /// synchronously by the connection task after its counters have been updated, so completing
+    /// this probe is authoritative evidence that the lifecycle transition (and its accounting)
+    /// has happened. Test-only synchronization: never used to change production behavior and
+    /// never carries payload or credential data.
+    /// </summary>
+    public static TaskCompletionSource<BoltTransportDiagnosticEvent> ProbeEvent(
+        BoltTcpServer server,
+        BoltTransportEventKind kind,
+        Func<BoltTransportDiagnosticEvent, bool>? predicate = null)
+    {
+        var probe = new TaskCompletionSource<BoltTransportDiagnosticEvent>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        server.Diagnostics.Event += observed =>
+        {
+            if (observed.Kind == kind && (predicate is null || predicate(observed)))
+            {
+                probe.TrySetResult(observed);
+            }
+        };
+        return probe;
+    }
+
+    /// <summary>
+    /// Awaits a probe created by <see cref="ProbeEvent"/> with a finite deadline. On timeout the
+    /// thrown exception reports the actual diagnostic counters so a race is never misreported as
+    /// a generic hang.
+    /// </summary>
+    public static async Task<BoltTransportDiagnosticEvent> AwaitEventAsync(
+        TaskCompletionSource<BoltTransportDiagnosticEvent> probe,
+        BoltTcpServer server,
+        string description,
+        TimeSpan? timeout = null)
+    {
+        var effectiveTimeout = timeout ?? TimeSpan.FromSeconds(10);
+        try
+        {
+            return await probe.Task.WaitAsync(effectiveTimeout).ConfigureAwait(false);
+        }
+        catch (TimeoutException)
+        {
+            throw new TimeoutException(
+                $"{description} was not observed within {effectiveTimeout.TotalSeconds:0.#}s; " +
+                $"accepted={server.Diagnostics.ConnectionsAccepted} " +
+                $"active={server.Diagnostics.ConnectionsActive} " +
+                $"completed={server.Diagnostics.ConnectionsCompleted} " +
+                $"failed={server.Diagnostics.ConnectionsFailed} " +
+                $"messages={server.Diagnostics.MessagesProcessed}");
+        }
+    }
+
+    /// <summary>
     /// Connects, handshakes (Bolt 5.8), completes HELLO and LOGON with the deterministic test
     /// credentials, optionally RUNs a query, and returns the ready client. Throws with a clear
     /// marker if any step does not return SUCCESS (this helper is not an assertion framework).

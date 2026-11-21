@@ -1,0 +1,340 @@
+{
+  "mode": "r1",
+  "filter": "all",
+  "platform": "Microsoft Windows NT 10.0.26200.0",
+  "runtime": "8.0.31",
+  "timestampUtc": "2026-11-17T14:55:35.4907337+00:00",
+  "results": [
+    {
+      "Name": "F01_Corrected_SuccessfulWritePastWriteTimeout",
+      "Passed": true,
+      "DurationMs": 214.7714,
+      "Details": {
+        "exactFailure": true,
+        "peerEnding": "eof",
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 147.75,
+        "lifecycleElapsedMs": 158.78,
+        "observerMs": 144.68,
+        "completed": 1,
+        "failed": 0,
+        "messages": 3,
+        "writeComplete": 1,
+        "drainAdmitted": 1,
+        "drainEnd": 1,
+        "writeFailed": 0,
+        "handles": 1,
+        "handlesClosed": true
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverShorterThanWriteTimeout",
+      "Passed": true,
+      "DurationMs": 53.0275,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": false,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 39.23,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverExceptionContained",
+      "Passed": true,
+      "DurationMs": 39.5189,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": true,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 35.86,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Boundary_ObserverExceedsAbsoluteLifecycleDeadline",
+      "Passed": true,
+      "DurationMs": 319.2904,
+      "Details": {
+        "phase": "post-write",
+        "reason": "total-deadline",
+        "admitted": false,
+        "elapsedMs": 300.87,
+        "closedAtMs": 260.03,
+        "closedWhileObserverActive": true,
+        "observerMs": 300.3,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "writeFailed": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Boundary_ListenerStopWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 3.7444,
+      "Details": {
+        "stimulus": "listener",
+        "phase": "post-write",
+        "reason": "listener-shutdown",
+        "admitted": false,
+        "elapsedMs": 0.41,
+        "signalToSocketCloseMs": 0.13,
+        "stopCompletedBeforeObserverRelease": false,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Boundary_OwnerCancellationWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 11.7374,
+      "Details": {
+        "stimulus": "owner",
+        "phase": "post-write",
+        "reason": "owner-cancelled",
+        "admitted": false,
+        "elapsedMs": 1.9,
+        "signalToSocketCloseMs": 1.75,
+        "stopCompletedBeforeObserverRelease": null,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Boundary_AbsoluteDeadlineWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 286.625,
+      "Details": {
+        "stimulus": "total",
+        "phase": "post-write",
+        "reason": "total-deadline",
+        "admitted": false,
+        "elapsedMs": 269.55,
+        "signalToSocketCloseMs": null,
+        "stopCompletedBeforeObserverRelease": null,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Resource_MultipleBlockedObserversRetainAdmission",
+      "Passed": true,
+      "DurationMs": 16.1848,
+      "Details": {
+        "activeWhileBlocked": 2,
+        "connectionTasksWhileBlocked": 2,
+        "rejectedCapacity": 1,
+        "activeAfterRelease": 0,
+        "connectionTasksAfterRelease": 0,
+        "completed": 3,
+        "failed": 0,
+        "healthyReplacement": true
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Resource_StopBeyondShutdownPolicyRetainsTask",
+      "Passed": true,
+      "DurationMs": 2550.3717,
+      "Details": {
+        "stopElapsedMs": 511.55,
+        "activeAfterStop": 1,
+        "connectionTasksAfterStop": 1,
+        "listenerStoppedDetail": "activeRemaining=1 stop=deadline",
+        "connectAfterStop": "refused",
+        "socketClosedAtDeadline": true,
+        "reasonAfterRelease": "listener-shutdown",
+        "completed": 1,
+        "failed": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Backpressure_WriteSpecificTimeout",
+      "Passed": false,
+      "DurationMs": 238.9947,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Backpressure_AbsoluteDeadline",
+      "Passed": false,
+      "DurationMs": 188.5508,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Backpressure_OwnerCancellation",
+      "Passed": false,
+      "DurationMs": 201.2426,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Backpressure_ListenerCancellation",
+      "Passed": false,
+      "DurationMs": 185.0719,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Diagnostics_SuccessfulLifecycleMetadata",
+      "Passed": true,
+      "DurationMs": 67.9202,
+      "Details": {
+        "names": [
+          "write-start",
+          "write-complete",
+          "drain-admitted",
+          "send-shutdown",
+          "drain-start",
+          "drain-end",
+          "disposed"
+        ],
+        "connectionIds": [
+          "conn-0001"
+        ],
+        "phases": {
+          "write-start@0.01": "write",
+          "write-complete@0.08": "post-write",
+          "drain-admitted@42.53": "shutdown",
+          "send-shutdown@42.72": "shutdown",
+          "drain-start@42.72": "drain",
+          "drain-end@42.76": "drain",
+          "disposed@42.81": "drain"
+        },
+        "writeStartPhase": "write",
+        "writeCompletePhase": "post-write",
+        "drainAdmittedPhase": "shutdown",
+        "drainEndPhase": "drain",
+        "drainEndReason": "peer-eof",
+        "disposedPhase": "drain",
+        "disposedReason": "peer-eof",
+        "elapsedMonotonic": true,
+        "maxBytes": 0,
+        "writeFailed": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Diagnostics_PendingWriteMetadata",
+      "Passed": false,
+      "DurationMs": 195.6071,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.DiagnosticsPendingWrite() in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 723\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Diagnostics_CapacityFallbackMetadata",
+      "Passed": true,
+      "DurationMs": 4.9783,
+      "Details": {
+        "phase": "admission",
+        "reason": "capacity",
+        "admitted": false,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "drainEnd": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Tls_IsolationFromPlaintextHelper",
+      "Passed": true,
+      "DurationMs": 220.4072,
+      "Details": {
+        "exactFailureOverTls": true,
+        "plaintextEvents": 0,
+        "completed": 1,
+        "failed": 0,
+        "tlsHandshakeFailures": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Repeat_F01_10x",
+      "Passed": true,
+      "DurationMs": 1535.8615,
+      "Details": {
+        "count": 10,
+        "failures": [],
+        "minMs": 148.07,
+        "maxMs": 169.7,
+        "meanMs": 152.75
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Repeat_ShorterObserver_10x",
+      "Passed": true,
+      "DurationMs": 581.2552,
+      "Details": {
+        "count": 10,
+        "failures": [],
+        "minMs": 48.98,
+        "maxMs": 63.55,
+        "meanMs": 58.11
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "Repeat_ObserverExceedsDeadline_5x",
+      "Passed": true,
+      "DurationMs": 1639.8995,
+      "Details": {
+        "count": 5,
+        "failures": [],
+        "minMs": 312.7,
+        "maxMs": 334.46,
+        "meanMs": 327.95
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{"kind":"mechanism-start","platform":"Microsoft Windows NT 10.0.26200.0","runtime":"8.0.31"}
+{"kind":"mechanism-case","result":{"Ordinal":1,"RowBytes":36864,"PeerReceiveActual":2048,"SendBefore":65536,"RowCompletedMs":0.367,"RowError":null,"ControlCompletedMs":0.0177,"ControlError":null,"ShrinkRequested":2048,"SendAfter":2048,"ShrinkError":"","TerminalState":"pending-at-400ms","TerminalMs":402.2517}}
+{"kind":"mechanism-case","result":{"Ordinal":2,"RowBytes":45056,"PeerReceiveActual":1024,"SendBefore":65536,"RowCompletedMs":0.0923,"RowError":null,"ControlCompletedMs":0.0044,"ControlError":null,"ShrinkRequested":1024,"SendAfter":1024,"ShrinkError":"","TerminalState":"pending-at-400ms","TerminalMs":400.5528}}
+{"kind":"mechanism-case","result":{"Ordinal":3,"RowBytes":49152,"PeerReceiveActual":512,"SendBefore":65536,"RowCompletedMs":0.0909,"RowError":null,"ControlCompletedMs":0.0049,"ControlError":null,"ShrinkRequested":512,"SendAfter":512,"ShrinkError":"","TerminalState":"pending-at-400ms","TerminalMs":401.9381}}
+{"kind":"mechanism-end"}

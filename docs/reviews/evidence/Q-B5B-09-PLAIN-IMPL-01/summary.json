@@ -1,0 +1,468 @@
+{
+  "configuration": "Debug net8.0; Neo4j.Driver 6.4.0",
+  "windows": {
+    "sdk": "10.0.401",
+    "test_runtime": "8.0.31"
+  },
+  "wsl2": {
+    "distribution": "Ubuntu",
+    "kernel": "6.6.114.1-microsoft-standard-WSL2",
+    "test_runtime": "10.0.14",
+    "DOTNET_ROLL_FORWARD": "Major"
+  },
+  "outstanding_release_gates": [
+    "Native Linux",
+    "Representative production capacity"
+  ],
+  "campaigns": {
+    "NC-00.trx": {
+      "outcomes": {
+        "Passed": 20
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "stop=0.61 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"listener\")": "profile (4194304, 4096, 0): listener-shutdown, 45.38 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"owner\")": "profile (4194304, 4096, 0): owner-cancelled, 39.56 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"deadline\")": "profile (4194304, 4096, 0): total-deadline, 257.23 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)": "delayed=True exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)": "delayed=False exactFailure=True ending=reader-eof"
+      }
+    },
+    "NC-01.trx": {
+      "outcomes": {
+        "Failed": 5,
+        "Passed": 1
+      }
+    },
+    "NC-02.trx": {
+      "outcomes": {
+        "Failed": 1
+      }
+    },
+    "NC-03.trx": {
+      "outcomes": {
+        "Failed": 1
+      }
+    },
+    "NC-04.trx": {
+      "outcomes": {
+        "Failed": 1
+      }
+    },
+    "NC-05.trx": {
+      "outcomes": {
+        "Passed": 5,
+        "Failed": 1
+      }
+    },
+    "NC-06.trx": {
+      "outcomes": {
+        "Passed": 2,
+        "Failed": 1
+      }
+    },
+    "NC-07.trx": {
+      "outcomes": {
+        "Failed": 1
+      }
+    },
+    "win-baseline.trx": {
+      "outcomes": {
+        "Passed": 4
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)": "delayed=False exactFailure=True ending=peer-reset",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)": "delayed=True exactFailure=False ending=peer-reset"
+      }
+    },
+    "win-core-final.trx": {
+      "outcomes": {
+        "Passed": 1250
+      },
+      "focused_case_counts": {
+        "Transport": 113,
+        "Sessions": 119,
+        "Messages": 98,
+        "Backend": 94,
+        "Qualification": 94,
+        "Remediation": 74,
+        "MultiClient": 6,
+        "TLS": 9,
+        "PlaintextTerminalClose": 21
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"owner\")": "profile (4194304, 4096, 0): owner-cancelled, 38.18 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"listener\")": "profile (4194304, 4096, 0): listener-shutdown, 27.57 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)": "delayed=True exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "stop=0.19 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)": "delayed=False exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"deadline\")": "profile (4194304, 4096, 0): total-deadline, 253.91 ms"
+      }
+    },
+    "win-core.trx": {
+      "outcomes": {
+        "Passed": 1249
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)": "delayed=True exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "stop=0.46 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"owner\")": "profile (4194304, 4096, 0): owner-cancelled, 40.58 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"deadline\")": "profile (4194304, 4096, 0): total-deadline, 249.61 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"listener\")": "profile (4194304, 4096, 0): listener-shutdown, 40.70 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)": "delayed=False exactFailure=True ending=reader-eof"
+      }
+    },
+    "win-driver-final.trx": {
+      "outcomes": {
+        "Passed": 43
+      },
+      "observations": {
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: True)": "{\"tls\":true,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}",
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: False)": "{\"tls\":false,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}"
+      }
+    },
+    "win-driver.trx": {
+      "outcomes": {
+        "Passed": 43
+      },
+      "observations": {
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: False)": "{\"tls\":false,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}",
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: True)": "{\"tls\":true,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}"
+      }
+    },
+    "win-focused-initial.trx": {
+      "outcomes": {
+        "Passed": 20
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "stop=0.34 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"owner\")": "profile (4194304, 4096, 0): owner-cancelled, 36.89 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"deadline\")": "profile (4194304, 4096, 0): total-deadline, 238.42 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"listener\")": "profile (4194304, 4096, 0): listener-shutdown, 40.22 ms"
+      }
+    },
+    "win-linger-accepted.trx": {
+      "outcomes": {
+        "Passed": 2
+      }
+    },
+    "wsl-baseline.trx": {
+      "outcomes": {
+        "Passed": 4
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)": "delayed=False exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)": "delayed=True exactFailure=True ending=reader-eof"
+      }
+    },
+    "wsl-core-final.trx": {
+      "outcomes": {
+        "Passed": 1250
+      },
+      "focused_case_counts": {
+        "Transport": 113,
+        "Sessions": 119,
+        "Messages": 98,
+        "Backend": 94,
+        "Qualification": 94,
+        "Remediation": 74,
+        "MultiClient": 6,
+        "TLS": 9,
+        "PlaintextTerminalClose": 21
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)": "delayed=False exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)": "delayed=True exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"owner\")": "terminal profile (262144, 1024, 2048), send=4608, writable=False\nprofile (262144, 1024, 2048): no pending terminal write, messages=5\nterminal profile (524288, 2048, 1024), send=4608, writable=False\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nterminal profile (1048576, 4096, 2048), send=4608, writable=False\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5\nterminal profile (262016, 1024, 1024), send=4608, writable=False\nprofile (262016, 1024, 1024): owner-cancelled, 25.93 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"listener\")": "terminal profile (262144, 1024, 2048), send=4608, writable=False\nprofile (262144, 1024, 2048): no pending terminal write, messages=5\nterminal profile (524288, 2048, 1024), send=4608, writable=False\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nterminal profile (1048576, 4096, 2048), send=4608, writable=False\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5\nterminal profile (262016, 1024, 1024), send=4608, writable=False\nprofile (262016, 1024, 1024): listener-shutdown, 21.32 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "stop=0.14 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"deadline\")": "terminal profile (262144, 1024, 2048), send=4608, writable=False\nprofile (262144, 1024, 2048): no pending terminal write, messages=5\nterminal profile (524288, 2048, 1024), send=4608, writable=False\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nterminal profile (1048576, 4096, 2048), send=4608, writable=False\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5\nterminal profile (262016, 1024, 1024), send=4608, writable=False\nprofile (262016, 1024, 1024): total-deadline, 250.93 ms"
+      }
+    },
+    "wsl-core.trx": {
+      "outcomes": {
+        "Passed": 1245,
+        "Failed": 4
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit": "stop=0.29 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"owner\")": "profile (262144, 1024, 2048): no pending terminal write, messages=5\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"listener\")": "profile (262144, 1024, 2048): no pending terminal write, messages=5\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: False)": "delayed=False exactFailure=True ending=reader-eof",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"deadline\")": "profile (262144, 1024, 2048): no pending terminal write, messages=5\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.QueuedTailComparison(delayed: True)": "delayed=True exactFailure=True ending=reader-eof"
+      }
+    },
+    "wsl-driver-final.trx": {
+      "outcomes": {
+        "Passed": 43
+      },
+      "observations": {
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: True)": "{\"tls\":true,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}",
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: False)": "{\"tls\":false,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}"
+      }
+    },
+    "wsl-driver.trx": {
+      "outcomes": {
+        "Passed": 43
+      },
+      "observations": {
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: False)": "{\"tls\":false,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}",
+        "BoltSharp.DriverInteropTests.Scenarios.PlaintextTerminalCloseInteropTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: True)": "{\"tls\":true,\"Code\":\"Neo.ClientError.Request.Invalid\",\"GqlStatus\":\"08N06\",\"IsRetriable\":false,\"type\":\"ProtocolException\",\"attempts\":1,\"refused\":\"conn-0001\",\"reusedReplacement\":\"conn-0002\",\"counters\":{\"Accepted\":2,\"RejectedForCapacity\":0,\"Active\":0,\"Completed\":2,\"Failed\":0,\"TlsHandshakeFailures\":0,\"BoltHandshakeFailures\":0,\"MessagesProcessed\":13}}"
+      }
+    },
+    "wsl-refined-pressure.trx": {
+      "outcomes": {
+        "Passed": 6
+      },
+      "observations": {
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"owner\")": "terminal profile (262144, 1024, 2048), send=4608, writable=False\nprofile (262144, 1024, 2048): no pending terminal write, messages=5\nterminal profile (524288, 2048, 1024), send=4608, writable=False\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nterminal profile (1048576, 4096, 2048), send=4608, writable=False\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5\nterminal profile (262016, 1024, 1024), send=4608, writable=False\nprofile (262016, 1024, 1024): owner-cancelled, 26.15 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"deadline\")": "terminal profile (262144, 1024, 2048), send=4608, writable=False\nprofile (262144, 1024, 2048): no pending terminal write, messages=5\nterminal profile (524288, 2048, 1024), send=4608, writable=False\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nterminal profile (1048576, 4096, 2048), send=4608, writable=False\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5\nterminal profile (262016, 1024, 1024), send=4608, writable=False\nprofile (262016, 1024, 1024): total-deadline, 248.99 ms",
+        "BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ActualPendingTerminalWriteIsInterrupted(stimulus: \"listener\")": "terminal profile (262144, 1024, 2048), send=4608, writable=False\nprofile (262144, 1024, 2048): no pending terminal write, messages=5\nterminal profile (524288, 2048, 1024), send=4608, writable=False\nprofile (524288, 2048, 1024): no pending terminal write, messages=5\nterminal profile (1048576, 4096, 2048), send=4608, writable=False\nprofile (1048576, 4096, 2048): no pending terminal write, messages=5\nterminal profile (262016, 1024, 1024), send=4608, writable=False\nprofile (262016, 1024, 1024): listener-shutdown, 24.99 ms"
+      }
+    },
+    "wsl-linger-accepted.trx": {
+      "outcomes": {
+        "Passed": 2
+      }
+    }
+  },
+  "archive_members": {
+    "controls-restore.log": {
+      "bytes": 309,
+      "sha256": "767e2a4028d53cf960d7ad3a6714a916edce4962fd390e96bfc123fc346742dc"
+    },
+    "final-driver-build.log": {
+      "bytes": 419,
+      "sha256": "7544bef3976070bf498d1b345d520ea3a4892ee10510a68da27829a36194bdca"
+    },
+    "final-production-build.log": {
+      "bytes": 228,
+      "sha256": "432ba3c1fd684c1e1766a98d8c763e6a7d115d276e0a3e204220d060b9892ddc"
+    },
+    "final-solution-build.log": {
+      "bytes": 2074,
+      "sha256": "5be90df9a55bd13c89b4f5dd41d5d2c90e907007791bf7b78466564e25bd60b3"
+    },
+    "linger-readback-observer.patch": {
+      "bytes": 2267,
+      "sha256": "da59a163ef1ade54add849f987b413de32443fdaf98aa9e94e38b539c7b34ec4"
+    },
+    "NC-00.log": {
+      "bytes": 1588,
+      "sha256": "54dd65c28472008391e1a3f25226914b04daa1f38d53b878d51e4870ea5bad19"
+    },
+    "NC-00.trx": {
+      "bytes": 33246,
+      "sha256": "87f5cadc0545eaca03b3422b21c8a5f5ba0b8e7afc1e90571fdb55d6a725c093"
+    },
+    "NC-01.log": {
+      "bytes": 6729,
+      "sha256": "307d1b42d323abd482cf99fc172696ccd086c22f8725b6d56e5d77fe8ae2d439"
+    },
+    "NC-01.trx": {
+      "bytes": 23320,
+      "sha256": "66bd19647e91437aabb2dc60d753d0012d2aae52d819267631355832a4c7375a"
+    },
+    "NC-02.log": {
+      "bytes": 2081,
+      "sha256": "e822fc48ba1ef22af236db4a6eaa8af458fa4b3a0800d9b9f0fb8cf9919a7578"
+    },
+    "NC-02.trx": {
+      "bytes": 6023,
+      "sha256": "b11269142146293bc3092179cb6828245e11517cb73839f5584453365212e9cf"
+    },
+    "NC-03.log": {
+      "bytes": 1743,
+      "sha256": "b2bdb8ce6b4e4b75906044dc89d2116747ab164dbfff114f5907c8173f3f6bd6"
+    },
+    "NC-03.trx": {
+      "bytes": 5310,
+      "sha256": "dfe1571bc5a8626a769430d7a3cbc2a4e765fd17626cecd48e686d5c96a9875c"
+    },
+    "NC-04.log": {
+      "bytes": 1631,
+      "sha256": "ef998ef1539241d2ef3f12deabd0ad1d5ec48ca26219b5700f692ee9919f35ac"
+    },
+    "NC-04.trx": {
+      "bytes": 5010,
+      "sha256": "69f0264bbe3fb065483c3b67ae233adf8573af2ae28157a90af79f5ca533e7ef"
+    },
+    "NC-05.log": {
+      "bytes": 1689,
+      "sha256": "2ce7429ac7d7b8d0907cb4d517b9e87437a0028f63533c0a1addf4d682f35a0f"
+    },
+    "NC-05.trx": {
+      "bytes": 13135,
+      "sha256": "c9d6b1e83783bd2421f15ea76b3b3c58e3404f309bff02bff6ca98c078d2062e"
+    },
+    "NC-06.log": {
+      "bytes": 1794,
+      "sha256": "dd9c2b515f1179ceec8485ce15bc6d67dee5be5ab189370fc571e3b37f939308"
+    },
+    "NC-06.trx": {
+      "bytes": 8514,
+      "sha256": "b73fc0c1a69346615ca801bf2ed5d9774b05b1560a6e43ee2140122251b40459"
+    },
+    "NC-07.log": {
+      "bytes": 1874,
+      "sha256": "e33570d3f17e60a45eb739837f3d1e047ba94033ab5df7d4fcddace87f9bc150"
+    },
+    "NC-07.trx": {
+      "bytes": 5458,
+      "sha256": "13b71e4d4a5133a7aacd53949cede7eb750fdb895ea7a46e893eae97c92db4fe"
+    },
+    "negative-controls.json": {
+      "bytes": 7257,
+      "sha256": "7029322d7512a8e5c6933c000bbd34d0f5fd750848cbdd169cff57d8ffa3158a"
+    },
+    "win-baseline.log": {
+      "bytes": 1920,
+      "sha256": "0da074123b271b9d85a76f61535c8956c63108dd336f40cb030d74002df533fa"
+    },
+    "win-baseline.trx": {
+      "bytes": 7482,
+      "sha256": "f888e368f7c88c88fd9322f59c3451e9d2edd1674c0b9902578909970906153d"
+    },
+    "win-core-final.log": {
+      "bytes": 466,
+      "sha256": "82a6d12d8dea0d573c6f9824715f01a5265557ae5a24ec8c1841b6779a585933"
+    },
+    "win-core-final.trx": {
+      "bytes": 1815622,
+      "sha256": "b38f66bda64ee86bfce8876a975377bcb6406a9e5799d166647678fbfa686765"
+    },
+    "win-core.log": {
+      "bytes": 460,
+      "sha256": "75e0e744d774ba6aa661c065dc3cce7f01637cba4857b57794c25ec3b955a648"
+    },
+    "win-core.trx": {
+      "bytes": 1814172,
+      "sha256": "66cd33899455f44547cf1366a4b1eca24963d0c98d76c78bc3f940ed0f74951a"
+    },
+    "win-driver-build.log": {
+      "bytes": 657,
+      "sha256": "fbafa1d6b7f5098a34dbd9e960c5566c91b41866bdc6508aebe48df6d0c88219"
+    },
+    "win-driver-final.log": {
+      "bytes": 511,
+      "sha256": "139a2173cffb016397b01a6330f7c132aff1399e96087aa4c484c5cf5d6d6427"
+    },
+    "win-driver-final.trx": {
+      "bytes": 69234,
+      "sha256": "9f5e92c0d1fc612734a2fe08775c73e51ec1204a64067a19edf96cd26a94aa6a"
+    },
+    "win-driver.log": {
+      "bytes": 505,
+      "sha256": "74c7ea6c333ba6b0b4f7f566a5362056bb2cf4afe8ac073365554a88125cf141"
+    },
+    "win-driver.trx": {
+      "bytes": 69234,
+      "sha256": "ce7413c7fc60be9586f8f23460c880eb7d2e144d077f567a5945638216303b2f"
+    },
+    "win-focused-initial.log": {
+      "bytes": 4348,
+      "sha256": "6da863128b6f08bba0c677913107c1141ef430fc304249b481648e1908054c6b"
+    },
+    "win-focused-initial.trx": {
+      "bytes": 32859,
+      "sha256": "2e9cc730a9f7f40015f4b290f1bafee015ae4abdcf8ba0220969933aa8d59232"
+    },
+    "win-format-authorized.log": {
+      "bytes": 3953,
+      "sha256": "56d582fc746f68f1c69671199757e40320a006d7a24da4f316c37e3e2c38b7af"
+    },
+    "win-format-final.log": {
+      "bytes": 32,
+      "sha256": "f45f6f2fad366ee38f9d9ac9837cffd1bdde2c949b1497a362a43ad6c673808f"
+    },
+    "win-format-fix.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "win-format.log": {
+      "bytes": 9524,
+      "sha256": "0681ee3731196cb38d01bed32f0faba05c6b03e739fed23c2d0f990cc707c659"
+    },
+    "win-linger-accepted.log": {
+      "bytes": 1618,
+      "sha256": "4ce8f0e7187cce92b0ac4cf0f769564a2cd915d003de8557be268d71a0e9c336"
+    },
+    "win-linger-accepted.trx": {
+      "bytes": 4396,
+      "sha256": "05c7dc4f7d8b332bb6fdeea29b056f6dc17015fac68aa64dbb1703b408c8fefb"
+    },
+    "win-production-build.log": {
+      "bytes": 214,
+      "sha256": "818dbd93b0aba8d9ae26775a86da77f47861aca6adba3a1d9f66bcd7d88b6f5b"
+    },
+    "win-solution-build.log": {
+      "bytes": 2142,
+      "sha256": "a0c086b44be51c726aab7291c363175c13115b2135e6aa660fef9980e2ef7487"
+    },
+    "wsl-baseline.log": {
+      "bytes": 364,
+      "sha256": "a25b962efb64026bfb89ed3e1d065f9d3ab00572c986b6f7962357892914ad10"
+    },
+    "wsl-baseline.trx": {
+      "bytes": 7387,
+      "sha256": "47ff4fbfb59e8dae4820f34af0e1f7ad4c7745b5f075bfba21fcc215765f6c1f"
+    },
+    "wsl-core-final.log": {
+      "bytes": 363,
+      "sha256": "d796d32636b9bd720760f1b668f098059e5b812525ec9f5de51fc010b84a3bf3"
+    },
+    "wsl-core-final.trx": {
+      "bytes": 1819355,
+      "sha256": "d74ef0a2be9369fca39682d9678a6e53ecd416c0a6f612260eb576537ba56223"
+    },
+    "wsl-core.log": {
+      "bytes": 4122,
+      "sha256": "407d683fe44eebc3ed18afa646b55b9a34584390f3829c82ad635f698d50fc83"
+    },
+    "wsl-core.trx": {
+      "bytes": 1823815,
+      "sha256": "2c2fd0983d379966a78c463ff0eeac13dc1800a1d8e9dc65ca8261ee2881ea3f"
+    },
+    "wsl-driver-final.log": {
+      "bytes": 379,
+      "sha256": "4fb77225fc0ca75ce9edb3ba55636a97a77be8d5cd80c4cc7ea99a0568735a9a"
+    },
+    "wsl-driver-final.trx": {
+      "bytes": 69218,
+      "sha256": "6e6872da65f7abb9f9ac482485308ed828fc9053c0e1ee151c67cf59646ed301"
+    },
+    "wsl-driver.log": {
+      "bytes": 373,
+      "sha256": "2eb59f3caf1096fa32848c72dfc41d99a57ffbef32cd768ce9364bcb766628c1"
+    },
+    "wsl-driver.trx": {
+      "bytes": 69218,
+      "sha256": "f5dee67fce8fa87597b795286d517cfe2f0b56662042dc99b34ae459e8b527bf"
+    },
+    "wsl-linger-accepted-initial.log": {
+      "bytes": 553,
+      "sha256": "a18b55258f42bf2673f47d329bd842d53198196646c386f5409d924f4bfdfa3c"
+    },
+    "wsl-linger-accepted.log": {
+      "bytes": 379,
+      "sha256": "c20c5c11a2bff6422caa1a80f2515315bdc760558733f98d2801dc57733fbd20"
+    },
+    "wsl-linger-accepted.trx": {
+      "bytes": 4306,
+      "sha256": "e72c04c0e3552220cb77894cae8af7b8427bfd8fd5d90f5343ce6ee44f45d670"
+    },
+    "wsl-refined-build.log": {
+      "bytes": 2060,
+      "sha256": "b993d3408d8f0fb6f0770154ae71d1c16bc322482216a2eb8b3b4592ce88b12c"
+    },
+    "wsl-refined-pressure.log": {
+      "bytes": 369,
+      "sha256": "cce46447c25445c3783c85888cc7285688bc3e214e50e0e7b375d9ad8f7e2d35"
+    },
+    "wsl-refined-pressure.trx": {
+      "bytes": 12484,
+      "sha256": "9f08feec5cfbe801451d91f1e0c230f651628e4ed84477c8ebcadaefe4fcfd8e"
+    }
+  }
+}

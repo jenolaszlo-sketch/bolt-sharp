@@ -1,0 +1,55 @@
+{
+  "mode": "r1",
+  "filter": "f01",
+  "platform": "Microsoft Windows NT 10.0.26200.0",
+  "runtime": "8.0.31",
+  "timestampUtc": "2026-11-18T05:10:46.0523871+00:00",
+  "results": [
+    {
+      "Name": "F01_Corrected_SuccessfulWritePastWriteTimeout",
+      "Passed": false,
+      "DurationMs": 408.5393,
+      "Details": {},
+      "Error": "InvalidOperationException: corrected phase was post-write",
+      "Stack": "   at Q2Probe.ProbeUtil.Check(Boolean condition, String message) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Support.cs:line 368\r\n   at Q2Probe.Program.F01Scenario(Boolean expectCorrected) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 207\r\n   at Q2Probe.Program.F01Scenario(Boolean expectCorrected) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 225\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2w\\probe\\Program.cs:line 142"
+    },
+    {
+      "Name": "F01_ObserverShorterThanWriteTimeout",
+      "Passed": true,
+      "DurationMs": 93.6638,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": false,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 74.09,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "F01_ObserverExceptionContained",
+      "Passed": true,
+      "DurationMs": 105.4768,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": true,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 85.96,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

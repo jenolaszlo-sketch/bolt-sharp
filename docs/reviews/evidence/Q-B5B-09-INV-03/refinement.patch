@@ -1,0 +1,137 @@
+diff --git a/src/BoltSharp/Transport/BoltTcpConnection.cs b/src/BoltSharp/Transport/BoltTcpConnection.cs
+--- a/src/BoltSharp/Transport/BoltTcpConnection.cs
++++ b/src/BoltSharp/Transport/BoltTcpConnection.cs
+@@ -39,6 +39,7 @@
+     {
+         using var clientOwnership = client;
+         var networkStream = client.GetStream();
++        Inv03Probe.Publish("socket", connectionId, client.Client.SafeHandle);
+         var failed = false;
+         var outcome = "closed";
+         BoltConnectionSession? session = null;
+@@ -55,7 +56,7 @@
+             {
+                 using var tlsCts = CancellationTokenSource.CreateLinkedTokenSource(shutdownCancellationToken);
+                 tlsCts.CancelAfter(options.TlsHandshakeTimeout);
+-                tlsInput = new BoundedTlsInput(networkStream);
++                tlsInput = new BoundedTlsInput(networkStream, client.Client.SafeHandle);
+                 sslStream = new SslStream(tlsInput, leaveInnerStreamOpen: true);
+                 try
+                 {
+@@ -232,9 +233,11 @@
+             // must not pre-decode: doing so closed the connection at the B3-A boundary for valid
+             // but unsupported commands (BEGIN/COMMIT/ROLLBACK/ROUTE) before the session's
+             // documented terminal refusal could run (finding B5-B-IMPL-F01 / B5-B-Q1-F01).
++            Inv03Probe.Publish("request", connectionId, null);
+             var result = session.ReceiveBytes(message);
+             if (session.EligibleForTerminalDrain)
+             {
++                Inv03Probe.Publish("terminal-result", connectionId, $"{result.State}:{result.Responses.Count}");
+                 // The session is already DEFUNCT. This branch never returns to the frame reader.
+                 await BoltTerminalClose.RunAsync(client, stream, tlsInput, terminalDrains, connectionId,
+                     async token =>
+diff --git a/src/BoltSharp/Transport/BoltTerminalClose.cs b/src/BoltSharp/Transport/BoltTerminalClose.cs
+--- a/src/BoltSharp/Transport/BoltTerminalClose.cs
++++ b/src/BoltSharp/Transport/BoltTerminalClose.cs
+@@ -32,7 +32,10 @@
+         using var abort = lifetime.Token.UnsafeRegister(static state => ((TcpClient)state!).Dispose(), client);
+         try
+         {
++            tlsInput?.Arm("terminal-write");
++            Inv03Probe.Publish("write-enter", connectionId, null);
+             await write(lifetime.Token).ConfigureAwait(false);
++            Inv03Probe.Publish("write-complete", connectionId, null);
+             writeMs = Stopwatch.GetElapsedTime(started).TotalMilliseconds;
+             phase = "admission";
+             lifetime.Token.ThrowIfCancellationRequested();
+@@ -43,12 +46,16 @@
+                 return;
+             }
+ 
++            Inv03Probe.Publish("permit", connectionId, null);
+             phase = "shutdown";
+             drain.CancelAfter(DrainMilliseconds);
+             using var stopDrain = drain.Token.UnsafeRegister(static state => ((TcpClient)state!).Dispose(), client);
+             if (stream is SslStream ssl)
+             {
++                tlsInput!.Arm("close-notify");
++                Inv03Probe.Publish("tls-shutdown-enter", connectionId, null);
+                 await ssl.ShutdownAsync().ConfigureAwait(false);
++                Inv03Probe.Publish("tls-shutdown-complete", connectionId, null);
+                 tlsInput!.StartLimit(CiphertextLimit);
+             }
+             else
+@@ -58,6 +65,7 @@
+ 
+             TerminalCloseTrace.Log.DrainStarted(connectionId, tlsInput is not null);
+             phase = "drain";
++            Inv03Probe.Publish("drain", connectionId, null);
+             var buffer = new byte[ScratchBytes];
+             while (bytes < PlaintextLimit)
+             {
+@@ -94,9 +102,12 @@
+             client.Dispose();
+             if (admitted)
+             {
++                Inv03Probe.Publish("permit-release", connectionId, null);
+                 permits.Release();
+             }
+ 
++            Inv03Probe.Publish("finished", connectionId, (phase, outcome, bytes, tlsInput?.WireBytes ?? 0,
++                Stopwatch.GetElapsedTime(started).TotalMilliseconds));
+             TerminalCloseTrace.Log.Finished(connectionId, phase, outcome, bytes, tlsInput?.WireBytes ?? 0,
+                 writeMs, Stopwatch.GetElapsedTime(started).TotalMilliseconds);
+         }
+@@ -132,9 +143,12 @@
+ 
+ // Preserve exclusive SslStream ownership. Bound inner-stream input without reading it
+ // concurrently with TLS. Previously buffered TLS bytes remain subject to the output cap.
+-internal sealed class BoundedTlsInput(Stream inner) : Stream
++internal sealed class BoundedTlsInput(Stream inner, SafeSocketHandle handle) : Stream
+ {
+     private int? _limit;
++    private string? _instrumentedWrite;
++
++    internal void Arm(string phase) => _instrumentedWrite = phase;
+     internal int WireBytes { get; private set; }
+     internal bool TransportEof { get; private set; }
+ 
+@@ -174,10 +188,17 @@
+     public override void Flush() => inner.Flush();
+     public override Task FlushAsync(CancellationToken cancellationToken) => inner.FlushAsync(cancellationToken);
+     public override void Write(byte[] buffer, int offset, int count) => inner.Write(buffer, offset, count);
+-    public override ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
+-        => inner.WriteAsync(buffer, cancellationToken);
++    public override async ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
++    {
++        var phase = Interlocked.Exchange(ref _instrumentedWrite, null);
++        var gate = Inv03Probe.EncryptedWrite;
++        if (phase is not null && gate is not null)
++            await gate(phase, handle, cancellationToken).ConfigureAwait(false);
++        await inner.WriteAsync(buffer, cancellationToken).ConfigureAwait(false);
++    }
++
+     public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+-        => inner.WriteAsync(buffer, offset, count, cancellationToken);
++        => WriteAsync(buffer.AsMemory(offset, count), cancellationToken).AsTask();
+     public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+     public override void SetLength(long value) => throw new NotSupportedException();
+ }
+diff --git a/src/BoltSharp/Transport/Inv03Probe.cs b/src/BoltSharp/Transport/Inv03Probe.cs
+new file mode 100644
+--- /dev/null
++++ b/src/BoltSharp/Transport/Inv03Probe.cs
+@@ -0,0 +1,13 @@
++using System.Net.Sockets;
++
++namespace BoltSharp.Transport;
++
++// Isolated qualification hooks, configured only in the in-process test fixture.
++internal static class Inv03Probe
++{
++    internal static Action<string, string, object?>? Observer = null;
++    internal static Func<string, SafeSocketHandle, CancellationToken, ValueTask>? EncryptedWrite = null;
++
++    internal static void Publish(string name, string connectionId, object? value)
++        => Observer?.Invoke(name, connectionId, value);
++}

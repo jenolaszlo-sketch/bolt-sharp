@@ -34,6 +34,7 @@ internal static class BoltTcpConnection
         BoltTcpServerOptions options,
         BoltTransportDiagnostics diagnostics,
         string connectionId,
+        BoltPlaintextTerminalClose? plaintextClose,
         CancellationToken shutdownCancellationToken)
     {
         using var clientOwnership = client;
@@ -110,14 +111,21 @@ internal static class BoltTcpConnection
                 new BoltSessionOptions { Verifier = options.CredentialVerifier },
                 new BoltMessageCodec());
 
-            await RunMessageLoopAsync(
+            var terminal = await RunMessageLoopAsync(
                     session,
                     protocolStream,
                     options,
                     diagnostics,
                     connectionId,
+                    client,
+                    options.Tls is null ? plaintextClose : null,
                     shutdownCancellationToken)
                 .ConfigureAwait(false);
+            if (terminal is { } disposition)
+            {
+                failed = disposition.Failed;
+                outcome = disposition.Detail;
+            }
         }
         catch (Exception ex) when (IsClientDisconnect(ex))
         {
@@ -190,12 +198,14 @@ internal static class BoltTcpConnection
         }
     }
 
-    private static async Task RunMessageLoopAsync(
+    private static async Task<(bool Failed, string Detail)?> RunMessageLoopAsync(
         BoltConnectionSession session,
         Stream stream,
         BoltTcpServerOptions options,
         BoltTransportDiagnostics diagnostics,
         string connectionId,
+        TcpClient client,
+        BoltPlaintextTerminalClose? plaintextClose,
         CancellationToken shutdownCancellationToken)
     {
         var reader = new BoltMessageReader(stream, options.FramingLimits);
@@ -214,7 +224,7 @@ internal static class BoltTcpConnection
             {
                 // Clean EOF before any message byte: the client disconnected deliberately.
                 // Connection accounting is reported once by the pipeline's finally block.
-                return;
+                return null;
             }
 
             // B5-B-F01-R1: the complete payload is processed by the accepted B3-B session entry
@@ -223,6 +233,16 @@ internal static class BoltTcpConnection
             // but unsupported commands (BEGIN/COMMIT/ROLLBACK/ROUTE) before the session's
             // documented terminal refusal could run (finding B5-B-IMPL-F01 / B5-B-Q1-F01).
             var result = session.ReceiveBytes(message);
+            if (plaintextClose is not null && result.PlaintextCloseEligible)
+            {
+                var plaintext = (NetworkStream)stream;
+                return await plaintextClose.RunAsync(client, plaintext, connectionId, options.WriteTimeout,
+                    (cancellation, pending) => WritePlaintextTerminalResponseAsync(
+                        plaintext, codec, result.Responses, cancellation, pending),
+                    () => diagnostics.Report(BoltTransportEventKind.MessageProcessed, connectionId,
+                        $"sig={DescribePayloadSignature(message)} responses={result.Responses.Count} state={result.State}"),
+                    shutdownCancellationToken).ConfigureAwait(false);
+            }
 
             await WriteResponsesAsync(
                     stream,
@@ -241,9 +261,11 @@ internal static class BoltTcpConnection
                 // Terminal outcome (GOODBYE, fatal protocol error, failed retirement): the final
                 // responses (if any) were written; the connection closes. No RESET recovery, no
                 // further messages. Connection accounting is reported once by the finally block.
-                return;
+                return null;
             }
         }
+
+        return null;
     }
 
     private static async Task WriteResponsesAsync(
@@ -259,14 +281,7 @@ internal static class BoltTcpConnection
             return;
         }
 
-        var buffer = new ArrayBufferWriter<byte>();
-        var writer = new BoltMessageWriter(buffer);
-        foreach (var response in responses)
-        {
-            // B3-A owns response encoding; B2 owns chunk framing.
-            writer.WriteMessage(codec.EncodeResponse(response));
-        }
-
+        var buffer = FrameResponses(codec, responses);
         using var writeCts = CancellationTokenSource.CreateLinkedTokenSource(shutdownCancellationToken);
         writeCts.CancelAfter(writeTimeout);
         var payload = buffer.WrittenSpan.ToArray();
@@ -280,6 +295,33 @@ internal static class BoltTcpConnection
         }
 
         await stream.FlushAsync(writeCts.Token).ConfigureAwait(false);
+    }
+
+    private static async Task WritePlaintextTerminalResponseAsync(
+        NetworkStream stream,
+        BoltMessageCodec codec,
+        IReadOnlyList<BoltResponse> responses,
+        CancellationToken cancellation,
+        Action reportPendingWrite)
+    {
+        var payload = FrameResponses(codec, responses).WrittenMemory;
+        var operation = stream.WriteAsync(payload, cancellation);
+        if (!operation.IsCompleted)
+            reportPendingWrite();
+        await operation.ConfigureAwait(false);
+        await stream.FlushAsync(cancellation).ConfigureAwait(false);
+    }
+
+    private static ArrayBufferWriter<byte> FrameResponses(BoltMessageCodec codec, IReadOnlyList<BoltResponse> responses)
+    {
+        var buffer = new ArrayBufferWriter<byte>();
+        var writer = new BoltMessageWriter(buffer);
+        foreach (var response in responses)
+        {
+            // B3-A owns response encoding; B2 owns chunk framing.
+            writer.WriteMessage(codec.EncodeResponse(response));
+        }
+        return buffer;
     }
 
     /// <summary>

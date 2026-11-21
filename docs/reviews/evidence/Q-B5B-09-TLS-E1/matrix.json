@@ -1,0 +1,64 @@
+﻿{
+    "commission":  "Q-B5B-09-TLS-E1",
+    "qualifying_outcomes":  [
+                                "induced-and-interrupted",
+                                "cap-bounded-and-clean"
+                            ],
+    "cells":  [
+                  {
+                      "cell":  "T1",
+                      "windows_runs":  6,
+                      "windows_passed":  5,
+                      "windows_qualified":  true,
+                      "wsl2_runs":  6,
+                      "wsl2_passed":  3,
+                      "wsl2_qualified":  true
+                  },
+                  {
+                      "cell":  "T2",
+                      "windows_runs":  6,
+                      "windows_passed":  5,
+                      "windows_qualified":  true,
+                      "wsl2_runs":  6,
+                      "wsl2_passed":  3,
+                      "wsl2_qualified":  true
+                  },
+                  {
+                      "cell":  "T3",
+                      "windows_runs":  6,
+                      "windows_passed":  5,
+                      "windows_qualified":  true,
+                      "wsl2_runs":  4,
+                      "wsl2_passed":  0,
+                      "wsl2_qualified":  false
+                  },
+                  {
+                      "cell":  "T4",
+                      "windows_runs":  6,
+                      "windows_passed":  5,
+                      "windows_qualified":  true,
+                      "wsl2_runs":  4,
+                      "wsl2_passed":  0,
+                      "wsl2_qualified":  false
+                  },
+                  {
+                      "cell":  "T5",
+                      "windows_runs":  3,
+                      "windows_passed":  3,
+                      "windows_qualified":  true,
+                      "wsl2_runs":  3,
+                      "wsl2_passed":  3,
+                      "wsl2_qualified":  true
+                  },
+                  {
+                      "cell":  "T6",
+                      "windows_runs":  3,
+                      "windows_passed":  3,
+                      "windows_qualified":  true,
+                      "wsl2_runs":  3,
+                      "wsl2_passed":  3,
+                      "wsl2_qualified":  true
+                  }
+              ],
+    "notes":  "passed counts oracle-passing attempts; qualified is the cell-level repeatability result of three oracle-passing runs with the same profile; runs includes non-qualifying discovery attempts (a small-queue deep profile legitimately records preceding-write-did-not-complete on Windows)"
+}

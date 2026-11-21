@@ -1,0 +1,384 @@
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Net.Security;
+using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
+using BoltSharp.Framing;
+using BoltSharp.Handshake;
+using BoltSharp.Messages;
+using BoltSharp.PackStream;
+using BoltSharp.Tests.Sessions;
+using BoltSharp.Transport;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace BoltSharp.Tests.Transport;
+
+public sealed class Inv02TerminalTests(ITestOutputHelper output)
+{
+    private const string Expected =
+        "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0";
+
+    private static readonly byte[] Terminal = TransportTestSupport.Frame([0xB1, 0x11, 0xA0]);
+    private static readonly byte[] FollowUp = Frame(SessionHarness.Run());
+    private static bool Candidate => Environment.GetEnvironmentVariable("INV02_EXPECT_CANDIDATE") == "1";
+
+    public static IEnumerable<object[]> Cases =>
+        from tls in new[] { false, true }
+        from scenario in new[] { "standalone", "small", "large", "partial", "opaque", "ongoing",
+            "delayed-reader", "never-read", "never-close", "immediate-close", "reset", "stalled",
+            "shutdown", "peer-send-eof" }
+        select new object[] { tls, scenario };
+
+    [Theory]
+    [MemberData(nameof(Cases))]
+    public async Task Matrix(bool tls, string scenario)
+    {
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(4));
+        var token = deadline.Token;
+        using var certificate = tls ? TransportTestSupport.CreateSelfSignedCertificate() : null;
+        using var trace = new Capture();
+        var provider = ScriptedOperationProvider.WithRows(42);
+        await using var server = await Start(certificate, provider);
+        var events = new ConcurrentQueue<BoltTransportDiagnosticEvent>();
+        server.Diagnostics.Event += events.Enqueue;
+        var connectionStart = Stopwatch.GetTimestamp();
+        using var peer = await Peer.Connect(server, certificate, token);
+        var terminalAt = Stopwatch.GetTimestamp();
+        var tail = scenario switch
+        {
+            "small" or "delayed-reader" or "never-read" or "peer-send-eof" => FollowUp,
+            "large" => new byte[24576],
+            "partial" => FollowUp[..1],
+            "opaque" => new byte[] { 0, 2, 0xC0, 0xC0, 0, 0 },
+            _ => []
+        };
+        await peer.Send(Terminal.Concat(tail).ToArray(), token);
+
+        if (scenario == "peer-send-eof")
+            await peer.CloseSend(token);
+
+        var observations = new List<string>();
+        var end = "unread";
+        var shutdownMs = -1d;
+        if (scenario is "reset" or "immediate-close")
+        {
+            if (scenario == "reset")
+                peer.Reset();
+            peer.Dispose();
+            end = "peer-closed";
+        }
+        else if (scenario == "shutdown")
+        {
+            if (Candidate)
+                await Wait(() => trace.Items.Any(item => item.Name == "DrainStarted")
+                    || server.Diagnostics.ConnectionsActive == 0, token);
+            else
+                await Wait(() => server.Diagnostics.MessagesProcessed == 3, token);
+            var start = Stopwatch.GetTimestamp();
+            await server.StopAsync(token);
+            shutdownMs = Stopwatch.GetElapsedTime(start).TotalMilliseconds;
+        }
+        else if (scenario != "never-read")
+        {
+            if (scenario == "delayed-reader")
+                await Task.Delay(35, token);
+            if (scenario == "stalled")
+                await Task.Delay(12, token);
+            var sender = scenario is "ongoing" or "stalled" ? SendBoundedTail(peer, scenario, token) : Task.CompletedTask;
+            // The paced sender completes before the reader. These trials deliberately cover a peer
+            // that prioritizes writes. Separate driver tests cover a standard reading peer.
+            await sender;
+            try
+            {
+                for (var i = 0; i < 2; i++)
+                {
+                    var payload = await peer.Read(token);
+                    if (payload is null)
+                    {
+                        end = tls ? "tls-stream-eof" : "tcp-eof";
+                        break;
+                    }
+                    observations.Add(Convert.ToHexString(payload));
+                    end = "extra-response";
+                }
+                if (scenario is not ("never-close" or "peer-send-eof"))
+                    await peer.TryCloseSend(token);
+            }
+            catch (IOException ex)
+            {
+                end = ex.InnerException is SocketException socket ? socket.SocketErrorCode.ToString() : ex.GetType().Name;
+            }
+        }
+
+        await Wait(() => server.Diagnostics.ConnectionsActive == 0, token);
+        var terminal = events.Where(e => e.Kind == BoltTransportEventKind.MessageProcessed &&
+            e.Detail?.Contains("sig=0x11", StringComparison.Ordinal) == true).ToArray();
+        output.WriteLine(JsonSerializer.Serialize(new
+        {
+            tls, scenario, end, observations, provider.PrepareCount, shutdownMs,
+            accepted = server.Diagnostics.ConnectionsAccepted, active = server.Diagnostics.ConnectionsActive,
+            completed = server.Diagnostics.ConnectionsCompleted, failed = server.Diagnostics.ConnectionsFailed,
+            messages = server.Diagnostics.MessagesProcessed, terminal = terminal.Select(e => e.Detail),
+            terminalToCompletionMs = Stopwatch.GetElapsedTime(terminalAt).TotalMilliseconds,
+            totalToCompletionMs = Stopwatch.GetElapsedTime(connectionStart).TotalMilliseconds,
+            trace = trace.Items
+        }));
+        Assert.Equal(0, provider.PrepareCount);
+        Assert.Equal(1, server.Diagnostics.ConnectionsAccepted);
+        Assert.Equal(1, server.Diagnostics.ConnectionsCompleted + server.Diagnostics.ConnectionsFailed);
+        if (scenario is not ("immediate-close" or "reset"))
+        {
+            Assert.Equal(3, server.Diagnostics.MessagesProcessed);
+            var report = Assert.Single(terminal);
+            Assert.Contains("state=Defunct", report.Detail);
+            Assert.Contains("responses=1", report.Detail);
+        }
+
+        Assert.InRange(observations.Count, 0, 1);
+        if (observations.Count > 0 || scenario == "standalone")
+            Assert.Equal(Expected, Assert.Single(observations));
+
+        if (Candidate && scenario is not ("immediate-close" or "reset"))
+        {
+            var finish = Assert.Single(trace.Items.Where(item => item.Name == "Finished"));
+            Assert.InRange(finish.Number("bytes"), 0, 8192);
+            Assert.InRange(finish.Number("wireBytes"), 0, 32768);
+            Assert.InRange(finish.Number("terminalMs"), 0, 1000);
+            if (scenario == "shutdown")
+                Assert.Equal("server-cancelled", finish.Text("outcome"));
+        }
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task DrainCapacityAndDisposal(bool tls)
+    {
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(4));
+        var token = deadline.Token;
+        using var certificate = tls ? TransportTestSupport.CreateSelfSignedCertificate() : null;
+        using var trace = new Capture();
+        await using var server = await Start(certificate, ScriptedOperationProvider.WithRows(42));
+        using var a = await Peer.Connect(server, certificate, token);
+        using var b = await Peer.Connect(server, certificate, token);
+        using var c = await Peer.Connect(server, certificate, token);
+        await Task.WhenAll(a.Send(Terminal, token), b.Send(Terminal, token), c.Send(Terminal, token));
+        await Wait(() => server.Diagnostics.ConnectionsActive == 0, token);
+        output.WriteLine(JsonSerializer.Serialize(new
+        {
+            tls, scenario = "capacity", trace = trace.Items, accepted = server.Diagnostics.ConnectionsAccepted,
+            completed = server.Diagnostics.ConnectionsCompleted, failed = server.Diagnostics.ConnectionsFailed
+        }));
+        Assert.Equal(3, server.Diagnostics.ConnectionsAccepted);
+        Assert.Equal(3, server.Diagnostics.ConnectionsCompleted + server.Diagnostics.ConnectionsFailed);
+        if (Candidate)
+        {
+            Assert.Equal(2, trace.Items.Count(e => e.Name == "DrainStarted"));
+            Assert.Single(trace.Items.Where(e => e.Name == "Finished" && e.Text("outcome") == "capacity"));
+        }
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    [InlineData(true, true)]
+    public async Task LargeLegalResponseBackpressure(bool tls, bool stopListener)
+    {
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+        var token = deadline.Token;
+        using var certificate = tls ? TransportTestSupport.CreateSelfSignedCertificate() : null;
+        using var trace = new Capture();
+        var row = new PackStreamValue?[] { new PackStreamString(new string('x', 4 * 1024 * 1024)) };
+        var operation = new ScriptedOperation(["value"], row);
+        await using var server = await Start(certificate, ScriptedOperationProvider.WithOperation(operation),
+            TimeSpan.FromMilliseconds(550));
+        using var peer = await Peer.Connect(server, certificate, token, receiveBuffer: 4096);
+        await peer.Send(Frame(SessionHarness.Run()), token);
+        _ = await peer.Read(token);
+        var started = Stopwatch.GetTimestamp();
+        await peer.Send(Frame(SessionHarness.Pull(2)).Concat(Terminal).ToArray(), token);
+        await Wait(() => Candidate ? trace.Items.Any(e => e.Name == "PendingWrite")
+            : operation.ReadCount == 2, token);
+        // Peer reads remain paused. Confirm the connection and preceding write have not
+        // retired during an observation interval before timeout or listener cancellation.
+        await Task.Delay(120, token);
+        var activeBefore = server.Diagnostics.ConnectionsActive;
+        var processedBefore = server.Diagnostics.MessagesProcessed;
+        if (stopListener)
+            await server.StopAsync(token);
+        await Wait(() => server.Diagnostics.ConnectionsActive == 0, token);
+        output.WriteLine(JsonSerializer.Serialize(new
+        {
+            tls, scenario = stopListener ? "backpressure-shutdown" : "backpressure-timeout",
+            activeBefore, processedBefore, elapsedMs = Stopwatch.GetElapsedTime(started).TotalMilliseconds,
+            completed = server.Diagnostics.ConnectionsCompleted, failed = server.Diagnostics.ConnectionsFailed,
+            finalProcessed = server.Diagnostics.MessagesProcessed, operation.DisposeCount, trace = trace.Items
+        }));
+        Assert.Equal(1, activeBefore);
+        Assert.InRange(processedBefore, 3, 4);
+        Assert.Equal(processedBefore, server.Diagnostics.MessagesProcessed);
+        if (Candidate)
+        {
+            Assert.Contains(trace.Items, e => e.Name == "PendingWrite" &&
+                (processedBefore == 3 ? e.Number("payloadBytes") > 4_000_000 : e.Number("payloadBytes") < 512));
+            if (processedBefore == 4)
+            {
+                var finish = Assert.Single(trace.Items.Where(e => e.Name == "Finished"));
+                Assert.Equal("write", finish.Text("phase"));
+                Assert.Equal(stopListener ? "server-cancelled" : "total-deadline", finish.Text("outcome"));
+            }
+        }
+        Assert.Equal(1, operation.DisposeCount);
+        Assert.Equal(1, server.Diagnostics.ConnectionsFailed + server.Diagnostics.ConnectionsCompleted);
+    }
+
+    private static Task<BoltTcpServer> Start(X509Certificate2? cert, ScriptedOperationProvider provider,
+        TimeSpan? writeTimeout = null) => TransportTestSupport.StartServerAsync(() => new BoltTcpServerOptions
+    {
+        CredentialVerifier = TestCredentialVerifier.AcceptAll(),
+        OperationProviderFactory = () => provider,
+        Tls = cert is null ? null : new BoltTlsServerOptions(cert),
+        MaxConnections = 4,
+        WriteTimeout = writeTimeout ?? TimeSpan.FromSeconds(2)
+    });
+
+    private static async Task Wait(Func<bool> condition, CancellationToken token)
+    {
+        while (!condition())
+            await Task.Delay(1, token);
+    }
+
+    private static byte[] Frame(BoltRequest request) => TransportTestSupport.Frame(TransportRequestEncoder.Encode(request));
+
+    private static async Task SendBoundedTail(Peer peer, string scenario, CancellationToken token)
+    {
+        try
+        {
+            for (var i = 0; i < (scenario == "ongoing" ? 14 : 1); i++)
+            {
+                await Task.Delay(7, token);
+                await peer.Send(scenario == "ongoing" ? new byte[1024] : new byte[1], token);
+            }
+        }
+        catch (IOException)
+        {
+            // The peer may lose its sending direction when the tested transport closes.
+        }
+    }
+
+    private sealed class Peer(TcpClient socket, Stream stream) : IDisposable
+    {
+        private readonly BoltMessageReader _reader = new(stream);
+
+        internal static async Task<Peer> Connect(BoltTcpServer server, X509Certificate2? expected,
+            CancellationToken token, int? receiveBuffer = null)
+        {
+            var socket = new TcpClient();
+            Stream? stream = null;
+            try
+            {
+                if (receiveBuffer is int size)
+                    socket.ReceiveBufferSize = size;
+                await socket.ConnectAsync(server.BoundEndPoint!.Address, server.BoundEndPoint.Port, token);
+                stream = socket.GetStream();
+                if (expected is not null)
+                {
+                    var ssl = new SslStream(stream, leaveInnerStreamOpen: true);
+                    stream = ssl;
+                    await ssl.AuthenticateAsClientAsync(new SslClientAuthenticationOptions
+                    {
+                        TargetHost = "localhost",
+                        RemoteCertificateValidationCallback = (_, cert, _, _) => cert?.GetCertHashString() == expected.Thumbprint
+                    }, token);
+                }
+
+                var peer = new Peer(socket, stream);
+                await peer.Send(TransportTestSupport.HandshakeFromVersions(new BoltProtocolVersion(5, 8)), token);
+                var chosen = new byte[4];
+                await stream.ReadExactlyAsync(chosen, token);
+                Assert.Equal(new byte[] { 0, 0, 8, 5 }, chosen);
+                foreach (var request in new BoltRequest[] { SessionHarness.Hello(), SessionHarness.Logon() })
+                {
+                    await peer.Send(Frame(request), token);
+                    Assert.IsType<SuccessResponse>(new BoltMessageCodec().DecodeResponse((await peer.Read(token))!));
+                }
+
+                return peer;
+            }
+            catch
+            {
+                socket.Dispose();
+                stream?.Dispose();
+                throw;
+            }
+        }
+
+        internal Task Send(byte[] bytes, CancellationToken token) => stream.WriteAsync(bytes.AsMemory(), token).AsTask();
+        internal ValueTask<byte[]?> Read(CancellationToken token) => _reader.ReadMessageAsync(token);
+        internal void Reset() => socket.LingerState = new LingerOption(true, 0);
+
+        internal async Task CloseSend(CancellationToken token)
+        {
+            if (stream is SslStream ssl)
+                await ssl.ShutdownAsync().WaitAsync(token);
+            else
+                socket.Client.Shutdown(SocketShutdown.Send);
+        }
+
+        internal async Task TryCloseSend(CancellationToken token)
+        {
+            try { await CloseSend(token); }
+            catch (Exception ex) when (ex is IOException or SocketException or InvalidOperationException) { }
+        }
+
+        public void Dispose()
+        {
+            socket.Dispose();
+            stream.Dispose();
+        }
+    }
+
+    private sealed record Item(string Name, Dictionary<string, object?> Fields)
+    {
+        internal double Number(string key) => Convert.ToDouble(Fields[key]);
+        internal string? Text(string key) => Fields[key] as string;
+    }
+
+    private sealed class Capture : IDisposable
+    {
+        private readonly IDisposable _all;
+        private IDisposable? _local;
+        internal ConcurrentQueue<Item> Items { get; } = new();
+
+        internal Capture() => _all = DiagnosticListener.AllListeners.Subscribe(new Observer<DiagnosticListener>(Attach));
+
+        private void Attach(DiagnosticListener listener)
+        {
+            if (listener.Name == "BoltSharp-INV02-Terminal")
+                _local = listener.Subscribe(new Observer<KeyValuePair<string, object?>>(Record));
+        }
+
+        private void Record(KeyValuePair<string, object?> item)
+        {
+            var fields = item.Value?.GetType().GetProperties()
+                .ToDictionary(property => property.Name, property => property.GetValue(item.Value)) ?? [];
+            Items.Enqueue(new Item(item.Key, fields));
+        }
+
+        public void Dispose()
+        {
+            _local?.Dispose();
+            _all.Dispose();
+        }
+    }
+
+    private sealed class Observer<T>(Action<T> next) : IObserver<T>
+    {
+        public void OnNext(T value) => next(value);
+        public void OnError(Exception error) { }
+        public void OnCompleted() { }
+    }
+}

@@ -1,0 +1,129 @@
+B5-B-TS1-Q1 - independent integrity verification
+==================================================
+Repository: D:\projects\bolt-sharp
+HEAD: d8c28a9bed0af6305936b2b6e427ca1365bed757
+Tree: 9e7f07ca2664e44230b10b4b92c9f435fd58fdcd
+Generated UTC: 2026-11-15T11:44:04.3112731Z
+Hash semantics: SHA-256 over exact bytes.
+  canonical aggregate = raw working-tree bytes (the documented historical convention).
+  excluded B3-B entries = current worktree, else blob at the manifest implementation_commit.
+  TS1 inventory = Git blob bytes at HEAD (explicit Q1 convention, checkout-independent).
+
+1) canonical 17-manifest aggregate (raw working-tree bytes)
+=== docs/reviews/evidence/B3-C-Q1/manifest.json declared=29 expected=29 OK ===
+=== docs/reviews/evidence/B3-C-IMPL-01/manifest.json declared=26 expected=26 OK ===
+=== docs/reviews/evidence/B3-B-Q3/manifest.json declared=33 expected=33 OK ===
+=== docs/reviews/evidence/B3-B-R2-IMPL-01/manifest.json declared=29 expected=29 OK ===
+=== docs/reviews/evidence/B3-B-Q2/manifest.json declared=38 expected=38 OK ===
+=== docs/reviews/evidence/B3-B-Q1/manifest.json declared=12 expected=12 OK ===
+=== docs/reviews/evidence/B3-A-Q1/manifest.json declared=14 expected=14 OK ===
+=== docs/reviews/evidence/B3-A-R1-IMPL-01/manifest.json declared=13 expected=13 OK ===
+=== docs/reviews/evidence/B3-A-Q2/manifest.json declared=15 expected=15 OK ===
+=== docs/reviews/evidence/B0-B-DRV-INT-01/manifest.json declared=24 expected=24 OK ===
+=== docs/reviews/evidence/B0-B-Q1/manifest.json declared=119 expected=119 OK ===
+=== docs/reviews/evidence/B5-A-IMPL-01/manifest.json declared=18 expected=18 OK ===
+=== docs/reviews/evidence/B5-A-Q1/manifest.json declared=10 expected=10 OK ===
+=== docs/reviews/evidence/B5-B-IMPL-01/manifest.json declared=62 expected=62 OK ===
+=== docs/reviews/evidence/B5-B-Q1/manifest.json declared=76 expected=76 OK ===
+=== docs/reviews/evidence/B5-B-F01-R1/manifest.json declared=70 expected=70 OK ===
+=== docs/reviews/evidence/B5-B-F01-R1-Q1/manifest.json declared=31 expected=31 OK ===
+
+CANONICAL TOTALS: entries=619 worktree_matched=619 blob_matched=313 mismatched=0 worktree_differs_from_blob=306
+CANONICAL EXPECTATION: 619/619 -> PASS
+
+2) excluded B3-B implementation-source manifests (36 entries)
+=== docs/reviews/evidence/B3-B-IMPL-01/manifest.json declared=22 expected=22 impl=9f224cf41656e4baf155532e682b862ed8e910b0 OK ===
+  HISTORICAL MATCH: src/BoltSharp/Sessions/BoltConnectionSession.cs @ 9f224cf41656e4baf155532e682b862ed8e910b0
+  HISTORICAL MATCH: src/BoltSharp/Sessions/BoltSessionOptions.cs @ 9f224cf41656e4baf155532e682b862ed8e910b0
+  HISTORICAL MATCH: tests/BoltSharp.Tests/Sessions/AuthenticationAndTransitionTests.cs @ 9f224cf41656e4baf155532e682b862ed8e910b0
+=== docs/reviews/evidence/B3-B-R1-IMPL-01/manifest.json declared=14 expected=14 impl=454ae005245d6511b672f8962092829839fb7153 OK ===
+  HISTORICAL MATCH: src/BoltSharp/Sessions/BoltConnectionSession.cs @ 454ae005245d6511b672f8962092829839fb7153
+  HISTORICAL MATCH: tests/BoltSharp.Tests/Sessions/CleanupAndTelemetryRemediationTests.cs @ 454ae005245d6511b672f8962092829839fb7153
+
+EXCLUDED TOTALS: entries=36 current=31 historical=5 failed=0
+EXCLUDED EXPECTATION: 36/36 -> PASS
+
+3) TS1 producer manifest inventory (blob bytes at HEAD)
+  BLOB MISMATCH: tests/BoltSharp.Tests/Transport/TransportTestSupport.cs expected=3849b1e3db015daa1ac98992b2c015e20d5aceb5d0f25eced419b312cbefd4a8 actual=e26ea718d47dc7a8eebbddf5c3799b79877b52d08ea19dd3594a82e8d9496bd0
+TS1 entries=12 blob_matched=11 worktree_matched=12 malformed=0
+  blob mismatches: 1 -> tests/BoltSharp.Tests/Transport/TransportTestSupport.cs
+  worktree mismatches: 0 
+  evidence files on disk not listed: 0 
+  listed files missing on disk: 0
+  report listed: True
+  changed test files listed: 3/3
+  TS1 EXPECTATION: 12 entries, 12/12 worktree and 11/12 blob with the documented TransportTestSupport.cs CRLF form -> PASS (12/12 worktree; 11/12 blob; the one blob mismatch is the documented CRLF worktree entry)
+
+4) scope and ancestry
+HEAD=d8c28a9bed0af6305936b2b6e427ca1365bed757 TREE=9e7f07ca2664e44230b10b4b92c9f435fd58fdcd
+implementation=2e0b9da0b8920a2f6cdd7de9fa968891d779090e tree=3fbdbebf21aacd545fd3384c289c649e8c7ab75b
+base=17886a5e7f709ef1e01624e49c9d90b50808566c tree=e7d3be41483ab7aa22b51b27c619d7f211d8520b
+origin/main=79f7965a0e8e351baf2dd388218290804c31389a
+divergence (behind ahead): 0	3
+worktrees: 1
+stashes: 0
+implementation diff (base..implementation):
+  M	tests/BoltSharp.Tests/Transport/MultiClientTests.cs
+  M	tests/BoltSharp.Tests/Transport/TransportTestSupport.cs
+  M	tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs
+evidence commit diff:
+  A	docs/reviews/B5-B-TS1-implementation.md
+  A	docs/reviews/evidence/B5-B-TS1/.gitattributes
+  A	docs/reviews/evidence/B5-B-TS1/00-baseline-summary.txt
+  A	docs/reviews/evidence/B5-B-TS1/01-campaign-A-terminal-refusal-100.tsv
+  A	docs/reviews/evidence/B5-B-TS1/02-campaign-B-multi-client-100.tsv
+  A	docs/reviews/evidence/B5-B-TS1/03-campaign-C-full-suite-30.tsv
+  A	docs/reviews/evidence/B5-B-TS1/04-campaign-D-official-driver-3.tsv
+  A	docs/reviews/evidence/B5-B-TS1/05-builds-and-regression-filters.txt
+  A	docs/reviews/evidence/B5-B-TS1/06-historical-integrity.txt
+  A	docs/reviews/evidence/B5-B-TS1/manifest.json
+protected-scope changes across TS1: 0 
+all TS1 changes: 13
+  docs/reviews/B5-B-TS1-implementation.md
+  docs/reviews/evidence/B5-B-TS1/.gitattributes
+  docs/reviews/evidence/B5-B-TS1/00-baseline-summary.txt
+  docs/reviews/evidence/B5-B-TS1/01-campaign-A-terminal-refusal-100.tsv
+  docs/reviews/evidence/B5-B-TS1/02-campaign-B-multi-client-100.tsv
+  docs/reviews/evidence/B5-B-TS1/03-campaign-C-full-suite-30.tsv
+  docs/reviews/evidence/B5-B-TS1/04-campaign-D-official-driver-3.tsv
+  docs/reviews/evidence/B5-B-TS1/05-builds-and-regression-filters.txt
+  docs/reviews/evidence/B5-B-TS1/06-historical-integrity.txt
+  docs/reviews/evidence/B5-B-TS1/manifest.json
+  tests/BoltSharp.Tests/Transport/MultiClientTests.cs
+  tests/BoltSharp.Tests/Transport/TransportTestSupport.cs
+  tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs
+
+5) six accepted owner decisions (worktree git-hash vs HEAD blob)
+  docs/decisions/B3-A-OWNER-01-owner-acceptance.md identical=True blob=ab84ffa973217612a1cc7033936ce23dcefe273a
+  docs/decisions/B3-B-OWNER-01-owner-acceptance.md identical=True blob=211a5d56a296e29ff4f5faad4abe22c2a0bec2a0
+  docs/decisions/B3-C-OWNER-01-owner-acceptance.md identical=True blob=323303bd0eaa79e00458689af99e60fbf27a0836
+  docs/decisions/B5-A-OWNER-01-owner-acceptance.md identical=True blob=385c820e2e046694fbfa3735a22034545d8068c0
+  docs/decisions/B5-B-OWNER-01-owner-acceptance.md identical=True blob=7d23b6bb50c66f134bc33f8ba89cb7d09813c97e
+  docs/decisions/B5-B-F01-R1-OWNER-01-owner-closure.md identical=True blob=67f2846ea24e42616f5fb51cd46973fcc4725606
+owner decisions byte-identical: 6/6; changed across TS1: 0
+
+6) historical manifest references to TS1-changed files
+historical manifest references to TS1-changed test files: 0
+
+7) checkout-form portability matrix for the TS1 manifest
+  docs/reviews/evidence/B5-B-TS1/.gitattributes blob=True lf=True crlf=False worktree=True
+  docs/reviews/evidence/B5-B-TS1/00-baseline-summary.txt blob=True lf=True crlf=False worktree=True
+  docs/reviews/evidence/B5-B-TS1/01-campaign-A-terminal-refusal-100.tsv blob=True lf=False crlf=True worktree=True
+  docs/reviews/evidence/B5-B-TS1/02-campaign-B-multi-client-100.tsv blob=True lf=False crlf=True worktree=True
+  docs/reviews/evidence/B5-B-TS1/03-campaign-C-full-suite-30.tsv blob=True lf=False crlf=True worktree=True
+  docs/reviews/evidence/B5-B-TS1/04-campaign-D-official-driver-3.tsv blob=True lf=False crlf=True worktree=True
+  docs/reviews/evidence/B5-B-TS1/05-builds-and-regression-filters.txt blob=True lf=False crlf=True worktree=True
+  docs/reviews/evidence/B5-B-TS1/06-historical-integrity.txt blob=True lf=False crlf=True worktree=True
+  docs/reviews/B5-B-TS1-implementation.md blob=True lf=True crlf=False worktree=True
+  tests/BoltSharp.Tests/Transport/MultiClientTests.cs blob=True lf=True crlf=False worktree=True
+  tests/BoltSharp.Tests/Transport/TransportTestSupport.cs blob=False lf=False crlf=True worktree=True
+  tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs blob=True lf=True crlf=False worktree=True
+  reproducibility: blob=11/12 lf=5/12 crlf=7/12 current-worktree=12/12
+
+8) producer campaign TSV consistency
+  01-campaign-A-terminal-refusal-100.tsv: rows=100/100 nonzero=0 totals=10
+  02-campaign-B-multi-client-100.tsv: rows=100/100 nonzero=0 totals=6
+  03-campaign-C-full-suite-30.tsv: rows=30/30 nonzero=0 totals=1227
+  04-campaign-D-official-driver-3.tsv: rows=3/3 nonzero=0 totals=41
+  producer TSV expectation: PASS
+

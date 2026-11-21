@@ -1,0 +1,107 @@
+[
+  {
+    "Id": "R-01",
+    "Passed": true,
+    "Assertions": 28,
+    "Failures": [],
+    "EvidenceFile": "r-01-recovery.txt"
+  },
+  {
+    "Id": "R-02",
+    "Passed": true,
+    "Assertions": 44,
+    "Failures": [],
+    "EvidenceFile": "r-02-recovery.txt"
+  },
+  {
+    "Id": "R-03",
+    "Passed": true,
+    "Assertions": 28,
+    "Failures": [],
+    "EvidenceFile": "r-03-recovery.txt"
+  },
+  {
+    "Id": "R-06",
+    "Passed": true,
+    "Assertions": 100,
+    "Failures": [],
+    "EvidenceFile": "r-06-recovery.txt"
+  },
+  {
+    "Id": "R-04",
+    "Passed": true,
+    "Assertions": 24,
+    "Failures": [],
+    "EvidenceFile": "r04-tls-recovery.txt"
+  },
+  {
+    "Id": "R-05",
+    "Passed": true,
+    "Assertions": 26,
+    "Failures": [],
+    "EvidenceFile": "r05-concurrent.txt"
+  },
+  {
+    "Id": "NC-01",
+    "Passed": true,
+    "Assertions": 25,
+    "Failures": [],
+    "EvidenceFile": "nc01-replacement-connection.txt"
+  },
+  {
+    "Id": "NC-02",
+    "Passed": true,
+    "Assertions": 15,
+    "Failures": [],
+    "EvidenceFile": "nc02-missing-reset.txt"
+  },
+  {
+    "Id": "NC-03",
+    "Passed": true,
+    "Assertions": 13,
+    "Failures": [],
+    "EvidenceFile": "nc03-injected-recovery-failure.txt"
+  },
+  {
+    "Id": "NC-04",
+    "Passed": true,
+    "Assertions": 10,
+    "Failures": [],
+    "EvidenceFile": "nc04-terminal-failure-substituted.txt"
+  },
+  {
+    "Id": "D-01",
+    "Passed": true,
+    "Assertions": 10,
+    "Failures": [],
+    "EvidenceFile": "d01-driver-failure.txt"
+  },
+  {
+    "Id": "D-02",
+    "Passed": true,
+    "Assertions": 10,
+    "Failures": [],
+    "EvidenceFile": "d02-driver-recovery.txt"
+  },
+  {
+    "Id": "D-03",
+    "Passed": true,
+    "Assertions": 9,
+    "Failures": [],
+    "EvidenceFile": "d03-driver-retriable.txt"
+  },
+  {
+    "Id": "D-04",
+    "Passed": true,
+    "Assertions": 13,
+    "Failures": [],
+    "EvidenceFile": "d04-driver-pooling.txt"
+  },
+  {
+    "Id": "D-05",
+    "Passed": true,
+    "Assertions": 6,
+    "Failures": [],
+    "EvidenceFile": "d05-same-session-retry.txt"
+  }
+]

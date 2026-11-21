@@ -1,0 +1,188 @@
+{
+  "task": "Q-B5B-09-TLS-E1",
+  "parent_commit": "250fb99273f975ae6552eb4e0ebefcc149796fa7",
+  "parent_tree": "bb69f2e3986dbae6a5db705c20690cb9f1cb9568",
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": [
+    {
+      "path": "docs/reviews/Q-B5B-09-TLS-E1-report.md",
+      "bytes": 14117,
+      "sha256": "668ccb8748818cd3e441573f1b13d6531dbe2008ddc497e1f65122d04084f7ea"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/.gitattributes",
+      "bytes": 33,
+      "sha256": "691957d6cb7e657fcc464a1c26c47dd90a63809d91de8e3079e1b5d26c3b5cc5"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/ProductionTlsCloseTests.cs.txt",
+      "bytes": 16680,
+      "sha256": "f65728f9253a08a965338bb7ad12c63aaa26ea150c31043f46bb6ef22d44bf7f"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/README.md",
+      "bytes": 6324,
+      "sha256": "519f4cba6c6631069b5419e7dc4e4f6108ab0fc331e42b4d89e4e406b6c534c9"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/TlsE1MechanismTests.cs.txt",
+      "bytes": 6083,
+      "sha256": "7a177cf07171cd2f1e6f63d766211ffa3808c5e0c0258fe0bdf5235f880e5e26"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/TlsE1Tests.cs.txt",
+      "bytes": 24284,
+      "sha256": "439c93a1241905f6694ba91d3dae2fb3425a86a2dbc3a26c9c49b47d70a973cd"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/commissioning-budget-reconciliation.json",
+      "bytes": 1831,
+      "sha256": "b63bc4d513f272b44e9bf70b822fc0c5cbcf4087a2004664e67e6662f1d0fb69"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/commissioning-matrix.json",
+      "bytes": 5816,
+      "sha256": "d97792474f2d0f2fe5ce96d87f5f69159eb9fe5d73047478d3cc36db1d85a4de"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/configuration.json",
+      "bytes": 2827,
+      "sha256": "651c664282bf7afd9dc787411daed6cec2140ed939eb8848268f35e652fea1ed"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/matrix.json",
+      "bytes": 2657,
+      "sha256": "5d5b4699e3fb8fa07bbfbb785e3807cc4a0561c49322b72b40ae36fc5e737347"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/nc1-cipher-cap-tamper.jsonl",
+      "bytes": 28324,
+      "sha256": "50d8bc87e15055d76f5b9a05809465bf17a5d44660a2891ec13ff8f63f043b32"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/nc2-deadline-renewal.jsonl",
+      "bytes": 1363,
+      "sha256": "fb2e1f7911f0ff35803b9295547945816bfabcc213488d6dd816e430e5515e28"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/run-wsl2-candidate-repeat.sh",
+      "bytes": 819,
+      "sha256": "581d8cdd0dce7f4da85a448d951d18abb1a67cfcc8730bfceab4bf273e19f13a"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/run-wsl2-candidate.sh",
+      "bytes": 872,
+      "sha256": "f211e441dae9f7e57fa8dcafea9338b4b8580945d57529a4936b550bdb5ef0ce"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/run-wsl2-production-repeat.sh",
+      "bytes": 510,
+      "sha256": "7073790b03967d8794bb0fa0f52446ec80a713002a70341675d9ddda889db6ab"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/run-wsl2-production.sh",
+      "bytes": 737,
+      "sha256": "b9ba9e47f4a83bcdad8bc185e781983e3f86baca78f85631eacdff5e8fb22b8b"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/source-identity.json",
+      "bytes": 3541,
+      "sha256": "d037004280514bbcf5b3b716be4e1d6cbfebfcc3e22bfb3a12f30770c5b4d14d"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/nc1-cipher-cap-tamper.log",
+      "bytes": 439,
+      "sha256": "fa499fa91ad0eadf00568914cfea2a144d9863668412cbeccd4ae3d76914fd48"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/nc2-deadline-renewal.log",
+      "bytes": 441,
+      "sha256": "4d45a8845c0f02c8e7fa53369bb41c38a7b43eb330d35a02f36e32b38ab371e3"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/windows-campaign.log",
+      "bytes": 427,
+      "sha256": "4520ff6d5cb1f0ed4dc281ca94df8d45da375dec900ba6617c66979db4a3a158"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/windows-mechanism.log",
+      "bytes": 427,
+      "sha256": "b3ad92a8715d2b2a3d13cffbb1a7befcf49971db4e146b4c472e4a3f01764dd0"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/windows-production.log",
+      "bytes": 429,
+      "sha256": "c2890551119d8d5eadafad64a1e23cff55d2346a3221c597933e09ce70b52ce4"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/wsl2-campaign-repeat.log",
+      "bytes": 250,
+      "sha256": "bbad39443b5e550f3dfdd52f8ebef0e5ed55d1df61c9fc0973727691dd7a1de0"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/wsl2-campaign.log",
+      "bytes": 250,
+      "sha256": "bbad39443b5e550f3dfdd52f8ebef0e5ed55d1df61c9fc0973727691dd7a1de0"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/wsl2-production-repeat.log",
+      "bytes": 250,
+      "sha256": "33bbcbbd697e8c5f8cdab7d2981fad457b44de4bea1c00f788eae9dd6b817842"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/transcripts/wsl2-production.log",
+      "bytes": 250,
+      "sha256": "33bbcbbd697e8c5f8cdab7d2981fad457b44de4bea1c00f788eae9dd6b817842"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/verify-evidence.py",
+      "bytes": 37050,
+      "sha256": "c01901918d639fa05b9e8f0df8e4c60fc32ed5ac3c340e5ad7c3a8e3205fd8ba"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/windows-campaign-first-run.jsonl",
+      "bytes": 12832,
+      "sha256": "3241f22b1359636f43d317f12f0ae9443cc039a5d5dfa679ace8f1361377e991"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/windows-campaign.jsonl",
+      "bytes": 34093,
+      "sha256": "aa7db0690c3ac6beceea662a21518d2991fc474ebfa2f76755e4e82f85030a0e"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/windows-mechanism.jsonl",
+      "bytes": 1050,
+      "sha256": "29d7b2a8d0bfd02704b2c7ab3b98bf842ccec6031f65c3c97cdda095b5400230"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/windows-production.jsonl",
+      "bytes": 6758,
+      "sha256": "4d85c1277736929b037a4707fb37e24b2d481e2388ab7d9b78bcc77893938330"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/wsl2-campaign-repeat.jsonl",
+      "bytes": 30091,
+      "sha256": "d7aea45c73be094803c38252df601ef9699a5041250048c6edf378efb803073f"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/wsl2-campaign.jsonl",
+      "bytes": 30087,
+      "sha256": "163f8fdddce146e811aaafddda7fea47a19c933eb06e3c4bd62d868065187532"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/wsl2-mechanism.jsonl",
+      "bytes": 1014,
+      "sha256": "e5d8966ce0bc4a063c61143663e5739e3f5478e20596ff3be6f5da8fe5e30bd9"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/wsl2-production-repeat.jsonl",
+      "bytes": 6876,
+      "sha256": "d7f3c2ad6393bdf1a4946ed511aa045d9f577109752f118cc2d0fb45404de153"
+    },
+    {
+      "path": "docs/reviews/evidence/Q-B5B-09-TLS-E1/wsl2-production.jsonl",
+      "bytes": 6878,
+      "sha256": "9135a61e7ca941710932c9a23549c117583dc4b6a038e31c4697ea119d9ba483"
+    }
+  ]
+}

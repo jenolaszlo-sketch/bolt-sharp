@@ -1,0 +1,18 @@
+wsl2 focused campaigns, 2026-11-20T02:53:06+08:00
+== reset/failure/disposal ==
+Passed!  - Failed:     0, Passed:    36, Skipped:     0, Total:    36, Duration: 189 ms - BoltSharp.Tests.dll (net8.0)
+== multi-client ==
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 136 ms - BoltSharp.Tests.dll (net8.0)
+== plaintext transport ==
+Passed!  - Failed:     0, Passed:    36, Skipped:     0, Total:    36, Duration: 210 ms - BoltSharp.Tests.dll (net8.0)
+== TLS integration ==
+Passed!  - Failed:     0, Passed:     9, Skipped:     0, Total:     9, Duration: 1 s - BoltSharp.Tests.dll (net8.0)
+== interop B5B2_06 (RESET then GOODBYE) ==
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 553 ms - BoltSharp.DriverInteropTests.dll (net8.0)
+== repeated x3 (RESET/failure/multi-client) ==
+repeat 1
+Passed!  - Failed:     0, Passed:    34, Skipped:     0, Total:    34, Duration: 156 ms - BoltSharp.Tests.dll (net8.0)
+repeat 2
+Passed!  - Failed:     0, Passed:    34, Skipped:     0, Total:    34, Duration: 152 ms - BoltSharp.Tests.dll (net8.0)
+repeat 3
+Passed!  - Failed:     0, Passed:    34, Skipped:     0, Total:    34, Duration: 146 ms - BoltSharp.Tests.dll (net8.0)

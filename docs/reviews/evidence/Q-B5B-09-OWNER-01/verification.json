@@ -1,0 +1,144 @@
+{
+  "entry_commit": "608eb3f0e07b059eb3bddd86de9235d422e1540c",
+  "entry_tree": "86ea9450d0fd5935af5a3ab851553934e39bfa20",
+  "ancestry_newest_first": [
+    "608eb3f0e07b059eb3bddd86de9235d422e1540c",
+    "44093f65df2b49de380e4debd64b9606f9e11733",
+    "4beafcdd4ce48e0c0a4f8a6e05a52db328d7e017",
+    "23d58da4e0c0e10aa46a31f05ef6a0c31ad3f2fa",
+    "29d521cea9e65fe2d240421156454444e0d055ea",
+    "b196db8f0bc612b7f1ef3f78412480239c3f04db",
+    "d8c28a9bed0af6305936b2b6e427ca1365bed757",
+    "2e0b9da0b8920a2f6cdd7de9fa968891d779090e",
+    "17886a5e7f709ef1e01624e49c9d90b50808566c",
+    "79f7965a0e8e351baf2dd388218290804c31389a"
+  ],
+  "prior_packages": {
+    "Q-B5B-09-TLS-GATE-01": {
+      "commit": "608eb3f0e07b059eb3bddd86de9235d422e1540c",
+      "tree": "86ea9450d0fd5935af5a3ab851553934e39bfa20",
+      "manifest_sha256": "172e79b3ea89f65c93f7ee89f136c59475b80da423b513076476926741d5f578",
+      "entries": 12,
+      "scope_additions": 13
+    },
+    "Q-B5B-09-INV-03": {
+      "commit": "44093f65df2b49de380e4debd64b9606f9e11733",
+      "tree": "4137367cf955671e1a31a8890c9ca2e54cc30215",
+      "manifest_sha256": "67cf8732a408b4d18c3932e6c6ca4d271a9fccd851607dd76fccf315dbacb972",
+      "entries": 12,
+      "scope_additions": 13
+    },
+    "Q-B5B-09-INV-02": {
+      "commit": "4beafcdd4ce48e0c0a4f8a6e05a52db328d7e017",
+      "tree": "a3a8bc2d651ec81c95e59167a914de65b268745e",
+      "manifest_sha256": "1478b2a49636218b3ffb35b9a35545130328d2e0ac1ba00ced4eb924eac612e9",
+      "entries": 13,
+      "scope_additions": 14
+    },
+    "Q-B5B-09-INV-01": {
+      "commit": "23d58da4e0c0e10aa46a31f05ef6a0c31ad3f2fa",
+      "tree": "bd841c86886587d38276fba2798ef13404ce002d",
+      "manifest_sha256": "e612b1363ffc8b03f024d87b79c89b85797fc89c48df0886ce743df600d547a5",
+      "entries": 11,
+      "scope_additions": 12
+    },
+    "B5-B-TS1-OWNER-01": {
+      "commit": "29d521cea9e65fe2d240421156454444e0d055ea",
+      "tree": "5063e16258354ecebd3587ac2d7e38bdd75d7e5a",
+      "manifest_sha256": "f71c2b01d9044143655a36f50adcc4743dacdf4937084e27065c5b54ec57a18e",
+      "entries": 5,
+      "scope_additions": 6
+    }
+  },
+  "prior_decision_blobs_preserved": {
+    "docs/decisions/B0-A-TRACE-OWNER-01-owner-acceptance.md": "da090d7900c7274668a34b39c87ad85e7b718e8d",
+    "docs/decisions/B0-B-OWNER-01-owner-acceptance.md": "3c4146714c9524bfe75594de6f3c71be5fae43f5",
+    "docs/decisions/B0-B-OWNER-01-qualification-reconciliation.md": "595e4943f3f1965da77501b610f91d8fcd366af9",
+    "docs/decisions/B2-B-OWNER-01-owner-acceptance.md": "91a3aa9329cd9b24e3c8631d9f964f027a5c93bf",
+    "docs/decisions/B2-C-OWNER-01-owner-acceptance.md": "36935987422f4568d89f233085491e92caf23d3d",
+    "docs/decisions/B3-A-OWNER-01-owner-acceptance.md": "ab84ffa973217612a1cc7033936ce23dcefe273a",
+    "docs/decisions/B3-B-OWNER-01-owner-acceptance.md": "211a5d56a296e29ff4f5faad4abe22c2a0bec2a0",
+    "docs/decisions/B3-C-OWNER-01-owner-acceptance.md": "323303bd0eaa79e00458689af99e60fbf27a0836",
+    "docs/decisions/B5-A-OWNER-01-owner-acceptance.md": "385c820e2e046694fbfa3735a22034545d8068c0",
+    "docs/decisions/B5-B-F01-R1-OWNER-01-owner-closure.md": "67f2846ea24e42616f5fb51cd46973fcc4725606",
+    "docs/decisions/B5-B-OWNER-01-owner-acceptance.md": "7d23b6bb50c66f134bc33f8ba89cb7d09813c97e",
+    "docs/decisions/B5-B-TS1-OWNER-01-owner-closure.md": "28f4e611de50acd51276c6b7a55b634bd52cd67e"
+  },
+  "tls_campaign": {
+    "configuration_sha256": "a38a5d1c76bbfc035aec52967e5afc5afe69c3f4913b625b8cdc54319a4b351e",
+    "maximum_attempts_per_cell_per_platform": 3,
+    "windows": {
+      "outcomes_by_cell": {
+        "T1": [
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete"
+        ],
+        "T2": [
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete"
+        ],
+        "T3": [
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete"
+        ],
+        "T4": [
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete",
+          "preceding-write-did-not-complete"
+        ]
+      },
+      "attempts": 12,
+      "unobserved_task_exceptions": 0
+    },
+    "wsl2": {
+      "outcomes_by_cell": {
+        "T1": [
+          "target-reached-no-persistent-pending-write",
+          "induced-and-interrupted"
+        ],
+        "T2": [
+          "target-reached-no-persistent-pending-write",
+          "induced-and-interrupted"
+        ],
+        "T3": [
+          "target-reached-no-persistent-pending-write",
+          "target-reached-no-persistent-pending-write",
+          "target-reached-no-persistent-pending-write"
+        ],
+        "T4": [
+          "target-reached-no-persistent-pending-write",
+          "target-reached-no-persistent-pending-write",
+          "target-reached-no-persistent-pending-write"
+        ]
+      },
+      "attempts": 10,
+      "unobserved_task_exceptions": 0
+    }
+  },
+  "isolated_patch_replay": {
+    "source_commit": "23d58da4e0c0e10aa46a31f05ef6a0c31ad3f2fa",
+    "source_tree": "bd841c86886587d38276fba2798ef13404ce002d",
+    "patch_blob_hashes": {
+      "docs/reviews/evidence/Q-B5B-09-INV-02/prototype.patch": "e97f640b0b3ff84326b935820cfdb77e0a639c040ea6b5f7dc64e979b9c3da79",
+      "docs/reviews/evidence/Q-B5B-09-INV-03/refinement.patch": "30061d42f8891e4f804e570105f556995e4f82a7cd542334284fce23a0dd57b5",
+      "docs/reviews/evidence/Q-B5B-09-INV-03/real-write-observation.patch": "f728d3125e225fad207e4cbe1e326fe043ec57f894122956ed30f6a31678c3a4",
+      "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01/link-observation.patch": "db1d34243fec2af7914cea20ed6cdfb1bf427afb899bd9f91379e0d00c9853b7",
+      "docs/reviews/evidence/Q-B5B-09-INV-02/wsl-listener-adapter.patch": "05311b8e76dd46754e0475e649f99c84d90d51e495ec7d6744a8781e82d74e6b"
+    },
+    "prototype_files": 4,
+    "refined_files": 5,
+    "windows_variant_matches": true,
+    "wsl2_variant_matches": true
+  },
+  "inv02_windows_result_counts": {
+    "win-baseline-core-authorized.trx": 1227,
+    "win-candidate-core-final.trx": 1227,
+    "win-baseline-driver-authorized.trx": 41,
+    "win-candidate-driver-final.trx": 43,
+    "win-baseline-matrix-final.trx": 34,
+    "win-candidate-matrix-final.trx": 34
+  }
+}

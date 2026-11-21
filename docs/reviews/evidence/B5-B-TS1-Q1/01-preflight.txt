@@ -1,0 +1,85 @@
+B5-B-TS1-Q1 - repository preflight (starting state)
+====================================================
+Captured UTC: 2026-11-15T11:36:49.6091395Z
+
+===== identity =====
+branch: main
+HEAD: d8c28a9bed0af6305936b2b6e427ca1365bed757
+HEAD tree: 9e7f07ca2664e44230b10b4b92c9f435fd58fdcd
+origin/main: 79f7965a0e8e351baf2dd388218290804c31389a
+divergence behind/ahead: 0	3
+implementation commit: 2e0b9da0b8920a2f6cdd7de9fa968891d779090e
+implementation tree: 3fbdbebf21aacd545fd3384c289c649e8c7ab75b
+implementation parent: 17886a5e7f709ef1e01624e49c9d90b50808566c
+base commit: 17886a5e7f709ef1e01624e49c9d90b50808566c
+base tree: e7d3be41483ab7aa22b51b27c619d7f211d8520b
+evidence commit: d8c28a9bed0af6305936b2b6e427ca1365bed757
+evidence commit tree: 9e7f07ca2664e44230b10b4b92c9f435fd58fdcd
+evidence commit parent: 2e0b9da0b8920a2f6cdd7de9fa968891d779090e
+
+===== working tree, worktrees, stashes =====
+git status --porcelain: 1 entries
+  ?? docs/reviews/evidence/B5-B-TS1-Q1/
+# The sole entry is the new Q1 qualification evidence directory being assembled.
+# Before it was created, git status --porcelain was empty; the starting state is clean.
+worktree count: 1
+  worktree D:/projects/bolt-sharp
+stash count: 0
+
+===== ancestry chain =====
+  d8c28a9bed0af6305936b2b6e427ca1365bed757 9e7f07ca2664e44230b10b4b92c9f435fd58fdcd 2e0b9da0b8920a2f6cdd7de9fa968891d779090e docs(boltsharp): record B5-B TS1 stability qualification evidence
+  2e0b9da0b8920a2f6cdd7de9fa968891d779090e 3fbdbebf21aacd545fd3384c289c649e8c7ab75b 17886a5e7f709ef1e01624e49c9d90b50808566c test(boltsharp): stabilize terminal refusal and multi-client lifecycle checks
+  17886a5e7f709ef1e01624e49c9d90b50808566c e7d3be41483ab7aa22b51b27c619d7f211d8520b 79f7965a0e8e351baf2dd388218290804c31389a docs(boltsharp): close B5-B F01 refusal remediation with qualifications
+  79f7965a0e8e351baf2dd388218290804c31389a 80bc7b4f3ec18341251ea4e04195d051489dacb5 5c9fc5da5f9966f778c5b4ea3e569d9f6ad52f8c docs(boltsharp): record B5-B-F01-R1-Q1 reviewer session provenance
+
+===== implementation commit diff (base..implementation) =====
+  M	tests/BoltSharp.Tests/Transport/MultiClientTests.cs
+  M	tests/BoltSharp.Tests/Transport/TransportTestSupport.cs
+  M	tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs
+
+===== evidence commit diff (docs-only additions) =====
+  A	docs/reviews/B5-B-TS1-implementation.md
+  A	docs/reviews/evidence/B5-B-TS1/.gitattributes
+  A	docs/reviews/evidence/B5-B-TS1/00-baseline-summary.txt
+  A	docs/reviews/evidence/B5-B-TS1/01-campaign-A-terminal-refusal-100.tsv
+  A	docs/reviews/evidence/B5-B-TS1/02-campaign-B-multi-client-100.tsv
+  A	docs/reviews/evidence/B5-B-TS1/03-campaign-C-full-suite-30.tsv
+  A	docs/reviews/evidence/B5-B-TS1/04-campaign-D-official-driver-3.tsv
+  A	docs/reviews/evidence/B5-B-TS1/05-builds-and-regression-filters.txt
+  A	docs/reviews/evidence/B5-B-TS1/06-historical-integrity.txt
+  A	docs/reviews/evidence/B5-B-TS1/manifest.json
+
+===== complete TS1 change set (base..HEAD) =====
+changed paths: 13
+  docs/reviews/B5-B-TS1-implementation.md
+  docs/reviews/evidence/B5-B-TS1/.gitattributes
+  docs/reviews/evidence/B5-B-TS1/00-baseline-summary.txt
+  docs/reviews/evidence/B5-B-TS1/01-campaign-A-terminal-refusal-100.tsv
+  docs/reviews/evidence/B5-B-TS1/02-campaign-B-multi-client-100.tsv
+  docs/reviews/evidence/B5-B-TS1/03-campaign-C-full-suite-30.tsv
+  docs/reviews/evidence/B5-B-TS1/04-campaign-D-official-driver-3.tsv
+  docs/reviews/evidence/B5-B-TS1/05-builds-and-regression-filters.txt
+  docs/reviews/evidence/B5-B-TS1/06-historical-integrity.txt
+  docs/reviews/evidence/B5-B-TS1/manifest.json
+  tests/BoltSharp.Tests/Transport/MultiClientTests.cs
+  tests/BoltSharp.Tests/Transport/TransportTestSupport.cs
+  tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs
+
+===== protected scope check (src, projects, solution, packages, owner decisions) =====
+protected-scope changes: 0
+
+===== six accepted owner decisions (worktree git-hash vs HEAD blob) =====
+  docs/decisions/B3-A-OWNER-01-owner-acceptance.md identical=True blob=ab84ffa973217612a1cc7033936ce23dcefe273a
+  docs/decisions/B3-B-OWNER-01-owner-acceptance.md identical=True blob=211a5d56a296e29ff4f5faad4abe22c2a0bec2a0
+  docs/decisions/B3-C-OWNER-01-owner-acceptance.md identical=True blob=323303bd0eaa79e00458689af99e60fbf27a0836
+  docs/decisions/B5-A-OWNER-01-owner-acceptance.md identical=True blob=385c820e2e046694fbfa3735a22034545d8068c0
+  docs/decisions/B5-B-OWNER-01-owner-acceptance.md identical=True blob=7d23b6bb50c66f134bc33f8ba89cb7d09813c97e
+  docs/decisions/B5-B-F01-R1-OWNER-01-owner-closure.md identical=True blob=67f2846ea24e42616f5fb51cd46973fcc4725606
+
+===== end-of-line attributes for TS1-changed text files =====
+  i/lf    w/lf    attr/                 	docs/reviews/B5-B-TS1-implementation.md
+  i/lf    w/lf    attr/                 	tests/BoltSharp.Tests/Transport/MultiClientTests.cs
+  i/lf    w/crlf  attr/                 	tests/BoltSharp.Tests/Transport/TransportTestSupport.cs
+  i/lf    w/lf    attr/                 	tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs
+# The mixed w/lf + w/crlf worktree is the producer's authoring form; it is not reproduced by a fresh checkout.
+  i/lf    w/lf    attr/                 	tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs

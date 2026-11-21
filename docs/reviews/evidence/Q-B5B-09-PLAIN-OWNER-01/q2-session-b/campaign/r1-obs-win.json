@@ -1,0 +1,185 @@
+{
+  "mode": "r1",
+  "filter": "obs",
+  "platform": "Microsoft Windows NT 10.0.26200.0",
+  "runtime": "8.0.31",
+  "timestampUtc": "2026-11-18T04:48:46.7029746+00:00",
+  "results": [
+    {
+      "Name": "OBS01_ObserverWithinLifecycleDeadline",
+      "Passed": true,
+      "DurationMs": 112.5935,
+      "Details": {
+        "observerDelayMs": 30,
+        "throwInObserver": false,
+        "phase": "drain",
+        "reason": "peer-eof",
+        "admitted": true,
+        "elapsedMs": 35.25,
+        "completed": 1,
+        "failed": 0,
+        "writeFailed": 0,
+        "drainEnd": 1
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS02_ObserverBeyondAbsoluteDeadline",
+      "Passed": true,
+      "DurationMs": 322.8134,
+      "Details": {
+        "phase": "post-write",
+        "reason": "total-deadline",
+        "admitted": false,
+        "elapsedMs": 302.19,
+        "closedAtMs": 270.22,
+        "closedWhileObserverActive": true,
+        "observerMs": 301.69,
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "writeFailed": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS03_ObserverBlockedAfterSocketDisposal",
+      "Passed": true,
+      "DurationMs": 274.8855,
+      "Details": {
+        "stimulus": "total",
+        "phase": "post-write",
+        "reason": "total-deadline",
+        "admitted": false,
+        "elapsedMs": 255.47,
+        "signalToSocketCloseMs": null,
+        "stopCompletedBeforeObserverRelease": null,
+        "whileObserverBlocked": {
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS05_ListenerStopWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 2.4945,
+      "Details": {
+        "stimulus": "listener",
+        "phase": "post-write",
+        "reason": "listener-shutdown",
+        "admitted": false,
+        "elapsedMs": 0.44,
+        "signalToSocketCloseMs": 0.15,
+        "stopCompletedBeforeObserverRelease": false,
+        "whileObserverBlocked": {
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS05b_OwnerCancellationWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 12.7873,
+      "Details": {
+        "stimulus": "owner",
+        "phase": "post-write",
+        "reason": "owner-cancelled",
+        "admitted": false,
+        "elapsedMs": 2.15,
+        "signalToSocketCloseMs": 1.98,
+        "stopCompletedBeforeObserverRelease": null,
+        "whileObserverBlocked": {
+          "activeWhileBlocked": 1,
+          "tasksWhileBlocked": 1,
+          "permitsAvailableWhileBlocked": 1,
+          "socketClosedWhileBlocked": true
+        },
+        "afterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 1
+        },
+        "completed": 1,
+        "failed": 0,
+        "drainAdmitted": 0,
+        "connectionTasks": 0
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS04_CapacityHeldWhileObserverBlocked",
+      "Passed": true,
+      "DurationMs": 16.6016,
+      "Details": {
+        "activeWhileBlocked": 2,
+        "connectionTasksWhileBlocked": 2,
+        "permitsAvailableWhileBlocked": 1,
+        "rejectedCapacity": 1,
+        "activeAfterRelease": 0,
+        "connectionTasksAfterRelease": 0,
+        "permitsAvailableAfterRelease": 1,
+        "completed": 3,
+        "failed": 0,
+        "healthyReplacement": true
+      },
+      "Error": null,
+      "Stack": null
+    },
+    {
+      "Name": "OBS06_StopBeyondShutdownPolicyThenSettle",
+      "Passed": true,
+      "DurationMs": 2545.9451,
+      "Details": {
+        "stopElapsedMs": 509.25,
+        "activeAfterStop": 1,
+        "connectionTasksAfterStop": 1,
+        "permitsAtStop": 0,
+        "permitsAvailableAfterStop": 0,
+        "listenerStoppedDetail": "activeRemaining=1 stop=deadline",
+        "connectAfterStop": "refused",
+        "socketClosedAtDeadline": true,
+        "reasonAfterRelease": "listener-shutdown",
+        "settledAfterRelease": {
+          "active": 0,
+          "tasks": 0,
+          "permitsAvailable": 0
+        },
+        "completed": 1,
+        "failed": 0
+      },
+      "Error": null,
+      "Stack": null
+    }
+  ]
+}

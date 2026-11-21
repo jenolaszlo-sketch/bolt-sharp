@@ -1,0 +1,324 @@
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Net.Security;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
+using BoltSharp.Framing;
+using BoltSharp.Handshake;
+using BoltSharp.Messages;
+using BoltSharp.PackStream;
+using BoltSharp.Tests.Sessions;
+using BoltSharp.Transport;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace BoltSharp.Tests.Transport;
+
+[CollectionDefinition("TLS-GATE-01 isolated", DisableParallelization = true)]
+public sealed class TlsGateCollection;
+
+[Collection("TLS-GATE-01 isolated")]
+public sealed class TlsGate01Tests(ITestOutputHelper output)
+{
+    private static readonly byte[] Terminal = TransportTestSupport.Frame([0xB1, 0x11, 0xA0]);
+    private static readonly byte[] Trailing = Frame(SessionHarness.Run());
+    private static readonly Cell[] Cells =
+    [
+        new("T1", "terminal-write", false), new("T2", "terminal-write", true),
+        new("T3", "close-notify", false), new("T4", "close-notify", true)
+    ];
+    private static readonly Profile[] Profiles =
+    [
+        new(1, 131072, 4096, 4096), new(2, 262144, 1024, 2048), new(3, 524288, 2048, 1024)
+    ];
+
+    [Fact]
+    public async Task FixedCampaign()
+    {
+        var path = Environment.GetEnvironmentVariable("BOLTSHARP_TLS_GATE_JOURNAL")
+            ?? throw new InvalidOperationException("Set BOLTSHARP_TLS_GATE_JOURNAL to a new file.");
+        using (File.Open(path, FileMode.CreateNew, FileAccess.Write, FileShare.Read))
+        {
+        }
+        // The run launcher must preserve this journal. Refuse to overwrite an existing run.
+        using var certificate = TransportTestSupport.CreateSelfSignedCertificate();
+        var defect = false;
+        var unobserved = 0;
+        EventHandler<UnobservedTaskExceptionEventArgs> onUnobserved = (_, _) => Interlocked.Increment(ref unobserved);
+        TaskScheduler.UnobservedTaskException += onUnobserved;
+        try
+        {
+            foreach (var cell in Cells)
+            {
+                foreach (var profile in Profiles)
+                {
+                    Write(new { kind = "started", cell, profile, platform = Environment.OSVersion.VersionString,
+                        runtime = Environment.Version.ToString() });
+                    var result = await Run(cell, profile, certificate);
+                    Write(new { kind = "completed", cell, profile, result });
+                    if (result.Outcome == "induced-and-interrupted")
+                        break;
+                    if (result.Outcome is "induced-but-checks-failed" or "phase-candidate-cleanup-failed")
+                    {
+                        defect = true;
+                        break;
+                    }
+                }
+                if (defect)
+                    break;
+            }
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            Write(new { kind = "campaign-end", defect, unobservedTaskExceptions = unobserved });
+        }
+        finally
+        {
+            TaskScheduler.UnobservedTaskException -= onUnobserved;
+        }
+
+        void Write(object value)
+        {
+            var text = JsonSerializer.Serialize(value);
+            File.AppendAllText(path, text + "\n");
+            output.WriteLine(text);
+        }
+    }
+
+    private static async Task<Attempt> Run(Cell cell, Profile profile, X509Certificate2 certificate)
+    {
+        using var watchdog = new CancellationTokenSource(TimeSpan.FromMilliseconds(3500));
+        var token = watchdog.Token;
+        using var probe = new Probe(cell.Stage, profile.TargetSend);
+        var row = new PackStreamValue?[] { new PackStreamString(new string('x', profile.PrecedingBytes)) };
+        var provider = ScriptedOperationProvider.WithOperation(new ScriptedOperation(["value"], row));
+        BoltTcpServer? server = null;
+        var started = Stopwatch.GetTimestamp();
+        var end = "environment";
+        string? error = null;
+        var confirmed = false;
+        var pendingMs = 0d;
+        double? listenerMs = null;
+        var pendingAtListener = false;
+        var peerUnreadAtSample = 0;
+        bool? senderWritableAtSample = null;
+        var peakPermits = 0;
+        TcpClient? peer = null;
+        SslStream? tls = null;
+        try
+        {
+            server = await TransportTestSupport.StartServerAsync(() => new BoltTcpServerOptions
+            {
+                CredentialVerifier = TestCredentialVerifier.AcceptAll(),
+                OperationProviderFactory = () => provider,
+                Tls = new BoltTlsServerOptions(certificate),
+                MaxConnections = 1,
+                WriteTimeout = TimeSpan.FromMilliseconds(750)
+            });
+            peer = new TcpClient(AddressFamily.InterNetwork) { ReceiveBufferSize = profile.PeerReceive };
+            await peer.ConnectAsync(server.BoundEndPoint!, token);
+            probe.PeerReceive = peer.ReceiveBufferSize;
+            tls = new SslStream(peer.GetStream(), leaveInnerStreamOpen: true);
+            await tls.AuthenticateAsClientAsync(new SslClientAuthenticationOptions
+            {
+                TargetHost = "localhost",
+                RemoteCertificateValidationCallback = (_, cert, _, _) => cert?.GetCertHashString() == certificate.Thumbprint
+            }, token);
+            await tls.WriteAsync(TransportTestSupport.HandshakeFromVersions(new BoltProtocolVersion(5, 8)), token);
+            var selected = new byte[4];
+            await tls.ReadExactlyAsync(selected, token);
+            Assert.Equal(new byte[] { 0, 0, 8, 5 }, selected);
+            var reader = new BoltMessageReader(tls);
+            var codec = new BoltMessageCodec();
+            foreach (var request in new BoltRequest[] { SessionHarness.Hello(), SessionHarness.Logon(), SessionHarness.Run() })
+            {
+                await tls.WriteAsync(Frame(request), token);
+                Assert.IsType<SuccessResponse>(codec.DecodeResponse((await reader.ReadMessageAsync(token))!));
+            }
+
+            // From this point the fixture client does not read. The sent requests and their
+            // application fixture data are finite. There are no relay delays or held writes.
+            await tls.WriteAsync(Frame(SessionHarness.Pull(2)).Concat(Terminal).Concat(Trailing).ToArray(), token);
+            while (server.Diagnostics.ConnectionsActive > 0 || !probe.AllClosed())
+            {
+                token.ThrowIfCancellationRequested();
+                if (!confirmed && probe.Pending(cell.Stage) is { } pending && !pending.Task.IsCompleted)
+                {
+                    var elapsed = Elapsed(pending.Started);
+                    if (elapsed >= 20)
+                    {
+                        confirmed = true;
+                        pendingMs = elapsed;
+                        peerUnreadAtSample = peer.Available;
+                        senderWritableAtSample = probe.SenderWritable();
+                        if (cell.Listener && !pending.Task.IsCompleted)
+                        {
+                            pendingAtListener = true;
+                            listenerMs = Elapsed(pending.Started);
+                            await server.StopAsync(token);
+                        }
+                    }
+                }
+
+                peakPermits = Math.Max(peakPermits, probe.Count("permit") - probe.Count("permit-release"));
+                await Task.Delay(2, token);
+            }
+
+            var stage = probe.Finish();
+            var target = probe.Pending(cell.Stage);
+            var accounting = Account(server);
+            var release = probe.AllClosed() && probe.Count("permit") == probe.Count("permit-release");
+            if (confirmed)
+            {
+                var expectedPhase = cell.Stage == "terminal-write" ? "write" : "shutdown";
+                var expectedOutcome = cell.Listener ? "server-cancelled" :
+                    cell.Stage == "terminal-write" ? "total-deadline" : "phase-deadline";
+                var listenerCausal = !cell.Listener || pendingAtListener && listenerMs is not null
+                    && probe.PendingLifetime(cell.Stage) is double pendingLifetime
+                    && pendingLifetime - listenerMs < 60
+                    && stage is not null && (cell.Stage == "terminal-write" ? stage.ElapsedMs < 220 : pendingLifetime < 70);
+                var totalInRange = stage is not null && stage.ElapsedMs <= 500;
+                var passed = stage?.Phase == expectedPhase && stage.Outcome == expectedOutcome && totalInRange
+                    && listenerCausal && target?.Task.IsCompleted == true && !target.Task.IsCompletedSuccessfully
+                    && release && accounting.Active == 0 && accounting.Completed + accounting.Failed == 1
+                    && accounting.Accepted == 1 && probe.Count("request") == 5 && probe.Count("terminal-result") == 1
+                    && probe.TerminalResult() == "Defunct:1" && provider.PrepareCount == 1
+                    && probe.Count("write-complete") == (cell.Stage == "terminal-write" ? 0 : 1)
+                    && probe.Count("tls-shutdown-complete") == 0;
+                end = passed ? "induced-and-interrupted"
+                    : target?.Task.IsCompletedSuccessfully == true && release
+                        ? "pending-resolved-before-verified-interruption"
+                        : "induced-but-checks-failed";
+            }
+            else if (stage is null)
+            {
+                end = "preceding-write-did-not-complete";
+            }
+            else if (!probe.BufferConfigured)
+            {
+                end = "target-stage-not-reached";
+            }
+            else
+            {
+                end = "target-reached-no-persistent-pending-write";
+            }
+        }
+        catch (Exception ex)
+        {
+            error = ex.GetType().Name;
+            end = confirmed ? "phase-candidate-cleanup-failed" : "environment";
+        }
+        finally
+        {
+            if (server is not null)
+                await server.DisposeAsync();
+            peer?.Dispose();
+            tls?.Dispose();
+        }
+
+        return new Attempt(end, error, confirmed, pendingMs, pendingAtListener, listenerMs, peerUnreadAtSample,
+            senderWritableAtSample, probe.BufferConfigured, probe.ActualSend, peer is null ? 0 : probe.PeerReceive,
+            probe.Count("request"), probe.Count("terminal-result"), probe.TerminalResult(), provider.PrepareCount,
+            probe.Count("permit"), probe.Count("permit-release"), peakPermits, probe.AllClosed(), probe.Finish(),
+            probe.PendingObservations(), server is null ? null : Account(server), Elapsed(started), probe.EventNames());
+    }
+
+    private static Accounting Account(BoltTcpServer server) => new(server.Diagnostics.ConnectionsAccepted,
+        server.Diagnostics.ConnectionsActive, server.Diagnostics.ConnectionsCompleted, server.Diagnostics.ConnectionsFailed,
+        server.Diagnostics.MessagesProcessed);
+    private static double Elapsed(long started) => Stopwatch.GetElapsedTime(started).TotalMilliseconds;
+    private static byte[] Frame(BoltRequest request) => TransportTestSupport.Frame(TransportRequestEncoder.Encode(request));
+
+    private sealed record Cell(string Name, string Stage, bool Listener);
+    private sealed record Profile(int Ordinal, int PrecedingBytes, int PeerReceive, int TargetSend);
+    private sealed record Accounting(long Accepted, long Active, long Completed, long Failed, long Messages);
+    private sealed record Finish(string Phase, string Outcome, int Bytes, int WireBytes, double ElapsedMs);
+    private sealed record Pending(long Started, Task Task);
+    private sealed record WriteObservation(string Stage, string Status, double? ElapsedMs);
+    private sealed record Attempt(string Outcome, string? Error, bool Confirmed, double PendingMs,
+        bool PendingAtListener, double? ListenerMs, int PeerUnreadAtSample, bool? SenderWritableAtSample,
+        bool BufferConfigured, int ActualSend, int ActualPeerReceive,
+        int ParserEntries, int TerminalResults, string? TerminalResult, int ProviderPreparations,
+        int Permits, int ReleasedPermits, int PeakSampledPermits, bool Closed, Finish? Finish,
+        WriteObservation[] InnerWrites, Accounting? Accounting, double ElapsedMs, string[] Stages);
+
+    private sealed class Probe : IDisposable
+    {
+        private static readonly Type HookType = typeof(BoltTcpServer).Assembly.GetType("BoltSharp.Transport.Inv03Probe", true)!;
+        private static readonly FieldInfo Observer = HookType.GetField("Observer", BindingFlags.Static | BindingFlags.NonPublic)!;
+        private static readonly FieldInfo GateField = HookType.GetField("EncryptedWrite", BindingFlags.Static | BindingFlags.NonPublic)!;
+        private readonly ConcurrentQueue<(string Name, string Id, object? Value)> _events = new();
+        private readonly ConcurrentDictionary<string, Pending> _pending = new();
+        private readonly ConcurrentDictionary<string, double> _settled = new();
+        private TcpClient? _owner;
+        public bool BufferConfigured { get; private set; }
+        public int ActualSend { get; private set; }
+        public int PeerReceive { get; set; }
+
+        public Probe(string target, int targetSend)
+        {
+            Observer.SetValue(null, (Action<string, string, object?>)Observe);
+            GateField.SetValue(null, (Func<string, SafeSocketHandle, CancellationToken, ValueTask>)Configure);
+            ValueTask Configure(string phase, SafeSocketHandle _, CancellationToken __)
+            {
+                if (phase == target)
+                {
+                    _owner!.SendBufferSize = targetSend;
+                    ActualSend = _owner.SendBufferSize;
+                    BufferConfigured = true;
+                }
+
+                return ValueTask.CompletedTask;
+            }
+        }
+
+        private void Observe(string name, string id, object? value)
+        {
+            if (name == "link-fixture-owner")
+                _owner = (TcpClient)value!;
+            if (name == "kernel-write-pending")
+            {
+                var task = (Task)value!;
+                var counter = Stopwatch.GetTimestamp();
+                _pending.TryAdd(id, new Pending(counter, task));
+                _ = task.ContinueWith(_ => _settled.TryAdd(id, Elapsed(counter)), CancellationToken.None,
+                    TaskContinuationOptions.ExecuteSynchronously, TaskScheduler.Default);
+            }
+
+            _events.Enqueue((name, id, value));
+        }
+
+        public bool? SenderWritable()
+        {
+            try { return _owner?.Client.Poll(0, SelectMode.SelectWrite); }
+            catch (Exception ex) when (ex is SocketException or ObjectDisposedException or NullReferenceException) { return null; }
+        }
+
+        public Pending? Pending(string stage) => _pending.GetValueOrDefault(stage);
+        public double? PendingLifetime(string stage) => _settled.TryGetValue(stage, out var elapsed) ? elapsed : null;
+        public string[] EventNames() => _events.Select(e => e.Name).ToArray();
+        public int Count(string name) => _events.Count(e => e.Name == name);
+        public bool AllClosed() => Count("socket") > 0 &&
+            _events.Where(e => e.Name == "socket").All(e => ((SafeSocketHandle)e.Value!).IsClosed);
+        public string? TerminalResult() => (string?)_events.FirstOrDefault(e => e.Name == "terminal-result").Value;
+        public WriteObservation[] PendingObservations() => _pending.Select(p =>
+            new WriteObservation(p.Key, p.Value.Task.Status.ToString(), PendingLifetime(p.Key))).ToArray();
+
+        public Finish? Finish()
+        {
+            var item = _events.FirstOrDefault(e => e.Name == "finished");
+            if (item.Value is null)
+                return null;
+            var v = ((string Phase, string Outcome, int Bytes, int WireBytes, double ElapsedMs))item.Value;
+            return new Finish(v.Phase, v.Outcome, v.Bytes, v.WireBytes, v.ElapsedMs);
+        }
+
+        public void Dispose()
+        {
+            GateField.SetValue(null, null);
+            Observer.SetValue(null, null);
+        }
+    }
+}

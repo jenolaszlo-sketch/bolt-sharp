@@ -1,0 +1,483 @@
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Security;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
+using BoltSharp.Framing;
+using BoltSharp.Handshake;
+using BoltSharp.Messages;
+using BoltSharp.PackStream;
+using BoltSharp.Tests.Sessions;
+using BoltSharp.Transport;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace BoltSharp.Tests.Transport;
+
+[CollectionDefinition("INV03 isolated", DisableParallelization = true)]
+public sealed class Inv03Collection;
+
+[Collection("INV03 isolated")]
+public sealed class Inv03QualificationTests(ITestOutputHelper output)
+{
+    private const string Expected = "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0";
+    private static readonly byte[] Terminal = TransportTestSupport.Frame([0xB1, 0x11, 0xA0]);
+
+    [Theory]
+    [InlineData("terminal-write", "timeout")]
+    [InlineData("terminal-write", "listener")]
+    [InlineData("close-notify", "timeout")]
+    [InlineData("close-notify", "listener")]
+    [InlineData("close-notify", "reset")]
+    public async Task PendingEncryptedOperation(string phase, string stimulus)
+    {
+        using var limit = new CancellationTokenSource(TimeSpan.FromSeconds(4));
+        using var cert = TransportTestSupport.CreateSelfSignedCertificate();
+        using var capture = new Probe();
+        var entered = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var allowReset = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var gateExited = false;
+        var sawOwnedSocketClose = false;
+        capture.Gate(async (stage, handle, ioToken) =>
+        {
+            if (stage != phase)
+                return;
+            entered.TrySetResult(ioToken.CanBeCanceled);
+            try
+            {
+                if (stimulus == "reset")
+                {
+                    await allowReset.Task.WaitAsync(limit.Token);
+                    return;
+                }
+
+                while (!handle.IsClosed)
+                    await Task.Delay(1, limit.Token);
+                sawOwnedSocketClose = true;
+                throw new IOException("Isolated encrypted-write stall released after owned socket disposal.");
+            }
+            finally
+            {
+                gateExited = true;
+            }
+        });
+
+        await using var server = await Start(cert);
+        using var peer = await Peer.Open(server, cert, limit.Token);
+        await peer.Send(Terminal, limit.Token);
+        var cancellableArgument = await entered.Task.WaitAsync(limit.Token);
+        Assert.False(gateExited);
+        Assert.True(server.Diagnostics.ConnectionsActive == 1);
+        string? received = null;
+        if (phase == "close-notify")
+            received = Convert.ToHexString((await peer.Read(limit.Token))!);
+        if (stimulus == "listener")
+            await server.StopAsync(limit.Token);
+        if (stimulus == "reset")
+        {
+            peer.Reset();
+            allowReset.TrySetResult();
+        }
+
+        await Wait(() => server.Diagnostics.ConnectionsActive == 0 && capture.AllClosed(), limit.Token);
+        var finish = Assert.Single(capture.Finishes());
+        Write(new { phase, stimulus, cancellableArgument, gateExited, sawOwnedSocketClose, received,
+            finish, requests = capture.Count("request"), active = server.Diagnostics.ConnectionsActive,
+            released = capture.AllClosed(), phases = capture.EventNames() });
+        Assert.Equal("Defunct:1", capture.Value("terminal-result"));
+        Assert.Equal(3, capture.Count("request"));
+        Assert.True(gateExited);
+        if (stimulus != "reset")
+        {
+            Assert.True(sawOwnedSocketClose);
+            Assert.Equal(phase == "terminal-write" ? "write" : "shutdown", finish.Phase);
+            Assert.Equal(stimulus == "listener" ? "server-cancelled" :
+                phase == "terminal-write" ? "total-deadline" : "phase-deadline", finish.Outcome);
+        }
+
+        if (stimulus == "listener")
+            Assert.InRange(finish.ElapsedMs, 0, phase == "terminal-write" ? 150 : 65);
+        if (phase == "close-notify")
+            Assert.Equal(Expected, received);
+        else
+            Assert.Equal(0, capture.Count("write-complete"));
+    }
+
+    [Fact]
+    public async Task ObserveRealTlsWritePressure()
+    {
+        using var cert = TransportTestSupport.CreateSelfSignedCertificate();
+        foreach (var precedingBytes in new[] { 262144, 1048576, 2097152, 4194304 })
+        {
+            using var limit = new CancellationTokenSource(TimeSpan.FromSeconds(4));
+            using var capture = new Probe();
+            var payload = new PackStreamValue?[] { new PackStreamString(new string('x', precedingBytes)) };
+            var provider = ScriptedOperationProvider.WithOperation(new ScriptedOperation(["value"], payload));
+            await using var server = await TransportTestSupport.StartServerAsync(() => new BoltTcpServerOptions
+            {
+                CredentialVerifier = TestCredentialVerifier.AcceptAll(),
+                OperationProviderFactory = () => provider,
+                Tls = new BoltTlsServerOptions(cert),
+                WriteTimeout = TimeSpan.FromMilliseconds(550)
+            });
+            using var peer = await Peer.Open(server, cert, limit.Token, 4096);
+            await peer.Send(Frame(SessionHarness.Run()), limit.Token);
+            _ = await peer.Read(limit.Token);
+            await peer.Send(Frame(SessionHarness.Pull(2)).Concat(Terminal).ToArray(), limit.Token);
+            await Task.Delay(120, limit.Token);
+            var pending = capture.Pending().Select(p => (p.Phase, p.Task.IsCompleted)).ToArray();
+            await Wait(() => server.Diagnostics.ConnectionsActive == 0 && capture.AllClosed(), limit.Token);
+            Write(new { precedingBytes, active = server.Diagnostics.ConnectionsActive, requests = capture.Count("request"),
+                messages = server.Diagnostics.MessagesProcessed, phases = capture.EventNames(),
+                pendingAtSample = pending.Select(p => new { p.Phase, p.IsCompleted }), finish = capture.Finishes() });
+            capture.AssertDisposed();
+        }
+    }
+
+    [Fact]
+    public async Task DeadlineSharedAcrossEncryptedPhases()
+    {
+        using var limit = new CancellationTokenSource(TimeSpan.FromSeconds(4));
+        using var cert = TransportTestSupport.CreateSelfSignedCertificate();
+        using var capture = new Probe();
+        capture.Gate(async (phase, handle, _) =>
+        {
+            if (phase == "terminal-write")
+            {
+                await Task.Delay(260, limit.Token);
+                return;
+            }
+            while (!handle.IsClosed)
+                await Task.Delay(1, limit.Token);
+            throw new IOException("Isolated close-notify stall released by disposal.");
+        });
+        await using var server = await Start(cert);
+        using var peer = await Peer.Open(server, cert, limit.Token);
+        await peer.Send(Terminal, limit.Token);
+        Assert.Equal(Expected, Convert.ToHexString((await peer.Read(limit.Token))!));
+        await Wait(() => server.Diagnostics.ConnectionsActive == 0 && capture.AllClosed(), limit.Token);
+        var finish = Assert.Single(capture.Finishes());
+        Write(new { finish, phases = capture.EventNames() });
+        Assert.Equal("shutdown", finish.Phase);
+        Assert.Equal("total-deadline", finish.Outcome);
+        Assert.InRange(finish.ElapsedMs, 260, 450);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task ResourceCampaign(bool tls)
+    {
+        using var limit = new CancellationTokenSource(TimeSpan.FromSeconds(18));
+        using var cert = tls ? TransportTestSupport.CreateSelfSignedCertificate() : null;
+        using var capture = new Probe();
+        await using var server = await Start(cert, maxConnections: 12);
+        using var process = Process.GetCurrentProcess();
+        var token = limit.Token;
+        var allocatedStart = GC.GetTotalAllocatedBytes(true);
+        var heapStart = GC.GetTotalMemory(false);
+        var cpuStart = process.TotalProcessorTime;
+        var started = Stopwatch.GetTimestamp();
+        var peakActive = 0L;
+        var peakOpen = 0;
+        var peakThreads = 0;
+        var peakPendingWork = 0L;
+        var minAvailableWorkers = int.MaxValue;
+        var maxHeap = heapStart;
+        using var sampling = CancellationTokenSource.CreateLinkedTokenSource(token);
+        var sample = Task.Run(async () =>
+        {
+            try
+            {
+                while (!sampling.IsCancellationRequested)
+                {
+                    peakActive = Math.Max(peakActive, server.Diagnostics.ConnectionsActive);
+                    peakOpen = Math.Max(peakOpen, capture.OpenCount());
+                    peakThreads = Math.Max(peakThreads, ThreadPool.ThreadCount);
+                    peakPendingWork = Math.Max(peakPendingWork, ThreadPool.PendingWorkItemCount);
+                    ThreadPool.GetAvailableThreads(out var available, out _);
+                    minAvailableWorkers = Math.Min(minAvailableWorkers, available);
+                    maxHeap = Math.Max(maxHeap, GC.GetTotalMemory(false));
+                    await Task.Delay(3, sampling.Token);
+                }
+            }
+            catch (OperationCanceledException) when (sampling.IsCancellationRequested) { }
+        });
+
+        var waves = new[] { 1, 2, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 };
+        var total = 0;
+        try
+        {
+            foreach (var size in waves)
+            {
+                var peers = await Task.WhenAll(Enumerable.Range(0, size).Select(_ => Peer.Open(server, cert, token)));
+                try
+                {
+                    await Task.WhenAll(peers.Select(peer => peer.Send(Terminal, token)));
+                    total += size;
+                    await Wait(() => server.Diagnostics.ConnectionsCompleted + server.Diagnostics.ConnectionsFailed == total, token);
+                }
+                finally
+                {
+                    foreach (var peer in peers)
+                        peer.Dispose();
+                }
+            }
+        }
+        finally
+        {
+            sampling.Cancel();
+            await sample;
+        }
+
+        var finalPeers = await Task.WhenAll(Enumerable.Range(0, 2).Select(_ => Peer.Open(server, cert, token)));
+        double stopMs;
+        try
+        {
+            await Task.WhenAll(finalPeers.Select(peer => peer.Send(Terminal, token)));
+            await Wait(() => capture.ActivePermits > 0, token);
+            var stopStarted = Stopwatch.GetTimestamp();
+            await server.StopAsync(token);
+            stopMs = Stopwatch.GetElapsedTime(stopStarted).TotalMilliseconds;
+        }
+        finally
+        {
+            foreach (var peer in finalPeers)
+                peer.Dispose();
+        }
+
+        var finished = capture.Finishes();
+        var latencies = finished.Select(f => f.ElapsedMs).Order().ToArray();
+        var outcomes = finished.GroupBy(f => f.Outcome).ToDictionary(g => g.Key, g => g.Count());
+        var wallMs = Stopwatch.GetElapsedTime(started).TotalMilliseconds;
+        Write(new { tls, waves, total = finished.Length, peakActive, peakOpen, peakThreads,
+            peakPendingWork, minAvailableWorkers, peakConcurrentDrains = capture.PeakPermits,
+            allocatedBytes = GC.GetTotalAllocatedBytes(true) - allocatedStart,
+            heapStart, maxHeap, heapAfter = GC.GetTotalMemory(false),
+            cpuMs = (process.TotalProcessorTime - cpuStart).TotalMilliseconds, wallMs, stopMs,
+            p95TerminalMs = latencies[(int)Math.Ceiling(latencies.Length * 0.95) - 1],
+            maxTerminalMs = latencies[^1], outcomes, capturedHandles = capture.Count("socket"), retained = capture.OpenCount(),
+            completed = server.Diagnostics.ConnectionsCompleted, failed = server.Diagnostics.ConnectionsFailed });
+        capture.AssertDisposed();
+        Assert.Equal(2, capture.PeakPermits);
+        Assert.Equal(0, capture.ActivePermits);
+        Assert.Contains(finished, f => f.Outcome == "capacity");
+        Assert.Contains(finished, f => f.Outcome == "server-cancelled");
+        Assert.Equal(waves.Sum() + 2, finished.Length);
+        Assert.Equal(finished.Length, server.Diagnostics.ConnectionsCompleted);
+        Assert.Equal(0, server.Diagnostics.ConnectionsActive);
+        Assert.All(finished, f =>
+        {
+            Assert.InRange(f.Bytes, 0, 8192);
+            Assert.InRange(f.WireBytes, 0, 32768);
+            Assert.InRange(f.ElapsedMs, 0, 450);
+        });
+    }
+
+    [Fact]
+    public async Task OraclesDetectParserEntryAndRetainedSocket()
+    {
+        using var limit = new CancellationTokenSource(TimeSpan.FromSeconds(4));
+        using var capture = new Probe();
+        await using var server = await Start(null);
+        using var peer = await Peer.Open(server, null, limit.Token);
+        await peer.Send(Terminal, limit.Token);
+        Assert.Equal(Expected, Convert.ToHexString((await peer.Read(limit.Token))!));
+        await peer.CloseWrite(limit.Token);
+        await server.StopAsync(limit.Token);
+        capture.AssertParsedCount(3);
+        capture.AssertDisposed();
+
+        // Test-only injected parser call on a fixture-owned, harmless request. No extra response
+        // is generated and this control never enters a live session or changes production parsing.
+        var harmless = TransportRequestEncoder.Encode(SessionHarness.Run());
+        Assert.IsType<RunRequest>(new BoltMessageCodec().DecodeRequest(harmless));
+        capture.Record("request", "parser-control", null);
+        Assert.ThrowsAny<Xunit.Sdk.XunitException>(() => capture.AssertParsedCount(3));
+
+        using var localListener = new TcpListener(IPAddress.Loopback, 0);
+        localListener.Start();
+        using var localPeer = new TcpClient();
+        await localPeer.ConnectAsync((IPEndPoint)localListener.LocalEndpoint, limit.Token);
+        using var intentionallyRetained = await localListener.AcceptTcpClientAsync(limit.Token);
+        capture.Record("socket", "retention-control", intentionallyRetained.Client.SafeHandle);
+        Assert.ThrowsAny<Xunit.Sdk.XunitException>(capture.AssertDisposed);
+        intentionallyRetained.Dispose();
+        capture.AssertDisposed();
+        Write(new { parserControlDetected = true, retentionControlDetected = true, extraResponse = false });
+    }
+
+    [Fact]
+    public async Task TypedDisabledLingerReadback()
+    {
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(4));
+        using var untyped = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        using var listener = new TcpListener(IPAddress.Loopback, 0);
+        object untypedResult;
+        try
+        {
+            untyped.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Linger, false);
+            untypedResult = new { success = true, state = untyped.LingerState };
+        }
+        catch (SocketException error)
+        {
+            untypedResult = new { success = false, native = error.NativeErrorCode, code = error.SocketErrorCode.ToString() };
+        }
+        listener.Server.LingerState = new LingerOption(false, 0);
+        listener.Start();
+        using var peer = new TcpClient();
+        await peer.ConnectAsync((IPEndPoint)listener.LocalEndpoint, deadline.Token);
+        using var accepted = await listener.AcceptTcpClientAsync(deadline.Token);
+        var listening = listener.Server.LingerState!;
+        var inherited = accepted.Client.LingerState!;
+        Write(new { platform = Environment.OSVersion.VersionString, runtime = Environment.Version.ToString(), untypedResult,
+            listener = listening, accepted = inherited });
+        Assert.False(listening.Enabled);
+        Assert.False(inherited.Enabled);
+    }
+
+    private static Task<BoltTcpServer> Start(X509Certificate2? cert, int maxConnections = 4)
+        => TransportTestSupport.StartServerAsync(() => new BoltTcpServerOptions
+        {
+            CredentialVerifier = TestCredentialVerifier.AcceptAll(),
+            Tls = cert is null ? null : new BoltTlsServerOptions(cert),
+            MaxConnections = maxConnections
+        });
+
+    private void Write(object row) => output.WriteLine(JsonSerializer.Serialize(row));
+    private static byte[] Frame(BoltRequest request) => TransportTestSupport.Frame(TransportRequestEncoder.Encode(request));
+
+    private static async Task Wait(Func<bool> predicate, CancellationToken token)
+    {
+        while (!predicate())
+            await Task.Delay(1, token);
+    }
+
+    private sealed class Peer(TcpClient client, Stream stream) : IDisposable
+    {
+        private readonly BoltMessageReader _reader = new(stream);
+
+        public static async Task<Peer> Open(BoltTcpServer server, X509Certificate2? expected, CancellationToken token, int receiveBuffer = 0)
+        {
+            var client = new TcpClient();
+            Stream? stream = null;
+            try
+            {
+                if (receiveBuffer != 0)
+                    client.ReceiveBufferSize = receiveBuffer;
+                await client.ConnectAsync(server.BoundEndPoint!, token);
+                stream = client.GetStream();
+                if (expected is not null)
+                {
+                    var ssl = new SslStream(stream, leaveInnerStreamOpen: true);
+                    stream = ssl;
+                    await ssl.AuthenticateAsClientAsync(new SslClientAuthenticationOptions
+                    {
+                        TargetHost = "localhost",
+                        RemoteCertificateValidationCallback = (_, cert, _, _) => cert?.GetCertHashString() == expected.Thumbprint
+                    }, token);
+                }
+                var peer = new Peer(client, stream);
+                await peer.Send(TransportTestSupport.HandshakeFromVersions(new BoltProtocolVersion(5, 8)), token);
+                var chosen = new byte[4];
+                await stream.ReadExactlyAsync(chosen, token);
+                Assert.Equal(new byte[] { 0, 0, 8, 5 }, chosen);
+                foreach (var request in new BoltRequest[] { SessionHarness.Hello(), SessionHarness.Logon() })
+                {
+                    await peer.Send(Frame(request), token);
+                    Assert.IsType<SuccessResponse>(new BoltMessageCodec().DecodeResponse((await peer.Read(token))!));
+                }
+                return peer;
+            }
+            catch
+            {
+                client.Dispose();
+                stream?.Dispose();
+                throw;
+            }
+        }
+
+        internal Task Send(byte[] bytes, CancellationToken token) => stream.WriteAsync(bytes.AsMemory(), token).AsTask();
+        internal ValueTask<byte[]?> Read(CancellationToken token) => _reader.ReadMessageAsync(token);
+        internal async Task CloseWrite(CancellationToken token)
+        {
+            if (stream is SslStream ssl)
+                await ssl.ShutdownAsync().WaitAsync(token);
+            else
+                client.Client.Shutdown(SocketShutdown.Send);
+        }
+
+        internal void Reset()
+        {
+            client.LingerState = new LingerOption(true, 0);
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            client.Dispose();
+            stream.Dispose();
+        }
+    }
+
+    private sealed record Finish(string Phase, string Outcome, int Bytes, int WireBytes, double ElapsedMs);
+
+    private sealed class Probe : IDisposable
+    {
+        private static readonly Type Hooks = typeof(BoltTcpServer).Assembly.GetType("BoltSharp.Transport.Inv03Probe", true)!;
+        private static readonly FieldInfo Observer = Hooks.GetField("Observer", BindingFlags.Static | BindingFlags.NonPublic)!;
+        private static readonly FieldInfo GateField = Hooks.GetField("EncryptedWrite", BindingFlags.Static | BindingFlags.NonPublic)!;
+        private readonly ConcurrentQueue<(string Name, string Id, object? Value)> _events = new();
+        private int _active;
+        private int _peak;
+        internal int ActivePermits => Volatile.Read(ref _active);
+        internal int PeakPermits => Volatile.Read(ref _peak);
+
+        internal Probe() => Observer.SetValue(null, (Action<string, string, object?>)Record);
+        internal void Gate(Func<string, SafeSocketHandle, CancellationToken, ValueTask> gate) => GateField.SetValue(null, gate);
+
+        internal void Record(string name, string id, object? value)
+        {
+            _events.Enqueue((name, id, value));
+            if (name == "permit")
+            {
+                var active = Interlocked.Increment(ref _active);
+                int before;
+                do
+                {
+                    before = Volatile.Read(ref _peak);
+                    if (before >= active)
+                        break;
+                }
+                while (Interlocked.CompareExchange(ref _peak, active, before) != before);
+            }
+            if (name == "permit-release")
+                Interlocked.Decrement(ref _active);
+        }
+
+        internal Finish[] Finishes() => _events.Where(x => x.Name == "finished").Select(x =>
+        {
+            var v = ((string Phase, string Outcome, int Bytes, int WireBytes, double ElapsedMs))x.Value!;
+            return new Finish(v.Phase, v.Outcome, v.Bytes, v.WireBytes, v.ElapsedMs);
+        }).ToArray();
+
+        internal (string Phase, Task Task)[] Pending() => _events.Where(e => e.Name == "kernel-write-pending")
+            .Select(e => (e.Id, (Task)e.Value!)).ToArray();
+        internal int OpenCount() => _events.Count(e => e.Name == "socket" && !((SafeSocketHandle)e.Value!).IsClosed);
+        internal bool AllClosed() => Count("socket") > 0 && OpenCount() == 0;
+        internal int Count(string name) => _events.Count(e => e.Name == name);
+        internal object? Value(string name) => _events.Single(e => e.Name == name).Value;
+        internal string[] EventNames() => _events.Select(e => e.Name).ToArray();
+        internal void AssertParsedCount(int count) => Assert.Equal(count, Count("request"));
+        internal void AssertDisposed() => Assert.Equal(0, OpenCount());
+
+        public void Dispose()
+        {
+            GateField.SetValue(null, null);
+            Observer.SetValue(null, null);
+        }
+    }
+}

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="19aac895-7510-4cfc-a8a7-d3ca9cbf6b60" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-20 02:46:28" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-20T02:46:28.2362866+08:00" queuing="2026-11-20T02:46:28.2362874+08:00" start="2026-11-20T02:46:26.9346736+08:00" finish="2026-11-20T02:46:28.6838946+08:00" />
+  <TestSettings name="default" id="58bae5e5-bb73-4488-9ce6-f9bcd3d8a242">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-20_02_46_28" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c5730100-be92-4823-9d1d-a8b8684fb511" testId="9bf4d73e-80d9-6ef3-834b-25502749a9d6" testName="BoltSharp.Q5B05.Probe.ResetRecovery.P05_Plaintext_ConcurrentClientUnaffected_AndRecoveryIsIsolated" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0225916" startTime="2026-11-20T02:46:28.1646303+08:00" endTime="2026-11-20T02:46:28.1646306+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c5730100-be92-4823-9d1d-a8b8684fb511" />
+    <UnitTestResult executionId="3d7d8230-dd16-4d7f-8182-27a242cf7a09" testId="bf7c4468-1449-9e46-611f-c5ab59854d14" testName="BoltSharp.Q5B05.Probe.NegativeControls.NC04_TerminalFailureSubstituted_CannotSatisfyTheRecoveryProof" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1579054" startTime="2026-11-20T02:46:28.1565379+08:00" endTime="2026-11-20T02:46:28.1565383+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d7d8230-dd16-4d7f-8182-27a242cf7a09" />
+    <UnitTestResult executionId="388de589-52db-47b5-b357-0b9179082a20" testId="f78345df-6f1a-73b5-5b9c-d4deb87d7a1d" testName="BoltSharp.Q5B05.Probe.TlsRecovery.P04_Tls_RecoverableFailureResetAndSubsequentOperation_SameConnection" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2264607" startTime="2026-11-20T02:46:28.2252369+08:00" endTime="2026-11-20T02:46:28.2252374+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="388de589-52db-47b5-b357-0b9179082a20" />
+    <UnitTestResult executionId="7e638202-5ef3-4192-af20-f0e9ef9876eb" testId="3b630425-5c12-3a8b-3b90-32bc19147cd8" testName="BoltSharp.Q5B05.Probe.NegativeControls.NC01_ReplacementConnection_IsRejectedByTheSameConnectionOracle" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0098649" startTime="2026-11-20T02:46:28.1669207+08:00" endTime="2026-11-20T02:46:28.1669210+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7e638202-5ef3-4192-af20-f0e9ef9876eb" />
+    <UnitTestResult executionId="0878599c-b949-4d2c-8db2-ef71fc36796b" testId="2dfd6734-01af-7ea7-dd46-0b0e01e957bc" testName="BoltSharp.Q5B05.Probe.DriverResetBehavior.D01_Driver_PipelinedRunPull_FailureThenIgnored_RecordsActualWireSequence" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0091592" startTime="2026-11-20T02:46:28.6184183+08:00" endTime="2026-11-20T02:46:28.6184186+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0878599c-b949-4d2c-8db2-ef71fc36796b" />
+    <UnitTestResult executionId="cfc8ee4d-087f-4b47-bd98-9d6fa46735e1" testId="49f54556-3e78-1001-9834-60b3c0963eb8" testName="BoltSharp.Q5B05.Probe.NegativeControls.NC03_RecoveryFailureInjected_IsDetectedByTheResetOracle" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0098720" startTime="2026-11-20T02:46:28.2045116+08:00" endTime="2026-11-20T02:46:28.2045116+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cfc8ee4d-087f-4b47-bd98-9d6fa46735e1" />
+    <UnitTestResult executionId="c99f1b36-f34b-4af1-aa26-d88a1ba8f5af" testId="cafc6fa6-501a-46e9-4af5-3ed5175973e6" testName="BoltSharp.Q5B05.Probe.DriverResetBehavior.D02_Driver_RecoveryAfterRecoverableFailure_RecordsConnectionDisposition" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1790341" startTime="2026-11-20T02:46:28.2043453+08:00" endTime="2026-11-20T02:46:28.2043456+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c99f1b36-f34b-4af1-aa26-d88a1ba8f5af" />
+    <UnitTestResult executionId="3a54228d-8366-42db-bb02-5ccc889ff1bc" testId="d354fe51-4132-af67-b94e-8dd296e65ad2" testName="BoltSharp.Q5B05.Probe.NegativeControls.NC02_MissingReset_CannotReportValidRecovery" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0086731" startTime="2026-11-20T02:46:28.1760667+08:00" endTime="2026-11-20T02:46:28.1760674+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3a54228d-8366-42db-bb02-5ccc889ff1bc" />
+    <UnitTestResult executionId="61286db6-9f32-43dd-a2a0-c6a34f7b1615" testId="e92e4503-a1f4-a85a-f097-04a8c6c8f4f1" testName="BoltSharp.Q5B05.Probe.ResetRecovery.P01_Plaintext_RecoverableFailureResetAndSubsequentOperation_SameConnection" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0952216" startTime="2026-11-20T02:46:28.0984788+08:00" endTime="2026-11-20T02:46:28.0985008+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="61286db6-9f32-43dd-a2a0-c6a34f7b1615" />
+    <UnitTestResult executionId="dd008005-fab0-43b3-9657-c6be815eb83d" testId="3866320c-d6a0-d451-7210-b9b334b91597" testName="BoltSharp.Q5B05.Probe.DriverResetBehavior.D04_Driver_PoolingSequence_RecordsPhysicalConnectionsAndResets" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2183341" startTime="2026-11-20T02:46:28.6087485+08:00" endTime="2026-11-20T02:46:28.6087488+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dd008005-fab0-43b3-9657-c6be815eb83d" />
+    <UnitTestResult executionId="278e8683-3dde-44d6-8099-031a302573d2" testId="c6accf81-225c-18db-c62e-e4adc364e753" testName="BoltSharp.Q5B05.Probe.ResetRecovery.P02_Plaintext_RepeatedFailureAndReset_CyclesOnOneConnection" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0230334" startTime="2026-11-20T02:46:28.1216311+08:00" endTime="2026-11-20T02:46:28.1216315+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="278e8683-3dde-44d6-8099-031a302573d2" />
+    <UnitTestResult executionId="f3826c95-3e96-48ed-9eea-86f64a0e3517" testId="2c6959b4-699a-3636-96e4-b6e7c855121d" testName="BoltSharp.Q5B05.Probe.ResetRecovery.P03_Plaintext_PipelinedFailureThenIgnored_ThenResetRecovers" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.0192522" startTime="2026-11-20T02:46:28.1413301+08:00" endTime="2026-11-20T02:46:28.1413304+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3826c95-3e96-48ed-9eea-86f64a0e3517" />
+    <UnitTestResult executionId="2c64fa0c-500b-4c34-bf39-5d402d6f1507" testId="a39d7c52-26a1-c131-84b5-4414f70e9262" testName="BoltSharp.Q5B05.Probe.DriverResetBehavior.D03_Driver_ProviderFailure_Retriable_RecordsWhetherResetIsSent" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.2114304" startTime="2026-11-20T02:46:28.3894790+08:00" endTime="2026-11-20T02:46:28.3894797+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c64fa0c-500b-4c34-bf39-5d402d6f1507" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Q5B05.Probe.NegativeControls.NC03_RecoveryFailureInjected_IsDetectedByTheResetOracle" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="49f54556-3e78-1001-9834-60b3c0963eb8">
+      <Execution id="cfc8ee4d-087f-4b47-bd98-9d6fa46735e1" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.NegativeControls" name="NC03_RecoveryFailureInjected_IsDetectedByTheResetOracle" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.NegativeControls.NC02_MissingReset_CannotReportValidRecovery" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="d354fe51-4132-af67-b94e-8dd296e65ad2">
+      <Execution id="3a54228d-8366-42db-bb02-5ccc889ff1bc" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.NegativeControls" name="NC02_MissingReset_CannotReportValidRecovery" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.ResetRecovery.P03_Plaintext_PipelinedFailureThenIgnored_ThenResetRecovers" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="2c6959b4-699a-3636-96e4-b6e7c855121d">
+      <Execution id="f3826c95-3e96-48ed-9eea-86f64a0e3517" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.ResetRecovery" name="P03_Plaintext_PipelinedFailureThenIgnored_ThenResetRecovers" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.ResetRecovery.P02_Plaintext_RepeatedFailureAndReset_CyclesOnOneConnection" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="c6accf81-225c-18db-c62e-e4adc364e753">
+      <Execution id="278e8683-3dde-44d6-8099-031a302573d2" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.ResetRecovery" name="P02_Plaintext_RepeatedFailureAndReset_CyclesOnOneConnection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.DriverResetBehavior.D02_Driver_RecoveryAfterRecoverableFailure_RecordsConnectionDisposition" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="cafc6fa6-501a-46e9-4af5-3ed5175973e6">
+      <Execution id="c99f1b36-f34b-4af1-aa26-d88a1ba8f5af" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.DriverResetBehavior" name="D02_Driver_RecoveryAfterRecoverableFailure_RecordsConnectionDisposition" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.DriverResetBehavior.D03_Driver_ProviderFailure_Retriable_RecordsWhetherResetIsSent" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="a39d7c52-26a1-c131-84b5-4414f70e9262">
+      <Execution id="2c64fa0c-500b-4c34-bf39-5d402d6f1507" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.DriverResetBehavior" name="D03_Driver_ProviderFailure_Retriable_RecordsWhetherResetIsSent" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.NegativeControls.NC04_TerminalFailureSubstituted_CannotSatisfyTheRecoveryProof" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="bf7c4468-1449-9e46-611f-c5ab59854d14">
+      <Execution id="3d7d8230-dd16-4d7f-8182-27a242cf7a09" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.NegativeControls" name="NC04_TerminalFailureSubstituted_CannotSatisfyTheRecoveryProof" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.NegativeControls.NC01_ReplacementConnection_IsRejectedByTheSameConnectionOracle" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="3b630425-5c12-3a8b-3b90-32bc19147cd8">
+      <Execution id="7e638202-5ef3-4192-af20-f0e9ef9876eb" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.NegativeControls" name="NC01_ReplacementConnection_IsRejectedByTheSameConnectionOracle" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.ResetRecovery.P01_Plaintext_RecoverableFailureResetAndSubsequentOperation_SameConnection" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="e92e4503-a1f4-a85a-f097-04a8c6c8f4f1">
+      <Execution id="61286db6-9f32-43dd-a2a0-c6a34f7b1615" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.ResetRecovery" name="P01_Plaintext_RecoverableFailureResetAndSubsequentOperation_SameConnection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.TlsRecovery.P04_Tls_RecoverableFailureResetAndSubsequentOperation_SameConnection" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="f78345df-6f1a-73b5-5b9c-d4deb87d7a1d">
+      <Execution id="388de589-52db-47b5-b357-0b9179082a20" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.TlsRecovery" name="P04_Tls_RecoverableFailureResetAndSubsequentOperation_SameConnection" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.ResetRecovery.P05_Plaintext_ConcurrentClientUnaffected_AndRecoveryIsIsolated" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="9bf4d73e-80d9-6ef3-834b-25502749a9d6">
+      <Execution id="c5730100-be92-4823-9d1d-a8b8684fb511" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.ResetRecovery" name="P05_Plaintext_ConcurrentClientUnaffected_AndRecoveryIsIsolated" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.DriverResetBehavior.D04_Driver_PoolingSequence_RecordsPhysicalConnectionsAndResets" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="3866320c-d6a0-d451-7210-b9b334b91597">
+      <Execution id="dd008005-fab0-43b3-9657-c6be815eb83d" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.DriverResetBehavior" name="D04_Driver_PoolingSequence_RecordsPhysicalConnectionsAndResets" />
+    </UnitTest>
+    <UnitTest name="BoltSharp.Q5B05.Probe.DriverResetBehavior.D01_Driver_PipelinedRunPull_FailureThenIgnored_RecordsActualWireSequence" storage="c:\windows\temp\opencode\q5b05q1\reviewer\docs\reviews\probes\q-b5b-05-probe-01\bin\release\net8.0\boltsharp.q5b05.probe.dll" id="2dfd6734-01af-7ea7-dd46-0b0e01e957bc">
+      <Execution id="0878599c-b949-4d2c-8db2-ef71fc36796b" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q5b05q1\reviewer\docs\reviews\probes\Q-B5B-05-PROBE-01\bin\Release\net8.0\BoltSharp.Q5B05.Probe.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Q5B05.Probe.DriverResetBehavior" name="D01_Driver_PipelinedRunPull_FailureThenIgnored_RecordsActualWireSequence" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="9bf4d73e-80d9-6ef3-834b-25502749a9d6" executionId="c5730100-be92-4823-9d1d-a8b8684fb511" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bf7c4468-1449-9e46-611f-c5ab59854d14" executionId="3d7d8230-dd16-4d7f-8182-27a242cf7a09" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f78345df-6f1a-73b5-5b9c-d4deb87d7a1d" executionId="388de589-52db-47b5-b357-0b9179082a20" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b630425-5c12-3a8b-3b90-32bc19147cd8" executionId="7e638202-5ef3-4192-af20-f0e9ef9876eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2dfd6734-01af-7ea7-dd46-0b0e01e957bc" executionId="0878599c-b949-4d2c-8db2-ef71fc36796b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="49f54556-3e78-1001-9834-60b3c0963eb8" executionId="cfc8ee4d-087f-4b47-bd98-9d6fa46735e1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cafc6fa6-501a-46e9-4af5-3ed5175973e6" executionId="c99f1b36-f34b-4af1-aa26-d88a1ba8f5af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d354fe51-4132-af67-b94e-8dd296e65ad2" executionId="3a54228d-8366-42db-bb02-5ccc889ff1bc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e92e4503-a1f4-a85a-f097-04a8c6c8f4f1" executionId="61286db6-9f32-43dd-a2a0-c6a34f7b1615" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3866320c-d6a0-d451-7210-b9b334b91597" executionId="dd008005-fab0-43b3-9657-c6be815eb83d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c6accf81-225c-18db-c62e-e4adc364e753" executionId="278e8683-3dde-44d6-8099-031a302573d2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c6959b4-699a-3636-96e4-b6e7c855121d" executionId="f3826c95-3e96-48ed-9eea-86f64a0e3517" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a39d7c52-26a1-c131-84b5-4414f70e9262" executionId="2c64fa0c-500b-4c34-bf39-5d402d6f1507" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="13" executed="13" passed="13" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.30]   Discovering: BoltSharp.Q5B05.Probe&#xD;
+[xUnit.net 00:00:00.33]   Discovered:  BoltSharp.Q5B05.Probe&#xD;
+[xUnit.net 00:00:00.33]   Starting:    BoltSharp.Q5B05.Probe&#xD;
+[xUnit.net 00:00:00.99]   Finished:    BoltSharp.Q5B05.Probe&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

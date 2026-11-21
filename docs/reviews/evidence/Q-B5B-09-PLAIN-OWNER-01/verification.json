@@ -1,0 +1,374 @@
+{
+  "base": {
+    "branch": "main",
+    "commit": "3c2144a0d655f1e0b7187ca0bf8ac6de1bef8e8f",
+    "divergenceFromOriginMain": {
+      "ahead": 18,
+      "behind": 0
+    },
+    "parent": "96a1a3cd0f059b554c6e7ab2ce099ef29b161ace",
+    "tree": "400cc968a989ed6fb67a5688bc4900bfb81265e4"
+  },
+  "buildAndFormat": {
+    "source": "session A package blobs at 96a1a3c",
+    "uniqueXUnit2012Warnings": 2,
+    "whitespaceFindings": 8,
+    "xUnit2012Occurrences": 4
+  },
+  "disposition": "PLAINTEXT REMEDIATION - ACCEPTED WITH QUALIFICATIONS - CLOSED",
+  "historicalIntegrity": {
+    "decisionsTreeAtBase": "fceee363ebcc72c99263d2bfe5e210a9c49cea4d",
+    "decisionsTreeAtR1Evidence": "fceee363ebcc72c99263d2bfe5e210a9c49cea4d",
+    "decisionsUnchanged": true,
+    "directories": {
+      "docs/reviews/evidence/B5-B-TS1": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/B5-B-TS1-OWNER-01": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-INV-01": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-INV-02": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-INV-03": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-OWNER-01": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-PLAIN-IMPL-01": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-PLAIN-Q1": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-PLAIN-R1": {
+        "unchangedSinceR1Evidence": true
+      },
+      "docs/reviews/evidence/Q-B5B-09-TLS-GATE-01": {
+        "unchangedSinceR1Evidence": true
+      }
+    }
+  },
+  "negativeControls": {
+    "nc-01": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-02": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-03": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-04": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-05": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-06": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-07": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-08": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    },
+    "nc-09": {
+      "detected": true,
+      "failuresRecorded": true,
+      "trxPresent": true
+    }
+  },
+  "package": "Q-B5B-09-PLAIN-OWNER-01",
+  "packageCollision": {
+    "addedBySessionB": [
+      "campaign/baseline-f01-wsl.json",
+      "campaign/r1-all-wsl.json",
+      "campaign/r1-backpressure-wsl.json",
+      "campaign/r1-f01-wsl.json",
+      "r1-nc-f01-mutation.patch"
+    ],
+    "headPackageFileCount": 53,
+    "identical": 35,
+    "modifiedBySessionB": [
+      ".gitattributes",
+      "README.md",
+      "build-production.log",
+      "build-solution.log",
+      "campaign/baseline-f01-win.json",
+      "campaign/r1-all-win.json",
+      "campaign/r1-backpressure-win.json",
+      "campaign/r1-f01-win.json",
+      "format-check.log",
+      "independence-statement.txt",
+      "manifest.json",
+      "negative-controls-assessment.md",
+      "verify-evidence.py"
+    ],
+    "onlyInSessionA": [],
+    "sessionAFileCount": 48,
+    "sessionBFileCount": 53,
+    "sessionBIsChildOfSessionA": true
+  },
+  "pinned": {
+    "independentQ1": {
+      "ancestorOfBase": true,
+      "commit": "9dd2fe1b9b6f8ab2880e3fe50b8ef9ac2d43ae9c",
+      "exists": true,
+      "tree": "f0f1d38dbe648ee36c07a490f6217b47a179dd16"
+    },
+    "independentQ2SessionA": {
+      "ancestorOfBase": true,
+      "commit": "96a1a3cd0f059b554c6e7ab2ce099ef29b161ace",
+      "exists": true,
+      "tree": "ae77886a82561fb844c5cc5c874d833cdf1c0fdf"
+    },
+    "independentQ2SessionB": {
+      "ancestorOfBase": true,
+      "commit": "3c2144a0d655f1e0b7187ca0bf8ac6de1bef8e8f",
+      "exists": true,
+      "tree": "400cc968a989ed6fb67a5688bc4900bfb81265e4"
+    },
+    "originalPlaintext": {
+      "ancestorOfBase": true,
+      "commit": "20fbc461c0257620db28fb78a463218b242455bc",
+      "exists": true,
+      "tree": "116ee015f1ae9a30bf991c2db470996db47996c0"
+    },
+    "ownerAuthorization": {
+      "ancestorOfBase": true,
+      "commit": "fac10f6c5ece37dbc3f38c9c831c668d49a3d290",
+      "exists": true,
+      "tree": "d464e85f810b50a00f768a9111dcc2a7f60cd699"
+    },
+    "r1Evidence": {
+      "ancestorOfBase": true,
+      "commit": "d7e5ac14704a9576813e32692b29050ef92ee7b8",
+      "exists": true,
+      "tree": "b98b57723ac6e8754961261e235a74013ca76058"
+    },
+    "r1Implementation": {
+      "ancestorOfBase": true,
+      "commit": "6a40c4b84993dec77deb165cef31e419df05be2e",
+      "exists": true,
+      "tree": "a23edab4242711fffc28da63f254ff0f8b4d3082"
+    },
+    "typedLinger": {
+      "ancestorOfBase": true,
+      "commit": "dac52d55ade0a9ae703b801c8a4066e8aef2bd58",
+      "exists": true,
+      "tree": "dcc1687c6c8fe8dd6b55863f7324e5c64c478416"
+    }
+  },
+  "q1Evidence": {
+    "baseTree": "52edbd39e4126251c2f3974c465c9a7e4f66c9da",
+    "byteIdentical": true,
+    "q1Tree": "52edbd39e4126251c2f3974c465c9a7e4f66c9da"
+  },
+  "r1Evidence": {
+    "docs/reviews/Q-B5B-09-PLAIN-R1-implementation.md": {
+      "bytes": 9642,
+      "present": true,
+      "sha256": "f45782a855a9a639f225fe9669622e7fa8dbb9588786e0f75f9c8051c3f3f4a5"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/.gitattributes": {
+      "bytes": 8,
+      "present": true,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/README.md": {
+      "bytes": 5193,
+      "present": true,
+      "sha256": "e25e099bfe32d09540591ffd5d485b240961a2894ce5b909eafb69befc9b477a"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/manifest.json": {
+      "bytes": 25735,
+      "present": true,
+      "sha256": "5b4db45cef3419f7fa563b95df83877c16218a730e3b29c10d6ebf8390162d69"
+    },
+    "docs/reviews/evidence/Q-B5B-09-PLAIN-R1/verify-evidence.py": {
+      "bytes": 6514,
+      "present": true,
+      "sha256": "13e73086c0cc1e20666dd18faabf26d3264fd503ecba6a3a0ece73ea9411f21c"
+    }
+  },
+  "r1Sources": {
+    "src/BoltSharp/Transport/BoltPlaintextTerminalClose.cs": {
+      "bytes": 8933,
+      "present": true,
+      "sha256": "05bee0f6c2dd0353a1a1359e90d1719f80ed6b377df6418895297411b7c58470"
+    },
+    "src/BoltSharp/Transport/BoltTcpConnection.cs": {
+      "bytes": 15031,
+      "present": true,
+      "sha256": "330045222e73ce5fb11e7b752e59db3e407105bb26748189f5d3f088ec7cbc1c"
+    },
+    "src/BoltSharp/Transport/BoltTcpServer.cs": {
+      "bytes": 8902,
+      "present": true,
+      "sha256": "10459f66ec6308fbcf60c0050f5171591f5d245f5ab5d4e29c93c30052fb17d3"
+    },
+    "tests/BoltSharp.Tests/Transport/PlaintextTerminalCloseTests.cs": {
+      "bytes": 29657,
+      "present": true,
+      "sha256": "7ea13bda2e537fb0f6e43069d2092dcaa1d2864c972ef6ff0078a0b5c4be5221"
+    }
+  },
+  "reportAgreement": {
+    "danglingObsProposalExistsAtBase": false,
+    "danglingObsProposalInSessionB": true,
+    "markersIdentical": true,
+    "reportsDiffer": true,
+    "sessionA": {
+      "doesNotCloseParent": true,
+      "overallSupportedWithQualifications": true,
+      "q1F01Supported": true,
+      "q1F02Supported": true,
+      "q1F03Supported": true,
+      "q2F01": true,
+      "q2F02": true,
+      "recommendsOwnerAcceptance": true
+    },
+    "sessionABytes": 21520,
+    "sessionB": {
+      "doesNotCloseParent": true,
+      "overallSupportedWithQualifications": true,
+      "q1F01Supported": true,
+      "q1F02Supported": true,
+      "q1F03Supported": true,
+      "q2F01": true,
+      "q2F02": true,
+      "recommendsOwnerAcceptance": true
+    },
+    "sessionBBytes": 20002
+  },
+  "rollbackProvenance": {
+    "inventoryPresent": true,
+    "unverified": [],
+    "verified": [
+      {
+        "inventorySha256": "812ff11b5e4f71cf74fcc0b21b933db5a9edefaee7818a992f69352f2176df72",
+        "manifestSha256": "812ff11b5e4f71cf74fcc0b21b933db5a9edefaee7818a992f69352f2176df72",
+        "match": true,
+        "path": "campaign/baseline-f01-win.json"
+      },
+      {
+        "inventorySha256": "d7e47d8d4b48beffbb3999973a92c58f8c86fbbd6b77a687559be9dbe385f33d",
+        "manifestSha256": "d7e47d8d4b48beffbb3999973a92c58f8c86fbbd6b77a687559be9dbe385f33d",
+        "match": true,
+        "path": "campaign/r1-f01-win.json"
+      },
+      {
+        "inventorySha256": "143cc89b79889493da25fa0ef623a5b802c9b79378a403495728bb54853841fe",
+        "manifestSha256": "143cc89b79889493da25fa0ef623a5b802c9b79378a403495728bb54853841fe",
+        "match": true,
+        "path": "campaign/r1-all-win.json"
+      },
+      {
+        "inventorySha256": "64f104e4803623a8ed3d6b8bc2d889c2f2996b55f88372f56c3fdfb7154823af",
+        "manifestSha256": "64f104e4803623a8ed3d6b8bc2d889c2f2996b55f88372f56c3fdfb7154823af",
+        "match": true,
+        "path": "campaign/r1-backpressure-win.json"
+      },
+      {
+        "inventorySha256": "79fbdee81f671403d25a68e807f86740e5977d857570d83e41b6cc2ec54582d6",
+        "manifestSha256": "79fbdee81f671403d25a68e807f86740e5977d857570d83e41b6cc2ec54582d6",
+        "match": true,
+        "path": "campaign/r1-nc-f01-f01-win.json"
+      }
+    ]
+  },
+  "sessions": {
+    "A": {
+      "commit": "96a1a3cd0f059b554c6e7ab2ce099ef29b161ace",
+      "manifestEntries": 48,
+      "manifestEntriesWithHashes": 48,
+      "manifestFullyPopulated": true,
+      "manifestMismatches": [],
+      "packageBytes": 4794367,
+      "packageFileCount": 48,
+      "parent": "d7e5ac14704a9576813e32692b29050ef92ee7b8",
+      "reportBytes": 21520,
+      "reportSha256": "51a6435bd26ed87adc77a91ff37f14321a96ac03e199f85fde5e41c89141d92d",
+      "tree": "ae77886a82561fb844c5cc5c874d833cdf1c0fdf"
+    },
+    "B": {
+      "commit": "3c2144a0d655f1e0b7187ca0bf8ac6de1bef8e8f",
+      "manifestEntries": 19,
+      "manifestEntriesWithHashes": 0,
+      "manifestFullyPopulated": false,
+      "manifestMismatches": [],
+      "packageBytes": 4770108,
+      "packageFileCount": 53,
+      "parent": "96a1a3cd0f059b554c6e7ab2ce099ef29b161ace",
+      "reportBytes": 20002,
+      "reportSha256": "b2691296783c68d0c6a30b50aa0e931640e4d0b8cbb2d7abdd6a06de3f0e00c2",
+      "tree": "400cc968a989ed6fb67a5688bc4900bfb81265e4"
+    }
+  },
+  "trxCounters": {
+    "core-tests.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 1257,
+      "skipped": 0,
+      "total": 1257
+    },
+    "driver-integration.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 75,
+      "skipped": 10,
+      "total": 85
+    },
+    "driver-interop.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 43,
+      "skipped": 0,
+      "total": 43
+    },
+    "integration.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 19,
+      "skipped": 0,
+      "total": 19
+    },
+    "wsl2-core-tests.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 1257,
+      "skipped": 0,
+      "total": 1257
+    },
+    "wsl2-driver-interop.trx": {
+      "failed": 0,
+      "matches": true,
+      "passed": 43,
+      "skipped": 0,
+      "total": 43
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "task": "B5-B-TS1-OWNER-01",
+  "parent_commit": "b196db8f0bc612b7f1ef3f78412480239c3f04db",
+  "parent_tree": "d7815b8ad338610e8343aefa6e948359b52b8fc2",
+  "hash_convention": "SHA-256 over exact Git blob payload bytes",
+  "entries": [
+    {
+      "path": "docs/decisions/B5-B-TS1-OWNER-01-owner-closure.md",
+      "bytes": 11409,
+      "sha256": "6e3f2031d68c0f6b9541f007b44c78bf1495a84eaedab2dcb491838e81e73493"
+    },
+    {
+      "path": "docs/reviews/evidence/B5-B-TS1-OWNER-01/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": "docs/reviews/evidence/B5-B-TS1-OWNER-01/README.md",
+      "bytes": 2165,
+      "sha256": "316eaa91d74fa8bc4649acb1c1868cfabdaf325fc1d8053937320b930213637b"
+    },
+    {
+      "path": "docs/reviews/evidence/B5-B-TS1-OWNER-01/verification.json",
+      "bytes": 2787,
+      "sha256": "fc8d3c92fa576bb414920800ad52f970f2fa4f36c4f4199238ed86197e782ade"
+    },
+    {
+      "path": "docs/reviews/evidence/B5-B-TS1-OWNER-01/verify-evidence.py",
+      "bytes": 3027,
+      "sha256": "8505ca253866db35fb20671bc7d5bbc732b717d6c1dc6c9e13b9d48db9222b4f"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "platform": "windows",
+  "revision": "6a40c4b84993dec77deb165cef31e419df05be2e",
+  "suites": {
+    "core": { "total": 1257, "passed": 1257, "failed": 0, "skipped": 0 },
+    "driverIntegration": { "total": 43, "passed": 43, "failed": 0, "skipped": 0 },
+    "plaintextTerminalClose": { "total": 28, "passed": 28, "failed": 0, "skipped": 0 },
+    "tlsIntegration": { "total": 23, "passed": 23, "failed": 0, "skipped": 0 },
+    "q2Probe": { "total": 13, "passed": 13, "failed": 0, "skipped": 0 }
+  },
+  "focusedRepetitions": 3,
+  "focusedTestsPerRun": 57,
+  "totalFocusedTests": 171,
+  "analyzerWarnings": 2,
+  "analyzerWarningDetails": "xUnit2012 at BoltRequestDecodeTests.cs:71,72",
+  "formatCheck": "passed (4 R1 paths)"
+}

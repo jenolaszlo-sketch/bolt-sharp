@@ -1,0 +1,70 @@
+{
+  "commit": "23d58da4e0c0e10aa46a31f05ef6a0c31ad3f2fa",
+  "tree": "bd841c86886587d38276fba2798ef13404ce002d",
+  "windows_archive_sha256": "05d87c8f12af664cb07a8e0be17cf816ee39bcdce74c202f87495c1ebf1dd3d9",
+  "replayed_prototype_source_bytes": [
+    {
+      "path": "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+      "sha256": "6db79fe5feb17dd9ef381ae64186fd769f1a9688bea70a81808c964538328e4a"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTcpConnection.cs",
+      "sha256": "b56c2edb749193aec9e731d6f722d901ef4e6ef5847bb7effe0f89f89a8174e5"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTcpServer.cs",
+      "sha256": "00fac654682ef6b50562cc2e55e94e20d3ee1804d9d141cead9c03519b8d6c0e"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTerminalClose.cs",
+      "sha256": "31a98c7853591931ddc9f27d10f424b83ac73ecf0aa41be03c71e2174f712bf5"
+    }
+  ],
+  "execution_archive_members": 60,
+  "inv01_manifest_verified": "11/11",
+  "ts1_owner_manifest_verified": "5/5",
+  "inv02_patch_blob_sha256": "e97f640b0b3ff84326b935820cfdb77e0a639c040ea6b5f7dc64e979b9c3da79",
+  "inv02_verified_payloads": "13/13",
+  "inv03_replayed_source_bytes": [
+    {
+      "path": "src/BoltSharp/Sessions/BoltConnectionSession.cs",
+      "sha256": "6db79fe5feb17dd9ef381ae64186fd769f1a9688bea70a81808c964538328e4a"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTcpConnection.cs",
+      "sha256": "b88b814f54717de4992c44b53296de90ed52fdd5b8ba88e6e01c3a24a6bc4971"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTcpServer.cs",
+      "sha256": "00fac654682ef6b50562cc2e55e94e20d3ee1804d9d141cead9c03519b8d6c0e"
+    },
+    {
+      "path": "src/BoltSharp/Transport/BoltTerminalClose.cs",
+      "sha256": "e424046505055cdbe2526e4d698587ebb5aef3df57c93bacba867a8ee1ccd714"
+    },
+    {
+      "path": "src/BoltSharp/Transport/Inv03Probe.cs",
+      "sha256": "7428ebf195411a8d854c1fc194acd71c57ff40d1d3b5ac7673a755fea07b2159"
+    }
+  ],
+  "inv03_execution_archive_members": 16,
+  "qualifying_parent": "44093f65df2b49de380e4debd64b9606f9e11733",
+  "inv03_manifest_verified": "12/12",
+  "replay_patch_sha256": {
+    "prototype.patch": "e97f640b0b3ff84326b935820cfdb77e0a639c040ea6b5f7dc64e979b9c3da79",
+    "refinement.patch": "30061d42f8891e4f804e570105f556995e4f82a7cd542334284fce23a0dd57b5",
+    "real-write-observation.patch": "f728d3125e225fad207e4cbe1e326fe043ec57f894122956ed30f6a31678c3a4"
+  },
+  "gate_isolated_source_sha256": {
+    "src/BoltSharp/Sessions/BoltConnectionSession.cs": "6db79fe5feb17dd9ef381ae64186fd769f1a9688bea70a81808c964538328e4a",
+    "src/BoltSharp/Transport/BoltTcpConnection.cs": "0de5fb6b4d50c4802c0fcdab069c04f430c0792d0a97e02cb95957ff10c1423a",
+    "src/BoltSharp/Transport/BoltTcpServer.cs": "00fac654682ef6b50562cc2e55e94e20d3ee1804d9d141cead9c03519b8d6c0e",
+    "src/BoltSharp/Transport/BoltTerminalClose.cs": "e424046505055cdbe2526e4d698587ebb5aef3df57c93bacba867a8ee1ccd714",
+    "src/BoltSharp/Transport/Inv03Probe.cs": "7428ebf195411a8d854c1fc194acd71c57ff40d1d3b5ac7673a755fea07b2159"
+  },
+  "wsL2_adapter_sha256": "05311b8e76dd46754e0475e649f99c84d90d51e495ec7d6744a8781e82d74e6b",
+  "wsL2_listener_source_sha256": "c935031985cd921eb9e56857ca6ffe8b838c4f4e33747e96b853d9c69ebb29c7",
+  "predeclared_configuration_sha256": "a38a5d1c76bbfc035aec52967e5afc5afe69c3f4913b625b8cdc54319a4b351e",
+  "harness_sha256": "2db7ceca650fba4b1ea7adcc1dace4cb11d85b79d1d9c74cb0ad9bfcadfdd90d",
+  "execution_record_members": 5
+}

@@ -1,0 +1,1279 @@
+[
+  {
+    "report": "control-NC-03.trx",
+    "total": 5,
+    "passed": 3,
+    "failed": 2,
+    "cases": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"reset\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "reset",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": false,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "drain",
+              "Outcome": "transport-error",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 13.8518
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "tls-shutdown-complete",
+              "drain",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"timeout\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "timeout",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "phase-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 93.9029
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"terminal-write\", stimulus: \"timeout\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "terminal-write",
+            "stimulus": "timeout",
+            "cancellableArgument": true,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": null,
+            "finish": {
+              "Phase": "write",
+              "Outcome": "total-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 319.5795
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"terminal-write\", stimulus: \"listener\")",
+        "outcome": "Failed",
+        "observations": [
+          {
+            "phase": "terminal-write",
+            "stimulus": "listener",
+            "cancellableArgument": true,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": null,
+            "finish": {
+              "Phase": "write",
+              "Outcome": "server-cancelled",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 323.5369
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"listener\")",
+        "outcome": "Failed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "listener",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "server-cancelled",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 94.8056
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      }
+    ],
+    "failures": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"terminal-write\", stimulus: \"listener\")",
+        "message": "Assert.InRange() Failure: Value not in range\r\nRange:  (0 - 150)\r\nActual: 323.5369"
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"listener\")",
+        "message": "Assert.InRange() Failure: Value not in range\r\nRange:  (0 - 65)\r\nActual: 94.805599999999998"
+      }
+    ]
+  },
+  {
+    "report": "control-NC-04.trx",
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "cases": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.DeadlineSharedAcrossEncryptedPhases",
+        "outcome": "Failed",
+        "observations": [
+          {
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "phase-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 364.9431
+            },
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      }
+    ],
+    "failures": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.DeadlineSharedAcrossEncryptedPhases",
+        "message": "Assert.Equal() Failure: Strings differ\r\n           \u2193 (pos 0)\r\nExpected: \"total-deadline\"\r\nActual:   \"phase-deadline\"\r\n           \u2191 (pos 0)"
+      }
+    ]
+  },
+  {
+    "report": "control-NC-05.trx",
+    "total": 2,
+    "passed": 0,
+    "failed": 2,
+    "cases": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: True)",
+        "outcome": "Failed",
+        "observations": [
+          {
+            "tls": true,
+            "waves": [
+              1,
+              2,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "total": 65,
+            "peakActive": 6,
+            "peakOpen": 6,
+            "peakThreads": 16,
+            "peakPendingWork": 4,
+            "minAvailableWorkers": 32756,
+            "peakConcurrentDrains": 3,
+            "allocatedBytes": 3715992,
+            "heapStart": 9851104,
+            "maxHeap": 13461680,
+            "heapAfter": 13576200,
+            "cpuMs": 656.25,
+            "wallMs": 1277.407,
+            "stopMs": 0.6155,
+            "p95TerminalMs": 87.9817,
+            "maxTerminalMs": 88.7338,
+            "outcomes": {
+              "phase-deadline": 33,
+              "capacity": 30,
+              "server-cancelled": 2
+            },
+            "capturedHandles": 65,
+            "retained": 0,
+            "completed": 65,
+            "failed": 0
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: False)",
+        "outcome": "Failed",
+        "observations": [
+          {
+            "tls": false,
+            "waves": [
+              1,
+              2,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "total": 65,
+            "peakActive": 6,
+            "peakOpen": 6,
+            "peakThreads": 13,
+            "peakPendingWork": 2,
+            "minAvailableWorkers": 32758,
+            "peakConcurrentDrains": 3,
+            "allocatedBytes": 2990288,
+            "heapStart": 6261496,
+            "maxHeap": 9228216,
+            "heapAfter": 9301856,
+            "cpuMs": 296.875,
+            "wallMs": 1228.0058,
+            "stopMs": 2.5589,
+            "p95TerminalMs": 86.343,
+            "maxTerminalMs": 88.6109,
+            "outcomes": {
+              "phase-deadline": 33,
+              "capacity": 30,
+              "server-cancelled": 2
+            },
+            "capturedHandles": 65,
+            "retained": 0,
+            "completed": 65,
+            "failed": 0
+          }
+        ]
+      }
+    ],
+    "failures": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: True)",
+        "message": "Assert.Equal() Failure: Values differ\r\nExpected: 2\r\nActual:   3"
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: False)",
+        "message": "Assert.Equal() Failure: Values differ\r\nExpected: 2\r\nActual:   3"
+      }
+    ]
+  },
+  {
+    "report": "windows-driver.trx",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "cases": [
+      {
+        "test": "BoltSharp.DriverInteropTests.Scenarios.Inv02DriverTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: True)",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "tls": true,
+            "Code": "Neo.ClientError.Request.Invalid",
+            "GqlStatus": "08N06",
+            "IsRetriable": false,
+            "type": "ProtocolException",
+            "attempts": 1,
+            "refused": "conn-0001",
+            "reusedReplacement": "conn-0002",
+            "counters": {
+              "Accepted": 2,
+              "RejectedForCapacity": 0,
+              "Active": 0,
+              "Completed": 2,
+              "Failed": 0,
+              "TlsHandshakeFailures": 0,
+              "BoltHandshakeFailures": 0,
+              "MessagesProcessed": 13
+            }
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.DriverInteropTests.Scenarios.Inv02DriverTests.RefusalFollowedByPooledRecoveryAndShutdown(tls: False)",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "tls": false,
+            "Code": "Neo.ClientError.Request.Invalid",
+            "GqlStatus": "08N06",
+            "IsRetriable": false,
+            "type": "ProtocolException",
+            "attempts": 1,
+            "refused": "conn-0001",
+            "reusedReplacement": "conn-0002",
+            "counters": {
+              "Accepted": 2,
+              "RejectedForCapacity": 0,
+              "Active": 0,
+              "Completed": 2,
+              "Failed": 0,
+              "TlsHandshakeFailures": 0,
+              "BoltHandshakeFailures": 0,
+              "MessagesProcessed": 13
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "report": "windows-gates.trx",
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "cases": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"reset\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "reset",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": false,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "drain",
+              "Outcome": "transport-error",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 19.87
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "tls-shutdown-complete",
+              "drain",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"terminal-write\", stimulus: \"timeout\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "terminal-write",
+            "stimulus": "timeout",
+            "cancellableArgument": true,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": null,
+            "finish": {
+              "Phase": "write",
+              "Outcome": "total-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 306.5977
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"listener\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "listener",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "server-cancelled",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 5.1684
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: False)",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "tls": false,
+            "waves": [
+              1,
+              2,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "total": 65,
+            "peakActive": 6,
+            "peakOpen": 6,
+            "peakThreads": 11,
+            "peakPendingWork": 3,
+            "minAvailableWorkers": 32758,
+            "peakConcurrentDrains": 2,
+            "allocatedBytes": 2274272,
+            "heapStart": 8963512,
+            "maxHeap": 11194648,
+            "heapAfter": 11284704,
+            "cpuMs": 468.75,
+            "wallMs": 1175.951,
+            "stopMs": 0.2165,
+            "p95TerminalMs": 86.5184,
+            "maxTerminalMs": 86.742,
+            "outcomes": {
+              "phase-deadline": 23,
+              "capacity": 40,
+              "server-cancelled": 2
+            },
+            "capturedHandles": 65,
+            "retained": 0,
+            "completed": 65,
+            "failed": 0
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"timeout\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "timeout",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "phase-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 84.2583
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.TypedDisabledLingerReadback",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "platform": "Microsoft Windows NT 10.0.26200.0",
+            "runtime": "8.0.31",
+            "untypedResult": {
+              "success": true,
+              "state": {
+                "Enabled": false,
+                "LingerTime": 0
+              }
+            },
+            "listener": {
+              "Enabled": false,
+              "LingerTime": 0
+            },
+            "accepted": {
+              "Enabled": false,
+              "LingerTime": 0
+            }
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ObserveRealTlsWritePressure",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "precedingBytes": 262144,
+            "active": 0,
+            "requests": 4,
+            "messages": 3,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request"
+            ],
+            "pendingAtSample": [],
+            "finish": []
+          },
+          {
+            "precedingBytes": 1048576,
+            "active": 0,
+            "requests": 4,
+            "messages": 3,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request"
+            ],
+            "pendingAtSample": [],
+            "finish": []
+          },
+          {
+            "precedingBytes": 2097152,
+            "active": 0,
+            "requests": 4,
+            "messages": 3,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request"
+            ],
+            "pendingAtSample": [],
+            "finish": []
+          },
+          {
+            "precedingBytes": 4194304,
+            "active": 0,
+            "requests": 4,
+            "messages": 3,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request"
+            ],
+            "pendingAtSample": [],
+            "finish": []
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.OraclesDetectParserEntryAndRetainedSocket",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "parserControlDetected": true,
+            "retentionControlDetected": true,
+            "extraResponse": false
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"terminal-write\", stimulus: \"listener\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "terminal-write",
+            "stimulus": "listener",
+            "cancellableArgument": true,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": null,
+            "finish": {
+              "Phase": "write",
+              "Outcome": "server-cancelled",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 10.7287
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.DeadlineSharedAcrossEncryptedPhases",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "total-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 324.474
+            },
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: True)",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "tls": true,
+            "waves": [
+              1,
+              2,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "total": 65,
+            "peakActive": 6,
+            "peakOpen": 6,
+            "peakThreads": 14,
+            "peakPendingWork": 2,
+            "minAvailableWorkers": 32755,
+            "peakConcurrentDrains": 2,
+            "allocatedBytes": 3371464,
+            "heapStart": 11532592,
+            "maxHeap": 14830160,
+            "heapAfter": 14927552,
+            "cpuMs": 687.5,
+            "wallMs": 1348.592,
+            "stopMs": 0.7811,
+            "p95TerminalMs": 87.4122,
+            "maxTerminalMs": 95.9622,
+            "outcomes": {
+              "phase-deadline": 23,
+              "capacity": 40,
+              "server-cancelled": 2
+            },
+            "capturedHandles": 65,
+            "retained": 0,
+            "completed": 65,
+            "failed": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "report": "windows-regression.trx",
+    "total": 29,
+    "passed": 29,
+    "failed": 0
+  },
+  {
+    "report": "wsl-adapted-gates.trx",
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "cases": [
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"timeout\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "timeout",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "phase-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 80.166
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"terminal-write\", stimulus: \"timeout\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "terminal-write",
+            "stimulus": "timeout",
+            "cancellableArgument": true,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": null,
+            "finish": {
+              "Phase": "write",
+              "Outcome": "total-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 302.7639
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: True)",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "tls": true,
+            "waves": [
+              1,
+              2,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "total": 65,
+            "peakActive": 6,
+            "peakOpen": 6,
+            "peakThreads": 14,
+            "peakPendingWork": 2,
+            "minAvailableWorkers": 32759,
+            "peakConcurrentDrains": 2,
+            "allocatedBytes": 3470392,
+            "heapStart": 12027192,
+            "maxHeap": 15407072,
+            "heapAfter": 7787632,
+            "cpuMs": 809.825,
+            "wallMs": 1008.7346,
+            "stopMs": 0.2194,
+            "p95TerminalMs": 77.0215,
+            "maxTerminalMs": 77.3184,
+            "outcomes": {
+              "phase-deadline": 23,
+              "capacity": 40,
+              "server-cancelled": 2
+            },
+            "capturedHandles": 65,
+            "retained": 0,
+            "completed": 65,
+            "failed": 0
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ObserveRealTlsWritePressure",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "precedingBytes": 262144,
+            "active": 0,
+            "requests": 5,
+            "messages": 5,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "tls-shutdown-complete",
+              "drain",
+              "permit-release",
+              "finished"
+            ],
+            "pendingAtSample": [],
+            "finish": [
+              {
+                "Phase": "drain",
+                "Outcome": "phase-deadline",
+                "Bytes": 0,
+                "WireBytes": 0,
+                "ElapsedMs": 71.7751
+              }
+            ]
+          },
+          {
+            "precedingBytes": 1048576,
+            "active": 0,
+            "requests": 5,
+            "messages": 5,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "tls-shutdown-complete",
+              "drain",
+              "permit-release",
+              "finished"
+            ],
+            "pendingAtSample": [],
+            "finish": [
+              {
+                "Phase": "drain",
+                "Outcome": "phase-deadline",
+                "Bytes": 0,
+                "WireBytes": 0,
+                "ElapsedMs": 78.3656
+              }
+            ]
+          },
+          {
+            "precedingBytes": 2097152,
+            "active": 0,
+            "requests": 4,
+            "messages": 3,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request"
+            ],
+            "pendingAtSample": [],
+            "finish": []
+          },
+          {
+            "precedingBytes": 4194304,
+            "active": 0,
+            "requests": 4,
+            "messages": 3,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "request"
+            ],
+            "pendingAtSample": [],
+            "finish": []
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"terminal-write\", stimulus: \"listener\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "terminal-write",
+            "stimulus": "listener",
+            "cancellableArgument": true,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": null,
+            "finish": {
+              "Phase": "write",
+              "Outcome": "server-cancelled",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 5.6224
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.DeadlineSharedAcrossEncryptedPhases",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "total-deadline",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 304.0188
+            },
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.ResourceCampaign(tls: False)",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "tls": false,
+            "waves": [
+              1,
+              2,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "total": 65,
+            "peakActive": 2,
+            "peakOpen": 2,
+            "peakThreads": 9,
+            "peakPendingWork": 3,
+            "minAvailableWorkers": 32762,
+            "peakConcurrentDrains": 2,
+            "allocatedBytes": 2271840,
+            "heapStart": 9372224,
+            "maxHeap": 11593864,
+            "heapAfter": 11675552,
+            "cpuMs": 449.771,
+            "wallMs": 975.1164,
+            "stopMs": 0.2789,
+            "p95TerminalMs": 75.2394,
+            "maxTerminalMs": 75.435,
+            "outcomes": {
+              "phase-deadline": 23,
+              "capacity": 40,
+              "server-cancelled": 2
+            },
+            "capturedHandles": 65,
+            "retained": 0,
+            "completed": 65,
+            "failed": 0
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"reset\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "reset",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": false,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "transport-error",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 21.6076
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.TypedDisabledLingerReadback",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "platform": "Unix 6.6.114.1",
+            "runtime": "10.0.14",
+            "untypedResult": {
+              "success": false,
+              "native": 22,
+              "code": "InvalidArgument"
+            },
+            "listener": {
+              "Enabled": false,
+              "LingerTime": 0
+            },
+            "accepted": {
+              "Enabled": false,
+              "LingerTime": 0
+            }
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.PendingEncryptedOperation(phase: \"close-notify\", stimulus: \"listener\")",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "phase": "close-notify",
+            "stimulus": "listener",
+            "cancellableArgument": false,
+            "gateExited": true,
+            "sawOwnedSocketClose": true,
+            "received": "B17FA48A67716C5F7374617475738530384E30368A6E656F346A5F636F6465D01F4E656F2E436C69656E744572726F722E526571756573742E496E76616C69648B6465736372697074696F6ED0434578706C69636974207472616E73616374696F6E7320616E6420726F7574696E6720617265206E6F7420737570706F727465642062792074686973207365727665722ED011646961676E6F737469635F7265636F7264A0",
+            "finish": {
+              "Phase": "shutdown",
+              "Outcome": "server-cancelled",
+              "Bytes": 0,
+              "WireBytes": 0,
+              "ElapsedMs": 2.7778
+            },
+            "requests": 3,
+            "active": 0,
+            "released": true,
+            "phases": [
+              "socket",
+              "request",
+              "request",
+              "request",
+              "terminal-result",
+              "write-enter",
+              "write-complete",
+              "permit",
+              "tls-shutdown-enter",
+              "permit-release",
+              "finished"
+            ]
+          }
+        ]
+      },
+      {
+        "test": "BoltSharp.Tests.Transport.Inv03QualificationTests.OraclesDetectParserEntryAndRetainedSocket",
+        "outcome": "Passed",
+        "observations": [
+          {
+            "parserControlDetected": true,
+            "retentionControlDetected": true,
+            "extraResponse": false
+          }
+        ]
+      }
+    ]
+  }
+]

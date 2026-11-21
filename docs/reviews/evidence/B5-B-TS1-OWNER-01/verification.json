@@ -1,0 +1,87 @@
+{
+  "ancestry_newest_first": [
+    {
+      "commit": "b196db8f0bc612b7f1ef3f78412480239c3f04db",
+      "tree": "d7815b8ad338610e8343aefa6e948359b52b8fc2"
+    },
+    {
+      "commit": "d8c28a9bed0af6305936b2b6e427ca1365bed757",
+      "tree": "9e7f07ca2664e44230b10b4b92c9f435fd58fdcd"
+    },
+    {
+      "commit": "2e0b9da0b8920a2f6cdd7de9fa968891d779090e",
+      "tree": "3fbdbebf21aacd545fd3384c289c649e8c7ab75b"
+    },
+    {
+      "commit": "17886a5e7f709ef1e01624e49c9d90b50808566c",
+      "tree": "e7d3be41483ab7aa22b51b27c619d7f211d8520b"
+    },
+    {
+      "commit": "79f7965a0e8e351baf2dd388218290804c31389a",
+      "tree": "80bc7b4f3ec18341251ea4e04195d051489dacb5"
+    }
+  ],
+  "scope": {
+    "implementation_modified_tests": [
+      "tests/BoltSharp.Tests/Transport/MultiClientTests.cs",
+      "tests/BoltSharp.Tests/Transport/TransportTestSupport.cs",
+      "tests/BoltSharp.Tests/Transport/UnsupportedCommandRefusalTests.cs"
+    ],
+    "producer_documentation_additions": 10,
+    "q1_documentation_additions": 26
+  },
+  "q1_blob_manifest_matches": 25,
+  "producer_raw_worktree_matches": 12,
+  "producer_blob_matches": 11,
+  "producer_crlf_reconstruction": {
+    "path": "tests/BoltSharp.Tests/Transport/TransportTestSupport.cs",
+    "sha256": "3849b1e3db015daa1ac98992b2c015e20d5aceb5d0f25eced419b312cbefd4a8",
+    "bytes": 20066,
+    "source_blob_sha256": "e26ea718d47dc7a8eebbddf5c3799b79877b52d08ea19dd3594a82e8d9496bd0",
+    "source_blob_bytes": 19563
+  },
+  "historical_sha256_matches": {
+    "canonical_worktree": 619,
+    "excluded_worktree": 31,
+    "excluded_blob": 5
+  },
+  "historical_references_to_ts1_test_files": 0,
+  "protected_owner_decisions": {
+    "docs/decisions/B3-A-OWNER-01-owner-acceptance.md": "ab84ffa973217612a1cc7033936ce23dcefe273a",
+    "docs/decisions/B3-B-OWNER-01-owner-acceptance.md": "211a5d56a296e29ff4f5faad4abe22c2a0bec2a0",
+    "docs/decisions/B3-C-OWNER-01-owner-acceptance.md": "323303bd0eaa79e00458689af99e60fbf27a0836",
+    "docs/decisions/B5-A-OWNER-01-owner-acceptance.md": "385c820e2e046694fbfa3735a22034545d8068c0",
+    "docs/decisions/B5-B-F01-R1-OWNER-01-owner-closure.md": "67f2846ea24e42616f5fb51cd46973fcc4725606",
+    "docs/decisions/B5-B-OWNER-01-owner-acceptance.md": "7d23b6bb50c66f134bc33f8ba89cb7d09813c97e"
+  },
+  "q1_campaign_executions": {
+    "A": 1000,
+    "B": 600,
+    "C": 36810,
+    "D": 123,
+    "E": 420
+  },
+  "q1_campaign_total": 38953,
+  "q1_campaign_failures_skips_timeouts": [
+    0,
+    0,
+    0
+  ],
+  "negative_controls_detected": 6,
+  "build_and_format": "passed",
+  "preflight": {
+    "branch": "main",
+    "behind": 0,
+    "ahead": 4,
+    "clean": true,
+    "worktrees": 1,
+    "stashes": 0
+  },
+  "q1_campaign_processes": {
+    "A": 100,
+    "B": 100,
+    "C": 30,
+    "D": 3,
+    "E": 5
+  }
+}

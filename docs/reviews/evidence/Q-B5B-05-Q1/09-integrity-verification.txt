@@ -1,0 +1,106 @@
+Q-B5B-05-Q1 evidence integrity transcripts
+
+Producer package verified at revision 8d762dd50502260e32f569f42f9cbfa92e37b862 over Git blob payloads (checkout independent).
+PYTHONDONTWRITEBYTECODE=1 set so the producer importer leaves no bytecode in the repository.
+
+=== 1. Producer self-verification ===
+
+============================================================================
+Q-B5B-05-PROBE-01 evidence verification
+revision    : 8d762dd50502260e32f569f42f9cbfa92e37b862
+disposition: PRODUCTION LIMITATION IDENTIFIED - OWNER DECISION REQUIRED
+============================================================================
+   PASS  manifest present at 8d762dd50502260e32f569f42f9cbfa92e37b862
+
+1. Commit structure and scope
+   PASS  sole parent is the recorded base
+   PASS  commit scope limited to the producer report, probe project and evidence package
+   PASS  commit scope is additions only
+   PASS  no production or existing-test file changed
+
+2. Manifest hashes, byte counts and Git blob IDs
+   PASS  51 package files match the manifest
+   PASS  manifest file count is consistent
+   PASS  manifest byte total is consistent
+
+3. Commission inventory
+   PASS  producer report present
+   PASS  probe project present
+   PASS  no build artifact tracked in the probe project
+   PASS  the probe project tracks 9 source files
+
+4. Campaign envelopes
+   PASS  q5b05-core-windows.trx
+   PASS  q5b05-core-wsl2.trx
+   PASS  q5b05-driver-interop-windows.trx
+   PASS  q5b05-driver-interop-wsl2.trx
+   PASS  q5b05-probe-wsl2.trx
+   PASS  q5b05-probe.trx
+
+5. Per-platform correlated traces
+   PASS  all 26 per-platform trace artifacts present
+   PASS  every trace carries its required markers
+
+6. Official-driver observations
+   PASS  every driver observation carries its required markers
+
+7. Credential and LOGON redaction
+   PASS  no credential or unredacted LOGON payload in 32 checked files
+
+8. Recorded audit
+   PASS  q5b05-evidence.json present
+   PASS  recorded audit matches the recomputed audit: trxCounters
+   PASS  recorded audit matches the recomputed audit: platformArtifacts
+   PASS  recorded audit matches the recomputed audit: traceMarkers
+   PASS  recorded audit matches the recomputed audit: driverMarkers
+   PASS  recorded audit matches the recomputed audit: redaction
+   PASS  recorded audit matches the recomputed audit: probeSource
+
+9. Live repository invariants
+   PASS  branch is main
+   PASS  working tree clean
+   PASS  one worktree
+   PASS  zero stashes
+   PASS  zero commits behind origin/main
+      22 ahead / 0 behind origin/main
+
+============================================================================
+VERIFICATION PASSED
+============================================================================
+
+=== 2. Reviewer-independent verification (own tooling: commit scope, manifest over blobs, TRX re-parse, redaction, checkout round-trip) ===
+
+==============================================================================
+Q-B5B-05-Q1 INDEPENDENT verification of D:\projects\bolt-sharp at 8d762dd50502260e32f569f42f9cbfa92e37b862
+==============================================================================
+  PASS  commit is additions-only
+  PASS  54 added files, all inside producer scope
+  PASS  no production/test changes
+  PASS  all 51 manifest entries match recomputed blob SHA-256 + bytes + blob ID
+  PASS  commit minus manifest == {manifest.json, verify-evidence.py, q5b05-evidence.json}
+  PASS  six TRX envelopes in manifest
+  PASS  26 per-platform trace artifacts in manifest
+  PASS  TRX q5b05-core-windows.trx counters total/passed/failed/notRunnable = (1257, 1257, 0, 0)
+  PASS  TRX q5b05-core-wsl2.trx counters total/passed/failed/notRunnable = (1257, 1257, 0, 0)
+  PASS  TRX q5b05-driver-interop-windows.trx counters total/passed/failed/notRunnable = (43, 43, 0, 0)
+  PASS  TRX q5b05-driver-interop-wsl2.trx counters total/passed/failed/notRunnable = (43, 43, 0, 0)
+  PASS  TRX q5b05-probe-wsl2.trx counters total/passed/failed/notRunnable = (13, 13, 0, 0)
+  PASS  TRX q5b05-probe.trx counters total/passed/failed/notRunnable = (13, 13, 0, 0)
+  PASS  no credential/LOGON payload markers (independent scan)
+  PASS  all working-tree files re-hash to committed blob IDs under repo filters
+  INFO  27 of 51 working-tree files carry inherited CRLF/line-ending conversion (clean-filter round-trip stable)
+==============================================================================
+INDEPENDENT VERIFICATION PASSED
+==============================================================================
+
+=== 3. Reviewer-independent per-artifact semantic verification (26 traces: hex decoded, server-side sequence shapes, ordering; both platforms) ===
+
+independently verified 26 per-platform artifacts (186 checks)
+ALL 26 ARTIFACTS PASS INDEPENDENT SEMANTIC VERIFICATION (both platforms)
+
+=== 4. This Q1 package ===
+
+The Q1 package itself is verified by its own committed verifier:
+python docs/reviews/evidence/Q-B5B-05-Q1/verify-evidence.py
+run at the qualification commit (checks additions-only scope, the manifest of every package
+file over Git blobs, the six reviewer TRX counters and both platform result files).

@@ -1,0 +1,41 @@
+{
+  "mode": "r1",
+  "filter": "backpressure",
+  "platform": "Microsoft Windows NT 10.0.26200.0",
+  "runtime": "8.0.31",
+  "timestampUtc": "2026-11-17T14:55:40.90064+00:00",
+  "results": [
+    {
+      "Name": "Backpressure_WriteSpecificTimeout",
+      "Passed": false,
+      "DurationMs": 282.319,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022write-timeout\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Backpressure_AbsoluteDeadline",
+      "Passed": false,
+      "DurationMs": 198.3382,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022deadline\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Backpressure_OwnerCancellation",
+      "Passed": false,
+      "DurationMs": 198.5618,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022owner\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    },
+    {
+      "Name": "Backpressure_ListenerCancellation",
+      "Passed": false,
+      "DurationMs": 181.5684,
+      "Details": {},
+      "Error": "InvalidOperationException: no profile produced a persistent terminal write: [{\u0022profile\u0022:{\u0022Size\u0022:4194304,\u0022Receive\u0022:4096,\u0022Send\u0022:0},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022},{\u0022profile\u0022:{\u0022Size\u0022:524288,\u0022Receive\u0022:4096,\u0022Send\u0022:2048},\u0022stimulus\u0022:\u0022listener\u0022,\u0022decisive\u0022:false,\u0022outcome\u0022:\u0022no-terminal-write-pending\u0022}]",
+      "Stack": "   at Q2Probe.Program.PendingWriteScenario(String stimulus) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 556\r\n   at Q2Probe.Program.RunAsync(String name, Func\u00601 body) in C:\\Windows\\Temp\\opencode\\q2\\probe\\Program.cs:line 120"
+    }
+  ]
+}

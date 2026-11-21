@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e5468836-0448-419e-a9ce-519ad97b5e73" name="Laszlos@LAPTOP-KBD8D8JG 2026-11-18 13:20:43" runUser="LAPTOP-KBD8D8JG\Laszlos" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-18T13:20:43.7345830+08:00" queuing="2026-11-18T13:20:43.7345834+08:00" start="2026-11-18T13:20:42.9290591+08:00" finish="2026-11-18T13:20:43.7386905+08:00" />
+  <TestSettings name="default" id="28daf82c-cb55-41a5-a43f-6e76358657f0">
+    <Deployment runDeploymentRoot="Laszlos_LAPTOP-KBD8D8JG_2026-11-18_13_20_43" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="7b6bf6a1-ecfa-4ba2-af0f-da8e5b4a95ec" testId="8615a6f0-8712-96e8-ab8c-4b5b4394a437" testName="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit" computerName="LAPTOP-KBD8D8JG" duration="00:00:00.1215187" startTime="2026-11-18T13:20:43.6556937+08:00" endTime="2026-11-18T13:20:43.6557050+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7b6bf6a1-ecfa-4ba2-af0f-da8e5b4a95ec">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "listener-shutdown"&#xD;
+Actual:   "drain-deadline"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit() in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 203&#xD;
+   at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit() in C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs:line 208&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit" storage="c:\windows\temp\opencode\q2w\r1\tests\boltsharp.tests\bin\debug\net8.0\boltsharp.tests.dll" id="8615a6f0-8712-96e8-ab8c-4b5b4394a437">
+      <Execution id="7b6bf6a1-ecfa-4ba2-af0f-da8e5b4a95ec" />
+      <TestMethod codeBase="C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="BoltSharp.Tests.Transport.PlaintextTerminalCloseTests" name="ListenerStopJoinsActualHandleAndReturnsPermit" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="8615a6f0-8712-96e8-ab8c-4b5b4394a437" executionId="7b6bf6a1-ecfa-4ba2-af0f-da8e5b4a95ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.31)&#xD;
+[xUnit.net 00:00:00.16]   Discovering: BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.27]   Discovered:  BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.27]   Starting:    BoltSharp.Tests&#xD;
+[xUnit.net 00:00:00.42]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.42]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.42]       Expected: "listener-shutdown"&#xD;
+[xUnit.net 00:00:00.42]       Actual:   "drain-deadline"&#xD;
+[xUnit.net 00:00:00.42]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.43]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.43]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(203,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit()&#xD;
+[xUnit.net 00:00:00.43]         C:\Windows\Temp\opencode\q2w\r1\tests\BoltSharp.Tests\Transport\PlaintextTerminalCloseTests.cs(208,0): at BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit()&#xD;
+[xUnit.net 00:00:00.43]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.43]   Finished:    BoltSharp.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-KBD8D8JG" outcome="Error" timestamp="2026-11-18T13:20:43.6547220+08:00">
+        <Text>[xUnit.net 00:00:00.42]     BoltSharp.Tests.Transport.PlaintextTerminalCloseTests.ListenerStopJoinsActualHandleAndReturnsPermit [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

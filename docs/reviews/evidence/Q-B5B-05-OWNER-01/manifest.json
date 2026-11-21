@@ -1,0 +1,40 @@
+{
+  "baseCommit": "7704fe6a9400c24217cf327e3b5910669c2f7c70",
+  "commission": "Q-B5B-05-OWNER-01",
+  "disposition": "Q-B5B-05 - ACCEPTED WITH QUALIFICATIONS - CLOSED",
+  "evidencePackage": "docs/reviews/evidence/Q-B5B-05-OWNER-01",
+  "fileCount": 5,
+  "files": [
+    {
+      "gitBlob": "a894dd4e7442d40dc73a721eda6f704f264ed6b7",
+      "path": "docs/decisions/Q-B5B-05-OWNER-01-owner-acceptance.md",
+      "sha256": "60d57832970cda02fb7b90e89fcee917894708c823b0f67283dc1de7620862fc",
+      "bytes": 9936
+    },
+    {
+      "gitBlob": "a894dd4e7442d40dc73a721eda6f704f264ed6b7",
+      "path": "docs/decisions/Q-B5B-05-OWNER-01-owner-acceptance.md",
+      "sha256": "60d57832970cda02fb7b90e89fcee917894708c823b0f67283dc1de7620862fc",
+      "bytes": 9936
+    },
+    {
+      "gitBlob": "ecc22234dff5f5e3f9280d415ccd29dbf7ec7314",
+      "path": "docs/reviews/evidence/Q-B5B-05-OWNER-01/README.md",
+      "sha256": "1e71a81a5e5907137e058db7fd906d80678424e1da0c2dee908ec1179a428db6",
+      "bytes": 1972
+    },
+    {
+      "gitBlob": "e57b333c3190940a0530e1ace94324933763e7f4",
+      "path": "docs/reviews/evidence/Q-B5B-05-OWNER-01/qualification-ledger.md",
+      "sha256": "c491c67be4ebfa6533515cbef942ae36d74217b1a7158066a3d21e0818262793",
+      "bytes": 2202
+    },
+    {
+      "gitBlob": "31f0e9d57530def91ff18f28718260d77b3fec34",
+      "path": "docs/reviews/evidence/Q-B5B-05-OWNER-01/verification.json",
+      "sha256": "dcf484be78a846d0850ba600b8316d6af15932e7656c511d3b86cd7ba3bcdf04",
+      "bytes": 1784
+    }
+  ],
+  "totalBytes": 25830
+}

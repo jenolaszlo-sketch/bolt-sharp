@@ -1,0 +1,4 @@
+run	utc	exit	summary
+1	2026-11-14T14:34:31.2331438Z	0	Passed!  - Failed:     0, Passed:    41, Skipped:     0, Total:    41, Duration: 2 m 1 s - BoltSharp.DriverInteropTests.dll (net8.0)
+2	2026-11-14T14:36:35.4801293Z	0	Passed!  - Failed:     0, Passed:    41, Skipped:     0, Total:    41, Duration: 2 m - BoltSharp.DriverInteropTests.dll (net8.0)
+3	2026-11-14T14:38:37.5369677Z	0	Passed!  - Failed:     0, Passed:    41, Skipped:     0, Total:    41, Duration: 2 m 1 s - BoltSharp.DriverInteropTests.dll (net8.0)

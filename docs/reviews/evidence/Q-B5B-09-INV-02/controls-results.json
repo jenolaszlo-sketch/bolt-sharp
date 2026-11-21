@@ -1,0 +1,82 @@
+[
+  {
+    "control": "baseline",
+    "test": "DrainCapacityAndDisposal",
+    "exit": 0,
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  },
+  {
+    "control": "missing-response",
+    "test": "Matrix",
+    "exit": 1,
+    "total": 28,
+    "passed": 4,
+    "failed": 24
+  },
+  {
+    "control": "wrong-response",
+    "test": "Matrix",
+    "exit": 1,
+    "total": 28,
+    "passed": 10,
+    "failed": 18
+  },
+  {
+    "control": "additional-response",
+    "test": "Matrix",
+    "exit": 1,
+    "total": 28,
+    "passed": 10,
+    "failed": 18
+  },
+  {
+    "control": "wrong-terminal-state",
+    "test": "Matrix",
+    "exit": 1,
+    "total": 28,
+    "passed": 4,
+    "failed": 24
+  },
+  {
+    "control": "deadline-overrun",
+    "test": "Matrix",
+    "exit": 1,
+    "total": 28,
+    "passed": 24,
+    "failed": 4
+  },
+  {
+    "control": "byte-overrun",
+    "test": "Matrix",
+    "exit": 1,
+    "total": 28,
+    "passed": 26,
+    "failed": 2
+  },
+  {
+    "control": "capacity-overrun",
+    "test": "DrainCapacityAndDisposal",
+    "exit": 1,
+    "total": 2,
+    "passed": 0,
+    "failed": 2
+  },
+  {
+    "control": "ignored-listener-cancellation",
+    "test": "Matrix",
+    "exit": 0,
+    "total": 28,
+    "passed": 28,
+    "failed": 0
+  },
+  {
+    "control": "accounting-leak",
+    "test": "DrainCapacityAndDisposal",
+    "exit": 1,
+    "total": 2,
+    "passed": 0,
+    "failed": 2
+  }
+]

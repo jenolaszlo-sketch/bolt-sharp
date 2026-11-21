@@ -1,0 +1,79 @@
+B5-B-TS1 - pre-change failure baseline and race characterization
+=================================================================
+
+Environment
+-----------
+OS                 : Microsoft Windows 11 Home Single Language 10.0.26200
+.NET SDK           : 10.0.401
+Test runtime       : Microsoft.NETCore.App 8.0.31
+PowerShell         : 5.1.26100.9711
+git                : 2.55.0.windows.3
+Logical CPUs       : 18
+Test project       : tests/BoltSharp.Tests (net8.0, xUnit 2.9.2)
+Baseline revision  : 17886a5e7f709ef1e01624e49c9d90b50808566c
+Baseline tree      : e7d3be41483ab7aa22b51b27c619d7f211d8520b
+Command form       : dotnet test tests\BoltSharp.Tests\BoltSharp.Tests.csproj -c Debug --no-build
+                     --nodeReuse:false --filter '<filter>'
+Each run below is a fresh test process.
+
+A. Pipelined terminal tests (unchanged code), 10 fresh processes
+----------------------------------------------------------------
+Filter : FullyQualifiedName~PipelinedUnsupportedCommand|FullyQualifiedName~PipelinedMalformedMessage
+Result : 7 failing executions / 10
+Failures: PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes
+          (runs 2, 3, 5, 6, 7, 8, 10)
+          PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes: 0
+
+Every failure had the same shape: IOException wrapping SocketException
+(SocketError.ConnectionReset / WSAECONNRESET) raised while the client read the in-flight
+terminal FAILURE, before any response bytes were decoded. This is the OS abortive close
+retained as OWNER-F01 / Q-B5B-09: the accepted terminal close happens while unread
+pipelined tail bytes remain in the server's receive buffer, and the resulting RST can
+discard response bytes the client application has not yet copied from the socket.
+
+No baseline failure was a wrong response, an unexpected message, a provider execution or a
+hang. The server-side contract was not implicated by these observations; the failing
+assertion was the client-visible read itself.
+
+Representative trace (run 2):
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+---- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.
+  Stack Trace:
+     at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+     at BoltSharp.Framing.BoltMessageReader.ReadPayload(Int32 length, IBufferWriter`1 destination)
+     at BoltSharp.Framing.BoltMessageReader.TryReadMessage(IBufferWriter`1 destination)
+     at BoltSharp.Framing.BoltMessageReader.ReadMessage()
+     at BoltSharp.Tests.Transport.TestBoltClient.ReadMessage()
+     at BoltSharp.Tests.Transport.TestBoltClient.ReadResponse()
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes()
+  Failed!  - Failed: 1, Passed: 1, Skipped: 0, Total: 2, Duration: 66 ms
+
+B. Multi-client counter test (unchanged code), 20 fresh isolated processes
+--------------------------------------------------------------------------
+Filter : FullyQualifiedName~FailureInOneClient_IsolatedFromOthers
+Result : 20 passed / 20
+
+The owner closure recorded the original observation: 1 failing execution / 33 full-suite
+runs, Expected 1, Actual 0 at MultiClientTests.cs line 78 (see
+docs/decisions/B5-B-F01-R1-OWNER-01-owner-closure.md section 8.3). The race is load
+sensitive, which is why isolated repetition did not reproduce it. The ordering was
+therefore established from the production source rather than from repetition alone:
+
+1. The old test called bad.Dispose(), then Assert.Equal("closed", bad.WaitForClose(5_000)).
+   WaitForClose polls the client's own TcpClient with Socket.Poll; after local disposal the
+   poll throws ObjectDisposedException and WaitForClose maps every exception to "closed".
+   The assertion therefore observed the test's own disposal and provided no synchronization
+   with the server.
+2. The test then completed a PULL round trip on the good client and immediately asserted
+   server.Diagnostics.ConnectionsFailed == 1.
+3. ConnectionsFailed is incremented only in BoltTcpConnection.RunAsync's finally block,
+   after the handshake failure propagates and session cleanup completes, on the bad
+   connection's task. Nothing in the test awaited that task or its diagnostic event. Under
+   load the assertion could therefore run before the bad connection's failure accounting,
+   observing 0 while the connection had in fact failed.
+
+The correction (see the implementation report) awaits the server's ConnectionFailed and
+ConnectionCompleted diagnostic events, which are raised synchronously by the connection task
+after the counters are updated, and then asserts exact accounting.

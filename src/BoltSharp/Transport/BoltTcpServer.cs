@@ -30,6 +30,7 @@ public sealed class BoltTcpServer : IAsyncDisposable
     private readonly BoltTransportDiagnostics _diagnostics = new();
     private readonly ConcurrentDictionary<int, Task> _connectionTasks = new();
     private readonly CancellationTokenSource _shutdownCts = new();
+    private readonly BoltPlaintextTerminalClose? _plaintextClose;
 
     private TcpListener? _listener;
     private Task? _acceptLoopTask;
@@ -41,6 +42,7 @@ public sealed class BoltTcpServer : IAsyncDisposable
         Options = options;
         Options.Validate();
         Diagnostics = _diagnostics;
+        _plaintextClose = options.Tls is null ? new BoltPlaintextTerminalClose(options.MaxConnections) : null;
     }
 
     /// <summary>Creates and validates a server configuration.</summary>
@@ -76,7 +78,7 @@ public sealed class BoltTcpServer : IAsyncDisposable
         }
 
         _listener = new TcpListener(Options.BindAddress, Options.Port);
-        _listener.Server.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Linger, false);
+        _listener.Server.LingerState = new LingerOption(false, 0);
         _listener.Start(Options.Backlog);
         BoundEndPoint = (IPEndPoint)_listener.LocalEndpoint;
 
@@ -102,9 +104,10 @@ public sealed class BoltTcpServer : IAsyncDisposable
         _shutdownCts.Cancel();
         _listener?.Stop();
 
-        var tasks = _connectionTasks.Values.ToArray();
-        if (tasks.Length > 0)
+        if (_plaintextClose is null)
         {
+            // Keep the established TLS listener stop and accounting policy.
+            var tasks = _connectionTasks.Values.ToArray();
             try
             {
                 await Task.WhenAll(tasks).WaitAsync(Options.ShutdownTimeout, cancellationToken)
@@ -112,18 +115,42 @@ public sealed class BoltTcpServer : IAsyncDisposable
             }
             catch (TimeoutException)
             {
-                // Bounded shutdown: remaining connection tasks were signalled but did not
-                // complete in time; their sockets were aborted by their own cancellation.
             }
+
+            foreach (var task in tasks)
+                _connectionTasks.TryRemove(task.Id, out _);
+
+            _diagnostics.Report(BoltTransportEventKind.ListenerStopped, "listener",
+                $"activeRemaining={_connectionTasks.Count}");
+            return;
         }
 
-        foreach (var task in tasks)
+        // Quiesce plaintext admission before the owner snapshot. Both joins share the stop budget.
+        var started = System.Diagnostics.Stopwatch.GetTimestamp();
+        var timedOut = false;
+        try
         {
-            _connectionTasks.TryRemove(task.Id, out _);
+            if (_acceptLoopTask is not null)
+                await _acceptLoopTask.WaitAsync(Options.ShutdownTimeout, cancellationToken).ConfigureAwait(false);
+
+            var remaining = Options.ShutdownTimeout - System.Diagnostics.Stopwatch.GetElapsedTime(started);
+            await Task.WhenAll(_connectionTasks.Values.ToArray())
+                .WaitAsync(remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero, cancellationToken)
+                .ConfigureAwait(false);
+        }
+        catch (TimeoutException)
+        {
+            // Unfinished plaintext owners remain visible until their tasks retire.
+            timedOut = true;
         }
 
-        _diagnostics.Report(BoltTransportEventKind.ListenerStopped, "listener", $"activeRemaining={_connectionTasks.Count}");
+        _diagnostics.Report(BoltTransportEventKind.ListenerStopped, "listener",
+            $"activeRemaining={_connectionTasks.Values.Count(task => !task.IsCompleted)}" +
+            (timedOut ? " stop=deadline" : ""));
     }
+
+    internal Task<bool> CancelPlaintextCloseAsync(string connectionId)
+        => _plaintextClose?.CancelConnectionAsync(connectionId) ?? Task.FromResult(false);
 
     /// <inheritdoc/>
     public async ValueTask DisposeAsync()
@@ -157,6 +184,12 @@ public sealed class BoltTcpServer : IAsyncDisposable
                 continue;
             }
 
+            if (_plaintextClose is not null && cancellationToken.IsCancellationRequested)
+            {
+                client.Dispose();
+                return;
+            }
+
             var connectionId = $"conn-{Interlocked.Increment(ref _nextConnectionId):0000}";
             if (_connectionTasks.Count >= Options.MaxConnections)
             {
@@ -171,7 +204,7 @@ public sealed class BoltTcpServer : IAsyncDisposable
             client.NoDelay = true;
 
             var connectionTask = Task.Run(
-                () => BoltTcpConnection.RunAsync(client, Options, _diagnostics, connectionId, _shutdownCts.Token),
+                () => BoltTcpConnection.RunAsync(client, Options, _diagnostics, connectionId, _plaintextClose, cancellationToken),
                 CancellationToken.None);
             _connectionTasks[connectionTask.Id] = connectionTask;
             _ = connectionTask.ContinueWith(

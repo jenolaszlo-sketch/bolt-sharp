@@ -1,0 +1,16 @@
+[
+  {
+    "variant": "control",
+    "exit": 0,
+    "total": 28,
+    "passed": 28,
+    "failed": 0
+  },
+  {
+    "variant": "unlinked",
+    "exit": 1,
+    "total": 28,
+    "passed": 26,
+    "failed": 2
+  }
+]

@@ -1,0 +1,19 @@
+R-04: TLS loopback recovery sequence on one encrypted connection
+server: accepted=1 active=0 completed=1 failed=0 tlsFailed=0 boltHandshakeFailed=0 messagesProcessed=10
+connection ids: accepted=[conn-0001]
+client local port: 44756 (unchanged through TLS)
+server trace (TLS byte tap is blind; server-side evidence only):
+2026-11-19T20:07:59.6738685+00:00  ConnectionAccepted  conn-0001  127.0.0.1:44756
+2026-11-19T20:07:59.7616411+00:00  TlsHandshakeCompleted  conn-0001  Tls13
+2026-11-19T20:07:59.7621275+00:00  BoltHandshakeCompleted  conn-0001  v5.8 mode=Legacy
+2026-11-19T20:07:59.7632071+00:00  MessageProcessed  conn-0001  sig=0x01 responses=1 state=Authentication
+2026-11-19T20:07:59.7634396+00:00  MessageProcessed  conn-0001  sig=0x6A responses=1 state=Ready
+2026-11-19T20:07:59.7639611+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-19T20:07:59.7641893+00:00  MessageProcessed  conn-0001  sig=0x3F responses=2 state=Ready
+2026-11-19T20:07:59.7643424+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Failed
+2026-11-19T20:07:59.7644780+00:00  MessageProcessed  conn-0001  sig=0x3F responses=1 state=Failed
+2026-11-19T20:07:59.7646195+00:00  MessageProcessed  conn-0001  sig=0x0F responses=1 state=Ready
+2026-11-19T20:07:59.7647366+00:00  MessageProcessed  conn-0001  sig=0x10 responses=1 state=Streaming
+2026-11-19T20:07:59.7649525+00:00  MessageProcessed  conn-0001  sig=0x3F responses=2 state=Ready
+2026-11-19T20:07:59.7651214+00:00  MessageProcessed  conn-0001  sig=0x02 responses=0 state=Defunct
+2026-11-19T20:07:59.7651249+00:00  ConnectionCompleted  conn-0001  closed

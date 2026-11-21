@@ -1,0 +1,777 @@
+===== M0-control/standalone run 1 | exit=0 | Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 39 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 39 ms - BoltSharp.Tests.dll (net8.0)
+===== M0-control/pipelined run 1 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M0-control/pipelined run 2 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/standalone run 1 | exit=1 | Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.38]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_Fa
+ilurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Encoding [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [38 ms]
+  Error Message:
+   Assert.NotNull() Failure: Value is null
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 157
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 162
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 1 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 2 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 3 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 4 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 5 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 6 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 7 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 8 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 9 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== M1-missing-terminal-write/pipelined run 10 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/standalone run 1 | exit=1 | Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 39 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.38]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_Fa
+ilurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Encoding [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [39 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+                                  Γåô (pos 154)
+Expected: ┬╖┬╖┬╖"736372697074696F6ED0434578706C69636974207"┬╖┬╖┬╖
+Actual:   ┬╖┬╖┬╖"736372697074696F6ED0224D55544154494F4E207"┬╖┬╖┬╖
+                                  Γåæ (pos 154)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 158
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 162
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 39 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 1 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 2 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 3 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 4 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 52 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.25]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 52 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 5 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.25]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 6 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 56 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.27]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [4 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 56 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 7 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 8 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 51 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 51 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 9 | exit=0 | Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== M2-wrong-failure-content/pipelined run 10 | exit=1 | Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 51 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.25]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedC
+ommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+           Γåô (pos 0)
+Expected: "Explicit transactions and routing are not"┬╖┬╖┬╖
+Actual:   "MUTATION wrong failure description"
+           Γåæ (pos 0)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.AssertFailure(FailureResponse failure, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 383
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.TryReadTerminalFailure(TestBoltClient client, String expectedDescription) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 341
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 243
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 51 ms - BoltSharp.Tests.dll (net8.0)
+===== M3-extra-response/standalone run 1 | exit=1 | Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 39 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.38]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_Fa
+ilurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Encoding [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [39 ms]
+  Error Message:
+   Assert.Null() Failure: Value is not null
+Expected: null
+Actual:   [177, 112, 161, 142, 109, ┬╖┬╖┬╖]
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 161
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 162
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 39 ms - BoltSharp.Tests.dll (net8.0)
+===== M3-extra-response/pipelined run 1 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [35 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 307
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 251
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0)
+===== M3-extra-response/pipelined run 2 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.25]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.26]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [38 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 307
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 251
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== M3-extra-response/pipelined run 3 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [35 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 307
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 251
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0)
+===== M3-extra-response/pipelined run 4 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [36 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 307
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 251
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M3-extra-response/pipelined run 5 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [36 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 307
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=2 state=Defunct"
+Not found: "responses=1"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 251
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M4-wrong-terminal-state/standalone run 1 | exit=0 | Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M4-wrong-terminal-state/pipelined run 1 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [35 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 308
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 252
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0)
+===== M4-wrong-terminal-state/pipelined run 2 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [35 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 308
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [2 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 252
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0)
+===== M4-wrong-terminal-state/pipelined run 3 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [36 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 308
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [4 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 252
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M4-wrong-terminal-state/pipelined run 4 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [36 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 308
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 252
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M4-wrong-terminal-state/pipelined run 5 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [36 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x10 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 308
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "sig=0x11 responses=1 state=Failed"
+Not found: "state=Defunct"
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 252
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M5-unrelated-transport-fault/standalone run 1 | exit=0 | Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M5-unrelated-transport-fault/pipelined run 1 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[xUnit.net 00:00:00.24]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [35 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+             Γåô (pos 2)
+Expected: "closed"
+Actual:   "client-disconnect"
+             Γåæ (pos 2)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 312
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+             Γåô (pos 2)
+Expected: "closed"
+Actual:   "client-disconnect"
+             Γåæ (pos 2)
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 257
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 37 ms - BoltSharp.Tests.dll (net8.0)
+===== M6-no-terminal-event/standalone run 1 | exit=1 | Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:00.38]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_Fa
+ilurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Encoding [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding [38 ms]
+  Error Message:
+   Assert.NotNull() Failure: Value is null
+  Stack Trace:
+     at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 157
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.UnsupportedCommand_FailurePayloadIsByteIdenticalToTheAcceptedSessionEncoding() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 162
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 38 ms - BoltSharp.Tests.dll (net8.0)
+===== M6-no-terminal-event/pipelined run 1 | exit=1 | Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 20 s - BoltSharp.Tests.dll (net8.0) =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet.exe : [xUnit.net 00:00:10.26]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMes
+sage_NothingAfterTheTerminalFailureExecutes [FAIL]
+At line:28 char:12
++     $out = & dotnet test $proj -c Debug --no-build --nodeReuse:false  ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Executes [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes [10 s]
+  Error Message:
+   System.TimeoutException : terminal MessageProcessed was not observed within 10s; accepted=1 active=0 completed=1 failed=0 messages=2
+  Stack Trace:
+     at BoltSharp.Tests.Transport.TransportTestSupport.AwaitEventAsync(TaskCompletionSource`1 probe, BoltTcpServer server, String description, Nullable`1 timeout) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 185
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 304
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedMalformedMessage_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 326
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:20.27]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_Nothin
+gAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [10 s]
+  Error Message:
+   System.TimeoutException : terminal MessageProcessed was not observed within 10s; accepted=1 active=0 completed=1 failed=0 messages=2
+  Stack Trace:
+     at BoltSharp.Tests.Transport.TransportTestSupport.AwaitEventAsync(TaskCompletionSource`1 probe, BoltTcpServer server, String description, Nullable`1 timeout) in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 185
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 248
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\mutation-work\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 273
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     0, Skipped:     0, Total:     2, Duration: 20 s - BoltSharp.Tests.dll (net8.0)

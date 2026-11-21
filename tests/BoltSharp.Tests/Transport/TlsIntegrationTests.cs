@@ -26,6 +26,20 @@ public sealed class TlsIntegrationTests
     }
 
     [Fact]
+    public async Task TlsStartup_UsesDisabledLinger()
+    {
+        var (server, certificate) = StartTlsServer();
+        using var cert = certificate;
+        await using var owner = server;
+        TcpListenerTests.AssertDisabledLinger(server);
+        using var peer = TestBoltClient.ConnectTls(server.BoundEndPoint!, cert);
+        peer.Handshake(new BoltProtocolVersion(5, 8));
+        Assert.NotNull(peer.NegotiatedVersion);
+        await server.StopAsync();
+        Assert.Equal(0, server.Diagnostics.ConnectionsActive);
+    }
+
+    [Fact]
     public async Task TlsConversation_CompletesScalarQuery()
     {
         var (server, certificate) = StartTlsServer();

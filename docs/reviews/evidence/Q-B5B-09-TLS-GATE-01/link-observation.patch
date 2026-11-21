@@ -1,0 +1,11 @@
+diff --git a/src/BoltSharp/Transport/BoltTcpConnection.cs b/src/BoltSharp/Transport/BoltTcpConnection.cs
+--- a/src/BoltSharp/Transport/BoltTcpConnection.cs
++++ b/src/BoltSharp/Transport/BoltTcpConnection.cs
+@@ -40,6 +40,7 @@
+         using var clientOwnership = client;
+         var networkStream = client.GetStream();
+         Inv03Probe.Publish("socket", connectionId, client.Client.SafeHandle);
++        Inv03Probe.Publish("link-fixture-owner", connectionId, client);
+         var failed = false;
+         var outcome = "closed";
+         BoltConnectionSession? session = null;

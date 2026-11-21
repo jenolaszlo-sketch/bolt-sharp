@@ -1,0 +1,21 @@
+{
+  "platform": "windows",
+  "revision": "20fbc461c0257620db28fb78a463218b242455bc",
+  "test": "F01_BaselineReproduction_ShortWriteTimeout_LongObserver_IncorrectlyReportsWriteDeadline",
+  "parameters": {
+    "writeTimeoutMs": 80,
+    "observerDelayMs": 140
+  },
+  "result": {
+    "passed": true,
+    "reason": "write-deadline",
+    "phase": "write",
+    "elapsedMs": 148.46,
+    "messagesProcessed": 3,
+    "connectionsFailed": 1,
+    "connectionsCompleted": 0,
+    "drainAdmitted": false,
+    "drainBytes": 0
+  },
+  "assertion": "F01 defect reproduced: exact peer receipt but incorrect write-deadline classification"
+}

@@ -1,0 +1,22 @@
+diff --git a/src/BoltSharp/Transport/BoltTerminalClose.cs b/src/BoltSharp/Transport/BoltTerminalClose.cs
+--- a/src/BoltSharp/Transport/BoltTerminalClose.cs
++++ b/src/BoltSharp/Transport/BoltTerminalClose.cs
+@@ -194,7 +194,17 @@
+         var gate = Inv03Probe.EncryptedWrite;
+         if (phase is not null && gate is not null)
+             await gate(phase, handle, cancellationToken).ConfigureAwait(false);
+-        await inner.WriteAsync(buffer, cancellationToken).ConfigureAwait(false);
++        var operation = inner.WriteAsync(buffer, cancellationToken);
++        if (phase is not null && !operation.IsCompleted && Inv03Probe.Observer is not null)
++        {
++            var pending = operation.AsTask();
++            Inv03Probe.Publish("kernel-write-pending", phase, pending);
++            await pending.ConfigureAwait(false);
++        }
++        else
++        {
++            await operation.ConfigureAwait(false);
++        }
+     }
+ 
+     public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)

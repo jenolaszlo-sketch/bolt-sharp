@@ -1,0 +1,50 @@
+Q-B5B-09-PLAIN-OWNER-01 - byte-level evidence for discrepancies D-02, D-04 and D-11
+All values are computed over exact Git blob payload bytes.
+
+D-02  Manifest integrity content
+  session A  commit=96a1a3c entries=48 entriesWithHashes=48
+             sample entry: .gitattributes sha256=705fd4d6451a31d3... bytes=8
+  session B  commit=3c2144a entries=19 entriesWithHashes=0
+             sample entry: README.md sha256='' bytes=0
+
+D-04  Session A verifier is checkout-dependent
+  The session A manifest pins the Git-blob SHA-256 of the qualification report.
+  report at session A commit=96a1a3c bytes=21520 sha256=51a6435bd26ed87adc77a91ff37f14321a96ac03e199f85fde5e41c89141d92d crlf=0 lf=347
+  report at session B commit=3c2144a bytes=20002 sha256=b2691296783c68d0c6a30b50aa0e931640e4d0b8cbb2d7abdd6a06de3f0e00c2 crlf=0 lf=412
+  core.autocrlf=true
+  A fresh Windows checkout normalizes the report to CRLF (21,520 blob bytes ->
+  21,867 worktree bytes; sha256 51a6435b... -> 0bf23605...), so the session A
+  verifier's filesystem hash no longer equals the manifest's blob hash.
+  The 47 package files are unaffected because the package .gitattributes marks them
+  '-text'. Reproduced in a disposable worktree: see
+  reconciliation/session-a-verifier-at-own-commit.log
+
+D-11  Byte-exactness guard in .gitattributes
+  session A  commit=96a1a3c .gitattributes=b'* -text\n'
+  session B  commit=3c2144a .gitattributes=b'* text=auto\n*.trx text\n*.zip binary\n*.json text\n*.md text\n*.log text\n*.patch text\n*.py text'
+  Session A marks every package file '-text' (no line-ending or text conversion).
+  Session B replaced that with '* text=auto', so its package files are not
+  guaranteed byte-stable across checkout environments, and its manifest carries no
+  hashes to detect the difference (D-02).
+
+Package collision counts across the two sessions
+  identical=35 modifiedBySessionB=13 onlyInSessionA=0 onlyInSessionB=5
+    modified: .gitattributes
+    modified: README.md
+    modified: build-production.log
+    modified: build-solution.log
+    modified: campaign/baseline-f01-win.json
+    modified: campaign/r1-all-win.json
+    modified: campaign/r1-backpressure-win.json
+    modified: campaign/r1-f01-win.json
+    modified: format-check.log
+    modified: independence-statement.txt
+    modified: manifest.json
+    modified: negative-controls-assessment.md
+    modified: verify-evidence.py
+    added   : campaign/baseline-f01-wsl.json
+    added   : campaign/r1-all-wsl.json
+    added   : campaign/r1-backpressure-wsl.json
+    added   : campaign/r1-f01-wsl.json
+    added   : r1-nc-f01-mutation.patch
+

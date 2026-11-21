@@ -122,7 +122,10 @@ public sealed class BoltConnectionSession : IDisposable
         {
             // BEGIN/COMMIT/ROLLBACK/ROUTE are valid Bolt 5.8 signatures that this bounded server does
             // not implement. They are refused deterministically â€” never fabricated as SUCCESS.
-            return FailTerminal(UnsupportedMessageFailure());
+            var authenticated = _state is BoltConnectionState.Ready or BoltConnectionState.Streaming
+                or BoltConnectionState.Failed;
+            var refusal = FailTerminal(UnsupportedMessageFailure());
+            return authenticated ? refusal.MarkPlaintextCloseEligible() : refusal;
         }
         catch (BoltMessageException)
         {

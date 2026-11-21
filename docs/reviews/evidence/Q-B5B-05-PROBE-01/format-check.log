@@ -1,0 +1,1 @@
+﻿format: scoped dotnet format --verify-no-changes over the probe project returned exit code 0 (no changes required).

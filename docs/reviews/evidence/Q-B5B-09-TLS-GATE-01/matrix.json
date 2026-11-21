@@ -1,0 +1,634 @@
+{
+  "windows": {
+    "runtime": "8.0.31",
+    "platform": "Microsoft Windows NT 10.0.26200.0",
+    "attempt_count": 12,
+    "unobserved_task_exceptions": 0,
+    "cells": {
+      "T1": [
+        {
+          "attempt": 1,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 839.1532,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 4096,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 772.374,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 1024,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 784.7966,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 2048,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        }
+      ],
+      "T2": [
+        {
+          "attempt": 1,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 781.7087,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 4096,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 769.9731,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 1024,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 779.3102,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 2048,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        }
+      ],
+      "T3": [
+        {
+          "attempt": 1,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 785.1023,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 4096,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 787.5763,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 1024,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 783.1175,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 2048,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        }
+      ],
+      "T4": [
+        {
+          "attempt": 1,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 766.5373,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 4096,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 775.8402,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 1024,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "preceding-write-did-not-complete",
+          "elapsed_ms": 786.9051,
+          "finish": null,
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 0,
+          "peer_receive_buffer": 2048,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 3
+          }
+        }
+      ]
+    }
+  },
+  "wsl2": {
+    "runtime": "10.0.14",
+    "platform": "Unix 6.6.114.1",
+    "attempt_count": 10,
+    "unobserved_task_exceptions": 0,
+    "cells": {
+      "T1": [
+        {
+          "attempt": 1,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 222.7893,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 79.4531
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 8192,
+          "peer_receive_buffer": 8192,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "induced-and-interrupted",
+          "elapsed_ms": 314.4463,
+          "finish": {
+            "Phase": "write",
+            "Outcome": "total-deadline",
+            "Bytes": 0,
+            "WireBytes": 0,
+            "ElapsedMs": 301.4401
+          },
+          "inner_writes": [
+            {
+              "Stage": "terminal-write",
+              "Status": "Faulted",
+              "ElapsedMs": 299.38
+            }
+          ],
+          "confirmed": true,
+          "pending_observed_ms": 23.1519,
+          "listener_signal_ms": null,
+          "sender_writable": false,
+          "peer_unread": 576,
+          "sender_buffer": 4608,
+          "peer_receive_buffer": 2304,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 0,
+            "Failed": 1,
+            "Messages": 4
+          }
+        }
+      ],
+      "T2": [
+        {
+          "attempt": 1,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 86.5379,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 77.6936
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 8192,
+          "peer_receive_buffer": 8192,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "induced-and-interrupted",
+          "elapsed_ms": 33.9756,
+          "finish": {
+            "Phase": "write",
+            "Outcome": "server-cancelled",
+            "Bytes": 0,
+            "WireBytes": 0,
+            "ElapsedMs": 22.135
+          },
+          "inner_writes": [
+            {
+              "Stage": "terminal-write",
+              "Status": "Faulted",
+              "ElapsedMs": 21.9382
+            }
+          ],
+          "confirmed": true,
+          "pending_observed_ms": 21.7206,
+          "listener_signal_ms": 21.7539,
+          "sender_writable": false,
+          "peer_unread": 576,
+          "sender_buffer": 4608,
+          "peer_receive_buffer": 2304,
+          "owner_closed": true,
+          "permits_taken": 0,
+          "permits_released": 0,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 4
+          }
+        }
+      ],
+      "T3": [
+        {
+          "attempt": 1,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 86.0973,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 77.1719
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 8192,
+          "peer_receive_buffer": 8192,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 90.1895,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 77.0166
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 4608,
+          "peer_receive_buffer": 2304,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 87.6321,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 76.7212
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 4608,
+          "peer_receive_buffer": 4096,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        }
+      ],
+      "T4": [
+        {
+          "attempt": 1,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 84.6211,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 74.1904
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 8192,
+          "peer_receive_buffer": 8192,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 89.6051,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 77.971
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 4608,
+          "peer_receive_buffer": 2304,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "target-reached-no-persistent-pending-write",
+          "elapsed_ms": 88.2481,
+          "finish": {
+            "Phase": "drain",
+            "Outcome": "phase-deadline",
+            "Bytes": 17,
+            "WireBytes": 0,
+            "ElapsedMs": 74.2599
+          },
+          "inner_writes": [],
+          "confirmed": false,
+          "pending_observed_ms": 0,
+          "listener_signal_ms": null,
+          "sender_writable": null,
+          "peer_unread": 0,
+          "sender_buffer": 4608,
+          "peer_receive_buffer": 4096,
+          "owner_closed": true,
+          "permits_taken": 1,
+          "permits_released": 1,
+          "accounting": {
+            "Accepted": 1,
+            "Active": 0,
+            "Completed": 1,
+            "Failed": 0,
+            "Messages": 5
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,235 @@
+===== old-pipelined run 1 | exit=1 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.43]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+---- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.
+  Stack Trace:
+     at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+   at BoltSharp.Framing.BoltMessageReader.ReadPayload(Int32 length, IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 267
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessage(IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 146
+   at BoltSharp.Framing.BoltMessageReader.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 86
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 296
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadResponse() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 302
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 217
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 226
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 78 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 2 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 42 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 3 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 42 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 4 | exit=1 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.27]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [2 ms]
+  Error Message:
+   System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+---- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.
+  Stack Trace:
+     at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+   at BoltSharp.Framing.BoltMessageReader.ReadPayload(Int32 length, IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 267
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessage(IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 146
+   at BoltSharp.Framing.BoltMessageReader.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 86
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 296
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadResponse() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 302
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 217
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 226
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 54 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 5 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 42 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 6 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 43 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 7 | exit=1 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.26]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+---- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.
+  Stack Trace:
+     at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+   at BoltSharp.Framing.BoltMessageReader.ReadPayload(Int32 length, IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 267
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessage(IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 146
+   at BoltSharp.Framing.BoltMessageReader.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 86
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 296
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadResponse() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 302
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 217
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 226
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 52 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 8 | exit=1 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.25]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [2 ms]
+  Error Message:
+   System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+---- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.
+  Stack Trace:
+     at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+   at BoltSharp.Framing.BoltMessageReader.ReadPayload(Int32 length, IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 267
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessage(IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 146
+   at BoltSharp.Framing.BoltMessageReader.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 86
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 296
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadResponse() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 302
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 217
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 226
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 50 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 9 | exit=1 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.26]     BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [FAIL]
+  Failed BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes [3 ms]
+  Error Message:
+   System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+---- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.
+  Stack Trace:
+     at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+   at BoltSharp.Framing.BoltMessageReader.ReadPayload(Int32 length, IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 267
+   at BoltSharp.Framing.BoltMessageReader.TryReadMessage(IBufferWriter`1 destination) in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 146
+   at BoltSharp.Framing.BoltMessageReader.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\src\BoltSharp\Framing\BoltMessageReader.cs:line 86
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadMessage() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 296
+   at BoltSharp.Tests.Transport.TestBoltClient.ReadResponse() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\TransportTestSupport.cs:line 302
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 217
+   at BoltSharp.Tests.Transport.UnsupportedCommandRefusalTests.PipelinedUnsupportedCommand_NothingAfterTheTerminalFailureExecutes() in C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\Transport\UnsupportedCommandRefusalTests.cs:line 226
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at System.Net.Sockets.NetworkStream.Read(Span`1 buffer)
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 52 ms - BoltSharp.Tests.dll (net8.0)
+===== old-pipelined run 10 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 1 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 2 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 3 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 4 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 5 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 6 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 7 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 8 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 9 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 10 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 11 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 12 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 13 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 14 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 15 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 16 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 17 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 40 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 18 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 42 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 19 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
+===== old-multiclient run 20 | exit=0 =====
+Test run for C:\Windows\Temp\opencode\b5b-ts1-q1\base-17886a5e\tests\BoltSharp.Tests\bin\Debug\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 41 ms - BoltSharp.Tests.dll (net8.0)
