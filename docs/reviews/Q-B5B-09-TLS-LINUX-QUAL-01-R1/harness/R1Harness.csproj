@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>R1Harness</AssemblyName>
+    <RootNamespace>R1Harness</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <BoltSharpProject Condition="'$(BoltSharpProject)' == ''">../../../../src/BoltSharp/BoltSharp.csproj</BoltSharpProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(BoltSharpProject)" />
+  </ItemGroup>
+
+</Project>
