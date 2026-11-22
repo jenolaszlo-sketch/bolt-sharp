@@ -1,0 +1,49 @@
+Q-B5B-09-TLS-LINUX-QUAL-01-R3 — focused local verification evidence
+====================================================================
+
+Run:      r3final, mode=full, fresh run-scoped directory (r3-final-3c02a8f8)
+Platform: Windows 11 (development environment only — NOT native Linux)
+Commit:   6948594b6771bf6e604094a1457b57f1acb8ded5 (harness under review)
+Tree:     7f593078d1c54a81bc007dc3634899b1a7dd87a2
+
+Focused results (R3 scope — actual TLS ciphertext measurement):
+  L5    qualified, 1 run, 1 success
+        drain_outcome=cipher-cap (encrypted cap binds first — E1 T5 pattern)
+        encrypted_wire_bytes=32775  (= registered 32768 cap + 7 partial-record
+        overshoot, within the declared one-record bound of 16406)
+        plaintext_bytes=1425 (< 8192)
+        flood_application_bytes=1595  -> ciphertext/application differential 20.6x
+        tls_record_overhead_bytes_drain=31350 (measured, > 0)
+        production_tls_terminal_observed=true (BoltTcpServer TLS terminal path)
+  L6    qualified, 1 run, 1 success
+        drain_outcome=plain-cap (plaintext cap binds — E1 T6 pattern)
+        plaintext_bytes=8192 EXACT (clipped reads)
+        encrypted_wire_bytes=12354 (<= 32768 registered bound verified)
+        flood overhead 1034 (measured, > 0)
+  NC-1  executed and detected
+        registered=32768, tampered=131072
+        drain_outcome=cipher-cap, encrypted_wire_bytes=131077 (> 32768)
+        plaintext_bytes=5699, tamper_detected=true
+        (mirrors E1 NC-1 evidence: WireBytes=131072, Bytes=5715)
+
+Preserved cells on the same run (hardened verifier):
+  L1    qualified, 6 runs, 3 successes (verifier-clean)
+  L2    qualified, 6 runs, 3 successes (verifier-clean)
+
+Pre-existing defects first exposed by actual execution — NOT R3 regressions,
+NOT fixed in R3 (out of scope), recorded for the next commission:
+  L3    close-notify path crashes: KeyNotFoundException 'elapsed_ms'
+  L4    gated proxy does not start on Windows (python launcher stub)
+  L7    Production.RunReceiptAttemptAsync never dispatched (dead code)
+  NC-2  executed but pendency prerequisite not induced on Windows profile 1
+  L6-PROD  supplementary production plaintext drain != 8192 on this run
+
+Verifier (fail-closed) on this run:
+  L1/L2/L5/L6/NC-1 clean; errors only for the pre-existing defects above.
+
+Verifier self-test (verifier_selftest.py):
+  valid R3 run accepted; EXEC-05 rejected (5 errors);
+  30/30 adversarial false-pass conditions rejected
+  (16 preserved Q1 + 14 new R3: proxy measurement, cap overshoot beyond one
+  max TLS record, zero overhead, plaintext-cap violations, drain outcome,
+  tampered declared cap, NC-1 not executed / under cap / proxy).

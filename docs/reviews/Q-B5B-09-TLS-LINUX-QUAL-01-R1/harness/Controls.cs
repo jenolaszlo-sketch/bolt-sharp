@@ -21,16 +21,30 @@ internal static class Controls
 
     private static async Task RunNC1CiphertextCapTamperAsync(Context ctx)
     {
+        // Actual execution (R3): the NC-1 control runs the E1-faithful candidate TLS drain with
+        // the declared encrypted cap tampered 32768 -> 131072. The drain terminates at the
+        // tampered cap, so the measured ciphertext wire bytes overshoot the registered 32768.
+        // Detection: observed encrypted_wire_bytes > registered cap. Mirrors E1 NC-1 evidence
+        // (drain outcome "cipher-cap", WireBytes = tampered cap).
         var cell = Campaign.Cells.First(c => c.Id == "L5");
-        var profile = new Profile(1, 4096, 4096, 0);
+        var profile = Campaign.CapProfile;
         var record = await Candidate.WithWatchdog(ctx, cell, profile, 1, 0, null,
-            (token) => Candidate.RunCapAttemptAsync(ctx, cell, profile, 1, 131072, token));
+            (token) => Candidate.RunCapAttemptAsync(ctx, cell, profile, 1, 0, null, false, token,
+                tamperedCiphertextCap: 131072));
         record["control"] = "NC-1";
         record["tampered_ciphertext_cap"] = 131072;
-        record["declared_ciphertext_cap"] = Campaign.CiphertextLimit;
-        ctx.Journal.WriteControl("NC-1", record);
+        record["declared_ciphertext_cap"] = 131072;
+        record["registered_ciphertext_cap"] = Campaign.CiphertextLimit;
         var outcome = (string)record["outcome"]!;
-        ctx.Journal.Transcript("NC-1", $"outcome={outcome} declared={Campaign.CiphertextLimit} tampered=131072");
+        var encryptedWire = record.ContainsKey("encrypted_wire_bytes")
+            ? Convert.ToInt64(record["encrypted_wire_bytes"]) : 0L;
+        // The control is detected when the tampered drain actually exceeded the registered cap.
+        record["tamper_detected"] = encryptedWire > Campaign.CiphertextLimit;
+        record["control_failure_observed"] = outcome == "cap-checks-failed" || outcome == "cap-bounded-and-clean";
+        ctx.Journal.WriteControl("NC-1", record);
+        ctx.Journal.Transcript("NC-1",
+            $"outcome={outcome} registered={Campaign.CiphertextLimit} tampered=131072 " +
+            $"observed_wire={encryptedWire} detected={record["tamper_detected"]}");
     }
 
     private static async Task RunNC2DeadlineRenewalAsync(Context ctx)

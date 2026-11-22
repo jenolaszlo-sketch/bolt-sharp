@@ -670,7 +670,7 @@ internal static class Production
     }
 
     internal static string QualifyingOutcome(CellSpec cell)
-        => cell.Kind.StartsWith("candidate-cap", StringComparison.Ordinal) || cell.Kind == "production-plaintext-cap"
+        => cell.Id is "L5" or "L6" or "L6-PROD" || cell.Kind == "production-plaintext-cap"
             ? "cap-bounded-and-clean"
             : cell.Kind == "production-peer-receipt" ? "peer-receipt-verified" : "induced-and-interrupted";
 

@@ -1,11 +1,37 @@
 #!/usr/bin/env python3
+"""Independent fail-closed verifier for the R1/R2/R3 qualification harness evidence.
+
+R3 semantics: L5/L6 ciphertext evidence must be measured at the transport boundary
+beneath SslStream (actual TLS record ciphertext). Proxy or application-byte substitutes
+are rejected. The encrypted cap is enforced with a bounded one-record overshoot; the
+plaintext cap is enforced exactly. NC-1 must be an actually executed tamper whose
+observed ciphertext exceeds the registered cap.
+"""
 import argparse
-import hashlib
 import json
-import os
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
+
+MEASUREMENT_BOUNDARY = "beneath-sslstream-transport-boundary"
+MAX_TLS_RECORD_WIRE_BYTES = 16406  # 5 header + 16384 payload + 1 content-type + 16 AEAD tag
+REGISTERED_CIPHERTEXT_CAP = 32768
+REGISTERED_PLAINTEXT_CAP = 8192
+
+QUALIFYING_OUTCOMES = {
+    "L1": "induced-and-interrupted",
+    "L2": "induced-and-interrupted",
+    "L3": "induced-and-interrupted",
+    "L4": "induced-and-interrupted",
+    "L5": "cap-bounded-and-clean",
+    "L6": "cap-bounded-and-clean",
+    "L7": "peer-receipt-verified",
+}
+ALLOWED_NON_QUALIFYING = {
+    "precursor-not-observed", "environment", "attempt-watchdog",
+    "induced-but-checks-failed", "cap-checks-failed", "peer-receipt-failed",
+}
+
 
 class Verifier:
     def __init__(self, results_dir: str, commit: str, tree: str, mode: str = "full"):
@@ -25,7 +51,8 @@ class Verifier:
     def load_journal(self, path: Path) -> List[Dict[str, Any]]:
         records = []
         if path.exists():
-            with open(path, "r") as f:
+            # utf-8-sig tolerates a UTF-8 BOM (older harness runs emitted one) and strips it.
+            with open(path, "r", encoding="utf-8-sig") as f:
                 for line in f:
                     line = line.strip()
                     if line:
@@ -35,21 +62,56 @@ class Verifier:
     def load_cell_summary(self, cell: str) -> Optional[Dict[str, Any]]:
         path = self.results_dir / "per-cell" / f"{cell}.summary.json"
         if path.exists():
-            with open(path, "r") as f:
+            with open(path, "r", encoding="utf-8-sig") as f:
                 return json.load(f)
         return None
+
+    def _load_attempts(self, cell: str) -> List[Dict[str, Any]]:
+        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
+        records = self.load_journal(journal)
+        return [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
 
     def load_peer_receipt(self, cell: str, attempt: int) -> Optional[Dict[str, Any]]:
         path = self.results_dir / "peer" / f"{cell}-attempt-{attempt}-receipt.jsonl"
         if path.exists():
-            with open(path, "r") as f:
-                for line in f:
-                    line = line.strip()
-                    if line:
-                        rec = json.loads(line)
-                        if rec.get("record_type") == "peer-receipt":
-                            return rec
+            for rec in self.load_journal(path):
+                if rec.get("record_type") == "peer-receipt":
+                    return rec
         return None
+
+    def _qualified_cell(self, cell: str) -> Optional[Tuple[Dict[str, Any], List[Dict[str, Any]]]]:
+        """Load a qualified cell and partition its attempts into qualifying vs discovery."""
+        summary = self.load_cell_summary(cell)
+        if not summary:
+            self.error(f"{cell}: summary missing")
+            return None
+        if not summary.get("qualified", False):
+            self.error(f"{cell}: summary not qualified (successes={summary.get('successes')})")
+            return None
+        attempts = self._load_attempts(cell)
+        qualifying = [a for a in attempts if a.get("outcome") == QUALIFYING_OUTCOMES[cell]]
+        for a in attempts:
+            if a.get("outcome") not in QUALIFYING_OUTCOMES[cell] and \
+                    a.get("outcome") not in ALLOWED_NON_QUALIFYING:
+                self.error(f"{cell} attempt {a.get('attempt')}: unregistered outcome "
+                           f"{a.get('outcome')!r}")
+        repeats_required = summary.get("repeats_required", 2)
+        expected = 1 + repeats_required
+        if len(qualifying) != expected:
+            self.error(f"{cell}: expected {expected} qualifying attempts "
+                       f"(1 discovery + {repeats_required} repeats), found {len(qualifying)}")
+            return None
+        # Repeat-classification equality: all qualifying attempts on one profile ordinal.
+        ordinals = {a.get("profile", {}).get("ordinal") for a in qualifying}
+        if ordinals != {summary.get("qualifying_profile_ordinal")}:
+            self.error(f"{cell}: qualifying attempts span profile ordinals {ordinals}, "
+                       f"summary declares {summary.get('qualifying_profile_ordinal')}")
+        # Repeat records must exist and be classified as repeats when repeats are required.
+        if repeats_required > 0:
+            repeat_marks = sorted(a.get("repeat") or 0 for a in qualifying if a.get("repeat"))
+            if repeat_marks != list(range(1, repeats_required + 1)):
+                self.error(f"{cell}: repeat classification incomplete: {repeat_marks}")
+        return summary, qualifying
 
     def verify_fresh_run(self):
         journal = self.results_dir / "campaign-journal.jsonl"
@@ -57,19 +119,24 @@ class Verifier:
             self.error("campaign-journal.jsonl missing")
             return
         records = self.load_journal(journal)
+        # Run scoping: every record belongs to exactly ONE run id; revision binding is
+        # enforced against run-meta.json (commit/tree), not the operator-chosen run label.
         run_ids = set(r.get("run_id") for r in records if "run_id" in r)
         if len(run_ids) != 1:
             self.error(f"journal contains {len(run_ids)} run_ids: {run_ids}")
-        for r in records:
-            if r.get("run_id") != self.commit[:12]:
-                self.error(f"record run_id {r.get('run_id')} does not match commit prefix {self.commit[:12]}")
+        meta_path = self.results_dir / "run-meta.json"
+        if meta_path.exists():
+            with open(meta_path, "r", encoding="utf-8-sig") as f:
+                meta_run_id = json.load(f).get("run_id")
+            if run_ids and meta_run_id not in run_ids:
+                self.error(f"run-meta run_id {meta_run_id} does not match the journal run_id(s) {run_ids}")
 
     def verify_commit_tree(self):
         meta_path = self.results_dir / "run-meta.json"
         if not meta_path.exists():
             self.error("run-meta.json missing")
             return
-        with open(meta_path, "r") as f:
+        with open(meta_path, "r", encoding="utf-8-sig") as f:
             meta = json.load(f)
         if meta.get("commit") != self.commit:
             self.error(f"meta commit {meta.get('commit')} != expected {self.commit}")
@@ -78,172 +145,198 @@ class Verifier:
         if meta.get("status") != "raw-complete":
             self.error(f"meta status {meta.get('status')} != raw-complete")
 
+    # ---------------------------------------------------------------- L1 / L2
+    def _terminal_write_oracle(self, cell: str, a: Dict[str, Any]):
+        checks = a.get("checks", {})
+        attempt = a.get("attempt")
+        if not checks.get("confirmed", False):
+            self.error(f"{cell} attempt {attempt}: Confirmed=false")
+        if checks.get("pending_at_least_20_ms") is not True:
+            self.error(f"{cell} attempt {attempt}: PendingMs < 20ms")
+        if checks.get("sender_not_writable") is not True:
+            self.error(f"{cell} attempt {attempt}: SenderWritableAtSample=true")
+        if checks.get("peer_unread_positive") is not True:
+            self.error(f"{cell} attempt {attempt}: PeerUnreadAtSample <= 0")
+        if checks.get("buffer_configured") is not True:
+            self.error(f"{cell} attempt {attempt}: BufferConfigured=false")
+        if checks.get("elapsed_within_bound") is not True:
+            self.error(f"{cell} attempt {attempt}: ElapsedMs > 500ms bound")
+        if checks.get("accounting_active_zero") is not True:
+            self.error(f"{cell} attempt {attempt}: Active != 0")
+        if checks.get("accounting_balanced") is not True:
+            self.error(f"{cell} attempt {attempt}: Accepted != Completed+Failed")
+        if checks.get("single_connection") is not True:
+            self.error(f"{cell} attempt {attempt}: not single connection")
+        if checks.get("terminal_write_not_completed") is not True:
+            self.error(f"{cell} attempt {attempt}: terminal write completed (messages > 3)")
+        if checks.get("peer_closed") is not True:
+            self.error(f"{cell} attempt {attempt}: peer not closed")
+        if checks.get("stop_bounded") is not True:
+            self.error(f"{cell} attempt {attempt}: stop not bounded")
+        if a.get("production_commit") != self.commit:
+            self.error(f"{cell} attempt {attempt}: production commit not recorded")
+        if a.get("stage") != "kernel-write-pending":
+            self.error(f"{cell} attempt {attempt}: stage != kernel-write-pending")
+
     def verify_cell_l1(self):
-        cell = "L1"
-        summary = self.load_cell_summary(cell)
-        if not summary:
-            self.error(f"{cell}: summary missing")
+        loaded = self._qualified_cell("L1")
+        if loaded is None:
             return
-        if not summary.get("qualified", False):
-            self.error(f"{cell}: not qualified (successes={summary.get('successes')}, required={summary.get('repeats_required', 2) + 1})")
-            return
-        if summary.get("qualifying_profile_ordinal") not in [1, 2, 3, 4]:
-            self.error(f"{cell}: invalid qualifying profile ordinal")
-        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
-        records = self.load_journal(journal)
-        attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
-        if len(attempts) < 3:
-            self.error(f"{cell}: fewer than 3 attempts in per-cell journal")
-        for a in attempts:
-            checks = a.get("checks", {})
-            if not checks.get("confirmed", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: Confirmed=false")
-            if checks.get("pending_at_least_20_ms") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: PendingMs < 20ms")
-            if checks.get("sender_not_writable") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: SenderWritableAtSample=true")
-            if checks.get("peer_unread_positive") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: PeerUnreadAtSample <= 0")
-            if checks.get("buffer_configured") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: BufferConfigured=false")
-            if checks.get("elapsed_within_bound") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: ElapsedMs > 500ms bound")
-            if checks.get("accounting_active_zero") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: Active != 0")
-            if checks.get("accounting_balanced") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: Accepted != Completed+Failed")
-            if checks.get("single_connection") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: not single connection")
-            if checks.get("terminal_write_not_completed") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: terminal write completed (messages > 3)")
-            if checks.get("peer_closed") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: peer not closed")
-            if checks.get("stop_bounded") is not True:
-                self.error(f"{cell} attempt {a.get('attempt')}: stop not bounded")
-            if a.get("outcome") != "induced-and-interrupted":
-                self.error(f"{cell} attempt {a.get('attempt')}: outcome {a.get('outcome')} != induced-and-interrupted")
+        _, qualifying = loaded
+        for a in qualifying:
+            self._terminal_write_oracle("L1", a)
+            if a.get("interruption") != "total-deadline":
+                self.error(f"L1 attempt {a.get('attempt')}: interruption != total-deadline")
 
     def verify_cell_l2(self):
-        cell = "L2"
-        summary = self.load_cell_summary(cell)
-        if not summary:
-            self.error(f"{cell}: summary missing")
+        loaded = self._qualified_cell("L2")
+        if loaded is None:
             return
-        if not summary.get("qualified", False):
-            self.error(f"{cell}: not qualified")
-            return
-        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
-        records = self.load_journal(journal)
-        attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
-        for a in attempts:
-            checks = a.get("checks", {})
-            if not checks.get("confirmed", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: Confirmed=false")
+        _, qualifying = loaded
+        for a in qualifying:
+            self._terminal_write_oracle("L2", a)
             if a.get("interruption") != "listener-cancellation":
-                self.error(f"{cell} attempt {a.get('attempt')}: interruption not listener-cancellation")
+                self.error(f"L2 attempt {a.get('attempt')}: interruption not listener-cancellation")
+
+    # ---------------------------------------------------------------- L3 / L4
+    def _close_notify_oracle(self, cell: str, a: Dict[str, Any]):
+        attempt = a.get("attempt")
+        if not a.get("shutdown_pending", False):
+            self.error(f"{cell} attempt {attempt}: live shutdown not observed pending")
+        if a.get("shutdown_pending_ms", 0) < 20:
+            self.error(f"{cell} attempt {attempt}: shutdown pending < 20ms")
+        if a.get("sender_writable_at_sample", True) is not False:
+            self.error(f"{cell} attempt {attempt}: sender writable at sample")
+        if a.get("buffer_configured") is not True:
+            self.error(f"{cell} attempt {attempt}: BufferConfigured=false")
+        levels = a.get("guarantee_levels", {})
+        if levels.get("tls_close_notify_transmission") is not True:
+            self.error(f"{cell} attempt {attempt}: tls_close_notify_transmission must be "
+                       f"true (candidate live shutdown evidence)")
 
     def verify_cell_l3(self):
-        cell = "L3"
-        summary = self.load_cell_summary(cell)
-        if not summary:
-            self.error(f"{cell}: summary missing")
+        loaded = self._qualified_cell("L3")
+        if loaded is None:
             return
-        if not summary.get("qualified", False):
-            self.error(f"{cell}: not qualified")
-            return
-        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
-        records = self.load_journal(journal)
-        attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
-        for a in attempts:
-            if not a.get("shutdown_pending", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: shutdown not pending")
-            if a.get("shutdown_pending_ms", 0) < 20:
-                self.error(f"{cell} attempt {a.get('attempt')}: shutdown pending < 20ms")
-            if a.get("sender_writable_at_sample", True):
-                self.error(f"{cell} attempt {a.get('attempt')}: sender writable at sample")
-            if a.get("outcome") != "induced-and-interrupted":
-                self.error(f"{cell} attempt {a.get('attempt')}: outcome != induced-and-interrupted")
+        _, qualifying = loaded
+        for a in qualifying:
+            self._close_notify_oracle("L3", a)
+            if a.get("interruption") != "phase-deadline":
+                self.error(f"L3 attempt {a.get('attempt')}: interruption != phase-deadline")
 
     def verify_cell_l4(self):
-        cell = "L4"
-        summary = self.load_cell_summary(cell)
-        if not summary:
-            self.error(f"{cell}: summary missing")
+        loaded = self._qualified_cell("L4")
+        if loaded is None:
             return
-        if not summary.get("qualified", False):
-            self.error(f"{cell}: not qualified")
-            return
-        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
-        records = self.load_journal(journal)
-        attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
-        for a in attempts:
-            if not a.get("shutdown_pending", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: shutdown not pending")
-            if a.get("shutdown_pending_ms", 0) < 20:
-                self.error(f"{cell} attempt {a.get('attempt')}: shutdown pending < 20ms")
+        _, qualifying = loaded
+        for a in qualifying:
+            self._close_notify_oracle("L4", a)
             if a.get("interruption") != "listener-cancellation":
-                self.error(f"{cell} attempt {a.get('attempt')}: interruption not listener-cancellation")
+                self.error(f"L4 attempt {a.get('attempt')}: interruption not listener-cancellation")
             if not a.get("proxy_port"):
-                self.error(f"{cell} attempt {a.get('attempt')}: no proxy port recorded")
+                self.error(f"L4 attempt {a.get('attempt')}: no gated proxy port recorded")
+            proxy_journal = a.get("proxy_journal")
+            if not proxy_journal:
+                self.error(f"L4 attempt {a.get('attempt')}: no proxy journal path recorded")
+
+    # ---------------------------------------------------------------- L5 / L6
+    def _verify_cap_attempt(self, cell: str, a: Dict[str, Any], plaintext_exact: Optional[int]):
+        """Shared oracle for L5/L6 candidate cap attempts (R3 E1-faithful semantics)."""
+        attempt = a.get("attempt")
+        # Proxy rejection (R3 requirement 8): the ciphertext evidence must declare the
+        # transport boundary beneath SslStream; proxy/app-byte substitutes are rejected.
+        measurement = a.get("ciphertext_measurement")
+        if measurement != MEASUREMENT_BOUNDARY:
+            self.error(f"{cell} attempt {attempt}: ciphertext measurement {measurement!r} is not "
+                       f"'{MEASUREMENT_BOUNDARY}' (proxy or estimated evidence rejected)")
+        source = str(a.get("ciphertext_source", ""))
+        if "proxy" in source.lower() or "application bytes" in source.lower():
+            self.error(f"{cell} attempt {attempt}: ciphertext_source declares a proxy measurement: {source!r}")
+
+        wire = a.get("encrypted_wire_bytes")
+        plain = a.get("plaintext_bytes")
+        declared_cap = a.get("declared_ciphertext_cap")
+        overhead = a.get("tls_record_overhead_bytes_drain")
+        if wire is None:
+            self.error(f"{cell} attempt {attempt}: encrypted_wire_bytes (actual TLS ciphertext) missing")
+            return
+        if plain is None:
+            self.error(f"{cell} attempt {attempt}: plaintext_bytes missing")
+            return
+        try:
+            wire = int(wire)
+            plain = int(plain)
+        except (TypeError, ValueError):
+            self.error(f"{cell} attempt {attempt}: non-numeric ciphertext counters")
+            return
+
+        if wire <= 0:
+            self.error(f"{cell} attempt {attempt}: no ciphertext measured at the transport boundary")
+        # The declared cap must equal the registered cap inside the qualifying cell.
+        if declared_cap != REGISTERED_CIPHERTEXT_CAP:
+            self.error(f"{cell} attempt {attempt}: declared ciphertext cap {declared_cap} "
+                       f"!= registered {REGISTERED_CIPHERTEXT_CAP}")
+        # Bounded encrypted enforcement (R3 requirement 6): a single SslStream record pull may
+        # overshoot the declared cap by at most one maximum TLS record; anything beyond that
+        # proves an undetected cap violation (TLS buffering/record overhead cannot hide it).
+        if wire > REGISTERED_CIPHERTEXT_CAP + MAX_TLS_RECORD_WIRE_BYTES:
+            self.error(f"{cell} attempt {attempt}: encrypted wire bytes {wire} exceed the registered "
+                       f"{REGISTERED_CIPHERTEXT_CAP} cap beyond one max TLS record "
+                       f"({MAX_TLS_RECORD_WIRE_BYTES})")
+        # Controlled differential (R3 requirement 5): TLS ciphertext and application byte
+        # counts must differ; zero overhead means the counter is not wire measurement.
+        if overhead is None or int(overhead) <= 0:
+            self.error(f"{cell} attempt {attempt}: no TLS record overhead measured — ciphertext "
+                       f"counter indistinguishable from an application-byte proxy")
+        flood_app = a.get("flood_application_bytes")
+        flood_wire = a.get("flood_encrypted_wire_bytes")
+        if flood_app is None or flood_wire is None or int(flood_app) <= 0 or int(flood_wire) < int(flood_app):
+            self.error(f"{cell} attempt {attempt}: flooding client counters inconsistent "
+                       f"(app={flood_app}, wire={flood_wire})")
+        # Plaintext enforcement: exact clip at the registered 8192-byte budget.
+        if plaintext_exact is None:
+            if plain >= REGISTERED_PLAINTEXT_CAP:
+                self.error(f"{cell} attempt {attempt}: plaintext {plain} reached the "
+                           f"{REGISTERED_PLAINTEXT_CAP} cap (encrypted cap must bind first for "
+                           f"the tiny-flood cell)")
+        else:
+            if plain != plaintext_exact:
+                self.error(f"{cell} attempt {attempt}: plaintext {plain} != exact enforced cap "
+                           f"{plaintext_exact}")
+        # Production TLS terminal path preserved inside the cell (R1 continuity).
+        if a.get("production_tls_terminal_observed") is not True:
+            self.error(f"{cell} attempt {attempt}: production TLS terminal path not observed")
+        # The candidate drain must have terminated at a cap, not at EOF or a fault.
+        if a.get("drain_outcome") not in ("cipher-cap", "plain-cap"):
+            self.error(f"{cell} attempt {attempt}: drain terminated at {a.get('drain_outcome')!r} "
+                       f"(expected a registered cap bound)")
+        checks = a.get("checks", {})
+        for required in ("plaintext_cap_enforced", "encrypted_cap_respected",
+                         "encrypted_bound_versus_registered", "ciphertext_app_differential_observed",
+                         "client_consistency", "accounting_active_zero", "accounting_balanced"):
+            if checks.get(required) is not True:
+                self.error(f"{cell} attempt {attempt}: checks.{required} is not true")
 
     def verify_cell_l5(self):
-        cell = "L5"
-        summary = self.load_cell_summary(cell)
-        if not summary:
-            self.error(f"{cell}: summary missing")
+        loaded = self._qualified_cell("L5")
+        if loaded is None:
             return
-        if not summary.get("qualified", False):
-            self.error(f"{cell}: not qualified")
-            return
-        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
-        records = self.load_journal(journal)
-        attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
-        for a in attempts:
-            checks = a.get("checks", {})
-            if not checks.get("ciphertext_cap_respected", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext cap not respected (ciphertext_bytes > 32768)")
-            if not checks.get("flood_stopped_at_limit", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: flood did not stop at ciphertext limit")
-            if a.get("declared_ciphertext_cap") != 32768:
-                self.error(f"{cell} attempt {a.get('attempt')}: declared ciphertext cap != 32768")
-            if a.get("outcome") != "cap-bounded-and-clean":
-                self.error(f"{cell} attempt {a.get('attempt')}: outcome != cap-bounded-and-clean")
-            # Verify plaintext_bytes is recorded (even if not capped for L5)
-            if "plaintext_bytes" not in a:
-                self.error(f"{cell} attempt {a.get('attempt')}: plaintext_bytes not recorded")
-            if "ciphertext_bytes" not in a:
-                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext_bytes not recorded")
+        _, qualifying = loaded
+        # Cap cells carry discovery bound 3 and no repeats per the registered plan.
+        if not (1 <= len(qualifying) <= 3):
+            self.error(f"L5: qualifying attempt count {len(qualifying)} outside the registered 1..3 bound")
+        for a in qualifying:
+            self._verify_cap_attempt("L5", a, plaintext_exact=None)
 
     def verify_cell_l6(self):
-        cell = "L6"
-        summary = self.load_cell_summary(cell)
-        if not summary:
-            self.error(f"{cell}: summary missing")
+        loaded = self._qualified_cell("L6")
+        if loaded is None:
             return
-        if not summary.get("qualified", False):
-            self.error(f"{cell}: not qualified")
-            return
-        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
-        records = self.load_journal(journal)
-        attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
-        for a in attempts:
-            checks = a.get("checks", {})
-            if not checks.get("ciphertext_cap_respected", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext cap not respected (ciphertext_bytes > 32768)")
-            if not checks.get("plaintext_cap_respected", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: plaintext cap not respected (plaintext_bytes > 8192)")
-            if not checks.get("flood_stopped_at_limit", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: flood did not stop at ciphertext limit")
-            if a.get("declared_ciphertext_cap") != 32768:
-                self.error(f"{cell} attempt {a.get('attempt')}: declared ciphertext cap != 32768")
-            if a.get("declared_plaintext_cap") != 8192:
-                self.error(f"{cell} attempt {a.get('attempt')}: declared plaintext cap != 8192")
-            if a.get("outcome") != "cap-bounded-and-clean":
-                self.error(f"{cell} attempt {a.get('attempt')}: outcome != cap-bounded-and-clean")
-            if "plaintext_bytes" not in a:
-                self.error(f"{cell} attempt {a.get('attempt')}: plaintext_bytes not recorded")
-            if "ciphertext_bytes" not in a:
-                self.error(f"{cell} attempt {a.get('attempt')}: ciphertext_bytes not recorded")
+        _, qualifying = loaded
+        if not (1 <= len(qualifying) <= 3):
+            self.error(f"L6: qualifying attempt count {len(qualifying)} outside the registered 1..3 bound")
+        for a in qualifying:
+            self._verify_cap_attempt("L6", a, plaintext_exact=REGISTERED_PLAINTEXT_CAP)
 
     def verify_cell_l6_prod(self):
         cell = "L6-PROD"
@@ -255,46 +348,41 @@ class Verifier:
         records = self.load_journal(journal)
         attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
         for a in attempts:
-            if a.get("plaintext_bytes") != 8192:
-                self.warn(f"{cell} attempt {a.get('attempt')}: plaintext drain != 8192")
+            if a.get("plaintext_bytes") != REGISTERED_PLAINTEXT_CAP:
+                self.warn(f"{cell} attempt {a.get('attempt')}: plaintext drain != {REGISTERED_PLAINTEXT_CAP}")
             if a.get("ciphertext_bytes") != 0:
                 self.warn(f"{cell} attempt {a.get('attempt')}: ciphertext bytes != 0")
 
+    # ---------------------------------------------------------------- L7
     def verify_cell_l7(self):
-        cell = "L7"
-        summary = self.load_cell_summary(cell)
-        if not summary:
-            self.error(f"{cell}: summary missing")
+        loaded = self._qualified_cell("L7")
+        if loaded is None:
             return
-        if not summary.get("qualified", False):
-            self.error(f"{cell}: not qualified")
-            return
-        journal = self.results_dir / "per-cell" / f"{cell}.jsonl"
-        records = self.load_journal(journal)
-        attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
-        for a in attempts:
+        _, qualifying = loaded
+        for a in qualifying:
+            attempt = a.get("attempt")
             checks = a.get("checks", {})
-            if not checks.get("receipt_present", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: receipt not present")
-            if not checks.get("peer_eof", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: peer EOF not recorded")
-            if not checks.get("receipt_matches_campaign_digest", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: receipt digest mismatch")
-            if not checks.get("peer_unread_at_end_zero", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: peer unread at end != 0")
-            if not checks.get("accounting_active_zero", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: Active != 0")
-            if not checks.get("accounting_balanced", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: Accepted != Completed+Failed")
-            if not checks.get("single_connection", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: not single connection")
-            if not checks.get("completed", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: not completed")
-            if not checks.get("terminal_message_processed", False):
-                self.error(f"{cell} attempt {a.get('attempt')}: terminal message not processed")
-            if a.get("outcome") != "peer-receipt-verified":
-                self.error(f"{cell} attempt {a.get('attempt')}: outcome != peer-receipt-verified")
+            for required in ("receipt_present", "peer_eof", "receipt_matches_campaign_digest",
+                             "peer_unread_at_end_zero", "accounting_active_zero",
+                             "accounting_balanced", "single_connection", "completed",
+                             "terminal_message_processed"):
+                if checks.get(required) is not True:
+                    self.error(f"L7 attempt {attempt}: checks.{required} is not true")
+            # The peer receipt journal itself must exist and re-validate.
+            receipt = self.load_peer_receipt("L7", attempt)
+            if receipt is None:
+                self.error(f"L7 attempt {attempt}: peer receipt journal record missing")
+            else:
+                import hashlib
+                hex_msg = receipt.get("message_hex", "")
+                try:
+                    digest = hashlib.sha256(bytes.fromhex(hex_msg)).hexdigest()
+                except ValueError:
+                    digest = None
+                if digest != receipt.get("sha256"):
+                    self.error(f"L7 attempt {attempt}: peer receipt digest does not match its own hex payload")
 
+    # ---------------------------------------------------------------- controls
     def verify_negative_controls(self):
         for nc in ["NC-1", "NC-2"]:
             path = self.results_dir / "negative-controls" / f"{nc}.jsonl"
@@ -304,10 +392,26 @@ class Verifier:
                 continue
             for r in records:
                 if nc == "NC-1":
-                    if r.get("declared_ciphertext_cap") != 32768 or r.get("tampered_ciphertext_cap") != 131072:
-                        self.error(f"{nc}: cap values not recorded")
-                    if r.get("outcome") == "cap-bounded-and-clean":
-                        self.error(f"{nc}: tampered cap accepted as clean")
+                    if r.get("registered_ciphertext_cap") != REGISTERED_CIPHERTEXT_CAP or \
+                            r.get("tampered_ciphertext_cap") != 131072:
+                        self.error(f"{nc}: cap tamper values not recorded")
+                    # Actual execution (R3): the tampered drain must have measured real
+                    # ciphertext wire bytes beyond the registered cap.
+                    wire = r.get("encrypted_wire_bytes")
+                    if wire is None:
+                        self.error(f"{nc}: no encrypted_wire_bytes observed — control not actually executed")
+                    else:
+                        try:
+                            wire = int(wire)
+                        except (TypeError, ValueError):
+                            wire = 0
+                        if wire <= REGISTERED_CIPHERTEXT_CAP:
+                            self.error(f"{nc}: tamper not detected — observed wire bytes {wire} "
+                                       f"did not exceed the registered {REGISTERED_CIPHERTEXT_CAP} cap")
+                    if r.get("tamper_detected") is not True:
+                        self.error(f"{nc}: tamper_detected flag not recorded as true")
+                    if r.get("ciphertext_measurement") != MEASUREMENT_BOUNDARY:
+                        self.error(f"{nc}: ciphertext measurement is not the transport boundary beneath SslStream")
                 elif nc == "NC-2":
                     if r.get("bound_deadline_ms") != 500 or r.get("extended_deadline_ms") != 800:
                         self.error(f"{nc}: deadline values not recorded")
@@ -322,30 +426,37 @@ class Verifier:
                 continue
             if not summary.get("qualified", False):
                 continue
-            if summary.get("successes") != 3:
-                self.error(f"{cell}: expected 3 successes (1 discovery + 2 repeats), got {summary.get('successes')}")
-            if summary.get("runs") > 6:
+            # Repeats apply only to cells registered with repeat_on_qualified (L1-L4, L7);
+            # cap cells (L5/L6) carry discovery bound 3 and no repeats.
+            repeats_required = summary.get("repeats_required", 2)
+            expected_successes = 1 + repeats_required
+            if summary.get("successes") != expected_successes:
+                self.error(f"{cell}: expected {expected_successes} successes "
+                           f"(1 discovery + {repeats_required} repeats), got {summary.get('successes')}")
+            if summary.get("runs", 0) > 6:
                 self.error(f"{cell}: runs {summary.get('runs')} > max 6")
 
     def verify_guarantee_levels(self):
         journal = self.results_dir / "campaign-journal.jsonl"
         records = self.load_journal(journal)
-        l1_attempts = [r for r in records if r.get("cell") == "L1" and r.get("record_type") == "attempt"]
-        l3_attempts = [r for r in records if r.get("cell") == "L3" and r.get("record_type") == "attempt"]
-        for a in l1_attempts + l3_attempts:
+        for a in records:
+            if a.get("record_type") != "attempt" or a.get("cell") not in ("L1", "L3"):
+                continue
+            if a.get("outcome") != QUALIFYING_OUTCOMES[a.get("cell")]:
+                continue
             levels = a.get("guarantee_levels", {})
             if a.get("cell") == "L1":
                 if levels.get("local_write_completion") is not False:
-                    self.error(f"L1: local_write_completion should be False")
+                    self.error("L1: local_write_completion should be False")
                 if levels.get("tls_close_notify_transmission") is not False:
-                    self.error(f"L1: tls_close_notify_transmission should be False")
+                    self.error("L1: tls_close_notify_transmission should be False")
                 if levels.get("peer_receipt") is not False:
-                    self.error(f"L1: peer_receipt should be False")
+                    self.error("L1: peer_receipt should be False")
                 if levels.get("verified_peer_receipt") is not False:
-                    self.error(f"L1: verified_peer_receipt should be False")
+                    self.error("L1: verified_peer_receipt should be False")
             if a.get("cell") == "L3":
                 if levels.get("tls_close_notify_transmission") is not True:
-                    self.error(f"L3: tls_close_notify_transmission should be True (candidate)")
+                    self.error("L3: tls_close_notify_transmission should be True (candidate)")
 
     def run(self) -> Tuple[bool, List[str], List[str]]:
         self.verify_fresh_run()

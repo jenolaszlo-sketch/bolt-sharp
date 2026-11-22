@@ -33,6 +33,10 @@ internal static class Campaign
     public const int TotalElapsedBoundMs = 500;
     public const int CiphertextLimit = 32768;
     public const int PlaintextLimit = 8192;
+    /// <summary>E1 cap profile: preceding fixture 4096 bytes, peer receive 4096, no send shrink.</summary>
+    public static readonly Profile CapProfile = new(1, 4096, 4096, 0);
+    /// <summary>Maximum TLS 1.3 application-data record on the wire (header+payload+type+tag).</summary>
+    public const int MaxTlsRecordWireBytes = CandidateDrain.MaxTlsRecordWireBytes;
 
     public static readonly Profile[] Profiles =
     [
@@ -65,6 +69,8 @@ internal static class Campaign
 
 internal sealed class Journal : IDisposable
 {
+    /// <summary>BOM-less UTF-8: Python json/verifier tooling must parse every byte stream.</summary>
+    internal static readonly Encoding Utf8NoBom = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
     private readonly object _gate = new();
     private readonly string _perCellDir;
     private readonly string _transcriptDir;
@@ -119,11 +125,11 @@ internal sealed class Journal : IDisposable
         var line = JsonSerializer.Serialize(record);
         lock (_gate)
         {
-            File.AppendAllText(_combined, line + "\n", Encoding.UTF8);
+            File.AppendAllText(_combined, line + "\n", Utf8NoBom);
             if (record.TryGetValue("cell", out var cell) && cell is string cellId && cellId.Length > 0)
             {
                 var path = Path.Combine(_perCellDir, cellId + ".jsonl");
-                File.AppendAllText(path, line + "\n", Encoding.UTF8);
+                File.AppendAllText(path, line + "\n", Utf8NoBom);
             }
         }
     }
@@ -137,7 +143,7 @@ internal sealed class Journal : IDisposable
         var line = JsonSerializer.Serialize(record);
         lock (_gate)
         {
-            File.AppendAllText(Path.Combine(_controlsDir, control + ".jsonl"), line + "\n", Encoding.UTF8);
+            File.AppendAllText(Path.Combine(_controlsDir, control + ".jsonl"), line + "\n", Utf8NoBom);
         }
     }
 
@@ -146,7 +152,7 @@ internal sealed class Journal : IDisposable
         lock (_gate)
         {
             File.AppendAllText(Path.Combine(_transcriptDir, cell + ".log"),
-                $"{DateTimeOffset.UtcNow:O} {line}\n", Encoding.UTF8);
+                $"{DateTimeOffset.UtcNow:O} {line}\n", Utf8NoBom);
         }
     }
 
@@ -156,7 +162,7 @@ internal sealed class Journal : IDisposable
         var text = JsonSerializer.Serialize(summary, new JsonSerializerOptions { WriteIndented = true });
         lock (_gate)
         {
-            File.WriteAllText(Path.Combine(_perCellDir, cell + ".summary.json"), text + "\n", Encoding.UTF8);
+            File.WriteAllText(Path.Combine(_perCellDir, cell + ".summary.json"), text + "\n", Utf8NoBom);
         }
     }
 
@@ -166,7 +172,7 @@ internal sealed class Journal : IDisposable
         var text = JsonSerializer.Serialize(meta, new JsonSerializerOptions { WriteIndented = true });
         lock (_gate)
         {
-            File.WriteAllText(Path.Combine(Directory, "run-meta.json"), text + "\n", Encoding.UTF8);
+            File.WriteAllText(Path.Combine(Directory, "run-meta.json"), text + "\n", Utf8NoBom);
         }
     }
 
@@ -737,3 +743,4 @@ internal static class RecordExtensions
         return record;
     }
 }
+

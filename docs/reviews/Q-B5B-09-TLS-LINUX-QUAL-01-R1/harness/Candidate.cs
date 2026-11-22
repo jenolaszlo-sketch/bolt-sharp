@@ -16,16 +16,22 @@ internal static class Candidate
 {
     internal static async Task RunCellAsync(Context ctx, CellSpec cell)
     {
+        // Cap cells (L5/L6) run the E1-faithful candidate TLS drain; other candidate cells run
+        // the close-notify / terminal-write observation flow. The R2 dispatch routed cap cells
+        // through the terminal-write flow, leaving RunCapAttemptAsync unreachable â€” fixed here.
+        var isCapCell = cell.Id is "L5" or "L6"; // kind prefixes never matched (R2 dispatch bug)
         var runs = 0;
         var successes = 0;
         Profile? qualifying = null;
         var failure = "";
         for (var discovery = 0; discovery < cell.DiscoveryBound && failure.Length == 0; discovery++)
         {
-            var profile = Campaign.ProfileFor(cell.Seed, discovery);
+            var profile = isCapCell ? Campaign.CapProfile : Campaign.ProfileFor(cell.Seed, discovery);
             runs++;
             var record = await WithWatchdog(ctx, cell, profile, runs, discovery, null,
-                (token) => RunCandidateAttemptAsync(ctx, cell, profile, runs, discovery, null, false, token));
+                (token) => isCapCell
+                    ? RunCapAttemptAsync(ctx, cell, profile, runs, discovery, null, false, token)
+                    : RunCandidateAttemptAsync(ctx, cell, profile, runs, discovery, null, false, token));
             ctx.Journal.Write(record);
             var outcome = (string)record["outcome"]!;
             if (outcome == QualifyingOutcome(cell))
@@ -48,7 +54,9 @@ internal static class Candidate
             {
                 runs++;
                 var record = await WithWatchdog(ctx, cell, selected, runs, -1, repeat,
-                    (token) => RunCandidateAttemptAsync(ctx, cell, selected, runs, -1, repeat, false, token));
+                    (token) => isCapCell
+                        ? RunCapAttemptAsync(ctx, cell, selected, runs, -1, repeat, false, token)
+                        : RunCandidateAttemptAsync(ctx, cell, selected, runs, -1, repeat, false, token));
                 ctx.Journal.Write(record);
                 var outcome = (string)record["outcome"]!;
                 if (outcome == QualifyingOutcome(cell))
@@ -427,43 +435,55 @@ internal static class Candidate
         peer.Tls.Dispose();
     }
 
-    internal static async Task RunCapCellAsync(Context ctx, CellSpec cell, int declaredLimit, int precedingBytes)
-    {
-        var profile = new Profile(1, precedingBytes, 4096, 0);
-        var record = await WithWatchdog(ctx, cell, profile, 1, 0, null,
-            (token) => RunCapAttemptAsync(ctx, cell, profile, 1, declaredLimit, token));
-        record["supplementary"] = true;
-        record["declared_limit"] = declaredLimit;
-        ctx.Journal.Write(record);
-        var qualified = (string)record["outcome"]! == "cap-bounded-and-clean";
-        ctx.Journal.WriteCellSummary(cell.Id, new Dictionary<string, object?>
-        {
-            ["cell"] = cell.Id,
-            ["kind"] = cell.Kind,
-            ["supplementary"] = true,
-            ["runs"] = 1,
-            ["successes"] = qualified ? 1 : 0,
-            ["qualified"] = qualified,
-            ["failure"] = qualified ? "" : record["outcome"]
-        });
-    }
-
+    /// <summary>
+    /// E1-faithful candidate cap attempt (L5/L6, explicitly candidate-only). Structure:
+    /// 1. Production TLS terminal observation: a real BoltTcpServer TLS session completes
+    ///    HELLO/LOGON/RUN, then PULL(4096-row) + BEGIN â€” production writes the PULL result and
+    ///    the terminal failure over TLS (production TLS terminal path, preserved from R1).
+    /// 2. Candidate drain: a harness-owned TLS listener runs the E1-faithful capped drain whose
+    ///    ciphertext counter sits at the transport boundary beneath SslStream (the counting
+    ///    inner stream measures the exact encrypted record bytes SslStream consumes), with the
+    ///    plaintext counter clipped exactly at the registered plaintext budget.
+    /// 3. Controlled differential: the flooding client also counts beneath its own SslStream,
+    ///    so the journal proves encrypted wire bytes differ from application bytes
+    ///    (TLS record overhead is measured, not assumed).
+    /// Registered caps: L5 enforces the 32768-byte encrypted cap (tiny flood â€” the encrypted
+    /// cap binds first); L6 enforces 8192 plaintext (large flood â€” the plaintext cap binds
+    /// first, exact) with the encrypted cap verified as a bound (E1 T5/T6 pattern).
+    /// </summary>
     internal static async Task<Dictionary<string, object?>> RunCapAttemptAsync(Context ctx, CellSpec cell,
-        Profile profile, int attempt, int declaredLimit, CancellationToken token)
+        Profile profile, int attempt, int discoveryIndex, int? repeat,
+        bool extendedDeadline, CancellationToken token, long? tamperedCiphertextCap = null)
     {
+        var isL5 = cell.Id == "L5";
         var result = NewAttempt(cell, profile, attempt, "candidate-cap");
-        result["declared_limit"] = declaredLimit;
-        var isL5 = cell.Id == "L5"; // L5 = ciphertext cap (32768), L6 = plaintext cap (8192)
-        var declaredCiphertextLimit = isL5 ? Campaign.CiphertextLimit : Campaign.CiphertextLimit; // Both cells respect 32768 encrypted cap
-        var declaredPlaintextLimit = isL5 ? long.MaxValue : Campaign.PlaintextLimit; // L6 enforces 8192 plaintext cap
+        result["phase"] = discoveryIndex >= 0 ? "discovery" : "repeat";
+        result["discovery_index"] = discoveryIndex;
+        result["repeat"] = repeat;
+        result["production_commit"] = ctx.Commit;
+        result["production_tree"] = ctx.Tree;
+        result["ciphertext_measurement"] = CandidateDrain.MeasurementBoundary;
+        result["ciphertext_source"] = CandidateDrain.CiphertextSource;
+        result["plaintext_source"] = "decrypted bytes read from candidate SslStream (exact, clipped to cap)";
+        result["registered_ciphertext_cap"] = Campaign.CiphertextLimit;
+        result["registered_plaintext_cap"] = Campaign.PlaintextLimit;
+        result["max_tls_record_wire_bytes"] = Campaign.MaxTlsRecordWireBytes;
+        result["flood_mode"] = isL5 ? "tiny" : "large";
+
+        // Cap accounting: the declared encrypted cap is the registered 32768 unless the NC-1
+        // control tampers it (declared != registered is exactly how the tamper is detected).
+        var declaredCiphertextCap = tamperedCiphertextCap ?? Campaign.CiphertextLimit;
+        result["declared_ciphertext_cap"] = declaredCiphertextCap;
+        result["ciphertext_cap_tampered"] = tamperedCiphertextCap is not null;
 
         BoltTcpServer? server = null;
-        TcpClient? peer = null;
-        long ciphertextBytes = 0; // Application bytes written (proxy for encrypted wire bytes)
-        long plaintextBytes = 0; // Plaintext bytes read (decrypted application data)
-        var plaintextReadComplete = false;
+        BoltPeer? productionPeer = null;
+        CandidateDrainListener? drainListener = null;
+        TcpClient? floodPeer = null;
+        CandidateDrain.DrainResult? drain = null;
         try
         {
+            // ---- Part 1: production TLS terminal observation (preserved from R1/R2) ----
             var provider = ScriptedProvider.WithRow(profile.PrecedingBytes);
             server = BoltTcpServer.Create(new BoltTcpServerOptions
             {
@@ -472,150 +492,184 @@ internal static class Candidate
                 Tls = new BoltTlsServerOptions(ctx.Certificate),
                 MaxConnections = 1,
                 WriteTimeout = TimeSpan.FromSeconds(30),
+                MessageReadTimeout = TimeSpan.FromSeconds(30),
                 ShutdownTimeout = TimeSpan.FromSeconds(5)
             });
             await server.StartAsync(token).ConfigureAwait(false);
-
-            peer = new TcpClient(AddressFamily.InterNetwork);
-            peer.ReceiveBufferSize = profile.PeerReceive;
-            await peer.ConnectAsync(server.BoundEndPoint!, token).ConfigureAwait(false);
-            var raw = peer.GetStream();
-            var tls = new SslStream(raw, leaveInnerStreamOpen: true);
-            await tls.AuthenticateAsClientAsync(new SslClientAuthenticationOptions
-            {
-                TargetHost = "localhost",
-                RemoteCertificateValidationCallback = (_, c, _, _) => c?.GetCertHashString() == ctx.Certificate.Thumbprint
-            }, token).ConfigureAwait(false);
-
-            await tls.WriteAsync(Wire.Handshake, token).ConfigureAwait(false);
-            var selected = new byte[4];
-            await ReadExactlyAsync(tls, selected, token).ConfigureAwait(false);
-            var reader = new BoltSharp.Framing.BoltMessageReader(tls);
-            var codec = new BoltSharp.Messages.BoltMessageCodec();
-            foreach (var request in new BoltSharp.Messages.BoltRequest[] { Wire.Hello(), Wire.Logon(), Wire.Run() })
-            {
-                await tls.WriteAsync(Wire.Frame(Wire.Encode(request)), token).ConfigureAwait(false);
-                var message = await reader.ReadMessageAsync(token).ConfigureAwait(false)
-                    ?? throw new EndOfStreamException("closed during authentication");
-                _ = codec.DecodeResponse(message);
-            }
-
-            var batch = Wire.Frame(Wire.Encode(Wire.Pull(2)))
+            productionPeer = await BoltPeer.ConnectAsync(server.BoundEndPoint!, ctx.Certificate,
+                profile.PeerReceive, token).ConfigureAwait(false);
+            result["production_tls_protocol"] = productionPeer.Tls.SslProtocol.ToString();
+            result["production_tls_cipher"] = productionPeer.Tls.NegotiatedCipherSuite.ToString();
+            await productionPeer.AuthenticateAsync(token).ConfigureAwait(false);
+            var productionBatch = Wire.Frame(Wire.Encode(Wire.Pull(2)))
                 .Concat(Wire.Frame(Wire.TerminalBegin))
                 .ToArray();
-            await tls.WriteAsync(batch, token).ConfigureAwait(false);
+            await productionPeer.SendAsync(productionBatch, token).ConfigureAwait(false);
 
-            // Candidate flood task: writes payload until ciphertext limit reached
+            // The 4096-byte PULL result fits the peer receive buffer; production writes both the
+            // PULL result and the terminal failure without parking, then closes (terminal outcome).
+            var productionDeadline = Stopwatch.GetTimestamp();
+            while (server.Diagnostics.MessagesProcessed < 5
+                && Stopwatch.GetElapsedTime(productionDeadline).TotalMilliseconds < 2000)
+                await Task.Delay(2, token).ConfigureAwait(false);
+            var productionTerminal = await productionPeer.ReadUntilEofAsync(TimeSpan.FromSeconds(1), token)
+                .ConfigureAwait(false);
+            var productionMessages = server.Diagnostics.MessagesProcessed;
+            var productionAccounting = Account.Snapshot(server);
+            var productionObserved = productionMessages == 5
+                && !productionTerminal.StartsWith("read-timeout", StringComparison.Ordinal);
+            result["production_tls_terminal_observed"] = productionObserved;
+            result["production_messages_processed"] = productionMessages;
+            result["production_peer_read_outcome"] = productionTerminal;
+            result["production_accounting"] = productionAccounting;
+            await server.StopAsync(token).WaitAsync(TimeSpan.FromSeconds(6), token).ConfigureAwait(false);
+            productionPeer.Dispose();
+            productionPeer = null;
+            await server.DisposeAsync().AsTask().WaitAsync(TimeSpan.FromSeconds(6), token).ConfigureAwait(false);
+            server = null;
+
+            // ---- Part 2: candidate TLS drain with real ciphertext measurement ----
+            drainListener = new CandidateDrainListener(ctx.Certificate, declaredCiphertextCap,
+                Campaign.PlaintextLimit, closeNotify: true, token);
+            var drainEndpoint = drainListener.Start();
+
+            // Flooding client: counts beneath its own SslStream for the controlled differential.
+            floodPeer = new TcpClient(AddressFamily.InterNetwork);
+            floodPeer.ReceiveBufferSize = profile.PeerReceive;
+            await floodPeer.ConnectAsync(drainEndpoint, token).ConfigureAwait(false);
+            var floodWire = new CandidateDrain.WireCountingStream(floodPeer.GetStream());
+            var floodTls = new SslStream(floodWire, leaveInnerStreamOpen: true);
+            await floodTls.AuthenticateAsClientAsync(new SslClientAuthenticationOptions
+            {
+                TargetHost = "localhost",
+                RemoteCertificateValidationCallback = (_, c, _, _) =>
+                    c?.GetCertHashString() == ctx.Certificate.Thumbprint
+            }, token).ConfigureAwait(false);
+            var floodWireBefore = floodWire.Snapshot;
+
+            var payload = isL5 ? new byte[1] : new byte[4096]; // E1 flood sizes: tiny 1 byte, large 4096
+            var floodBound = 4L * 1024 * 1024; // hard safety bound far above any cap overshoot
+            long applicationFlooded = 0;
+            string? floodError = null;
             var flood = Task.Run(async () =>
             {
-                var payload = new byte[4096];
                 try
                 {
-                    while (!token.IsCancellationRequested)
+                    while (!token.IsCancellationRequested && applicationFlooded < floodBound)
                     {
-                        // Check both limits before writing
-                        if (ciphertextBytes >= declaredCiphertextLimit)
-                            break;
-                        await tls.WriteAsync(payload, token).ConfigureAwait(false);
-                        Interlocked.Add(ref ciphertextBytes, payload.Length);
+                        await floodTls.WriteAsync(payload, token).ConfigureAwait(false);
+                        applicationFlooded += payload.Length;
                     }
                 }
-                catch (Exception) { }
-            }, token);
-
-            // Candidate read task: reads server responses until plaintext limit reached or EOF
-            var readTask = Task.Run(async () =>
-            {
-                var buffer = new byte[4096];
-                try
+                catch (Exception ex)
                 {
-                    while (!token.IsCancellationRequested && plaintextBytes < declaredPlaintextLimit)
-                    {
-                        var read = await tls.ReadAsync(buffer, token).ConfigureAwait(false);
-                        if (read == 0)
-                        {
-                            plaintextReadComplete = true;
-                            break;
-                        }
-                        Interlocked.Add(ref plaintextBytes, read);
-                    }
+                    floodError = ex.GetType().Name;
                 }
-                catch (Exception) { }
             }, token);
 
-            var started = Stopwatch.GetTimestamp();
-            // Wait for flood to complete (ciphertext limit reached) or read to complete
-            await Task.WhenAny(flood, readTask).WaitAsync(TimeSpan.FromSeconds(10), token).ConfigureAwait(false);
-            var elapsedMs = Math.Round(Stopwatch.GetElapsedTime(started).TotalMilliseconds, 3);
+            var drainCompleted = await drainListener.DrainTask
+                .WaitAsync(TimeSpan.FromMilliseconds(Campaign.AttemptLifetimeMs), token).ConfigureAwait(false);
+            drain = drainCompleted;
 
-            // Wait a bit more for any remaining reads
-            try { await readTask.WaitAsync(TimeSpan.FromSeconds(2), token).ConfigureAwait(false); }
+            // Give the flood a bounded grace to observe the connection close, then stop it.
+            try { await flood.WaitAsync(TimeSpan.FromSeconds(1), token).ConfigureAwait(false); }
             catch (Exception) { }
+            var floodWireAfter = floodWire.Snapshot;
+            var floodEncryptedWire = floodWireAfter.EncryptedOutbound - floodWireBefore.EncryptedOutbound;
 
-            result["drain_end"] = new Dictionary<string, object?>
-            {
-                ["name"] = "candidate-flood-complete",
-                ["bytes"] = isL5 ? ciphertextBytes : plaintextBytes,
-                ["reason"] = isL5 ? "ciphertext-cap" : "plaintext-cap"
-            };
-            result["plaintext_bytes"] = plaintextBytes;
-            result["declared_plaintext_cap"] = declaredPlaintextLimit == long.MaxValue ? null : declaredPlaintextLimit;
-            result["ciphertext_bytes"] = ciphertextBytes;
-            result["declared_ciphertext_cap"] = declaredCiphertextLimit;
-            result["ciphertext_source"] = "candidate TLS write flood counter (application bytes as encrypted proxy)";
-            result["plaintext_source"] = "candidate TLS read counter (decrypted plaintext bytes)";
-            result["plaintext_read_complete"] = plaintextReadComplete;
-            result["permits"] = 0;
-            result["released_permits"] = 0;
-            result["elapsed_ms"] = elapsedMs;
+            result["drain_outcome"] = drain.Outcome;
+            result["drain_error"] = drain.Error;
+            result["encrypted_wire_bytes"] = drain.EncryptedWireBytes;
+            result["plaintext_bytes"] = drain.PlaintextBytes;
+            result["drain_close_notify_completed"] = drain.CloseNotifyCompleted;
+            result["drain_elapsed_ms"] = drain.ElapsedMs;
+            result["drain_wire_totals"] = drain.Accounting;
+            result["flood_application_bytes"] = applicationFlooded;
+            result["flood_encrypted_wire_bytes"] = floodEncryptedWire;
+            result["flood_error"] = floodError;
 
-            var accounting = Account.Snapshot(server);
-            result["accounting"] = accounting;
-            var active = (long)accounting["active"]!;
-            var accepted = (long)accounting["accepted"]!;
-            var completed = (long)accounting["completed"]!;
-            var failed = (long)accounting["failed"]!;
+            // Controlled differential (R3 requirement 5): the TLS ciphertext counters and the
+            // application byte counts MUST differ â€” the difference is the measured TLS record
+            // overhead, proving the ciphertext evidence is wire measurement, not an app proxy.
+            var overheadDrain = drain.EncryptedWireBytes - drain.PlaintextBytes;
+            var overheadFlood = floodEncryptedWire - applicationFlooded;
+            result["tls_record_overhead_bytes_drain"] = overheadDrain;
+            result["tls_record_overhead_bytes_flood"] = overheadFlood;
+            var differentialObserved = isL5
+                ? overheadDrain > 0 && drain.EncryptedWireBytes > drain.PlaintextBytes
+                : overheadDrain > 0 && overheadFlood > 0;
+            result["ciphertext_app_differential_observed"] = differentialObserved;
 
-            // For L5: verify ciphertext cap enforced (ciphertextBytes <= 32768, flood stopped at limit)
-            // For L6: verify plaintext cap enforced (plaintextBytes <= 8192) AND ciphertext cap respected (ciphertextBytes <= 32768)
-            var ciphertextCapRespected = ciphertextBytes <= Campaign.CiphertextLimit;
-            var plaintextCapRespected = !isL5 ? plaintextBytes <= Campaign.PlaintextLimit : true;
-            var floodStoppedAtLimit = isL5 ? ciphertextBytes >= declaredCiphertextLimit * 0.9 : true; // Allow some overshoot due to buffering
+            // ---- Part 3: registered cap oracle (E1 T5/T6 semantics) ----
+            // Exact plaintext enforcement: the drain clips every read to the remaining plaintext
+            // budget, so plaintext_bytes never overshoots the cap.
+            var plaintextCapEnforced = isL5
+                ? drain.PlaintextBytes < Campaign.PlaintextLimit
+                : drain.PlaintextBytes == Campaign.PlaintextLimit;
+            // Bounded encrypted enforcement: the encrypted counter is checked after every read;
+            // a single SslStream record pull may overshoot by at most one maximum TLS record,
+            // so WireBytes <= cap + MaxTlsRecordWireBytes proves no undetected violation
+            // (R3 requirement 6: buffering/record overhead cannot hide a cap breach).
+            var encryptedCapRespected = drain.EncryptedWireBytes > 0
+                && drain.EncryptedWireBytes <= declaredCiphertextCap + Campaign.MaxTlsRecordWireBytes;
+            var encryptedBoundVersusRegistered = drain.EncryptedWireBytes <= Campaign.CiphertextLimit
+                + Campaign.MaxTlsRecordWireBytes;
+            var clientConsistency = applicationFlooded > 0 && floodEncryptedWire > 0
+                && floodEncryptedWire >= applicationFlooded;
+            var accountingClean = (long)productionAccounting["active"]! == 0
+                && (long)productionAccounting["accepted"]! == 1;
 
-            var checks = ciphertextCapRespected
-                && plaintextCapRespected
-                && floodStoppedAtLimit
-                && active == 0
-                && accepted == 1
-                && completed + failed == 1;
+            result["plaintext_cap_enforced"] = plaintextCapEnforced;
+            result["encrypted_cap_respected"] = encryptedCapRespected;
+            result["encrypted_bound_versus_registered"] = encryptedBoundVersusRegistered;
+            result["client_consistency"] = clientConsistency;
+
+            var checks = productionObserved
+                && plaintextCapEnforced
+                && encryptedCapRespected
+                && encryptedBoundVersusRegistered
+                && differentialObserved
+                && clientConsistency
+                && accountingClean;
             result["checks"] = new Dictionary<string, object?>
             {
-                ["ciphertext_cap_respected"] = ciphertextCapRespected,
-                ["plaintext_cap_respected"] = plaintextCapRespected,
-                ["flood_stopped_at_limit"] = floodStoppedAtLimit,
-                ["accounting_active_zero"] = active == 0,
-                ["accounting_balanced"] = accepted == completed + failed
+                ["production_tls_terminal_observed"] = productionObserved,
+                ["plaintext_cap_enforced"] = plaintextCapEnforced,
+                ["encrypted_cap_respected"] = encryptedCapRespected,
+                ["encrypted_bound_versus_registered"] = encryptedBoundVersusRegistered,
+                ["ciphertext_app_differential_observed"] = differentialObserved,
+                ["client_consistency"] = clientConsistency,
+                ["accounting_active_zero"] = (long)productionAccounting["active"]! == 0,
+                ["accounting_balanced"] = (long)productionAccounting["accepted"]! == 1
+                    && ((long)productionAccounting["completed"]! + (long)productionAccounting["failed"]!) == 1
             };
             result["outcome"] = checks ? "cap-bounded-and-clean" : "cap-checks-failed";
             result["guarantee_levels"] = new Dictionary<string, object?>
             {
                 ["local_write_completion"] = true,
-                ["tls_close_notify_transmission"] = false,
+                ["tls_close_notify_transmission"] = drain.CloseNotifyCompleted,
                 ["peer_receipt"] = false,
                 ["verified_peer_receipt"] = false
             };
             ctx.Journal.Transcript(cell.Id,
-                $"attempt {attempt}: cap {declaredLimit} plaintext={plaintextBytes} ciphertext={ciphertextBytes} " +
-                $"ciphertext_cap_ok={ciphertextCapRespected} plaintext_cap_ok={plaintextCapRespected} outcome={result["outcome"]}");
+                $"attempt {attempt}: drain={drain.Outcome} wire={drain.EncryptedWireBytes} " +
+                $"plain={drain.PlaintextBytes} app={applicationFlooded} overhead={overheadDrain} " +
+                $"outcome={result["outcome"]}");
         }
         catch (Exception ex)
         {
             result["outcome"] = "environment";
             result["error"] = ex.GetType().Name + ":" + ex.Message;
+            result["drain_outcome"] = drain?.Outcome;
+            result["encrypted_wire_bytes"] = drain?.EncryptedWireBytes;
+            result["plaintext_bytes"] = drain?.PlaintextBytes;
+            ctx.Journal.Transcript(cell.Id, $"attempt {attempt}: environment {result["error"]}");
         }
         finally
         {
-            peer?.Dispose();
+            floodPeer?.Dispose();
+            if (drainListener is not null)
+                await drainListener.DisposeAsync().ConfigureAwait(false);
             if (server is not null)
             {
                 try { await server.DisposeAsync().AsTask().WaitAsync(TimeSpan.FromSeconds(6)).ConfigureAwait(false); }
@@ -639,10 +693,12 @@ internal static class Candidate
     }
 
     internal static string QualifyingOutcome(CellSpec cell)
-        => cell.Kind.StartsWith("candidate-cap", StringComparison.Ordinal)
+        => cell.Id is "L5" or "L6"
             ? "cap-bounded-and-clean"
             : "induced-and-interrupted";
 
     internal static bool IsChecksFailure(string outcome)
         => outcome is "induced-but-checks-failed" or "cap-checks-failed" or "phase-candidate-cleanup-failed";
 }
+
+
