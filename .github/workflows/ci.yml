@@ -32,7 +32,7 @@ jobs:
         run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@67a3573c9a986a3f9c594fabf9ac5fc1b6f4b6d2
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
 
