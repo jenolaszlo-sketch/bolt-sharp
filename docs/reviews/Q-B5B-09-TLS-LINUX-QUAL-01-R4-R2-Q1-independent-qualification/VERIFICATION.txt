@@ -1,0 +1,148 @@
+Q-B5B-09-TLS-LINUX-QUAL-01-R4-R2-Q1 - INDEPENDENT QUALIFICATION VERIFICATION
+============================================================================
+
+Reviewed commit .. 784cc3365cce16afdeec189e4d1349e4b844f250
+Reviewed tree ..... 13ac2e99f4c3ff9abf58791df9f6a06da147c6ff
+R4-R1 predecessor .. 1eb03bdee1c1c322983bfdde333be76f053319a9
+Production base ... 36d7b69bd4eb35bccc2a75ceb322171eefe32c9c
+Pin ............... 7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f
+Author/committer .. jenol <jenolaszlo-sketch@users.noreply.github.com>
+
+Identity verified before commencing. Parent of the reviewed commit is the R4-R1 commit.
+
+F6 DISPOSITION: B - SUPPORTED WITH QUALIFICATIONS
+F5: OPEN.  Native-Linux: OUTSTANDING.  Release readiness: NOT ESTABLISHED.
+
+1. CODE INSPECTION (independently read from the committed blobs)
+---------------------------------------------------------------
+verify_r1.py:92-105  load_peer_receipts returns EVERY record typed peer-receipt.
+verify_r1.py:484-518 zero -> missing; >1 -> "exactly one ... found N" plus per-record
+                    binding errors for extras; otherwise binds receipts[0].
+F1 checks unchanged and still enforced: sha equality (529), byte-count equality
+(533-545), attempt binding (513), cell binding (516), receipt self-consistency
+(506-511), framed-payload length vs declared bytes.
+
+2. INDEPENDENT ADVERSARIAL CONTROL - 16 cases, all correct
+---------------------------------------------------------
+Baseline unmodified copy -> VERIFIER: PASS (0 errors).
+10 reported cases (D1-D10) + 6 independently designed (X1-X6).
+D1/D2 contradictory & different payload+bytes duplicates -> 1 error, multiplicity.
+D3 appended other-attempt records -> 2 errors.  D4 identical duplicate -> 1 error.
+D5 prepended other-attempt records -> 3 errors.  D6/D7 missing -> 1 / 3 errors.
+D8 record_type stripped -> 1 error (missing).  D9 empty journal -> 1 error (missing).
+D10 triple extra -> 1 error (found 4).
+X1/X2 ordering cannot bypass (contradictory-first; wrong-attempt primary) -> 3 errors each.
+X3 single typed receipt belonging to another attempt -> 1 error via BINDING, not
+   multiplicity - demonstrates the two paths are independent.
+X4 duplicate with no attempt field -> 2 errors.
+X5/X6 POSITIVE: untyped receipt-like or diagnostic records -> VERIFIER: PASS.
+Full transcript: adversarial-f6-independent.txt
+
+3. REGRESSION QUALIFICATION MATRIX
+----------------------------------
+[independent, executed by me]
+  Complete verifier self-test suite .... ALL SELF-TESTS PASSED (exit 0)
+  73 fixture lines = 60 single + 9 double + 3 triple + 1 EXEC-05
+  0 fixtures with >3 errors (no vacuous rejection)
+  Independent F6 adversarial control ... 16/16 correct behaviour
+  Preserved R4 Windows evidence ....... VERIFIER: PASS
+  Preserved R4-R1 Windows evidence .... VERIFIER: PASS
+  Preserved R4-R2 Windows evidence .... VERIFIER: PASS
+  Fresh reviewer campaign r2q1full ..... VERIFIER: PASS (executed by me)
+  Positive control: untyped diagnostics  PASS (X5, X6, and live evidence)
+[inspected historical evidence]
+  preserved R4 / R4-R1 journals, verified by re-running the verifier over them
+
+Fresh campaign r2q1full: Windows NT 10.0.26200.0, runtime 10.0.12, raw-complete,
+0 unobserved exceptions. L1-L7 all qualified. L5 wire 32768 exactly / plaintext 1424 /
+cipher-cap. L6 wire 20590 <= cap / plaintext 8192 exact / plain-cap. L7 169 bytes,
+5cdf80e60e813e45ddb60777b10c920fb9f940ff49adc865c5157c2c56c7c444. NC-1 131072 exact.
+NC-2 elapsed 810.763 > 500, prerequisite_confirmed and deadline_tamper_detected true.
+Dispatch audit: all 7 implementations invoked.
+Each L7 attempt journal contains exactly ONE typed peer-receipt record out of four
+records - the real harness complies and legitimate diagnostic records coexist.
+
+4. FROZEN SCOPE
+---------------
+git diff 7429c6b..HEAD -- src|tests : EMPTY (src empty alone; tests empty alone)
+Pin 7429c6bb is an ancestor of HEAD.
+R4-R2 changes exactly two files outside its additive evidence package:
+verifier/verify_r1.py and verifier/verifier_selftest.py.
+Evidence package: 54 files on disk = 54 paths added by the commit (zero difference).
+
+5. F1-F4 PRESERVATION
+---------------------
+F1 L7 journal<->receipt binding, F2 L5 plaintext > 0, F3 fixture-count erratum and
+F4 provenance documentation are all still enforced and still pass on preserved
+evidence. No regression demonstrated.
+
+6. F5 ENTRY READINESS - CAUSAL MODEL CORRECTION
+-----------------------------------------------
+All F5 technical claims independently verified: E1 shrinks SO_SNDBUF
+(TlsE1MechanismTests.cs.txt:108); R4 Production.cs never sets sender SendBufferSize;
+Candidate.cs:283 does shrink; the native-Linux oracle
+Production.cs:243-244 with IsNativeLinux() = Unix && !IsWsl (Support.cs:703-704) is
+bypassed under WSL2. The profile set maxes at 262144 preceding bytes. The campaign
+plan ALREADY carries a profile-4 note naming native-Linux, so O4 is substantially
+satisfied and should be restated closed-pending-verification.
+
+The record's causal model does NOT match the evidence. Windows vs WSL2, L3 attempt 1,
+same profile (ordinal 1, 36864 preceding):
+  candidate send buffer req/actual   2048 / 2048      | 2048 / 4608
+  peer rcvbuf requested              2048             | 2048
+  fixture bytes                      5120             | 2048
+  fixture_path_saturated             true             | true
+  shutdown_pending / ms              true / 21.6      | false / 0
+  elapsed_ms                         320.4            | 0.207
+The failure is not "262144 bytes against a 4 MB buffer": the fixture was only 2048
+bytes, the path WAS saturated, the sender WAS already shrunk (to 4608 against Linux's
+floor), and close_notify still completed immediately (shutdown_completed_after_hold
+true) in 0.207 ms. The binding constraint is buffer-capacity arithmetic among the
+EFFECTIVE candidate send buffer, the peer's effective receive buffer and the fixture
+byte count.
+
+Consequence: O1's two options (shrink sender SO_SNDBUF / extend the profile set) do not
+address the observed mechanism - the sender is already shrunk and the profile ceiling is
+not binding. Peers also diverge: on WSL2 the L3 zero-window peer never reached a
+"parked" record at all, while L4's peer did park.
+
+RECOMMENDATION: the smallest defensible F5 commission is DIAGNOSTIC, not a buffer-change
+commission. F5 implementation is NOT authorized here.
+
+7. REPOSITORY CONSOLIDATION READINESS (non-mutating)
+----------------------------------------------------
+Branches: main (43 ahead of origin/main) and qualification/q-b5b-09-tls-linux-qual-01.
+Worktrees: exactly one (D:/projects/bolt-sharp, main). No additional worktrees.
+Stashes: one - .github/workflows/q-b5b-09-tls-linux-qual-01.yml and
+        docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/run-campaign.py.
+Local vs remote main: local 43 ahead, remote 0 ahead -> strictly ahead, no rebase risk.
+Divergences: main and the qualification branch have genuinely diverged
+        (merge base 3e55368; 10 unique on main, 7 unique on the branch). The branch's
+        unique commits are native-Linux campaign-driver work directly relevant to F5,
+        touch no src/tests, and are already published to their own origin ref.
+
+Sequence: publish main (no risk); reconcile the qualification branch deliberately as an
+F5 prerequisite, not as consolidation fallout; preserve the stash as protected; one
+checkout already satisfies the single-checkout objective. Consolidation of accepted
+plaintext work is not gated on the TLS roadmap.
+
+8. DISPOSITIONS
+---------------
+F6 remediation ....... B - SUPPORTED WITH QUALIFICATIONS
+F5 .................. OPEN (obligations recorded; causal model needs correction)
+Native-Linux ......... OUTSTANDING (not executed, not claimed, not advanced)
+Windows scope ........ stands, on fresh evidence produced and verified by me
+Consolidation ....... main publishable; qualification branch must be reconciled
+Release readiness ... NOT ESTABLISHED (gated on F5 / native Linux)
+
+9. RESIDUAL LIMITATIONS
+-----------------------
+1. F5 causal model contradicted by evidence (material to the next commission).
+2. O4's profile-4 note already exists; restate rather than reopen.
+3. My control exercised the preserved R4-R2 evidence and one fresh campaign; it did not
+   re-execute the R4 and R4-R1 campaigns.
+4. Three of my 16 cases reject via paths other than the one I first expected; each was
+   re-verified directly and all are correct rejections.
+
+No owner acceptance granted. No push, publication, tag, release, worktree, branch or
+stash modification.
