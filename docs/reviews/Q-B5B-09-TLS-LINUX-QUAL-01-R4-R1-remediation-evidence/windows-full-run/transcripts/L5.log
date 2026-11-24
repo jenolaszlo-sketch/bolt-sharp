@@ -1,0 +1,2 @@
+2026-11-24T07:58:53.3474924+00:00 attempt 1: drain=cipher-cap wire=32768 plain=1424 app=1642 overhead=31344 outcome=cap-bounded-and-clean
+2026-11-24T07:58:53.9552814+00:00 attempt 1: drain=cipher-cap wire=131072 plain=5698 app=5764 overhead=125374 outcome=cap-checks-failed

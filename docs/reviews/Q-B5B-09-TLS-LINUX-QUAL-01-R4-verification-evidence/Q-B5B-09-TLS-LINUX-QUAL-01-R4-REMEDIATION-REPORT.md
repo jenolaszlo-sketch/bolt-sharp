@@ -186,7 +186,7 @@ journal and dropped every other cell's summary, so every fixture was rejected fo
 test. That made the suite unable to detect a verifier regression.
 
 Each fixture now starts from a **complete valid run** and mutates exactly one thing,
-so a rejection is attributable. 50 rejecting fixtures now yield exactly one error in
+so a rejection is attributable. 54 rejecting fixtures now yield exactly one error in
 47 cases and two coupled errors in 7 cases (where a single mutation trips two directly
 related assertions, e.g. `encrypted_cap_strict = false` failing both the direct
 assertion and the required-checks loop). No fixture rejects vacuously.

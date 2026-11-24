@@ -1,0 +1,62 @@
+==============================================================================
+R4-R1 FRESH ADVERSARIAL CONTROLS (F1 + F2) against PRESERVED REAL EVIDENCE
+==============================================================================
+
+[baseline] unmodified copy -> exit=0 last="VERIFIER: PASS" errors=0
+
+OK   F1 journal expected_terminal_sha256 corrupted
+      exit=1 total_errors=3 matching=3
+      > ERROR: L7 attempt 1: expected_terminal_sha256 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff does not match the peer receipt sha256 
+      > ERROR: L7 attempt 2: expected_terminal_sha256 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff does not match the peer receipt sha256 
+
+OK   F1 journal expected_terminal_message_bytes corrupted
+      exit=1 total_errors=3 matching=3
+      > ERROR: L7 attempt 1: expected_terminal_message_bytes 999 does not match the peer receipt message_bytes 169 (the harness expectation disagrees with the
+      > ERROR: L7 attempt 2: expected_terminal_message_bytes 999 does not match the peer receipt message_bytes 169 (the harness expectation disagrees with the
+
+OK   F1 journal expected digest malformed (not hex)
+      exit=1 total_errors=3 matching=3
+      > ERROR: L7 attempt 1: expected_terminal_sha256 'not-a-digest' is not a 64-character lowercase hex sha256
+      > ERROR: L7 attempt 2: expected_terminal_sha256 'not-a-digest' is not a 64-character lowercase hex sha256
+
+OK   F1 journal expected digest missing
+      exit=1 total_errors=3 matching=3
+      > ERROR: L7 attempt 1: expected_terminal_sha256 missing ù the harness did not declare the terminal message it expects
+      > ERROR: L7 attempt 2: expected_terminal_sha256 missing ù the harness did not declare the terminal message it expects
+
+OK   F1 journal expected bytes missing
+      exit=1 total_errors=3 matching=3
+      > ERROR: L7 attempt 1: expected_terminal_message_bytes missing ù the harness did not declare the terminal message length
+      > ERROR: L7 attempt 2: expected_terminal_message_bytes missing ù the harness did not declare the terminal message length
+
+OK   F1 receipt associated with the wrong attempt
+      exit=1 total_errors=1 matching=1
+      > ERROR: L7 attempt 2: peer receipt is associated with attempt 9 (receipt is not bound to this attempt)
+
+OK   F1 receipt message_bytes corrupted
+      exit=1 total_errors=1 matching=1
+      > ERROR: L7 attempt 2: expected_terminal_message_bytes 169 does not match the peer receipt message_bytes 999 (the harness expectation disagrees with the
+
+OK   F1 receipt cell mislabelled
+      exit=1 total_errors=1 matching=1
+      > ERROR: L7 attempt 2: peer receipt is associated with cell 'L1'
+
+OK   F1 receipt sha256 corrupted (existing check preserved)
+      exit=1 total_errors=2 matching=1
+      > ERROR: L7 attempt 2: peer receipt digest does not match its own hex payload
+
+OK   F1 receipt message_hex malformed
+      exit=1 total_errors=2 matching=1
+      > ERROR: L7 attempt 2: peer receipt message_hex is malformed and cannot be re-encoded
+
+OK   F2 L5 plaintext zero
+      exit=1 total_errors=1 matching=1
+      > ERROR: L5 attempt 1: plaintext bytes 0 is not greater than zero ù the tiny-flood drain decrypted nothing at the transport boundary (an empty observati
+
+OK   F2 L5 plaintext negative
+      exit=1 total_errors=1 matching=1
+      > ERROR: L5 attempt 1: plaintext bytes -1 is not greater than zero ù the tiny-flood drain decrypted nothing at the transport boundary (an empty observat
+
+==============================================================================
+cases=12 detected_for_intended_reason=12
+FAILED CASES: none

@@ -1,0 +1,73 @@
+Q-B5B-09-TLS-LINUX-QUAL-01-R4-R1 - F4 EVIDENCE PROVENANCE RECORD
+===============================================================
+
+Q1 finding F4: "run-meta.json in the preserved evidence is line-ending-normalized
+(LF vs raw CRLF; 0 field differences) - recommend either preserving verbatim raw output
+or applying the rewrite uniformly and documenting it."
+
+Status: DOCUMENTED, with a field-by-field confirmation of zero semantic change.
+No raw evidence was rewritten in this commission.
+
+1. WHAT WAS PRESERVED
+---------------------
+Package: Q-B5B-09-TLS-LINUX-QUAL-01-R4-verification-evidence/
+Source:  C:\Windows\TEMP\r4-full-windows6  (run-id r4full6)
+
+SHA-256 comparison of every copied file against the raw run output:
+
+  identical ......... 48 of 49 files (byte-for-byte)
+  differs .......... 1 file  (run-meta.json)
+  missing in raw ... 0 files
+  added by producer  PROVENANCE.txt (a summary file, not harness output)
+
+2. THE SINGLE DIFFERENCE - run-meta.json
+----------------------------------------
+  Raw output ........ 894 bytes, 19 CR + 20 LF  (CRLF line endings)
+  Preserved copy .... 875 bytes,  0 CR + 20 LF  (LF line endings)
+
+  Same 20 logical lines. The difference is a line-ending normalisation introduced by
+  the preserve step (Python text-mode read with universal-newline translation followed
+  by a write with newline=''), not a content edit.
+
+3. ZERO SEMANTIC FIELD CHANGE (all 18 fields compared)
+------------------------------------------------------
+run_id, campaign, commit, tree, mode, platform, runtime, kernel, wsl, native_linux,
+python, production_assembly, production_assembly_sha256, certificate_sha256,
+started_utc, elapsed_ms, unobserved_task_exceptions, status.
+
+  Fields differing in value: 0.
+
+  Specifically preserved and verified:
+    commit = 36d7b69bd4eb35bccc2a75ceb322171eefe32c9c
+    tree   = 5d176f30765d710894a1286c397dc6106556cc0c
+    status = raw-complete
+    platform = Microsoft Windows NT 10.0.26200.0
+    wsl = false            native_linux = false
+    unobserved_task_exceptions = 0
+
+4. ABSOLUTE PATHS INSIDE THE PRESERVED EVIDENCE
+----------------------------------------------
+  60 occurrences of "C:\Windows\TEMP\r4-full-windows6\..." remain in the preserved
+  package, entirely inside peer journal records (e.g. L7-attempt-N-receipt.jsonl,
+  L3/L4 zero-window and proxy journals).
+
+  These are the HARNESS'S OWN recorded self-references, written by the peer at run
+  time and preserved verbatim. They are not producer-introduced edits, and they are
+  NOT scrubbed from run-meta.json (which was the only rewritten file). The observed
+  inconsistency is therefore: run-meta.json line endings were normalised while the
+  peer journals' embedded paths were left verbatim. This is recorded as the provenance
+  note; the scientific content of every field is unchanged.
+
+5. MEASURES TAKEN
+-----------------
+  a) This record documents the normalisation and the zero-field-difference result.
+  b) No raw evidence in the repository was rewritten.
+  c) The R4-R1 evidence package (this directory) preserves its own run-meta.json
+     from the same preserve step; the same LF-vs-CRLF normalisation applies and is
+     documented here for that package as well.
+
+6. RECOMMENDATION
+-----------------
+  No further action is required for qualification. For any future evidence package,
+  prefer a byte-exact copy so that hashes can be re-derived without normalisation
+  caveats, or apply the normalisation uniformly to every file and state it once.

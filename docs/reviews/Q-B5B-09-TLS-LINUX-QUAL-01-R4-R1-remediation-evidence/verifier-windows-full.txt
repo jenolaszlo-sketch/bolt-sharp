@@ -1,0 +1,3 @@
+Independent verifier, --mode full, against the fresh R4-R1 Windows full campaign (windows-full-run, run-id r4r1full):
+
+VERIFIER: PASS

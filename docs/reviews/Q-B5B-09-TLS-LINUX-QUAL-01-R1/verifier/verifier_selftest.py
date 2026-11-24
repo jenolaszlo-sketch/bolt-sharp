@@ -53,8 +53,11 @@ def write_meta(dir: Path, commit: str, tree: str, run_id: str):
 
 
 def write_peer_receipt(dir: Path, cell: str, attempt: int, receipt: dict):
+    # The real framing-aware peer records the cell and attempt on every receipt; the
+    # verifier (R4-R1 F1) binds each receipt to the attempt it claims to describe.
     with open(dir / "peer" / f"{cell}-attempt-{attempt}-receipt.jsonl", "w") as f:
-        f.write(json.dumps({"record_type": "peer-receipt", **receipt}) + "\n")
+        f.write(json.dumps({"record_type": "peer-receipt", "cell": cell, "attempt": attempt,
+                            **receipt}) + "\n")
 
 
 def write_cell_journal(dir: Path, cell: str, records: list):
@@ -160,6 +163,8 @@ def make_attempt_record(cell: str, attempt: int, run_id: str, commit: str, tree:
     elif cell == "L7":
         base["outcome"] = "peer-receipt-verified"
         base["interruption"] = "none"
+        base["expected_terminal_message_bytes"] = len(bytes.fromhex(RECEIPT_HEX))
+        base["expected_terminal_sha256"] = RECEIPT_SHA
         base["checks"] = {
             "receipt_present": True, "peer_eof": True, "receipt_matches_campaign_digest": True,
             "peer_unread_at_end_zero": True, "accounting_active_zero": True,
@@ -203,7 +208,8 @@ def make_valid_run(d: Path, run_id: str, commit: str, tree: str):
                                        "deadline_tamper_detected": True,
                                        "elapsed_ms": 600.0}])
     for attempt in (1, 2, 3):
-        write_peer_receipt(d, "L7", attempt, {"message_bytes": 16, "message_hex": RECEIPT_HEX,
+        write_peer_receipt(d, "L7", attempt, {"message_bytes": len(bytes.fromhex(RECEIPT_HEX)),
+                                              "message_hex": RECEIPT_HEX,
                                               "sha256": RECEIPT_SHA, "receipt_ms": 5,
                                               "app": "python3-stdlib-ssl-peer"})
     targets = ["Candidate.RunCapAttemptAsync", "Candidate.RunCloseNotifyAttemptAsync",
@@ -343,6 +349,11 @@ def _rewrite_l7_receipt(d: Path, attempt: int, receipt_updates: dict):
     path.write_text("\n".join(json.dumps(r) for r in records) + "\n", encoding="utf-8")
 
 
+def _set_mutate_l7(d: Path, vals: "dict | None" = None, drop_fields: tuple = ()):
+    """Mutate the journal side of an L7 attempt (R4-R1 F1)."""
+    _rewrite_cell_attempt(d, "L7", 2, vals or {}, None, drop_fields)
+
+
 def _mutate_l6prod(d: Path, run_id: str, commit: str, tree: str,
                    dispatch_target: str = "Production.RunTerminalAttemptAsync"):
     """Add the production supplementary cell to a run that omitted it, mis-dispatched."""
@@ -401,21 +412,44 @@ def test_dispatch_audit_integrity():
 
 
 def test_strict_cap_boundary_accepted():
-    """The strict contract must ACCEPT the exact boundary (no over-rejection)."""
-    print("TEST: strict encrypted-cap boundary accepted (32768 exact; large flood bounded)")
+    """The strict contract must ACCEPT the exact boundary and a minimal-positive plaintext
+    observation (no over-rejection, and no arbitrary minimum above zero)."""
+    print("TEST: strict encrypted-cap boundary accepted (32768 exact; plaintext > 0)")
     commit = "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f"
     tree = "2fdf1c3b96586465eb7547d23b6b1792240692ba"
     run_id = commit[:12]
     d = make_fresh_results_dir()
     make_valid_run(d, run_id, commit, tree)
-    # L5 terminates exactly at the cap; L6 stays inside it. Both must still qualify.
-    _rewrite_cell_attempt(d, "L5", 1, field_updates={"encrypted_wire_bytes": 32768})
+    # L5 terminates exactly at the cap; L6 stays inside it; L5 decrypted a minimal 1 byte.
+    _rewrite_cell_attempt(d, "L5", 1, field_updates={
+        "encrypted_wire_bytes": 32768, "plaintext_bytes": 1})
     _rewrite_cell_attempt(d, "L6", 1, field_updates={"encrypted_wire_bytes": 32768})
     v = Verifier(str(d), commit, tree)
     ok, errors, _ = v.run()
     shutil.rmtree(d)
     if not ok:
-        print(f"  FAIL: exact/bounded cap should be accepted: {errors}")
+        print(f"  FAIL: exact cap with minimal positive plaintext should be accepted: {errors}")
+        return False
+    print("  PASS")
+    return True
+
+
+def test_l7_binding_accepted():
+    """The R4-R1 F1 binding must ACCEPT a matched journal/receipt pair (no over-rejection)."""
+    print("TEST: L7 journal<->peer-receipt binding accepted when matched")
+    commit = "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f"
+    tree = "2fdf1c3b96586465eb7547d23b6b1792240692ba"
+    run_id = commit[:12]
+    d = make_fresh_results_dir()
+    make_valid_run(d, run_id, commit, tree)
+    # Re-assert the receipt association fields explicitly, as the real peer writes them.
+    for attempt in (1, 2, 3):
+        _rewrite_l7_receipt(d, attempt, {"cell": "L7", "attempt": attempt})
+    v = Verifier(str(d), commit, tree)
+    ok, errors, _ = v.run()
+    shutil.rmtree(d)
+    if not ok:
+        print(f"  FAIL: matched L7 binding should be accepted: {errors}")
         return False
     print("  PASS")
     return True
@@ -457,6 +491,15 @@ def test_false_pass_conditions():
         ("L7 peer receipt journal absent", lambda d: (d / "peer" / "L7-attempt-2-receipt.jsonl").unlink()),
         ("L7 peer receipt digest does not match its own payload",
          lambda d: _rewrite_l7_receipt(d, 2, {"sha256": "0" * 64})),
+        # ---- R4-R1 F1: journal expectation must be bound to the peer receipt ----
+        ("L7 journal expected digest corrupted", lambda d: _set_mutate_l7(d, {"expected_terminal_sha256": "f" * 64})),
+        ("L7 journal expected message bytes corrupted", lambda d: _set_mutate_l7(d, {"expected_terminal_message_bytes": 999})),
+        ("L7 journal expected digest malformed (not hex)", lambda d: _set_mutate_l7(d, {"expected_terminal_sha256": "not-a-digest"})),
+        ("L7 journal expected digest missing", lambda d: _set_mutate_l7(d, drop_fields=("expected_terminal_sha256",))),
+        ("L7 journal expected message bytes missing", lambda d: _set_mutate_l7(d, drop_fields=("expected_terminal_message_bytes",))),
+        ("L7 receipt associated with the wrong attempt", lambda d: _rewrite_l7_receipt(d, 2, {"attempt": 9})),
+        ("L7 receipt message_bytes corrupted", lambda d: _rewrite_l7_receipt(d, 2, {"message_bytes": 999})),
+        ("L7 receipt cell mislabelled", lambda d: _rewrite_l7_receipt(d, 2, {"cell": "L1"})),
         # ---- R3 proxy-measurement rejection ----
         ("L5 proxy measurement rejected", lambda d: A(d, "L5", 1, {"ciphertext_measurement": "application-bytes-proxy", "ciphertext_source": "candidate TLS write flood counter (application bytes as encrypted proxy)"})),
         ("L5 missing measurement boundary", lambda d: A(d, "L5", 1, {"ciphertext_measurement": None})),
@@ -468,6 +511,9 @@ def test_false_pass_conditions():
         ("L5 no TLS record overhead (app-proxy indistinguishable)", lambda d: A(d, "L5", 1, {"tls_record_overhead_bytes_drain": 0})),
         ("L5 plaintext reached 8192 (encrypted cap did not bind)", lambda d: A(d, "L5", 1, {"plaintext_bytes": 8192, "drain_outcome": "plain-cap"})),
         ("L5 no production TLS terminal observation", lambda d: A(d, "L5", 1, {"production_tls_terminal_observed": False})),
+        # ---- R4-R1 F2: the tiny-flood cell must have decrypted something ----
+        ("L5 plaintext zero (tiny flood decrypted nothing)", lambda d: A(d, "L5", 1, {"plaintext_bytes": 0})),
+        ("L5 plaintext negative", lambda d: A(d, "L5", 1, {"plaintext_bytes": -1})),
         ("L5 declared cap tampered in the qualifying cell", lambda d: A(d, "L5", 1, {"declared_ciphertext_cap": 131072})),
         ("L6 plaintext not exactly 8192", lambda d: A(d, "L6", 1, {"plaintext_bytes": 8191})),
         ("L6 plaintext overshoot beyond cap", lambda d: A(d, "L6", 1, {"plaintext_bytes": 8192 + 2048})),
@@ -514,6 +560,7 @@ def main():
     all_pass &= test_exec05_rejection()
     all_pass &= test_dispatch_audit_integrity()
     all_pass &= test_strict_cap_boundary_accepted()
+    all_pass &= test_l7_binding_accepted()
     all_pass &= test_false_pass_conditions()
     print("\nALL SELF-TESTS PASSED" if all_pass else "\nSOME SELF-TESTS FAILED")
     return 0 if all_pass else 1

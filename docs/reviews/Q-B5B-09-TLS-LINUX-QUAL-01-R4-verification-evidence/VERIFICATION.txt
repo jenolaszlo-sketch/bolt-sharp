@@ -53,7 +53,18 @@ every rejection is attributable to the targeted registered condition):
         required interruption evidence (`interrupted`), L7 receipt/digest/
         peer-journal conditions, proxy-measurement rejection, strict cap
         enforcement, NC-1/NC-2 control detection, and R4 dispatch coverage.
-  47 of the 50 rejecting fixtures reject with exactly ONE error; 7 reject with two
+  47 of the 54 rejecting fixtures reject with exactly ONE error; 7 reject with two
+   coupled errors that are the direct consequence of the single mutation
+   (e.g. encrypted_cap_strict=false trips both the direct assertion and the
+   required-checks loop). No fixture rejects vacuously.
+
+   ERRATUM (R4-R1, finding F3): the original R4 issue of this package stated "47 of the
+   50 rejecting fixtures". That figure was arithmetically inconsistent with the same
+   sentence's own 47 + 7 split. The independent Q1 review confirmed the correct total is
+   54 rejecting fixtures: 7 dispatch-coverage-integrity cases + 47 false-pass fixtures,
+   of which 47 reject with exactly one error and 7 with two coupled errors. The figure
+   above is corrected; the self-test result itself was always correct and is unchanged.
+   See Q-B5B-09-TLS-LINUX-QUAL-01-R4-R1-REMEDIATION-REPORT.md for the full reconciliation.
   coupled errors that are the direct consequence of the single mutation
   (e.g. encrypted_cap_strict=false trips both the direct assertion and the
   required-checks loop). No fixture rejects vacuously.

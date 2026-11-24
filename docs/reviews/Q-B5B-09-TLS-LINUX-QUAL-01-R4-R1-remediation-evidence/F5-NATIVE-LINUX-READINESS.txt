@@ -1,0 +1,96 @@
+Q-B5B-09-TLS-LINUX-QUAL-01-R4-R1 - F5 NATIVE-LINUX READINESS OBLIGATION
+=======================================================================
+
+Status: OPEN OBLIGATION - RECORDED, NOT IMPLEMENTED.
+
+Q1 finding F5 (material for the native-Linux requirement):
+  "the native-Linux pendency oracle is unexercised, not merely unexecuted ...
+  R4 has no send-buffer shrink on the production path (E1 did), so qualification on any
+  platform with a larger effective buffer will fail."
+
+No native-Linux send-buffer or profile change was made in this commission. Design
+decisions and implementation are reserved for a separate, explicitly authorized
+commission, as instructed.
+
+1. WHY IT MATTERS
+-----------------
+The R4 Windows evidence qualifies L1-L7 in a Windows scope. The native-Linux
+requirement is separate and unmet. Two independent platform-coupled mechanisms stand
+in the way, and neither has been exercised on native Linux.
+
+2. THE E1 SHRINK MECHANISM THAT R4 DOES NOT CARRY ON THE PRODUCTION PATH
+-----------------------------------------------------------------------
+E1's candidate harness deliberately shrinks the socket send buffer before writing the
+terminal message:
+
+  docs/reviews/evidence/Q-B5B-09-TLS-E1/TlsE1MechanismTests.cs.txt
+    line 65:  peer.ReceiveBufferSize = probe.PeerReceive;
+    line 108: server.SendBufferSize = probe.ShrinkTo;
+
+E1's registered profile 4 note states: "deep queue required on adapted WSL2; recorded
+as preceding-write-did-not-complete on Windows".
+
+3. THE R4 PRODUCTION-PATH DIFFERENCE
+------------------------------------
+docs/reviews/.../R1/harness/Production.cs (production terminal-write cells L1, L2):
+  - configures only the PEER RECEIVE buffer:
+        BoltPeer.ConnectAsync(..., profile.PeerReceive, ...)
+        result["peer_receive_actual"] = peer.Tcp.ReceiveBufferSize;
+  - never sets the sender's SendBufferSize; no SO_SNDBUF shrink.
+
+By contrast the candidate cap cells DO shrink
+(Candidate.cs:283):
+        sender.SendBufferSize = profile.TargetSend > 0 ? profile.TargetSend : 2048;
+
+4. OBSERVED CONSEQUENCE (Q1 evidence, not remediated)
+----------------------------------------------------
+  Windows L1 profile 4 (preceding 262144 bytes, peer_receive 1024):
+      peer_receive_requested = 1024   peer_receive_actual = 1024
+      -> pendency induced, qualified.
+  WSL2 L1 profile 4 (identical profile):
+      peer_receive_requested = 1024   peer_receive_actual = 2304
+      os send buffer tcp_wmem = "4096 16384 4194304"
+      -> no pendency; precursor-not-observed on every attempt.
+
+The registered profile set maxes at 262144 preceding bytes. Where the effective socket
+buffer exceeds that, no pendency can be induced and L1-L4 cannot qualify.
+
+5. THE NATIVE-LINUX ORACLE IS UNEXERCISED
+-----------------------------------------
+Production.cs:
+    var pendingNow = messages == 3 && available > 0
+        && (queue > 0 || !OperatingSystemProbe.IsNativeLinux());
+
+Support.cs:
+    internal static bool IsNativeLinux()
+        => Environment.OSVersion.Platform == PlatformID.Unix && !IsWsl();
+
+The WSL2 run reports platform "Unix 6.6.114.1" with wsl = true, so IsNativeLinux()
+evaluated FALSE and the /proc/net/tcp TxQueue branch was BYPASSED. The native-Linux
+pendency oracle - requiring an actual non-zero TCP transmit queue read from
+/proc/net/tcp - has therefore never been executed by any R4 evidence.
+
+6. OPEN OBLIGATIONS FOR A SEPARATE AUTHORIZED COMMISSION
+--------------------------------------------------------
+  O1  Decide, per platform, between:
+        (a) shrink SO_SNDBUF on the production sender (mirroring E1's
+            server.SendBufferSize = probe.ShrinkTo), or
+        (b) extend the registered profile set beyond 262144 preceding bytes.
+      Consideration: (a) changes harness behaviour and needs a registered-profile
+      decision; (b) keeps behaviour but increases attempt cost. Both must be
+      registered in campaign-plan.json before execution.
+
+  O2  Exercise and validate the native-Linux queue > 0 oracle on a native Linux host,
+      including a negative case (queue must be zero when the write completes).
+
+  O3  Run the full campaign on native Linux and verify with verify_r1.py; record the
+      platform-dependent cells explicitly and never classify them as passed without a
+      registered qualifying outcome.
+
+  O4  Re-derive the E1-style profile-4 "adapted platform" note for R4, so the platform
+      coupling is registered rather than discovered.
+
+7. EXPLICIT NON-CLAIM
+---------------------
+Neither R4 nor this remediation claims native-Linux qualification. The Windows scope
+qualification is unaffected by F5. No owner acceptance is granted.

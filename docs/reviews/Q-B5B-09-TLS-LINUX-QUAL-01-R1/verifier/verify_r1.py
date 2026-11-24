@@ -349,6 +349,14 @@ class Verifier:
             if a.get("drain_outcome") != "cipher-cap":
                 self.error(f"{cell} attempt {attempt}: drain terminated at {a.get('drain_outcome')!r} "
                             f"(expected the encrypted cap to bind for the tiny-flood cell)")
+            # R4-R1 F2: the tiny-flood cell must actually have decrypted something at the
+            # transport boundary. A cell claiming the encrypted cap bound while reporting zero
+            # plaintext is an empty observation, not a cap measurement. This mirrors the binding
+            # E1 contract, which requires a positive exact decrypted-byte value for T5.
+            if plain <= 0:
+                self.error(f"{cell} attempt {attempt}: plaintext bytes {plain} is not greater than "
+                            f"zero — the tiny-flood drain decrypted nothing at the transport "
+                            f"boundary (an empty observation, not a cap measurement)")
         else:
             if wire > REGISTERED_CIPHERTEXT_CAP:
                 self.error(f"{cell} attempt {attempt}: encrypted wire bytes {wire} exceed the "
@@ -458,19 +466,81 @@ class Verifier:
                              "terminal_message_processed"):
                 if checks.get(required) is not True:
                     self.error(f"L7 attempt {attempt}: checks.{required} is not true")
-            # The peer receipt journal itself must exist and re-validate.
+            # The peer receipt journal itself must exist, re-validate, and be BOUND to the
+            # harness expectation (R4-R1 F1). The R3/R4 defect class was a harness-side
+            # expectation that disagreed with the bytes the peer actually received; the
+            # verifier previously only rejected a receipt that was self-inconsistent. A
+            # missing, malformed, or contradictory value now fails verification.
             receipt = self.load_peer_receipt("L7", attempt)
             if receipt is None:
                 self.error(f"L7 attempt {attempt}: peer receipt journal record missing")
             else:
                 import hashlib
                 hex_msg = receipt.get("message_hex", "")
-                try:
-                    digest = hashlib.sha256(bytes.fromhex(hex_msg)).hexdigest()
-                except ValueError:
-                    digest = None
-                if digest != receipt.get("sha256"):
-                    self.error(f"L7 attempt {attempt}: peer receipt digest does not match its own hex payload")
+                digest = None
+                if not isinstance(hex_msg, str) or hex_msg == "":
+                    self.error(f"L7 attempt {attempt}: peer receipt message_hex is missing")
+                else:
+                    try:
+                        digest = hashlib.sha256(bytes.fromhex(hex_msg)).hexdigest()
+                    except ValueError:
+                        self.error(f"L7 attempt {attempt}: peer receipt message_hex is malformed "
+                                   f"and cannot be re-encoded")
+                    if digest is not None and digest != receipt.get("sha256"):
+                        self.error(f"L7 attempt {attempt}: peer receipt digest does not match its own hex payload")
+                # Association: the receipt must belong to this attempt and to this cell.
+                if receipt.get("attempt") != attempt:
+                    self.error(f"L7 attempt {attempt}: peer receipt is associated with attempt "
+                               f"{receipt.get('attempt')!r} (receipt is not bound to this attempt)")
+                if receipt.get("cell") != "L7":
+                    self.error(f"L7 attempt {attempt}: peer receipt is associated with cell "
+                               f"{receipt.get('cell')!r}")
+                # Expected-observation binding: each declared expectation must equal the
+                # observation recorded by the framing-aware peer, and the declared byte count
+                # must equal the actual framed payload length.
+                expected_sha = a.get("expected_terminal_sha256")
+                if expected_sha is None:
+                    self.error(f"L7 attempt {attempt}: expected_terminal_sha256 missing — the "
+                               f"harness did not declare the terminal message it expects")
+                elif not (isinstance(expected_sha, str) and self._is_sha256_hex(expected_sha)):
+                    self.error(f"L7 attempt {attempt}: expected_terminal_sha256 "
+                               f"{expected_sha!r} is not a 64-character lowercase hex sha256")
+                elif digest is not None and expected_sha != receipt.get("sha256"):
+                    self.error(f"L7 attempt {attempt}: expected_terminal_sha256 {expected_sha} "
+                               f"does not match the peer receipt sha256 {receipt.get('sha256')} "
+                               f"(the harness expectation disagrees with the bytes the peer received)")
+                expected_bytes = a.get("expected_terminal_message_bytes")
+                receipt_bytes = receipt.get("message_bytes")
+                if expected_bytes is None:
+                    self.error(f"L7 attempt {attempt}: expected_terminal_message_bytes missing — "
+                               f"the harness did not declare the terminal message length")
+                elif not self._is_int(expected_bytes):
+                    self.error(f"L7 attempt {attempt}: expected_terminal_message_bytes "
+                               f"{expected_bytes!r} is not an integer")
+                elif receipt_bytes is None:
+                    self.error(f"L7 attempt {attempt}: peer receipt message_bytes missing")
+                elif not self._is_int(receipt_bytes):
+                    self.error(f"L7 attempt {attempt}: peer receipt message_bytes "
+                               f"{receipt_bytes!r} is not an integer")
+                else:
+                    if expected_bytes != receipt_bytes:
+                        self.error(f"L7 attempt {attempt}: expected_terminal_message_bytes "
+                                   f"{expected_bytes} does not match the peer receipt message_bytes "
+                                   f"{receipt_bytes} (the harness expectation disagrees with the "
+                                   f"bytes the peer received)")
+                    elif isinstance(hex_msg, str) and expected_bytes != len(hex_msg) // 2:
+                        self.error(f"L7 attempt {attempt}: expected_terminal_message_bytes "
+                                   f"{expected_bytes} does not match the actual framed payload "
+                                   f"length {len(hex_msg) // 2}")
+
+    @staticmethod
+    def _is_sha256_hex(value: Any) -> bool:
+        return isinstance(value, str) and len(value) == 64 and \
+            all(c in "0123456789abcdef" for c in value)
+
+    @staticmethod
+    def _is_int(value: Any) -> bool:
+        return isinstance(value, int) and not isinstance(value, bool)
 
     # ---------------------------------------------------------------- controls
     def verify_negative_controls(self):

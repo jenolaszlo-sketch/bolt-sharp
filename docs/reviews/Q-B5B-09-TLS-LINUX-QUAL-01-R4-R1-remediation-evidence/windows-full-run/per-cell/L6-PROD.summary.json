@@ -1,0 +1,10 @@
+{
+  "cell": "L6-PROD",
+  "kind": "production-plaintext-cap",
+  "supplementary": true,
+  "runs": 1,
+  "successes": 1,
+  "qualified": true,
+  "failure": "",
+  "run_id": "r4r1full"
+}
