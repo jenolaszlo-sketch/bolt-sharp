@@ -1,0 +1,8 @@
+{"forward_bound_bytes": 0, "gate_ms": 50, "kind": "proxy-listening", "port": 35418, "ts": 1795540251.551463, "upstream": "127.0.0.1:35417"}
+{"client_rcvbuf_requested": 2048, "kind": "client-accepted", "peer": ["127.0.0.1", 35419], "ts": 1795540251.5526912}
+{"cipher": "TLS_AES_256_GCM_SHA384", "kind": "tls-client", "ts": 1795540251.5628514, "version": "TLSv1.3"}
+{"cipher": "TLS_AES_256_GCM_SHA384", "kind": "tls-upstream", "ts": 1795540251.563178, "version": "TLSv1.3"}
+{"bound_bytes": 0, "forwarded_bytes": 0, "gate_ms": 50, "kind": "gate-engaged", "ts": 1795540251.5642698}
+{"kind": "gate-released", "reason": "peer-listener-cancelled", "ts": 1795540251.7164636}
+{"kind": "drain-start", "ts": 1795540251.717081}
+{"kind": "drain-window-reopened", "requested_rcvbuf": 262144, "ts": 1795540251.7175014}

@@ -1,0 +1,5 @@
+{"actual_rcvbuf": 2048, "kind": "listening", "port": 20574, "requested_rcvbuf": 2048, "ts": 1795540246.6905334}
+{"actual_rcvbuf": 2048, "kind": "accepted", "peer": ["127.0.0.1", 20575], "ts": 1795540246.693781}
+{"cipher": "TLS_AES_256_GCM_SHA384", "kind": "tls", "ts": 1795540246.701219, "version": "TLSv1.3"}
+{"elapsed_ms": 0.21958351135253906, "fionread": -1, "kind": "parked", "ts": 1795540246.7018151}
+{"elapsed_ms": 206.95996284484863, "fionread": -1, "kind": "parked", "ts": 1795540246.908556}

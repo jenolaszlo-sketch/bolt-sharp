@@ -1,0 +1,20 @@
+{
+  "run_id": "r4r2full",
+  "campaign": "Q-B5B-09-TLS-LINUX-QUAL-01-R1",
+  "commit": "36d7b69bd4eb35bccc2a75ceb322171eefe32c9c",
+  "tree": "5d176f30765d710894a1286c397dc6106556cc0c",
+  "mode": "full",
+  "platform": "Microsoft Windows NT 10.0.26200.0",
+  "runtime": "10.0.12",
+  "kernel": "Microsoft Windows NT 10.0.26200.0",
+  "wsl": false,
+  "native_linux": false,
+  "python": "python",
+  "production_assembly": "D:\\projects\\bolt-sharp\\docs\\reviews\\Q-B5B-09-TLS-LINUX-QUAL-01-R1\\harness\\bin\\Release\\net10.0\\BoltSharp.dll",
+  "production_assembly_sha256": "082a1291ba540e25ebddc9140adfea7df690c3a0bb080542ddb273033dd0fd67",
+  "certificate_sha256": "047021c17614af35d1450c61e46da8dca73ce32c00ed5423d9ea499f1555f719",
+  "started_utc": "2026-11-24T17:10:55.7739044\u002B00:00",
+  "elapsed_ms": 10705.63,
+  "unobserved_task_exceptions": 0,
+  "status": "raw-complete"
+}

@@ -89,13 +89,20 @@ class Verifier:
         records = self.load_journal(journal)
         return [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
 
-    def load_peer_receipt(self, cell: str, attempt: int) -> Optional[Dict[str, Any]]:
+    def load_peer_receipts(self, cell: str, attempt: int) -> List[Dict[str, Any]]:
+        """Return EVERY peer-receipt record in the attempt's journal (R4-R2 F6).
+
+        The previous implementation returned only the FIRST matching record, which
+        silently ignored duplicate, contradictory, or unrelated appended receipt
+        records. Receipt journals legitimately contain other diagnostic records
+        (peer-start, tls, peer-eof) with no record_type, so only records explicitly
+        typed as peer-receipt are counted.
+        """
         path = self.results_dir / "peer" / f"{cell}-attempt-{attempt}-receipt.jsonl"
-        if path.exists():
-            for rec in self.load_journal(path):
-                if rec.get("record_type") == "peer-receipt":
-                    return rec
-        return None
+        if not path.exists():
+            return []
+        return [rec for rec in self.load_journal(path)
+                if isinstance(rec, dict) and rec.get("record_type") == "peer-receipt"]
 
     def _qualified_cell(self, cell: str) -> Optional[Tuple[Dict[str, Any], List[Dict[str, Any]]]]:
         """Load a qualified cell and partition its attempts into qualifying vs discovery."""
@@ -471,10 +478,24 @@ class Verifier:
             # expectation that disagreed with the bytes the peer actually received; the
             # verifier previously only rejected a receipt that was self-inconsistent. A
             # missing, malformed, or contradictory value now fails verification.
-            receipt = self.load_peer_receipt("L7", attempt)
-            if receipt is None:
+            # R4-R2 F6: exactly ONE peer-receipt record per qualifying attempt. The
+            # previous loader returned only the first match, which silently accepted
+            # duplicate, contradictory, or unrelated appended receipt records.
+            receipts = self.load_peer_receipts("L7", attempt)
+            if not receipts:
                 self.error(f"L7 attempt {attempt}: peer receipt journal record missing")
             else:
+                receipt = receipts[0]
+                if len(receipts) > 1:
+                    self.error(f"L7 attempt {attempt}: exactly one peer-receipt record is "
+                               f"required, found {len(receipts)} (duplicate, contradictory, or "
+                               f"unrelated appended receipt records are rejected)")
+                    for extra in receipts:
+                        if extra.get("attempt") != attempt or extra.get("cell") != "L7":
+                            self.error(f"L7 attempt {attempt}: a receipt record in this journal "
+                                       f"belongs to attempt {extra.get('attempt')!r} cell "
+                                       f"{extra.get('cell')!r} (receipt is not bound to this "
+                                       f"attempt)")
                 import hashlib
                 hex_msg = receipt.get("message_hex", "")
                 digest = None

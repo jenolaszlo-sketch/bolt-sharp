@@ -1,0 +1,14 @@
+{
+  "cell": "L6",
+  "kind": "candidate-plaintext-cap",
+  "seed": 1006,
+  "runs": 1,
+  "successes": 1,
+  "qualified": true,
+  "qualifying_profile_ordinal": 1,
+  "failure": "",
+  "discovery_bound": 3,
+  "repeats_required": 0,
+  "max_runs": 3,
+  "run_id": "r4r2full"
+}

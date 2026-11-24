@@ -1,0 +1,6 @@
+2026-11-24T17:10:46.2100008+00:00 attempt 1 profile 1: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=2.281 outcome=precursor-not-observed
+2026-11-24T17:10:46.2194885+00:00 attempt 2 profile 2: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=2.612 outcome=precursor-not-observed
+2026-11-24T17:10:46.2300911+00:00 attempt 3 profile 3: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=2.816 outcome=precursor-not-observed
+2026-11-24T17:10:46.2910999+00:00 attempt 4 profile 4: confirmed=True pending=21.2 unread=1024 tx=-1 elapsed=52.706 outcome=induced-and-interrupted
+2026-11-24T17:10:46.3511738+00:00 attempt 5 profile 4: confirmed=True pending=22.8 unread=1024 tx=-1 elapsed=53.508 outcome=induced-and-interrupted
+2026-11-24T17:10:46.4111928+00:00 attempt 6 profile 4: confirmed=True pending=21.3 unread=1024 tx=-1 elapsed=52.813 outcome=induced-and-interrupted

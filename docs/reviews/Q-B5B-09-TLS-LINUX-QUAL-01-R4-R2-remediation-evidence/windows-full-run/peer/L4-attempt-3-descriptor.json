@@ -1,0 +1,11 @@
+{
+  "upstream": "127.0.0.1:35417",
+  "listen_port": 0,
+  "gate_forward_bound_bytes": 0,
+  "gate_ms": 50,
+  "client_rcvbuf": 2048,
+  "journal": "C:\\Windows\\TEMP\\r4r2full\\peer\\L4-attempt-3-proxy-journal.jsonl",
+  "cert_pem": "C:\\Windows\\TEMP\\r4r2full\\cert\\server.crt",
+  "key_pem": "C:\\Windows\\TEMP\\r4r2full\\cert\\server.key",
+  "cert_sha256": "047021c17614af35d1450c61e46da8dca73ce32c00ed5423d9ea499f1555f719"
+}

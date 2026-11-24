@@ -1,0 +1,94 @@
+Q-B5B-09-TLS-LINUX-QUAL-01-R4-R2 - F6 EVIDENCE UNIQUENESS REMEDIATION VERIFICATION
+===================================================================================
+
+Starting revision ... 1eb03bdee1c1c322983bfdde333be76f053319a9 (tree e2d28d015e99ffc57252c586e87ceb0c1d2bcf2d)
+Production base ...... 36d7b69bd4eb35bccc2a75ceb322171eefe32c9c
+Frozen pin ........... 7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f
+Closes ................ independent R4-R1-Q1 finding F6
+F1-F4 ................ already closed; not reopened.
+
+1. DEFECT
+---------
+Verifier.load_peer_receipt returned only the FIRST record with record_type
+"peer-receipt" and ignored all others, so duplicate, contradictory, or unrelated
+appended receipt records silently passed verification. Three cases were demonstrated
+by the independent reviewer to produce VERIFIER: PASS on contradictory evidence.
+
+2. REMEDIATION
+--------------
+load_peer_receipt -> load_peer_receipts (returns EVERY peer-receipt record).
+verify_cell_l7 now requires EXACTLY ONE per qualifying L7 attempt:
+  zero  -> "peer receipt journal record missing"
+  > 1   -> "exactly one peer-receipt record is required, found N"
+           plus a specific error for every extra record bound to another attempt/cell.
+
+The record_type filter keeps the rule narrow: the real peer's peer-start / tls /
+peer-eof records carry no record_type and remain valid.
+
+Preserved L7 contracts (unchanged): SHA-256 equality between journal expectation and
+peer receipt; exact message-byte-count equality; attempt and cell binding; valid Bolt
+message framing; receipt self-consistency.
+
+Files changed: verify_r1.py, verifier_selftest.py. No harness, production, peer, or
+frozen-test change.
+
+3. ADVERSARIAL VERIFICATION (against the preserved R4-R1 real evidence)
+----------------------------------------------------------------------
+Baseline unmodified copy -> VERIFIER: PASS, 0 errors.
+
+  [OK] D1 duplicate receipt, contradictory sha256            1 error  (reviewer case 1)
+  [OK] D2 duplicate receipt, different payload+bytes         1 error  (reviewer case 2)
+  [OK] D3 attempt-2 journal + appended attempt-3 records     2 errors (reviewer case 3)
+  [OK] D4 identical duplicate receipt                        1 error
+  [OK] D5 attempt-3 records prepended before attempt-2's     3 errors (multiplicity + 2 binding)
+  [OK] D6 receipt missing for one attempt                    1 error
+  [OK] D7 all receipts missing                              3 errors (one per attempt)
+  [OK] D8 record_type stripped (receipt invisible)           1 error
+  [OK] D9 duplicate receipts on every attempt               3 errors (one per attempt)
+  [OK] D10 three extra receipts in one journal               1 error  (found 4)
+  -> 10/10 detected for the intended reason.
+
+4. SELF-TEST SUITE
+------------------
+  ALL SELF-TESTS PASSED (exit 0)
+  73 fixture result lines = 60 single-error + 9 two-error + 3 three-error + 1 EXEC-05.
+
+  New negative fixtures (8): duplicate contradictory sha256; duplicate different
+  payload+bytes; identical duplicate; appended attempt-3 records; prepended attempt-3
+  records; record_type stripped; all receipts missing; duplicates on every attempt.
+
+  New positive fixture (1): test_f6_legitimate_journal_accepted - appends UNTYPED
+  diagnostic records to every receipt journal and requires the run to still PASS,
+  proving the uniqueness rule does not broaden rejection beyond the authorized schema.
+
+  All three 3-error fixtures inspected individually and confirmed attributable:
+  D7/D9 give exactly one targeted error per attempt; D5 gives the multiplicity error
+  plus the two binding errors caused by the prepended records. None rejects vacuously.
+
+5. REGRESSION QUALIFICATION
+---------------------------
+  Preserved R4 Windows evidence ........... VERIFIER: PASS
+  Preserved R4-R1 Windows evidence ........ VERIFIER: PASS
+  Fresh R4-R2 campaign (r4r2full) .......... VERIFIER: PASS
+  Positive baseline ....................... accepted
+  git diff 7429c6b..HEAD -- src tests ...... EMPTY
+
+  Fresh R4-R2 campaign: Windows NT 10.0.26200.0, runtime 10.0.12, status raw-complete,
+  unobserved_task_exceptions 0.
+  L1 3/6  L2 3/6  L3 3/3  L4 3/3  L5 1/1  L6 1/1  L6-PROD 1/1  L7 3/3  (all qualified)
+  L5  wire=32768 exactly, plaintext=1424, drain=cipher-cap
+  L6  wire=8236, plaintext=8192, drain=plain-cap
+  L7  169-byte framed terminal message
+      sha256 = 5cdf80e60e813e45ddb60777b10c920fb9f940ff49adc865c5157c2c56c7c444
+  L7 peer-receipt records per attempt in the fresh run: 1, 1, 1  (real harness complies)
+  NC-1 wire=131072 exactly, tamper_detected=true
+  NC-2 elapsed_ms=801.788 > 500, prerequisite_confirmed=true, deadline_tamper_detected=true
+  dispatch audit: all_required_invoked=true, 7 implementations
+
+6. DISPOSITION
+--------------
+  F6 is remediated. All F1-F6 findings are now closed. The Windows-scope qualification
+  stands on fresh evidence produced with the updated verifier.
+
+  F5 (native-Linux readiness) remains an OPEN, separately authorized obligation.
+  No native-Linux qualification is claimed and no owner acceptance is granted.

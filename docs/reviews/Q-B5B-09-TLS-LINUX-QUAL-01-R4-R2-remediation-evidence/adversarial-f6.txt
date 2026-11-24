@@ -1,0 +1,42 @@
+==============================================================================
+R4-R2 F6 INDEPENDENT ADVERSARIAL CONTROL
+==============================================================================
+
+[baseline] unmodified copy -> exit=0 last="VERIFIER: PASS" errors=0
+
+OK   D1 duplicate receipt, contradictory sha256   exit=1 errors=1 match=1
+      > ERROR: L7 attempt 2: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+
+OK   D2 duplicate receipt, different payload+bytes   exit=1 errors=1 match=1
+      > ERROR: L7 attempt 2: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+
+OK   D3 attempt-2 journal contains appended attempt-3 records   exit=1 errors=2 match=1
+      > ERROR: L7 attempt 2: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+
+OK   D4 identical duplicate receipt   exit=1 errors=1 match=1
+      > ERROR: L7 attempt 2: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+
+OK   D5 attempt-3 records prepended before attempt-2's   exit=1 errors=3 match=1
+      > ERROR: L7 attempt 2: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+
+OK   D6 receipt missing for one attempt   exit=1 errors=1 match=1
+      > ERROR: L7 attempt 2: peer receipt journal record missing
+
+OK   D7 all receipts missing   exit=1 errors=3 match=3
+      > ERROR: L7 attempt 1: peer receipt journal record missing
+      > ERROR: L7 attempt 2: peer receipt journal record missing
+      > ERROR: L7 attempt 3: peer receipt journal record missing
+
+OK   D8 receipt record_type stripped (invisible)   exit=1 errors=1 match=1
+      > ERROR: L7 attempt 2: peer receipt journal record missing
+
+OK   D9 duplicate receipts on all attempts   exit=1 errors=3 match=3
+      > ERROR: L7 attempt 1: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+      > ERROR: L7 attempt 2: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+      > ERROR: L7 attempt 3: exactly one peer-receipt record is required, found 2 (duplicate, contradictory, or unrelated appended receipt records are re
+
+FAIL D10 three receipts in one journal   exit=1 errors=1 match=0
+
+==============================================================================
+cases=10 detected_for_intended_reason=9
+FAILED CASES: ['D10 three receipts in one journal']

@@ -6,6 +6,7 @@ false-pass condition — including dispatch-coverage integrity (wrong or uninvok
 targets) and the NC-2 unconfirmed-prerequisite control."""
 import hashlib
 import json
+import os
 import shutil
 import sys
 import tempfile
@@ -354,6 +355,44 @@ def _set_mutate_l7(d: Path, vals: "dict | None" = None, drop_fields: tuple = ())
     _rewrite_cell_attempt(d, "L7", 2, vals or {}, None, drop_fields)
 
 
+def _append_l7_receipt(d: Path, attempt: int, extra: dict):
+    """Append an additional peer-receipt record to an attempt's journal (R4-R2 F6)."""
+    path = d / "peer" / f"L7-attempt-{attempt}-receipt.jsonl"
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps({"record_type": "peer-receipt", "cell": "L7", "attempt": attempt,
+                            **extra}) + "\n")
+
+
+def _copy_receipt_into(d: Path, attempt: int, source_attempt: int, mode: str = "append"):
+    """Copy another attempt's receipt records into this attempt's journal (R4-R2 F6)."""
+    src = d / "peer" / f"L7-attempt-{source_attempt}-receipt.jsonl"
+    dst = d / "peer" / f"L7-attempt-{attempt}-receipt.jsonl"
+    a = [json.loads(l) for l in dst.read_text(encoding="utf-8").splitlines() if l.strip()]
+    b = [json.loads(l) for l in src.read_text(encoding="utf-8").splitlines() if l.strip()]
+    out = b + a if mode == "prepend" else a + b
+    with open(dst, "w", encoding="utf-8") as f:
+        for r in out:
+            f.write(json.dumps(r) + "\n")
+
+
+def _strip_receipt_types(d: Path, attempt: int):
+    """Remove record_type from every record, making the receipt invisible (R4-R2 F6)."""
+    p = d / "peer" / f"L7-attempt-{attempt}-receipt.jsonl"
+    rs = [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()]
+    for r in rs:
+        r.pop("record_type", None)
+    with open(p, "w", encoding="utf-8") as f:
+        for r in rs:
+            f.write(json.dumps(r) + "\n")
+
+
+def _append_diagnostic_record(d: Path, attempt: int):
+    """Append a legitimate diagnostic record with no record_type (must stay valid)."""
+    p = d / "peer" / f"L7-attempt-{attempt}-receipt.jsonl"
+    with open(p, "a", encoding="utf-8") as f:
+        f.write(json.dumps({"kind": "diagnostic", "note": "not a receipt"}) + "\n")
+
+
 def _mutate_l6prod(d: Path, run_id: str, commit: str, tree: str,
                    dispatch_target: str = "Production.RunTerminalAttemptAsync"):
     """Add the production supplementary cell to a run that omitted it, mis-dispatched."""
@@ -455,6 +494,30 @@ def test_l7_binding_accepted():
     return True
 
 
+def test_f6_legitimate_journal_accepted():
+    """R4-R2 F6 must not broaden rejection: legitimate diagnostic records that carry no
+    record_type remain valid, and ordinary multi-attempt evidence must still pass."""
+    print("TEST: F6 legitimate receipt journals accepted (diagnostic records, multi-attempt)")
+    commit = "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f"
+    tree = "2fdf1c3b96586465eb7547d23b6b1792240692ba"
+    run_id = commit[:12]
+    d = make_fresh_results_dir()
+    make_valid_run(d, run_id, commit, tree)
+    # The real peer records peer-start/tls/peer-eof entries with no record_type; appending
+    # more such diagnostic records must not be mistaken for duplicate receipts.
+    for attempt in (1, 2, 3):
+        _append_diagnostic_record(d, attempt)
+        _append_diagnostic_record(d, attempt)
+    v = Verifier(str(d), commit, tree)
+    ok, errors, _ = v.run()
+    shutil.rmtree(d)
+    if not ok:
+        print(f"  FAIL: legitimate diagnostic records should be accepted: {errors}")
+        return False
+    print("  PASS")
+    return True
+
+
 def test_false_pass_conditions():
     print("TEST: false-pass condition detection (Q1 + R3 cap accounting + R4 dispatch/strictness)")
     failures = 0
@@ -500,6 +563,26 @@ def test_false_pass_conditions():
         ("L7 receipt associated with the wrong attempt", lambda d: _rewrite_l7_receipt(d, 2, {"attempt": 9})),
         ("L7 receipt message_bytes corrupted", lambda d: _rewrite_l7_receipt(d, 2, {"message_bytes": 999})),
         ("L7 receipt cell mislabelled", lambda d: _rewrite_l7_receipt(d, 2, {"cell": "L1"})),
+        # ---- R4-R2 F6: peer-receipt journal uniqueness ----
+        ("F6 duplicate receipt with contradictory sha256",
+         lambda d: _append_l7_receipt(d, 2, {"sha256": "d" * 64})),
+        ("F6 duplicate receipt with different payload and bytes",
+         lambda d: _append_l7_receipt(d, 2, {"message_hex": "deadbeef" * 4,
+                                             "sha256": "d" * 64, "message_bytes": 32})),
+        ("F6 identical duplicate receipt",
+         lambda d: _append_l7_receipt(d, 2, {"message_hex": RECEIPT_HEX,
+                                             "message_bytes": len(bytes.fromhex(RECEIPT_HEX)),
+                                             "sha256": RECEIPT_SHA})),
+        ("F6 attempt-2 journal contains appended attempt-3 records",
+         lambda d: _copy_receipt_into(d, 2, 3, "append")),
+        ("F6 attempt-2 journal contains prepended attempt-3 records",
+         lambda d: _copy_receipt_into(d, 2, 3, "prepend")),
+        ("F6 receipt record_type stripped (receipt invisible)",
+         lambda d: _strip_receipt_types(d, 2)),
+        ("F6 all L7 receipts missing",
+         lambda d: [os.unlink(d / "peer" / f"L7-attempt-{a}-receipt.jsonl") for a in (1, 2, 3)]),
+        ("F6 duplicate receipts on every attempt",
+         lambda d: [_append_l7_receipt(d, a, {"sha256": "d" * 64}) for a in (1, 2, 3)]),
         # ---- R3 proxy-measurement rejection ----
         ("L5 proxy measurement rejected", lambda d: A(d, "L5", 1, {"ciphertext_measurement": "application-bytes-proxy", "ciphertext_source": "candidate TLS write flood counter (application bytes as encrypted proxy)"})),
         ("L5 missing measurement boundary", lambda d: A(d, "L5", 1, {"ciphertext_measurement": None})),
@@ -561,6 +644,7 @@ def main():
     all_pass &= test_dispatch_audit_integrity()
     all_pass &= test_strict_cap_boundary_accepted()
     all_pass &= test_l7_binding_accepted()
+    all_pass &= test_f6_legitimate_journal_accepted()
     all_pass &= test_false_pass_conditions()
     print("\nALL SELF-TESTS PASSED" if all_pass else "\nSOME SELF-TESTS FAILED")
     return 0 if all_pass else 1

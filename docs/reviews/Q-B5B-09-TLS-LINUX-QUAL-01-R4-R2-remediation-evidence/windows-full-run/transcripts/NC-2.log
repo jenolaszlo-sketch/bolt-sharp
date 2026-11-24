@@ -1,0 +1,2 @@
+2026-11-24T17:10:55.7617291+00:00 attempt 1: profile ordinal 4 outcome=induced-but-checks-failed confirmed=True elapsed=801.788
+2026-11-24T17:10:55.7633719+00:00 outcome=induced-but-checks-failed elapsed=801.788 bound=500 profile=4 source=L1.summary.json qualifying profile ordinal 4 detected=True
