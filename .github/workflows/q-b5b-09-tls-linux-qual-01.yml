@@ -20,8 +20,15 @@
 name: Q-B5B-09 TLS Native-Linux Qualification
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  # Restored to manual dispatch only. The qualification campaign is a bounded,
+  # time-consuming native-Linux execution; it must not run automatically on every
+  # pull request, and the campaign revision is an explicit operator choice.
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: "Pinned revision the campaign is commissioned against"
+        required: false
+        default: "7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f"
 
 permissions:
   contents: read
