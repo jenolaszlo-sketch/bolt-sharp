@@ -54,6 +54,9 @@ jobs:
           ref: ${{ inputs.revision }}
           persist-credentials: false
 
+      - name: Reject private key material before executing
+        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
+
       - name: Verify native Linux runner
         run: |
           echo "RUNNER_OS=$RUNNER_OS"

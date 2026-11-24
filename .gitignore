@@ -30,3 +30,12 @@ packages/
 # OS noise
 .DS_Store
 Thumbs.db
+
+# Qualification evidence retention - generated disposable TLS credentials.
+# The R1 harness creates an ephemeral certificate and key per run inside the
+# results directory (see R1Harness/Program.cs Certificates.Create). The key is
+# disposable, never reusable, and must never be tracked. Public certificates and
+# journals remain trackable. Narrowed to the qualification results tree so that
+# legitimate source keys elsewhere are not concealed.
+docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results/**/cert/*.key
+docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results/**/cert/*.key
