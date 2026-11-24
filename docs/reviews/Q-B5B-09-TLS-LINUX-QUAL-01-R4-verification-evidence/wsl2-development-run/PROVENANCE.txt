@@ -1,0 +1,20 @@
+{
+  "run_id": "r4wsl2dev1",
+  "campaign": "Q-B5B-09-TLS-LINUX-QUAL-01-R1",
+  "commit": "36d7b69bd4eb35bccc2a75ceb322171eefe32c9c",
+  "tree": "5d176f30765d710894a1286c397dc6106556cc0c",
+  "mode": "full",
+  "platform": "Unix 6.6.114.1",
+  "runtime": "10.0.14",
+  "kernel": "6.6.114.1-microsoft-standard-WSL2",
+  "wsl": true,
+  "native_linux": false,
+  "python": "python3",
+  "production_assembly": "./docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/harness/bin/Release/net10.0/BoltSharp.dll",
+  "production_assembly_sha256": "8a7597de8f1429000f5db87484dbb101c96bafe7f7a784da5a48e827dcbb7097",
+  "certificate_sha256": "766f0fa9ebfc9120e76fa2b9601115ac5c4f44cf334c54f46f768062e4e47d51",
+  "started_utc": "2026-11-24T03:56:47.6566100\u002B00:00",
+  "elapsed_ms": 2178.557,
+  "unobserved_task_exceptions": 0,
+  "status": "raw-complete"
+}

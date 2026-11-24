@@ -1,0 +1,4 @@
+2026-11-24T03:56:47.6061591+00:00 attempt 1: profile ordinal 1 outcome=precursor-not-observed confirmed=False elapsed=4.784
+2026-11-24T03:56:47.6180219+00:00 attempt 2: profile ordinal 2 outcome=precursor-not-observed confirmed=False elapsed=2.632
+2026-11-24T03:56:47.6294846+00:00 attempt 3: profile ordinal 3 outcome=precursor-not-observed confirmed=False elapsed=2.7
+2026-11-24T03:56:47.6352979+00:00 outcome=precursor-not-observed elapsed=2.7 bound=500 profile=3 source=discovery profile 1 (L1 summary unavailable or unqualified) detected=False

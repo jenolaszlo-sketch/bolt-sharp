@@ -1,0 +1,3 @@
+Independent verifier, --mode full, against the preserved windows-full-run:
+
+VERIFIER: PASS

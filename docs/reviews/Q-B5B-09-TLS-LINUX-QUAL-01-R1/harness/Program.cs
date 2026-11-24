@@ -111,6 +111,11 @@ internal static class Program
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
+            // R4 dispatch-coverage audit: every registered cell and negative control must have
+            // reached its intended implementation. Written before campaign-end so a failure in
+            // a later step cannot omit it.
+            var audit = DispatchAudit.Snapshot(mode == "full");
+            journal.Write(audit);
             journal.Write(With(journal.Record("campaign-end"),
                 ("defect", campaignFailure.Length > 0),
                 ("failure", campaignFailure),
@@ -120,6 +125,8 @@ internal static class Program
         catch (Exception ex)
         {
             campaignFailure = ex.GetType().Name + ":" + ex.Message;
+            try { journal.Write(DispatchAudit.Snapshot(mode == "full")); }
+            catch (Exception) { }
             journal.Write(With(journal.Record("campaign-end"),
                 ("defect", true),
                 ("failure", campaignFailure),

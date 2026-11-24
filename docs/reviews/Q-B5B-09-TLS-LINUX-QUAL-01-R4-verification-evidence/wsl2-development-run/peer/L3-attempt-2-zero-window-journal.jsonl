@@ -1,0 +1,3 @@
+{"actual_rcvbuf": 2304, "kind": "listening", "port": 35027, "requested_rcvbuf": 1024, "ts": 1795492606.0147805}
+{"actual_rcvbuf": 2304, "kind": "accepted", "peer": ["127.0.0.1", 44436], "ts": 1795492606.017803}
+{"cipher": "TLS_AES_256_GCM_SHA384", "kind": "tls", "ts": 1795492606.0291214, "version": "TLSv1.3"}

@@ -1,0 +1,4 @@
+2026-11-24T03:56:45.9320931+00:00 attempt 1 profile 1: fixture=True pending=False pendingMs=0.0 writable= proxyObserved=False outcome=precursor-not-observed
+2026-11-24T03:56:46.0294819+00:00 attempt 2 profile 2: fixture=True pending=False pendingMs=0.0 writable= proxyObserved=False outcome=precursor-not-observed
+2026-11-24T03:56:46.1236360+00:00 attempt 3 profile 3: fixture=True pending=False pendingMs=0.0 writable= proxyObserved=False outcome=precursor-not-observed
+2026-11-24T03:56:46.2200172+00:00 attempt 4 profile 4: fixture=True pending=False pendingMs=0.0 writable= proxyObserved=False outcome=precursor-not-observed

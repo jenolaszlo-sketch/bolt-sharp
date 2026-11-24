@@ -13,6 +13,11 @@ internal static class Production
 {
     internal static async Task RunCellAsync(Context ctx, CellSpec cell)
     {
+        // R4 dispatch fix: L7 is the registered peer-receipt cell (RunReceiptAttemptAsync);
+        // L1/L2 are the registered terminal-write cells (RunTerminalAttemptAsync). Before R4,
+        // every production cell was routed through RunTerminalAttemptAsync, leaving the L7
+        // receipt path dead code that no run ever reached.
+        var isReceiptCell = cell.Id == "L7" || cell.Kind == "production-peer-receipt";
         var runs = 0;
         var successes = 0;
         Profile? qualifying = null;
@@ -22,7 +27,9 @@ internal static class Production
             var profile = Campaign.ProfileFor(cell.Seed, discovery);
             runs++;
             var record = await WithWatchdog(ctx, cell, profile, runs, discovery, null,
-                (token) => RunTerminalAttemptAsync(ctx, cell, profile, runs, discovery, null, false, token));
+                (token) => isReceiptCell
+                    ? RunReceiptAttemptAsync(ctx, cell, profile, runs, null, token)
+                    : RunTerminalAttemptAsync(ctx, cell, profile, runs, discovery, null, false, token));
             ctx.Journal.Write(record);
             var outcome = (string)record["outcome"]!;
             if (outcome == QualifyingOutcome(cell))
@@ -45,7 +52,9 @@ internal static class Production
             {
                 runs++;
                 var record = await WithWatchdog(ctx, cell, selected, runs, -1, repeat,
-                    (token) => RunTerminalAttemptAsync(ctx, cell, selected, runs, -1, repeat, false, token));
+                    (token) => isReceiptCell
+                        ? RunReceiptAttemptAsync(ctx, cell, selected, runs, repeat, token)
+                        : RunTerminalAttemptAsync(ctx, cell, selected, runs, -1, repeat, false, token));
                 ctx.Journal.Write(record);
                 var outcome = (string)record["outcome"]!;
                 if (outcome == QualifyingOutcome(cell))
@@ -164,6 +173,8 @@ internal static class Production
         Profile profile, int attempt, int discoveryIndex, int? repeat, bool extendedDeadline, CancellationToken token)
     {
         var result = NewAttempt(cell, profile, attempt, "production");
+        DispatchAudit.Invoke("Production.RunTerminalAttemptAsync");
+        result["dispatch_target"] = "Production.RunTerminalAttemptAsync";
         result["phase"] = discoveryIndex >= 0 ? "discovery" : "repeat";
         result["discovery_index"] = discoveryIndex;
         result["repeat"] = repeat;
@@ -368,11 +379,20 @@ internal static class Production
     }
 
     internal static async Task<Dictionary<string, object?>> RunReceiptAttemptAsync(Context ctx, CellSpec cell,
-        Profile profile, int attempt, CancellationToken token)
+        Profile profile, int attempt, int? repeat, CancellationToken token)
     {
         var result = NewAttempt(cell, profile, attempt, "production");
+        DispatchAudit.Invoke("Production.RunReceiptAttemptAsync");
+        result["dispatch_target"] = "Production.RunReceiptAttemptAsync";
+        // Same discovery/repeat classification the terminal attempts carry: the verifier's
+        // repeat-classification check must be able to see which qualifying attempts were
+        // repeats (L7 registers repeats_required=2).
+        result["phase"] = repeat is null ? "discovery" : "repeat";
+        result["discovery_index"] = repeat is null ? attempt - 1 : -1;
+        result["repeat"] = repeat;
         result["production_commit"] = ctx.Commit;
         result["production_tree"] = ctx.Tree;
+        result["mechanism"] = "production TLS terminal failure read by an independent python3 receipt peer";
         BoltTcpServer? server = null;
         var expected = Wire.ExpectedTerminalFailure();
         var expectedDigest = Wire.Sha256Hex(expected);
@@ -395,20 +415,22 @@ internal static class Production
             });
             await server.StartAsync(token).ConfigureAwait(false);
             var endpoint = server.BoundEndPoint!;
+            // The cooperative peer pipelines the full request sequence and then reads everything
+            // until EOF; the terminal failure is the LAST application message before EOF, so the
+            // receipt is the trailing expected-length slice of the received stream.
             var requests = new List<string>
             {
                 Convert.ToHexString(Wire.Frame(Wire.Encode(Wire.Hello()))).ToLowerInvariant(),
                 Convert.ToHexString(Wire.Frame(Wire.Encode(Wire.Logon()))).ToLowerInvariant(),
                 Convert.ToHexString(Wire.Frame(Wire.Encode(Wire.Run()))).ToLowerInvariant(),
                 Convert.ToHexString(Wire.Frame(Wire.Encode(Wire.Pull(2)))).ToLowerInvariant(),
-                Convert.ToHexString(Wire.Frame(Wire.TerminalBegin)).ToLowerInvariant(),
-                Convert.ToHexString(Wire.Frame(Wire.Encode(Wire.Run()))).ToLowerInvariant()
+                Convert.ToHexString(Wire.Frame(Wire.TerminalBegin)).ToLowerInvariant()
             };
             var descriptor = new Dictionary<string, object?>
             {
                 ["cell"] = cell.Id,
                 ["attempt"] = attempt,
-                ["endpoint"] = $"{endpoint.Address}:{endpoint.Port}",
+                ["endpoint"] = $"{IPAddress.Loopback}:{endpoint.Port}",
                 ["cert_pem"] = ctx.CertificatePemPath,
                 ["cert_sha256"] = ctx.CertificateSha256,
                 ["handshake_hex"] = Convert.ToHexString(Wire.Handshake).ToLowerInvariant(),
@@ -429,18 +451,18 @@ internal static class Production
             result["peer_receipt_journal"] = receiptPath;
             var exited = await process.WaitAsync(TimeSpan.FromSeconds(10), token).ConfigureAwait(false);
             result["peer_exited"] = exited;
-            result["peer_exit_code"] = exited ? process.StandardError : null;
+            result["peer_exit_code"] = exited ? process.ExitCode : null;
             if (!exited)
             {
                 result["outcome"] = "peer-receipt-failed";
-                result["error"] = "peer process did not exit";
+                result["error"] = "peer process did not exit: " + process.StandardError.Trim();
                 return result;
             }
 
             if (!File.Exists(receiptPath))
             {
                 result["outcome"] = "peer-receipt-failed";
-                result["error"] = "peer receipt journal missing: " + process.StandardError;
+                result["error"] = "peer receipt journal missing: " + process.StandardError.Trim();
                 return result;
             }
 
@@ -448,30 +470,43 @@ internal static class Production
                 .Where(l => l.Trim().Length > 0)
                 .Select(l => JsonSerializer.Deserialize<Dictionary<string, object?>>(l)!)
                 .ToArray();
-            var receipt = lines.LastOrDefault(l => (string?)l.GetValueOrDefault("record_type") == "peer-receipt");
-            var eof = lines.LastOrDefault(l => (string?)l.GetValueOrDefault("record_type") == "peer-eof");
+            var receipt = lines.LastOrDefault(l =>
+                (string?)Json.Scalar(l.GetValueOrDefault("record_type")) == "peer-receipt");
+            var eof = lines.LastOrDefault(l =>
+                (string?)Json.Scalar(l.GetValueOrDefault("record_type")) == "peer-eof");
             result["peer_receipt"] = receipt is not null;
             result["peer_eof"] = eof is not null;
             if (receipt is not null)
             {
-                var hex = (string?)receipt.GetValueOrDefault("message_hex") ?? "";
+                var hex = (string?)Json.Scalar(receipt.GetValueOrDefault("message_hex")) ?? "";
                 var bytes = hex.Length > 0 ? Convert.FromHexString(hex) : Array.Empty<byte>();
                 var digest = Wire.Sha256Hex(bytes);
-                result["receipt_message_bytes"] = receipt.GetValueOrDefault("message_bytes");
-                result["receipt_sha256"] = receipt.GetValueOrDefault("sha256");
+                result["receipt_message_bytes"] = Json.Scalar(receipt.GetValueOrDefault("message_bytes"));
+                result["receipt_sha256"] = Json.Scalar(receipt.GetValueOrDefault("sha256"));
                 result["receipt_recomputed_sha256"] = digest;
-                result["receipt_ms"] = receipt.GetValueOrDefault("receipt_ms");
-                result["receipt_app"] = receipt.GetValueOrDefault("app");
-                result["receipt_journal_field"] = receipt.GetValueOrDefault("journal");
+                result["receipt_ms"] = Json.Scalar(receipt.GetValueOrDefault("receipt_ms"));
+                result["receipt_app"] = Json.Scalar(receipt.GetValueOrDefault("app"));
+                result["receipt_journal_field"] = Json.Scalar(receipt.GetValueOrDefault("journal"));
                 result["receipt_matches"] = bytes.Length == expected.Length
                     && digest == expectedDigest
-                    && (string?)receipt.GetValueOrDefault("sha256") == expectedDigest
-                    && Convert.ToInt32(receipt.GetValueOrDefault("message_bytes")) == expected.Length;
+                    && (string?)Json.Scalar(receipt.GetValueOrDefault("sha256")) == expectedDigest
+                    && Convert.ToInt64(Json.Scalar(receipt.GetValueOrDefault("message_bytes")) ?? -1L)
+                        == expected.Length;
             }
 
-            result["peer_unread_at_end"] = eof?.GetValueOrDefault("unread_at_end");
-            result["tls_protocol"] = receipt?.GetValueOrDefault("tls_version");
-            result["tls_cipher"] = receipt?.GetValueOrDefault("tls_cipher");
+            result["peer_unread_at_end"] = eof is null ? null : Json.Scalar(eof.GetValueOrDefault("unread_at_end"));
+            result["tls_protocol"] = receipt is null ? null : Json.Scalar(receipt.GetValueOrDefault("tls_version"));
+            result["tls_cipher"] = receipt is null ? null : Json.Scalar(receipt.GetValueOrDefault("tls_cipher"));
+
+            // Let the production terminal path finish and the connection retire before the
+            // accounting snapshot, bounded by the attempt watchdog.
+            var settle = Stopwatch.GetTimestamp();
+            while (Stopwatch.GetElapsedTime(settle).TotalMilliseconds < 2000
+                && (server.Diagnostics.MessagesProcessed < 5 || server.Diagnostics.ConnectionsActive > 0))
+            {
+                await Task.Delay(2, token).ConfigureAwait(false);
+            }
+            await server.StopAsync(token).WaitAsync(TimeSpan.FromSeconds(6), token).ConfigureAwait(false);
             var accounting = Account.Snapshot(server);
             result["accounting"] = accounting;
             var active = (long)accounting["active"]!;
@@ -479,10 +514,11 @@ internal static class Production
             var completed = (long)accounting["completed"]!;
             var failed = (long)accounting["failed"]!;
             var messages = (long)accounting["messages"]!;
+            var unread = Convert.ToInt64(Json.Scalar(result.GetValueOrDefault("peer_unread_at_end")) ?? -1L);
             var checks = receipt is not null
                 && eof is not null
                 && (bool)(result["receipt_matches"] ?? false)
-                && Convert.ToInt64(result["peer_unread_at_end"] ?? -1) == 0
+                && unread == 0
                 && active == 0
                 && accepted == 1
                 && completed + failed == 1
@@ -493,7 +529,7 @@ internal static class Production
                 ["receipt_present"] = receipt is not null,
                 ["peer_eof"] = eof is not null,
                 ["receipt_matches_campaign_digest"] = result["receipt_matches"],
-                ["peer_unread_at_end_zero"] = Convert.ToInt64(result["peer_unread_at_end"] ?? -1) == 0,
+                ["peer_unread_at_end_zero"] = unread == 0,
                 ["accounting_active_zero"] = active == 0,
                 ["accounting_balanced"] = accepted == completed + failed,
                 ["single_connection"] = accepted == 1 && completed + failed == 1,
@@ -510,7 +546,7 @@ internal static class Production
             };
             ctx.Journal.Transcript(cell.Id,
                 $"attempt {attempt}: receipt={receipt is not null} eof={eof is not null} " +
-                $"digest={result["receipt_matches"]} outcome={result["outcome"]}");
+                $"digest={result["receipt_matches"]} unread={unread} outcome={result["outcome"]}");
         }
         catch (Exception ex)
         {
@@ -535,6 +571,8 @@ internal static class Production
         Profile profile, int attempt, CancellationToken token)
     {
         var result = NewAttempt(cell, profile, attempt, "production-plaintext");
+        DispatchAudit.Invoke("Production.RunPlaintextCapAttemptAsync");
+        result["dispatch_target"] = "Production.RunPlaintextCapAttemptAsync";
         result["supplementary"] = true;
         BoltTcpServer? server = null;
         PlaintextCloseCapture? capture = null;
@@ -548,7 +586,10 @@ internal static class Production
                 CredentialVerifier = new AcceptAllVerifier(),
                 OperationProviderFactory = () => provider,
                 Tls = null,
-                MaxConnections = 1,
+                // Production admits the terminal-close drain from a permit pool sized
+                // maxConnections-1; with MaxConnections=1 the pool is empty and the drain is
+                // never admitted (the R3 "capacity" warning). Two connections admit one drain.
+                MaxConnections = 2,
                 WriteTimeout = TimeSpan.FromSeconds(30),
                 ShutdownTimeout = TimeSpan.FromSeconds(5)
             });
@@ -570,8 +611,14 @@ internal static class Production
                 _ = codec.DecodeResponse(message);
             }
 
+            // The terminal trigger (PULL + BEGIN) is pipelined with exactly the registered
+            // 8192-byte drain payload. The framing reader consumes only the two complete
+            // messages; the padding stays in the socket buffer, so the production drain reads
+            // it back and terminates at the registered byte limit.
+            var padding = new byte[Campaign.PlaintextLimit];
             var batch = Wire.Frame(Wire.Encode(Wire.Pull(2)))
                 .Concat(Wire.Frame(Wire.TerminalBegin))
+                .Concat(padding)
                 .ToArray();
             await stream.WriteAsync(batch, token).ConfigureAwait(false);
             var flood = Task.Run(async () =>
@@ -604,6 +651,7 @@ internal static class Production
             result["plaintext_source"] = "production BoltPlaintextTerminalClose drain-end event";
             result["permits"] = capture.Admitted;
             result["released_permits"] = capture.Released;
+            result["plaintext_events"] = capture.Names;
             result["elapsed_ms"] = Math.Round(Stopwatch.GetElapsedTime(started).TotalMilliseconds, 3);
             var accounting = Account.Snapshot(server, capture);
             result["accounting"] = accounting;
@@ -621,6 +669,7 @@ internal static class Production
                 && completed + failed == 1;
             result["checks"] = new Dictionary<string, object?>
             {
+                ["drain_admitted"] = capture.Admitted == 1,
                 ["drain_at_plaintext_cap"] = drain?.Bytes == Campaign.PlaintextLimit,
                 ["drain_reason_byte_limit"] = drain?.Reason == "byte-limit",
                 ["permits_balanced"] = capture.Admitted == 1 && capture.Released == 1,

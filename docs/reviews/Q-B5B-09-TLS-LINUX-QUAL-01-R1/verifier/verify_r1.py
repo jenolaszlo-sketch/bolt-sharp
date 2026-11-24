@@ -3,9 +3,14 @@
 
 R3 semantics: L5/L6 ciphertext evidence must be measured at the transport boundary
 beneath SslStream (actual TLS record ciphertext). Proxy or application-byte substitutes
-are rejected. The encrypted cap is enforced with a bounded one-record overshoot; the
-plaintext cap is enforced exactly. NC-1 must be an actually executed tamper whose
-observed ciphertext exceeds the registered cap.
+are rejected.
+
+R4 semantics (strict): the encrypted cap is enforced STRICTLY at the transport boundary
+— the original E1 contract (T5 WireBytes == 32768; NC-1 WireBytes == 131072; T6
+WireBytes <= 32768). The plaintext cap is enforced exactly. No one-record overshoot
+allowance is accepted. Every registered cell and negative control must additionally
+record the implementation it was dispatched to (the R4 dispatch-coverage audit), and the
+campaign journal must show every required implementation actually invoked.
 """
 import argparse
 import json
@@ -14,9 +19,22 @@ from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
 MEASUREMENT_BOUNDARY = "beneath-sslstream-transport-boundary"
-MAX_TLS_RECORD_WIRE_BYTES = 16406  # 5 header + 16384 payload + 1 content-type + 16 AEAD tag
 REGISTERED_CIPHERTEXT_CAP = 32768
 REGISTERED_PLAINTEXT_CAP = 8192
+REGISTERED_NC1_TAMPERED_CAP = 131072
+
+DISPATCH_TARGETS = {
+    "L1": "Production.RunTerminalAttemptAsync",
+    "L2": "Production.RunTerminalAttemptAsync",
+    "L3": "Candidate.RunCloseNotifyAttemptAsync",
+    "L4": "Candidate.RunCloseNotifyAttemptAsync",
+    "L5": "Candidate.RunCapAttemptAsync",
+    "L6": "Candidate.RunCapAttemptAsync",
+    "L7": "Production.RunReceiptAttemptAsync",
+    "L6-PROD": "Production.RunPlaintextCapAttemptAsync",
+    "NC-1": "Controls.RunNC1CiphertextCapTamperAsync",
+    "NC-2": "Controls.RunNC2DeadlineRenewalAsync",
+}
 
 QUALIFYING_OUTCOMES = {
     "L1": "induced-and-interrupted",
@@ -145,10 +163,41 @@ class Verifier:
         if meta.get("status") != "raw-complete":
             self.error(f"meta status {meta.get('status')} != raw-complete")
 
+    # ---------------------------------------------------------------- dispatch audit
+    def verify_dispatch_audit(self):
+        """R4: every registered cell/control implementation must be reachable AND invoked."""
+        journal = self.results_dir / "campaign-journal.jsonl"
+        records = self.load_journal(journal)
+        audits = [r for r in records if r.get("record_type") == "dispatch-audit"]
+        if not audits:
+            self.error("dispatch-audit record missing from the campaign journal")
+            return
+        audit = audits[-1]
+        rows = audit.get("implementations")
+        if not isinstance(rows, list) or not rows:
+            self.error("dispatch-audit record contains no implementation rows")
+            return
+        by_target = {r.get("implementation"): r for r in rows if isinstance(r, dict)}
+        for target in sorted(set(DISPATCH_TARGETS.values())):
+            row = by_target.get(target)
+            if row is None:
+                self.error(f"dispatch-audit: registered implementation {target} is not audited")
+                continue
+            cells = [c for c, t in DISPATCH_TARGETS.items() if t == target]
+            if row.get("invoked") is not True:
+                self.error(f"dispatch-audit: implementation {target} (cells {cells}) was never "
+                            f"invoked — registered dispatch is unreachable")
+        if self.mode == "full" and audit.get("all_required_invoked") is not True:
+            self.error("dispatch-audit: not every required implementation was invoked in full mode")
+
     # ---------------------------------------------------------------- L1 / L2
     def _terminal_write_oracle(self, cell: str, a: Dict[str, Any]):
         checks = a.get("checks", {})
         attempt = a.get("attempt")
+        # R4 dispatch coverage: the registered implementation must be the one that ran.
+        if a.get("dispatch_target") != DISPATCH_TARGETS[cell]:
+            self.error(f"{cell} attempt {attempt}: dispatch_target {a.get('dispatch_target')!r} "
+                        f"!= {DISPATCH_TARGETS[cell]!r} (registered implementation not invoked)")
         if not checks.get("confirmed", False):
             self.error(f"{cell} attempt {attempt}: Confirmed=false")
         if checks.get("pending_at_least_20_ms") is not True:
@@ -201,6 +250,10 @@ class Verifier:
     # ---------------------------------------------------------------- L3 / L4
     def _close_notify_oracle(self, cell: str, a: Dict[str, Any]):
         attempt = a.get("attempt")
+        # R4 dispatch coverage: the registered implementation must be the one that ran.
+        if a.get("dispatch_target") != DISPATCH_TARGETS[cell]:
+            self.error(f"{cell} attempt {attempt}: dispatch_target {a.get('dispatch_target')!r} "
+                        f"!= {DISPATCH_TARGETS[cell]!r} (registered implementation not invoked)")
         if not a.get("shutdown_pending", False):
             self.error(f"{cell} attempt {attempt}: live shutdown not observed pending")
         if a.get("shutdown_pending_ms", 0) < 20:
@@ -209,6 +262,8 @@ class Verifier:
             self.error(f"{cell} attempt {attempt}: sender writable at sample")
         if a.get("buffer_configured") is not True:
             self.error(f"{cell} attempt {attempt}: BufferConfigured=false")
+        if a.get("interrupted") is not True:
+            self.error(f"{cell} attempt {attempt}: attempt not interrupted")
         levels = a.get("guarantee_levels", {})
         if levels.get("tls_close_notify_transmission") is not True:
             self.error(f"{cell} attempt {attempt}: tls_close_notify_transmission must be "
@@ -238,11 +293,17 @@ class Verifier:
             proxy_journal = a.get("proxy_journal")
             if not proxy_journal:
                 self.error(f"L4 attempt {a.get('attempt')}: no proxy journal path recorded")
+            if a.get("peer_listener_cancelled") is not True:
+                self.error(f"L4 attempt {a.get('attempt')}: peer listener was not cancelled")
 
     # ---------------------------------------------------------------- L5 / L6
     def _verify_cap_attempt(self, cell: str, a: Dict[str, Any], plaintext_exact: Optional[int]):
-        """Shared oracle for L5/L6 candidate cap attempts (R3 E1-faithful semantics)."""
+        """Shared oracle for L5/L6 candidate cap attempts (E1 semantics, strict in R4)."""
         attempt = a.get("attempt")
+        # R4 dispatch coverage: the registered implementation must be the one that ran.
+        if a.get("dispatch_target") != DISPATCH_TARGETS[cell]:
+            self.error(f"{cell} attempt {attempt}: dispatch_target {a.get('dispatch_target')!r} "
+                        f"!= {DISPATCH_TARGETS[cell]!r} (registered implementation not invoked)")
         # Proxy rejection (R3 requirement 8): the ciphertext evidence must declare the
         # transport boundary beneath SslStream; proxy/app-byte substitutes are rejected.
         measurement = a.get("ciphertext_measurement")
@@ -276,13 +337,27 @@ class Verifier:
         if declared_cap != REGISTERED_CIPHERTEXT_CAP:
             self.error(f"{cell} attempt {attempt}: declared ciphertext cap {declared_cap} "
                        f"!= registered {REGISTERED_CIPHERTEXT_CAP}")
-        # Bounded encrypted enforcement (R3 requirement 6): a single SslStream record pull may
-        # overshoot the declared cap by at most one maximum TLS record; anything beyond that
-        # proves an undetected cap violation (TLS buffering/record overhead cannot hide it).
-        if wire > REGISTERED_CIPHERTEXT_CAP + MAX_TLS_RECORD_WIRE_BYTES:
-            self.error(f"{cell} attempt {attempt}: encrypted wire bytes {wire} exceed the registered "
-                       f"{REGISTERED_CIPHERTEXT_CAP} cap beyond one max TLS record "
-                       f"({MAX_TLS_RECORD_WIRE_BYTES})")
+        # STRICT encrypted enforcement (R4, the original E1 contract): inbound reads are
+        # clipped to the remaining encrypted budget at the transport boundary, so the
+        # tiny-flood cell must terminate EXACTLY at the declared cap and the large-flood cell
+        # must stay inside the registered cap. A one-record overshoot allowance is NOT part of
+        # the registered contract (E1 verifier: WireBytes == 32768) and is rejected.
+        if cell == "L5":
+            if wire != REGISTERED_CIPHERTEXT_CAP:
+                self.error(f"{cell} attempt {attempt}: encrypted wire bytes {wire} != the strict "
+                            f"registered cap {REGISTERED_CIPHERTEXT_CAP} (cap not enforced exactly)")
+            if a.get("drain_outcome") != "cipher-cap":
+                self.error(f"{cell} attempt {attempt}: drain terminated at {a.get('drain_outcome')!r} "
+                            f"(expected the encrypted cap to bind for the tiny-flood cell)")
+        else:
+            if wire > REGISTERED_CIPHERTEXT_CAP:
+                self.error(f"{cell} attempt {attempt}: encrypted wire bytes {wire} exceed the "
+                            f"registered {REGISTERED_CIPHERTEXT_CAP} cap")
+            if a.get("drain_outcome") != "plain-cap":
+                self.error(f"{cell} attempt {attempt}: drain terminated at {a.get('drain_outcome')!r} "
+                            f"(expected the plaintext cap to bind for the large-flood cell)")
+        if a.get("checks", {}).get("encrypted_cap_strict") is not True:
+            self.error(f"{cell} attempt {attempt}: checks.encrypted_cap_strict is not true")
         # Controlled differential (R3 requirement 5): TLS ciphertext and application byte
         # counts must differ; zero overhead means the counter is not wire measurement.
         if overhead is None or int(overhead) <= 0:
@@ -311,7 +386,7 @@ class Verifier:
             self.error(f"{cell} attempt {attempt}: drain terminated at {a.get('drain_outcome')!r} "
                        f"(expected a registered cap bound)")
         checks = a.get("checks", {})
-        for required in ("plaintext_cap_enforced", "encrypted_cap_respected",
+        for required in ("plaintext_cap_enforced", "encrypted_cap_strict",
                          "encrypted_bound_versus_registered", "ciphertext_app_differential_observed",
                          "client_consistency", "accounting_active_zero", "accounting_balanced"):
             if checks.get(required) is not True:
@@ -348,10 +423,19 @@ class Verifier:
         records = self.load_journal(journal)
         attempts = [r for r in records if r.get("record_type") == "attempt" and r.get("cell") == cell]
         for a in attempts:
+            # R4 dispatch coverage: the production plaintext cap implementation must be the
+            # one that ran for the supplementary cell.
+            if a.get("dispatch_target") != DISPATCH_TARGETS[cell]:
+                self.error(f"{cell} attempt {a.get('attempt')}: dispatch_target "
+                            f"{a.get('dispatch_target')!r} != {DISPATCH_TARGETS[cell]!r} "
+                            f"(registered implementation not invoked)")
             if a.get("plaintext_bytes") != REGISTERED_PLAINTEXT_CAP:
                 self.warn(f"{cell} attempt {a.get('attempt')}: plaintext drain != {REGISTERED_PLAINTEXT_CAP}")
             if a.get("ciphertext_bytes") != 0:
                 self.warn(f"{cell} attempt {a.get('attempt')}: ciphertext bytes != 0")
+            if a.get("checks", {}).get("drain_admitted") is not True:
+                self.error(f"{cell} attempt {a.get('attempt')}: production drain was never admitted "
+                            f"(permit pool exhausted by the listener configuration)")
 
     # ---------------------------------------------------------------- L7
     def verify_cell_l7(self):
@@ -361,6 +445,12 @@ class Verifier:
         _, qualifying = loaded
         for a in qualifying:
             attempt = a.get("attempt")
+            # R4 dispatch coverage: L7 must have reached the receipt path (this was dead code
+            # in R1-R3 — every production cell was routed through the terminal-write path).
+            if a.get("dispatch_target") != DISPATCH_TARGETS["L7"]:
+                self.error(f"L7 attempt {attempt}: dispatch_target {a.get('dispatch_target')!r} "
+                            f"!= {DISPATCH_TARGETS['L7']!r} (registered receipt implementation "
+                            f"not invoked — dead dispatch)")
             checks = a.get("checks", {})
             for required in ("receipt_present", "peer_eof", "receipt_matches_campaign_digest",
                              "peer_unread_at_end_zero", "accounting_active_zero",
@@ -391,9 +481,13 @@ class Verifier:
                 self.error(f"{nc}: no records")
                 continue
             for r in records:
+                if r.get("dispatch_target") != DISPATCH_TARGETS[nc]:
+                    self.error(f"{nc}: dispatch_target {r.get('dispatch_target')!r} "
+                                f"!= {DISPATCH_TARGETS[nc]!r} (registered control implementation "
+                                f"not invoked)")
                 if nc == "NC-1":
                     if r.get("registered_ciphertext_cap") != REGISTERED_CIPHERTEXT_CAP or \
-                            r.get("tampered_ciphertext_cap") != 131072:
+                            r.get("tampered_ciphertext_cap") != REGISTERED_NC1_TAMPERED_CAP:
                         self.error(f"{nc}: cap tamper values not recorded")
                     # Actual execution (R3): the tampered drain must have measured real
                     # ciphertext wire bytes beyond the registered cap.
@@ -405,6 +499,10 @@ class Verifier:
                             wire = int(wire)
                         except (TypeError, ValueError):
                             wire = 0
+                        if wire != REGISTERED_NC1_TAMPERED_CAP:
+                            self.error(f"{nc}: observed wire bytes {wire} != the tampered cap "
+                                        f"{REGISTERED_NC1_TAMPERED_CAP} (strict enforcement not "
+                                        f"exercised by the tamper control)")
                         if wire <= REGISTERED_CIPHERTEXT_CAP:
                             self.error(f"{nc}: tamper not detected — observed wire bytes {wire} "
                                        f"did not exceed the registered {REGISTERED_CIPHERTEXT_CAP} cap")
@@ -417,6 +515,21 @@ class Verifier:
                         self.error(f"{nc}: deadline values not recorded")
                     if r.get("elapsed_ms", 0) <= 500:
                         self.error(f"{nc}: extended deadline not exceeded")
+                    if r.get("outcome") != "induced-but-checks-failed":
+                        self.error(f"{nc}: outcome {r.get('outcome')!r} != induced-but-checks-failed "
+                                   f"(registered control detection not recorded)")
+                    # R4: the deadline-renewal control depends on a profile that actually induces
+                    # the terminal-write pendency. An unconfirmed prerequisite (the R3 defect, which
+                    # ran on a profile that never induced pendency and reported the precursor as
+                    # unobserved with elapsed ~2.6 ms) is rejected, so the extended deadline must
+                    # have been genuinely exercised.
+                    if r.get("prerequisite_confirmed") is not True:
+                        self.error(f"{nc}: prerequisite not confirmed — the deadline-renewal control "
+                                   f"was not run on a profile that induced the terminal-write "
+                                   f"pendency it depends on")
+                    if r.get("deadline_tamper_detected") is not True:
+                        self.error(f"{nc}: deadline_tamper_detected not recorded true — control "
+                                   f"execution not evidenced")
 
     def verify_repeatability(self):
         cells = ["L1", "L2", "L3", "L4", "L5", "L6", "L7"]
@@ -461,6 +574,7 @@ class Verifier:
     def run(self) -> Tuple[bool, List[str], List[str]]:
         self.verify_fresh_run()
         self.verify_commit_tree()
+        self.verify_dispatch_audit()
         self.verify_cell_l1()
         self.verify_cell_l2()
         self.verify_cell_l3()

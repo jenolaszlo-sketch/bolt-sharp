@@ -1,0 +1,13 @@
+Verifier result for the WSL2 development run (development-only, NOT a native-Linux qualification claim):
+
+VERIFIER: FAIL
+
+ERROR: L1: summary not qualified (successes=0)
+ERROR: L2: summary not qualified (successes=0)
+ERROR: L3: summary not qualified (successes=0)
+ERROR: L4: summary not qualified (successes=0)
+ERROR: L6: summary not qualified (successes=0)
+ERROR: NC-2: extended deadline not exceeded
+ERROR: NC-2: outcome 'precursor-not-observed' != induced-but-checks-failed (registered control detection not recorded)
+ERROR: NC-2: prerequisite not confirmed - the deadline-renewal control was not run on a profile that induced the terminal-write pendency it depends on
+ERROR: NC-2: deadline_tamper_detected not recorded true - control execution not evidenced

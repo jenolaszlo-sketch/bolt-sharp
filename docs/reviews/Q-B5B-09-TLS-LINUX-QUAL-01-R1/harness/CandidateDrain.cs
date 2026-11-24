@@ -18,15 +18,14 @@ namespace R1Harness;
 /// Direction and accounting boundaries mirror Q-B5B-09-TLS-E1 (T5/T6 + NC-1 evidence):
 /// the encrypted cap binds INBOUND encrypted bytes processed during the drain phase
 /// (post-handshake application-data phase only); the plaintext cap is enforced exactly by
-/// clipping each read to the remaining plaintext budget; the encrypted counter can overshoot
-/// the cap by at most one maximum TLS record (bounded, declared, verified).
+/// clipping each read to the remaining plaintext budget. The encrypted cap is enforced
+/// strictly at the same transport boundary: inbound reads are clipped to the remaining
+/// encrypted budget, so the drain can never consume more than the declared cap. This is the
+/// original E1 contract (T5 WireBytes == 32768; NC-1 WireBytes == 131072), not a one-record
+/// overshoot allowance.
 /// </summary>
 internal static class CandidateDrain
 {
-    /// <summary>Maximum TLS 1.3 application-data record on the wire:
-    /// 5-byte header + 16384 payload + 1 content-type + 16 AEAD tag = 16406.</summary>
-    internal const int MaxTlsRecordWireBytes = 5 + 16384 + 1 + 16;
-
     /// <summary>The exact measurement boundary string recorded in every attempt journal.</summary>
     internal const string MeasurementBoundary = "beneath-sslstream-transport-boundary";
 
@@ -34,20 +33,44 @@ internal static class CandidateDrain
 
     internal sealed record WireCounters(long EncryptedInbound, long EncryptedOutbound);
 
+    /// <summary>Raised by the wire boundary when the strict inbound ciphertext budget is spent.</summary>
+    internal sealed class CiphertextCapReachedException : IOException
+    {
+        internal CiphertextCapReachedException(long cap)
+            : base($"encrypted inbound byte cap {cap} reached at the transport boundary")
+        {
+        }
+    }
+
     /// <summary>
     /// A Stream wrapper that counts bytes at the TLS transport boundary. Bytes written through
     /// this stream are the encrypted records SslStream emits; bytes read from it are the
     /// encrypted records SslStream consumes. Both are exact wire-phase ciphertext counts.
+    /// An optional inbound limit is armed after the TLS handshake; from then on every read is
+    /// clipped to the remaining budget and a read beyond the budget fails closed.
     /// </summary>
     internal sealed class WireCountingStream : Stream
     {
         private readonly Stream _inner;
         private long _encryptedInbound;
         private long _encryptedOutbound;
+        private long _inboundLimit = -1;
+        private long _inboundSinceLimit;
 
         internal WireCountingStream(Stream inner) => _inner = inner ?? throw new ArgumentNullException(nameof(inner));
 
         internal WireCounters Snapshot => new(Interlocked.Read(ref _encryptedInbound), Interlocked.Read(ref _encryptedOutbound));
+
+        /// <summary>Arm the strict post-handshake inbound ciphertext budget.</summary>
+        internal void ArmInboundLimit(long limit)
+        {
+            Interlocked.Exchange(ref _inboundSinceLimit, 0);
+            Interlocked.Exchange(ref _inboundLimit, limit);
+        }
+
+        internal long InboundSinceLimit => Interlocked.Read(ref _inboundSinceLimit);
+
+        internal long InboundLimit => Interlocked.Read(ref _inboundLimit);
 
         public override bool CanRead => _inner.CanRead;
         public override bool CanWrite => _inner.CanWrite;
@@ -59,17 +82,40 @@ internal static class CandidateDrain
         public override void Flush() => _inner.Flush();
         public override Task FlushAsync(CancellationToken cancellationToken) => _inner.FlushAsync(cancellationToken);
 
+        /// <summary>Clip a read request to the remaining strict inbound budget (fail closed at the cap).</summary>
+        private Memory<byte> ClipInbound(Memory<byte> buffer)
+        {
+            var limit = Interlocked.Read(ref _inboundLimit);
+            if (limit < 0) return buffer;
+            var remaining = limit - Interlocked.Read(ref _inboundSinceLimit);
+            if (remaining <= 0)
+                throw new CandidateDrain.CiphertextCapReachedException(limit);
+            return buffer.Length <= remaining ? buffer : buffer[..(int)remaining];
+        }
+
         public override int Read(byte[] buffer, int offset, int count)
         {
-            var read = _inner.Read(buffer, offset, count);
-            if (read > 0) Interlocked.Add(ref _encryptedInbound, read);
+            var clipped = ClipInbound(buffer.AsMemory(offset, count));
+            var read = _inner.Read(clipped.Span);
+            if (read > 0)
+            {
+                Interlocked.Add(ref _encryptedInbound, read);
+                if (Interlocked.Read(ref _inboundLimit) >= 0)
+                    Interlocked.Add(ref _inboundSinceLimit, read);
+            }
             return read;
         }
 
         public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
         {
-            var read = await _inner.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
-            if (read > 0) Interlocked.Add(ref _encryptedInbound, read);
+            var clipped = ClipInbound(buffer);
+            var read = await _inner.ReadAsync(clipped, cancellationToken).ConfigureAwait(false);
+            if (read > 0)
+            {
+                Interlocked.Add(ref _encryptedInbound, read);
+                if (Interlocked.Read(ref _inboundLimit) >= 0)
+                    Interlocked.Add(ref _inboundSinceLimit, read);
+            }
             return read;
         }
 
@@ -106,14 +152,18 @@ internal static class CandidateDrain
         bool CloseNotifyCompleted,
         Dictionary<string, object?> Accounting,
         double ElapsedMs,
-        string? Error);
+        string? Error,
+        long InboundWireLimit);
 
     /// <summary>
     /// Runs the candidate drain against an already-accepted TLS client stream pair. The drain
     /// terminates at whichever registered cap binds first (matching E1 T5/T6 semantics):
-    /// "cipher-cap" when the inbound encrypted wire counter reaches the encrypted cap,
+    /// "cipher-cap" when the strict inbound encrypted wire budget is spent (exactly the cap),
     /// "plain-cap" when the decrypted plaintext counter reaches the plaintext cap,
     /// "peer-eof" when the peer disconnects before either cap.
+    /// The encrypted cap is enforced strictly at the transport boundary: the wire wrapper
+    /// clips every post-handshake inbound read to the remaining budget, so the consumed
+    /// ciphertext can never exceed the declared cap (original E1 contract).
     /// </summary>
     internal static async Task<DrainResult> RunAsync(
         TcpClient client,
@@ -136,7 +186,10 @@ internal static class CandidateDrain
                 .ConfigureAwait(false);
 
             // Accounting boundary: the caps bind the post-handshake application-data phase only.
+            // Arming the strict inbound budget here also guarantees the drain can never consume
+            // more than the declared ciphertext cap, no matter what SslStream buffers.
             wireBefore = wire.Snapshot;
+            wire.ArmInboundLimit(ciphertextCap);
             var scratch = new byte[2048]; // E1 scratch size
             while (true)
             {
@@ -146,7 +199,7 @@ internal static class CandidateDrain
                     return Finish("plain-cap", null);
                 }
 
-                if (wire.Snapshot.EncryptedInbound - wireBefore.EncryptedInbound >= ciphertextCap)
+                if (wire.InboundSinceLimit >= ciphertextCap)
                 {
                     return Finish("cipher-cap", null);
                 }
@@ -163,12 +216,14 @@ internal static class CandidateDrain
         }
         catch (Exception ex)
         {
-            // A transport fault is reported with the counters measured so far; the caller
-            // decides the oracle. The decrypted count is exact; the encrypted delta is the
-            // wire bytes consumed up to the fault (bounded by one record of bookkeeping loss).
-            var outcome = plaintextDrained >= plaintextCap ? "plain-cap"
+            // The strict budget can be spent inside a single SslStream record pull; that is a
+            // cap bound, not a fault. A transport fault is reported with the counters measured
+            // so far; the caller decides the oracle. The decrypted count is exact.
+            var spentBudget = wire.InboundSinceLimit >= ciphertextCap;
+            var outcome = spentBudget ? "cipher-cap"
+                : plaintextDrained >= plaintextCap ? "plain-cap"
                 : ex is OperationCanceledException ? "watchdog" : "transport-error";
-            return Finish(outcome, ex.GetType().Name + ":" + ex.Message);
+            return Finish(outcome, spentBudget ? null : ex.GetType().Name + ":" + ex.Message);
         }
         finally
         {
@@ -193,13 +248,14 @@ internal static class CandidateDrain
 
             var final = wire.Snapshot;
             return new CandidateDrain.DrainResult(outcome,
-                final.EncryptedInbound - wireBefore.EncryptedInbound,
+                wire.InboundSinceLimit,
                 plaintextDrained,
                 final.EncryptedOutbound - wireBefore.EncryptedOutbound,
                 closeNotifyCompleted,
                 new Dictionary<string, object?>(),
                 Math.Round(Stopwatch.GetElapsedTime(started).TotalMilliseconds, 3),
-                error);
+                error,
+                wire.InboundLimit);
         }
     }
 }
@@ -249,7 +305,7 @@ internal sealed class CandidateDrainListener : IAsyncDisposable
         catch (Exception)
         {
             _completion.TrySetResult(new CandidateDrain.DrainResult("listener-closed", 0, 0, 0, false,
-                new Dictionary<string, object?>(), 0, "listener closed before accept"));
+                new Dictionary<string, object?>(), 0, "listener closed before accept", 0));
             return;
         }
 
@@ -261,14 +317,16 @@ internal sealed class CandidateDrainListener : IAsyncDisposable
             var final = result with { Accounting = new Dictionary<string, object?>
             {
                 ["wire_encrypted_inbound_total"] = wire.Snapshot.EncryptedInbound,
-                ["wire_encrypted_outbound_total"] = wire.Snapshot.EncryptedOutbound
+                ["wire_encrypted_outbound_total"] = wire.Snapshot.EncryptedOutbound,
+                ["wire_inbound_since_limit"] = wire.InboundSinceLimit,
+                ["wire_inbound_limit"] = wire.InboundLimit
             } };
             _completion.TrySetResult(final);
         }
         catch (Exception ex)
         {
             _completion.TrySetResult(new CandidateDrain.DrainResult("transport-error", 0, 0, 0, false,
-                new Dictionary<string, object?>(), 0, ex.GetType().Name + ":" + ex.Message));
+                new Dictionary<string, object?>(), 0, ex.GetType().Name + ":" + ex.Message, 0));
         }
         finally
         {

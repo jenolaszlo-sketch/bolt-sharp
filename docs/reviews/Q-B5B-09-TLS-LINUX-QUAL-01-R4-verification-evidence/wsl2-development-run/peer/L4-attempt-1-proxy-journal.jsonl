@@ -1,0 +1,3 @@
+{"forward_bound_bytes": 0, "gate_ms": 50, "kind": "proxy-listening", "port": 36121, "ts": 1795492606.4026592, "upstream": "127.0.0.1:34689"}
+{"client_rcvbuf_requested": 2048, "kind": "client-accepted", "peer": ["127.0.0.1", 50878], "ts": 1795492606.4058774}
+{"cipher": "TLS_AES_256_GCM_SHA384", "kind": "tls-client", "ts": 1795492606.4211833, "version": "TLSv1.3"}

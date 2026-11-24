@@ -33,10 +33,25 @@ internal static class Campaign
     public const int TotalElapsedBoundMs = 500;
     public const int CiphertextLimit = 32768;
     public const int PlaintextLimit = 8192;
+    /// <summary>Independent budget for the close-notify preceding fixture write (E1: 750 ms).</summary>
+    public const int PrecedingWriteTimeoutMs = 750;
+    /// <summary>Close-notify preceding fixture size: written with the default send buffer, then
+    /// SO_SNDBUF is shrunk below it so the close_notify write cannot be admitted (E1 probe
+    /// mechanism). Needed above any doubled SO_SNDBUF (8192 > 2*4096).</summary>
+    public const int CloseNotifyFixtureBytes = 8192;
+    /// <summary>L4 adaptive fill bound: the proxied send path absorbs a bounded amount, so the
+    /// close-notify fixture is written in chunks until the path saturates or this bound. The
+    /// bound exceeds the whole chain capacity (sender send buffer + proxy receive buffer), so
+    /// the send buffer is genuinely saturated when the alert is written; the subsequent shrink
+    /// below the queued bytes is the second enforcement of the same fact (E1 mechanism).</summary>
+    public const int CloseNotifyFillBoundBytes = 128 * 1024;
+    /// <summary>L4 gated-proxy forwarding bound: the proxy engages the gate before forwarding
+    /// anything, so the sender's held data is never drained until the peer listener is
+    /// cancelled. This is what keeps the sender's close_notify pending (the sender keeps its
+    /// own queued bytes while SO_SNDBUF sits below them).</summary>
+    public const int ProxyForwardBoundBytes = 0;
     /// <summary>E1 cap profile: preceding fixture 4096 bytes, peer receive 4096, no send shrink.</summary>
     public static readonly Profile CapProfile = new(1, 4096, 4096, 0);
-    /// <summary>Maximum TLS 1.3 application-data record on the wire (header+payload+type+tag).</summary>
-    public const int MaxTlsRecordWireBytes = CandidateDrain.MaxTlsRecordWireBytes;
 
     public static readonly Profile[] Profiles =
     [
@@ -307,8 +322,11 @@ internal static class Wire
             ("diagnostic_record", EmptyMap));
         var buffer = new ArrayBufferWriter<byte>();
         var writer = new BoltMessageWriter(buffer);
+        // BoltMessageWriter.WriteMessage already emits the complete chunked transfer encoding
+        // ([2-byte chunk length][payload][0x0000]); wrapping its output in Wire.Frame again
+        // would double-frame the expectation and never match a peer's framing-aware receipt.
         writer.WriteMessage(new BoltMessageCodec().EncodeResponse(failure));
-        return Frame(buffer.WrittenSpan.ToArray());
+        return buffer.WrittenSpan.ToArray();
     }
 
     internal static string Sha256Hex(ReadOnlySpan<byte> bytes)
@@ -519,6 +537,8 @@ internal sealed class PythonProcess : IDisposable
 
     internal int Id => _process.Id;
 
+    internal int? ExitCode => _process.HasExited ? _process.ExitCode : null;
+
     internal string StandardError
     {
         get
@@ -533,17 +553,36 @@ internal sealed class PythonProcess : IDisposable
         {
             RedirectStandardOutput = true,
             RedirectStandardError = true,
-            UseShellExecute = false
+            UseShellExecute = false,
+            CreateNoWindow = true
         };
         psi.ArgumentList.Add(script);
         foreach (var argument in arguments)
             psi.ArgumentList.Add(argument);
-        var process = Process.Start(psi) ?? throw new InvalidOperationException("could not start " + python);
+        Process process;
+        try
+        {
+            process = Process.Start(psi)
+                ?? throw new InvalidOperationException("could not start " + python);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException(
+                $"could not start python peer ({python} {script}): {ex.GetType().Name}:{ex.Message}", ex);
+        }
         return new PythonProcess(process);
     }
 
+    /// <summary>
+    /// Read the peer's stdout port line. Returns null on timeout, and surfaces the peer's
+    /// stderr instead of a null-dereference crash when the peer exits without printing
+    /// (the R3 L4 failure mode: int.Parse(null) masked the real launch fault).
+    /// </summary>
     internal async Task<string?> ReadLineAsync(TimeSpan timeout, CancellationToken token)
     {
+        if (_process.HasExited)
+            throw new InvalidOperationException(
+                $"python peer exited before reporting (exit {_process.ExitCode}): {StandardError.Trim()}");
         var read = _process.StandardOutput.ReadLineAsync();
         try
         {
@@ -551,6 +590,9 @@ internal sealed class PythonProcess : IDisposable
         }
         catch (TimeoutException)
         {
+            if (_process.HasExited)
+                throw new InvalidOperationException(
+                    $"python peer exited before reporting (exit {_process.ExitCode}): {StandardError.Trim()}");
             return null;
         }
     }
@@ -717,6 +759,59 @@ internal static class Account
         };
 }
 
+/// <summary>
+/// R4 dispatch-coverage audit. Every registered cell and negative control maps to exactly one
+/// intended implementation; each implementation reports its invocation here, and the campaign
+/// end journal carries the full expected-versus-observed table. The verifier fails closed when
+/// an implementation that a registered cell requires was never invoked (the R2/R3 dead-code
+/// failure mode: RunCapAttemptAsync, then RunReceiptAttemptAsync).
+/// </summary>
+internal static class DispatchAudit
+{
+    internal static readonly (string Target, string[] Cells)[] Registry =
+    [
+        ("Production.RunTerminalAttemptAsync", ["L1", "L2"]),
+        ("Production.RunReceiptAttemptAsync", ["L7"]),
+        ("Production.RunPlaintextCapAttemptAsync", ["L6-PROD"]),
+        ("Candidate.RunCloseNotifyAttemptAsync", ["L3", "L4"]),
+        ("Candidate.RunCapAttemptAsync", ["L5", "L6"]),
+        ("Controls.RunNC1CiphertextCapTamperAsync", ["NC-1"]),
+        ("Controls.RunNC2DeadlineRenewalAsync", ["NC-2"])
+    ];
+
+    private static readonly ConcurrentDictionary<string, int> Counts = new();
+
+    internal static void Invoke(string target)
+        => Counts.AddOrUpdate(target, 1, (_, n) => n + 1);
+
+    internal static int Count(string target) => Counts.TryGetValue(target, out var n) ? n : 0;
+
+    /// <summary>The dispatch table with observed invocation counts, for the campaign journal.</summary>
+    internal static Dictionary<string, object?> Snapshot(bool fullMode)
+    {
+        var rows = new List<Dictionary<string, object?>>();
+        foreach (var (target, cells) in Registry)
+        {
+            var count = Count(target);
+            rows.Add(new Dictionary<string, object?>
+            {
+                ["implementation"] = target,
+                ["cells"] = cells,
+                ["invocations"] = count,
+                ["invoked"] = count > 0,
+                ["required"] = fullMode
+            });
+        }
+        return new Dictionary<string, object?>
+        {
+            ["record_type"] = "dispatch-audit",
+            ["mode_requires_all"] = fullMode,
+            ["implementations"] = rows,
+            ["all_required_invoked"] = rows.All(r => !((bool)r["required"]!) || (bool)r["invoked"]!)
+        };
+    }
+}
+
 internal static class Json
 {
     internal static Dictionary<string, object?> Object(params (string Key, object? Value)[] entries)
@@ -731,6 +826,21 @@ internal static class Json
         => JsonSerializer.Serialize(value, new JsonSerializerOptions { WriteIndented = indented });
 
     internal static JsonNode? Read(string path) => JsonNode.Parse(File.ReadAllText(path));
+
+    /// <summary>
+    /// Convert a System.Text.Json deserialized value (JsonElement for object? fields) into a
+    /// plain CLR scalar. The L7 receipt journal reader used to compare JsonElement values
+    /// directly against strings/longs, which never matched.
+    /// </summary>
+    internal static object? Scalar(object? value) => value switch
+    {
+        JsonElement e when e.ValueKind == JsonValueKind.String => e.GetString(),
+        JsonElement e when e.ValueKind == JsonValueKind.Number => e.TryGetInt64(out var l) ? l : e.GetDouble(),
+        JsonElement e when e.ValueKind == JsonValueKind.True => true,
+        JsonElement e when e.ValueKind == JsonValueKind.False => false,
+        JsonElement e when e.ValueKind == JsonValueKind.Null => null,
+        _ => value
+    };
 }
 
 internal static class RecordExtensions

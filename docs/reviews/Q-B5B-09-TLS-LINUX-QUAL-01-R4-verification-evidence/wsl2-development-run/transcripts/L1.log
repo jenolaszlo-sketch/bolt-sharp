@@ -1,0 +1,7 @@
+2026-11-24T03:56:45.6399188+00:00 attempt 1 profile 1: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=8.731 outcome=precursor-not-observed
+2026-11-24T03:56:45.6799486+00:00 attempt 2 profile 2: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=5.223 outcome=precursor-not-observed
+2026-11-24T03:56:45.6993873+00:00 attempt 3 profile 3: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=5.234 outcome=precursor-not-observed
+2026-11-24T03:56:45.7179628+00:00 attempt 4 profile 4: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=3.08 outcome=precursor-not-observed
+2026-11-24T03:56:47.6025451+00:00 attempt 1 profile 1: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=4.784 outcome=precursor-not-observed
+2026-11-24T03:56:47.6146858+00:00 attempt 2 profile 2: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=2.632 outcome=precursor-not-observed
+2026-11-24T03:56:47.6263815+00:00 attempt 3 profile 3: confirmed=False pending=0.0 unread=0 tx=-1 elapsed=2.7 outcome=precursor-not-observed

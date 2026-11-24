@@ -1,0 +1,14 @@
+{
+  "cell": "L3",
+  "kind": "candidate-close-notify-phase",
+  "seed": 1003,
+  "runs": 4,
+  "successes": 0,
+  "qualified": false,
+  "qualifying_profile_ordinal": null,
+  "failure": "",
+  "discovery_bound": 4,
+  "repeats_required": 2,
+  "max_runs": 6,
+  "run_id": "r4wsl2dev1"
+}

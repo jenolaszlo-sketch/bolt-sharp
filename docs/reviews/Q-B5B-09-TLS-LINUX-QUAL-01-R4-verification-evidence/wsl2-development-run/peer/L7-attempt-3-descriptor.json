@@ -1,0 +1,21 @@
+{
+  "cell": "L7",
+  "attempt": 3,
+  "endpoint": "127.0.0.1:42303",
+  "cert_pem": "/mnt/c/Windows/TEMP/r4-wsl2-dev1/cert/server.crt",
+  "cert_sha256": "766f0fa9ebfc9120e76fa2b9601115ac5c4f44cf334c54f46f768062e4e47d51",
+  "handshake_hex": "6060b01700000805000000000000000000000000",
+  "selected_hex": "00000805",
+  "requests_hex": [
+    "0040b101a28a757365725f6167656e748e72312d6861726e6573732f312e308a626f6c745f6167656e74a18770726f647563748e72312d6861726e6573732f312e300000",
+    "0033b16aa386736368656d65856261736963897072696e636970616c856e656f346a8b63726564656e7469616c73867365637265740000",
+    "000db3108852455455524e2031a0a00000",
+    "0006b13fa1816e020000",
+    "0003b111a00000"
+  ],
+  "expected_message_bytes": 169,
+  "expected_sha256": "5cdf80e60e813e45ddb60777b10c920fb9f940ff49adc865c5157c2c56c7c444",
+  "receipt_journal": "/mnt/c/Windows/TEMP/r4-wsl2-dev1/peer/L7-attempt-3-receipt.jsonl",
+  "app": "python3-stdlib-ssl-peer",
+  "timeout_ms": 8000
+}

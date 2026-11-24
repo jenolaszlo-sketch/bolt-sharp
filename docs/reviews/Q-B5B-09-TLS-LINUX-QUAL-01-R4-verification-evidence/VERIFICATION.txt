@@ -1,0 +1,203 @@
+Q-B5B-09-TLS-LINUX-QUAL-01-R4 - INTEGRATED HARNESS STABILIZATION VERIFICATION
+=============================================================================
+
+1. REVISION IDENTITY
+--------------------
+Production revision under test (UNCHANGED, pinned):
+  commit  36d7b69bd4eb35bccc2a75ceb322171eefe32c9c
+  tree    5d176f30765d710894a1286c397dc6106556cc0c
+  pin     7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f
+
+  `git diff 7429c6bb36ad9bf6a337e87870d7f4c3d7e90d7f -- src tests` is EMPTY.
+  No production, test, API, or dependency change was made. All R4 edits are
+  harness-only (docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/harness/**, peer/**,
+  verifier/**).
+
+2. INDEPENDENT VERIFIER RESULT (WINDOWS, FULL MODE)
+---------------------------------------------------
+Command:
+  python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/verifier/verify_r1.py \
+    --results <windows-full-run> \
+    --commit 36d7b69bd4eb35bccc2a75ceb322171eefe32c9c \
+    --tree   5d176f30765d710894a1286c397dc6106556cc0c --mode full
+
+Result:
+  VERIFIER: PASS          (exit code 0)
+  Transcript: verifier-windows-full.txt
+  Re-verified against the preserved copy inside this directory: VERIFIER: PASS
+
+3. VERIFIER SELF-TEST (ADVERSARIAL REGRESSIONS)
+-----------------------------------------------
+Command:
+  python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/verifier/verifier_selftest.py
+
+Result:
+  ALL SELF-TESTS PASSED    (exit code 0)
+  Transcript: verifier-selftest.txt
+
+Coverage (55 fixtures, each a single mutation of an otherwise COMPLETE valid run, so
+every rejection is attributable to the targeted registered condition):
+  - valid full run accepted (baseline)
+  - EXEC-05 evidence rejected
+  - dispatch-coverage integrity: 7 cases
+        dispatch-audit record missing entirely
+        not every required implementation invoked (all_required_invoked=false)
+        receipt implementation never invoked (dead dispatch)
+        close-notify implementation never invoked
+        terminal-write implementation never invoked
+        cap implementation row absent from the audit
+        production-plaintext implementation row absent from the audit
+  - strict encrypted-cap boundary ACCEPTED (L5 == 32768 exact, L6 <= 32768) -
+        proves the strict contract does not over-reject
+  - false-pass conditions: 46 cases, including Q1 terminal-write conditions,
+        required interruption evidence (`interrupted`), L7 receipt/digest/
+        peer-journal conditions, proxy-measurement rejection, strict cap
+        enforcement, NC-1/NC-2 control detection, and R4 dispatch coverage.
+  47 of the 50 rejecting fixtures reject with exactly ONE error; 7 reject with two
+  coupled errors that are the direct consequence of the single mutation
+  (e.g. encrypted_cap_strict=false trips both the direct assertion and the
+  required-checks loop). No fixture rejects vacuously.
+
+4. REGISTERED CELL / CONTROL OUTCOMES (WINDOWS FULL RUN)
+--------------------------------------------------------
+  Cell       Kind                            Qualified  Successes  Profile
+  L1         production-terminal-deadline    yes        3 (1 disc + 2 repeat)  ordinal 4
+  L2         production-terminal-listener     yes        3 (1 disc + 2 repeat)  ordinal 4
+  L3         candidate-close-notify-phase     yes        3 (1 disc + 2 repeat)  ordinal 1
+  L4         candidate-close-notify-proxy     yes        3 (1 disc + 2 repeat)  ordinal 1
+  L5         candidate-ciphertext-cap         yes        1                     ordinal 1
+  L6         candidate-plaintext-cap          yes        1                     ordinal 1
+  L6-PROD    production-plaintext-cap(suppl.) yes       1                     -
+  L7         production-peer-receipt          yes        3 (1 disc + 2 repeat)  ordinal 1
+
+  Negative controls (correctly detected, never qualified):
+  NC-1  cipher-cap tamper   outcome=cap-checks-failed
+        encrypted_wire_bytes = 131072 (exactly the tampered cap), tamper_detected=true
+  NC-2  deadline renewal     outcome=induced-but-checks-failed
+        elapsed_ms = 800.122 > 500 bound, prerequisite_confirmed=true
+        (prerequisite profile ordinal 4, reused from the qualified L1 profile),
+        deadline_tamper_detected=true
+
+  No cell was left unexecuted, failed, or unclassified. No cell was classified as
+  passed without a registered qualifying outcome, a matching peer receipt where
+  required, and an audited dispatch target.
+
+5. STRICT ENCRYPTED-CAP RECONCILIATION TO THE BINDING E1 CONTRACT
+-----------------------------------------------------------------
+  The original binding contract is docs/reviews/evidence/Q-B5B-09-TLS-E1/
+  verify-evidence.py with configuration.json candidate_limits:
+        ciphertext = 32768
+        plaintext  = 8192
+  and it enforces EQUALITY, not inequality:
+        T5  Finish.WireBytes == 32768          (exact)
+        T5  Finish.Bytes     == 1441           (exact)
+        T6  Finish.Bytes     == 8192           (exact)
+        T6  Finish.WireBytes <= 32768          (bounded)
+        NC-1 Finish.WireBytes == 131072        (exact)
+
+  R4 verifier and harness now enforce exactly this, with NO one-record overshoot
+  allowance (the R3 "+ 16406" tolerance was removed):
+        L5   encrypted_wire_bytes != 32768  -> reject
+        L5   drain_outcome must be "cipher-cap"
+        L6   encrypted_wire_bytes >  32768  -> reject
+        L6   plaintext_bytes       !=  8192 -> reject
+        L6   drain_outcome must be "plain-cap"
+        NC-1 encrypted_wire_bytes != 131072 -> reject
+        checks.encrypted_cap_strict must be true on both L5 and L6
+
+  Measured Windows evidence:
+        L5  encrypted_wire_bytes = 32768 (exactly the cap), plaintext = 1424,
+            drain = cipher-cap, encrypted_cap_strict = true
+        L6  encrypted_wire_bytes = 8236  (inside the cap), plaintext = 8192,
+            drain = plain-cap, encrypted_cap_strict = true
+
+  Enforcement is implemented at the transport boundary: WireCountingStream clips
+  inbound reads to the remaining encrypted budget (ArmInboundLimit/ClipInbound), so
+  the cap binds on the wire, not after the fact.
+
+6. DISPATCH REACHABILITY AUDIT
+------------------------------
+  Every registered cell and negative control must dispatch to its registered
+  implementation, and the campaign journal must record that each required
+  implementation was actually invoked. Both are now enforced.
+
+  Registered targets (verified in the Windows full-run dispatch-audit record):
+    L1, L2              -> Production.RunTerminalAttemptAsync      invoked=true  (13 invocations)
+    L3, L4              -> Candidate.RunCloseNotifyAttemptAsync    invoked=true  (6 invocations)
+    L5, L6              -> Candidate.RunCapAttemptAsync            invoked=true  (3 invocations)
+    L7                  -> Production.RunReceiptAttemptAsync       invoked=true  (3 invocations)
+    L6-PROD             -> Production.RunPlaintextCapAttemptAsync  invoked=true  (1 invocation)
+    NC-1                -> Controls.RunNC1CiphertextCapTamperAsync invoked=true  (1 invocation)
+    NC-2                -> Controls.RunNC2DeadlineRenewalAsync     invoked=true  (1 invocation)
+    all_required_invoked = true
+
+  Every per-attempt journal record additionally carries its dispatch_target, and the
+  verifier rejects any record whose dispatch_target is not the registered target.
+  The R1-R3 dead dispatch to the L7 receipt path is closed: L7 now runs through
+  Production.RunReceiptAttemptAsync and is peer-receipt verified on all attempts.
+
+7. L7 EVIDENCE (FIXED IN R4)
+----------------------------
+  expected_terminal_message_bytes = 169 on every attempt.
+  expected_terminal_sha256       = 5cdf80e60e813e45ddb60777b10c920fb9f940ff49adc865c5157c2c56c7c444
+  outcome = peer-receipt-verified on attempts 1, 2, 3 (repeat markers 1 and 2).
+
+  Two independent defects were repaired:
+    (a) harness-side double framing - BoltMessageWriter.WriteMessage already emits
+        Bolt chunk framing ([2-byte len][payload][0x0000]), so an additional
+        Wire.Frame() call produced a doubly-framed payload and a mismatching digest;
+    (b) journal-side repeat classification - RunReceiptAttemptAsync did not emit the
+        repeat/phase/discovery_index fields RunTerminalAttemptAsync emits, so L7
+        repeats were never classified as repeats.
+
+8. WSL2 DEVELOPMENT RUN (EXPLICITLY NOT QUALIFICATION)
+------------------------------------------------------
+  A campaign was additionally executed under WSL2 (Ubuntu, kernel 6.6.114.1-microsoft-
+  standard-WSL2, .NET 10.0.114, Python 3.14.4). This evidence is preserved as
+  wsl2-development-run/ and is DEVELOPMENT-ONLY.
+
+  Transcript: verifier-wsl2-development.txt - VERIFIER: FAIL
+
+  Observed:
+    L1, L2, L3, L4   precursor-not-observed on every attempt -> NOT qualified
+    L5               qualified
+    L6               cap-checks-failed -> NOT qualified
+    L6-PROD          qualified
+    L7               qualified (3 successes)
+    NC-1             executed, wire = 131072, tamper detected
+    NC-2             precursor-not-observed, elapsed 2.7 ms -> control not evidenced
+
+  The run-meta itself records: platform = Unix 6.6.114.1, wsl = true,
+  native_linux = false. The harness self-declares non-native-Linux.
+
+  The WSL2 kernel does not induce the kernel-write pendency precursors that L1-L4
+  require, so those cells cannot qualify there. This is a genuine platform-dependent
+  result and is recorded as such.
+
+9. STATED LIMITATIONS - READ BEFORE QUOTING THIS RESULT
+------------------------------------------------------
+  * NO NATIVE-LINUX QUALIFICATION CLAIM IS MADE. No campaign has been executed on a
+    native Linux host in this round. The WSL2 evidence is development-only and its
+    verifier result is FAIL.
+  * The qualification evidence in this package is Windows-only: platform
+    "Microsoft Windows NT 10.0.26200.0", runtime 10.0.12, unobserved_task_exceptions 0,
+    status raw-complete.
+  * Owner acceptance is NOT granted and was not requested.
+
+10. FILES IN THIS PACKAGE
+-------------------------
+  VERIFICATION.txt                                 this file
+  Q-B5B-09-TLS-LINUX-QUAL-01-R4-REMEDIATION-REPORT.md
+  verifier-windows-full.txt                        verifier output (PASS)
+  verifier-wsl2-development.txt                    verifier output (FAIL, dev-only)
+  verifier-selftest.txt                            self-test output (ALL PASSED)
+  windows-full-run/                                preserved Windows full-campaign evidence
+    campaign-journal.jsonl, run-meta.json, PROVENANCE.txt
+    per-cell/*.jsonl, per-cell/*.summary.json
+    negative-controls/NC-1.jsonl, NC-2.jsonl
+    peer/ (zero-window journals, L4 proxy journals, L7 peer receipts)
+    transcripts/*.log
+  wsl2-development-run/                            preserved WSL2 development evidence (same layout)
+
+  The generated TLS certificate/key material from the raw results directories was
+  intentionally NOT copied into this package.

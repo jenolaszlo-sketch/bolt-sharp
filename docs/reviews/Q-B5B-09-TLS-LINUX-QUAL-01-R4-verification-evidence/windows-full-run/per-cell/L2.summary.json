@@ -1,0 +1,14 @@
+{
+  "cell": "L2",
+  "kind": "production-terminal-listener",
+  "seed": 1002,
+  "runs": 6,
+  "successes": 3,
+  "qualified": true,
+  "qualifying_profile_ordinal": 4,
+  "failure": "",
+  "discovery_bound": 4,
+  "repeats_required": 2,
+  "max_runs": 6,
+  "run_id": "r4full6"
+}

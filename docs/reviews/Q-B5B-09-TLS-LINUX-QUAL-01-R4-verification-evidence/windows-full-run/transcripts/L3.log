@@ -1,0 +1,3 @@
+2026-11-24T04:01:27.1057983+00:00 attempt 1 profile 1: fixture=True pending=True pendingMs=21.6 writable=False proxyObserved=False outcome=induced-and-interrupted
+2026-11-24T04:01:27.5482466+00:00 attempt 2 profile 1: fixture=True pending=True pendingMs=21.7 writable=False proxyObserved=False outcome=induced-and-interrupted
+2026-11-24T04:01:27.9883014+00:00 attempt 3 profile 1: fixture=True pending=True pendingMs=22.6 writable=False proxyObserved=False outcome=induced-and-interrupted
