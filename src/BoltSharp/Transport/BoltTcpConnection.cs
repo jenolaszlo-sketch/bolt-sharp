@@ -71,7 +71,13 @@ internal static class BoltTcpConnection
                 }
                 catch (Exception ex)
                 {
-                    diagnostics.Report(BoltTransportEventKind.TlsHandshakeFailed, connectionId, ex.GetType().Name);
+                    // Shutdown cancellation is a lifecycle outcome, not a TLS authentication
+                    // failure; only a genuine handshake fault is counted as one.
+                    if (!shutdownCancellationToken.IsCancellationRequested)
+                    {
+                        diagnostics.Report(BoltTransportEventKind.TlsHandshakeFailed, connectionId, ex.GetType().Name);
+                    }
+
                     await sslStream.DisposeAsync().ConfigureAwait(false);
                     throw;
                 }
