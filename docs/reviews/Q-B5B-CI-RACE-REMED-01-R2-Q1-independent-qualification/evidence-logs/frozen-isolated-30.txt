@@ -1,0 +1,2 @@
+frozen test isolated x30 at 0ebc38cb7fc677edd0b1923651bffcb54fd5a27e
+pass=30 fail=0

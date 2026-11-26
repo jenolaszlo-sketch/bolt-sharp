@@ -1,0 +1,27 @@
+lifecycle class x5 at 0ebc38cb7fc677edd0b1923651bffcb54fd5a27e
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     7, Skipped:     0, Total:     7, Duration: 594 ms - BoltSharp.Tests.dll (net8.0)
+
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     7, Skipped:     0, Total:     7, Duration: 579 ms - BoltSharp.Tests.dll (net8.0)
+
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     7, Skipped:     0, Total:     7, Duration: 575 ms - BoltSharp.Tests.dll (net8.0)
+
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     7, Skipped:     0, Total:     7, Duration: 578 ms - BoltSharp.Tests.dll (net8.0)
+
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     7, Skipped:     0, Total:     7, Duration: 576 ms - BoltSharp.Tests.dll (net8.0)
+
+lifecycle: pass=5 fail=0

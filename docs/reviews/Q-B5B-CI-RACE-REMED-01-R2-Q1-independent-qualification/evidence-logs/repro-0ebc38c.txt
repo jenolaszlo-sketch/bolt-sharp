@@ -1,0 +1,19 @@
+0ebc38c (HEAD 0ebc38cb7fc677edd0b1923651bffcb54fd5a27e)
+Build succeeded.
+    0 Error(s)
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 93 ms - BoltSharp.Tests.dll (net8.0)
+
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 112 ms - BoltSharp.Tests.dll (net8.0)
+
+Test run for D:\projects\bolt-sharp\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 104 ms - BoltSharp.Tests.dll (net8.0)
+
+0ebc38c: PASS, PASS, PASS

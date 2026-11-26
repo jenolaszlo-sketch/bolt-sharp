@@ -1,0 +1,218 @@
+Q-B5B-CI-RACE-REMED-01-R2-Q1 - INDEPENDENT QUALIFICATION VERIFICATION
+=====================================================================
+
+Commission ........ B5B-CI-RACE-REMED-01-R2-Q1
+Baseline (parent) . a276ec278ce41ea5b5f0a38cee466d043a945617
+WIP (superseded) .. e66f2eb8a862b7a28722662da75abfd483362c88
+                    codex/preserve-b5b-ci-race-wip, never merged
+Reviewed commit ... 0ebc38cb7fc677edd0b1923651bffcb54fd5a27e (= origin/main)
+Author/committer .. jenol <jenolaszlo-sketch@users.noreply.github.com>
+CI run ............ 45587935213  push -> main  conclusion=success
+                    headSha matches the reviewed revision exactly
+
+DISPOSITION: C - REMEDIATION REQUIRED
+F-01 (MAJOR) TLS shutdown cancellation applies to the WAIT, not the handshake;
+             abandoned task faults unobserved (100/100 baseline, 100/100 fix)
+F-02 (MAJOR) Accept-loop fault reporting decrements ConnectionsActive without a
+             prior ConnectionAccepted; active goes negative on ordinary client resets
+
+1. IDENTITY (verified before commencing)
+---------------------------------------------------------------
+git rev-parse HEAD / origin/main  -> 0ebc38cb... both
+git rev-parse HEAD^               -> a276ec278ce41ea5b5f0a38cee466d043a945617
+git rev-parse codex/preserve-b5b-ci-race-wip -> e66f2eb8a862b7a28722662da75abfd483362c88
+git rev-list --count a276ec2..HEAD           -> 1
+git tag --points-at HEAD                     -> (none)
+git show -s HEAD  author+committer           -> jenol <jenolaszlo-sketch@users.noreply.github.com>
+git status --short                           -> (clean before this evidence package)
+
+2. PRODUCTION DIFF (git diff --stat a276ec2 0ebc38c)
+---------------------------------------------------------------
+src/BoltSharp/Transport/BoltTcpServer.cs            | 588 +++++++---
+src/BoltSharp/Transport/BoltTcpConnection.cs        |   8 +-
+src/BoltSharp/Transport/BoltShutdownOutcome.cs      |  28 +
+tests/BoltSharp.Tests/Transport/ListenerShutdownLifecycleTests.cs | 302 +
+4 files changed, 863 insertions(+), 63 deletions(-)
+
+Blobs at 0ebc38c (git rev-parse 0ebc38c:<path>) and worktree SHA-256:
+  BoltTcpServer.cs            7c0010ea399228e7f2ecbfd62d18b81603ca3a4f
+                              2488DEEB6324946B571E0FBC947BA5732ECE7D0D68CDC004A7245AADE6E4E6D6
+  BoltTcpConnection.cs        1116696a7f25e352ccfafe3e616742dbc3db6731
+                              E7A84145D704C26B3F7BC35CA8CC5269B73F8CC63C1FB46474ACE5FF7D4019EC
+  BoltShutdownOutcome.cs      c201bd5c8ee04b2c8d9478e1c553ad319d53f517
+                              EE65108F93A13DC66BFC414DE4A6A48E5E631512296D2A2DF4ACE13CB5F05627
+  ListenerShutdownLifecycleTests.cs
+                              88fcd18852bcbf402933d6de6119ad59d591d08f
+                              509AE7BF4A49F85CA98CBC9B0A686EED18E76915DCC16D0CD17176F01CED366F
+
+Frozen scope:
+  git diff --stat a276ec2 0ebc38c -- tests/.../TcpHandshakeTests.cs        -> EMPTY
+  git diff --stat a276ec2 0ebc38c -- tests/.../BoltMessageFixtures.cs      -> EMPTY
+
+3. HOSTED CI
+---------------------------------------------------------------
+gh run view 45587935213 --json databaseId,headSha,headBranch,event,status,
+conclusion,workflowName,createdAt,updatedAt,jobs
+  -> saved evidence-logs/ci-run-45587935213.json
+  conclusion=success  headSha=0ebc38cb7fc677edd0b1923651bffcb54fd5a27e
+  headBranch=main     event=push
+  job "Build, test and secret scan" success; every step success, including
+  "Reject private key material", "Secret scanner controls", Build (Release),
+  Test (Release).
+
+4. BUILD / FORMAT / PACK
+---------------------------------------------------------------
+dotnet build BoltSharp.slnx -c Release         -> 0 errors
+dotnet format BoltSharp.slnx --verify-no-changes --no-restore
+                                               -> exit 2, ONLY pre-existing
+  tests/BoltSharp.Tests/Messages/BoltMessageFixtures.cs(434,92)/(437,5) WHITESPACE
+  Reproduced identically at a276ec2 (evidence-logs/format-fixtures-a276ec2.txt) and at
+  0ebc38c (evidence-logs/format-fixtures-0ebc38c.txt) -> pre-existing, not introduced.
+dotnet format --include <the four touched files> -> exit 0 (clean)
+dotnet pack src/BoltSharp/BoltSharp.csproj -c Release --no-build
+                                               -> BoltSharp.1.0.0.nupkg created
+                                                  (evidence-logs/dotnet-pack.txt)
+
+5. TEST EXECUTION (all run by this reviewer)
+---------------------------------------------------------------
+dotnet test BoltSharp.slnx -c Release
+  -> Passed! Failed: 0, Passed: 1264, Total: 1264      (evidence-logs/full-suite.txt)
+  repeat run                                            -> 2/2 passed
+dotnet test ... --filter FullyQualifiedName~BoltSharp.Tests.Transport
+  -> Passed! Failed: 0, Passed: 127, Total: 127        (evidence-logs/transport-suite.txt)
+frozen test isolated x30:
+  --filter FullyQualifiedName~TcpHandshakeTests.
+           ListenerShutdownDuringNegotiation_CompletesBounded
+  -> pass=30 fail=0                                    (evidence-logs/frozen-isolated-30.txt)
+lifecycle class x5:
+  --filter FullyQualifiedName~ListenerShutdownLifecycleTests
+  -> pass=5 fail=0 (7 tests per run)                   (evidence-logs/lifecycle-5x.txt)
+
+6. INDEPENDENT REPRODUCER (three revisions, 3 runs each)
+---------------------------------------------------------------
+Baseline-compatible IndependentShutdownRepro.cs added temporarily per worktree,
+never committed (worktrees C:\Windows\Temp\opencode\q1-base, q1-wip):
+  a276ec2 -> FAIL FAIL FAIL  (Expected "closed", Actual "open")
+            evidence-logs/repro-a276ec2.txt
+  e66f2eb -> FAIL FAIL FAIL  evidence-logs/repro-e66f2eb.txt
+  0ebc38c -> PASS PASS PASS  evidence-logs/repro-0ebc38c.txt
+
+7. ADVERSARIAL PROBE MATRIX (B5BQ1Probe, out-of-tree, references built DLL)
+---------------------------------------------------------------
+Source: controls/B5BQ1Probe/Program.cs + B5BQ1Probe.csproj
+Full run: evidence-logs/probe-full-0ebc38c.txt (also evidence-logs/probe-run-0ebc38c.txt)
+All bounded; peers closed in every family except the two findings below.
+  ipv4-loopback-negotiation        10 rounds  bounded, peer=closed, active=0
+  ipv6-loopback-negotiation        10 rounds  bounded, peer=closed
+  ipv6any-tls                       5 rounds  IPv6-only on this host
+                                             (IPv4 connect refused); v6 closed
+  ipv4-wildcard-tls                 3 rounds  bounded, peer=closed
+  nic-address-tls                   3 rounds  bounded, peer=closed
+  short-budget-unaccepted      1/5/10/50ms    bounded, peers closed 10/10
+  race-delay                 6 delays x4 budgets x10 = 240 cells
+                                             bounded 240/240, peerOpen=0/240,
+                                             one Incomplete cell (bounded)
+  nic-short-budget          2 delays x4 budgets x10
+                                             bounded 10/10, incomplete=0
+  wake-failure (degraded, reflection on BoundEndPoint)
+                          6 delays x5 = 30 rounds
+                                             bounded 30/30, Incomplete
+                                             observable, pendingPeerOpen=0/30
+  flood (backlog 128)             163 attempts  163 peers closed
+                                             accepted=100 terminal=100
+  flood-aggressive (32 workers)   187 attempts  155 connected, all closed
+  backlog-1-flood                  69 attempts  all closed, accepted=60
+  concurrent-dispose               5 rounds  bounded, peer=closed
+  external-listener-stop           3 rounds  bounded, peer=closed
+  sentinel-port-ambiguity          3 rounds  benign, terminal=100
+  tls-auth-cancel                  3 rounds  tlsFailures=0 (correct
+                                             classification), peers closed
+
+8. OS-LEVEL ACCEPT-RACE CONTROL (RawSocketProbe)
+---------------------------------------------------------------
+Source: controls/RawSocketProbe/Program.cs; evidence-logs/raw-socket-probe-3x.txt
+Identical across 3 runs:
+  cancel only   accept=s(socket)   peer=closed  server-side FinWait2
+  close only    accept=SocketException      peer=OPEN   server-side Established
+  cancel+close  accept=OperationCanceled    peer=OPEN   server-side Established
+Establishes: the peer is only released when the pending accept's completion is
+retrieved. The AcceptEx mechanism description in the remediation report remains
+an inference consistent with, but not itself established by, this control.
+
+9. F-01 EVIDENCE (TLS abandoned handshake task)
+---------------------------------------------------------------
+Code: src/BoltSharp/Transport/BoltTcpConnection.cs:59-65
+  AuthenticateAsServerAsync(cert, ..., false).WaitAsync(tlsCts.Token)
+  WaitAsync cancels the WAIT only; the handshake keeps running and faults
+  unobserved after kernel abort.
+Probe controls/B5BTlsAbandonProbe (100 shutdown rounds + forced GC,
+UnobservedTaskException interception):
+  a276ec2 -> runs=100/100 unobserved=100   evidence-logs/tls-abandon-a276ec2.txt
+  0ebc38c -> runs=100/100 unobserved=100   evidence-logs/tls-abandon-0ebc38c.txt
+In-tree variant (evidence-logs/probe-tls-abandoned-task.txt, detail + full):
+  99/100 and 145/100 across two runs; all samples
+  IOException "Unable to read data from the transport connection: The I/O
+  operation has been aborted because of either a thread exit or an application
+  request." rooted at Socket.AwaitableSocketAsyncEventArgs...GetResult
+  Presence of unobserved faults is deterministic; exact count is
+  scheduling-dependent.
+Cancellable overload availability (evidence-logs/probe-tls-overloads.txt, reflection on
+SslStream.AuthenticateAsServerAsync):
+  (X509Certificate) (X509Certificate,Boolean,Boolean)
+  (X509Certificate,Boolean,SslProtocols,Boolean)
+  (SslServerAuthenticationOptions,CancellationToken)   <- usable fix
+  (ServerOptionsSelectionCallback,Object,CancellationToken)  <- usable fix
+
+10. F-02 EVIDENCE (unbalanced accept accounting)
+---------------------------------------------------------------
+Code: src/BoltSharp/Transport/BoltTcpServer.cs:456-461 (general catch reports
+ConnectionFailed with id "listener"); BoltTransportDiagnostics.cs:111-113
+unconditionally decrements ConnectionsActive on ConnectionFailed.
+Baseline comparison (a276ec2 blobs): the same unconditional decrement exists
+(BoltTransportDiagnostics.cs:111-113) and the same general-catch report exists
+(BoltTcpServer.cs:178-184), BUT the baseline's first filter returned on ANY
+SocketException, so an aborted peer terminated the loop without reporting.
+The remediation keeps the loop alive and routes non-stop SocketExceptions to the
+general catch -> the pre-existing imbalance becomes newly reachable through
+ordinary client aborts. The Register-failure path (0ebc38c:498-502) is correct
+(reports only after ConnectionAccepted).
+Probe: clients connect then RST before accept
+  evidence-logs/probe-accept-reset.txt  10/10 rounds unbalanced:
+    accepted=1..9  completed=accepted  failed=64..70
+    ConnectionsActive = -64 .. -70
+  evidence-logs/probe-full-0ebc38c.txt (MaxConnections default) 3/10 rounds unbalanced,
+    e.g. accepted=99 completed=99 failed=1 active=-1
+    accepted=5  completed=5  failed=67 active=-67
+Invariant violated whenever the path fires: accepted != completed + failed;
+ConnectionsActive is publicly observable negative.
+
+11. REMEDIATION-REPORT CLAIM CORRECTIONS
+---------------------------------------------------------------
+a. "Cancellation propagation": NOT established for the TLS handshake (F-01).
+   Established: shutdown cancellation is correctly classified (not counted as
+   TlsHandshakeFailed) and Bolt handshake/read/write phases are cancellable.
+b. "Eight scenarios": the commit message names eight behaviours but adds SEVEN
+   test methods; forced termination and observable incomplete shutdown share
+   BlockedConnection_IsForced_Bounded_AndReportsIncomplete.
+   ListenerShutdownLifecycleTests.cs contains exactly 7 [Fact] methods.
+c. "AcceptEx internals": inference; the OS-level observation in section 8 is the
+   established part.
+
+12. SCOPE BOUNDARIES
+---------------------------------------------------------------
+- Windows only; no native-Linux qualification executed (out of commission scope).
+- Dual-stack not reachable via the public API on this host (IPv6Any is IPv6-only
+  here; IPv4 connect refused). Wildcard/NIC binds exercised through TLS only
+  (plaintext BindAddress validation restricts to loopback).
+- Wake-failure path not publicly inducible; control used reflection on
+  BoundEndPoint (30 rounds: bounded, Incomplete observable, no orphan).
+- No F5 diagnostics; no formal native-Linux qualification (per commission).
+
+13. DISPOSITION
+---------------------------------------------------------------
+C - REMEDIATION REQUIRED.
+Commissioned defect fix: independently established (sections 5, 6, 7, 8).
+Open findings: F-01, F-02 (section 9, 10). Requalification requirements for the
+successor are recorded in the report (section 9 of the report).
+No owner acceptance granted. No push, publication, tag, release, force-push or
+published-history rewrite performed by this record.

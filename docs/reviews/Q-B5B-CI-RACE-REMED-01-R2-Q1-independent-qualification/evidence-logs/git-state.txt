@@ -1,0 +1,14 @@
+HEAD 0ebc38cb7fc677edd0b1923651bffcb54fd5a27e
+origin/main 0ebc38cb7fc677edd0b1923651bffcb54fd5a27e
+WIP e66f2eb8a862b7a28722662da75abfd483362c88
+parent a276ec278ce41ea5b5f0a38cee466d043a945617
+commits-ahead 1
+
+--- status ---
+
+--- branches ---
+  codex/preserve-b5b-ci-race-wip           e66f2eb WIP: bounded forced socket termination in BoltTcpServer shutdown (partial) * main                                     0ebc38c [origin/main] Fix listener shutdown so an accepted connection is never abandoned   qualification/q-b5b-09-tls-linux-qual-01 56cd357 [origin/qualification/q-b5b-09-tls-linux-qual-01] feat(reviews): Q-B5B-09 harness stabilization and campaign driver
+--- tags at HEAD ---
+
+--- commit ---
+0ebc38cb7fc677edd0b1923651bffcb54fd5a27e jenol <jenolaszlo-sketch@users.noreply.github.com> jenol <jenolaszlo-sketch@users.noreply.github.com> Fix listener shutdown so an accepted connection is never abandoned The accept loop awaited a cancellable accept while shutdown cancelled the token and closed the listening socket underneath it. On Windows a pending AcceptEx whose completion is never retrieved leaves the accepted socket ESTABLISHED with no FIN and no RST, so a peer that completed the TCP handshake but had not yet sent a protocol byte never observed closure (B5B-CI-RACE-REMED-01-R2). The WIP socket registry could not help because nothing had been accepted by the application yet.  - Run the accept without a cancellation token and quiesce it with a bound   loopback sentinel before closing the listening socket; drain and dispose   anything that raced with shutdown so acceptance can never be missed and no   accept is left outstanding at close. - Replace the task/socket dictionaries with one connection registry that   owns the socket, registers it before its pipeline can run, and retires it   only after termination is established. - Reserve a share of the shutdown budget for forced socket termination and   expose incomplete termination through BoltShutdownOutcome. - Make StopAsync idempotent under concurrency, keep caller cancellation from   abandoning the shutdown, and stop counting shutdown cancellation as a TLS   authentication failure.  Adds ListenerShutdownLifecycleTests covering repeated negotiation shutdown, TLS authentication cancellation, concurrent accepts during shutdown, forced termination, observable incomplete shutdown, caller cancellation, repeated and concurrent stop, and graceful shutdown preservation. 
