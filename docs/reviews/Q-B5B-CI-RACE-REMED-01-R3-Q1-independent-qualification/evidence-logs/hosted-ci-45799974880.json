@@ -1,0 +1,28 @@
+{
+  "id": 45799974880,
+  "name": "CI",
+  "head_branch": "main",
+  "head_sha": "e0448bc5c8e8e3b9f343bfece6c1705b4f9104ed",
+  "run_number": 4,
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "workflow_id": 1,
+  "url": "https://github.com/jenolaszlo-sketch/bolt-sharp/actions/runs/45799974880",
+  "created_at": "2026-11-26T10:17:00Z",
+  "updated_at": "2026-11-26T10:18:16Z",
+  "run_attempt": 1,
+  "jobs": {
+    "build-test-scan": {
+      "name": "Build, test and secret scan",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        { "name": "Reject private key material", "conclusion": "success" },
+        { "name": "Secret scanner controls", "conclusion": "success" },
+        { "name": "Build (Release)", "conclusion": "success" },
+        { "name": "Test (Release)", "conclusion": "success" }
+      ]
+    }
+  }
+}

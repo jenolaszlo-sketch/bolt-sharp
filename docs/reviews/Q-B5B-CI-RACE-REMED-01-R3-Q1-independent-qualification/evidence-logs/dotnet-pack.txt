@@ -1,0 +1,3 @@
+  The package BoltSharp.1.0.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+  Successfully created package 'D:\projects\bolt-sharp\src\BoltSharp\bin\Release\BoltSharp.1.0.0.nupkg'.
+exit=0
