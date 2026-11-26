@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <!--
-      Multi-targeted so the permanent matrix can verify both a net8.0 and a net10.0
-      Native AOT consumer. The library itself remains net8.0.
+      Single consumer TFM per invocation, selected with -p:ConsumerTfm=net8.0|net10.0.
+      This keeps each build single-targeted so neither SDK ever has to evaluate a TFM it
+      does not support (a net8.0;net10.0 multi-target project fails under the .NET 8 SDK).
+      The library itself remains net8.0.
     -->
-    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <ConsumerTfm Condition="'$(ConsumerTfm)' == ''">net8.0</ConsumerTfm>
+    <TargetFramework>$(ConsumerTfm)</TargetFramework>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>

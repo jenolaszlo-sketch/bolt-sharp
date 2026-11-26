@@ -142,7 +142,7 @@ jobs:
         shell: pwsh
         run: |
           $log = Join-Path $env:RUNNER_TEMP 'aot-analyzer.log'
-          dotnet build tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -f ${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:PublishTrimmed=true 2>&1 | Tee-Object -FilePath $log
+          dotnet build tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -p:ConsumerTfm=${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:PublishTrimmed=true 2>&1 | Tee-Object -FilePath $log
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $warn = Select-String -Path $log -Pattern 'warning IL\d+|Trim analysis warning|AOT analysis warning'
           if ($warn) { Write-Host ($warn | Out-String); throw 'Unexpected Native AOT / trimming warnings.' }
@@ -153,7 +153,7 @@ jobs:
         run: |
           $out = Join-Path $env:GITHUB_WORKSPACE 'artifacts/harness'
           $log = Join-Path $env:RUNNER_TEMP 'aot-publish.log'
-          dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -f ${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -o $out 2>&1 | Tee-Object -FilePath $log
+          dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -p:ConsumerTfm=${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -o $out 2>&1 | Tee-Object -FilePath $log
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $warn = Select-String -Path $log -Pattern 'warning IL\d+|Trim analysis warning|AOT analysis warning'
           if ($warn) { Write-Host ($warn | Out-String); throw 'Unexpected Native AOT / trimming warnings during publish.' }
@@ -191,7 +191,7 @@ jobs:
             '</configuration>'
           ) -join "`n"
           Set-Content -Path $cfg -Value $xml -Encoding utf8
-          dotnet publish tests/BoltSharp.AotConsumerPackage/BoltSharp.AotConsumerPackage.csproj -c Release -f ${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:RestoreConfigFile=$cfg -p:RestorePackagesPath=$cache -o $out
+          dotnet publish tests/BoltSharp.AotConsumerPackage/BoltSharp.AotConsumerPackage.csproj -c Release -p:ConsumerTfm=${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:RestoreConfigFile=$cfg -p:RestorePackagesPath=$cache -o $out
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $resolved = Join-Path $cache 'boltsharp/1.0.0-preview.1/lib/net8.0/BoltSharp.dll'
           if (-not (Test-Path $resolved)) { throw 'Package-based consumer did not resolve BoltSharp from the isolated local feed.' }
