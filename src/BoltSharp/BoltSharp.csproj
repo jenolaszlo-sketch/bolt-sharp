@@ -7,7 +7,7 @@
     -->
     <AssemblyName>BoltSharp</AssemblyName>
     <RootNamespace>BoltSharp</RootNamespace>
-    <Version>1.0.0-preview.1</Version>
+    <Version>1.0.0-preview.2</Version>
     <PackageId>BoltSharp</PackageId>
     <Description>An independent .NET implementation of the Bolt 5.8 / PackStream 1.0 wire protocol for building compatible server endpoints.</Description>
     <Authors>BoltSharp Contributors</Authors>
@@ -17,7 +17,7 @@
     <RepositoryUrl>https://github.com/jenolaszlo-sketch/bolt-sharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>bolt;packstream;neo4j;protocol;database;graph</PackageTags>
-    <PackageReleaseNotes>See release notes for version 1.0.0-preview.1</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-preview.2: declares IsAotCompatible; preserves diagnostic payloads under trimming (DynamicDependency + scoped IL2026 suppression); ships SDK-style packaging with embedded symbols; adds permanent Windows and Linux managed regression plus .NET 8/.NET 10 Native AOT (harness and package-based consumer) CI verification. See README for supported scope and limitations.</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <DebugType>embedded</DebugType>

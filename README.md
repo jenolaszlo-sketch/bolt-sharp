@@ -8,7 +8,7 @@ BoltSharp develops reusable building blocks for communicating using Bolt, with a
 
 ## Status and scope
 
-**Preview release (1.0.0-preview.1).** The Windows transport layer (Bolt 5.8 / PackStream 1.0) has been independently qualified. Full Bolt server functionality and interoperability with any particular driver or Neo4j Browser version should **not** be assumed from the project's name or roadmap.
+**Preview release (1.0.0-preview.2).** The Windows transport layer (Bolt 5.8 / PackStream 1.0) has been independently qualified. Full Bolt server functionality and interoperability with any particular driver or Neo4j Browser version should **not** be assumed from the project's name or roadmap.
 
 The qualified scope includes:
 
@@ -37,7 +37,7 @@ Passing local tests does not, by itself, establish compatibility with third-part
 ## Installation
 
 ```sh
-dotnet add package BoltSharp --version 1.0.0-preview.1
+dotnet add package BoltSharp --version 1.0.0-preview.2
 ```
 
 ## Minimal usage
@@ -105,14 +105,16 @@ A Bolt-compatible endpoint does not necessarily provide Neo4j database semantics
 
 ## Native AOT Compatibility
 
-BoltSharp is verified for Native AOT compilation and execution:
+BoltSharp is verified for Native AOT compilation and execution across a four-cell matrix (consumer target framework × operating system), with the library itself remaining `net8.0`:
 
-| Configuration | Status | Notes |
-|---------------|--------|-------|
-| .NET 8, win-x64 | **Verified** | AOT analyzer clean (IL2026 on DiagnosticSource only), harness executes |
-| .NET 10, win-x64 | **Verified** | AOT analyzer clean, harness executes |
-| .NET 8, linux-x64 | **CI Verified** | Compilation and execution verified in CI |
-| .NET 10, linux-x64 | **CI Verified** | Compilation and execution verified in CI |
+| Consumer TFM | OS / RID | Status |
+|--------------|----------|--------|
+| net8.0 | Windows / win-x64 | **Verified** |
+| net10.0 | Windows / win-x64 | **Verified** |
+| net8.0 | Linux / linux-x64 | **Verified** |
+| net10.0 | Linux / linux-x64 | **Verified** |
+
+Each cell verifies: the AOT and trimming analyzer gate, a Native AOT *harness* (project reference), and a Native AOT *consumer* of the produced NuGet package (restored from an isolated local feed with no public fallback).
 
 **Scope of AOT verification:**
 - PackStream encoding/decoding (all types)
@@ -120,19 +122,21 @@ BoltSharp is verified for Native AOT compilation and execution:
 - Message codec (request/response encode/decode)
 - Server lifecycle (start/stop, plaintext and TLS)
 - Public API surface accessibility
+- Diagnostic event delivery (payload preserved and delivered under Native AOT)
 
-**Known AOT limitation (qualified):**
-- `System.Diagnostics.DiagnosticSource.Write<T>` triggers IL2026 trim analysis warning in `BoltPlaintextTerminalCloseDiagnostics`. The `TerminalEvent` payload type is preserved via `[DynamicDependency]`, and diagnostic event delivery has been verified to work correctly under Native AOT (test `Diagnostic Event Delivery` in AOT harness). The warning reflects the analyzer's inability to prove the DiagnosticSource API's internal reflection usage is safe, not an actual runtime failure. Core protocol functionality is unaffected.
+**Known AOT qualification:**
+- `System.Diagnostics.DiagnosticSource.Write<T>` is annotated `RequiresUnreferencedCode`. The `TerminalEvent` payload is preserved via `[DynamicDependency]`, the resulting IL2026 is suppressed on that single method with justification (not globally), and payload delivery is verified under Native AOT by the harness. The AOT/trimming warning gate treats any *other* IL/trim warning as a failure.
 
 **To run AOT verification locally:**
 ```sh
-# Publish and run the AOT harness (Windows)
+# Native AOT harness (project reference), default consumer TFM net8.0
 dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r win-x64 -p:PublishAot=true -o ./artifacts/aot-harness
 ./artifacts/aot-harness/BoltSharp.AotHarness.exe
 
-# Publish and run the minimal AOT consumer
-dotnet publish tests/BoltSharp.AotConsumer/BoltSharp.AotConsumer.csproj -c Release -r win-x64 -p:PublishAot=true -o ./artifacts/aot-consumer
-./artifacts/aot-consumer/BoltSharp.AotConsumer.exe
+# Package-based Native AOT consumer (build the package first, then consume it)
+dotnet pack src/BoltSharp/BoltSharp.csproj -c Release -o ./artifacts/packages
+dotnet publish tests/BoltSharp.AotConsumerPackage/BoltSharp.AotConsumerPackage.csproj -c Release -p:ConsumerTfm=net8.0 -r win-x64 -p:PublishAot=true -o ./artifacts/aot-consumer
+./artifacts/aot-consumer/BoltSharp.AotConsumerPackage.exe
 ```
 
 **Permanent CI integration:** Native AOT verification runs on every push to `main` and pull request (see `.github/workflows/ci.yml`).

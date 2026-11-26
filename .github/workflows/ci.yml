@@ -135,8 +135,12 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $pkg = Get-ChildItem ./artifacts/packages/BoltSharp.*.nupkg | Select-Object -First 1
           if (-not $pkg) { throw 'No package was produced.' }
+          [xml] $xml = Get-Content -LiteralPath src/BoltSharp/BoltSharp.csproj
+          $ver = [string] $xml.Project.PropertyGroup.Version
+          if (-not $ver) { throw 'Could not read <Version> from the library project.' }
+          "PKG_VERSION=$ver" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
           $hash = (Get-FileHash $pkg.FullName -Algorithm SHA256).Hash
-          Write-Host "Package: $($pkg.Name) size=$($pkg.Length) SHA256=$hash source=$($env:GITHUB_SHA)"
+          Write-Host "Package: $($pkg.Name) version=$ver size=$($pkg.Length) SHA256=$hash source=$($env:GITHUB_SHA)"
 
       - name: AOT and trimming analysis (fail on unexpected warnings)
         shell: pwsh
@@ -191,10 +195,12 @@ jobs:
             '</configuration>'
           ) -join "`n"
           Set-Content -Path $cfg -Value $xml -Encoding utf8
-          dotnet publish tests/BoltSharp.AotConsumerPackage/BoltSharp.AotConsumerPackage.csproj -c Release -p:ConsumerTfm=${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:RestoreConfigFile=$cfg -p:RestorePackagesPath=$cache -o $out
+          $ver = $env:PKG_VERSION
+          if (-not $ver) { throw 'PKG_VERSION was not set by the package build step.' }
+          dotnet publish tests/BoltSharp.AotConsumerPackage/BoltSharp.AotConsumerPackage.csproj -c Release -p:ConsumerTfm=${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:BoltSharpVersion=$ver -p:RestoreConfigFile=$cfg -p:RestorePackagesPath=$cache -o $out
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          $resolved = Join-Path $cache 'boltsharp/1.0.0-preview.1/lib/net8.0/BoltSharp.dll'
-          if (-not (Test-Path $resolved)) { throw 'Package-based consumer did not resolve BoltSharp from the isolated local feed.' }
+          $resolved = Join-Path $cache "boltsharp/$ver/lib/net8.0/BoltSharp.dll"
+          if (-not (Test-Path $resolved)) { throw "Package-based consumer did not resolve BoltSharp $ver from the isolated local feed." }
           Write-Host "Resolved BoltSharp from isolated cache: $resolved"
           $exeName = 'BoltSharp.AotConsumerPackage'
           if ([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform([System.Runtime.InteropServices.OSPlatform]::Windows)) { $exeName += '.exe' }
