@@ -45,6 +45,12 @@ jobs:
             Write-Host "Non-tag run ($env:GITHUB_REF_NAME); publishing at repository version $VERSION"
           }
 
+      - name: Prepare package files
+        shell: pwsh
+        run: |
+          Copy-Item -Path ../README.md -Destination src/BoltSharp/README.md -Force
+          Copy-Item -Path ../LICENSE -Destination src/BoltSharp/LICENSE -Force
+
       - name: Pack
         shell: pwsh
         run: |
