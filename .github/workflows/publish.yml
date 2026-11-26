@@ -1,0 +1,89 @@
+name: Publish to NuGet
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Validate tag matches release version
+        shell: pwsh
+        run: |
+          [xml] $xml = Get-Content -LiteralPath Directory.Build.props
+          $VERSION = [string] $xml.Project.PropertyGroup.Version
+          if (-not $VERSION) {
+            Write-Error "Could not read <Version> from Directory.Build.props"
+            exit 1
+          }
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            if ($env:GITHUB_REF_NAME -ne "v$VERSION") {
+              Write-Error "Tag $env:GITHUB_REF_NAME does not match release version $VERSION"
+              exit 1
+            }
+            Write-Host "Tag $env:GITHUB_REF_NAME matches release version $VERSION"
+          } else {
+            Write-Host "Non-tag run ($env:GITHUB_REF_NAME); publishing at repository version $VERSION"
+          }
+
+      - name: Pack
+        shell: pwsh
+        run: |
+          $args = @()
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            $args += "--property:PackageVersion=${env:GITHUB_REF_NAME.TrimStart('v')}"
+          }
+          dotnet pack src/BoltSharp/BoltSharp.csproj `
+            --configuration Release `
+            --output ./artifacts `
+            $args
+
+      - name: Verify package contents
+        shell: pwsh
+        run: |
+          $nupkg = @(Get-ChildItem ./artifacts/BoltSharp.*.nupkg)
+          if ($nupkg.Count -ne 1) {
+            throw "Expected exactly 1 NuGet package; found $($nupkg.Count)."
+          }
+          $package = $nupkg[0]
+          Write-Host "Package: $($package.Name)"
+          Write-Host "Size: $($package.Length) bytes"
+          Write-Host "SHA256: $(Get-FileHash $package.FullName -Algorithm SHA256).Hash"
+
+      - name: NuGet login (OIDC -> temp API key)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Publish to NuGet.org
+        shell: pwsh
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:NUGET_API_KEY)) {
+            throw 'NuGet trusted publishing did not return a temporary API key.'
+          }
+          $package = Get-ChildItem ./artifacts/BoltSharp.*.nupkg
+          dotnet nuget push $package.FullName `
+            --source https://api.nuget.org/v3/index.json `
+            --api-key $env:NUGET_API_KEY `
+            --skip-duplicate
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
