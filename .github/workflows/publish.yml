@@ -58,6 +58,9 @@ jobs:
       - name: Build
         run: dotnet build src/BoltSharp/BoltSharp.csproj --configuration Release --no-restore
 
+      - name: Install NuGet
+        run: sudo apt-get update && sudo apt-get install -y nuget
+
       - name: Pack
         shell: pwsh
         run: |
@@ -65,9 +68,8 @@ jobs:
           if ($env:GITHUB_REF_TYPE -eq 'tag') {
             $args += "-Version ${env:GITHUB_REF_NAME.TrimStart('v')}"
           }
-          dotnet pack src/BoltSharp/BoltSharp.nuspec `
-            --configuration Release `
-            --output ./artifacts `
+          nuget pack src/BoltSharp/BoltSharp.nuspec `
+            -OutputDirectory ./artifacts `
             $args
 
       - name: Verify package contents
