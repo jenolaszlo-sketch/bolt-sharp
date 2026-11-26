@@ -39,6 +39,8 @@ jobs:
         run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
 
       - name: Secret scanner controls
+        env:
+          TMPDIR: ${{ runner.temp }}
         run: |
           python --version
           python -c "import sys; print(sys.executable)"
