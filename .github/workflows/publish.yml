@@ -52,6 +52,9 @@ jobs:
           Copy-Item -Path "$workspace/README.md" -Destination src/BoltSharp/README.md -Force
           Copy-Item -Path "$workspace/LICENSE" -Destination src/BoltSharp/LICENSE -Force
 
+      - name: Restore
+        run: dotnet restore src/BoltSharp/BoltSharp.csproj
+
       - name: Build
         run: dotnet build src/BoltSharp/BoltSharp.csproj --configuration Release --no-restore
 
