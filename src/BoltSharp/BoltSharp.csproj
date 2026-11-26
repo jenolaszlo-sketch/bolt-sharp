@@ -7,6 +7,28 @@
     -->
     <AssemblyName>BoltSharp</AssemblyName>
     <RootNamespace>BoltSharp</RootNamespace>
+    <Version>1.0.0-preview.1</Version>
+    <PackageId>BoltSharp</PackageId>
+    <Description>An independent .NET implementation of the Bolt 5.8 / PackStream 1.0 wire protocol for building compatible server endpoints.</Description>
+    <Authors>BoltSharp Contributors</Authors>
+    <Copyright>Copyright (c) 2024 BoltSharp Contributors</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/jenolaszlo-sketch/bolt-sharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jenolaszlo-sketch/bolt-sharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>bolt;packstream;neo4j;protocol;database;graph</PackageTags>
+    <PackageReleaseNotes>See release notes for version 1.0.0-preview.1</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <DebugType>embedded</DebugType>
+    <EmbedAllSources>true</EmbedAllSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="LICENSE" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
