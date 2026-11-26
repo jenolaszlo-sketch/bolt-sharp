@@ -108,6 +108,18 @@ jobs:
           echo "campaign driver exit: $code"
           exit $code
 
+      - name: Sanitize campaign artifacts (remove private keys)
+        if: always()
+        run: |
+          python3 "${{ env.CAMPAIGN_DIR }}/../Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py" "${{ env.RESULTS_DIR }}"
+          echo "sanitize exit: $?"
+
+      - name: Validate artifact security (scan for private keys)
+        if: always()
+        run: |
+          python3 "${{ env.CAMPAIGN_DIR }}/../Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py" "${{ env.RESULTS_DIR }}" --scan-only
+          echo "security scan exit: $?"
+
       - name: Append campaign summary
         if: always()
         run: |
