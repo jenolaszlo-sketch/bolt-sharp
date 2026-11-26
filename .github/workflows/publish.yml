@@ -52,16 +52,18 @@ jobs:
           Copy-Item -Path "$workspace/README.md" -Destination src/BoltSharp/README.md -Force
           Copy-Item -Path "$workspace/LICENSE" -Destination src/BoltSharp/LICENSE -Force
 
+      - name: Build
+        run: dotnet build src/BoltSharp/BoltSharp.csproj --configuration Release --no-restore
+
       - name: Pack
         shell: pwsh
         run: |
           $args = @()
           if ($env:GITHUB_REF_TYPE -eq 'tag') {
-            $args += "--property:PackageVersion=${env:GITHUB_REF_NAME.TrimStart('v')}"
+            $args += "-Version ${env:GITHUB_REF_NAME.TrimStart('v')}"
           }
-          dotnet pack src/BoltSharp/BoltSharp.csproj `
-            --configuration Release `
-            --output ./artifacts `
+          nuget pack src/BoltSharp/BoltSharp.nuspec `
+            -OutputDirectory ./artifacts `
             $args
 
       - name: Verify package contents
