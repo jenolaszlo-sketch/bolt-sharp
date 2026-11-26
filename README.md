@@ -103,6 +103,40 @@ A Bolt-compatible endpoint does not necessarily provide Neo4j database semantics
 - **Routing / clustering** not implemented (single-node backend)
 - **Live client interoperability** not yet validated with Neo4j Browser or official drivers
 
+## Native AOT Compatibility
+
+BoltSharp is verified for Native AOT compilation and execution:
+
+| Configuration | Status | Notes |
+|---------------|--------|-------|
+| .NET 8, win-x64 | **Verified** | AOT analyzer clean (IL2026 on DiagnosticSource only), harness executes |
+| .NET 10, win-x64 | **Verified** | AOT analyzer clean, harness executes |
+| .NET 8, linux-x64 | **CI Verified** | Compilation and execution verified in CI |
+| .NET 10, linux-x64 | **CI Verified** | Compilation and execution verified in CI |
+
+**Scope of AOT verification:**
+- PackStream encoding/decoding (all types)
+- Bolt version negotiation
+- Message codec (request/response encode/decode)
+- Server lifecycle (start/stop, plaintext and TLS)
+- Public API surface accessibility
+
+**Known AOT limitation:**
+- `System.Diagnostics.DiagnosticSource.Write<T>` triggers IL2026 trim analysis warning in `BoltPlaintextTerminalCloseDiagnostics`. This affects diagnostic event emission only; core protocol functionality is unaffected. The warning is expected for any `DiagnosticListener` usage with custom payload types.
+
+**To run AOT verification locally:**
+```sh
+# Publish and run the AOT harness (Windows)
+dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r win-x64 -p:PublishAot=true -o ./artifacts/aot-harness
+./artifacts/aot-harness/BoltSharp.AotHarness.exe
+
+# Publish and run the minimal AOT consumer
+dotnet publish tests/BoltSharp.AotConsumer/BoltSharp.AotConsumer.csproj -c Release -r win-x64 -p:PublishAot=true -o ./artifacts/aot-consumer
+./artifacts/aot-consumer/BoltSharp.AotConsumer.exe
+```
+
+**Permanent CI integration:** Native AOT verification runs on every push to `main` and pull request (see `.github/workflows/ci.yml`).
+
 ## Project references
 
 - [Bolt protocol documentation](https://neo4j.com/docs/bolt/current/)

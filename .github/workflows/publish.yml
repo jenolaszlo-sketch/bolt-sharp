@@ -63,11 +63,10 @@ jobs:
         run: |
           $args = @()
           if ($env:GITHUB_REF_TYPE -eq 'tag') {
-            $args += "--property:PackageVersion=${env:GITHUB_REF_NAME.TrimStart('v')}"
+            $args += "-Version ${env:GITHUB_REF_NAME.TrimStart('v')}"
           }
-          dotnet pack src/BoltSharp/BoltSharp.csproj `
-            --configuration Release `
-            --output ./artifacts `
+          nuget pack src/BoltSharp/BoltSharp.nuspec `
+            -OutputDirectory ./artifacts `
             $args
 
       - name: Verify package contents

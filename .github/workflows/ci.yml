@@ -62,3 +62,73 @@ jobs:
           python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results --scan-only
           python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results --scan-only
           echo "evidence security scan exit: $?"
+
+  aot-verification:
+    name: Native AOT verification
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            dotnet-version: "8.0.x"
+            rid: win-x64
+          - os: windows-latest
+            dotnet-version: "10.0.x"
+            rid: win-x64
+          - os: ubuntu-latest
+            dotnet-version: "8.0.x"
+            rid: linux-x64
+          - os: ubuntu-latest
+            dotnet-version: "10.0.x"
+            rid: linux-x64
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET (${{ matrix.dotnet-version }})
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Install Native AOT workload
+        run: dotnet workload install wasi-experimental --skip-manifest-check || true
+
+      - name: Restore AOT harness
+        run: dotnet restore tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj
+
+      - name: AOT analyzer (PublishAot + PublishTrimmed)
+        run: dotnet build tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r ${{ matrix.rid }} -p:PublishAot=true -p:PublishTrimmed=true --no-restore
+
+      - name: Publish Native AOT executable
+        run: dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r ${{ matrix.rid }} -p:PublishAot=true -o ./artifacts/aot-harness-${{ matrix.rid }}
+
+      - name: Execute Native AOT harness
+        run: ./artifacts/aot-harness-${{ matrix.rid }}/BoltSharp.AotHarness${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+
+      - name: Validate artifact security
+        if: always()
+        run: |
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results --scan-only
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results --scan-only
+          echo "evidence security scan exit: $?"
+
+  managed-linux-regression:
+    name: Managed Linux regression
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build (Release)
+        run: dotnet build BoltSharp.slnx -c Release --nologo
+
+      - name: Test (Release)
+        run: dotnet test BoltSharp.slnx -c Release --no-build --nologo
