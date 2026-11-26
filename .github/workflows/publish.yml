@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Existing release tag to build and publish (e.g. v1.0.0-preview.1)'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -15,45 +20,62 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    env:
+      # Target tag: explicit input on manual dispatch, otherwise the pushed tag. The corrected
+      # workflow (this file) lives on main and can build a frozen historical tag by checking it
+      # out, without ever moving or replacing the tag.
+      TARGET_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.release_tag || github.ref_name }}
     steps:
-      - name: Checkout
+      - name: Checkout the release tag
         uses: actions/checkout@v6
         with:
           fetch-tags: true
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.release_tag || github.ref_name }}
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 8.0.x
 
-      # Packaging must reproduce the tagged release, never current main. Require a tag ref
-      # whose name matches the project version. For manual recovery, dispatch on the tag:
-      #   gh workflow run publish.yml --ref v1.0.0-preview.1
-      - name: Validate tag matches release version
+      # Require a tag-shaped target whose name matches the checked-out project version. This
+      # prevents accidentally packaging current main under a release identity.
+      - name: Validate target tag matches checked-out version
         shell: pwsh
         run: |
+          $tag = $env:TARGET_TAG
+          if ($tag -notmatch '^v\d') {
+            Write-Error "Target '$tag' is not a release tag (v*). Refusing to package."
+            exit 1
+          }
           [xml] $xml = Get-Content -LiteralPath src/BoltSharp/BoltSharp.csproj
           $VERSION = [string] $xml.Project.PropertyGroup.Version
           if (-not $VERSION) {
             Write-Error "Could not read <Version> from src/BoltSharp/BoltSharp.csproj"
             exit 1
           }
-          if ($env:GITHUB_REF_TYPE -ne 'tag') {
-            Write-Error ("Publishing requires a tag ref. Dispatch on the release tag, e.g. " +
-              "'gh workflow run publish.yml --ref v$VERSION'. Ref was '$($env:GITHUB_REF_NAME)' ($($env:GITHUB_REF_TYPE)).")
+          if ($tag -ne "v$VERSION") {
+            Write-Error "Target tag $tag does not match checked-out release version $VERSION"
             exit 1
           }
-          if ($env:GITHUB_REF_NAME -ne "v$VERSION") {
-            Write-Error "Tag $env:GITHUB_REF_NAME does not match release version $VERSION"
-            exit 1
-          }
-          Write-Host "Tag $env:GITHUB_REF_NAME matches release version $VERSION at commit $($env:GITHUB_SHA)"
+          Write-Host "Building release $tag from commit $($env:GITHUB_SHA)"
+
+      # The frozen v1.0.0-preview.1 tag's csproj references README.md/LICENSE relative to
+      # src/BoltSharp and enables the (now failing) symbols package. Copy the root files and
+      # disable symbols on the command line so the corrected workflow can rebuild either the
+      # historical tag or current main with the same authoritative `dotnet pack` mechanism.
+      - name: Prepare package files
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dest = 'src/BoltSharp'
+          Copy-Item -Path README.md -Destination (Join-Path $dest 'README.md') -Force
+          Copy-Item -Path LICENSE -Destination (Join-Path $dest 'LICENSE') -Force
 
       - name: Build library package (authoritative dotnet pack)
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          dotnet pack src/BoltSharp/BoltSharp.csproj -c Release -o ./artifacts
+          dotnet pack src/BoltSharp/BoltSharp.csproj -c Release -o ./artifacts -p:IncludeSymbols=false
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: Verify package contents
@@ -71,8 +93,7 @@ jobs:
           $zip = [System.IO.Compression.ZipFile]::OpenRead($package.FullName)
           try {
             $entries = $zip.Entries | ForEach-Object { $_.FullName }
-            $required = @('lib/net8.0/BoltSharp.dll', 'README.md', 'LICENSE')
-            foreach ($r in $required) {
+            foreach ($r in @('lib/net8.0/BoltSharp.dll', 'README.md', 'LICENSE')) {
               if (-not ($entries -contains $r)) { throw "Package is missing required entry '$r'." }
             }
             Write-Host "Entries: $($entries -join ', ')"
@@ -80,7 +101,7 @@ jobs:
             $zip.Dispose()
           }
 
-      - name: Artifact and secret security checks
+      - name: Artifact and secret security checks (before authentication)
         shell: pwsh
         run: |
           python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
