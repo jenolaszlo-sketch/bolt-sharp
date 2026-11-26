@@ -61,15 +61,17 @@ Added standard CI validation step:
 
 ## Limitations of PEM Armour Detection
 
-The detection mechanism scans for unambiguous PEM private key armour headers at line start:
+The detection mechanism scans for unambiguous PEM private key armour headers at line start. The patterns matched are:
 
 ```
------BEGIN PRIVATE KEY-----
------BEGIN RSA PRIVATE KEY-----
------BEGIN EC PRIVATE KEY-----
------BEGIN OPENSSH PRIVATE KEY-----
------BEGIN ENCRYPTED PRIVATE KEY-----
+[PRIVATE KEY ARMOUR HEADER 1]
+[PRIVATE KEY ARMOUR HEADER 2]
+[PRIVATE KEY ARMOUR HEADER 3]
+[PRIVATE KEY ARMOUR HEADER 4]
+[PRIVATE KEY ARMOUR HEADER 5]
 ```
+
+(Actual header strings omitted to avoid false positives in documentation; see scanner source for exact patterns.)
 
 **Known limitations:**
 1. **Encoding dependence** — Only detects UTF-8/ASCII encoded armour. UTF-16 or other encodings with BOM will not match (mitigated: OpenSSL and standard tools emit UTF-8).
