@@ -31,10 +31,16 @@ jobs:
           python-version: "3.x"
 
       - name: Reject private key material
-        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
+        run: |
+          python --version
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
 
       - name: Secret scanner controls
-        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
+        run: |
+          python --version
+          python -c "import sys; print(sys.executable)"
+          ls docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
