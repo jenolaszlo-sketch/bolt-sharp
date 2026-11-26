@@ -48,8 +48,9 @@ jobs:
       - name: Prepare package files
         shell: pwsh
         run: |
-          Copy-Item -Path ../README.md -Destination src/BoltSharp/README.md -Force
-          Copy-Item -Path ../LICENSE -Destination src/BoltSharp/LICENSE -Force
+          $workspace = $env:GITHUB_WORKSPACE
+          Copy-Item -Path "$workspace/README.md" -Destination src/BoltSharp/README.md -Force
+          Copy-Item -Path "$workspace/LICENSE" -Destination src/BoltSharp/LICENSE -Force
 
       - name: Pack
         shell: pwsh
