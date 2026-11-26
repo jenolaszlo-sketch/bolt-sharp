@@ -25,22 +25,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Python
-        id: setup-python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          architecture: x64
+      - name: Check Python availability
+        run: |
+          python --version
+          where python
 
       - name: Reject private key material
-        run: |
-          python --version
-          python "${{ steps.setup-python.outputs.python-path }}/python.exe" docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
+        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
 
       - name: Secret scanner controls
-        run: |
-          python --version
-          python "${{ steps.setup-python.outputs.python-path }}/python.exe" docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
+        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
