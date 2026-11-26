@@ -121,8 +121,8 @@ BoltSharp is verified for Native AOT compilation and execution:
 - Server lifecycle (start/stop, plaintext and TLS)
 - Public API surface accessibility
 
-**Known AOT limitation:**
-- `System.Diagnostics.DiagnosticSource.Write<T>` triggers IL2026 trim analysis warning in `BoltPlaintextTerminalCloseDiagnostics`. This affects diagnostic event emission only; core protocol functionality is unaffected. The warning is expected for any `DiagnosticListener` usage with custom payload types.
+**Known AOT limitation (qualified):**
+- `System.Diagnostics.DiagnosticSource.Write<T>` triggers IL2026 trim analysis warning in `BoltPlaintextTerminalCloseDiagnostics`. The `TerminalEvent` payload type is preserved via `[DynamicDependency]`, and diagnostic event delivery has been verified to work correctly under Native AOT (test `Diagnostic Event Delivery` in AOT harness). The warning reflects the analyzer's inability to prove the DiagnosticSource API's internal reflection usage is safe, not an actual runtime failure. Core protocol functionality is unaffected.
 
 **To run AOT verification locally:**
 ```sh

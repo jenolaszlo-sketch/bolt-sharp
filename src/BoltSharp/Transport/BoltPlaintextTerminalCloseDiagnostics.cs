@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BoltSharp.Transport;
 
@@ -6,6 +7,7 @@ internal static class BoltPlaintextTerminalCloseDiagnostics
 {
     private static readonly DiagnosticListener Listener = new("BoltSharp.PlaintextTerminalClose");
 
+    [DynamicDependency(DynamicallyAccessedMemberTypes.PublicProperties, typeof(TerminalEvent))]
     internal static void Report(
         string connectionId,
         string name,

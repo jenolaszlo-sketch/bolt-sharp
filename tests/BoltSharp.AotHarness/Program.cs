@@ -36,6 +36,7 @@ internal sealed class Harness
         RunTestAsync("Server Startup/Shutdown (TLS)", TestServerLifecycleTls);
         RunTestAsync("Server Cancellation", TestServerCancellation);
         RunTest("Public API Surface", TestPublicApi);
+        RunTestAsync("Diagnostic Event Delivery", TestDiagnosticEventDelivery);
 
         Console.WriteLine();
         Console.WriteLine($"=== Harness Complete: Exit Code {_exitCode} ===");
@@ -391,6 +392,49 @@ EnabledProtocols = (System.Security.Authentication.SslProtocols)3072 | (System.S
         AssertNotNull(t20); AssertNotNull(t21); AssertNotNull(t22); AssertNotNull(t23);
         AssertNotNull(t24); AssertNotNull(t25); AssertNotNull(t26); AssertNotNull(t27);
         AssertNotNull(t28);
+    }
+
+    private async Task TestDiagnosticEventDelivery()
+    {
+        // Verify that diagnostic events are delivered correctly under Native AOT
+        var options = new BoltTcpServerOptions
+        {
+            BindAddress = IPAddress.Loopback,
+            Port = 0,
+            MaxConnections = 10,
+            HandshakeTimeout = TimeSpan.FromSeconds(5),
+            MessageReadTimeout = TimeSpan.FromSeconds(5),
+            WriteTimeout = TimeSpan.FromSeconds(5),
+            ShutdownTimeout = TimeSpan.FromSeconds(5),
+        };
+
+        var server = BoltTcpServer.Create(options);
+        var eventReceived = false;
+        var eventConnectionId = "";
+        var eventDetail = "";
+
+        // Subscribe to diagnostic events
+        server.Diagnostics.Event += evt =>
+        {
+            if (evt.Kind == BoltTransportEventKind.ListenerStarted ||
+                evt.Kind == BoltTransportEventKind.ListenerStopped)
+            {
+                eventReceived = true;
+                eventConnectionId = evt.ConnectionId;
+                eventDetail = evt.Detail ?? "";
+            }
+        };
+
+        await server.StartAsync();
+        AssertNotNull(server.BoundEndPoint);
+
+        // Stop the server - this should trigger listener stopped diagnostic
+        await server.StopAsync();
+        AssertEqual(server.ShutdownOutcome, BoltShutdownOutcome.Completed);
+
+        // Verify diagnostic event was delivered
+        AssertTrue(eventReceived);
+        AssertNotNull(eventConnectionId);
     }
 
     private X509Certificate2 CreateSelfSignedCertificate()

@@ -72,15 +72,19 @@ jobs:
           - os: windows-latest
             dotnet-version: "8.0.x"
             rid: win-x64
+            tfm: net8.0
           - os: windows-latest
             dotnet-version: "10.0.x"
             rid: win-x64
+            tfm: net8.0
           - os: ubuntu-latest
             dotnet-version: "8.0.x"
             rid: linux-x64
+            tfm: net8.0
           - os: ubuntu-latest
             dotnet-version: "10.0.x"
             rid: linux-x64
+            tfm: net8.0
       fail-fast: false
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -92,20 +96,36 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
-      - name: Install Native AOT workload
-        run: dotnet workload install wasi-experimental --skip-manifest-check || true
-
       - name: Restore AOT harness
         run: dotnet restore tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj
 
       - name: AOT analyzer (PublishAot + PublishTrimmed)
         run: dotnet build tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r ${{ matrix.rid }} -p:PublishAot=true -p:PublishTrimmed=true --no-restore
 
-      - name: Publish Native AOT executable
+      - name: Publish Native AOT harness
         run: dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r ${{ matrix.rid }} -p:PublishAot=true -o ./artifacts/aot-harness-${{ matrix.rid }}
 
       - name: Execute Native AOT harness
         run: ./artifacts/aot-harness-${{ matrix.rid }}/BoltSharp.AotHarness${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+
+      - name: Build library package
+        run: |
+          dotnet pack src/BoltSharp/BoltSharp.csproj -c Release --output ./artifacts/packages --no-build
+          PKG_PATH=$(ls ./artifacts/packages/BoltSharp.*.nupkg | head -1)
+          echo "PACKAGE_PATH=$PKG_PATH" >> $GITHUB_ENV
+          echo "Built package: $PKG_PATH"
+
+      - name: Publish Native AOT consumer (package-based)
+        run: |
+          PACKAGE_DIR="${{ github.workspace }}/artifacts/packages"
+          dotnet new nugetconfig -o ./artifacts/consumer-test
+          dotnet nuget add source "$PACKAGE_DIR" --name local-packages --configfile ./artifacts/consumer-test/NuGet.Config
+          cd tests/BoltSharp.AotConsumerPackage
+          dotnet restore --configfile ../../artifacts/consumer-test/NuGet.Config --packages ../../artifacts/consumer-test/packages
+          dotnet publish -c Release -r ${{ matrix.rid }} -p:PublishAot=true -o ../../artifacts/aot-consumer-${{ matrix.rid }} --no-restore
+
+      - name: Execute Native AOT consumer (package-based)
+        run: ./artifacts/aot-consumer-${{ matrix.rid }}/BoltSharp.AotConsumerPackage${{ matrix.os == 'windows-latest' && '.exe' || '' }}
 
       - name: Validate artifact security
         if: always()
