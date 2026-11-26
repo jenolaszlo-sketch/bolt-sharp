@@ -58,24 +58,16 @@ jobs:
       - name: Build
         run: dotnet build src/BoltSharp/BoltSharp.csproj --configuration Release --no-restore
 
-      - name: Download NuGet CLI (Linux)
-        run: |
-          curl -sSL -o nuget.exe https://dist.nuget.org/linux-x86-commandline/latest/nuget.exe
-          chmod +x nuget.exe
-          sudo mv nuget.exe /usr/local/bin/nuget
-
-      - name: Verify NuGet
-        run: nuget --version
-
       - name: Pack
         shell: pwsh
         run: |
           $args = @()
           if ($env:GITHUB_REF_TYPE -eq 'tag') {
-            $args += "-Version ${env:GITHUB_REF_NAME.TrimStart('v')}"
+            $args += "--property:PackageVersion=${env:GITHUB_REF_NAME.TrimStart('v')}"
           }
-          nuget pack src/BoltSharp/BoltSharp.nuspec `
-            -OutputDirectory ./artifacts `
+          dotnet pack src/BoltSharp/BoltSharp.csproj `
+            --configuration Release `
+            --output ./artifacts `
             $args
 
       - name: Verify package contents
