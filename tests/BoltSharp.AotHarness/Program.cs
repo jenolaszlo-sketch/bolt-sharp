@@ -457,7 +457,12 @@ EnabledProtocols = (System.Security.Authentication.SslProtocols)3072 | (System.S
             DateTimeOffset.UtcNow.AddHours(-1),
             DateTimeOffset.UtcNow.AddHours(1));
 
+#if NET9_0_OR_GREATER
+        return X509CertificateLoader.LoadPkcs12(
+            cert.Export(X509ContentType.Pfx), password: null, keyStorageFlags: X509KeyStorageFlags.EphemeralKeySet);
+#else
         return new X509Certificate2(cert.Export(X509ContentType.Pfx), "", X509KeyStorageFlags.EphemeralKeySet);
+#endif
     }
 
     private static void AssertEqual(object actual, object expected, string context = "")
@@ -466,7 +471,7 @@ EnabledProtocols = (System.Security.Authentication.SslProtocols)3072 | (System.S
             throw new Exception($"Expected {expected}, got {actual}" + (context != "" ? $" ({context})" : ""));
     }
 
-    private static void AssertNull(object obj)
+    private static void AssertNull(object? obj)
     {
         if (obj is not null) throw new Exception("Expected null");
     }
@@ -481,7 +486,7 @@ EnabledProtocols = (System.Security.Authentication.SslProtocols)3072 | (System.S
         if (condition) throw new Exception("Expected false");
     }
 
-    private static void AssertNotNull(object obj)
+    private static void AssertNotNull(object? obj)
     {
         if (obj is null) throw new Exception("Expected non-null");
     }

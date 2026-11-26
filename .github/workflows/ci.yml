@@ -1,8 +1,9 @@
-# Standard build and test validation.
+# Standard build, test and Native AOT validation.
 #
-# Deliberately narrow: builds and tests the repository and runs the private-key
-# scanner. It cannot publish NuGet packages, create releases, or execute the
-# Q-B5B-09 native-Linux qualification campaign (that campaign remains a separate,
+# Builds and tests the repository, runs the private-key scanner, and verifies
+# Native AOT compatibility with a four-cell matrix (Windows/Linux x net8.0/net10.0
+# consumers). It cannot publish NuGet packages or create releases, and it does not
+# execute the Q-B5B-09 native-Linux qualification campaign (that remains a separate,
 # manually dispatched, bounded workflow).
 
 name: CI
@@ -17,8 +18,8 @@ permissions:
   contents: read
 
 jobs:
-  build-and-test:
-    name: Build, test and secret scan
+  windows-managed:
+    name: Windows managed build, test and secret scan
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -29,15 +30,6 @@ jobs:
         run: |
           python --version
           where python
-          echo "=== Checking script ==="
-          if (Test-Path "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py") {
-              echo "Script found"
-          } else {
-              echo "Script NOT found"
-              dir docs/reviews/
-              dir docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/
-              dir docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/
-          }
 
       - name: Reject private key material
         run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
@@ -63,78 +55,7 @@ jobs:
           python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results --scan-only
           echo "evidence security scan exit: $?"
 
-  aot-verification:
-    name: Native AOT verification
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-          - os: windows-latest
-            dotnet-version: "8.0.x"
-            rid: win-x64
-            tfm: net8.0
-          - os: windows-latest
-            dotnet-version: "10.0.x"
-            rid: win-x64
-            tfm: net8.0
-          - os: ubuntu-latest
-            dotnet-version: "8.0.x"
-            rid: linux-x64
-            tfm: net8.0
-          - os: ubuntu-latest
-            dotnet-version: "10.0.x"
-            rid: linux-x64
-            tfm: net8.0
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          persist-credentials: false
-
-      - name: Set up .NET (${{ matrix.dotnet-version }})
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-
-      - name: Restore AOT harness
-        run: dotnet restore tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj
-
-      - name: AOT analyzer (PublishAot + PublishTrimmed)
-        run: dotnet build tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r ${{ matrix.rid }} -p:PublishAot=true -p:PublishTrimmed=true --no-restore
-
-      - name: Publish Native AOT harness
-        run: dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -r ${{ matrix.rid }} -p:PublishAot=true -o ./artifacts/aot-harness-${{ matrix.rid }}
-
-      - name: Execute Native AOT harness
-        run: ./artifacts/aot-harness-${{ matrix.rid }}/BoltSharp.AotHarness${{ matrix.os == 'windows-latest' && '.exe' || '' }}
-
-      - name: Build library package
-        run: |
-          dotnet pack src/BoltSharp/BoltSharp.csproj -c Release --output ./artifacts/packages --no-build
-          PKG_PATH=$(ls ./artifacts/packages/BoltSharp.*.nupkg | head -1)
-          echo "PACKAGE_PATH=$PKG_PATH" >> $GITHUB_ENV
-          echo "Built package: $PKG_PATH"
-
-      - name: Publish Native AOT consumer (package-based)
-        run: |
-          PACKAGE_DIR="${{ github.workspace }}/artifacts/packages"
-          dotnet new nugetconfig -o ./artifacts/consumer-test
-          dotnet nuget add source "$PACKAGE_DIR" --name local-packages --configfile ./artifacts/consumer-test/NuGet.Config
-          cd tests/BoltSharp.AotConsumerPackage
-          dotnet restore --configfile ../../artifacts/consumer-test/NuGet.Config --packages ../../artifacts/consumer-test/packages
-          dotnet publish -c Release -r ${{ matrix.rid }} -p:PublishAot=true -o ../../artifacts/aot-consumer-${{ matrix.rid }} --no-restore
-
-      - name: Execute Native AOT consumer (package-based)
-        run: ./artifacts/aot-consumer-${{ matrix.rid }}/BoltSharp.AotConsumerPackage${{ matrix.os == 'windows-latest' && '.exe' || '' }}
-
-      - name: Validate artifact security
-        if: always()
-        run: |
-          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results --scan-only
-          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results --scan-only
-          echo "evidence security scan exit: $?"
-
-  managed-linux-regression:
+  managed-linux:
     name: Managed Linux regression
     runs-on: ubuntu-latest
     steps:
@@ -152,3 +73,140 @@ jobs:
 
       - name: Test (Release)
         run: dotnet test BoltSharp.slnx -c Release --no-build --nologo
+
+  aot-verification:
+    name: Native AOT (${{ matrix.os }} / ${{ matrix.tfm }} / ${{ matrix.rid }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            sdk: "8.0.x"
+            sdk-pin: "8.0.100"
+            tfm: net8.0
+            rid: win-x64
+          - os: windows-latest
+            sdk: "10.0.x"
+            sdk-pin: "10.0.100"
+            tfm: net10.0
+            rid: win-x64
+          - os: ubuntu-latest
+            sdk: "8.0.x"
+            sdk-pin: "8.0.100"
+            tfm: net8.0
+            rid: linux-x64
+          - os: ubuntu-latest
+            sdk: "10.0.x"
+            sdk-pin: "10.0.100"
+            tfm: net10.0
+            rid: linux-x64
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET (${{ matrix.sdk }})
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.sdk }}
+
+      # Runners ship several SDKs; without a pin, `dotnet` selects the newest one and the
+      # matrix cell would silently use the wrong toolchain. Pin the intended major.minor.
+      - name: Pin SDK for this cell and confirm
+        shell: pwsh
+        run: |
+          $pin = '${{ matrix.sdk-pin }}'
+          $json = @{ sdk = @{ version = $pin; rollForward = 'latestFeature' } } | ConvertTo-Json
+          Set-Content -Path global.json -Value $json -Encoding utf8
+          $ver = dotnet --version
+          if ($LASTEXITCODE -ne 0) { throw 'dotnet --version failed' }
+          $expectedPrefix = $pin.Substring(0, $pin.LastIndexOf('.'))
+          Write-Host "Selected SDK: $ver (expected feature band $expectedPrefix)"
+          if (-not $ver.StartsWith($expectedPrefix + '.')) {
+            throw "Selected SDK $ver does not match the pinned feature band $expectedPrefix"
+          }
+
+      - name: Build library package (authoritative dotnet pack)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          dotnet pack src/BoltSharp/BoltSharp.csproj -c Release -o ./artifacts/packages
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $pkg = Get-ChildItem ./artifacts/packages/BoltSharp.*.nupkg | Select-Object -First 1
+          if (-not $pkg) { throw 'No package was produced.' }
+          $hash = (Get-FileHash $pkg.FullName -Algorithm SHA256).Hash
+          Write-Host "Package: $($pkg.Name) size=$($pkg.Length) SHA256=$hash source=$($env:GITHUB_SHA)"
+
+      - name: AOT and trimming analysis (fail on unexpected warnings)
+        shell: pwsh
+        run: |
+          $log = Join-Path $env:RUNNER_TEMP 'aot-analyzer.log'
+          dotnet build tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -f ${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:PublishTrimmed=true 2>&1 | Tee-Object -FilePath $log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $warn = Select-String -Path $log -Pattern 'warning IL\d+|Trim analysis warning|AOT analysis warning'
+          if ($warn) { Write-Host ($warn | Out-String); throw 'Unexpected Native AOT / trimming warnings.' }
+          Write-Host 'Native AOT / trimming analyzer: clean.'
+
+      - name: Publish and execute Native AOT harness (project reference)
+        shell: pwsh
+        run: |
+          $out = Join-Path $env:GITHUB_WORKSPACE 'artifacts/harness'
+          $log = Join-Path $env:RUNNER_TEMP 'aot-publish.log'
+          dotnet publish tests/BoltSharp.AotHarness/BoltSharp.AotHarness.csproj -c Release -f ${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -o $out 2>&1 | Tee-Object -FilePath $log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $warn = Select-String -Path $log -Pattern 'warning IL\d+|Trim analysis warning|AOT analysis warning'
+          if ($warn) { Write-Host ($warn | Out-String); throw 'Unexpected Native AOT / trimming warnings during publish.' }
+          $exeName = 'BoltSharp.AotHarness'
+          if ([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform([System.Runtime.InteropServices.OSPlatform]::Windows)) { $exeName += '.exe' }
+          $exe = Join-Path $out $exeName
+          if (-not (Test-Path $exe)) { throw "Native harness not produced at $exe" }
+          & $exe
+          if ($LASTEXITCODE -ne 0) { throw "Native AOT harness failed with exit code $LASTEXITCODE." }
+
+      - name: Package-based Native AOT consumer (isolated feed, no public fallback)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $feed = Join-Path $env:GITHUB_WORKSPACE 'artifacts/packages'
+          $cache = Join-Path $env:GITHUB_WORKSPACE 'artifacts/pkgcache'
+          $cfg = Join-Path $env:GITHUB_WORKSPACE 'artifacts/NuGet.Consumer.Config'
+          $out = Join-Path $env:GITHUB_WORKSPACE 'artifacts/pkgconsumer'
+          $xml = @(
+            '<?xml version="1.0" encoding="utf-8"?>',
+            '<configuration>',
+            '  <packageSources>',
+            '    <clear />',
+            ('    <add key="local" value="{0}" />' -f $feed),
+            '    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />',
+            '  </packageSources>',
+            '  <packageSourceMapping>',
+            '    <packageSource key="local">',
+            '      <package pattern="BoltSharp" />',
+            '    </packageSource>',
+            '    <packageSource key="nuget.org">',
+            '      <package pattern="*" />',
+            '    </packageSource>',
+            '  </packageSourceMapping>',
+            '</configuration>'
+          ) -join "`n"
+          Set-Content -Path $cfg -Value $xml -Encoding utf8
+          dotnet publish tests/BoltSharp.AotConsumerPackage/BoltSharp.AotConsumerPackage.csproj -c Release -f ${{ matrix.tfm }} -r ${{ matrix.rid }} -p:PublishAot=true -p:RestoreConfigFile=$cfg -p:RestorePackagesPath=$cache -o $out
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $resolved = Join-Path $cache 'boltsharp/1.0.0-preview.1/lib/net8.0/BoltSharp.dll'
+          if (-not (Test-Path $resolved)) { throw 'Package-based consumer did not resolve BoltSharp from the isolated local feed.' }
+          Write-Host "Resolved BoltSharp from isolated cache: $resolved"
+          $exeName = 'BoltSharp.AotConsumerPackage'
+          if ([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform([System.Runtime.InteropServices.OSPlatform]::Windows)) { $exeName += '.exe' }
+          $exe = Join-Path $out $exeName
+          if (-not (Test-Path $exe)) { throw "Native package consumer not produced at $exe" }
+          & $exe
+          if ($LASTEXITCODE -ne 0) { throw "Package-based Native AOT consumer failed with exit code $LASTEXITCODE." }
+
+      - name: Validate artifact security
+        if: always()
+        shell: pwsh
+        run: |
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results --scan-only
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results --scan-only
+          Write-Host "evidence security scan exit: $LASTEXITCODE"

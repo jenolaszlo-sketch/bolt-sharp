@@ -1,8 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!--
+      Package-based consumer for permanent Native AOT verification. It MUST use a
+      PackageReference (never a ProjectReference) so the CI gate verifies the
+      produced .nupkg, not the in-tree project. Multi-targeted so the matrix can
+      verify both a net8.0 and a net10.0 consumer.
+    -->
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>false</IsPackable>

@@ -22,14 +22,24 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <DebugType>embedded</DebugType>
     <EmbedAllSources>true</EmbedAllSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!--
+      Debug symbols and sources are embedded in BoltSharp.dll (DebugType/EmbedAllSources
+      above), so there is no separate .pdb to ship. A separate snupkg would therefore be
+      empty, and newer SDKs (>= 10) fail the symbols package with NU5017 ("Cannot create a
+      package that has no dependencies nor content"), failing the whole pack. The embedded
+      symbols already provide full debuggability from the shipped assembly.
+    -->
+    <IncludeSymbols>false</IncludeSymbols>
     <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="README.md" Pack="true" PackagePath="\" />
-    <Content Include="LICENSE" Pack="true" PackagePath="\" />
+    <!--
+      Package README and LICENSE come from the repository root, so packaging is
+      self-contained and does not depend on a prior copy step in the workflow.
+    -->
+    <None Include="$(MSBuildThisFileDirectory)..\..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="$(MSBuildThisFileDirectory)..\..\LICENSE" Pack="true" PackagePath="\" Link="LICENSE" />
   </ItemGroup>
 
 </Project>
