@@ -58,8 +58,11 @@ jobs:
       - name: Build
         run: dotnet build src/BoltSharp/BoltSharp.csproj --configuration Release --no-restore
 
-      - name: Install NuGet CLI
-        run: dotnet tool install --global NuGet.CommandLine
+      - name: Download NuGet CLI
+        run: |
+          curl -sSL -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+          chmod +x nuget.exe
+          sudo mv nuget.exe /usr/local/bin/nuget
 
       - name: Pack
         shell: pwsh
