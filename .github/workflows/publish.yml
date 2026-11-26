@@ -65,8 +65,9 @@ jobs:
           if ($env:GITHUB_REF_TYPE -eq 'tag') {
             $args += "-Version ${env:GITHUB_REF_NAME.TrimStart('v')}"
           }
-          nuget pack src/BoltSharp/BoltSharp.nuspec `
-            -OutputDirectory ./artifacts `
+          dotnet pack src/BoltSharp/BoltSharp.nuspec `
+            --configuration Release `
+            --output ./artifacts `
             $args
 
       - name: Verify package contents
