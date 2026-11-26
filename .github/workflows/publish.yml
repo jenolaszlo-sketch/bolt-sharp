@@ -58,8 +58,8 @@ jobs:
       - name: Build
         run: dotnet build src/BoltSharp/BoltSharp.csproj --configuration Release --no-restore
 
-      - name: Install NuGet
-        run: sudo apt-get update && sudo apt-get install -y nuget
+      - name: Install NuGet CLI
+        run: dotnet tool install --global NuGet.CommandLine
 
       - name: Pack
         shell: pwsh
