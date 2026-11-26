@@ -455,8 +455,11 @@ public sealed class BoltTcpServer : IAsyncDisposable
             }
             catch (Exception ex)
             {
-                // A transient accept fault must not silently kill the listener.
-                _diagnostics.Report(BoltTransportEventKind.ConnectionFailed, "listener", Describe(ex));
+                // A transient accept fault must not silently kill the listener. It is a
+                // listener-level event, not a connection outcome: reporting it as a connection
+                // failure would decrement active accounting for a connection that was never
+                // accepted (B5B-CI-RACE-REMED-01-R2-Q1/F-02).
+                _diagnostics.Report(BoltTransportEventKind.ListenerFault, "listener", Describe(ex));
                 await Task.Delay(1, CancellationToken.None).ConfigureAwait(false);
                 continue;
             }

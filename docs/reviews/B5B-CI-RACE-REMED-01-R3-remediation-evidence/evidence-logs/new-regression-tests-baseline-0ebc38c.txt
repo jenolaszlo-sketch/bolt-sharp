@@ -1,0 +1,35 @@
+Test run for C:\Windows\Temp\opencode\r3-baseline\tests\BoltSharp.Tests\bin\Release\net8.0\BoltSharp.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+dotnet : [xUnit.net 00:00:00.44]     
+BoltSharp.Tests.Transport.ConnectionAccountingBaselineControl.ConnectThenReset_KeepsAccountingBalanced [FAIL]
+At line:1 char:189
++ ... 3-baseline; dotnet test tests\BoltSharp.Tests\BoltSharp.Tests.csproj  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([xUnit.net 00:0...Balanced [FAIL]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Failed BoltSharp.Tests.Transport.ConnectionAccountingBaselineControl.ConnectThenReset_KeepsAccountingBalanced [212 ms]
+  Error Message:
+   round=0: ConnectionsActive must never be negative, was -100
+  Stack Trace:
+     at BoltSharp.Tests.Transport.ConnectionAccountingBaselineControl.ConnectThenReset_KeepsAccountingBalanced() in C:\Windows\Temp\opencode\r3-baseline\tests\BoltSharp.Tests\Transport\ConnectionAccountingBaselineControl.cs:line 32
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.17]     
+BoltSharp.Tests.Transport.TlsShutdownCancellationTests.TlsHandshakeTimeout_LeavesNoUnobservedTaskFault [FAIL]
+  Failed BoltSharp.Tests.Transport.TlsShutdownCancellationTests.TlsHandshakeTimeout_LeavesNoUnobservedTaskFault [2 s]
+  Error Message:
+   TLS handshake timeout abandoned 10 authentication task(s); first: Unable to read data from the transport connection: The I/O operation has been aborted because of either a thread exit or an application request..
+  Stack Trace:
+     at BoltSharp.Tests.Transport.TlsShutdownCancellationTests.TlsHandshakeTimeout_LeavesNoUnobservedTaskFault() in C:\Windows\Temp\opencode\r3-baseline\tests\BoltSharp.Tests\Transport\TlsShutdownCancellationTests.cs:line 145
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:04.20]     
+BoltSharp.Tests.Transport.TlsShutdownCancellationTests.ShutdownDuringTlsAuthentication_LeavesNoUnobservedTaskFault 
+[FAIL]
+  Failed BoltSharp.Tests.Transport.TlsShutdownCancellationTests.ShutdownDuringTlsAuthentication_LeavesNoUnobservedTaskFault [1 s]
+  Error Message:
+   TLS shutdown abandoned 20 authentication task(s); first: Unable to read data from the transport connection: The I/O operation has been aborted because of either a thread exit or an application request..
+  Stack Trace:
+     at BoltSharp.Tests.Transport.TlsShutdownCancellationTests.ShutdownDuringTlsAuthentication_LeavesNoUnobservedTaskFault() in C:\Windows\Temp\opencode\r3-baseline\tests\BoltSharp.Tests\Transport\TlsShutdownCancellationTests.cs:line 84
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     3, Passed:     1, Skipped:     0, Total:     4, Duration: 4 s - BoltSharp.Tests.dll (net8.0)

@@ -2,6 +2,7 @@ using System.Buffers;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 
 using BoltSharp.Framing;
 using BoltSharp.Handshake;
@@ -56,12 +57,20 @@ internal static class BoltTcpConnection
                 var sslStream = new SslStream(networkStream, leaveInnerStreamOpen: false);
                 try
                 {
-                    await sslStream.AuthenticateAsServerAsync(
-                            options.Tls.ServerCertificate,
-                            options.Tls.ClientCertificateRequired,
-                            options.Tls.EnabledProtocols,
-                            checkCertificateRevocation: false)
-                        .WaitAsync(tlsCts.Token)
+                    // B5B-CI-RACE-REMED-01-R3/F-01: the cancellation token is passed into the
+                    // handshake itself, so listener shutdown and the handshake timeout abort the
+                    // underlying operation. Task.WaitAsync would cancel only the wait, abandoning a
+                    // still-running handshake whose fault is then never observed. The options
+                    // reproduce the former overload exactly: same certificate, client-certificate
+                    // requirement, protocol set and disabled revocation checking.
+                    var authenticationOptions = new SslServerAuthenticationOptions
+                    {
+                        ServerCertificate = options.Tls.ServerCertificate,
+                        ClientCertificateRequired = options.Tls.ClientCertificateRequired,
+                        EnabledSslProtocols = options.Tls.EnabledProtocols,
+                        CertificateRevocationCheckMode = X509RevocationMode.NoCheck,
+                    };
+                    await sslStream.AuthenticateAsServerAsync(authenticationOptions, tlsCts.Token)
                         .ConfigureAwait(false);
                     diagnostics.Report(
                         BoltTransportEventKind.TlsHandshakeCompleted,

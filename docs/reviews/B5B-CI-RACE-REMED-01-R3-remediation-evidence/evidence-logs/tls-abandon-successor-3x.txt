@@ -1,0 +1,4 @@
+=== successor ===
+run 1 : runs=100/100 unobserved=0
+run 2 : runs=100/100 unobserved=0
+run 3 : runs=100/100 unobserved=0

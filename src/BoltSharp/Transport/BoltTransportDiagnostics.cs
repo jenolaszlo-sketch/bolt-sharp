@@ -11,6 +11,13 @@ public enum BoltTransportEventKind
     /// <summary>The listener stopped accepting and shutdown completed (or was bounded).</summary>
     ListenerStopped,
 
+    /// <summary>
+    /// The listener's accept loop observed a transient fault and continued accepting. This is a
+    /// listener-level event, not a connection outcome: it is accounting-neutral and never
+    /// decrements active connection accounting.
+    /// </summary>
+    ListenerFault,
+
     /// <summary>A connection was accepted by the listener.</summary>
     ConnectionAccepted,
 
@@ -57,6 +64,7 @@ public sealed class BoltTransportDiagnostics
     private long _connectionsAccepted;
     private long _connectionsRejectedForCapacity;
     private long _connectionsActive;
+    private long _listenerFaults;
     private long _connectionsCompleted;
     private long _connectionsFailed;
     private long _tlsHandshakeFailures;
@@ -78,6 +86,13 @@ public sealed class BoltTransportDiagnostics
     /// <summary>Currently active (accepted, not yet completed) connections.</summary>
     public long ConnectionsActive => Interlocked.Read(ref _connectionsActive);
 
+    /// <summary>
+    /// Transient accept-loop faults observed by the listener. These are not connection outcomes:
+    /// they never affect <see cref="ConnectionsAccepted"/>, <see cref="ConnectionsActive"/>,
+    /// <see cref="ConnectionsCompleted"/> or <see cref="ConnectionsFailed"/>.
+    /// </summary>
+    public long ListenerFaults => Interlocked.Read(ref _listenerFaults);
+
     /// <summary>Connections that completed without an unexpected transport fault.</summary>
     public long ConnectionsCompleted => Interlocked.Read(ref _connectionsCompleted);
 
@@ -98,19 +113,42 @@ public sealed class BoltTransportDiagnostics
         switch (kind)
         {
             case BoltTransportEventKind.ConnectionAccepted:
-                Interlocked.Increment(ref _connectionsAccepted);
-                Interlocked.Increment(ref _connectionsActive);
+                // The id is the accounting authority: a connection only becomes active (and is
+                // only counted as accepted) when its id can be registered.
+                if (_activeConnectionIds.TryAdd(connectionId, 0))
+                {
+                    Interlocked.Increment(ref _connectionsAccepted);
+                    Interlocked.Increment(ref _connectionsActive);
+                }
+
                 break;
             case BoltTransportEventKind.ConnectionRejectedCapacity:
                 Interlocked.Increment(ref _connectionsRejectedForCapacity);
                 break;
             case BoltTransportEventKind.ConnectionCompleted:
-                Interlocked.Decrement(ref _connectionsActive);
-                Interlocked.Increment(ref _connectionsCompleted);
+                // A terminal event decrements active accounting only for a connection that was
+                // previously accepted. This keeps ConnectionsActive non-negative and the
+                // accepted == completed + failed invariant intact even if a terminal event is
+                // ever reported for an unknown id.
+                if (_activeConnectionIds.TryRemove(connectionId, out _))
+                {
+                    Interlocked.Decrement(ref _connectionsActive);
+                    Interlocked.Increment(ref _connectionsCompleted);
+                }
+
                 break;
             case BoltTransportEventKind.ConnectionFailed:
-                Interlocked.Decrement(ref _connectionsActive);
-                Interlocked.Increment(ref _connectionsFailed);
+                if (_activeConnectionIds.TryRemove(connectionId, out _))
+                {
+                    Interlocked.Decrement(ref _connectionsActive);
+                    Interlocked.Increment(ref _connectionsFailed);
+                }
+
+                break;
+            case BoltTransportEventKind.ListenerFault:
+                // Listener-level, accounting-neutral: observable without touching connection
+                // lifecycle counters.
+                Interlocked.Increment(ref _listenerFaults);
                 break;
             case BoltTransportEventKind.TlsHandshakeFailed:
                 Interlocked.Increment(ref _tlsHandshakeFailures);
@@ -123,15 +161,6 @@ public sealed class BoltTransportDiagnostics
                 break;
             default:
                 break;
-        }
-
-        if (kind == BoltTransportEventKind.ConnectionAccepted)
-        {
-            _activeConnectionIds.TryAdd(connectionId, 0);
-        }
-        else if (kind is BoltTransportEventKind.ConnectionCompleted or BoltTransportEventKind.ConnectionFailed)
-        {
-            _activeConnectionIds.TryRemove(connectionId, out _);
         }
 
         var observer = Event;

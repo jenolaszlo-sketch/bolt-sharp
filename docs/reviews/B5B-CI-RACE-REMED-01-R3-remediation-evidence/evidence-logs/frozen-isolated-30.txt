@@ -1,0 +1,1 @@
+frozen-isolated-30: pass=30 fail=0
