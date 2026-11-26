@@ -64,6 +64,9 @@ jobs:
           chmod +x nuget.exe
           sudo mv nuget.exe /usr/local/bin/nuget
 
+      - name: Verify NuGet
+        run: nuget --version
+
       - name: Pack
         shell: pwsh
         run: |
