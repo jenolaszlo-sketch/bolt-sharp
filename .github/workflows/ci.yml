@@ -26,33 +26,10 @@ jobs:
           persist-credentials: false
 
       - name: Reject private key material
-        run: |
-          echo "=== Checking Python ==="
-          python --version
-          echo "=== Checking script exists ==="
-          if (Test-Path "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py") {
-              echo "Script found"
-          } else {
-              echo "Script NOT found"
-              dir docs/reviews/
-              dir docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/
-              dir docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/
-          }
-          echo "=== Running scan ==="
-          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
+        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
 
       - name: Secret scanner controls
-        run: |
-          echo "=== Checking Python ==="
-          python --version
-          echo "=== Checking script exists ==="
-          if (Test-Path "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py") {
-              echo "Script found"
-          } else {
-              echo "Script NOT found"
-          }
-          echo "=== Running selftest ==="
-          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
+        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
@@ -68,12 +45,6 @@ jobs:
       - name: Validate artifact security (scan for private keys in evidence directories)
         if: always()
         run: |
-          $dirs = @("docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results", "docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results")
-          foreach ($dir in $dirs) {
-              if (Test-Path $dir) {
-                  python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py $dir --scan-only
-              } else {
-                  Write-Host "Directory $dir does not exist, skipping scan"
-              }
-          }
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01/results --scan-only
+          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/sanitize_artifacts.py docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/results --scan-only
           echo "evidence security scan exit: $?"
