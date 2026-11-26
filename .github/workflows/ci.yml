@@ -25,31 +25,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Verify Python availability
-        run: |
-          python --version
-          where python
-
       - name: Reject private key material
         run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py
 
       - name: Secret scanner controls
-        env:
-          TMPDIR: ${{ runner.temp }}
-        run: |
-          python --version
-          python -c "import sys; print(sys.executable)"
-          python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
+        run: python docs/reviews/Q-B5B-09-TLS-LINUX-QUAL-01-R1/tools/scan_for_private_keys.py --selftest
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: "10.0.x"
 
       - name: Build (Release)
         run: dotnet build BoltSharp.slnx -c Release --nologo
